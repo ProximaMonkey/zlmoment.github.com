@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/"><h1>Sequences and Proxy Services in WSO2 ESB</h1></a>
+            Sat 02 June 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
+<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of it. Luckly, a great man, Hiranya Jayathilka, who worked in WSO2 Inc, give me a shock at the basic of this ESB system. Here is Hiranya's blog from blogspot, I copy it here since blogspot is blocked in China and I want to share it with my patners and others who may need it. <a href="http://techfeast-hiranya.blogspot.jp/2009/11/wso2-esb-tips-tricks-01-sequences-and.html">Here</a> is the original article source. All right reserved by Hiranya Jayathilka.</p>
+<p>The main objective of this post is to introduce two very important functional components of the ESB, namely sequences and proxy services. These are perhaps the most commonly used functional components of WSO2 ESB. They can be used to implement even the most complex of messaging systems and enterprise integration patterns using the service bus. During the course of this article I will briefly explain some of the use cases of sequences and proxy services along with some useful information on how to use them in WSO2 ESB.</p>
+<p>WSO2 ESB supports four modes of operation.</p>
+<ol>
+<li>
+<p>Service mediation</p>
+</li>
+<li>
+<p>Message mediation</p>
+</li>
+<li>
+<p>Task scheduling</p>
+</li>
+<li>
+<p>Eventing</p>
+</li>
+</ol>
+<p>In the service mediation mode, WSO2 ESB acts as a proxy to a real Web Service hosted in a Web Services container like Apache Axis2 or WSO2 WSAS. The ESB exposes a virtual Web Service which can accept requests from clients. The requests are processed, mediated and forwarded to the actual service implementation by the ESB. Any responses coming from the service implementation are mediated and forwarded to the clients. Proxy services are used to get the ESB operating in this mode.</p>
+<p>In the message mediation mode, WSO2 ESB functions as a message router. It can filter, transform, drop messages or forward them to remote endpoints for further processing when operating in this mode. Sequences are used to define the message mediation behavior of the ESB. A sequence is a series of mediators, where each mediator is an entity that can accept messages and carry out a predefined task on them. WSO2 ESB provides you with a wide range of mediators designed to carry out various processing tasks on the messages. You can mix and match these available mediators to develop sequences. For instance a sequence comprising of the log mediator and the send mediator will act as a simple log-and-forward message flow. You can have any number of mediators in a sequence and a sequence can also dispatch messages to other sequences if needed.</p>
+<p>A proxy service is a combination of three sequences and a target endpoint. The target endpoint is for the actual service implementation to which the messages will be forwarded after mediation. The three sequences are as follows.</p>
+<ul>
+<li>
+<p>In-sequence: All the incoming requests to the proxy service are dispatched to the in-sequence. This sequence defines how the requests should be processed before forwarding them to the target endpoint.</p>
+</li>
+<li>
+<p>Out-sequence: All the responses coming back from the backend service implementation are dispatched to this sequence. It defines how the responses should be handled before sending them back to the clients. The out sequence can also forward the responses to a given service endpoint, thus effectively linking up multiple services. This way a single request to the proxy service will trigger multiple service invocations. The response from the 1st service is fed to the 2nd service as the request.</p>
+</li>
+<li>
+<p>Fault sequence: If an error occurs during service mediation the faulty message is handed to the fault sequence for error handling work. Depending on our requirements the fault sequence can be used log the error, ignore it or send a SOAP fault back to the client indicating that something went wrong.</p>
+</li>
+</ul>
+<p>Now that you have a basic understanding of sequences and proxy services let’s take a look at some of the use cases where these components come in handy. Proxy services can be used to expose an existing service over a different schema (message format). In scenarios like this one, proxy services can transform the messages flowing back and forth. Also since proxy services can be exposed over multiple transports they can be used to expose an existing service over a different transport. For an example we can take a simple HTTP service and expose it over JMS by creating a proxy service for the HTTP service and exposing it over JMS. The ESB will take care of switching the communication protocols. In addition, proxy services are useful in adding QoS features (security, RM etc) to ordinary message flows. As an example, we can take an unsecured service, create a proxy service for it and engage security on the proxy service to add security to the backend service implementation.</p>
+<p>Sequences can be used to audit, filter, control and transform messages flowing through a network. Certain advanced features like access control, load balancing and fail over are also possible with sequences. In WSO2 ESB all the incoming messages which are not destined to a proxy service are dispatched to the “main” sequence. The main sequence can further distribute them to other sequences and they in turns can call even more sequences. This is somewhat analogous to how a C program works. The application runtime invokes the main procedure and it in turns can call other procedures.</p>
+<p>Enough with the theory! Let’s get practical and see how to create sequences and proxy services in WSO2 ESB. Here actually you have several options. You can either use the XML based Synapse configuration language to define sequences and proxy services, or use the set of graphical tools that come with WSO2 ESB. To create a sequence graphically, first start the ESB server and logon to the management console. (By default the web based console is accessible at https://localhost:9443/carbon) Sign in as an administrator (By default the username and the password are both “admin”). Click on the “Sequences” option in the left panel. This will show you a list of existing sequences. By default the “main” sequence and the global “fault” sequence is listed on this page.</p>
+<p><a href="/static/images/2012/06/seq_list.png"><img alt="" src="/static/images/2012/06/seq_list.png" /></a></p>
+<p>To create a new sequence, click on “Add Sequence”. This will bring up the on-line sequence editor. Start by giving a name to the sequence. Then go ahead and start adding mediators.</p>
+<p><a href="/static/images/2012/06/seq_editor.png"><img alt="" src="/static/images/2012/06/seq_editor.png" /></a></p>
+<p>To further customize the behavior of a mediator instance click on the mediator and a dialog box will appear just below the sequence editor panel. Once you are done creating the sequence click on “Save” to save and close the editor. The newly created sequence will now show up on the list of available sequences.</p>
+<p>Ceating a proxy service is just as easy. Click on the Proxy Service link in the left panel to start the proxy service creation wizard.</p>
+<p>Simply go through the 3-step wizard and specify an in-sequence, target endpoint, out-sequence and a fault sequence for the proxy service. When specifying these items you can either import an already existing sequence/endpoint or create one on the spot by selecting the “Anonymous” option.</p>
+<p><a href="/static/images/2012/06/seq_epr.png"><img alt="" src="/static/images/2012/06/seq_epr.png" /></a></p>
+<p>Once you finish the wizard the new service will get created and deployed on the server. If you gave the name “FooProxy” to the service it will be exposed on the HTTP endpoint http://localhost:8280/services/FooProxy.</p>
+<p>Now if you click on the “Synapse” link on the left navigation bar you can see that the overall ESB configuration has been updated with your changes.</p>
+<p><a href="/static/images/2012/06/synapse.png"><img alt="" src="/static/images/2012/06/synapse.png" /></a></p>
+<p>The UI also allows you to enable statistics collection on sequences and proxy services, enable tracing on them and modifying their configuration. Play around with the various options available to you and get familiar with sequences, proxy services and the ESB management console. We will be using these a lot in the days to come.</p>
+<p>Thanks Hiranya Jayathilka.</p></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/wso2.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

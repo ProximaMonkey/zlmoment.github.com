@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>找不到libmysqlclient.18.dylib库的解决办法</h1>
+            Sat 18 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<p>问题描述：</p>
+<p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>  
+<span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 7<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 6<span class="p">,</span> <span class="n">in</span> <span class="n">__bootstrap__</span>  
+<span class="n">ImportError</span><span class="p">:</span> <span class="n">dlopen</span><span class="p">(</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">zhaoyulee</span><span class="o">/</span><span class="p">.</span><span class="n">python</span><span class="o">-</span><span class="n">eggs</span><span class="o">/</span><span class="n">MySQL_python</span><span class="o">-</span>1<span class="p">.</span>2<span class="p">.</span>3<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="o">-</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="p">.</span><span class="n">egg</span><span class="o">-</span><span class="n">tmp</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">so</span><span class="p">,</span> 2<span class="p">):</span> <span class="n">Library</span> <span class="n">not</span> <span class="n">loaded</span><span class="p">:</span> <span class="n">libmysqlclient</span><span class="p">.</span>18<span class="p">.</span><span class="n">dylib</span>  
+<span class="n">Referenced</span> <span class="n">from</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">zhaoyulee</span><span class="o">/</span><span class="p">.</span><span class="n">python</span><span class="o">-</span><span class="n">eggs</span><span class="o">/</span><span class="n">MySQL_python</span><span class="o">-</span>1<span class="p">.</span>2<span class="p">.</span>3<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="o">-</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="p">.</span><span class="n">egg</span><span class="o">-</span><span class="n">tmp</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">so</span>  
+<span class="n">Reason</span><span class="p">:</span> <span class="n">image</span> <span class="n">not</span> <span class="n">found</span>
+</pre></div>
+
+
+<p>解决办法：</p>
+<p>Just creat a symbolic link to the library.</p>
+<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libmysqlclient</span><span class="p">.</span>18<span class="p">.</span><span class="n">dylib</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libmysqlclient</span><span class="p">.</span>18<span class="p">.</span><span class="n">dylib</span>
+</pre></div>
+
+
+<p>参考资料：</p>
+<p><a href="http://stackoverflow.com/questions/6383310/python-mysqldb-library-not-loaded-libmysqlclient-18-dylib">《Python mysqldb: Library not loaded: libmysqlclient.18.dylib》</a></p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

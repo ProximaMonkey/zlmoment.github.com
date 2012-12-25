@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/"><h1>WebSocket新版Hybi-10协议介绍</h1></a>
+            Sun 29 April 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>不知道问什么，网上的几乎所有关于WebSocket的讲解都是旧版协议，开源的PHP-WebSocket也早不更新了。一开始还以为是服务器程序的原因，后来发现是协议变更了。而且好不容易将握手协议更换为新版后，发现传送的数据都是乱码（见<a href="http://weibo.com/1784705505/ygyi4A0Pj">这里</a>），原来数据报文的格式也进行了非常大的变更！</p>
+<p>之前我们曾介绍过基于WebSocket协议的服务器实现，但那篇文章中提到的WebSocket协议标准还是草案7.5、7.6的标准，如今只有Safari支持此版本的协议，Chrome和Firefox最新版都已升级至Hybi-10（<a href="http://tools.ietf.org/html/draft-ietf-hybi-thewebsocketprotocol-10">协议地址</a>）。因此，我们再来介绍一下WebSocket新版协议Hybi-10。这次协议变更非常大，主要集中在握手协议和数据传输的格式上。下面我们来详细介绍一下。</p>
+<h3>握手协议</h3>
+<p>我们先来看一下大致的区别：</p>
+<ol>
+<li>
+<p>最老的websocket草案标准中是没有安全key，草案7.5、7.6中有两个安全key，而现在的草案10中只有一个安全key，即将7.5、7.6中http头中的"Sec-WebSocket-Key1"与"Sec-WebSocket-Key2"合并为了一个"Sec-WebSocket-Key"</p>
+</li>
+<li>
+<p>把http头中Upgrade的值由"WebSocket"修改为了"websocket"；http头中的"-Origin"修改为了"Sec-WebSocket-Origin";</p>
+</li>
+<li>
+<p>增加了http头"Sec-WebSocket-Accept"，用来返回原来草案7.5、7.6服务器返回给客户端的握手验证，原来是以内容的形式返回，现在是放到了http头中；另外服务器返回客户端的验证方式也有变化。</p>
+</li>
+</ol>
+<p>服务器生成验证的方式变化较大，我们来做一介绍。</p>
+<p>旧版：</p>
+<div class="codehilite"><pre><span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span>1<span class="p">.</span>1
+<span class="n">Upgrade</span><span class="p">:</span> <span class="n">WebSocket</span>
+<span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
+<span class="n">Host</span><span class="p">:</span> 127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="p">:</span>1337
+<span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span>127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="p">:</span>8000
+<span class="n">Cookie</span><span class="p">:</span> <span class="n">sessionid</span><span class="p">=</span><span class="n">xxxx</span><span class="p">;</span> <span class="n">calView</span><span class="p">=</span><span class="n">day</span><span class="p">;</span> <span class="n">dayCurrentDate</span><span class="p">=</span>1314288000000
+<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Key1</span><span class="p">:</span> <span class="n">cV</span>`<span class="n">p1</span><span class="o">*</span> 42#7  ^9<span class="p">}</span><span class="n">_</span> 647  08<span class="p">{</span>
+<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Key2</span><span class="p">:</span> <span class="n">O8</span> 415 8<span class="n">x37R</span> <span class="n">A8</span>   4
+<span class="p">;</span>&quot;######
+</pre></div>
+
+
+<p>旧版生成Token的方法如下：</p>
+<p>取出Sec-WebSocket-Key1中的所有数字字符形成一个数值，这里是1427964708，然后除以Key1中的空格数目，得到一个数值，保留该数值整数位，得到数值N1；对Sec-WebSocket-Key2采取同样的算法，得到第二个整数N2；把N1和N2按照Big-Endian字符序列连接起来，然后再与另外一个Key3连接，得到一个原始序列ser_key。Key3是指在握手请求最后，有一个8字节的奇怪的字符串“;”######”，这个就是Key3。然后对ser_key进行一次md5运算得出一个16字节长的digest，这就是老版本协议需要的token，然后将这个token附在握手消息的最后发送回Client，即可完成握手。</p>
+<p>新版：</p>
+<div class="codehilite"><pre><span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span>1<span class="p">.</span>1
+<span class="n">Upgrade</span><span class="p">:</span> <span class="n">websocket</span>
+<span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
+<span class="n">Host</span><span class="p">:</span> 127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="p">:</span>1337
+<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span>127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="p">:</span>8000
+<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="n">erWJbDVAlYnHvHNulgrW8Q</span><span class="o">==</span>
+<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Version</span><span class="p">:</span> 8
+<span class="n">Cookie</span><span class="p">:</span> <span class="n">csrftoken</span><span class="p">=</span><span class="n">xxxxxx</span><span class="p">;</span> <span class="n">sessionid</span><span class="p">=</span><span class="n">xxxxx</span>
+</pre></div>
+
+
+<p>新版生成Token的方法如下：</p>
+<p>首先服务器将key（长度24）截取出来，如4tAjitqO9So2Wu8lkrsq3w==，用它和自定义的一个字符串（长度36）258EAFA5-E914-47DA-95CA-C5AB0DC85B11连接起来，然后把这一字符串进行SHA-1算法加密，得到长度为20字节的二进制数据，再将这些数据经过Base64编码，最终得到服务端的密钥，也就是ser_key。服务器将ser_key附在返回值Sec-WebSocket-Accept后，至此握手成功。</p>
+<h3>数据报文格式</h3>
+<p>旧版协议比较简单，仅仅是在原始数据前加了个’\x00′，在最后面加了个’\xFF’，即假如Client发送一个字符串’test’，实际上WebSocket Server收到的数据是：’x00test\xFF’，所以只需要剥离掉首尾那两个字符就可以了。</p>
+<p>新版的协议对这部分规定比较复杂，以下是其格式标准：（下图在Firefox可能会出现错乱，请换用Chrome）</p>
+<div class="codehilite"><pre>      0                   1                   2                   3
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     <span class="o">+-+-+-+-+-------+-+-------------+-------------------------------+</span>
+     <span class="o">|</span><span class="n">F</span><span class="o">|</span><span class="n">R</span><span class="o">|</span><span class="n">R</span><span class="o">|</span><span class="n">R</span><span class="o">|</span> <span class="n">opcode</span><span class="o">|</span><span class="n">M</span><span class="o">|</span> <span class="n">Payload</span> <span class="n">len</span> <span class="o">|</span>    <span class="n">Extended</span> <span class="n">payload</span> <span class="nb">length</span>    <span class="o">|</span>
+     <span class="o">|</span><span class="n">I</span><span class="o">|</span><span class="n">S</span><span class="o">|</span><span class="n">S</span><span class="o">|</span><span class="n">S</span><span class="o">|</span>  <span class="p">(</span>4<span class="p">)</span>  <span class="o">|</span><span class="n">A</span><span class="o">|</span>     <span class="p">(</span>7<span class="p">)</span>     <span class="o">|</span>             <span class="p">(</span>16<span class="o">/</span>63<span class="p">)</span>           <span class="o">|</span>
+     <span class="o">|</span><span class="n">N</span><span class="o">|</span><span class="n">V</span><span class="o">|</span><span class="n">V</span><span class="o">|</span><span class="n">V</span><span class="o">|</span>       <span class="o">|</span><span class="n">S</span><span class="o">|</span>             <span class="o">|</span>   <span class="p">(</span><span class="k">if</span> <span class="n">payload</span> <span class="n">len</span><span class="o">==</span>126<span class="o">/</span>127<span class="p">)</span>   <span class="o">|</span>
+     <span class="o">|</span> <span class="o">|</span>1<span class="o">|</span>2<span class="o">|</span>3<span class="o">|</span>       <span class="o">|</span><span class="n">K</span><span class="o">|</span>             <span class="o">|</span>                               <span class="o">|</span>
+     <span class="o">+-+-+-+-+-------+-+-------------+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span>
+     <span class="o">|</span>     <span class="n">Extended</span> <span class="n">payload</span> <span class="nb">length</span> <span class="n">continued</span><span class="p">,</span> <span class="k">if</span> <span class="n">payload</span> <span class="n">len</span> <span class="o">==</span> 127  <span class="o">|</span>
+     <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+-------------------------------+</span>
+     <span class="o">|</span>                               <span class="o">|</span><span class="n">Masking</span><span class="o">-</span><span class="n">key</span><span class="p">,</span> <span class="k">if</span> <span class="n">MASK</span> <span class="n">set</span> <span class="n">to</span> 1  <span class="o">|</span>
+     <span class="o">+-------------------------------+-------------------------------+</span>
+     <span class="o">|</span> <span class="n">Masking</span><span class="o">-</span><span class="n">key</span> <span class="p">(</span><span class="n">continued</span><span class="p">)</span>       <span class="o">|</span>          <span class="n">Payload</span> <span class="n">Data</span>         <span class="o">|</span>
+     <span class="o">+--------------------------------</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span>
+     <span class="p">:</span>                     <span class="n">Payload</span> <span class="n">Data</span> <span class="n">continued</span> <span class="p">...</span>                <span class="p">:</span>
+     <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span>
+     <span class="o">|</span>                     <span class="n">Payload</span> <span class="n">Data</span> <span class="n">continued</span> <span class="p">...</span>                <span class="o">|</span>
+     <span class="o">+---------------------------------------------------------------+</span>
+</pre></div>
+
+
+<p><strong>FIN：</strong>1位，用来表明这是一个消息的最后的消息片断，当然第一个消息片断也可能是最后的一个消息片断；</p>
+<p><strong>RSV1, RSV2, RSV3:</strong> 分别都是1位，如果双方之间没有约定自定义协议，那么这几位的值都必须为0,否则必须断掉WebSocket连接；</p>
+<p><strong>Opcode:</strong>4位操作码，定义有效负载数据，如果收到了一个未知的操作码，连接也必须断掉，以下是定义的操作码：</p>
+<ul>
+<li>
+<p>%x0 表示连续消息片断</p>
+</li>
+<li>
+<p>%x1 表示文本消息片断</p>
+</li>
+<li>
+<p>%x2 表未二进制消息片断</p>
+</li>
+<li>
+<p>%x3-7 为将来的非控制消息片断保留的操作码</p>
+</li>
+<li>
+<p>%x8 表示连接关闭</p>
+</li>
+<li>
+<p>%x9 表示心跳检查的ping</p>
+</li>
+<li>
+<p>%xA 表示心跳检查的pong</p>
+</li>
+<li>
+<p>%xB-F 为将来的控制消息片断的保留操作码</p>
+</li>
+</ul>
+<p><strong>Mask:</strong>1位，定义传输的数据是否有加掩码,如果设置为1,掩码键必须放在masking-key区域，客户端发送给服务端的所有消息，此位的值都是1；</p>
+<p><strong>Payload length: </strong>传输数据的长度，以字节的形式表示：7位、7+16位、或者7+64位。如果这个值以字节表示是0-125这个范围，那这个值就表示传输数据的长度；如果这个值是126，则随后的两个字节表示的是一个16进制无符号数，用来表示传输数据的长度；如果这个值是127,则随后的是8个字节表示的一个64位无符合数，这个数用来表示传输数据的长度。多字节长度的数量是以网络字节的顺序表示。负载数据的长度为扩展数据及应用数据之和，扩展数据的长度可能为0,因而此时负载数据的长度就为应用数据的长度。</p>
+<p><strong>Masking-key:</strong>0或4个字节，客户端发送给服务端的数据，都是通过内嵌的一个32位值作为掩码的；掩码键只有在掩码位设置为1的时候存在。
+<strong>Payload data: </strong> (x+y)位，负载数据为扩展数据及应用数据长度之和。
+<strong>Extension data:</strong>x位，如果客户端与服务端之间没有特殊约定，那么扩展数据的长度始终为0，任何的扩展都必须指定扩展数据的长度，或者长度的计算方式，以及在握手时如何确定正确的握手方式。如果存在扩展数据，则扩展数据就会包括在负载数据的长度之内。
+<strong>Application data:</strong>y位，任意的应用数据，放在扩展数据之后，应用数据的长度=负载数据的长度-扩展数据的长度。</p>
+<p>以下是Python实现的解码和编码，兼容新旧版协议，仅供参考：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">send_data</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">raw_str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">sockets</span><span class="p">[</span><span class="n">self</span><span class="p">][</span><span class="s">&#39;new_version&#39;</span><span class="p">]:</span>
+        <span class="n">back_str</span> <span class="p">=</span> <span class="p">[]</span>
+        <span class="n">back_str</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;\x81&#39;</span><span class="p">)</span>
+        <span class="n">data_length</span> <span class="p">=</span> <span class="n">len</span><span class="p">(</span><span class="n">raw_str</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data_length</span> <span class="o">&lt;</span><span class="p">=</span> 125<span class="p">:</span>
+            <span class="n">back_str</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">chr</span><span class="p">(</span><span class="n">data_length</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">back_str</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">chr</span><span class="p">(</span>126<span class="p">))</span>
+            <span class="n">back_str</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">chr</span><span class="p">(</span><span class="n">data_length</span> <span class="o">&gt;&gt;</span> 8<span class="p">))</span>
+            <span class="n">back_str</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">chr</span><span class="p">(</span><span class="n">data_length</span> <span class="o">&amp;</span> 0<span class="n">xFF</span><span class="p">))</span>
+
+        <span class="n">back_str</span> <span class="p">=</span> &quot;&quot;<span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">back_str</span><span class="p">)</span> <span class="o">+</span> <span class="n">raw_str</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">transport</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">back_str</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">back_str</span> <span class="p">=</span> <span class="s">&#39;\x00%s\xFF&#39;</span> <span class="c">% (raw_str)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">transport</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">back_str</span><span class="p">)</span>
+
+<span class="n">def</span> <span class="n">parse_recv_data</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">raw_str</span> <span class="p">=</span> <span class="s">&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">sockets</span><span class="p">[</span><span class="n">self</span><span class="p">][</span><span class="s">&#39;new_version&#39;</span><span class="p">]:</span>
+        <span class="n">code_length</span> <span class="p">=</span> <span class="n">ord</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span>1<span class="p">])</span> <span class="o">&amp;</span> 127
+
+        <span class="k">if</span> <span class="n">code_length</span> <span class="o">==</span> 126<span class="p">:</span>
+            <span class="n">masks</span> <span class="p">=</span> <span class="n">msg</span><span class="p">[</span>4<span class="p">:</span>8<span class="p">]</span>
+            <span class="n">data</span> <span class="p">=</span> <span class="n">msg</span><span class="p">[</span>8<span class="p">:]</span>
+        <span class="n">elif</span> <span class="n">code_length</span> <span class="o">==</span> 127<span class="p">:</span>
+            <span class="n">masks</span> <span class="p">=</span> <span class="n">msg</span><span class="p">[</span>10<span class="p">:</span>14<span class="p">]</span>
+            <span class="n">data</span> <span class="p">=</span> <span class="n">msg</span><span class="p">[</span>14<span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">masks</span> <span class="p">=</span> <span class="n">msg</span><span class="p">[</span>2<span class="p">:</span>6<span class="p">]</span>
+            <span class="n">data</span> <span class="p">=</span> <span class="n">msg</span><span class="p">[</span>6<span class="p">:]</span>
+
+        <span class="nb">i</span> <span class="p">=</span> 0
+        <span class="k">for</span> <span class="n">d</span> <span class="n">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">raw_str</span> <span class="o">+</span><span class="p">=</span> <span class="n">chr</span><span class="p">(</span><span class="n">ord</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> ^ <span class="n">ord</span><span class="p">(</span><span class="n">masks</span><span class="p">[</span><span class="nb">i</span><span class="c">%4]))</span>
+            <span class="nb">i</span> <span class="o">+</span><span class="p">=</span> 1
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">raw_str</span> <span class="p">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">split</span><span class="p">(</span>&quot;<span class="o">\</span><span class="n">xFF</span>&quot;<span class="p">)[</span>0<span class="p">][</span>1<span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">raw_str</span>
+</pre></div></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/websocket.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/"><h2>解密人人网应用“好友档案”与“X档案”</h2></a>
+        <div class= "well small"> Thu 23 June 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
+<h3>接口分析</h3>
+<p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
+<p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
+<ol>
+<li>
+<p>status.getComment()</p>
+</li>
+<li>
+<p>photos.getComments()</p>
+</li>
+<li>
+<p>blog.getComments()</p>
+</li>
+</ol>
+<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/"><h2>Sequences and Proxy Services in WSO2 ESB</h2></a>
+        <div class= "well small"> Sat 02 June 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
+<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/"><h2>高效人士的七种习惯（中英对照）</h2></a>
+        <div class= "well small"> Thu 03 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="" src="/static/images/2012/05/ogwAq.jpg" /></p>
+<p><strong>摘要：</strong></p>
+<p>Habit 1: Be Proactive 凡事积极主动</p>
+<p>Habit 2: Begin with the End in Mind 先定目标而后有行动</p>
+<p>Habit 3: Put First Things First 重要的事要先做</p>
+<p>Habit 4: Think Win-Win 为了大家都赢</p>
+<p>Habit 5: Seek First to Understand, Then to Be Understood 先理解别人，再让别人理解自己</p>
+<p>Habit 6: Synergize 协同合作</p>
+<p>Habit 7: Sharpen the Saw 磨亮锯子（意指不断自我提高 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/"><h2>年华一度，梦如歌</h2></a>
+        <div class= "well small"> Sun 13 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
+<p>多年以前，当我们还是孩童的时候，曾是那么的渴望着长大。长大以后，懵懵懂懂的，我们又希望能够早些成熟。而当我们都成熟之后才明白，原来，成熟真的不是一件幸福的事情，我们为此付出了太大的代价。生活的种种无奈要面对，人生的诸多曲折要经历，所以我们不得不抛却内心的纯真，挂上虚伪的笑容，冷漠着自己的视线，用伪装将自己层层包裹，时间久了，最真实的自我也就忘了。</p>
+<p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
+<p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
+<p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/04/socket-programming-in-php/"><h2>PHP中的Socket编程</h2></a>
+        <div class= "well small"> Tue 17 April 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
+<h3>文章结构：</h3>
+<ul>
+<li>
+<p>Socket基础知识</p>
+</li>
+<li>
+<p>编写服务器</p>
+</li>
+<li>
+<p>编写客户端</p>
+</li>
+<li>
+<p>总结</p>
+</li>
+</ul>
+<p>通过这三部分你将会体验到Socket的魅力，并了解怎样去编写一个服务器，怎样通过Sockets连接到服务器，服务器怎样处理信息并将信息发送给相应的客户端。</p>
+<p>不管你信不信，只要你用过PHP，就一定用过Sockets。HTTP服务器就是一个Socket服务器，浏览器就是客户端，也就是最简单的C/S模式。</p>
+<h3>Socket基础知识</h3>
+<p>我们可以把Socket当做是一种数据结构，客户端和服务器间通过这种数据结构来交换数据。服务器开始监听连接，当客户端想要连接服务器时，会通过服务器监听的端口开启一个会话，服务器收到客户端的请求后，建立连接完毕，然后继续监听下一次连接。</p>
+<p>要产生一个Socket，你我们需要三个变量：一个协议（protocol）、一个socket类型（socket type）和一个公共协议类型（common protocol type）。下面将会详细介绍各个部分的具体内容。</p>
+<p><strong>协议</strong></p>
+<ul>
+<li>
+<p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
+</li>
+<li>
+<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/socket-programming-in-php/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/07/socket-work-model/"><h2>Socket的几种工作模式</h2></a>
+        <div class= "well small"> Tue 17 July 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
+<h2>阻塞模式</h2>
+<p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
+<p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
+<p><img alt="" src="/static/images/2012/07/1.jpg" /></p>
+<p>可参见下面的例子：</p>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
+<span class="c">#include &lt;stdlib.h&gt;</span>
+<span class="c">#include &lt;errno.h&gt;</span>
+<span class="c">#include &lt;string.h&gt;</span>
+<span class="c">#include &lt;sys/types.h&gt;</span>
+<span class="c">#include &lt;netinet/in.h&gt;</span>
+<span class="c">#include &lt;sys/socket.h&gt;</span>
+<span class="c">#include &lt;sys/wait.h&gt;</span>
+<span class="c">#define ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/07/socket-work-model/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/"><h2>找不到libmysqlclient.18.dylib库的解决办法</h2></a>
+        <div class= "well small"> Sat 18 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<p>问题描述：</p>
+<p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>  
+<span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/"><h2>Wordpress提示填写FTP信息的解决办法</h2></a>
+        <div class= "well small"> Sat 14 January 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在上一篇文章《<a href="http://www.hackecho.com/archives/710.html">VPS折腾记</a>》中提到在升级Wordpress或添加删除主题和插件的时候需要填写FTP账户信息的问题，提示一般如下：</p>
+<blockquote>
+<p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</p>
+</blockquote>
+<p>一般情况下，虚拟主机很少会出现这样的情况，如果使用 VPS 的话，这种情况就会比较多。主要原因是网站服务器运行PHP的用户和Wordpress文件夹的所有者不一样，目的就是为了安全，Wordpress在升级时会创建一个临时文件看看owner是不是和当前运行的PHP是否一样，如果不一样，就会出现这个界面。</p>
+<p>第一种解决办法很简单，就是直接在wp-config.php 中加入FTP的配置代码：</p>
+<div class="codehilite"><pre><span class="c1">// ** FTP SETTINGS FOR AUTO-UPDATE ** //</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_HOST</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">localhost</span><span class="err">’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_USER</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">帐号’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_PASS</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">密码’</span><span class="p">);</span>
+</pre></div>
+
+
+<p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
+<p>针对有高级管理权限的用户，如服务器或 VPS ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/"><h2>WordPress与Suhosin冲突的解决办法</h2></a>
+        <div class= "well small"> Fri 23 March 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
+<p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
+<p><a href="/static/images/2012/03/zhaoyulee-—-ssh-—-80×24-1-1.jpg"><img alt="" src="/static/images/2012/03/zhaoyulee-—-ssh-—-80×24-1-1.jpg" /></a></p>
+<p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
+<p>主要参考文章：</p>
+<ul>
+<li>
+<p><a href="http://www.cnblogs.com/droko/archive/2012/03/06/2381966.html">《PHP进程高负载》</a></p>
+</li>
+<li>
+<p><a href="http://changblog.com/582">《大战suhosin》</a></p>
+</li>
+<li>
+<p><a href="http://changblog.com/981">《解决wordpress引起的suhosin报错》</a></p>
+</li>
+<li>
+<p><a href="http://core.trac.wordpress.org/ticket/13847">《WP increasing the memory above other server limit》</a></p>
+</li>
+<li>
+<p><a href="http://demon.tw/software/suhosin-php.html">《Suhosin，PHP保护神？》</a></p>
+</li>
+</ul>
+<p>先观察些时日再说。</p>
+<p><em>补充（2012-3-23 20:40）：</em></p>
+<p>放上我的临时解决办法：</p>
+<p>对于上面日志中的问题，原因是suhosin的memory_limit限制了脚本内存的分配。解决办法是在php.ini中搜索memory_limit关键字，修改如下：</p>
+<div class="codehilite"><pre><span class="n">extension</span><span class="p">=</span><span class="n">suhosin</span><span class="p">.</span><span class="n">so</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="p">=</span> 256<span class="n">M</span>
+</pre></div>
+
+
+<p>对于get和post数据大小限制的问题 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2010/09/some-notes-about-myself/"><h2>记录一些心情</h2></a>
+        <div class= "well small"> Sun 05 September 2010
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>刚刚写的状态：“所谓的理想，所谓的现实，所谓的差距，经历了太多以前未曾有过的挫折，或许是以前太顺利了。”其实也没什么，有些心情记录一下，会更好的。</p>
+<p>昨天与10级的班长支书见面，又看到了去年自己的影子。依稀记得去年这个时候，学长坐在那里给我们讲述他们的生活，而如今，我们坐在了他们的位置，给满怀期待的学弟学妹们讲述我们的生活。我能理解他们的心情，脑海中浮现出去年的一张张影像，好一个时光的交错更替。8月28号为新生党员带路，9月1号为新生家长带路，无一不是回忆，时隔一年，感觉时间还没有真正开始，却早已逝去，留下的都是追忆。</p>
+<p>都说自古才子多寂寞，我不是才子，为何有时也会孤单？其实一个人的生活，孤单但并不孤独。</p>
+<p>我曾经发过一条状态：“突然一下感觉要失去什么了，猛然想抓住那些曾经错过的东西。想要个移动硬盘，想保留的东西太多了，而且记性不好，就用它存储我的记忆；想要个数码相机，想多走走拍拍，免得以后老了或是忙了，才发现自己是为了生存而生活；想要一个单车，想结伙一起外出郊游或是锻炼，免得都市粉尘吸久了体质下降了。”</p>
+<p>我买了相机，开始记录我的生活，在那一幅幅静态的影像中，才能看到时间的足迹，换句话说 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2010/09/some-notes-about-myself/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li7.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
+    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+
+    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li9.html">Next &rarr;</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/"><h1>利用.htaccess简单实现的10个功能</h1></a>
+            Thu 12 April 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
+<ol>
+<li>防盗链</li>
+</ol>
+<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
+<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
+<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^$</span>
+<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^http://(www.)?yoursite.com/.*$ [NC]</span>
+<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span>$ <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="p">=</span>302<span class="p">,</span><span class="n">L</span><span class="p">]</span>
+</pre></div>
+
+
+<ol>
+<li>防止目录浏览</li>
+</ol>
+<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
+<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
+</pre></div>
+
+
+<ol>
+<li>301永久重定向</li>
+</ol>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向，不但流量没有丢失，搜索引擎也迅速更新了收录。或者当要更改网站URL结构的时候，做301重定向也是一个好方法：</p>
+<div class="codehilite"><pre><span class="n">Redirect</span> 301 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">yoursite</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">article</span><span class="p">.</span><span class="n">html</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">yoursite</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">archives</span><span class="o">/</span><span class="n">article</span>
+</pre></div>
+
+
+<ol>
+<li>个性化 404 错误页面</li>
+</ol>
+<p>404页面是什么就不用解释了吧，通过下面的简单配置可以自定义404页面：</p>
+<div class="codehilite"><pre><span class="n">ErrorDocument</span> 404 <span class="o">/</span>404<span class="p">.</span><span class="n">html</span>
+</pre></div>
+
+
+<ol>
+<li>设置目录的默认页面</li>
+</ol>
+<p>假如需要为不同的目录设置不同的默认页面，可以很容易的通过 .htaccess 实现：</p>
+<div class="codehilite"><pre><span class="n">DirectoryIndex</span> <span class="n">about</span><span class="p">.</span><span class="n">html</span>
+</pre></div>
+
+
+<ol>
+<li>基于referer来限制网站访问</li>
+</ol>
+<p>当你想屏蔽一些网站的访问时（比如垃圾评论网站），可以这样配置：</p>
+<div class="codehilite"><pre><span class="nt">&lt;IfModule</span> <span class="err">mod_rewrite.c</span><span class="nt">&gt;</span>
+RewriteEngine on  RewriteCond %{HTTP_REFERER} spamteam.com [NC,OR]
+RewriteCond %{HTTP_REFERER} trollteam.com [NC,OR]
+RewriteRule .* – [F]
+<span class="nt">&lt;/ifModule&gt;</span>
+</pre></div>
+
+
+<ol>
+<li>限制PHP上传文件大小</li>
+</ol>
+<p>第一个是设置最大的上传文件大小，第二个是设置最大的POST请求大小，第三个PHP脚本最长的执行时间，最后一个是脚本解析上传文件的最长时间：</p>
+<div class="codehilite"><pre><span class="n">php_value</span> <span class="n">upload_max_filesize</span> 20<span class="n">M</span>
+<span class="n">php_value</span> <span class="n">post_max_size</span> 20<span class="n">M</span>
+<span class="n">php_value</span> <span class="n">max_execution_time</span> 200
+<span class="n">php_value</span> <span class="n">max_input_time</span> 200
+</pre></div>
+
+
+<ol>
+<li>压缩文件</li>
+</ol>
+<p>可以通过压缩文件来减少网络流量和页面装载时间：</p>
+<div class="codehilite"><pre><span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">plain</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">css</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">xml</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">xhtml</span><span class="o">+</span><span class="n">xml</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">rss</span><span class="o">+</span><span class="n">xml</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">javascript</span>
+<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">javascript</span>
+</pre></div>
+
+
+<ol>
+<li>缓存文件</li>
+</ol>
+<p>这一点还需要解释吗？</p>
+<div class="codehilite"><pre><span class="nt">&lt;FilesMatch</span> <span class="err">&quot;.(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf)$&quot;</span><span class="nt">&gt;</span>
+Header set Cache-Control &quot;max-age=2592000&quot;
+<span class="nt">&lt;/FilesMatch&gt;</span>
+</pre></div>
+
+
+<ol>
+<li>添加尾部的反斜杠</li>
+</ol>
+<p>很多人都说添加尾部反斜杠有益于SEO：</p>
+<div class="codehilite"><pre><span class="nt">&lt;IfModule</span> <span class="err">mod_rewrite.c</span><span class="nt">&gt;</span>
+RewriteCond %{REQUEST_URI} /+[^\.]+$
+RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/htaccess.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

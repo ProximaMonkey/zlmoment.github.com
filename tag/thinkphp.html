@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2011/11/deployment-of-thinkphp/"><h1>ThinkPHP部署二三事儿</h1></a>
+            Wed 09 November 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
+<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
+<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
+<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
+<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
+<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像，导致Ubuntu无法配置PHP服务器环境。。。</p>
+<p>其实问题很简单，管理员的内外网端口映射已经做好，但防火墙配置出现问题，把我们的所有请求都拦截了...也就是说，我们需要联系管理员配置下网络防火墙即可。。。</p>
+<p>接着我们配置好了PHP运行环境，将我们的项目进行部署。这里的问题都是关于ThinkPHP的了，大牛可以直接略过。</p>
+<p><strong>乱码问题</strong></p>
+<p>嗯，不用多说，MySQL编码的问题...</p>
+<p><strong>权限问题</strong></p>
+<p>ThinkPHP的Runtime文件夹需要755的权限，直接从Windows环境下拷过去的项目一定要重新配置下权限。</p>
+<p><strong>找不到Public模块</strong></p>
+<p>我们用.htaccess配置了URLRewrite，把index.php隐去了，但奇怪的是诸如http://localhost/Public/...的地址全部都显示为“无法找到Public模块。”Public是个共用文件夹，我们把一些图片，CSS和JS放在里面，但ThinkPHP却去加载Public Action，导致无法找到模块。</p>
+<p>起初以为是.htaccess的问题，安秦把重写规则改了好多遍依旧不能解决问题，ThinkPHP的URLMODE试了一遍也不行。我隐约记得以前写过一个ThinkPHP项目中遇到过同样的问题，但后来怎么解决的却始终想不起来。正当问题进入“白热化”阶段，我们准备写一个PublicAction来捕捉所有请求的时候，终于。。。</p>
+<p>问题是，在Windows下面URL是不区分大小写的，但在Linux下面，大家应该都清楚吧，case sensitive！</p>
+<p>好了，问题解决了。</p>
+<p>明天下午继续去解决防火墙问题，不出差错，马上就可以上线咯！</p></div>
+        <hr />
+    </div>
+		
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/"><h2>深入浅出ThinkPHP系列教程(四) 模块与操作</h2></a>
+        <div class= "well small"> Wed 12 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
+<p>具体如下图所示：</p>
+<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
+<p>我们来详细了解一下图中所示的模块和操作。</p>
+<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
+<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
+<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="err">具体代码略……</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="err">```</span><span class="nx">PHP</span>
+
+<span class="err">该文件已经演示了一个基于</span> <span class="nx">ThinkPHP</span> <span class="err">的实际应用。</span>
+
+<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
+
+<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/10/thinkphp-hello-world/"><h2>深入浅出ThinkPHP系列教程(三) Hello World！</h2></a>
+        <div class= "well small"> Sat 01 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
+<p><strong>入口文件</strong></p>
+<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
+<p><strong>创建入口文件</strong></p>
+<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">//定义ThinkPHP框架路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
+<span class="c1">//定义项目名称和路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="c1">//加载框架入口文件</span>
+<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
+<span class="c1">//实例化一个网站应用实例</span>
+<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/thinkphp-hello-world/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/"><h2>深入浅出ThinkPHP系列教程(二) MVC简介</h2></a>
+        <div class= "well small"> Wed 28 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>通过这篇教程，让我们来简单熟悉一下MVC的基本思想，这也是使用ThinkPHP开发应用不可或缺的知识，否则你将寸步难行。</p>
+<p>MVC主要由三部分组成：</p>
+<ul>
+<li>
+<p>（控制器Controller）- 负责转发请求，对请求进行处理。</p>
+</li>
+<li>
+<p>（视图View） - 界面设计人员进行图形界面设计。</p>
+</li>
+<li>
+<p>（模型Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</p>
+</li>
+</ul>
+<p><img alt="" src="/static/images/2011/09/ModelViewControllerDiagramZh.png" /></p>
+<p>本博客以前发布过一篇关于MVC的简单介绍，详情请点击这里：<a href="http://www.hackecho.com/archives/138.html">《对MVC架构的简单解读》</a></p>
+<p><strong>视图</strong></p>
+<p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
+<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/intro-to-thinkphp/"><h2>深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</h2></a>
+        <div class= "well small"> Mon 26 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
+<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
+<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
+<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
+<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
+<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
+<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
+<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
+<p><strong>加速开发过程：</strong></p>
+<p>PHP框架 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/intro-to-thinkphp/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/04/thinkphp-notes/"><h2>ThinkPHP学习笔记（一）</h2></a>
+        <div class= "well small"> Mon 04 April 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>因为是自己的笔记，所以比较杂乱，见谅。</p>
+<p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
+<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
+<span class="o">&lt;?</span><span class="n">php</span>
+<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
+    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
+<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
+<span class="o">&lt;?</span><span class="n">php</span>
+    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
+    <span class="p">{}</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p>Action目录放置命名为xxxAction.class.php的控制器文件，Model目录放置对应数据库表的命名为xxxModel.class.php的类文件。</p>
+<p>1 在TP开发中，要增加一个应用模块，就在Action文件夹里建立一个类，类的文件命名格式是模块名称+Action.class.php ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/thinkphp-notes/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/thinkphp.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/02/macvim-with-python/"><h1>配置MacVim的Pyhton编程环境</h1></a>
+            Sat 25 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
+<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
+<h3>安装MacVim和Python</h3>
+<p>下列两种方式中的任一种均可用来安装MacVim。</p>
+<p><strong>方式一：通过Mac ports</strong></p>
+<p>首先确保你的Mac ports是最新版：</p>
+<p>1 $ sudo port -v selfupdate</p>
+<p>安装：</p>
+<div class="codehilite"><pre>$ <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
+</pre></div>
+
+
+<p><strong>方式二：自己编译</strong></p>
+<div class="codehilite"><pre>$ <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">b4winckler</span><span class="o">/</span><span class="n">macvim</span><span class="p">.</span><span class="n">git</span>
+$ <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
+$ <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="p">=</span>10<span class="p">.</span>6
+$ <span class="n">make</span>
+</pre></div>
+
+
+<p>然后键入：</p>
+<div class="codehilite"><pre>$ <span class="n">open</span> <span class="n">MacVim</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">Release</span>
+</pre></div>
+
+
+<p>并把MacVim图表拖到/Applications文件夹。</p>
+<p>(source: <a href="https://github.com/b4winckler/macvim/wiki/Building">MacVim Github</a>)</p>
+<h3>外观</h3>
+<p>默认的主题似乎不是那么吸引人。我发现黑色背景对眼睛更好一点，亮色的背景对眼睛刺激性太强。要安装一个新的配色的话，首先需要新建一个文件夹：</p>
+<div class="codehilite"><pre>$ <span class="n">mkdir</span> <span class="o">~/</span><span class="p">.</span><span class="n">vim</span><span class="o">/</span><span class="n">colors</span>
+</pre></div>
+
+
+<p>然后，到<a href="http://www.vim.org/scripts/script_search_results.php?keywords=&amp;script_type=color+scheme&amp;order_by=creation_date&amp;direction=descending&amp;search=search">这里</a>选择一个配色方案，将下载下来的.vim文件放到刚刚新建的文件夹中。</p>
+<p><a href="http://www.vim.org/scripts/script.php?script_id=2536">Lucius这个配色</a>还不错，而且支持亮色和蓝色方案。我们将lucius放到colors文件夹中，然后编辑.vimrc文件，开启语法高亮并设置主题。</p>
+<div class="codehilite"><pre>$ <span class="n">mv</span> <span class="n">lucius</span><span class="p">.</span><span class="n">vim</span> <span class="o">~/</span><span class="p">.</span><span class="n">vim</span><span class="o">/</span><span class="n">colors</span>
+$ <span class="n">vi</span> <span class="o">~/</span><span class="p">.</span><span class="n">vimrc</span>
+</pre></div>
+
+
+<p>内容如下：</p>
+<div class="codehilite"><pre><span class="n">set</span> <span class="n">nocompatible</span>
+<span class="n">syntax</span> <span class="n">on</span>
+<span class="n">colorscheme</span> <span class="n">lucius</span>
+&quot;<span class="n">colorscheme</span> <span class="n">mustang</span>
+<span class="n">set</span> <span class="n">background</span><span class="p">=</span><span class="n">dark</span>
+</pre></div>
+
+
+<p>对于字体，可以这样设置：</p>
+<div class="codehilite"><pre><span class="n">set</span> <span class="n">gfn</span><span class="p">=</span><span class="n">Monaco</span><span class="p">:</span><span class="n">h12</span>
+</pre></div>
+
+
+<p>下面是一些其它有用的设置：</p>
+<div class="codehilite"><pre><span class="n">set</span> <span class="n">tabstop</span><span class="p">=</span>4
+<span class="n">set</span> <span class="n">shiftwidth</span><span class="p">=</span>4
+<span class="n">set</span> <span class="n">expandtab</span>
+<span class="n">set</span> <span class="n">softtabstop</span><span class="p">=</span>4
+<span class="n">set</span> <span class="n">smartindent</span>
+<span class="n">set</span> <span class="n">autoindent</span>
+
+<span class="n">set</span> <span class="n">hlsearch</span>
+<span class="n">set</span> <span class="n">incsearch</span>
+<span class="n">set</span> <span class="n">showmatch</span>
+
+<span class="n">set</span> <span class="n">number</span>
+</pre></div>
+
+
+<h3>在新标签中打开文件</h3>
+<p>通常情况下，在Terminal中键入"vi a_new_file"会在一个新的窗口中打开文件。你也许想将新的文件在一个新的tab中打开。</p>
+<p>编辑mvim:</p>
+<div class="codehilite"><pre>$ <span class="n">vi</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">mvim</span>
+</pre></div>
+
+
+<p>将下列语句添加在最上方.</p>
+<div class="codehilite"><pre><span class="n">tabs</span><span class="p">=</span><span class="n">true</span>
+</pre></div>
+
+
+<p>然后将文件末尾的if结构替换为下面的语句：</p>
+<div class="codehilite"><pre><span class="cp"># Last step: fire up vim.</span>
+<span class="k">if</span> <span class="p">[</span> <span class="s">&quot;$gui&quot;</span> <span class="p">];</span> <span class="n">then</span>
+<span class="k">if</span> <span class="n">$tabs</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">[[</span> <span class="err">`</span><span class="n">$binary</span> <span class="o">--</span><span class="n">serverlist</span><span class="err">`</span> <span class="o">=</span> <span class="s">&quot;VIM&quot;</span> <span class="p">]];</span> <span class="n">then</span>
+<span class="err">  </span> <span class="n">exec</span> <span class="s">&quot;$binary&quot;</span> <span class="o">-</span><span class="n">g</span> <span class="n">$opts</span> <span class="o">--</span><span class="n">remote</span><span class="o">-</span><span class="n">tab</span><span class="o">-</span><span class="n">silent</span> <span class="n">$</span><span class="p">{</span><span class="mi">1</span><span class="o">:+</span><span class="s">&quot;$@&quot;</span><span class="p">}</span>
+<span class="k">else</span>
+<span class="err">   </span> <span class="n">exec</span> <span class="s">&quot;$binary&quot;</span> <span class="o">-</span><span class="n">g</span> <span class="n">$opts</span> <span class="n">$</span><span class="p">{</span><span class="mi">1</span><span class="o">:+</span><span class="s">&quot;$@&quot;</span><span class="p">}</span>
+<span class="n">fi</span> 
+<span class="k">else</span>
+<span class="err">   </span> <span class="n">exec</span> <span class="s">&quot;$binary&quot;</span> <span class="n">$opts</span> <span class="n">$</span><span class="p">{</span><span class="mi">1</span><span class="o">:+</span><span class="s">&quot;$@&quot;</span><span class="p">}</span>
+<span class="n">fi</span>
+</pre></div>
+
+
+<h3>CTags and Tag List</h3>
+<p>安装ctags：</p>
+<div class="codehilite"><pre>$ <span class="n">port</span> <span class="n">install</span> <span class="n">ctags</span>
+</pre></div>
+
+
+<p>安装taglist：</p>
+<p>在<a href="http://www.vim.org/scripts/script.php?script_id=273">这里</a>下载taglist，并将taglist.vim复制到~/.vim/plugin</p>
+<p>在~/.vimrc中添加：</p>
+<div class="codehilite"><pre><span class="n">filetype</span> <span class="n">on</span>
+<span class="n">filetype</span> <span class="n">plugin</span> <span class="n">on</span>
+</pre></div>
+
+
+<p>在你的项目目录中运行ctags来生成tags文件，文件中包含了所有类、成员和函数的位置信息。例如，我们在"my_django_project"中运行：</p>
+<div class="codehilite"><pre>$ <span class="n">cd</span> <span class="n">my_django_project</span>
+$ <span class="n">ctags</span> <span class="o">-</span><span class="n">R</span> <span class="o">*</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>在.vimrc中，我们将绑定到ctags命令实现快捷的生成tags文件：</p>
+<div class="codehilite"><pre><span class="n">nnoremap</span> <span class="p">:</span>!<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ctags</span> <span class="o">-</span><span class="n">R</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="n">kinds</span><span class="p">=</span><span class="o">-</span><span class="nb">i</span> <span class="o">*</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p><a href="/static/images/2012/02/tag_list.png"><img alt="" src="/static/images/2012/02/tag_list.png" /></a></p>
+<p>关于ctags的更多用法请Google之。</p>
+<p>在MacVim中，键入:TlistToggle来打开tag list.使用组合键来在窗口之间切换，当光标停留在某个变量上时可以用来跳到变量的定义，用回到之前的位置。在tag list窗口中按空格键打开相应的方法签名。对于tag list中的所有快捷键，参照<a href="http://vim.wikia.com/wiki/Browsing_programs_with_tags">这篇文章</a>。</p>
+<h3>Omni Complete</h3>
+<p>如果你之前用过Visual Studio或Eclipse等IDE，我想你已经知道Omni Complete是干什么的了。</p>
+<p>在~/.vimrc中添加下列代码来打开vim中python的自动完成。</p>
+<div class="codehilite"><pre><span class="n">autocmd</span> <span class="n">FileType</span> <span class="n">python</span> <span class="n">set</span> <span class="n">omnifunc</span><span class="p">=</span><span class="n">pythoncomplete</span>
+</pre></div>
+
+
+<p><a href="/static/images/2012/02/omni_complete.png"><img alt="" src="/static/images/2012/02/omni_complete.png" /></a></p>
+<h3>Task list</h3>
+<p>在你的代码中标记TODO和FIXME是个良好的习惯，TaskList插件为我们完成这一任务。</p>
+<p>在<a href="http://www.vim.org/scripts/script.php?script_id=2607">这里</a>下载，然后复制到~/.vim/plugin文件夹。</p>
+<p>在MacVim中键入:TaskList打开列表。</p>
+<p><a href="/static/images/2012/02/task_list.png"><img alt="" src="/static/images/2012/02/task_list.png" /></a></p>
+<h3>Pyflakes</h3>
+<p>Pyflakes用来分析并找出python程序中的错误，对于我来讲这个插件必不可少。</p>
+<p>在<a href="http://www.vim.org/scripts/script.php?script_id=2441">这里</a>下载，然后解压到~/.vim/文件夹：</p>
+<div class="codehilite"><pre>$ <span class="n">unzip</span> <span class="n">pyflakes</span><span class="o">-</span><span class="n">vim</span><span class="p">.</span><span class="n">zip</span> <span class="o">-</span><span class="n">d</span> <span class="o">~/</span><span class="p">.</span><span class="n">vim</span><span class="o">/</span>
+</pre></div>
+
+
+<p><a href="/static/images/2012/02/pyflakes.png"><img alt="" src="/static/images/2012/02/pyflakes.png" /></a></p>
+<h3>SnipMate</h3>
+<p>TextMate最酷的功能之一就是snippet，如键入"for"按下Tab键就可以自动将for语句块生成。用SnipMate插件，Vim也可以做到这一点。</p>
+<p>在<a href="http://www.vim.org/scripts/script.php?script_id=2540">这里</a>下载，解压到~/.vim/文件夹。</p>
+<p>^_^</p>
+<p>更多有趣有用的插件请参考原文，这里不再一一翻译。但其插件不限于原文介绍的那些，大家如果有什么私家珍藏的插件欢迎分享：）</p></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/macvim.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

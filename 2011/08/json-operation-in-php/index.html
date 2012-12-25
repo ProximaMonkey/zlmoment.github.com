@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>PHP中JSON的处理</h1>
+            Wed 10 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>近日因为小组项目的需要，要为一款Android应用（Howdy，敬请期待）开发服务器端。在HTTP协议的基础上，服务器需要根据请求返回JSON数据包（当然也可以返回XML，有关XML与JSON的转换请参看《<a href="http://www.hackecho.com/archives/444.html">XML与JSON的格式转换方法</a>》），因此简单研究了一下PHP处理JSON数据的方法。</p>
+<p>从5.2版本开始，PHP原生提供json_encode()和json_decode()函数，前者用于编码，后者用于解码。5.2以前的版本请自行到网上下载相应的JSON解析类。</p>
+<p>我们先来了解一下<strong>索引数组</strong>和<strong>关联数组</strong>：</p>
+<p>PHP支持两种数组，一种是只保存"值"（value）的索引数组（indexed array），另一种是保存"名值对"（name/value）的关联数组（associative array）。一般在JSON数据格式中，索引数组的用<code>[]</code>包围，各个值之间用英文逗号分隔，如<code>["one","two","three"]</code>；关联数组用{}包围，键值之间用英文冒号一一对应，如<code>{"1":"one","2":"two","3":"three"}</code>。</p>
+<p>下面我们来看一下<strong>json_encode()</strong>方法：</p>
+<p>定义：<code>string <strong>json_encode</strong> ( mixed $value [, int $options = 0 ] )</code></p>
+<p>描述：Returns a string containing the JSON representation of value.</p>
+<p>其中第二个参数为可选参数，<strong>一般当传入true值是返回数组类型，不传值则返回对象。</strong></p>
+<p>我们先看一个数组转换的例子：</p>
+<div class="codehilite"><pre>$<span class="n">arr</span> <span class="p">=</span> <span class="n">array</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">=</span><span class="o">&gt;</span>1<span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">=</span><span class="o">&gt;</span>2<span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">=</span><span class="o">&gt;</span>3<span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">=</span><span class="o">&gt;</span>4<span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">=</span><span class="o">&gt;</span>5<span class="p">);</span>
+<span class="n">echo</span> <span class="n">json_encode</span><span class="p">(</span>$<span class="n">arr</span><span class="p">);</span>
+</pre></div>
+
+
+<p>输出结果为</p>
+<div class="codehilite"><pre><span class="p">{</span>&quot;<span class="n">a</span>&quot;<span class="p">:</span>1<span class="p">,</span>&quot;<span class="n">b</span>&quot;<span class="p">:</span>2<span class="p">,</span>&quot;<span class="n">c</span>&quot;<span class="p">:</span>3<span class="p">,</span>&quot;<span class="n">d</span>&quot;<span class="p">:</span>4<span class="p">,</span>&quot;<span class="n">e</span>&quot;<span class="p">:</span>5<span class="p">}</span>
+</pre></div>
+
+
+<p>再看一个对象转换的例子：</p>
+<div class="codehilite"><pre>$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">body</span> <span class="p">=</span> <span class="s">&#39;another post&#39;</span><span class="p">;</span>
+$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">id</span> <span class="p">=</span> 21<span class="p">;</span>
+$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">approved</span> <span class="p">=</span> <span class="n">true</span><span class="p">;</span>
+$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">favorite_count</span> <span class="p">=</span> 1<span class="p">;</span>
+$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">status</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">echo</span> <span class="n">json_encode</span><span class="p">(</span>$<span class="n">obj</span><span class="p">);</span>
+</pre></div>
+
+
+<p>输出结果为</p>
+<div class="codehilite"><pre><span class="p">{</span>
+　　&quot;<span class="n">body</span>&quot;<span class="p">:</span>&quot;<span class="n">another</span> <span class="n">post</span>&quot;<span class="p">,</span>
+　　&quot;<span class="n">id</span>&quot;<span class="p">:</span>21<span class="p">,</span>
+　　&quot;<span class="n">approved</span>&quot;<span class="p">:</span><span class="n">true</span><span class="p">,</span>
+　　&quot;<span class="n">favorite_count</span>&quot;<span class="p">:</span>1<span class="p">,</span>
+　　&quot;<span class="n">status</span>&quot;<span class="p">:</span><span class="n">null</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>注意：由于JSON只接受utf-8编码的字符，所以json_encode()的参数<strong>必须</strong>是utf-8编码，否则会得到空字符或者null。</p>
+<p>我们来看一个具体的例子：</p>
+<div class="codehilite"><pre>$<span class="n">arr</span> <span class="p">=</span> <span class="n">array</span><span class="p">(</span>
+    <span class="s">&#39;name&#39;</span> <span class="p">=</span><span class="o">&gt;</span><span class="s">&#39;李昭谕&#39;</span><span class="p">,</span>
+    <span class="s">&#39;nick&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;天堂皓月&#39;</span><span class="p">,</span>
+    <span class="s">&#39;contact&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="n">array</span><span class="p">(</span>
+        <span class="s">&#39;email&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;zhaoyulee@126.com&#39;</span><span class="p">,</span>
+        <span class="s">&#39;website&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;http://www.hackecho.com&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="s">&#39;sex&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;男&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+$<span class="n">json_string</span> <span class="p">=</span> <span class="n">json_encode</span><span class="p">(</span>$<span class="n">arr</span><span class="p">);</span>
+<span class="n">echo</span> $<span class="n">json_string</span><span class="p">.</span><span class="s">&#39;&lt;br&gt;&lt;br&gt;&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>输出结果请大家自己试验：）</p>
+<p>接下来我们看一下<strong>json_decode()：</strong></p>
+<p>定义：<code>mixed json_decode ( string $json [, bool $assoc = false [, int $depth = 512 [, int $options = 0 ]]] )</code></p>
+<p>描述：Takes a JSON encoded string and converts it into a PHP variable.</p>
+<p>一般情况下我们只需要传入$json就可以了。这点不再详述，只是json_encode()的逆过程而已。请大家自己试验。</p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

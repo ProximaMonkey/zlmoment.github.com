@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2011/11/deployment-of-thinkphp/"><h1>ThinkPHP部署二三事儿</h1></a>
+            Wed 09 November 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
+<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
+<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
+<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
+<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
+<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像，导致Ubuntu无法配置PHP服务器环境。。。</p>
+<p>其实问题很简单，管理员的内外网端口映射已经做好，但防火墙配置出现问题，把我们的所有请求都拦截了...也就是说，我们需要联系管理员配置下网络防火墙即可。。。</p>
+<p>接着我们配置好了PHP运行环境，将我们的项目进行部署。这里的问题都是关于ThinkPHP的了，大牛可以直接略过。</p>
+<p><strong>乱码问题</strong></p>
+<p>嗯，不用多说，MySQL编码的问题...</p>
+<p><strong>权限问题</strong></p>
+<p>ThinkPHP的Runtime文件夹需要755的权限，直接从Windows环境下拷过去的项目一定要重新配置下权限。</p>
+<p><strong>找不到Public模块</strong></p>
+<p>我们用.htaccess配置了URLRewrite，把index.php隐去了，但奇怪的是诸如http://localhost/Public/...的地址全部都显示为“无法找到Public模块。”Public是个共用文件夹，我们把一些图片，CSS和JS放在里面，但ThinkPHP却去加载Public Action，导致无法找到模块。</p>
+<p>起初以为是.htaccess的问题，安秦把重写规则改了好多遍依旧不能解决问题，ThinkPHP的URLMODE试了一遍也不行。我隐约记得以前写过一个ThinkPHP项目中遇到过同样的问题，但后来怎么解决的却始终想不起来。正当问题进入“白热化”阶段，我们准备写一个PublicAction来捕捉所有请求的时候，终于。。。</p>
+<p>问题是，在Windows下面URL是不区分大小写的，但在Linux下面，大家应该都清楚吧，case sensitive！</p>
+<p>好了，问题解决了。</p>
+<p>明天下午继续去解决防火墙问题，不出差错，马上就可以上线咯！</p></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/fu-wu-qi-bu-shu.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

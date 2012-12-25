@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>深入浅出ThinkPHP系列教程(三) Hello World！</h1>
+            Sat 01 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
+<p><strong>入口文件</strong></p>
+<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
+<p><strong>创建入口文件</strong></p>
+<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">//定义ThinkPHP框架路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
+<span class="c1">//定义项目名称和路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="c1">//加载框架入口文件</span>
+<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
+<span class="c1">//实例化一个网站应用实例</span>
+<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>在入口文件中，定义了 ThinkPHP 框架路径、项目路径及名称以及加载框架入口文件 ThinkPHP.php ，最后实例化一个项目应用。</p>
+<p>保存入口文件后，在浏览器运行该文件：</p>
+<div class="codehilite"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span>127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span>
+</pre></div>
+
+
+<p>可以看到浏览器出现项目构建成功提示：</p>
+<p><img alt="" src="http://thinkphp.cn/Public/Uploads/111112.gif" /></p>
+<p><strong>注意：</strong>ThinkPHP框架的所有文件都是采用UTF-8编码保存，但是这不影响你的项目中使用其他编码开发和浏览。请注意确保文件保存的时候去掉UTF-8的BOM头信息，防止因产生隐藏的输出而导致程序运行不正常。</p>
+<p><strong>注意：</strong>如果你是在Linux环境下，要确保项目目录的自动生成，请设置Myapp目录的权限为可写，否则请自行创建相关目录。然后设置Runtime目录为可写权限（通常都是设置目录属性为777）。</p>
+<p><strong>项目目录结构</strong></p>
+<p>第一次运行项目入口文件时，系统会自动生成了项目目录结构，在 myapp 下：</p>
+<p>Common：项目公共文件目录，一般放置项目的公共函数</p>
+<p>Conf：项目配置目录，配置文件放该目录下</p>
+<p>Lang：项目语言包目录（可选），作为多语言支持</p>
+<p>Lib：项目类库目录，通常包括Action和Model子目录</p>
+<p>Tpl：项目模板目录，支持不同模板主题</p>
+<p>Runtime：项目运行时目录，包括Cache（模板缓存）、Temp（数据缓存）、Data（数据目录）和Logs（日志文件）子目录</p>
+<p><strong>项目</strong></p>
+<p>在 ThinkPHP 中项目的概念，相当于一个独立的基于 ThinkPHP 框架的应用。项目有自己独立的入口文件、配置文件、应用类库及模板、缓存日志等。项目在入口文件中定义，包括项目名称和路径（如上面的例子）。</p>
+<p>项目中的应用都通过入口文件来访问，一个网站由一个或多个项目组成。一个网站的典型部署如下：</p>
+<p>ThinkPHP：ThinkPHP 核心包目录</p>
+<p>Home：网站应用项目目录</p>
+<p>index.php：网站入口文件</p>
+<p>admin.php：后台管理入口文件</p>
+<p>……更多项目目录</p>
+<p>第三方应用：BBS、SNS 等目录</p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/"><h2>深入浅出ThinkPHP系列教程(二) MVC简介</h2></a>
+        <div class= "well small"> Wed 28 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>通过这篇教程，让我们来简单熟悉一下MVC的基本思想，这也是使用ThinkPHP开发应用不可或缺的知识，否则你将寸步难行。</p>
+<p>MVC主要由三部分组成：</p>
+<ul>
+<li>
+<p>（控制器Controller）- 负责转发请求，对请求进行处理。</p>
+</li>
+<li>
+<p>（视图View） - 界面设计人员进行图形界面设计。</p>
+</li>
+<li>
+<p>（模型Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</p>
+</li>
+</ul>
+<p><img alt="" src="/static/images/2011/09/ModelViewControllerDiagramZh.png" /></p>
+<p>本博客以前发布过一篇关于MVC的简单介绍，详情请点击这里：<a href="http://www.hackecho.com/archives/138.html">《对MVC架构的简单解读》</a></p>
+<p><strong>视图</strong></p>
+<p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
+<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/intro-to-thinkphp/"><h2>深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</h2></a>
+        <div class= "well small"> Mon 26 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
+<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
+<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
+<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
+<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
+<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
+<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
+<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
+<p><strong>加速开发过程：</strong></p>
+<p>PHP框架 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/intro-to-thinkphp/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/10-cool-jquery-slides/"><h2>10款非常酷的 jQuery 内容滑块插件</h2></a>
+        <div class= "well small"> Fri 16 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>我们在做网站前端开发的时候经常会用到内容滑块插件，而网上又难以找到系统的、功能强大的完整教程。Troy在这里收藏最最经典而且效果非常酷炫、功能强大的10款 jQuery 内容滑块插件。每个插件下面都有针对这款插件详细介绍的链接。</p>
+<p><strong>1.jQuery HTML Content Slider</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pAGZ2hcCfv2CQOJ2flJ0Hl3gzZEHz4EkYHMKve6aLAc78X-8991UHBdVXuV5nCZQuuZQngArt0-XgNY_Lkj3Pcw/1.PNG?psid=1" /></p>
+<p><a href="http://bxslider.com/">More Information on jQuery HTML Content Slider</a></p>
+<p><strong>2.Awkward Showcase – A jQuery Plugin</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pvP3ooRkPU05ZmPb1qP6CBv6EYC3aUQZk8QwQwqAOBUzbJ38CN7e9HLt5nLMaJQLgciNHm_mhFVeguTD8OyhSKA/2.PNG?psid=1" /></p>
+<p><a href="http://www.awkwardgroup.com/sandbox/awkward-showcase-a-jquery-plugin/">More Information on Awkward Showcase – A jQuery Plugin</a></p>
+<p><strong>3.Diapo</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1phjrx18GpoUiAIlZB90sHvOO1ux7UQHzaHEx_36xUDnhKGs-7aT1kYtsAcn4h3SbVt4gLznB3eIQlUiU_AQOJPg/3.PNG?psid=1" /></p>
+<p><a href="http://www.pixedelic.com/plugins/diapo/">More Information on Diapo</a></p>
+<p><strong>4.Smooth Div Scroll</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pyHHBkYkEfsr0fvzitqKR718_X_H2IUCdftFfBVIDp1hNM5GzMkAagwuOFFpERnDyfGAVX5GKfaa4QDoFhusRJg/4.PNG?psid=1" /></p>
+<p><a href="http://www.smoothdivscroll.com/#quickdemo">More Information on Smooth Div Scroll ...</a></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/10-cool-jquery-slides/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/"><h2>XML与JSON的格式转换方法</h2></a>
+        <div class= "well small"> Wed 10 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
+<p>废话不多说，直接上代码：</p>
+<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
+    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
+    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
+    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
+    return ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/json-operation-in-php/"><h2>PHP中JSON的处理</h2></a>
+        <div class= "well small"> Wed 10 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>近日因为小组项目的需要，要为一款Android应用（Howdy，敬请期待）开发服务器端。在HTTP协议的基础上，服务器需要根据请求返回JSON数据包（当然也可以返回XML，有关XML与JSON的转换请参看《<a href="http://www.hackecho.com/archives/444.html">XML与JSON的格式转换方法</a>》），因此简单研究了一下PHP处理JSON数据的方法。</p>
+<p>从5.2版本开始，PHP原生提供json_encode()和json_decode()函数，前者用于编码，后者用于解码。5.2以前的版本请自行到网上下载相应的JSON解析类。</p>
+<p>我们先来了解一下<strong>索引数组</strong>和<strong>关联数组</strong>：</p>
+<p>PHP支持两种数组，一种是只保存"值"（value）的索引数组（indexed array），另一种是保存"名值对"（name/value）的关联数组（associative array）。一般在JSON数据格式中，索引数组的用<code>[]</code>包围，各个值之间用英文逗号分隔，如<code>["one","two","three"]</code>；关联数组用{}包围，键值之间用英文冒号一一对应，如 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/json-operation-in-php/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/android-shared-preferences/"><h2>Android数据存储之Shared Preferences</h2></a>
+        <div class= "well small"> Sat 06 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
+<p>1、Shared Preferences</p>
+<p>用来存储 “键-值”格式的数据。</p>
+<p>2、Files</p>
+<p>通过FileInputStream和FileOutputStream对文件进行操作。</p>
+<p>3、SQLite</p>
+<p>标准数据库，支持SQL语句。</p>
+<p>4、NetWork</p>
+<p>通过网络存储和获取数据。</p>
+<p><strong>下面我们来着重介绍一下Shared Preferences的使用方法。</strong></p>
+<p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
+<p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
+<p>1、文件创建模式：Activity.MODE_APPEND</p>
+<p>如果该文件已经存在，然后将数据写入 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/android-shared-preferences/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/"><h2>使用友盟SNS_SDK为Android应用加入SNS分享功能</h2></a>
+        <div class= "well small"> Wed 03 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>很多朋友在开发Android应用的过程中，都想加入社会化的分享功能，如将自己的应用使用状态或心得同步到新浪微博、人人网或腾讯微博等。这些社交网络或微博都已经发布了针对开发者的开放平台（关于开放平台的相关信息，请参考<a href="http://www.hackecho.com/archives/127.html">《说说微创业——关于开放平台和微时代》</a>），因此我们可以将这些分享功能集成到自己的应用中，提高用户的互动性和产品推广效果。将应用与社会化网络联系起来已经成为现在移动开发的主流趋势之一。</p>
+<p>可对于新手而言，各大开放平台的SDK使用方法还需要花费很大精力来学习，如果仅仅是开发Demo的话，其实没有必要花费过多的时间在此。近两天我也在想办法给自己的应用加入社会化分享功能，偶然的机会看到了友盟提供的SNS_SDK（测试版），简单的试用过以后感觉不错，因此分享给大家，让我们的产品在开发初期也能快速方便的拥有SNS分享同步功能。</p>
+<p>友盟SNS_SDK目前提供两种分享方式：一种是文字分享，另一种是图文（图片+文字）分享。支持的开放平台目前有新浪微博、人人网和腾讯微博。首先我们要下载相应的SDK。</p>
+<p>进入<a href="http://www.umeng.com/doc/home.html">友盟文档中心</a>，点击左侧的<strong>开发工具SDK</strong>目录，在右侧点击下载即可。这里是一个简要的开发文档（<a href="http://www.umeng.com/doc/home.html#op_con_kfzn/adsdk_shhfx">点击查看</a>），当然我们会在下面为大家详细介绍其使用方法。</p>
+<p>首先我们应该注册一个友盟账号（<a href="http://www.umeng.com">点击注册</a>），注册完成后登录，进入友盟的管理后台，点击“添加新应用”，进入新应用信息填写的页面。App 建立成功后，自动会跳转到该App管理页面的开发指南页面 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/splash-of-android/"><h2>创建Android应用程序启动界面（Splash）</h2></a>
+        <div class= "well small"> Tue 02 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
+<p>首先新建一个splashscreen.xml布局文件，我们已经在res/drawable目录下放置了一张启动图片home_gradient.png：</p>
+<div class="codehilite"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">android:id=</span><span class="s">&quot;@+id/LinearLayout01&quot;</span>
+              <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+              <span class="na">android:layout_height=</span><span class="s">&quot;fill_parent&quot;</span>
+              <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+              <span class="na">android:gravity=</span><span class="s">&quot;center|bottom&quot;</span>
+              <span class="na">android:background=</span><span class="s">&quot;@drawable/home_gradient&quot;</span>
+              <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/splash-of-android/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/07/asynctask-in-android/"><h2>Android中使用AsyncTask实现简单的异步处理</h2></a>
+        <div class= "well small"> Sun 24 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
+<p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
+<p>Android提供了几种在其他线程中访问UI线程的方法：</p>
+<p><code>Java
+  Activity.runOnUiThread( Runnable )
+  View.post( Runnable )
+  View.postDelayed( Runnable, long )
+  Hanlder</code></p>
+<p>这些类或方法同样会使你的代码很复杂很难理解。然而当你需要实现一些很复杂的操作并需要频繁地更新UI时这会变得更糟糕。</p>
+<p>为了解决这个问题，Android 1.5提供了一个工具类：AsyncTask，它使创建需要与用户界面交互的长时间运行的任务变得更简单。不需要借助线程和Handler即可实现。</p>
+<p>AsyncTask是抽象类.AsyncTask定义了三种泛型类型 Params，Progress和Result。</p>
+<ul>
+<li>
+<p>Params 启动任务执行的输入参数，比如HTTP请求的URL。</p>
+</li>
+<li>
+<p>Progress 后台任务执行的百分比。</p>
+</li>
+<li>
+<p>Result ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/asynctask-in-android/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/"><h2>用CBitmapButton实现按钮四态的方法</h2></a>
+        <div class= "well small"> Fri 15 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今天上午由于特殊原因重装了系统，下午四点左右开始了交大一软通的界面绘制。这次一软通界面全面更新，各种控件该自绘的自绘，该贴图的贴图，力争给用户最好的视觉和操作体验。</p>
+<p>第二个选项卡效果是鼠标悬浮时的效果，其实这不是TabControl，而是普普通通的Button，但用到了按钮的四态。</p>
+<p>下面简单总结一下四态按钮的实现，以备日后之需。</p>
+<p>为了实现一些按钮的特效，网上遍布着从CButton派生的各种各样的按钮类，其中最为著名的就是CButtonST类。但考虑到各方面原因，最好的选择还是自己努力实现想要的效果，一方面可以消除代码冗余，另一方面自己也学习到了知识。</p>
+<p>今天的主角是CBitmapButton类，可以参考MSDN自带的例子“CTRLTEST”学习CBitmapButton的用法。这里简单总结一些要点：</p>
+<p>按钮选中Owner Draw属性，不需要选择Bitmap属性；</p>
+<p>按钮成员变量的类型定义为CBitmapButton，不可用ClassWizard生成CButton类进行修改，否则会出错；</p>
+<p>将位图与按钮进行关联，一般有两种方法：</p>
+<p>（一）使用CBitmapButton::LoadBitmaps装载各种状态的图片,使用SubclassDlgItem关联到想要的按钮，使用CBitmapButton::SizeToContent函数使按钮适合图片大小。注意Loadbitmaps一定要在关联到按钮之前进行！</p>
+<p>（二）使用CBitmapButton::AutoLoad函数关联到想要的按钮。</p>
+<p>在第三点中推荐使用第二种方法，但有一些注意事项：</p>
+<p>A、之前不能使用CBitmapButton::LoadBitmaps装载各种状态的图片，否则会出错。</p>
+<p>B、AutoLoad函数完成的关联和改变按钮大小的CBitmapButton ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/category/develope4.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://hackecho.com/category/develope.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope4.html">4</a></li>
+    <li class="active"><a href="http://hackecho.com/category/develope5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
+
+    <li class="next"><a href="http://hackecho.com/category/develope6.html">Next &rarr;</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

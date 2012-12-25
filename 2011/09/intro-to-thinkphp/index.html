@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</h1>
+            Mon 26 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
+<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
+<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
+<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
+<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
+<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
+<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
+<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
+<p><strong>加速开发过程：</strong></p>
+<p>PHP框架 内置了预建的模块，免去了冗长又令人厌烦的编程工作。这样开发者就能够把时间花在开发实际程序上，而不是每一次都要为每一个项目重建基础模块。</p>
+<p>PHP框架 背后的思想被称为 模型—视图—控制器（MVC）。MVC 是这样一种架构模式：它隔离了业务逻辑与 UI，允许其一改变而另一者不受影响；在 MVC 中，模型负责数据，视图负责表现，控制器则是程序主体或者说是负责业务逻辑。从本质上说，MVC 拆分了一个程序的开发过程，这样你就可以修改独立的每一部分，而其他部分不受影响。这是十分重要的，它使得编写 PHP 代码更为快捷简单。</p>
+<p><strong>成熟稳健性：</strong></p>
+<p>但是对于大多初级开发者而言，PHP 是如此的简单以至于他们会完全没有意识地写出低质量的代码。这样的 PHP 程序可能在大多数时间内仍正常工作，但你可能已在代码中留下了巨大的安全漏洞，使其易受攻击。而 PHP框架 对一些基本的细节及安全性等做了处理，再次基础上开发出来的 PHP 代码会更加安全可靠。</p>
+<p><strong>可扩展性：</strong></p>
+<p>PHP框架 往往有着庞大的支持团队，使用者众多，它是不断升级的，你可以直接享受别人升级代码带来的好处。PHP框架 也方便的支持用户根据实际业务需求扩展自己特有的模块。</p>
+<p><strong>&gt;&gt;PHP框架解决了什么？</strong></p>
+<p><strong>快速开发：</strong></p>
+<p>如上面使用 PHP框架 的理由所言，PHP框架 模糊了 PHP 程序开发中的基本底层细节，使你可以专注于业务逻辑的开发，大大节约了项目开发时间与精力。</p>
+<p><strong>编码规范：</strong></p>
+<p>PHP框架 的开发规范让大家在基于 PHP框架 开发程序时，所有的开发人员都遵循统一的编码开发规范。如此一来，程序代码将变得容易被其他人理解，项目成员在彼此合作开发时彼此的协作将更加协调，也有利于日后的项目维护及后续开发。</p>
+<p><strong>避免常见的安全性问题：</strong></p>
+<p>PHP框架 已经对常见的安全性如表单检测、SQL注入等常见的安全问题做了一定的内置处理。当然，不是用上 PHP 就绝对安全了，最重要的还是要程序开发人员自己有安全意识与经验。</p>
+<p><strong>MVC 逻辑与交互界面分离：</strong></p>
+<p>一份逻辑代码可以支持不同的展现，而展现界面及交互休验的改进，也不用受制于逻辑代码的开发周期，二者可以同时进行。另一个附加的好处是，编写出的 PHP 代码会更加简单、整洁且易懂。</p>
+<p><strong>其他：</strong></p>
+<p>根据需要构造出漂亮的 URL 等其他功能。</p>
+<p><strong>&gt;&gt;PHP框架的不足？</strong></p>
+<p>PHP框架 的不足表现在以下几个方面：</p>
+<p>除了学习 PHP 之外，你还需要花费一定时间去学习 PHP框架，尽管这个过程并不复杂。</p>
+<p>当 PHP 成为框架之后，它的效率相对原生 PHP 程序，效率出现下降是不可避免的。</p>
+<p>当你使用 PHP框架 后，你以前的类库或者程序面临着重新改造的风险。</p>
+<p><strong>&gt;&gt;ThinkPHP简介</strong></p>
+<p>ThinkPHP是一个<strong>免费开源的，快速、简单的面向对象的轻量级</strong>PHP开发框架，遵循Apache2开源协议发布，遵循 MVC 模式，在 PHP 的基础上将一些 PHP 细节进行隐藏而组织出实际开发中最需要的功能。开发者在 ThinkPHP 框架的基础上能够进行快速敏捷的项目开发，明显缩短项目开发周期，提高开发效率。</p>
+<p><strong>&gt;&gt;为什么要选择ThinkPHP？</strong></p>
+<p>当有如下情况之一时，您需要选择一款 PHP 框架或者说选择 ThinkPHP 框架：</p>
+<ul>
+<li>
+<p>需要进行快速的 PHP 开发。</p>
+</li>
+<li>
+<p>需要基于 MVC 模式开发。</p>
+</li>
+<li>
+<p>以前是 Java 程序员或对 Java 熟悉。</p>
+</li>
+<li>
+<p>项目是多人协作模式。</p>
+</li>
+<li>
+<p>刚具备一定 PHP 基础的初中级学习者。</p>
+</li>
+<li>
+<p>客户指定基于框架开发。</p>
+</li>
+</ul>
+<p><strong>&gt;&gt;什么情况下不适合使用ThinkPHP？</strong></p>
+<p>当有如下情况之一时，您可能不需要 ThinkPHP 框架或者说 PHP 框架：</p>
+<ul>
+<li>
+<p>进行 PHP 语法学习。</p>
+</li>
+<li>
+<p>开发很小的功能，如留言板或网站投票。</p>
+</li>
+<li>
+<p>非常讲究程序运行效率。</p>
+</li>
+<li>
+<p>使用 PHP 框架对已有的系统改造代价巨大。</p>
+</li>
+<li>
+<p>多年开发经验，已经形成了自己惯有的开发模式与类库。</p>
+</li>
+<li>
+<p>纯 PHP 代码爱好者。</p>
+</li>
+</ul></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

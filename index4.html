@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/"><h2>初探Scrapy的架构</h2></a>
+        <div class= "well small"> Mon 27 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
+<h3>概览</h3>
+<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
+<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
+<h3>组件介绍</h3>
+<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
+<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
+<p><strong>Scheduler（调度控制器）</strong></p>
+<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
+<p><strong>Downloader（下载器）</strong></p>
+<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
+<p><strong>Spiders（蜘蛛）</strong></p>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/macvim-with-python/"><h2>配置MacVim的Pyhton编程环境</h2></a>
+        <div class= "well small"> Sat 25 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
+<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
+<h3>安装MacVim和Python</h3>
+<p>下列两种方式中的任一种均可用来安装MacVim。</p>
+<p><strong>方式一：通过Mac ports</strong></p>
+<p>首先确保你的Mac ports是最新版：</p>
+<p>1 $ sudo port -v selfupdate</p>
+<p>安装：</p>
+<div class="codehilite"><pre>$ <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
+</pre></div>
+
+
+<p><strong>方式二：自己编译</strong></p>
+<div class="codehilite"><pre>$ <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">b4winckler</span><span class="o">/</span><span class="n">macvim</span><span class="p">.</span><span class="n">git</span>
+$ <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
+$ <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="p">=</span>10<span class="p">.</span>6
+$ <span class="n">make</span>
+</pre></div>
+
+
+<p>然后键入 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/macvim-with-python/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/"><h2>找不到libmysqlclient.18.dylib库的解决办法</h2></a>
+        <div class= "well small"> Sat 18 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<p>问题描述：</p>
+<p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>  
+<span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/"><h2>Mac OS X上装MySQL for Python的辛酸经历</h2></a>
+        <div class= "well small"> Sat 18 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>折腾了一下午，只为一个MySQL for Python...</p>
+<p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
+<p>首先说一下安装环境：</p>
+<blockquote>
+<p>操作系统：Mac OS X Lion</p>
+<p>Python版本：2.7</p>
+<p>MySQL for Python版本：1.2.3</p>
+</blockquote>
+<h3>问题：</h3>
+<p>编译MySQL for Python的源码时，出现如下错误提示：</p>
+<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/"><h2>Mac下GBK与UTF8编码文件的批量转换</h2></a>
+        <div class= "well small"> Fri 17 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
+<p>就不细细介绍了，看下面的例子，就都懂了：</p>
+<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
+<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
+<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
+<span class="n">iconv ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/"><h2>[原创Chrome插件]去除Google搜索结果的自动跳转</h2></a>
+        <div class= "well small"> Wed 15 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
+<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
+<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
+<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
+<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
+<p>使用这款插件后，效果如下：</p>
+<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
+<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
+<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
+<p><strong>插件下载地址</strong>：暂无 </p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/no-struggle-no-life/"><h2>无折腾，不生活</h2></a>
+        <div class= "well small"> Mon 13 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>看看这几天都折腾了些啥...</p>
+<p>1.换博客程序，更换域名</p>
+<p>开学前，抱着“无折腾，不生活”的态度，将博客的程序换成了国人开发的Emlog。整个转换过程基本用了一天时间，网上可以找到很多emlog转Worpdress的程序，但逆向的话却很少。最后，采取了一种最笨的方法，将文章一篇一篇手工复制...不过也正好借此机会整理下文章。至于评论，由于数量多而且分散，更恐怖的是有级联关系（即谁回复了谁的关系），但看了一下发现两个程序的评论表差不多，便用PHP写了个小脚本将评论迁移了过来。当然，经过修复无数个小bug之后，博客终于又全新上线了。</p>
+<p>不过你也许看到了，现在的博客依旧是WordPress...因为后来我又折腾回来了...不解释。</p>
+<p>遗憾的是，在折腾过程中，一不小心将最新的备份给 rm -rf 掉了，因此博客所有的数据只能还原到2011年12月底。不过幸运的是，在转换程序的时候在本地还有一次数据导入，因此又找回了几篇文章，但最新的一些评论却永远丢失了...</p>
+<p>哦对了，还换了个域名：hackecho.com，原来域名还有一年多到期，进行了301永久重定向到新域名，原来的二级域名因指向不同的host，依旧有效。 </p>
+<p>2 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/no-struggle-no-life/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/01/git-notes/"><h2>Git 学习笔记</h2></a>
+        <div class= "well small"> Sun 29 January 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>学习Git的笔记，会不定期更新。</p>
+<p>我的Github地址：<a href="https://github.com/uutroy">https://github.com/uutroy</a></p>
+<p>首先推荐两篇非常好的入门：</p>
+<ul>
+<li>
+<p><a href="http://gitimmersion.com/">Git Immersion</a></p>
+</li>
+<li>
+<p><a href="http://www.ralfebert.de/tutorials/git/#commit_a">Git Tutorial</a></p>
+</li>
+</ul>
+<p>一般流程：取代码 → 更新到最新版本 → 修改代码 → 提交</p>
+<h2>Creating a new repository</h2>
+<blockquote>
+<p>$ git init</p>
+</blockquote>
+<h2>取代码及修改全局设置</h2>
+<p>git在创建提交的时候会记录你的名字和email地址，所以你应该告诉git这些内容。可以使用’git config’命令来设置，如果传递参数’-global’ ，它会将这些值记录在~/.gitconfig文件里，作为这些配置的默认值。</p>
+<p>设置用户名与邮箱</p>
+<blockquote>
+<p>git config –global user.name “name”</p>
+</blockquote>
+<p>git config –global user.email “username@email.com ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/git-notes/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/01/the-zen-of-python/"><h2>Python之禅 - The Zen of Python</h2></a>
+        <div class= "well small"> Tue 24 January 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
+<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
+<h2>The Zen of Python, by Tim Peters</h2>
+<ul>
+<li>
+<p>Beautiful is better than ugly.</p>
+</li>
+<li>
+<p>Explicit is better than implicit.</p>
+</li>
+<li>
+<p>Simple is better than complex.</p>
+</li>
+<li>
+<p>Complex is better than complicated.</p>
+</li>
+<li>
+<p>Flat is better ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/the-zen-of-python/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/"><h2>Wordpress提示填写FTP信息的解决办法</h2></a>
+        <div class= "well small"> Sat 14 January 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在上一篇文章《<a href="http://www.hackecho.com/archives/710.html">VPS折腾记</a>》中提到在升级Wordpress或添加删除主题和插件的时候需要填写FTP账户信息的问题，提示一般如下：</p>
+<blockquote>
+<p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</p>
+</blockquote>
+<p>一般情况下，虚拟主机很少会出现这样的情况，如果使用 VPS 的话，这种情况就会比较多。主要原因是网站服务器运行PHP的用户和Wordpress文件夹的所有者不一样，目的就是为了安全，Wordpress在升级时会创建一个临时文件看看owner是不是和当前运行的PHP是否一样，如果不一样，就会出现这个界面。</p>
+<p>第一种解决办法很简单，就是直接在wp-config.php 中加入FTP的配置代码：</p>
+<div class="codehilite"><pre><span class="c1">// ** FTP SETTINGS FOR AUTO-UPDATE ** //</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_HOST</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">localhost</span><span class="err">’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_USER</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">帐号’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_PASS</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">密码’</span><span class="p">);</span>
+</pre></div>
+
+
+<p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
+<p>针对有高级管理权限的用户，如服务器或 VPS ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/index3.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://hackecho.com/index.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/index2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/index3.html">3</a></li>
+    <li class="active"><a href="http://hackecho.com/index4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/index5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/index6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+
+    <li class="next"><a href="http://hackecho.com/index5.html">Next &rarr;</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/"><h2>深入浅出ThinkPHP系列教程(四) 模块与操作</h2></a>
+        <div class= "well small"> Wed 12 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
+<p>具体如下图所示：</p>
+<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
+<p>我们来详细了解一下图中所示的模块和操作。</p>
+<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
+<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
+<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="err">具体代码略……</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="err">```</span><span class="nx">PHP</span>
+
+<span class="err">该文件已经演示了一个基于</span> <span class="nx">ThinkPHP</span> <span class="err">的实际应用。</span>
+
+<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
+
+<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/10/work-with-high-efficiency/"><h2>杜绝拖延，提高工作学习效率</h2></a>
+        <div class= "well small"> Sat 08 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>导致工作效率降低的最大原因是拖延，说明这是一种耽误工作效率的糟糕习惯。辟如某事的行事方式，如果你发现有问题，那么你就应该立刻站出来，干脆利索的将事情解决掉，改掉拖延症，找出高效工作的方法。</p>
+<p>希腊神话告诉人们，智慧女神雅典娜，有一天从宙斯的头脑中披甲执戈一跃而出。人的最大梦想、最大创意、最大憧憬，就像雅典娜一样，也往往是在某一瞬间突然从头脑中很完备、很有力地跃出来的。但有计划而不去执行，使之烟消云散，这对于你的品格力量会产生非常不良的影响。</p>
+<p>一个生动而强烈的意象、观念闪入一位作家的脑海，使他灵光乍现，产生出一种不可阻遏的冲动——要想提起笔来，将那美丽生动的意象、观念移向白纸；但那时他或许有些不方便，所以不能立刻就写。那个意象不断的在他脑海中跳跃、催促，然而他还是拖延，最后灵感就会逐渐的模糊、暗淡，终于整个消失。</p>
+<p><strong>1、拖延症就像容易上瘾的诱惑，需要坚定意志，努力克服。</strong></p>
+<p>习惯中最足以误人的莫过于拖延，有许多人都是因为此种习惯所累而陷入困境。拖延的习惯，最能损害及减低人的做事能力。你应该极力避免拖延的习惯，就像避免一种罪恶的引诱一样。</p>
+<p><strong>2、第一时间当机立断的着手解决问题。</strong></p>
+<p>假使对于某一件事，你发觉自己有着拖延的倾向，你应该跳起来 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/work-with-high-efficiency/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/10/thinkphp-hello-world/"><h2>深入浅出ThinkPHP系列教程(三) Hello World！</h2></a>
+        <div class= "well small"> Sat 01 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
+<p><strong>入口文件</strong></p>
+<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
+<p><strong>创建入口文件</strong></p>
+<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">//定义ThinkPHP框架路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
+<span class="c1">//定义项目名称和路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="c1">//加载框架入口文件</span>
+<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
+<span class="c1">//实例化一个网站应用实例</span>
+<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/thinkphp-hello-world/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/"><h2>深入浅出ThinkPHP系列教程(二) MVC简介</h2></a>
+        <div class= "well small"> Wed 28 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>通过这篇教程，让我们来简单熟悉一下MVC的基本思想，这也是使用ThinkPHP开发应用不可或缺的知识，否则你将寸步难行。</p>
+<p>MVC主要由三部分组成：</p>
+<ul>
+<li>
+<p>（控制器Controller）- 负责转发请求，对请求进行处理。</p>
+</li>
+<li>
+<p>（视图View） - 界面设计人员进行图形界面设计。</p>
+</li>
+<li>
+<p>（模型Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</p>
+</li>
+</ul>
+<p><img alt="" src="/static/images/2011/09/ModelViewControllerDiagramZh.png" /></p>
+<p>本博客以前发布过一篇关于MVC的简单介绍，详情请点击这里：<a href="http://www.hackecho.com/archives/138.html">《对MVC架构的简单解读》</a></p>
+<p><strong>视图</strong></p>
+<p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
+<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/intro-to-thinkphp/"><h2>深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</h2></a>
+        <div class= "well small"> Mon 26 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
+<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
+<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
+<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
+<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
+<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
+<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
+<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
+<p><strong>加速开发过程：</strong></p>
+<p>PHP框架 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/intro-to-thinkphp/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/difference-between-work-and-create/"><h2>打工与注册公司创业的区别</h2></a>
+        <div class= "well small"> Fri 23 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>自己打工与注册公司有什么区别，有人说都是为了赚钱，都是为了生活。但这两这还是有本质的不同。</p>
+<p>1.打工是靠自己的能力吃饭，注册公司是靠自己的智慧和思考吃饭；</p>
+<p>2.打工是靠别人给自己的平台来展示能力，注册公司是靠自己的决心和眼光创造一个平台；</p>
+<p>3.打工是做好自己的本分工作就好，注册公司是要思考体系运作的每一个环节；</p>
+<p>4.打工的人期望的是一周有两天休息，注册公司的人是思考的是如何能低成本的运作；</p>
+<p>5.打工的不愿意真实的面对自己的收入，注册公司必须要真实的面对自己的实力和财务状况；</p>
+<p>6.打工的时候想的是自己的经历和文凭应该值多少钱，注册公司的时候想的是自己的勤劳和策略能创造多少钱；</p>
+<p>7.打工时想用自己的专业知识吃饭，存钱养家，注册公司时候想的是如何利用社会资源来赚钱养活组织和员工；</p>
+<p>8.打工的人一般都比较天真，认为辛苦和听话就可以长保无忧，注册公司的时候才知道市场的变幻简直就是日不可测，日不可知；</p>
+<p>9.打工搞好上司和同事关系就可以生活，注册公司要搞好客户和社会方方面面的关系才能生存；</p>
+<p>10.打工要看上司和老板的脸色，注册公司看社会消费者和主管行政部门的脸色和媒体的脸色；</p>
+<p>11.打工想的是今年我能存多少钱，发多少奖金，注册公司想的是今年能开多少店，占多少市场份额；</p>
+<p>12.打工人今天天下雨和下雪，没有客人就很高兴，可以放松偷懒，注册公司想的今天天气下雨下雪，心如火焚，着急无比，如何吸引客人上门 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/difference-between-work-and-create/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/dreams-and-creature/"><h2>创业与梦想</h2></a>
+        <div class= "well small"> Sun 18 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今天在42qu上看到一个提问：</p>
+<p><em>“@Firenze : 现在是不是在一种创业狂潮的状态中？为啥每个人都在想要做一个网站然后可以如何如何可以怎样布局怎样找风头怎样拿政府扶植怎样获得盈利模式一轮融资二轮融资。这究竟是大家都看到了创业者成功的那些少数派案例然后都想来分一杯羹还是只是我现在所在的圈子是这样？又或者这是一个必然的趋势的发展方向？”</em></p>
+<p>有一个精彩的回复非常好，转载收藏。</p>
+<p>——作者：Dreamer</p>
+<p>在两个年轻人在斯坦福实验室里创造 Yahoo! 的时候，互联网的创业就与传奇和梦想划上了等号，之后的 Google 和 Facebook 一次又一次地让所有人确信这一点。它们都诞生在不起眼的大学宿舍，都在很大程度上改变了世界影响了人们的生活。所以在这个创业渐成风气的年代，你总能看到国内很多初创互联网公司大叫“我们年轻，所以我们有梦想”，它们在招聘的时候也会特别注明应聘者一定要有“激情和梦想”。</p>
+<p>然而事实真的如此吗？</p>
+<p>不知道别人怎么定义“梦想”这个词，我觉得“梦想”应该是一个很美好的东西。它触动你的心灵，让你感动；它激发出你的全部热情，而不是贪婪；它发自内心、来自于自己的反思和独立判断，而不是别人的煽动和灌输。</p>
+<p>以前我也常憧憬着去一家创业公司，那个时候我不满大公司的臃肿和低效，痛恨他们的官僚和笨重，觉得创业公司是梦想、激情、灵活和创新的化身，它一定没有那些大公司的毛病。我想象着那里的每一个员工都热爱自己的产品，每一个人都是产品的客服 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/dreams-and-creature/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/10-cool-jquery-slides/"><h2>10款非常酷的 jQuery 内容滑块插件</h2></a>
+        <div class= "well small"> Fri 16 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>我们在做网站前端开发的时候经常会用到内容滑块插件，而网上又难以找到系统的、功能强大的完整教程。Troy在这里收藏最最经典而且效果非常酷炫、功能强大的10款 jQuery 内容滑块插件。每个插件下面都有针对这款插件详细介绍的链接。</p>
+<p><strong>1.jQuery HTML Content Slider</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pAGZ2hcCfv2CQOJ2flJ0Hl3gzZEHz4EkYHMKve6aLAc78X-8991UHBdVXuV5nCZQuuZQngArt0-XgNY_Lkj3Pcw/1.PNG?psid=1" /></p>
+<p><a href="http://bxslider.com/">More Information on jQuery HTML Content Slider</a></p>
+<p><strong>2.Awkward Showcase – A jQuery Plugin</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pvP3ooRkPU05ZmPb1qP6CBv6EYC3aUQZk8QwQwqAOBUzbJ38CN7e9HLt5nLMaJQLgciNHm_mhFVeguTD8OyhSKA/2.PNG?psid=1" /></p>
+<p><a href="http://www.awkwardgroup.com/sandbox/awkward-showcase-a-jquery-plugin/">More Information on Awkward Showcase – A jQuery Plugin</a></p>
+<p><strong>3.Diapo</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1phjrx18GpoUiAIlZB90sHvOO1ux7UQHzaHEx_36xUDnhKGs-7aT1kYtsAcn4h3SbVt4gLznB3eIQlUiU_AQOJPg/3.PNG?psid=1" /></p>
+<p><a href="http://www.pixedelic.com/plugins/diapo/">More Information on Diapo</a></p>
+<p><strong>4.Smooth Div Scroll</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pyHHBkYkEfsr0fvzitqKR718_X_H2IUCdftFfBVIDp1hNM5GzMkAagwuOFFpERnDyfGAVX5GKfaa4QDoFhusRJg/4.PNG?psid=1" /></p>
+<p><a href="http://www.smoothdivscroll.com/#quickdemo">More Information on Smooth Div Scroll ...</a></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/10-cool-jquery-slides/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/beauty-of-chinese-article/"><h2>中国风，将唯美雅韵进行到底</h2></a>
+        <div class= "well small"> Wed 14 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><strong>好久没有读到如此荡气回肠的文章了，中国风，是一种生活态度。</strong></p>
+<p>翻开中国滚滚历史长卷，墨香墨离，各个朝代独领风流，各个领域人才辈出，上至轩辕开天大战蚩尤，惊天地，泣鬼神，统制九州，九樽青鼎为鉴，苍松白鹿为证，黄帝仙逝，轩辕氏仍逐鹿中原，人才济济，舜尧两帝，开创文明先河，黄河长江流域谱写华丽篇章。­</p>
+<p>中国华夏五千年文明泱泱流淌，川流不息，讫立世界民族之林不倒，像明珠矗立在世界的东方，成为四大文明古国之一，其经济、文化、历史、建筑、佛法…都为世界做出了巨大的贡献，古老而神秘的国度，散发着朦胧的书香气息，其高超的技艺，精美的墨笔，巧夺天功的神来之笔，为华夏文明装点上一层浓厚的翰林墨息。­</p>
+<p>至统领九州以来，各朝各代，文人儒客，风流倜倘，身着素衣，手握折扇，不羁一格，吟诵明月诗篇，歌窈窕乐章，不为世旅尘俗所累，放心绿水之湄，听风吟月，自在江上泛舟轻摇，一壶残酒 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/beauty-of-chinese-article/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/"><h2>XML与JSON的格式转换方法</h2></a>
+        <div class= "well small"> Wed 10 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
+<p>废话不多说，直接上代码：</p>
+<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
+    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
+    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
+    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
+    return ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/index5.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://hackecho.com/index.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/index2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/index3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/index4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/index5.html">5</a></li>
+    <li class="active"><a href="http://hackecho.com/index6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+
+    <li class="next"><a href="http://hackecho.com/index7.html">Next &rarr;</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

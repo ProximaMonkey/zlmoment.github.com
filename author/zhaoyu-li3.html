@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/"><h2>XML与JSON的格式转换方法</h2></a>
+        <div class= "well small"> Wed 10 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
+<p>废话不多说，直接上代码：</p>
+<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
+    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
+    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
+    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
+    return ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/11/deployment-of-thinkphp/"><h2>ThinkPHP部署二三事儿</h2></a>
+        <div class= "well small"> Wed 09 November 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
+<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
+<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
+<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
+<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
+<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/11/deployment-of-thinkphp/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/development-of-mobile-network/"><h2>听创新工场COO陶宁讲移动互联网的发展</h2></a>
+        <div class= "well small"> Wed 02 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>很早便锁定了今晚的第120期IT龙门阵，主题是创新工场COO陶宁讲关于IT产业变迁和移动互联网领域的创业与发展。创新工场关注的四大领域分别是移动互联网、消费互联网、电子商务和云计算，由于对移动互联网我还算是情有独钟，便想借此机会希望能得到陶老师的指导。另外，还有创新工场里的豌豆夹和友盟团队的负责人也将出席进行指导，所以更不能错过如此难得的机会了。</p>
+<p>（我对北京的交通表示一下小小的不满…）</p>
+<p>现场人很多，我看了一下签到表上很多都是著名IT公司的部门负责人，更有许多人是直接递名片的，当然还有很多充满热情的创业者。我去的比较晚，本来就不大的巴黎厅早已座无虚席。我相信来到这里的人，不论是在读的大学生还是已有成绩的项目负责人，都是带着对移动互联网的激情来的，置身其中，顿能感到一种强烈的创业者的热情，我想这才是我们真正需要的东西。</p>
+<p>留给我很深印象的是豌豆夹的项目负责人王俊煜和友盟团队负责人蒋凡，第一：年轻，第二：充满激情。作为创新工场第一批孵化项目，他们在移动互联网领域取得的巨大成功是有目共睹的，而他们还具有的共同点就是在创业过程中坚持不懈。想起马云讲过的一句话：“所有的成功秘诀都是不管用的，真正的成功方法只有一条，就是坚持不懈！”</p>
+<p><a href="/static/images/2011/03/IMG_2021.jpg"><img alt="人山人海的ARIVA三层巴黎厅" src="/static/images/2011/03/IMG_2021-300x225.jpg" /></a></p>
+<p>下面是一些我记录的感想，稍微总结一下：</p>
+<p><strong>1.关于大学生创业</strong></p>
+<p>大学生创业很难获得VC的支持和投资，因为我们没有经验，我们不可能是第二个扎克伯格。经验很重要，哪怕是失败的经历，只要能够从中学习到了一些东西，对于我们都是财富。</p>
+<p>当然，这只是VC方面，我感觉大学生创业的热情还是需要鼓励的，我个人更提倡Dorm创业 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/development-of-mobile-network/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/difference-between-work-and-create/"><h2>打工与注册公司创业的区别</h2></a>
+        <div class= "well small"> Fri 23 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>自己打工与注册公司有什么区别，有人说都是为了赚钱，都是为了生活。但这两这还是有本质的不同。</p>
+<p>1.打工是靠自己的能力吃饭，注册公司是靠自己的智慧和思考吃饭；</p>
+<p>2.打工是靠别人给自己的平台来展示能力，注册公司是靠自己的决心和眼光创造一个平台；</p>
+<p>3.打工是做好自己的本分工作就好，注册公司是要思考体系运作的每一个环节；</p>
+<p>4.打工的人期望的是一周有两天休息，注册公司的人是思考的是如何能低成本的运作；</p>
+<p>5.打工的不愿意真实的面对自己的收入，注册公司必须要真实的面对自己的实力和财务状况；</p>
+<p>6.打工的时候想的是自己的经历和文凭应该值多少钱，注册公司的时候想的是自己的勤劳和策略能创造多少钱；</p>
+<p>7.打工时想用自己的专业知识吃饭，存钱养家，注册公司时候想的是如何利用社会资源来赚钱养活组织和员工；</p>
+<p>8.打工的人一般都比较天真，认为辛苦和听话就可以长保无忧，注册公司的时候才知道市场的变幻简直就是日不可测，日不可知；</p>
+<p>9.打工搞好上司和同事关系就可以生活，注册公司要搞好客户和社会方方面面的关系才能生存；</p>
+<p>10.打工要看上司和老板的脸色，注册公司看社会消费者和主管行政部门的脸色和媒体的脸色；</p>
+<p>11.打工想的是今年我能存多少钱，发多少奖金，注册公司想的是今年能开多少店，占多少市场份额；</p>
+<p>12.打工人今天天下雨和下雪，没有客人就很高兴，可以放松偷懒，注册公司想的今天天气下雨下雪，心如火焚，着急无比，如何吸引客人上门 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/difference-between-work-and-create/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/11/disappear-day/"><h2>消失的这几天</h2></a>
+        <div class= "well small"> Sat 03 November 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>突然间，这里已经11月3日了，现在是凌晨1：20。在遥远的故乡，正是下午2：2o。朋友们，下午好。</p>
+<p>好久没写东西了，哪怕是技术方面的，也没有一篇。最新的一篇日志还停留在7月份，记得那是离签证还有一星期的时候，忙里偷闲转的一篇。一转眼，万圣节已过，开始期盼Thanksgiving的时候，却发现到处都开始准备圣诞树了。时间好快，恍惚之间，不敢苟且。</p>
+<p>如今，三个月过去了，每天的安排开始有了规律。不过回想起这三个月的种种，心头也会涌起一股莫名的感情。经常会想写一些东西记录，而一切变化太快，未等提笔，便已忙于身外，只能享受那片刻欢愉。</p>
+<p>也许有一天，我会将这些见闻与经历写一写，而现在还没有准备好。因为没有经过沉淀的思想，永远都是肤浅的。有一天回忆的时候，我要找寻那种想哭的感动。</p>
+<p>不过，我喜欢这种充实的生活，每一天都在创造价值，哥伦比亚是个小镇，宁静安详，不吵不闹，这里有传统的美国文化，也有纯真朴实的来自世界各地的人们，每天都有新发现，每天都会带给你新的的感受。</p>
+<p>明天又将是充实的一天 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/11/disappear-day/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/dreams-and-creature/"><h2>创业与梦想</h2></a>
+        <div class= "well small"> Sun 18 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今天在42qu上看到一个提问：</p>
+<p><em>“@Firenze : 现在是不是在一种创业狂潮的状态中？为啥每个人都在想要做一个网站然后可以如何如何可以怎样布局怎样找风头怎样拿政府扶植怎样获得盈利模式一轮融资二轮融资。这究竟是大家都看到了创业者成功的那些少数派案例然后都想来分一杯羹还是只是我现在所在的圈子是这样？又或者这是一个必然的趋势的发展方向？”</em></p>
+<p>有一个精彩的回复非常好，转载收藏。</p>
+<p>——作者：Dreamer</p>
+<p>在两个年轻人在斯坦福实验室里创造 Yahoo! 的时候，互联网的创业就与传奇和梦想划上了等号，之后的 Google 和 Facebook 一次又一次地让所有人确信这一点。它们都诞生在不起眼的大学宿舍，都在很大程度上改变了世界影响了人们的生活。所以在这个创业渐成风气的年代，你总能看到国内很多初创互联网公司大叫“我们年轻，所以我们有梦想”，它们在招聘的时候也会特别注明应聘者一定要有“激情和梦想”。</p>
+<p>然而事实真的如此吗？</p>
+<p>不知道别人怎么定义“梦想”这个词，我觉得“梦想”应该是一个很美好的东西。它触动你的心灵，让你感动；它激发出你的全部热情，而不是贪婪；它发自内心、来自于自己的反思和独立判断，而不是别人的煽动和灌输。</p>
+<p>以前我也常憧憬着去一家创业公司，那个时候我不满大公司的臃肿和低效，痛恨他们的官僚和笨重，觉得创业公司是梦想、激情、灵活和创新的化身，它一定没有那些大公司的毛病。我想象着那里的每一个员工都热爱自己的产品，每一个人都是产品的客服 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/dreams-and-creature/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/dreams-not-just-words/"><h2>梦想，不是说说而已</h2></a>
+        <div class= "well small"> Wed 29 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><strong>原文/meiya，转载时有删减。</strong></p>
+<p>我们是否有为梦想真正的实干一把？</p>
+<p>我从西藏回来以后，我在空间中上传了一些旅行时拍的照片，一个大学同学在很多照片下留了言。</p>
+<blockquote>
+<p>“最近在看《藏地密码》太让我有遐想了。”</p>
+</blockquote>
+<p>“这里的天怎么可以如此的蓝，这里的水像是在画里流淌。”</p>
+<p>“湖面像是银盘一样，天啊，我爱死了你拍的每一张照片了！”</p>
+<p>“你走过这桥的时候啥感觉啊？”</p>
+<p>“啊呀，这就是传说中的八廊街的玛吉阿米啊！”</p>
+<p>这个同学是大学睡在我上铺的姐妹，她比我更想去西藏旅行，当年有好多个夜晚我们兴奋地聊着西藏，聊着西藏旅行的梦想，她说她从高中起就想去西藏旅行了。</p>
+<p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
+<p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
+<p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/dreams-not-just-words/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/07/fhs-introduction/"><h2>Linux文件系统备忘录</h2></a>
+        <div class= "well small"> Sun 01 July 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
+<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
+<h2>根文件系统</h2>
+<p><strong>/bin</strong></p>
+<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong></p>
+<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong></p>
+<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong></p>
+<p>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong></p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/07/fhs-introduction/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/find-password-of-win7/"><h2>Win 7忘记密码的恢复方法</h2></a>
+        <div class= "well small"> Tue 08 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><strong>声明：本文只供学习交流之用，请勿将此方法用于非法用途，转载请注明来自<a href="http://www.hackecho.com">天堂皓月</a></strong></p>
+<p><strong>基本思想：</strong></p>
+<p>在登陆界面想办法启动cmd，取得管理员权限，开启（或新增）系统管理员，进入后重置密码。</p>
+<p><strong>实现方法：</strong></p>
+<p>大家注意登陆界面的“轻松访问”按钮，打开后可以看到一系列应用程序，如“讲述人”“放大镜”“高对比度”等，这些应用程序的可执行文件都在“C:Windowssystem32”(假设Windows7安装在C盘)目录里。</p>
+<p>我们可以通过第三方系统（如CE，另一个XP等）进入系统目录，更改（以“放大镜”为例）magnify.exe文件的权限，右击“magnify.exe”选择“权限”——高级——所有者，将当前系统管理员帐号设置为所有者(如果没有当前帐号在列表，则单击“其他账户”，手动输入当前账户名)。单击 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/find-password-of-win7/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/02/finish-of-bjtuer/"><h2>交大一软通 V2.0 开发完毕</h2></a>
+        <div class= "well small"> Sat 19 February 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>首先感谢大家对1.0版本的支持，收到大家的意见反馈后，经过努力，V2.0版交大一软通发布！</p>
+<p>更新啦~~~：</p>
+<p>1.增加“知行快读”模块，可以快速、方便地在软件内阅读知行论坛热门板块，以及晨光BT的资源，让你第一时间获得最新信息，体验酣畅淋漓的“刷论坛”阅读感受！</p>
+<p>2.修正“免流量上网通道”无法使用的问题，更换了代理地址并且增加为两条通道，通道1无法使用时可以使用通道2。修复了其导致的无法上网的问题，程序退出时将自动关闭通道。</p>
+<p>3.主页增加了“快捷启动”栏目，直达各个常用功能，方便快捷！</p>
+<p>4.一软通内置了网络浏览系统，不再调用系统默认浏览器。</p>
+<p>5.增加“实用工具”模块，混在交大，这些工具少得了？！工具还在不断添加中！</p>
+<p>6“交大导航”新增许多地址，而且还在不断增加，导航更齐全！</p>
+<p>7.增加的功能详细介绍如下：</p>
+<blockquote>
+<p>知行快读 ...</p></blockquote> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/02/finish-of-bjtuer/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li2.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
+    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+
+    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li4.html">Next &rarr;</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

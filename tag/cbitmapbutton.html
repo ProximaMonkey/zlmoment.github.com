@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/"><h1>用CBitmapButton实现按钮四态的方法</h1></a>
+            Fri 15 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>今天上午由于特殊原因重装了系统，下午四点左右开始了交大一软通的界面绘制。这次一软通界面全面更新，各种控件该自绘的自绘，该贴图的贴图，力争给用户最好的视觉和操作体验。</p>
+<p>第二个选项卡效果是鼠标悬浮时的效果，其实这不是TabControl，而是普普通通的Button，但用到了按钮的四态。</p>
+<p>下面简单总结一下四态按钮的实现，以备日后之需。</p>
+<p>为了实现一些按钮的特效，网上遍布着从CButton派生的各种各样的按钮类，其中最为著名的就是CButtonST类。但考虑到各方面原因，最好的选择还是自己努力实现想要的效果，一方面可以消除代码冗余，另一方面自己也学习到了知识。</p>
+<p>今天的主角是CBitmapButton类，可以参考MSDN自带的例子“CTRLTEST”学习CBitmapButton的用法。这里简单总结一些要点：</p>
+<p>按钮选中Owner Draw属性，不需要选择Bitmap属性；</p>
+<p>按钮成员变量的类型定义为CBitmapButton，不可用ClassWizard生成CButton类进行修改，否则会出错；</p>
+<p>将位图与按钮进行关联，一般有两种方法：</p>
+<p>（一）使用CBitmapButton::LoadBitmaps装载各种状态的图片,使用SubclassDlgItem关联到想要的按钮，使用CBitmapButton::SizeToContent函数使按钮适合图片大小。注意Loadbitmaps一定要在关联到按钮之前进行！</p>
+<p>（二）使用CBitmapButton::AutoLoad函数关联到想要的按钮。</p>
+<p>在第三点中推荐使用第二种方法，但有一些注意事项：</p>
+<p>A、之前不能使用CBitmapButton::LoadBitmaps装载各种状态的图片，否则会出错。</p>
+<p>B、AutoLoad函数完成的关联和改变按钮大小的CBitmapButton::SizeToContent函数的功能。</p>
+<p>C、CBitmapButton::AutoLoad使用的位图是默认资源ID的，即它会自动装载相关资源位图。位图的资源ID格式为："按钮Caption+U"、"按钮Caption+D"、"按钮Caption+F"、"按钮Caption+X"，分别代表Up、Down、Focus、Disable状态。如资源编辑时，希望关联的按钮的Caption为Test，那么其默认装载的位图资源的ID为："TestU"/"TestD"/"TestF"/"TestX"，注意分号""也是其ID的一部分。
+最后，将按钮的MouseMove消息在PreTranslateMessage中处理即可，代码如下：</p>
+<div class="codehilite"><pre><span class="n">BOOL</span> <span class="n">Cyrt30Dlg</span><span class="p">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">MSG</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">WM_MOUSEMOVE</span> <span class="o">==</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">POINT</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">GetCursorPos</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+        <span class="n">CString</span> <span class="n">s</span><span class="p">;</span>
+        <span class="n">CWnd</span> <span class="o">*</span><span class="n">hwnd</span><span class="p">=</span><span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_TabNav</span><span class="p">);</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span>&quot;<span class="c">%d&quot;,hwnd=WindowFromPoint(p));</span>
+
+        <span class="n">CWnd</span> <span class="o">*</span><span class="n">hwndTabNav</span><span class="p">=</span><span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_TabNav</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">hwndTabNav</span> <span class="o">==</span> <span class="n">hwnd</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">GetFocus</span><span class="p">()</span>!<span class="p">=</span><span class="n">hwndTabNav</span><span class="p">)</span>
+                <span class="n">hwndTabNav</span><span class="o">-&gt;</span><span class="n">SetFocus</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">GetFocus</span><span class="p">()</span> <span class="o">==</span> <span class="n">hwndTabNav</span> <span class="p">)</span>
+                <span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_NULL</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">SetFocus</span><span class="p">();</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">CDialogEx</span><span class="p">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">pMsg</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>这样，就可以完美实现四态按钮了。</p></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/cbitmapbutton.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

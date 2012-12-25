@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/11/suds-problems/"><h1>SUDS错误和实例</h1></a>
+            Tue 13 November 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+<p>错误信息：</p>
+<div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> &quot;<span class="n">test</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 12<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">client</span> <span class="p">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="p">=</span><span class="n">d</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 112<span class="p">,</span> <span class="n">in</span> <span class="n">__init__</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">wsdl</span> <span class="p">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">reader</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 152<span class="p">,</span> <span class="n">in</span> <span class="n">open</span>
+    <span class="n">d</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">fn</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">wsdl</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 159<span class="p">,</span> <span class="n">in</span> <span class="n">__init__</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">build_schema</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">wsdl</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 220<span class="p">,</span> <span class="n">in</span> <span class="n">build_schema</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">schema</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">schema</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 95<span class="p">,</span> <span class="n">in</span> <span class="n">load</span>
+    <span class="n">child</span><span class="p">.</span><span class="n">dereference</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">schema</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 323<span class="p">,</span> <span class="n">in</span> <span class="n">dereference</span>
+    <span class="n">midx</span><span class="p">,</span> <span class="n">deps</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">dependencies</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">sxbasic</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 422<span class="p">,</span> <span class="n">in</span> <span class="n">dependencies</span>
+    <span class="n">raise</span> <span class="n">TypeNotFound</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">ref</span><span class="p">)</span>
+<span class="n">suds</span><span class="p">.</span><span class="n">TypeNotFound</span><span class="p">:</span> <span class="n">Type</span> <span class="n">not</span> <span class="n">found</span><span class="p">:</span> <span class="s">&#39;</span><span class="err">(schema, http://www.w3.org/2001/XMLSchema, )</span>
+</pre></div>
+
+
+<p>解决办法：</p>
+<div class="codehilite"><pre><span class="n">from</span> <span class="n">suds</span><span class="p">.</span><span class="n">client</span> <span class="n">import</span> <span class="n">Client</span>
+<span class="n">from</span> <span class="n">suds</span><span class="p">.</span><span class="n">xsd</span><span class="p">.</span><span class="n">doctor</span> <span class="n">import</span> <span class="n">ImportDoctor</span><span class="p">,</span> <span class="n">Import</span>
+
+<span class="n">url</span> <span class="p">=</span> <span class="s">&#39;https://solaranywhere.com/service.asmx?WSDL&#39;</span>
+<span class="n">imp</span> <span class="p">=</span> <span class="n">Import</span><span class="p">(</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema&#39;</span><span class="p">,</span> <span class="n">location</span><span class="p">=</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema.xsd&#39;</span><span class="p">)</span>
+<span class="n">imp</span><span class="p">.</span><span class="n">filter</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;http://www.solaranywhere.com/&#39;</span><span class="p">)</span>
+<span class="n">d</span> <span class="p">=</span> <span class="n">ImportDoctor</span><span class="p">(</span><span class="n">imp</span><span class="p">)</span>
+<span class="n">client</span> <span class="p">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="p">=</span><span class="n">d</span><span class="p">)</span>
+<span class="n">print</span> <span class="n">client</span>
+</pre></div>
+
+
+<p>第六行折腾了半天有木有。</p>
+<p>截图纪念：</p>
+<p><a href="/static/images/2012/11/suds-success.jpg"><img alt="" src="/static/images/2012/11/suds-success.jpg" /></a></p>
+<p>（微吐槽：最近调试本地页面，老是有一个GET请求发往urllog.sinaapp.com，我是真没写过这样的代码啊。。最后罪魁祸首原来是我装的一个叫“Sorry Youku”的插件，这插件在我打开的任何页面都会请求刚刚那个网址和发送google统计代码，赤裸裸被跟踪了。。。）</p>
+<p>实例都在此处（<a href="https://fedorahosted.org/suds/wiki/Documentation">点击</a>），我就不一一粘贴了。。。</p></div>
+        <hr />
+    </div>
+		
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/05/python-decorator/"><h2>Python中的装饰器Decorator</h2></a>
+        <div class= "well small"> Fri 11 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
+<p>如果使用如下的代码：</p>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
+<span class="p">@</span><span class="n">makeitalic</span>
+<span class="n">def</span> <span class="n">say</span><span class="p">():</span>
+    <span class="k">return</span> &quot;<span class="n">Hello</span>&quot;
+</pre></div>
+
+
+<p>打印出如下的输出：</p>
+<div class="codehilite"><pre><span class="nt">&lt;b&gt;&lt;i&gt;</span>Hello<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
+</pre></div>
+
+
+<p>你会怎么做？最后给出的答案是：</p>
+<div class="codehilite"><pre>def makebold(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;b&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/b&gt;</span>&quot;
+    return wrapped
+
+def makeitalic(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;i&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/i&gt;</span>&quot;
+    return wrapped
+
+@makebold
+@makeitalic
+def hello():
+    return &quot;hello world&quot;
+
+print hello() ## 返回 ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/python-decorator/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/"><h2>初探Scrapy的架构</h2></a>
+        <div class= "well small"> Mon 27 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
+<h3>概览</h3>
+<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
+<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
+<h3>组件介绍</h3>
+<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
+<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
+<p><strong>Scheduler（调度控制器）</strong></p>
+<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
+<p><strong>Downloader（下载器）</strong></p>
+<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
+<p><strong>Spiders（蜘蛛）</strong></p>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/macvim-with-python/"><h2>配置MacVim的Pyhton编程环境</h2></a>
+        <div class= "well small"> Sat 25 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
+<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
+<h3>安装MacVim和Python</h3>
+<p>下列两种方式中的任一种均可用来安装MacVim。</p>
+<p><strong>方式一：通过Mac ports</strong></p>
+<p>首先确保你的Mac ports是最新版：</p>
+<p>1 $ sudo port -v selfupdate</p>
+<p>安装：</p>
+<div class="codehilite"><pre>$ <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
+</pre></div>
+
+
+<p><strong>方式二：自己编译</strong></p>
+<div class="codehilite"><pre>$ <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">b4winckler</span><span class="o">/</span><span class="n">macvim</span><span class="p">.</span><span class="n">git</span>
+$ <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
+$ <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="p">=</span>10<span class="p">.</span>6
+$ <span class="n">make</span>
+</pre></div>
+
+
+<p>然后键入 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/macvim-with-python/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/"><h2>找不到libmysqlclient.18.dylib库的解决办法</h2></a>
+        <div class= "well small"> Sat 18 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<p>问题描述：</p>
+<p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>  
+<span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/"><h2>Mac OS X上装MySQL for Python的辛酸经历</h2></a>
+        <div class= "well small"> Sat 18 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>折腾了一下午，只为一个MySQL for Python...</p>
+<p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
+<p>首先说一下安装环境：</p>
+<blockquote>
+<p>操作系统：Mac OS X Lion</p>
+<p>Python版本：2.7</p>
+<p>MySQL for Python版本：1.2.3</p>
+</blockquote>
+<h3>问题：</h3>
+<p>编译MySQL for Python的源码时，出现如下错误提示：</p>
+<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/01/the-zen-of-python/"><h2>Python之禅 - The Zen of Python</h2></a>
+        <div class= "well small"> Tue 24 January 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
+<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
+<h2>The Zen of Python, by Tim Peters</h2>
+<ul>
+<li>
+<p>Beautiful is better than ugly.</p>
+</li>
+<li>
+<p>Explicit is better than implicit.</p>
+</li>
+<li>
+<p>Simple is better than complex.</p>
+</li>
+<li>
+<p>Complex is better than complicated.</p>
+</li>
+<li>
+<p>Flat is better ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/the-zen-of-python/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/python.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

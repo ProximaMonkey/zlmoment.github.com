@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/11/suds-problems/"><h1>SUDS错误和实例</h1></a>
+            Tue 13 November 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+<p>错误信息：</p>
+<div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> &quot;<span class="n">test</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 12<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">client</span> <span class="p">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="p">=</span><span class="n">d</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 112<span class="p">,</span> <span class="n">in</span> <span class="n">__init__</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">wsdl</span> <span class="p">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">reader</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 152<span class="p">,</span> <span class="n">in</span> <span class="n">open</span>
+    <span class="n">d</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">fn</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">wsdl</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 159<span class="p">,</span> <span class="n">in</span> <span class="n">__init__</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">build_schema</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">wsdl</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 220<span class="p">,</span> <span class="n">in</span> <span class="n">build_schema</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">schema</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">schema</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 95<span class="p">,</span> <span class="n">in</span> <span class="n">load</span>
+    <span class="n">child</span><span class="p">.</span><span class="n">dereference</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">schema</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 323<span class="p">,</span> <span class="n">in</span> <span class="n">dereference</span>
+    <span class="n">midx</span><span class="p">,</span> <span class="n">deps</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">dependencies</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">sxbasic</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 422<span class="p">,</span> <span class="n">in</span> <span class="n">dependencies</span>
+    <span class="n">raise</span> <span class="n">TypeNotFound</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">ref</span><span class="p">)</span>
+<span class="n">suds</span><span class="p">.</span><span class="n">TypeNotFound</span><span class="p">:</span> <span class="n">Type</span> <span class="n">not</span> <span class="n">found</span><span class="p">:</span> <span class="s">&#39;</span><span class="err">(schema, http://www.w3.org/2001/XMLSchema, )</span>
+</pre></div>
+
+
+<p>解决办法：</p>
+<div class="codehilite"><pre><span class="n">from</span> <span class="n">suds</span><span class="p">.</span><span class="n">client</span> <span class="n">import</span> <span class="n">Client</span>
+<span class="n">from</span> <span class="n">suds</span><span class="p">.</span><span class="n">xsd</span><span class="p">.</span><span class="n">doctor</span> <span class="n">import</span> <span class="n">ImportDoctor</span><span class="p">,</span> <span class="n">Import</span>
+
+<span class="n">url</span> <span class="p">=</span> <span class="s">&#39;https://solaranywhere.com/service.asmx?WSDL&#39;</span>
+<span class="n">imp</span> <span class="p">=</span> <span class="n">Import</span><span class="p">(</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema&#39;</span><span class="p">,</span> <span class="n">location</span><span class="p">=</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema.xsd&#39;</span><span class="p">)</span>
+<span class="n">imp</span><span class="p">.</span><span class="n">filter</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;http://www.solaranywhere.com/&#39;</span><span class="p">)</span>
+<span class="n">d</span> <span class="p">=</span> <span class="n">ImportDoctor</span><span class="p">(</span><span class="n">imp</span><span class="p">)</span>
+<span class="n">client</span> <span class="p">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="p">=</span><span class="n">d</span><span class="p">)</span>
+<span class="n">print</span> <span class="n">client</span>
+</pre></div>
+
+
+<p>第六行折腾了半天有木有。</p>
+<p>截图纪念：</p>
+<p><a href="/static/images/2012/11/suds-success.jpg"><img alt="" src="/static/images/2012/11/suds-success.jpg" /></a></p>
+<p>（微吐槽：最近调试本地页面，老是有一个GET请求发往urllog.sinaapp.com，我是真没写过这样的代码啊。。最后罪魁祸首原来是我装的一个叫“Sorry Youku”的插件，这插件在我打开的任何页面都会请求刚刚那个网址和发送google统计代码，赤裸裸被跟踪了。。。）</p>
+<p>实例都在此处（<a href="https://fedorahosted.org/suds/wiki/Documentation">点击</a>），我就不一一粘贴了。。。</p></div>
+        <hr />
+    </div>
+		
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/11/disappear-day/"><h2>消失的这几天</h2></a>
+        <div class= "well small"> Sat 03 November 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>突然间，这里已经11月3日了，现在是凌晨1：20。在遥远的故乡，正是下午2：2o。朋友们，下午好。</p>
+<p>好久没写东西了，哪怕是技术方面的，也没有一篇。最新的一篇日志还停留在7月份，记得那是离签证还有一星期的时候，忙里偷闲转的一篇。一转眼，万圣节已过，开始期盼Thanksgiving的时候，却发现到处都开始准备圣诞树了。时间好快，恍惚之间，不敢苟且。</p>
+<p>如今，三个月过去了，每天的安排开始有了规律。不过回想起这三个月的种种，心头也会涌起一股莫名的感情。经常会想写一些东西记录，而一切变化太快，未等提笔，便已忙于身外，只能享受那片刻欢愉。</p>
+<p>也许有一天，我会将这些见闻与经历写一写，而现在还没有准备好。因为没有经过沉淀的思想，永远都是肤浅的。有一天回忆的时候，我要找寻那种想哭的感动。</p>
+<p>不过，我喜欢这种充实的生活，每一天都在创造价值，哥伦比亚是个小镇，宁静安详，不吵不闹，这里有传统的美国文化，也有纯真朴实的来自世界各地的人们，每天都有新发现，每天都会带给你新的的感受。</p>
+<p>明天又将是充实的一天 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/11/disappear-day/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/07/socket-work-model/"><h2>Socket的几种工作模式</h2></a>
+        <div class= "well small"> Tue 17 July 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
+<h2>阻塞模式</h2>
+<p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
+<p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
+<p><img alt="" src="/static/images/2012/07/1.jpg" /></p>
+<p>可参见下面的例子：</p>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
+<span class="c">#include &lt;stdlib.h&gt;</span>
+<span class="c">#include &lt;errno.h&gt;</span>
+<span class="c">#include &lt;string.h&gt;</span>
+<span class="c">#include &lt;sys/types.h&gt;</span>
+<span class="c">#include &lt;netinet/in.h&gt;</span>
+<span class="c">#include &lt;sys/socket.h&gt;</span>
+<span class="c">#include &lt;sys/wait.h&gt;</span>
+<span class="c">#define ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/07/socket-work-model/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/07/fhs-introduction/"><h2>Linux文件系统备忘录</h2></a>
+        <div class= "well small"> Sun 01 July 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
+<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
+<h2>根文件系统</h2>
+<p><strong>/bin</strong></p>
+<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong></p>
+<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong></p>
+<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong></p>
+<p>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong></p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/07/fhs-introduction/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/06/my-faile-can-be-copied/"><h2>我的失败可以复制</h2></a>
+        <div class= "well small"> Sat 23 June 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>常听人说，如果你开始回忆过去，说明你老了。而我却时常会怀念过去，或者说，是忏悔。</p>
+<p>有时候会想，如果大学的前三年可以重新来过，让我们都回到那个懵懂的年纪，重新开始全新的大学生活，一定会选择一种完全不一样的生活。我一直以为，世界上有另外一个我，在过着我想过的生活，在做着我想做的事，而我却永远无法重新选择。</p>
+<p>永远不能回头，在不断的选择中，我们创造了自己的生活。然而，当我们回首时看到的却满是错误与失去，多想穿越时空告诉那时的自己，你的选择，错了。可是，这些都是没有用的，回不去的事情再勉强也是幻想，走好余下的路才是最重要的，过去的错误永远是最宝贵的财富。</p>
+<p>生命中，我们竭尽全力都无法改变的事情：倒向你的墙，离你而去的人，流逝的时间，和永远的过去。</p>
+<p>就像这句歌词一样：“如果骄傲没被现实大海冷冷拍下，又怎会懂得要多努力才走得到远方；如果梦想不曾坠落悬崖千钧一发，又怎会晓得执着的人有隐形翅牓。”</p>
+<p>所以，不要难过了。离过去越近，离未来就越远。过精彩的生活，遇到精彩的人，找到精彩的未来。</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/my-faile-can-be-copied/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/06/my-ncee/"><h2>我的高考</h2></a>
+        <div class= "well small"> Tue 05 June 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>后天就要高考了，但这似乎已经与我无关。那段时光已经过去三年，可每每到这个时候，都会禁不住想起当年的我，当年的18班。</p>
+<p>时间正在将过往一丝一丝地抹去，我想在淡忘之前，再次品味一下那年的生活。</p>
+<p>关键字：运动场，角落，封闭的军事化管理，星空，考试那天</p>
+<h3>运动场</h3>
+<p>每天晚饭吃过以后，大约6点半，我们会三三两两到运动场上跑步，一般是跑6圈，然后满头大汗地回到教室等待晚自修。不管天气多么热，尤其是临近6月的时候，跑道上塑胶的味道很具有冲击感，但我们都依旧坚持着。当时的想法很简单，身体好才能保证学习，而要想身体好就要锻炼。那时候跟我一起跑的通常是永明，我高三时的同桌，物理超牛逼的一个人，现在在北大学物理系。跑步完之后，有时候我们会坐在草坪上，望着天空，莫名地感叹一下高三的生活，憧憬一下美好的未来，讨论一下大学，讨论一下理想。那时候没有多余的想法，黑色的高三也没那么苦，只是觉得很充实，很带感。</p>
+<h3>角落</h3>
+<p>后来，我们在教室的位置换成了桌子和桌子相互隔开的布局，谁也不是谁的同桌。我特别向往教室最后面的角落里的那个座位，或许只是想求得一份宁静，在聒噪的高三里 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/my-ncee/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/06/three-software-architecture-style/"><h2>3 Software Architecture Style</h2></a>
+        <div class= "well small"> Sat 02 June 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
+<p>This brief introduction of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/three-software-architecture-style/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/"><h2>Sequences and Proxy Services in WSO2 ESB</h2></a>
+        <div class= "well small"> Sat 02 June 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
+<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/"><h2>解决MySQL无法通过localhost连接问题</h2></a>
+        <div class= "well small"> Sun 27 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
+<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
+<h3>安装MySQL</h3>
+<p>依次执行下列三个命令：</p>
+<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
+<span class="n">unset</span> <span class="n">TMPDIR</span>
+<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="p">=</span>`<span class="n">whoami</span>` <span class="o">--</span><span class="n">basedir</span><span class="p">=</span>&quot;$<span class="p">(</span><span class="n">brew</span> <span class="o">--</span><span class="n">prefix</span> <span class="n">mysql</span><span class="p">)</span>&quot; <span class="o">--</span><span class="n">datadir</span><span class="p">=</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="p">=</span><span class="o">/</span><span class="n">tmp</span>
+</pre></div>
+
+
+<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
+<h3>解决localhost问题</h3>
+<p>我们看它的错误提示：</p>
+<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/05/super-tool-homebrew/"><h2>开发者神器 - Homebrew简介</h2></a>
+        <div class= "well small"> Fri 25 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
+<p><img alt="" src="/static/images/2012/05/homebrew.jpg" /></p>
+<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/super-tool-homebrew/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/index.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/index2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/index3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/index4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/index5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/index6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+
+    <li class="next"><a href="http://hackecho.com/index2.html">Next &rarr;</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

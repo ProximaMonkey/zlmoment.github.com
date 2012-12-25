@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2011/08/android-shared-preferences/"><h1>Android数据存储之Shared Preferences</h1></a>
+            Sat 06 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
+<p>1、Shared Preferences</p>
+<p>用来存储 “键-值”格式的数据。</p>
+<p>2、Files</p>
+<p>通过FileInputStream和FileOutputStream对文件进行操作。</p>
+<p>3、SQLite</p>
+<p>标准数据库，支持SQL语句。</p>
+<p>4、NetWork</p>
+<p>通过网络存储和获取数据。</p>
+<p><strong>下面我们来着重介绍一下Shared Preferences的使用方法。</strong></p>
+<p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
+<p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
+<p>1、文件创建模式：Activity.MODE_APPEND</p>
+<p>如果该文件已经存在，然后将数据写入，而不是抹掉它现有文件的末尾。</p>
+<p>2、文件创建模式：MODE_PRIVATE</p>
+<p>默认模式，在那里创建的文件只能由应用程序调用,即为私有的</p>
+<p>3、文件创建模式：Activity.MODE_WORLD_READABLE</p>
+<p>允许所有其他应用程序有读取和创建文件的权限。</p>
+<p>4、文件创建模式：Activity.MODE_WORLD_WRITEABLE</p>
+<p>允许所有其他应用程序具有写入、访问和创建的文件权限。</p>
+<p>在每安装一个Android 应用程序时，data/data目录下都会产生一个对应的包文件夹，如果应用程序中使用了 Preferences 则会在该应用程序文件夹下产生一个shared_prefs文件夹保存我们的数据。</p>
+<p><strong>示例：</strong></p>
+<p>读取配置的方法：</p>
+<div class="codehilite"><pre><span class="c1">//读取当前的配置信息</span>
+<span class="n">private</span> <span class="n">SharedPreferences</span> <span class="k">config</span><span class="p">;</span>
+<span class="k">config</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="p">(</span><span class="s">&quot;CONFIG&quot;</span><span class="p">,</span><span class="n">ConfigActivity</span><span class="p">.</span><span class="no">MODE_WORLD_WRITEABLE</span><span class="p">);</span>
+<span class="n">minRecordTime</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;minRecordTime&quot;</span><span class="p">,</span> <span class="mh">1000</span><span class="p">);</span>
+<span class="n">minRecordDistance</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;minRecordDistance&quot;</span><span class="p">,</span> <span class="mh">1</span><span class="p">);</span>
+<span class="n">isGetMyLocAtStartAuto</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getBoolean</span><span class="p">(</span><span class="s">&quot;isGetMyLocAtStartAuto&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+</pre></div>
+
+
+<p>编辑配置的方法:</p>
+<div class="codehilite"><pre><span class="c1">//写入sharepreference</span>
+<span class="n">SharedPreferences</span> <span class="k">config</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="p">(</span><span class="s">&quot;CONFIG&quot;</span><span class="p">,</span><span class="n">ConfigActivity</span><span class="p">.</span><span class="no">MODE_WORLD_WRITEABLE</span><span class="p">);</span>
+<span class="n">SharedPreferences</span><span class="p">.</span><span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">edit</span><span class="p">();</span>
+<span class="n">editor</span><span class="p">.</span><span class="n">putInt</span><span class="p">(</span><span class="s">&quot;minRecordTime&quot;</span><span class="p">,</span> <span class="n">minRecordTime</span><span class="p">);</span>
+<span class="n">editor</span><span class="p">.</span><span class="n">commit</span><span class="p">();</span>
+</pre></div>
+
+
+<p>示例比较简略，但很典型，摘自我自己的应用BJTUer（暂定名）。</p></div>
+        <hr />
+    </div>
+		
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/"><h2>使用友盟SNS_SDK为Android应用加入SNS分享功能</h2></a>
+        <div class= "well small"> Wed 03 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>很多朋友在开发Android应用的过程中，都想加入社会化的分享功能，如将自己的应用使用状态或心得同步到新浪微博、人人网或腾讯微博等。这些社交网络或微博都已经发布了针对开发者的开放平台（关于开放平台的相关信息，请参考<a href="http://www.hackecho.com/archives/127.html">《说说微创业——关于开放平台和微时代》</a>），因此我们可以将这些分享功能集成到自己的应用中，提高用户的互动性和产品推广效果。将应用与社会化网络联系起来已经成为现在移动开发的主流趋势之一。</p>
+<p>可对于新手而言，各大开放平台的SDK使用方法还需要花费很大精力来学习，如果仅仅是开发Demo的话，其实没有必要花费过多的时间在此。近两天我也在想办法给自己的应用加入社会化分享功能，偶然的机会看到了友盟提供的SNS_SDK（测试版），简单的试用过以后感觉不错，因此分享给大家，让我们的产品在开发初期也能快速方便的拥有SNS分享同步功能。</p>
+<p>友盟SNS_SDK目前提供两种分享方式：一种是文字分享，另一种是图文（图片+文字）分享。支持的开放平台目前有新浪微博、人人网和腾讯微博。首先我们要下载相应的SDK。</p>
+<p>进入<a href="http://www.umeng.com/doc/home.html">友盟文档中心</a>，点击左侧的<strong>开发工具SDK</strong>目录，在右侧点击下载即可。这里是一个简要的开发文档（<a href="http://www.umeng.com/doc/home.html#op_con_kfzn/adsdk_shhfx">点击查看</a>），当然我们会在下面为大家详细介绍其使用方法。</p>
+<p>首先我们应该注册一个友盟账号（<a href="http://www.umeng.com">点击注册</a>），注册完成后登录，进入友盟的管理后台，点击“添加新应用”，进入新应用信息填写的页面。App 建立成功后，自动会跳转到该App管理页面的开发指南页面 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/splash-of-android/"><h2>创建Android应用程序启动界面（Splash）</h2></a>
+        <div class= "well small"> Tue 02 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
+<p>首先新建一个splashscreen.xml布局文件，我们已经在res/drawable目录下放置了一张启动图片home_gradient.png：</p>
+<div class="codehilite"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">android:id=</span><span class="s">&quot;@+id/LinearLayout01&quot;</span>
+              <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+              <span class="na">android:layout_height=</span><span class="s">&quot;fill_parent&quot;</span>
+              <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+              <span class="na">android:gravity=</span><span class="s">&quot;center|bottom&quot;</span>
+              <span class="na">android:background=</span><span class="s">&quot;@drawable/home_gradient&quot;</span>
+              <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/splash-of-android/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/07/asynctask-in-android/"><h2>Android中使用AsyncTask实现简单的异步处理</h2></a>
+        <div class= "well small"> Sun 24 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
+<p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
+<p>Android提供了几种在其他线程中访问UI线程的方法：</p>
+<p><code>Java
+  Activity.runOnUiThread( Runnable )
+  View.post( Runnable )
+  View.postDelayed( Runnable, long )
+  Hanlder</code></p>
+<p>这些类或方法同样会使你的代码很复杂很难理解。然而当你需要实现一些很复杂的操作并需要频繁地更新UI时这会变得更糟糕。</p>
+<p>为了解决这个问题，Android 1.5提供了一个工具类：AsyncTask，它使创建需要与用户界面交互的长时间运行的任务变得更简单。不需要借助线程和Handler即可实现。</p>
+<p>AsyncTask是抽象类.AsyncTask定义了三种泛型类型 Params，Progress和Result。</p>
+<ul>
+<li>
+<p>Params 启动任务执行的输入参数，比如HTTP请求的URL。</p>
+</li>
+<li>
+<p>Progress 后台任务执行的百分比。</p>
+</li>
+<li>
+<p>Result ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/asynctask-in-android/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/07/10-open-source-android-project/"><h2>10个非常值得学习的Android开源项目</h2></a>
+        <div class= "well small"> Tue 05 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><img alt="android开源项目" src="/static/images/2011/07/2010073016245383.png" /></p>
+<p>暑假要学习Android的同学们请注意了，这里是非常经典的10个Android开源项目，倘若能深入研究，一定会有所收获。</p>
+<h3>1.Android官方团队提供的示例项目</h3>
+<p>如果不是从学习Android SDK中提供的那些样例代码开始，可能没有更好的方法来掌握在Android这个平台上开发。</p>
+<p>由Android的核心开发团队提供了15个优秀的示例项 目，包含了游戏、图像处理、时间显示、开始菜单快捷方式等。</p>
+<p>项目地址：<a href="http://code.google.com/p/apps-for-android/">http://code.google.com/p/apps-for-android/</a></p>
+<p><img alt="" src="/static/images/2011/07/Amazed2_3-300x200.jpg" /></p>
+<h3>2.Remote Droid</h3>
+<p>RemoteDroid是一个Android应用，能够让用户使用自己的无线网络使用无线键盘、触摸屏操作手机。</p>
+<p>这个项目为开发者提供了如网络连接、触摸屏手指运动等很好的样例。</p>
+<p>项目地址：<a href="http://code.google.com/p/remotedroid/">http://code.google.com/p/remotedroid/</a></p>
+<p><img alt="" src="/static/images/2011/07/9867-remdrscr_super.png" /></p>
+<h3>3.TorProxy和Shadow</h3>
+<p>TorProxy应用实现了Android手机无线电电传通讯(TOR)，和Shadow应用一起使用，可以使用手机匿名上网。</p>
+<p>从该项目源代码中，可以掌握socket连接、管理cookie等方法。</p>
+<p>项目地址：<a href="http://www.cl.cam.ac.uk/research/dtg/code/svn/android-tor/">http://www.cl ...</a></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/10-open-source-android-project/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/where-to-go-this-summer/"><h2>今年夏天，什么季</h2></a>
+        <div class= "well small"> Fri 04 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>去年大一夏天，我一人独自外出流浪。我深知，大学四年的暑假绝不能荒废，我们应该做一些有意义的事情。大一那时没有技术，实习的话什么也干不了，于是干脆利用这个时间到处走走，旅行，也能给人很多收获。</p>
+<p>去年暑假回来后，我一直处在思考的状态。明白了很多，懂了很多。明白了有些事情发生了，有些人离开了，有些爱情丢失了，就再也回不来了；至少我曾经拥有过，我学会了珍惜，也学会了珍藏。</p>
+<p>这一段时间里，我看到了很多新兴领域的崛起，这些领域包括了移动开发和互联网开发等等。不能说我“见证了”Android的成长，但起码看到了它是怎样一步一步走来，走出一个全新领域的过程；也不能说我又非凡的“前瞻”力，但我依稀感觉到了它巨大的发展潜力。</p>
+<p>我对互联网虽没有达到痴迷的程度，但着实非常喜欢。喜欢那B/S架构带来的体验，喜欢从一个小小的窗口、从head/body里看世界，喜欢一种connection。当然，应用软件也很喜欢，C/S架构的胖客户端也是很有潜力的！</p>
+<p>今年夏天，会是什么季呢。。</p>
+<p>那么从现在就开始吧。</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/where-to-go-this-summer/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/android.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

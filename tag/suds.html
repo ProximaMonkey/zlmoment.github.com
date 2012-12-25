@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/11/suds-problems/"><h1>SUDS错误和实例</h1></a>
+            Tue 13 November 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+<p>错误信息：</p>
+<div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> &quot;<span class="n">test</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 12<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">client</span> <span class="p">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="p">=</span><span class="n">d</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">client</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 112<span class="p">,</span> <span class="n">in</span> <span class="n">__init__</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">wsdl</span> <span class="p">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">reader</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 152<span class="p">,</span> <span class="n">in</span> <span class="n">open</span>
+    <span class="n">d</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">fn</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">wsdl</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 159<span class="p">,</span> <span class="n">in</span> <span class="n">__init__</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">build_schema</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">wsdl</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 220<span class="p">,</span> <span class="n">in</span> <span class="n">build_schema</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">schema</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">schema</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 95<span class="p">,</span> <span class="n">in</span> <span class="n">load</span>
+    <span class="n">child</span><span class="p">.</span><span class="n">dereference</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">schema</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 323<span class="p">,</span> <span class="n">in</span> <span class="n">dereference</span>
+    <span class="n">midx</span><span class="p">,</span> <span class="n">deps</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">dependencies</span><span class="p">()</span>
+  <span class="n">File</span> &quot;<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span>2<span class="p">.</span>7<span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">suds</span><span class="o">-</span>0<span class="p">.</span>4<span class="o">-</span><span class="n">py2</span><span class="p">.</span>7<span class="p">.</span><span class="n">egg</span><span class="o">/</span><span class="n">suds</span><span class="o">/</span><span class="n">xsd</span><span class="o">/</span><span class="n">sxbasic</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 422<span class="p">,</span> <span class="n">in</span> <span class="n">dependencies</span>
+    <span class="n">raise</span> <span class="n">TypeNotFound</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">ref</span><span class="p">)</span>
+<span class="n">suds</span><span class="p">.</span><span class="n">TypeNotFound</span><span class="p">:</span> <span class="n">Type</span> <span class="n">not</span> <span class="n">found</span><span class="p">:</span> <span class="s">&#39;</span><span class="err">(schema, http://www.w3.org/2001/XMLSchema, )</span>
+</pre></div>
+
+
+<p>解决办法：</p>
+<div class="codehilite"><pre><span class="n">from</span> <span class="n">suds</span><span class="p">.</span><span class="n">client</span> <span class="n">import</span> <span class="n">Client</span>
+<span class="n">from</span> <span class="n">suds</span><span class="p">.</span><span class="n">xsd</span><span class="p">.</span><span class="n">doctor</span> <span class="n">import</span> <span class="n">ImportDoctor</span><span class="p">,</span> <span class="n">Import</span>
+
+<span class="n">url</span> <span class="p">=</span> <span class="s">&#39;https://solaranywhere.com/service.asmx?WSDL&#39;</span>
+<span class="n">imp</span> <span class="p">=</span> <span class="n">Import</span><span class="p">(</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema&#39;</span><span class="p">,</span> <span class="n">location</span><span class="p">=</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema.xsd&#39;</span><span class="p">)</span>
+<span class="n">imp</span><span class="p">.</span><span class="n">filter</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;http://www.solaranywhere.com/&#39;</span><span class="p">)</span>
+<span class="n">d</span> <span class="p">=</span> <span class="n">ImportDoctor</span><span class="p">(</span><span class="n">imp</span><span class="p">)</span>
+<span class="n">client</span> <span class="p">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="p">=</span><span class="n">d</span><span class="p">)</span>
+<span class="n">print</span> <span class="n">client</span>
+</pre></div>
+
+
+<p>第六行折腾了半天有木有。</p>
+<p>截图纪念：</p>
+<p><a href="/static/images/2012/11/suds-success.jpg"><img alt="" src="/static/images/2012/11/suds-success.jpg" /></a></p>
+<p>（微吐槽：最近调试本地页面，老是有一个GET请求发往urllog.sinaapp.com，我是真没写过这样的代码啊。。最后罪魁祸首原来是我装的一个叫“Sorry Youku”的插件，这插件在我打开的任何页面都会请求刚刚那个网址和发送google统计代码，赤裸裸被跟踪了。。。）</p>
+<p>实例都在此处（<a href="https://fedorahosted.org/suds/wiki/Documentation">点击</a>），我就不一一粘贴了。。。</p></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/suds.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

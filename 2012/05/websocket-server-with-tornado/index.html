@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>用Tornado实现WebSocket服务器</h1>
+            Tue 01 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>为什么昨天才发现还有这么好的框架：）简洁，非阻塞。Tornado是一个HTTP服务器，也是一个Web开发框架，最初是由FriendFeed网站的幕后团队开发的，后被Facebook收购开源，现主要服务于Facebook。昨晚用它实现了新的WebSocket服务器，最简单的EchoBack，代码行数骤减，开发效率非常高，稳定性也比PHP略高一筹。</p>
+<p>Tornado是非阻塞的，所以我觉得对于非阻塞式IO (nonblocking IO) 和异步IO (asynchronous IO  AIO)很有必要谈一谈。</p>
+<h3>Non-blocking IO 和 Asynchronous IO</h3>
+<p>我们假设你正在写的应用程序需要去远程服务器上请求数据（比如数据库中的数据，或一些远程API），这步请求假设需要花费5秒钟的时间。在很多Web开发框架中，它们是这样处理的：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">handler_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">answ</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">remote_server</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> # <span class="n">this</span> <span class="n">takes</span> 5 <span class="n">seconds</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">write_response</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
+</pre></div>
+
+
+<p>如果你在单线程中运行，那么每5秒钟你只能处理一个请求，在这5秒钟内，其它请求必须等待，也就是说，你的执行效率是0.2个/秒。这太糟糕了！</p>
+<p>当然，每人会这么做，大部分服务器会使用多线程技术来处理这个问题。假设你有20个线程，那么执行效率将能提高到4个/秒。但是众所周知，但是多线程带来非常大的内存占用和调度开销，这种增加线程的方法始终不能解决根本问题。</p>
+<p>如果使用异步IO（AIO），每秒钟处理上千个这样的请求也是轻而易举的。如下：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">handler_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">remote_server</span><span class="p">.</span><span class="n">query_async</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">response_received</span><span class="p">)</span>
+<span class="n">def</span> <span class="n">response_received</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">answ</span><span class="p">):</span># <span class="n">this</span> <span class="n">is</span> <span class="n">called</span> 5 <span class="n">seconds</span> <span class="n">later</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
+</pre></div>
+
+
+<p>其主要思想是在我们等待本次请求的结果时不阻塞，而是当结果出来时通过一个回调函数通知框架。这样，服务器就能同时处理多个请求。</p>
+<h3>WebSocket Of Tornado</h3>
+<p>Tornado自带WebSocket库，这一点要强于其它很多框架，可以让我们专心于业务逻辑而不用纠结于协议本身。Tornado的最新版现在支持最新版的WebSocket协议（<a href="http://tools.ietf.org/html/rfc6455">RFC6455</a>），当然也可以支持旧版，需要我们重写WebSocketHandler.allow_draft76()函数。</p>
+<div class="codehilite"><pre><span class="n">class</span> <span class="n">tornado</span><span class="p">.</span><span class="n">websocket</span><span class="p">.</span><span class="n">WebSocketHandler</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)[</span><span class="n">source</span><span class="p">]</span>
+</pre></div>
+
+
+<p>通常我们通过继承这个类来建立一个WebSocket处理类。（以下参考<a href="http://www.tornadoweb.org/documentation/websocket.html">官方文档</a>）</p>
+<p><strong>事件处理方法：</strong></p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">open</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Invoked when a new WebSocket is opened.</p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">on_message</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Handle incoming messages on the WebSocket. This method must be overridden.</p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">on_close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Invoked when the WebSocket is closed.</p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">select_subprotocol</span><span class="p">(</span><span class="n">subprotocols</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Invoked when a new WebSocket requests specific subprotocols.</p>
+<p><strong>输出事件处理：</strong></p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">write_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">binary</span><span class="p">=</span><span class="n">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Sends the given message to the client of this Web Socket.</p>
+<p>The message may be either a string or a dict (which will be encoded as json). If the binary argument is false, the message will be sent as utf8; in binary mode any byte string is allowed.</p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Closes this Web Socket.</p>
+<p>Once the close handshake is successful the socket will be closed.</p>
+<p><strong>配置事件：</strong></p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">allow_draft76</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Override to enable support for the older “draft76” protocol.</p>
+<p>The draft76 version of the websocket protocol is disabled by default due to security concerns, but it can be enabled by overriding this method to return True. Connections using the draft76 protocol do not support the binary=True flag to write_message.</p>
+<div class="codehilite"><pre><span class="n">WebSocketHandler</span><span class="p">.</span><span class="n">get_websocket_scheme</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Return the url scheme used for this request, either “ws” or “wss”.</p>
+<p>This is normally decided by HTTPServer, but applications may wish to override this if they are using an SSL proxy that does not provide the X-Scheme header as understood by HTTPServer. Note that this is only used by the draft76 protocol.</p>
+<p>最后我们以一个简单的例子结尾，这个例子将客户端所有的请求返回给该客户端。</p>
+<div class="codehilite"><pre><span class="n">class</span> <span class="n">EchoWebSocket</span><span class="p">(</span><span class="n">websocket</span><span class="p">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
+    <span class="n">def</span> <span class="n">open</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">print</span> &quot;<span class="n">WebSocket</span> <span class="n">opened</span>&quot;
+
+    <span class="n">def</span> <span class="n">on_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">write_message</span><span class="p">(</span><span class="n">u</span>&quot;<span class="n">You</span> <span class="n">said</span><span class="p">:</span> &quot; <span class="o">+</span> <span class="n">message</span><span class="p">)</span>
+
+    <span class="n">def</span> <span class="n">on_close</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">print</span> &quot;<span class="n">WebSocket</span> <span class="n">closed</span>&quot;
+</pre></div></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

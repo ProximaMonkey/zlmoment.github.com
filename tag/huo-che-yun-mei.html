@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2011/05/coal-transportation-algorithm/"><h1>面试题：火车运煤问题</h1></a>
+            Thu 19 May 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>这个可能是一个比较经典的智力题了，其题目如下：</p>
+<p>你是山西的一个煤老板，你在矿区开采了有3000吨煤需要运送到市场上去卖，从你的矿区到市场有1000公里，你手里有一列烧煤的火车，这个火车最多只能装1000吨煤，且每一公里需要耗一吨煤。请问，作为一个<strong>懂编程</strong>的煤老板的你，你会怎么运送才能运最多的煤到集市？</p>
+<p>这道题一开始看上去好像是无解的，因为你的火车每一公里就要消耗一吨煤，而到目的地有1000公里，而火车最多只能装1000吨媒。如果你的火车可以全部装下，到目的地也会被全部烧光，一丁点也不剩。所以，很多人的第一反应都是觉得这个不太可能。</p>
+<p>如果你一开始就觉得不太可能的话，这是很正常的。不过我不知道你还会不会继续思考下去，如果你不想思考下去了，那么我很为你担忧，因为你可能并不是一个不善于思考的人，而是一个畏难的人，还有可能是一个容易放弃的人。这对于你做好 一个需要大量思考的工作的程序员来说可能并不适合。</p>
+<p>我一开始也觉得不可能，后来想了一想，想到一个解法可以最多运送500吨煤到市场（当然还有更好的结果），方法如下：（希望你先自己想一想再查看这个答案）</p>
+<p>答案之一：</p>
+<p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
+<p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤，所以，火车是可以回矿山的。</p>
+<p>装上最后1000吨煤，走到500公里处，装上那里的500吨煤，然后一直走到目的。</p>
+<p>于是，你最多可以运送500吨煤到市场（当然，火车也回不去了，因为那矿山没有煤了）</p>
+<p>好像这样很不错的了，不过还有更好的方法能运更多的媒过去。你知道这个方法吗？可以提示的是，就是以上述这个方法的思路。我先暂时不把答案放上来，你可以自己想想。（最佳答案是533）</p>
+<p><strong>更新：</strong></p>
+<p>一公里一公里的向前移动
+在3000 – 2000 时，每向前一公里，需要来回移动5次，故在这个时段每公里耗费5吨煤
+在2000 – 1000 时，每向前一公里，需要来回移动3次，每公里耗费3吨煤
+在1000 – 0 时，每公里1吨煤</p>
+<p>所以结果如下：
+剩下的煤 已经走了的公里数
+3000 : 0
+2000 : (1000/5) = 200
+1001 : 200 + (1000/3) = 533</p>
+<p>最后在走了533公里的时候，火车上还可以有1001吨，但是零下的一吨是带不走的
+所以最后应该是 1000吨 – （1000公里 – 533公里）* 1吨每公里 = 533吨</p>
+<p>以下为代码实现方法：</p>
+<div class="codehilite"><pre><span class="cm">/**</span>
+<span class="cm">* @param m the total weight of coal</span>
+<span class="cm">* @param n the capacity of train or the miles count of distance</span>
+<span class="cm">* @return the weight of the left coal mine</span>
+<span class="cm">*/</span>
+<span class="n">public</span> <span class="k">static</span> <span class="k">int</span> <span class="n">resolve</span><span class="p">(</span><span class="k">int</span> <span class="n">m</span><span class="p">,</span> <span class="k">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="k">int</span> <span class="n">milesLeft</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">int</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">int</span> <span class="n">coalLeft</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
+
+    <span class="k">int</span> <span class="n">backAndForthCount</span> <span class="o">=</span> <span class="n">coalLeft</span> <span class="o">/</span> <span class="n">milesLeft</span> <span class="o">+</span> <span class="p">(((</span><span class="n">coalLeft</span> <span class="o">%</span> <span class="n">milesLeft</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mh">0</span><span class="p">)</span> <span class="o">?</span> <span class="mh">1</span> <span class="o">:</span> <span class="mh">0</span> <span class="p">);</span>
+    <span class="k">int</span> <span class="n">backAndForthTimes</span> <span class="o">=</span> <span class="mh">2</span> <span class="o">*</span> <span class="n">backAndForthCount</span> <span class="err">–</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">backAndForthTimes</span> <span class="o">&gt;</span> <span class="mh">1</span><span class="p">){</span>
+        <span class="c1">// 每次向前走一公里耗费的煤</span>
+        <span class="k">int</span> <span class="n">costPerMile</span> <span class="o">=</span> <span class="n">backAndForthTimes</span><span class="p">;</span>
+        <span class="k">int</span> <span class="n">milesToBeMoved</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">costPerMile</span><span class="p">;</span>
+        <span class="n">coalLeft</span> <span class="o">-=</span> <span class="n">milesToBeMoved</span> <span class="o">*</span> <span class="n">costPerMile</span><span class="p">;</span>
+        <span class="n">milesLeft</span> <span class="o">-=</span> <span class="n">milesToBeMoved</span><span class="p">;</span>
+        <span class="n">backAndForthCount</span><span class="err">–</span><span class="p">;</span>
+        <span class="n">backAndForthTimes</span> <span class="o">=</span> <span class="mh">2</span> <span class="o">*</span> <span class="n">backAndForthCount</span> <span class="err">–</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">capacity</span> <span class="err">–</span> <span class="n">milesLeft</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">int</span> <span class="n">miles</span> <span class="o">=</span> <span class="mh">3000</span><span class="p">;</span>
+    <span class="k">int</span> <span class="n">capacity</span> <span class="o">=</span> <span class="mh">1000</span><span class="p">;</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">there</span> <span class="n">are</span> <span class="n">totally</span> <span class="o">%</span><span class="n">d</span> <span class="n">ton</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">of</span> <span class="n">coal</span> <span class="n">left</span><span class="err">”</span><span class="p">,</span> <span class="n">resolve</span><span class="p">(</span><span class="n">miles</span><span class="p">,</span> <span class="n">capacity</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/huo-che-yun-mei.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

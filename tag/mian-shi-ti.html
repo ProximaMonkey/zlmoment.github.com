@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/"><h1>趣味算法面试题：男女比例问题</h1></a>
+            Mon 16 April 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
+<p>本能地反应男女比例还应该是1：1，但到底是不是呢，我们来用程序验证一下。</p>
+<p>思路：如果一个家庭生的是女孩，则继续让下一个家庭生；如果是男孩，则递归调用自己，直到结果为女孩。生男生女将由随机产生的0和1来决定。</p>
+<p>我们先看运行结果，程序代码附在文后。如果你有兴趣，可以自己实现一下。</p>
+<h3>编译环境：</h3>
+<blockquote>
+<p>i686-apple-darwin11-llvm-gcc-4.2 (GCC) 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)</p>
+</blockquote>
+<h3>运行结果：</h3>
+<p><a href="/static/images/2012/04/skitched-20120416-192726.png"><img alt="" src="/static/images/2012/04/skitched-20120416-192726.png" /></a></p>
+<p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
+<h3>程序代码：</h3>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;  </span>
+<span class="c">#include &lt;stdlib.h&gt;  </span>
+<span class="c">#define MAN    1  //男孩  </span>
+<span class="c">#define WOMAN  0  //女孩  </span>
+<span class="k">static</span> <span class="n">int</span> <span class="n">numOfMan</span> <span class="p">=</span> 0<span class="p">;</span>  <span class="o">//</span>男孩个数  
+<span class="k">static</span> <span class="n">int</span> <span class="n">numOfWoman</span> <span class="p">=</span> 0<span class="p">;</span>  <span class="o">//</span>女孩个数  
+
+<span class="k">static</span> <span class="n">void</span> <span class="n">PrintResult</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Man&#39;s number is %d, woman&#39;s number is %d.\n&quot;</span><span class="p">,</span> <span class="n">numOfMan</span><span class="p">,</span> <span class="n">numOfWoman</span><span class="p">);</span>
+    <span class="n">float</span> <span class="n">fResult</span> <span class="p">=</span> <span class="p">(</span><span class="n">float</span><span class="p">)</span><span class="n">numOfMan</span> <span class="o">/</span> <span class="p">(</span><span class="n">float</span><span class="p">)</span><span class="n">numOfWoman</span><span class="p">;</span>
+    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Man / Woman is [%f]\n&quot;</span><span class="p">,</span> <span class="n">fResult</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="n">void</span> <span class="n">OneFamilyGetChild</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">int</span> <span class="n">iChildType</span> <span class="p">=</span> <span class="p">(</span><span class="nb">rand</span><span class="p">()</span><span class="c">%2);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">MAN</span> <span class="o">==</span> <span class="n">iChildType</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="o">//</span>如果是男孩，则递归调用，再生一个小孩，直到生出一个女孩为止  
+        <span class="n">numOfMan</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">OneFamilyGetChild</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">WOMAN</span> <span class="o">==</span> <span class="n">iChildType</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">numOfWoman</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;child type is error!\n&quot;</span><span class="p">);</span>
+        <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="n">void</span> <span class="n">StatisticsOfAllFamily</span><span class="p">(</span><span class="n">int</span> <span class="n">iFamilyCount</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Total family count is %d.\n&quot;</span><span class="p">,</span> <span class="n">iFamilyCount</span><span class="p">);</span>
+
+    <span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">iFamilyCount</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">OneFamilyGetChild</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">PrintResult</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">int</span> <span class="n">main</span> <span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">srand</span><span class="p">(</span><span class="nb">time</span><span class="p">(</span><span class="n">NULL</span><span class="p">));</span>
+    <span class="n">StatisticsOfAllFamily</span><span class="p">(</span>1000000<span class="p">);</span>
+
+    <span class="k">return</span> 1<span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>参考资料：现代简明魔法</p></div>
+        <hr />
+    </div>
+		
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/05/coal-transportation-algorithm/"><h2>面试题：火车运煤问题</h2></a>
+        <div class= "well small"> Thu 19 May 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>这个可能是一个比较经典的智力题了，其题目如下：</p>
+<p>你是山西的一个煤老板，你在矿区开采了有3000吨煤需要运送到市场上去卖，从你的矿区到市场有1000公里，你手里有一列烧煤的火车，这个火车最多只能装1000吨煤，且每一公里需要耗一吨煤。请问，作为一个<strong>懂编程</strong>的煤老板的你，你会怎么运送才能运最多的煤到集市？</p>
+<p>这道题一开始看上去好像是无解的，因为你的火车每一公里就要消耗一吨煤，而到目的地有1000公里，而火车最多只能装1000吨媒。如果你的火车可以全部装下，到目的地也会被全部烧光，一丁点也不剩。所以，很多人的第一反应都是觉得这个不太可能。</p>
+<p>如果你一开始就觉得不太可能的话，这是很正常的。不过我不知道你还会不会继续思考下去，如果你不想思考下去了，那么我很为你担忧，因为你可能并不是一个不善于思考的人，而是一个畏难的人，还有可能是一个容易放弃的人。这对于你做好 一个需要大量思考的工作的程序员来说可能并不适合。</p>
+<p>我一开始也觉得不可能，后来想了一想，想到一个解法可以最多运送500吨煤到市场（当然还有更好的结果），方法如下：（希望你先自己想一想再查看这个答案）</p>
+<p>答案之一：</p>
+<p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
+<p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/05/coal-transportation-algorithm/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/mian-shi-ti.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

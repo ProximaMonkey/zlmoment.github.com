@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>Android数据存储之Shared Preferences</h1>
+            Sat 06 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
+<p>1、Shared Preferences</p>
+<p>用来存储 “键-值”格式的数据。</p>
+<p>2、Files</p>
+<p>通过FileInputStream和FileOutputStream对文件进行操作。</p>
+<p>3、SQLite</p>
+<p>标准数据库，支持SQL语句。</p>
+<p>4、NetWork</p>
+<p>通过网络存储和获取数据。</p>
+<p><strong>下面我们来着重介绍一下Shared Preferences的使用方法。</strong></p>
+<p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
+<p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
+<p>1、文件创建模式：Activity.MODE_APPEND</p>
+<p>如果该文件已经存在，然后将数据写入，而不是抹掉它现有文件的末尾。</p>
+<p>2、文件创建模式：MODE_PRIVATE</p>
+<p>默认模式，在那里创建的文件只能由应用程序调用,即为私有的</p>
+<p>3、文件创建模式：Activity.MODE_WORLD_READABLE</p>
+<p>允许所有其他应用程序有读取和创建文件的权限。</p>
+<p>4、文件创建模式：Activity.MODE_WORLD_WRITEABLE</p>
+<p>允许所有其他应用程序具有写入、访问和创建的文件权限。</p>
+<p>在每安装一个Android 应用程序时，data/data目录下都会产生一个对应的包文件夹，如果应用程序中使用了 Preferences 则会在该应用程序文件夹下产生一个shared_prefs文件夹保存我们的数据。</p>
+<p><strong>示例：</strong></p>
+<p>读取配置的方法：</p>
+<div class="codehilite"><pre><span class="c1">//读取当前的配置信息</span>
+<span class="n">private</span> <span class="n">SharedPreferences</span> <span class="k">config</span><span class="p">;</span>
+<span class="k">config</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="p">(</span><span class="s">&quot;CONFIG&quot;</span><span class="p">,</span><span class="n">ConfigActivity</span><span class="p">.</span><span class="no">MODE_WORLD_WRITEABLE</span><span class="p">);</span>
+<span class="n">minRecordTime</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;minRecordTime&quot;</span><span class="p">,</span> <span class="mh">1000</span><span class="p">);</span>
+<span class="n">minRecordDistance</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;minRecordDistance&quot;</span><span class="p">,</span> <span class="mh">1</span><span class="p">);</span>
+<span class="n">isGetMyLocAtStartAuto</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getBoolean</span><span class="p">(</span><span class="s">&quot;isGetMyLocAtStartAuto&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+</pre></div>
+
+
+<p>编辑配置的方法:</p>
+<div class="codehilite"><pre><span class="c1">//写入sharepreference</span>
+<span class="n">SharedPreferences</span> <span class="k">config</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="p">(</span><span class="s">&quot;CONFIG&quot;</span><span class="p">,</span><span class="n">ConfigActivity</span><span class="p">.</span><span class="no">MODE_WORLD_WRITEABLE</span><span class="p">);</span>
+<span class="n">SharedPreferences</span><span class="p">.</span><span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">edit</span><span class="p">();</span>
+<span class="n">editor</span><span class="p">.</span><span class="n">putInt</span><span class="p">(</span><span class="s">&quot;minRecordTime&quot;</span><span class="p">,</span> <span class="n">minRecordTime</span><span class="p">);</span>
+<span class="n">editor</span><span class="p">.</span><span class="n">commit</span><span class="p">();</span>
+</pre></div>
+
+
+<p>示例比较简略，但很典型，摘自我自己的应用BJTUer（暂定名）。</p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

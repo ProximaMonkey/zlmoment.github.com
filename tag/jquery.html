@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/"><h1>页面滚动时层智能浮动定位的实现</h1></a>
+            Thu 13 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
+<p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
+<p>当我们滑动网页时，可以看到如下效果：</p>
+<p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
+<p>右上角的通知栏始终固定不动，不管网页怎么滑动。</p>
+<p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
+<p>下面我们就来利用jQuery实现这种效果。</p>
+<p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
+<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+
+<p>接下来，我们假设想要进行智能浮动的层如下：</p>
+<div class="codehilite"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;float&quot;</span><span class="nt">&gt;</span>
+    我是来自天堂皓月博客的浮动层...
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
+<p>然后我们加入如下的JS代码：</p>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+$<span class="p">.</span><span class="n">fn</span><span class="p">.</span><span class="n">smartFloat</span> <span class="p">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">position</span> <span class="p">=</span> <span class="k">function</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">top</span> <span class="p">=</span> <span class="n">element</span><span class="p">.</span><span class="n">position</span><span class="p">().</span><span class="n">top</span><span class="p">,</span> <span class="n">pos</span> <span class="p">=</span> <span class="n">element</span><span class="p">.</span><span class="n">css</span><span class="p">(</span>&quot;<span class="n">position</span>&quot;<span class="p">);</span>
+        $<span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="n">scroll</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">var</span> <span class="n">scrolls</span> <span class="p">=</span> $<span class="p">(</span><span class="n">this</span><span class="p">).</span><span class="n">scrollTop</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">scrolls</span> <span class="o">&gt;</span> <span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">window</span><span class="p">.</span><span class="n">XMLHttpRequest</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">element</span><span class="p">.</span><span class="n">css</span><span class="p">({</span>
+                        <span class="n">position</span><span class="p">:</span> &quot;<span class="n">fixed</span>&quot;<span class="p">,</span>
+                        <span class="n">top</span><span class="p">:</span> 0<span class="p">,</span>
+                        <span class="n">width</span><span class="p">:</span>&quot;100<span class="c">%&quot;</span>
+                    <span class="p">});</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">element</span><span class="p">.</span><span class="n">css</span><span class="p">({</span>
+                        <span class="n">top</span><span class="p">:</span> <span class="n">scrolls</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+                <span class="n">element</span><span class="p">.</span><span class="n">css</span><span class="p">({</span>
+                    <span class="n">position</span><span class="p">:</span> <span class="n">pos</span><span class="p">,</span>
+                    <span class="n">top</span><span class="p">:</span> <span class="n">top</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+    <span class="k">return</span> $<span class="p">(</span><span class="n">this</span><span class="p">).</span><span class="n">each</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">position</span><span class="p">(</span>$<span class="p">(</span><span class="n">this</span><span class="p">));</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+$<span class="p">(</span>&quot;#<span class="n">menu</span><span class="o">-</span><span class="n">primary</span>&quot;<span class="p">).</span><span class="n">smartFloat</span><span class="p">();</span>
+</pre></div>
+
+
+<p>这段代码的主要意思是：判断#float层的位置，如果到达浏览器边缘，则给层的CSS定义中加上"position:fixed;top:0;"两个属性。</p>
+<p>到此为止，我们的float层就会自动进行浮动啦。</p></div>
+        <hr />
+    </div>
+		
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/10-cool-jquery-slides/"><h2>10款非常酷的 jQuery 内容滑块插件</h2></a>
+        <div class= "well small"> Fri 16 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>我们在做网站前端开发的时候经常会用到内容滑块插件，而网上又难以找到系统的、功能强大的完整教程。Troy在这里收藏最最经典而且效果非常酷炫、功能强大的10款 jQuery 内容滑块插件。每个插件下面都有针对这款插件详细介绍的链接。</p>
+<p><strong>1.jQuery HTML Content Slider</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pAGZ2hcCfv2CQOJ2flJ0Hl3gzZEHz4EkYHMKve6aLAc78X-8991UHBdVXuV5nCZQuuZQngArt0-XgNY_Lkj3Pcw/1.PNG?psid=1" /></p>
+<p><a href="http://bxslider.com/">More Information on jQuery HTML Content Slider</a></p>
+<p><strong>2.Awkward Showcase – A jQuery Plugin</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pvP3ooRkPU05ZmPb1qP6CBv6EYC3aUQZk8QwQwqAOBUzbJ38CN7e9HLt5nLMaJQLgciNHm_mhFVeguTD8OyhSKA/2.PNG?psid=1" /></p>
+<p><a href="http://www.awkwardgroup.com/sandbox/awkward-showcase-a-jquery-plugin/">More Information on Awkward Showcase – A jQuery Plugin</a></p>
+<p><strong>3.Diapo</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1phjrx18GpoUiAIlZB90sHvOO1ux7UQHzaHEx_36xUDnhKGs-7aT1kYtsAcn4h3SbVt4gLznB3eIQlUiU_AQOJPg/3.PNG?psid=1" /></p>
+<p><a href="http://www.pixedelic.com/plugins/diapo/">More Information on Diapo</a></p>
+<p><strong>4.Smooth Div Scroll</strong></p>
+<p><img alt="" src="https://sn2files.storage.live.com/y1pyHHBkYkEfsr0fvzitqKR718_X_H2IUCdftFfBVIDp1hNM5GzMkAagwuOFFpERnDyfGAVX5GKfaa4QDoFhusRJg/4.PNG?psid=1" /></p>
+<p><a href="http://www.smoothdivscroll.com/#quickdemo">More Information on Smooth Div Scroll ...</a></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/10-cool-jquery-slides/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/jquery.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

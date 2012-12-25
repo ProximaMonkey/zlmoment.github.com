@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/"><h2>单链表的一些算法实现</h2></a>
+        <div class= "well small"> Thu 10 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
+<p><strong>首先定义节点：</strong></p>
+<div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
+    <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
+    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span><span class="o">//</span>下一个结点
+<span class="p">};</span>
+</pre></div>
+
+
+<p><strong>创建带n个数据的单链表：</strong></p>
+<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Init</span><span class="p">(){</span>
+    <span class="n">head</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
+    <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Create</span><span class="p">(</span><span class="n">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">i</span> <span class="p">=</span> 1 <span class="p">;</span> <span class="nb">i</span> <span class="o">&lt;</span><span class="p">=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="nb">i</span><span class="p">)</span>  <span class="p">{</span>
+        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
+        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
+        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/04/alpha-of-lzy/"><h2>李昭谕Alpha版发布</h2></a>
+        <div class= "well small"> Wed 13 April 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>经过从出生到目前为期7454天的开发，李昭谕Alpha版发布。</p>
+<p>在正规软件开发流程中，Alpha为内测版，位于Beta版之前，一般是程序员完成第一遍的代码，这时候的程序bug非常多，程序还非常不完美。</p>
+<p>如今，7454天，20多年了，李昭谕的Alpha版必须发布了。发布后才能有进步，发布后就要不断debug，修复漏洞，发布更新的版本，每次发布的李昭谕都不一样。</p>
+<p>李昭谕Alpha版现在还非常不完美，有很多缺点：</p>
+<p>李昭谕程序内部有两套运行机制，一套叫Lazy，一套叫Diligent，它们的协调机制还不完善，lazy总是抢占进程，不服从调度...</p>
+<p>李昭谕程序的数据库还不够大，有些时候做数据分析会非常不准确...</p>
+<p>李昭谕程序的执行效率还不够高，必须升级主频...</p>
+<p>李昭谕程序的硬件载体还不够强劲，需要升级...</p>
+<p>李昭谕程序还有很长一段路要走，相比于其它一些程序，别人是Win7，他是DOS...</p>
+<p>李昭谕程序...........还有很多很多很多很多bug.....</p>
+<p>李昭谕Alpha，以后还有漫长的Beta版要走，也许永远也不会有正式版...但希望每次更新都有变化，每次都可以debug。</p>
+<p>努力开发，迈向Beta 1.0。</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/alpha-of-lzy/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/08/android-shared-preferences/"><h2>Android数据存储之Shared Preferences</h2></a>
+        <div class= "well small"> Sat 06 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
+<p>1、Shared Preferences</p>
+<p>用来存储 “键-值”格式的数据。</p>
+<p>2、Files</p>
+<p>通过FileInputStream和FileOutputStream对文件进行操作。</p>
+<p>3、SQLite</p>
+<p>标准数据库，支持SQL语句。</p>
+<p>4、NetWork</p>
+<p>通过网络存储和获取数据。</p>
+<p><strong>下面我们来着重介绍一下Shared Preferences的使用方法。</strong></p>
+<p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
+<p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
+<p>1、文件创建模式：Activity.MODE_APPEND</p>
+<p>如果该文件已经存在，然后将数据写入 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/android-shared-preferences/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/07/asynctask-in-android/"><h2>Android中使用AsyncTask实现简单的异步处理</h2></a>
+        <div class= "well small"> Sun 24 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
+<p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
+<p>Android提供了几种在其他线程中访问UI线程的方法：</p>
+<p><code>Java
+  Activity.runOnUiThread( Runnable )
+  View.post( Runnable )
+  View.postDelayed( Runnable, long )
+  Hanlder</code></p>
+<p>这些类或方法同样会使你的代码很复杂很难理解。然而当你需要实现一些很复杂的操作并需要频繁地更新UI时这会变得更糟糕。</p>
+<p>为了解决这个问题，Android 1.5提供了一个工具类：AsyncTask，它使创建需要与用户界面交互的长时间运行的任务变得更简单。不需要借助线程和Handler即可实现。</p>
+<p>AsyncTask是抽象类.AsyncTask定义了三种泛型类型 Params，Progress和Result。</p>
+<ul>
+<li>
+<p>Params 启动任务执行的输入参数，比如HTTP请求的URL。</p>
+</li>
+<li>
+<p>Progress 后台任务执行的百分比。</p>
+</li>
+<li>
+<p>Result ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/asynctask-in-android/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/04/be-programmer-best/"><h2>做一个有理想的程序猿</h2></a>
+        <div class= "well small"> Fri 22 April 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>我想，程序员只是一个代名词，我们是一群爱IT的人，希望通过自己的技术改变世界的人，我们是一群热爱生活、热爱世界的人。（蓝色文字皆为Troy注解）</p>
+<p>作为程序员，要取得非凡成就需要记住的15件事。</p>
+<p><strong>1.走一条不一样的路</strong></p>
+<p>在有利于自己的市场中竞争，如果你满足于“泯然众人矣”，那恐怕就得跟那些低工资国家的程序员们同场竞技了。</p>
+<p>“走一条不同的路”，“走自己喜欢的路”从来都是一个人成功的重要条件，但是更为重要的是，选定的一条路，一定要好好地、坚持地走下去。与其他半途而废的人来比，我们就是笑到最后的人。</p>
+<p><strong>2.了解自己的公司</strong></p>
+<p>以我在医院、咨询公司、物流企业以及大技术公司工作的经验来看，这一点所言不虚。</p>
+<p>不同公司的运营模式差异极大。如果你理解企业的运营模式，那你就不一样了！在这家公司中（或者对客户而言），你是参与业务运营的资产，你的工作能直接产生效益！</p>
+<p>如果一个人能够在他/她喜欢的公司工作，还用得着努力地去重新了解它吗？某种程度上我们喜欢某家公司的原因恰恰是我们喜欢它的运营理念。</p>
+<p><strong>3.与最优秀的人为伍</strong></p>
+<p>很早以前，我喜欢打篮球，被分配到一个水平比较高的队里。一开始适应的确很困难，但环境的压力越大（重大比赛），我的长进也就越明显 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/be-programmer-best/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/09/beauty-of-chinese-article/"><h2>中国风，将唯美雅韵进行到底</h2></a>
+        <div class= "well small"> Wed 14 September 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><strong>好久没有读到如此荡气回肠的文章了，中国风，是一种生活态度。</strong></p>
+<p>翻开中国滚滚历史长卷，墨香墨离，各个朝代独领风流，各个领域人才辈出，上至轩辕开天大战蚩尤，惊天地，泣鬼神，统制九州，九樽青鼎为鉴，苍松白鹿为证，黄帝仙逝，轩辕氏仍逐鹿中原，人才济济，舜尧两帝，开创文明先河，黄河长江流域谱写华丽篇章。­</p>
+<p>中国华夏五千年文明泱泱流淌，川流不息，讫立世界民族之林不倒，像明珠矗立在世界的东方，成为四大文明古国之一，其经济、文化、历史、建筑、佛法…都为世界做出了巨大的贡献，古老而神秘的国度，散发着朦胧的书香气息，其高超的技艺，精美的墨笔，巧夺天功的神来之笔，为华夏文明装点上一层浓厚的翰林墨息。­</p>
+<p>至统领九州以来，各朝各代，文人儒客，风流倜倘，身着素衣，手握折扇，不羁一格，吟诵明月诗篇，歌窈窕乐章，不为世旅尘俗所累，放心绿水之湄，听风吟月，自在江上泛舟轻摇，一壶残酒 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/beauty-of-chinese-article/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/"><h2>第一个HackEcho爬虫诞生记</h2></a>
+        <div class= "well small"> Sun 18 March 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
+<p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
+<p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
+<p>当然，爬取的数据也不多，具体只有以下几项：</p>
+<div class="codehilite"><pre><span class="n">from</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">item</span> <span class="n">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="n">class</span> <span class="n">YileeItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    # <span class="n">DEFINE</span> <span class="n">THE</span> <span class="n">FIELDS</span> <span class="n">FOR</span> <span class="n">YOUR</span> <span class="n">ITEM</span> <span class="n">HERE</span> <span class="n">LIKE</span><span class="p">:</span>
+    # <span class="n">NAME</span> <span class="p">=</span> <span class="n">FIELD</span><span class="p">()</span>
+    <span class="n">url</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">title</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">release_time</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">category</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">content_html</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+</pre></div>
+
+
+<p>当然 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/"><h2>那些年与编程和计算机有关的小事儿</h2></a>
+        <div class= "well small"> Thu 17 November 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>不知道写这种文章算不算回忆录，因为说回忆录未免有些早。记得初中的时候写过一本《我的小学回忆录》，将从入学一年级第一天起开始能想起来的人和事都记录了下来，如今这本未出版的手写书已不知去向，小学的记忆也越来越模糊。忽然想不如趁着现在对一些往事还尚存记忆，稍微回忆一下，也算对自己的鼓励吧。</p>
+<p>从小就是一个对电脑比较感兴趣的人，有时候兴趣是没有理由的，因为那时周围很多同学使用电脑仅限于聊QQ和半条命，而我却对除此之外的一些其它东西有着非常浓厚的兴趣。印象比较深的是买了很多很多的电脑书籍，当时最惬意的事情就是趴在桌前，做完作业后看那本比砖头还厚的《电脑医院》，一看就是四五个小时，后来还照葫芦画瓢写了个破坏注册表的.reg脚本，号称是我制造的第一个电脑病毒！</p>
+<p>由于很多电脑名词不明白，便买书、查资料。什么《注册表终极操作》、《BIOS配置指南》、《电脑上网故障1000问》、《榨干你的电脑》等等，还有全年的《电脑迷》、《电脑爱好者》、《IT新闻周刊》和不怎么看得懂的《CHIP新电脑》等。尤记得当时第一次重装系统时的激动，第一次电脑崩溃时的伤心，第一次编译通过一个程序，第一次入侵别人电脑等等的第一次，现在回想起来，真有一番体味。</p>
+<p>跟所有少年一样，在当时那个年龄段，都有一个黑客梦。当时最崇拜的人是陈盈豪，因为他的CIH病毒第一次颠覆了我的观念：病毒原来还可以破坏硬件设备 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/05/coal-transportation-algorithm/"><h2>面试题：火车运煤问题</h2></a>
+        <div class= "well small"> Thu 19 May 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>这个可能是一个比较经典的智力题了，其题目如下：</p>
+<p>你是山西的一个煤老板，你在矿区开采了有3000吨煤需要运送到市场上去卖，从你的矿区到市场有1000公里，你手里有一列烧煤的火车，这个火车最多只能装1000吨煤，且每一公里需要耗一吨煤。请问，作为一个<strong>懂编程</strong>的煤老板的你，你会怎么运送才能运最多的煤到集市？</p>
+<p>这道题一开始看上去好像是无解的，因为你的火车每一公里就要消耗一吨煤，而到目的地有1000公里，而火车最多只能装1000吨媒。如果你的火车可以全部装下，到目的地也会被全部烧光，一丁点也不剩。所以，很多人的第一反应都是觉得这个不太可能。</p>
+<p>如果你一开始就觉得不太可能的话，这是很正常的。不过我不知道你还会不会继续思考下去，如果你不想思考下去了，那么我很为你担忧，因为你可能并不是一个不善于思考的人，而是一个畏难的人，还有可能是一个容易放弃的人。这对于你做好 一个需要大量思考的工作的程序员来说可能并不适合。</p>
+<p>我一开始也觉得不可能，后来想了一想，想到一个解法可以最多运送500吨煤到市场（当然还有更好的结果），方法如下：（希望你先自己想一想再查看这个答案）</p>
+<p>答案之一：</p>
+<p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
+<p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/05/coal-transportation-algorithm/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/"><h2>Mac下GBK与UTF8编码文件的批量转换</h2></a>
+        <div class= "well small"> Fri 17 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
+<p>就不细细介绍了，看下面的例子，就都懂了：</p>
+<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
+<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
+<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
+<span class="n">iconv ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
+    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+
+    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li3.html">Next &rarr;</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/"><h1>使用友盟SNS_SDK为Android应用加入SNS分享功能</h1></a>
+            Wed 03 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>很多朋友在开发Android应用的过程中，都想加入社会化的分享功能，如将自己的应用使用状态或心得同步到新浪微博、人人网或腾讯微博等。这些社交网络或微博都已经发布了针对开发者的开放平台（关于开放平台的相关信息，请参考<a href="http://www.hackecho.com/archives/127.html">《说说微创业——关于开放平台和微时代》</a>），因此我们可以将这些分享功能集成到自己的应用中，提高用户的互动性和产品推广效果。将应用与社会化网络联系起来已经成为现在移动开发的主流趋势之一。</p>
+<p>可对于新手而言，各大开放平台的SDK使用方法还需要花费很大精力来学习，如果仅仅是开发Demo的话，其实没有必要花费过多的时间在此。近两天我也在想办法给自己的应用加入社会化分享功能，偶然的机会看到了友盟提供的SNS_SDK（测试版），简单的试用过以后感觉不错，因此分享给大家，让我们的产品在开发初期也能快速方便的拥有SNS分享同步功能。</p>
+<p>友盟SNS_SDK目前提供两种分享方式：一种是文字分享，另一种是图文（图片+文字）分享。支持的开放平台目前有新浪微博、人人网和腾讯微博。首先我们要下载相应的SDK。</p>
+<p>进入<a href="http://www.umeng.com/doc/home.html">友盟文档中心</a>，点击左侧的<strong>开发工具SDK</strong>目录，在右侧点击下载即可。这里是一个简要的开发文档（<a href="http://www.umeng.com/doc/home.html#op_con_kfzn/adsdk_shhfx">点击查看</a>），当然我们会在下面为大家详细介绍其使用方法。</p>
+<p>首先我们应该注册一个友盟账号（<a href="http://www.umeng.com">点击注册</a>），注册完成后登录，进入友盟的管理后台，点击“添加新应用”，进入新应用信息填写的页面。App 建立成功后，自动会跳转到该App管理页面的开发指南页面。在这个页面中获得该App 的AppKey（非常重要）。获得该Appkey 后，请继续完成以下步骤：</p>
+<p><strong>UMENG_APPKEY 和分享平台的绑定：</strong></p>
+<p>获得appkey后，还需要将应用和我们要使用的分享平台注册时获取的appkey 和appsecret绑定。注册过程如下：</p>
+<p><strong>新浪微博：</strong>http://open.t.sina.com.cn -&gt; 我是开发者 -&gt; 创建新应用</p>
+<p><strong>腾讯微博：</strong>http://open.t.qq.com/ -&gt; 创建应用</p>
+<p><strong>人人网：</strong> http://dev.renren.com/ -&gt; 创建应用</p>
+<p>注意：人人网的应用创建完成后，在“我的应用”页面将可以看到获得的AppId，Appkey, Secret，至此还需要去设置App 的Callback URL：点击“应用设置”下的“编辑应用属性”,在跳转后的页面中，点击 “Canvas 设置”, 设置“<strong>Canvas Callback URL</strong>”为：http://sns.whalecloud.com/renr/callback 保存即可， 最后因为SDK 中使用了人人的status.set 和photo.upload 接口（这两个接口属于人人定义的高级API）, 目前人人要求对高级API的使用须向其提交申请，具体流程参见：人人API 申请审核制度（V1.0） 下的“申请流程”。<strong>不过现在作为测试者，可以先不申请，具体详见<a href="http://wiki.dev.renren.com/wiki/Test_Advanced_API">高级API测试方案</a>。</strong></p>
+<p>在各平台注册应用后，接下来需要完成 UMENG_APPKEY 和友盟支持的分享平台注册应用时获取的appkey 和appsecret 绑定。具体操作为：开发工具-&gt;SNS 分享-&gt;设置。如下图所示：</p>
+<p><img alt="" src="/static/images/2011/08/21.png" /></p>
+<p>接下来我们要开始集成到应用中去咯：</p>
+<p><strong>一、导入UMeng-Android-SDK-SnsService.jar （简称SDK）</strong></p>
+<p>右键工程根目录，选择 Properties -&gt; Java Build Path -&gt; Libraries，然后点击 Add External JARs... 选择指向 UMeng-Android-SDK-snsService.jar 的路径，点击 OK，即导入成功。</p>
+<p>与此同时SDK 中引用了httpmime-4.1.1.jar 和commons-httpclient-3.1.jar 这两个第三方的包，请用同样的方式引入工程。</p>
+<p><strong>二、配置AndroidMainfest.xml</strong></p>
+<p><strong>1. 添加Activity "com.umeng.api.activity.OauthActivity"和"com.umeng.api.activity.UpdateStatusActivity"</strong></p>
+<div class="codehilite"><pre><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;com.umeng.api.activity.OauthActivity&quot;</span>
+    <span class="na">android:screenOrientation=</span><span class="s">&quot;unspecified&quot;</span>
+    <span class="na">android:windowSoftInputMode=</span><span class="s">&quot;adjustResize&quot;</span>
+    <span class="na">android:configChanges=</span><span class="s">&quot;orientation|keyboardHidden&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+<span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;com.umeng.api.activity.UpdateStatusActivity&quot;</span>
+    <span class="na">android:theme=</span><span class="s">&quot;@style/Theme.IOSched&quot;</span>
+    <span class="na">android:windowSoftInputMode=</span><span class="s">&quot;stateVisible|adjustResize&quot;</span>
+    <span class="na">android:screenOrientation=</span><span class="s">&quot;unspecified&quot;</span>
+    <span class="na">android:configChanges=</span><span class="s">&quot;orientation|keyboardHidden&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intent-filter&gt;</span>
+        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.action.VIEW&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.DEFAULT&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.BROWSABLE&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">android:scheme=</span><span class="s">&quot;schemaYourUmengAppKey&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</pre></div>
+
+
+<p><strong>2.修改Activity "com.umeng.api.activity.UpdateStatusActivity"中的data标签：</strong></p>
+<div class="codehilite"><pre><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;com.umeng.api.activity.UpdateStatusActivity&quot;</span> <span class="err">…</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;intent-filter&gt;</span>
+        …
+        <span class="nt">&lt;data</span> <span class="na">android:scheme=</span><span class="s">&quot;schema你的应用程序的友盟Appkey&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</pre></div>
+
+
+<p>例如你的UMENG_APPKEY 为：4da011e664f3b4a487000002，则data 标签改为：</p>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="n">data</span> <span class="n">android</span><span class="p">:</span><span class="n">scheme</span><span class="p">=</span>&quot;<span class="n">schema4da011e664f3b4a487000002</span>&quot; <span class="o">/&gt;</span>
+</pre></div>
+
+
+<p><strong>3. 添加UMENG_APPKEY：</strong></p>
+<div class="codehilite"><pre><span class="nt">&lt;application</span> <span class="err">…</span><span class="nt">&gt;</span>
+    …
+    <span class="nt">&lt;meta-data</span> <span class="na">android:value=</span><span class="s">&quot;你的应用的Appkey&quot;</span> <span class="na">android:name=</span><span class="s">&quot;UMENG_APPKEY&quot;</span><span class="nt">&gt;&lt;/meta-data&gt;</span>
+<span class="nt">&lt;/application&gt;</span>
+</pre></div>
+
+
+<p><strong>4.添加相应的权限：</strong></p>
+<p><em>android.permission.ACCESS_NETWORK_STATE</em> 用于判断网络的状态，因为SDK 中提供的服务仅在有网络时有效；</p>
+<p><em>android.permission.INTERNET</em> 用于完成分享内容的发送；</p>
+<p><em>android.permission.READ_PHONE_STATE</em> 读取终端的IMEI, 以用于分享的统计。</p>
+<div class="codehilite"><pre><span class="nt">&lt;manifest</span> <span class="err">…</span><span class="nt">&gt;</span>
+    …
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.READ_PHONE_STATE&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/manifest&gt;</span>
+</pre></div>
+
+
+<p><strong>5.下面这段文字来自官方：</strong></p>
+<p>如果您调用我们提供的SDK 的Activity 支持横竖屏的切换，并且您使用的是我们SDK 中提供的默认分享页面，我们强烈建议您将该Activity 设置为在横竖屏切换时Activity 不销毁， 您只需在该Activity 中添加： android:configChanges="orientation|keyboardHidden"。这对您的应用功能，性能均无影响，因为我们的SDK 默认的分享页面与您的应用的交互是从弹出一个Dialog 开始的，这样的设置将保证在横竖屏切换时不会出现Activity 在Dialog Dismiss 之前finish，从而避免造成潜在隐患，使得整个app 更安全，稳定。</p>
+<p><strong>至于你加没加，反正我加了。</strong></p>
+<p><strong>三、添加其他资源文件</strong></p>
+<p>我们下载的SDK中的资源文件有：Drawable, drawable-hdpi, layout, values, anim 只需要拷贝到project 的对应目录下即可。</p>
+<p><strong>四、配置分享平台（可选）</strong></p>
+<p>目前友盟支持的分享的平台是：新浪微博，人人网和腾讯微博， 如果只需要用到其中的某一个或某两个平台， 只需要在umeng_share_parameters.xml（该文件在SDK提供的资源文件， values文件夹下）将不需要的平台设为”close”即可（默认三个平台都是开启的）。例如不需要用到分享到腾讯微博的功能，则将umeng_share_tenc 设为"close"即可。</p>
+<div class="codehilite"><pre><span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;umeng_share_renr&quot;</span><span class="nt">&gt;</span>open<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;umeng_share_sina&quot;</span><span class="nt">&gt;</span>open<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;umeng_share_tenc&quot;</span><span class="nt">&gt;</span>close<span class="nt">&lt;/string&gt;</span>
+    …
+<span class="nt">&lt;/resources&gt;</span>
+</pre></div>
+
+
+<p><strong>五、其他复杂的功能请参看官方文档。</strong></p>
+<p><strong>六、下面我们来看一下最最基本的分享文字消息的使用方法，以我的应用为示例：</strong></p>
+<p>在需要打开分享功能的地方加入下列使用代码即可：</p>
+<div class="codehilite"><pre><span class="n">UMSnsService</span><span class="p">.</span><span class="n">share</span><span class="p">(</span><span class="n">BJTUerActivity</span><span class="p">.</span><span class="n">this</span><span class="p">,</span> &quot;测试同步功能！&quot;<span class="p">);</span>
+</pre></div>
+
+
+<p>这样点击后，将会弹出以下界面：</p>
+<p><img alt="" src="/static/images/2011/08/3.png" /></p>
+<p>哈哈，接下来就是认证了。因为我已经认证过了，所以这一步略过。然后就是分享界面：</p>
+<p><img alt="" src="/static/images/2011/08/4.png" /></p>
+<p>其中还可以插入表情、话题或者@某人等。</p>
+<p>当然，除了分享文字外，还可以分享图片加文字（如拍张照后直接分享），具体使用方法请参考官方文档。</p>
+<p>最后再提一点，关于用户的所有分享操作在友盟上开发者是可以看到所有统计数据的，如下图（我的应用只有我在测试，所以图表比较寒酸...）：</p>
+<p><img alt="" src="/static/images/2011/08/6.png" /></p>
+<p>好了，介绍完毕，大家Enjoy it吧！有问题欢迎讨论！</p></div>
+        <hr />
+    </div>
+		
+            <div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/sns.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

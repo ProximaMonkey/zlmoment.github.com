@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>Wordpress提示填写FTP信息的解决办法</h1>
+            Sat 14 January 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>在上一篇文章《<a href="http://www.hackecho.com/archives/710.html">VPS折腾记</a>》中提到在升级Wordpress或添加删除主题和插件的时候需要填写FTP账户信息的问题，提示一般如下：</p>
+<blockquote>
+<p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</p>
+</blockquote>
+<p>一般情况下，虚拟主机很少会出现这样的情况，如果使用 VPS 的话，这种情况就会比较多。主要原因是网站服务器运行PHP的用户和Wordpress文件夹的所有者不一样，目的就是为了安全，Wordpress在升级时会创建一个临时文件看看owner是不是和当前运行的PHP是否一样，如果不一样，就会出现这个界面。</p>
+<p>第一种解决办法很简单，就是直接在wp-config.php 中加入FTP的配置代码：</p>
+<div class="codehilite"><pre><span class="c1">// ** FTP SETTINGS FOR AUTO-UPDATE ** //</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_HOST</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">localhost</span><span class="err">’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_USER</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">帐号’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_PASS</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">密码’</span><span class="p">);</span>
+</pre></div>
+
+
+<p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
+<p>针对有高级管理权限的用户，如服务器或 VPS 等管理员，只需将 PHP 和网站目录设置成同一个用户组即可。一般是 www 用户组跑 PHP，所以将网站所在目录内所有文件夹和文件设置成www用户组即可，输入命令：</p>
+<div class="codehilite"><pre><span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">www</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">wwwroot</span>  
+<span class="n">chgrp</span> <span class="o">-</span><span class="n">R</span> <span class="n">www</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">wwwroot</span>
+</pre></div>
+
+
+<p>记住将上述命令中的网站目录路径改为自己的路径即可。</p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>解密人人网应用“好友档案”与“X档案”</h1>
+            Thu 23 June 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
+<h3>接口分析</h3>
+<p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
+<p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
+<ol>
+<li>
+<p>status.getComment()</p>
+</li>
+<li>
+<p>photos.getComments()</p>
+</li>
+<li>
+<p>blog.getComments()</p>
+</li>
+</ol>
+<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复，只能是最近N条的。</p>
+<p>还有一点可以看到，现在还没有有关留言板的API，所以及时两个人留言板聊得再欢，也不会影响排名。</p>
+<h3>算法预测</h3>
+<ol>
+<li>
+<p>获取当前用户ID；</p>
+</li>
+<li>
+<p>获取ID的状态，记为sid；</p>
+</li>
+<li>
+<p>历遍sid，获取所有的回复者id，记为rid，所有的rid组成一个列表，每当在下一个状态里发现同样的rid，则记录数量＋1；</p>
+</li>
+<li>
+<p>同理获取照片和blog的rid；</p>
+</li>
+<li>
+<p>rid列表排序，取前6。</p>
+</li>
+</ol>
+<h3>总结</h3>
+<p>其中【最关心你的人】分析方式:获取本人50条状态，按好友回复数排名</p>
+<p>【最自恋的人】分析方式:按好友头像相册中头像的个数排名</p>
+<h3>其它</h3>
+<p>这个应用是由几个在校大学生编写的，对他们的创意和技术表示钦佩。</p>
+<p>最后，博主得到了一些此应用的源代码，感兴趣者请看下面。（未结构化，看着乱的话请复制到你自己的编辑器中Format。信息来自网络，如侵权请邮件告知）</p>
+<p>部分源代码如下：（Python）</p>
+<p>因版权和安全原因，源码不再公开。</p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

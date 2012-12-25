@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>Python中的装饰器Decorator</h1>
+            Fri 11 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
+<p>如果使用如下的代码：</p>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
+<span class="p">@</span><span class="n">makeitalic</span>
+<span class="n">def</span> <span class="n">say</span><span class="p">():</span>
+    <span class="k">return</span> &quot;<span class="n">Hello</span>&quot;
+</pre></div>
+
+
+<p>打印出如下的输出：</p>
+<div class="codehilite"><pre><span class="nt">&lt;b&gt;&lt;i&gt;</span>Hello<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
+</pre></div>
+
+
+<p>你会怎么做？最后给出的答案是：</p>
+<div class="codehilite"><pre>def makebold(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;b&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/b&gt;</span>&quot;
+    return wrapped
+
+def makeitalic(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;i&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/i&gt;</span>&quot;
+    return wrapped
+
+@makebold
+@makeitalic
+def hello():
+    return &quot;hello world&quot;
+
+print hello() ## 返回 <span class="nt">&lt;b&gt;&lt;i&gt;</span>hello world<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
+</pre></div>
+
+
+<p>其中的@其实就是Python的装饰器。</p>
+<p>装饰器模式可以在不影响其它对象的情况下，以动态、透明的方式给单个对象添加职责，也能够处理那些可以撤销的职责。经常用于日志记录、性能测试等场合。</p>
+<p>想象一下这个很常见的场景，你写了一个方法只提供给以登陆的用户访问，你可以写以下代码：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">A</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+        <span class="n">do</span> <span class="n">something</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pass</span>
+</pre></div>
+
+
+<p>这当然没什么问题，但是你又写了一个方法B，也要求只有登录用户可以访问，于是有写了以下代码：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">B</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+        <span class="n">do</span> <span class="n">something</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pass</span>
+</pre></div>
+
+
+<p>问题出来了，如果不是两个方法而是一堆方法，你可能就有点受不了啦。当然聪明的你可以想出这个方法：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">A</span><span class="p">():</span>
+    <span class="n">pass</span>
+<span class="n">def</span> <span class="n">B</span><span class="p">():</span>
+    <span class="n">pass</span>
+<span class="n">def</span> <span class="n">login_required</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="n">def</span> <span class="n">ff</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+            <span class="n">fn</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pass</span>
+    <span class="k">return</span> <span class="n">ff</span>
+
+<span class="n">A</span> <span class="p">=</span> <span class="n">login_required</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">B</span> <span class="p">=</span> <span class="n">login_required</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+
+
+<p>你可能没有想到，对于这么好用的东西，python优雅的支持，这就是@修饰符：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">login_required</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="n">def</span> <span class="n">ff</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+            <span class="n">fn</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pass</span>
+    <span class="k">return</span> <span class="n">ff</span>
+
+<span class="p">@</span><span class="n">login_required</span>
+<span class="n">def</span> <span class="n">A</span><span class="p">():</span>
+    <span class="n">pass</span>
+<span class="p">@</span><span class="n">login_required</span>
+<span class="n">def</span> <span class="n">B</span><span class="p">():</span>
+    <span class="n">pass</span>
+</pre></div>
+
+
+<p><strong>在方法A上边写一个@修饰符，调用方法A的时候会调用修饰符后边的方法B，方法B以A方法为参数，而且需要返回一个可调用的对象，这个可调用的对象会使用A方法提供的参数执行。</strong>看这个例子：</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/env python  </span>
+
+<span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;a&#39;</span>
+    <span class="k">def</span> <span class="nf">d</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">st</span><span class="o">+</span><span class="s">&#39;d&#39;</span>
+    <span class="k">return</span> <span class="n">d</span>
+
+<span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;b&#39;</span>
+    <span class="k">return</span> <span class="n">fn</span>
+
+<span class="nd">@a</span>
+<span class="nd">@b</span>
+<span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">st</span>
+
+<span class="n">c</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输出结果是：bacd</p>
+<p>我们调用c('c')的时候会先调用b(c)，b(c)打印字符"b"然后返回c，然后再调用a(c)，a(c)打印字符"a"，然后返回方法d，然后再执行d('c')，打印cd。</p>
+<p>参考资料：http://blog.csdn.net/shangzhihaohao</p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

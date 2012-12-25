@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>初探Scrapy的架构</h1>
+            Mon 27 February 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
+<h3>概览</h3>
+<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
+<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
+<h3>组件介绍</h3>
+<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
+<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
+<p><strong>Scheduler（调度控制器）</strong></p>
+<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
+<p><strong>Downloader（下载器）</strong></p>
+<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
+<p><strong>Spiders（蜘蛛）</strong></p>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs (requests) to follow.Each spider is able to handle a specific domain (or group of domains).</p>
+<p>For more information see <a href="http://doc.scrapy.org/en/latest/topics/spiders.html#topics-spiders"><em>Spiders</em></a>.</p>
+<p><strong>Item Pipeline（项目管道）</strong></p>
+<p>The Item Pipeline is responsible for processing the items once they have been extracted (or scraped) by the spiders. Typical tasks include cleansing, validation and persistence (like storing the item in a database).</p>
+<p>For more information see <a href="http://doc.scrapy.org/en/latest/topics/item-pipeline.html#topics-item-pipeline"><em>Item Pipeline</em></a>.</p>
+<p><strong>Downloader middlewares（下载器中间件）</strong></p>
+<p>Downloader middlewares are specific hooks that sit between the Engine and the Downloader and process requests when they pass from the Engine to the Downloader, and responses that pass from Downloader to the Engine. They provide a convenient mechanism for extending Scrapy functionality by plugging custom code.</p>
+<p>大致意思是说，下载器中间件是位于Scrapy引擎和下载器之间的特殊钩子，负责处理Scrapy引擎与下载器之间的请求及响应。通过自定义代码可以方便地拓展Scrapy的功能。</p>
+<p>For more information see <a href="http://doc.scrapy.org/en/latest/topics/downloader-middleware.html#topics-downloader-middleware"><em>Downloader Middleware</em></a>.</p>
+<p><strong>Spider middlewares（蜘蛛中间件）</strong></p>
+<p>Spider middlewares are specific hooks that sit between the Engine and the Spiders and are able to process spider input (responses) and output (items and requests). They provide a convenient mechanism for extending Scrapy functionality by plugging custom code.</p>
+<p>具体含义可参考下载器中间件。</p>
+<p>For more information see <a href="http://doc.scrapy.org/en/latest/topics/spider-middleware.html#topics-spider-middleware"><em>Spider Middleware</em></a>.</p>
+<h3>Data flow（<strong>数据处理</strong>）</h3>
+<p>The data flow in Scrapy is controlled by the Engine, and goes like this:</p>
+<ol>
+<li>
+<p>The Engine opens a domain, locates the Spider that handles that domain, and asks the spider for the first URLs to crawl.</p>
+</li>
+<li>
+<p>The Engine gets the first URLs to crawl from the Spider and schedules them in the Scheduler, as Requests.</p>
+</li>
+<li>
+<p>The Engine asks the Scheduler for the next URLs to crawl.</p>
+</li>
+<li>
+<p>The Scheduler returns the next URLs to crawl to the Engine and the Engine sends them to the Downloader, passing through the Downloader Middleware (request direction).</p>
+</li>
+<li>
+<p>Once the page finishes downloading the Downloader generates a Response (with that page) and sends it to the Engine, passing through the Downloader Middleware (response direction).</p>
+</li>
+<li>
+<p>The Engine receives the Response from the Downloader and sends it to the Spider for processing, passing through the Spider Middleware (input direction).</p>
+</li>
+<li>
+<p>The Spider processes the Response and returns scraped Items and new Requests (to follow) to the Engine.</p>
+</li>
+<li>
+<p>The Engine sends scraped Items (returned by the Spider) to the Item Pipeline and Requests (returned by spider) to the Scheduler</p>
+</li>
+<li>
+<p>The process repeats (from step 2) until there are no more requests from the Scheduler, and the Engine closes the domain.</p>
+</li>
+</ol>
+<h3>Event-driven networking（事件驱动的网络框架）</h3>
+<p>Scrapy是由<a href="http://twistedmatrix.com/trac/">Twisted </a>编写的一个基于Python事件驱动的网络框架，采用非堵塞的方式（a.k.a.异步）处理并发。</p>
+<p>如果要获取更多关于异步编程和Twisted的信息，请参考下面两条链接。</p>
+<ul>
+<li>
+<p><a href="http://twistedmatrix.com/projects/core/documentation/howto/async.html">Asynchronous Programming with Twisted</a></p>
+</li>
+<li>
+<p><a href="http://jessenoller.com/2009/02/11/twisted-hello-asynchronous-programming/">Twisted - hello, asynchronous programming</a></p>
+</li>
+</ul></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

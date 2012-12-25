@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/04/open-source-knowledge/"><h2>补习一下开源软件协议的知识</h2></a>
+        <div class= "well small"> Sat 02 April 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>近日接触到很多开源的东西，都有各自的开源协议。记得以前Linux操作系统老师讲过一些，但已记不大清楚。为了更好的使用这些开源软件，只好再补习一下了。</p>
+<p>下面只是一些常见的协议，具体的详解请参照<a href="http://www.opensource.org/licenses/alphabetical">http://www.opensource.org/licenses/alphabetical</a></p>
+<ul>
+<li><strong>Mozilla Public License</strong></li>
+</ul>
+<p>MPL License，允许免费重发布、免费修改，但要求修改后的代码版权归软件的发起者。这种授权维护了商业软件的利益，，它要求基于这种软件得修改无偿贡献版权给该软件。这样，围绕该软件得所有代码得版权都集中在发起开发人得手中。但MPL是允许修改，无偿使用得。MPL软件对链接没有要求。</p>
+<ul>
+<li><strong>BSD开源协议</strong></li>
+</ul>
+<p>BSD开源协议是一个给于使用者很大自由的协议。可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。 当你发布使用了BSD协议的代码，或则以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：</p>
+<p>1． 如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。</p>
+<p>2． 如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议。</p>
+<p>3． 不可以用开源代码的作者/机构名字和原来产品的名字做市场推广。</p>
+<p>BSD代码鼓励代码共享，但需要尊重代码作者的著作权 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/open-source-knowledge/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/"><h2>用HP Scrawlr检测数据库SQL注入漏洞</h2></a>
+        <div class= "well small"> Wed 30 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
+<p><strong>引言</strong></p>
+<p>SQL数据库是目前世界上最快的一种数据库，每秒钟可以完成数百万次的事务处理。使用PHP和ASP代码处理SQL连接的时候，如果代码写的不好的 话，就会为网站的安全留下隐患：黑客可以通过插入代码来获得您的服务器上数据库的控制权。所以，一定要保护好您的SQL数据库。测试软件和网络的安全性应 该成为安全审计的一部分。HP为我们提供了扫描网站的SQL漏洞的免费软件。Scrawlr只可用于合法地扫描您自己的站点，而不得用于您的组织之外的站 点。安全分析人员进行渗透测试时，应当将这款软件也纳入到他们的安全工具库中。</p>
+<p><strong>HP Scrawlr</strong></p>
+<p>Hewlett  Packard公司提供了一款免费的工具，供人们用来爬行他们的站点，并从中查找安全漏洞。Scrawlr是由HP的web安全研究团队开发的，可用于对 单独的网页进行SQL注入漏洞的检测和利用。这个程序运行速度非常快；在运行期间，它可以利用HP的智能引擎技术来创建和动态执行SQL注入。最后，它还 能提高一份简单的报告来供管理员分析有关结果。如果该程序成功的话，您就会看到数据库和各种表。</p>
+<p><strong>Scrawlr</strong></p>
+<p>下面是Scrawlr的两个截图：</p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527390.jpg" /></p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527391.jpg" /></p>
+<p><strong>SQL注入</strong></p>
+<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/how-to-recognize-false-geek/"><h2>如何分辨极客与伪极</h2></a>
+        <div class= "well small"> Sat 26 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>有着非常强健的体魄，或者非常专业的某项体育技能的，100%不是极客。极客没有时间也没有兴趣刻意锻炼身体。身体非常虚弱的，100%不是极 客，70%是伪极，呆极客或者宅。极客虽然不会进行长期稳定的体育运动，但是他们享受户外的活动。绝不会始终宅在家里。所以身体一定是健康的，却不是好坏 两个极端。</p>
+<p>不戴眼镜的，100%不是极客。</p>
+<p>出门站在衣柜犹豫不知穿什么衣服的，80%不是极客。极客们讲求效率，不会在穿衣戴帽等事情上浪费时间。另一方面，他们也没有太多的衣物供不同场合的选择。出门随手拽两件衣服披上就走的，90%是极客。</p>
+<p>拥有一辆不错的个人车的，70%不是极客。极客开车的机会不多，也不会下血本买费钱费油的好车。</p>
+<p>酒量特别好的，100%不是极客。极客们饮酒的机会不多。不过由于常常帮朋友修理电脑导致被请客在外就餐的机会也不少，所以酒量比宅要高很多。</p>
+<p>经常哭穷的，100%不是极客。极客们手头都是相对宽裕的。他们的心态比较中置，对于不同的家庭背景或者收入状况不会加以打击或者憧憬，因为他们所追求的不是纯物质生活，更多的在于精神上 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/"><h2>单链表的一些算法实现</h2></a>
+        <div class= "well small"> Thu 10 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
+<p><strong>首先定义节点：</strong></p>
+<div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
+    <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
+    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span><span class="o">//</span>下一个结点
+<span class="p">};</span>
+</pre></div>
+
+
+<p><strong>创建带n个数据的单链表：</strong></p>
+<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Init</span><span class="p">(){</span>
+    <span class="n">head</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
+    <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Create</span><span class="p">(</span><span class="n">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">i</span> <span class="p">=</span> 1 <span class="p">;</span> <span class="nb">i</span> <span class="o">&lt;</span><span class="p">=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="nb">i</span><span class="p">)</span>  <span class="p">{</span>
+        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
+        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
+        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/find-password-of-win7/"><h2>Win 7忘记密码的恢复方法</h2></a>
+        <div class= "well small"> Tue 08 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><strong>声明：本文只供学习交流之用，请勿将此方法用于非法用途，转载请注明来自<a href="http://www.hackecho.com">天堂皓月</a></strong></p>
+<p><strong>基本思想：</strong></p>
+<p>在登陆界面想办法启动cmd，取得管理员权限，开启（或新增）系统管理员，进入后重置密码。</p>
+<p><strong>实现方法：</strong></p>
+<p>大家注意登陆界面的“轻松访问”按钮，打开后可以看到一系列应用程序，如“讲述人”“放大镜”“高对比度”等，这些应用程序的可执行文件都在“C:Windowssystem32”(假设Windows7安装在C盘)目录里。</p>
+<p>我们可以通过第三方系统（如CE，另一个XP等）进入系统目录，更改（以“放大镜”为例）magnify.exe文件的权限，右击“magnify.exe”选择“权限”——高级——所有者，将当前系统管理员帐号设置为所有者(如果没有当前帐号在列表，则单击“其他账户”，手动输入当前账户名)。单击 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/find-password-of-win7/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/03/intro-of-mvc-structure/"><h2>对MVC架构的简单解读</h2></a>
+        <div class= "well small"> Sat 05 March 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>因最近开发的需要，开始自学PHP，学习中的一些心得和技巧将会记录在博客里。作为一名初学者，我选择了使用SpeedPHP开发框架，因为它是个轻量级的框架。这篇文章是SP教程里的，简单摘录一下，以加深理解。</p>
+<p>本文将讲述在网络系统（WEB系统）开发中，MVC（模型-视图-控制器）架构的理念、设计以及在sp框架中的实际应用方式等。</p>
+<p>首先我们来看看MVC架构的示意图：</p>
+<p><a href="http://www.hackecho.com/?attachment_id=139"><img alt="MVC" src="/static/images/2011/03/捕获-300x118.png" /></a></p>
+<p>从上图我们可以将MVC简单地理解成：</p>
+<p>和访问者交互的是控制层（Controller层），控制器（controller）是同类交互的集合，每一个交互的操作，都对应了一个动作（action）。在sp框架中，全部的控制器类都必须继承于spController。</p>
+<p>对数据库进行存取的是模型层（Model层），在sp框架中，全部的模型器类都必须继承于spModel。</p>
+<p>显示页面模板的是视图层（View层），在sp框架中，视图层被集成到了控制器内，所以在实际开发中，视图层所要制作的只有页面模板。</p>
+<p>上面简单描述了MVC架构的理解。下面讲述一下关于sp框架中的MVC理念，可能比较抽象而不好理解，但是还请耐心去阅读，毕竟在实际开发中，对MVC理念的理解是非常必要和重要的。</p>
+<p>sp框架中的MVC理念，是将网络系统划分为三个关注点：交互、数据、页面模板；也就是我们设计或分析一个网络系统 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/intro-of-mvc-structure/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/02/parse-xml-in-vc/"><h2>在VC中解析XML的方法</h2></a>
+        <div class= "well small"> Fri 25 February 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>昨天突发奇想，准备在交大一软通的第二个版本中加入RSS阅读器的功能，以便可以快速阅读知行论坛的帖子和获取晨光上的资源。今天下午开始研究怎样用VC来解析XML文件，现在总算把这一模块写完了。如果单独分离出来，应该是一个不错的RSS阅读器。</p>
+<p>记得前不久学期实训时我们小组做播放器，其中的网络搜索模块中用到了解析XML文件（百度MP3未公开的API哦，自己谷歌下就知道了）。当时由于这个模块归我负责，所以开始接触了XML，由于知识有欠缺，稀里糊涂中，也算可以一次性获得5首百度搜索返回的结果了。今天想找出来当时写的实验代码看看，结果却发现已经删了，不得已，重新开始学习一下吧。</p>
+<p>自己写一个全新的XML解析引擎出来对我来说还有点难度，于是我把目光放在了现成类库或组件上。目前找到三种方法：</p>
+<p><strong>1.免费的易火RSS解析引擎</strong></p>
+<p>很强大的引擎，而且免费，但因为是COM组件，需要系统注册使用，所以放弃了（一软通是绿色软件）；</p>
+<p><strong>2.利用MSXML解析XML文档</strong></p>
+<p>这是我在实训时用的方法，实现起来很简单，但要做的很强大就需要进行深度学习了。因为考虑到有些电脑上可能没有安装MSXML组件，所以放弃了；</p>
+<p><strong>3.利用Markup类库</strong></p>
+<p>最后一软通中用了这种方法，只需导入一个头文件和一个源文件就可以了。这是官方的下载地址<a href="http://www.firstobject.com/dn_markup.htm">http://www.firstobject.com/dn_markup.htm</a>，官网上还有详细的说明文档 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/02/parse-xml-in-vc/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2011/02/finish-of-bjtuer/"><h2>交大一软通 V2.0 开发完毕</h2></a>
+        <div class= "well small"> Sat 19 February 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>首先感谢大家对1.0版本的支持，收到大家的意见反馈后，经过努力，V2.0版交大一软通发布！</p>
+<p>更新啦~~~：</p>
+<p>1.增加“知行快读”模块，可以快速、方便地在软件内阅读知行论坛热门板块，以及晨光BT的资源，让你第一时间获得最新信息，体验酣畅淋漓的“刷论坛”阅读感受！</p>
+<p>2.修正“免流量上网通道”无法使用的问题，更换了代理地址并且增加为两条通道，通道1无法使用时可以使用通道2。修复了其导致的无法上网的问题，程序退出时将自动关闭通道。</p>
+<p>3.主页增加了“快捷启动”栏目，直达各个常用功能，方便快捷！</p>
+<p>4.一软通内置了网络浏览系统，不再调用系统默认浏览器。</p>
+<p>5.增加“实用工具”模块，混在交大，这些工具少得了？！工具还在不断添加中！</p>
+<p>6“交大导航”新增许多地址，而且还在不断增加，导航更齐全！</p>
+<p>7.增加的功能详细介绍如下：</p>
+<blockquote>
+<p>知行快读 ...</p></blockquote> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/02/finish-of-bjtuer/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2009/07/start-of-web-dev/"><h2>春风化雨——初涉网站建设领域</h2></a>
+        <div class= "well small"> Wed 22 July 2009
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>近来没有写过日志，主要是因为忙于自己的网站。今天完成了当天的任务，便写一些近来做网站的一些感受吧！­</p>
+<p>个人站长很少有独立开发整站程序的人，我也算是一个，一方面没有相关的技术，二来没有时间和精力来学习、编写和调试。所以我便很佩服DEDECMS的开发者柏拉图，因为著名的DEDECMS起初便是由他一人独立开发的。网上流行的CMS很多，但运行于PHP环境的就屈指可数了，因为我的空间是UNIX型，只能使用基于PHP的CMS。下面说一下我认识CMS的过程吧。­</p>
+<p>我接触的第一款CMS是DEDECMS，但那还是一年前，出于好奇，也并没有想去建一个自己的网站，即使想，那时也没有时间。当初没有怎么深入研究，只迷迷糊糊知道CMS可以进行网站内容管理。现在，高考结束，在北交大的录取通知书马上就要到来的情况下，我便购置了空间和域名，将身心全部投入到我的爱好中来。­</p>
+<p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2009/07/start-of-web-dev/">read more</a></div>
+    </div>	
+				
+            <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/category/develope6.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://hackecho.com/category/develope.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope6.html">6</a></li>
+    <li class="active"><a href="http://hackecho.com/category/develope7.html">7</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

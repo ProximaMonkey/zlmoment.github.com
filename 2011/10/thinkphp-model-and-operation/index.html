@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="">
+    <meta name="author" content="Zhaoyu Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://hackecho.com/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://hackecho.com">Hackecho</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+                    <li><a href="/archives.html">Archives</a></li>
+                    <li><a href="/tags.html">Tags</a></li>
+                    
+                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+            <div class='article'>
+        <div class="content-title">
+            <h1>深入浅出ThinkPHP系列教程(四) 模块与操作</h1>
+            Wed 12 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+        </div>
+	
+        <div><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
+<p>具体如下图所示：</p>
+<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
+<p>我们来详细了解一下图中所示的模块和操作。</p>
+<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
+<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
+<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="err">具体代码略……</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="err">```</span><span class="nx">PHP</span>
+
+<span class="err">该文件已经演示了一个基于</span> <span class="nx">ThinkPHP</span> <span class="err">的实际应用。</span>
+
+<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
+
+<span class="err">像上面这个</span> <span class="nx">IndexAction</span><span class="p">.</span><span class="kr">class</span><span class="p">.</span><span class="nx">php</span> <span class="err">这样的特殊文件，称为控制器。该类文件通常位于</span> <span class="nx">LibAction</span> <span class="err">下面，命名方式必须以“模块名</span><span class="o">+</span><span class="nx">Action</span><span class="p">.</span><span class="kr">class</span><span class="p">.</span><span class="nx">php</span><span class="err">”样式来命名，如</span> <span class="nx">IndexAction</span><span class="p">.</span><span class="kr">class</span><span class="p">.</span><span class="nx">php</span> <span class="err">，详细可参考《</span><span class="nx">ThinkPHP</span> <span class="err">命名规范》章节。</span>
+
+<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">模块</span><span class="o">**</span>
+
+<span class="err">一个控制器对应一个模块。如</span> <span class="nx">IndexAction</span><span class="p">.</span><span class="kr">class</span><span class="p">.</span><span class="nx">php</span> <span class="err">就对应</span> <span class="nx">Index</span> <span class="err">模块，相应的类名为</span> <span class="nx">IndexAction</span> <span class="err">，如上面的例子：</span>
+
+    <span class="kr">class</span> <span class="nx">IndexAction</span> <span class="kr">extends</span> <span class="nx">Action</span>
+
+<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">操作</span><span class="o">**</span>
+
+<span class="err">一个模块（类）里有多个方法，称之为“操作”。如上面例子的</span> <span class="nx">index</span> <span class="err">方法：</span>
+
+    <span class="kr">public</span> <span class="kd">function</span> <span class="nx">index</span><span class="p">()</span>
+
+<span class="err">我们更改上面的</span> <span class="nx">IndexAction</span><span class="p">.</span><span class="kr">class</span><span class="p">.</span><span class="nx">php</span> <span class="err">为：</span>
+
+<span class="err">```</span><span class="nx">PHP</span><span class="err">```</span>
+<span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="nx">header</span><span class="p">(</span><span class="s2">&quot;Content-Type:text/html; charset=utf-8&quot;</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="s2">&quot;第一个例子测试！&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>再次访问网站首页（入口文件）：</p>
+<div class="codehilite"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span>127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span>
+</pre></div>
+
+
+<p>浏览器显示内容为在 index 操作中输出的：</p>
+<p>第一个例子测试！</p>
+<p>而不是原来的默认欢迎界面。</p>
+<p><strong>&gt;&gt; 增加操作</strong></p>
+<p>要增加一个操作，只需在模块里增加一个定义为 public 的方法即可。在 IndexAction.class.php 里面新增加一个 test 操作：</p>
+<div class="codehilite"><pre><span class="n">public</span> <span class="k">function</span> <span class="n">test</span><span class="p">(){</span>
+    <span class="n">header</span><span class="p">(</span>&quot;<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span><span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="p">=</span><span class="n">utf</span><span class="o">-</span>8&quot;<span class="p">);</span>
+    <span class="n">echo</span> &quot;这是 <span class="n">test</span> 操作&quot;<span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>要访问该操作，浏览器地址为：</p>
+<div class="codehilite"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span>127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">Myapp</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="o">/</span><span class="n">Index</span><span class="o">/</span><span class="n">test</span>
+</pre></div>
+
+
+<p>浏览器输出如下：</p>
+<p>这是 test 操作</p>
+<p>可见要访问其他方法，需要在入口文件 URL 地址后面加上“模块/操作”才可以。关于通过入口文件 URL 地址访问模块方法的具体信息，请参看《ThinkPHP URL 访问模式》章节。</p>
+<p><strong>&gt;&gt; 小结</strong></p>
+<p>控制器类文件名为 IndexAction.class.php 这种固定格式，对应 Index 模块，类名为 IndexAction</p>
+<p>我们自定义的模块里面的类由 ThinkPHP的 基类 Action 继承而来，其遵循 PHP 的类继承属性</p>
+<p>一个 Web 页面对应一个方法（反之则不一定），且该方法必须定义为 public 类型</p>
+<p>一个控制器文件里面只能有一个模块可用，但模块（类）可以有多个方法，也可以没有方法</p>
+<p>特别鸣谢5iDev网提供部分素材。</p></div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://hackecho.com/archives.html">Archives</a>
+                <li><a href="http://hackecho.com/tags.html">Tags</a>
+                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
+                            </ul>
+            </div>
+            -->
+
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
+                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
+                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                        </ul>
+            </div>
+            
+
+                        <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                            </ul>
+            </div>
+            </div>
+            
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>
