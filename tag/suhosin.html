@@ -72,7 +72,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
         
         <div><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
 <p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
-<p><a href="/static/images/2012/03/zhaoyulee-—-ssh-—-80×24-1-1.jpg"><img alt="" src="/static/images/2012/03/zhaoyulee-—-ssh-—-80×24-1-1.jpg" /></a></p>
+<p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
 <p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
 <p>主要参考文章：</p>
 <ul>
@@ -140,11 +140,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
             <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
-                Site
+                RSS
                 </li>
-            
-                <li><a href="http://hackecho.com/archives.html">Archives</a>
-                <li><a href="http://hackecho.com/tags.html">Tags</a>
                 <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
                             </ul>
             </div>
