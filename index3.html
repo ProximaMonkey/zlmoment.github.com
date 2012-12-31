@@ -60,6 +60,51 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/04/socket-programming-in-php/"><h2>PHP中的Socket编程</h2></a>
+        <div class= "well small"> Tue 17 April 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
+<h3>文章结构：</h3>
+<ul>
+<li>
+<p>Socket基础知识</p>
+</li>
+<li>
+<p>编写服务器</p>
+</li>
+<li>
+<p>编写客户端</p>
+</li>
+<li>
+<p>总结</p>
+</li>
+</ul>
+<p>通过这三部分你将会体验到Socket的魅力，并了解怎样去编写一个服务器，怎样通过Sockets连接到服务器，服务器怎样处理信息并将信息发送给相应的客户端。</p>
+<p>不管你信不信，只要你用过PHP，就一定用过Sockets。HTTP服务器就是一个Socket服务器，浏览器就是客户端，也就是最简单的C/S模式。</p>
+<h3>Socket基础知识</h3>
+<p>我们可以把Socket当做是一种数据结构，客户端和服务器间通过这种数据结构来交换数据。服务器开始监听连接，当客户端想要连接服务器时，会通过服务器监听的端口开启一个会话，服务器收到客户端的请求后，建立连接完毕，然后继续监听下一次连接。</p>
+<p>要产生一个Socket，你我们需要三个变量：一个协议（protocol）、一个socket类型（socket type）和一个公共协议类型（common protocol type）。下面将会详细介绍各个部分的具体内容。</p>
+<p><strong>协议</strong></p>
+<ul>
+<li>
+<p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
+</li>
+<li>
+<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/socket-programming-in-php/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/"><h2>趣味算法面试题：男女比例问题</h2></a>
         <div class= "well small"> Mon 16 April 2012
 
@@ -357,37 +402,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 
 
 <p>其中，X和Y两个参数用来调整IB ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/02/dreams-not-just-words/"><h2>梦想，不是说说而已</h2></a>
-        <div class= "well small"> Wed 29 February 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><strong>原文/meiya，转载时有删减。</strong></p>
-<p>我们是否有为梦想真正的实干一把？</p>
-<p>我从西藏回来以后，我在空间中上传了一些旅行时拍的照片，一个大学同学在很多照片下留了言。</p>
-<blockquote>
-<p>“最近在看《藏地密码》太让我有遐想了。”</p>
-</blockquote>
-<p>“这里的天怎么可以如此的蓝，这里的水像是在画里流淌。”</p>
-<p>“湖面像是银盘一样，天啊，我爱死了你拍的每一张照片了！”</p>
-<p>“你走过这桥的时候啥感觉啊？”</p>
-<p>“啊呀，这就是传说中的八廊街的玛吉阿米啊！”</p>
-<p>这个同学是大学睡在我上铺的姐妹，她比我更想去西藏旅行，当年有好多个夜晚我们兴奋地聊着西藏，聊着西藏旅行的梦想，她说她从高中起就想去西藏旅行了。</p>
-<p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
-<p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
-<p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/02/dreams-not-just-words/">read more</a></div>
     </div>	
 				
             <div class="pagination">

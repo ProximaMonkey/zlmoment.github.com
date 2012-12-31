@@ -60,6 +60,32 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/"><h2>XML与JSON的格式转换方法</h2></a>
+        <div class= "well small"> Wed 10 August 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
+<p>废话不多说，直接上代码：</p>
+<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
+    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
+    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
+    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
+    return ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2011/08/json-operation-in-php/"><h2>PHP中JSON的处理</h2></a>
         <div class= "well small"> Wed 10 August 2011
 
@@ -287,39 +313,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>在过去的一年里，Google+的开发一直秘密进行着，期间传闻不断，也有过官方辟谣，但最终它还是出现了。</p>
 <h3>Google+项目负责人谈产品</h3>
 <p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/something-about-google-plus/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/10-open-source-android-project/"><h2>10个非常值得学习的Android开源项目</h2></a>
-        <div class= "well small"> Tue 05 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="android开源项目" src="/static/images/2011/07/2010073016245383.png" /></p>
-<p>暑假要学习Android的同学们请注意了，这里是非常经典的10个Android开源项目，倘若能深入研究，一定会有所收获。</p>
-<h3>1.Android官方团队提供的示例项目</h3>
-<p>如果不是从学习Android SDK中提供的那些样例代码开始，可能没有更好的方法来掌握在Android这个平台上开发。</p>
-<p>由Android的核心开发团队提供了15个优秀的示例项 目，包含了游戏、图像处理、时间显示、开始菜单快捷方式等。</p>
-<p>项目地址：<a href="http://code.google.com/p/apps-for-android/">http://code.google.com/p/apps-for-android/</a></p>
-<p><img alt="" src="/static/images/2011/07/Amazed2_3-300x200.jpg" /></p>
-<h3>2.Remote Droid</h3>
-<p>RemoteDroid是一个Android应用，能够让用户使用自己的无线网络使用无线键盘、触摸屏操作手机。</p>
-<p>这个项目为开发者提供了如网络连接、触摸屏手指运动等很好的样例。</p>
-<p>项目地址：<a href="http://code.google.com/p/remotedroid/">http://code.google.com/p/remotedroid/</a></p>
-<p><img alt="" src="/static/images/2011/07/9867-remdrscr_super.png" /></p>
-<h3>3.TorProxy和Shadow</h3>
-<p>TorProxy应用实现了Android手机无线电电传通讯(TOR)，和Shadow应用一起使用，可以使用手机匿名上网。</p>
-<p>从该项目源代码中，可以掌握socket连接、管理cookie等方法。</p>
-<p>项目地址：<a href="http://www.cl.cam.ac.uk/research/dtg/code/svn/android-tor/">http://www.cl ...</a></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/10-open-source-android-project/">read more</a></div>
     </div>	
 				
             <div class="pagination">

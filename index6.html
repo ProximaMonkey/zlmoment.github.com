@@ -60,6 +60,32 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/"><h2>页面滚动时层智能浮动定位的实现</h2></a>
+        <div class= "well small"> Thu 13 October 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
+<p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
+<p>当我们滑动网页时，可以看到如下效果：</p>
+<p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
+<p>右上角的通知栏始终固定不动，不管网页怎么滑动。</p>
+<p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
+<p>下面我们就来利用jQuery实现这种效果。</p>
+<p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
+<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/"><h2>深入浅出ThinkPHP系列教程(四) 模块与操作</h2></a>
         <div class= "well small"> Wed 12 October 2011
 
@@ -320,32 +346,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>翻开中国滚滚历史长卷，墨香墨离，各个朝代独领风流，各个领域人才辈出，上至轩辕开天大战蚩尤，惊天地，泣鬼神，统制九州，九樽青鼎为鉴，苍松白鹿为证，黄帝仙逝，轩辕氏仍逐鹿中原，人才济济，舜尧两帝，开创文明先河，黄河长江流域谱写华丽篇章。­</p>
 <p>中国华夏五千年文明泱泱流淌，川流不息，讫立世界民族之林不倒，像明珠矗立在世界的东方，成为四大文明古国之一，其经济、文化、历史、建筑、佛法…都为世界做出了巨大的贡献，古老而神秘的国度，散发着朦胧的书香气息，其高超的技艺，精美的墨笔，巧夺天功的神来之笔，为华夏文明装点上一层浓厚的翰林墨息。­</p>
 <p>至统领九州以来，各朝各代，文人儒客，风流倜倘，身着素衣，手握折扇，不羁一格，吟诵明月诗篇，歌窈窕乐章，不为世旅尘俗所累，放心绿水之湄，听风吟月，自在江上泛舟轻摇，一壶残酒 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/beauty-of-chinese-article/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/"><h2>XML与JSON的格式转换方法</h2></a>
-        <div class= "well small"> Wed 10 August 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
-<p>废话不多说，直接上代码：</p>
-<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
-    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
-    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
-    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
-    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
-    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
-    return ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">read more</a></div>
     </div>	
 				
             <div class="pagination">
