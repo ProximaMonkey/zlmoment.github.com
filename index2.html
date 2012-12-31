@@ -60,6 +60,37 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/"><h2>解决MySQL无法通过localhost连接问题</h2></a>
+        <div class= "well small"> Sun 27 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
+<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
+<h3>安装MySQL</h3>
+<p>依次执行下列三个命令：</p>
+<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
+<span class="n">unset</span> <span class="n">TMPDIR</span>
+<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="p">=</span>`<span class="n">whoami</span>` <span class="o">--</span><span class="n">basedir</span><span class="p">=</span>&quot;$<span class="p">(</span><span class="n">brew</span> <span class="o">--</span><span class="n">prefix</span> <span class="n">mysql</span><span class="p">)</span>&quot; <span class="o">--</span><span class="n">datadir</span><span class="p">=</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="p">=</span><span class="o">/</span><span class="n">tmp</span>
+</pre></div>
+
+
+<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
+<h3>解决localhost问题</h3>
+<p>我们看它的错误提示：</p>
+<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2012/05/super-tool-homebrew/"><h2>开发者神器 - Homebrew简介</h2></a>
         <div class= "well small"> Fri 25 May 2012
 
@@ -292,39 +323,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>增加了http头"Sec-WebSocket-Accept ...</p></li></ol> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/04/algorithm-of-24-game/"><h2>24点游戏（速算24）算法</h2></a>
-        <div class= "well small"> Mon 23 April 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>24点游戏规则：任取1－13之间的4个数字，用＋－＊／（）连结成算式，使得式子的计算结果为24。很多人玩的都是用扑克牌玩的那种，两人各出2张牌，谁先算出来谁赢，赢家收回已经算过的4张牌。最后看谁手里的牌多。</p>
-<p>解决此问题一般使用<strong>穷举法</strong>，即穷举4个整数和运算符的所有可能的表达式，然后对表达式求值。</p>
-<p>注：以下文字中“运算”两字都表示对＋－＊／分别计算。</p>
-<p>思路一：</p>
-<p>将前两个作为一组、后两个数作为一组，分别计算出各组的结果，再对获得的两个组结果进行运算。由于是排列，分前后两组进行运算就可满足所有可能的组合。</p>
-<p>思路二（递归）：</p>
-<p>把多元运算转化为两元运算。先从四个数中取出两个数进行运算，然后把运算结果和第三个数进行运算，再把结果与第四个数进行运算。在求表达式的过程中，最难处理的就是对括号的处理，而这种思路很好的避免了对括号的处理。</p>
-<ul>
-<li>
-<p>(1) 将4个整数放入数组中，</p>
-</li>
-<li>
-<p>(2) 在数组中取两个数字的排列，共有 P(4,2) 种排列。对每一个排列，</p>
-</li>
-<li>
-<p>(2.1) 对 + - * / 每一个运算符 ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/algorithm-of-24-game/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/index.html">&larr; Previous</a></li>
@@ -340,6 +338,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
     <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
     <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/index3.html">Next &rarr;</a></li>
 
@@ -382,7 +381,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://shikailun.com/">异泪</a></li>
                             <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
                             <li><a href="http://ilifezen.com/">iLifeZen</a></li>
                             <li><a href="http://techeric.info/">远方</a></li>

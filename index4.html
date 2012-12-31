@@ -60,6 +60,35 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/"><h2>带偏好的爬虫——优先级队列</h2></a>
+        <div class= "well small"> Wed 07 March 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
+<p>那么怎样来判断网页的重要性呢？</p>
+<p>其因素很多，主要有链接的欢迎度、链接的重要度和平均链接深度、网站质量、历史权重等。</p>
+<p>链接的欢迎度主要由反向链接（Backlinks）的数量和质量决定，我们定义为IB(P)。</p>
+<p>链接的重要度，是一个关于URL字符串的函数，仅仅考察字符串本身，比如认为".com"和"home"的URL重要度比".cc"和"map"高，我们定义为IL(P)。</p>
+<p>平均连接深度，计算出全站的平均链接深度，然后认为距离种子站点越近的重要性越高。我们定义为ID(P)。</p>
+<p>如果定义网页的重要性为I(P)，那么其重要度有下面的公式决定：</p>
+<div class="codehilite"><pre><span class="n">I</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="p">=</span> <span class="n">X</span><span class="o">*</span><span class="n">IB</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="n">IL</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+
+
+<p>其中，X和Y两个参数用来调整IB ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2012/02/dreams-not-just-words/"><h2>梦想，不是说说而已</h2></a>
         <div class= "well small"> Wed 29 February 2012
 
@@ -324,41 +353,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>git config –global user.email “username@email.com ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/git-notes/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/01/the-zen-of-python/"><h2>Python之禅 - The Zen of Python</h2></a>
-        <div class= "well small"> Tue 24 January 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
-<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
-<h2>The Zen of Python, by Tim Peters</h2>
-<ul>
-<li>
-<p>Beautiful is better than ugly.</p>
-</li>
-<li>
-<p>Explicit is better than implicit.</p>
-</li>
-<li>
-<p>Simple is better than complex.</p>
-</li>
-<li>
-<p>Complex is better than complicated.</p>
-</li>
-<li>
-<p>Flat is better ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/the-zen-of-python/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/index3.html">&larr; Previous</a></li>
@@ -374,6 +368,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
     <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
     <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/index5.html">Next &rarr;</a></li>
 
@@ -416,7 +411,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://shikailun.com/">异泪</a></li>
                             <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
                             <li><a href="http://ilifezen.com/">iLifeZen</a></li>
                             <li><a href="http://techeric.info/">远方</a></li>

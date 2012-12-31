@@ -60,6 +60,48 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/"><h2>利用.htaccess简单实现的10个功能</h2></a>
+        <div class= "well small"> Thu 12 April 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
+<ol>
+<li>防盗链</li>
+</ol>
+<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
+<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
+<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^$</span>
+<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^http://(www.)?yoursite.com/.*$ [NC]</span>
+<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span>$ <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="p">=</span>302<span class="p">,</span><span class="n">L</span><span class="p">]</span>
+</pre></div>
+
+
+<ol>
+<li>防止目录浏览</li>
+</ol>
+<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
+<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
+</pre></div>
+
+
+<ol>
+<li>301永久重定向</li>
+</ol>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2010/07/the-movie-earthquake-in-tangshan/"><h2>23秒，32年——《唐山大地震》观后感</h2></a>
         <div class= "well small"> Mon 26 July 2010
 
@@ -356,35 +398,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>This brief introduction of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/three-software-architecture-style/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/to-dear-myself/"><h2>[转]写给亲爱的自己</h2></a>
-        <div class= "well small"> Fri 04 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="写给亲爱的自己" src="http://www.umiwi.com/public/article_image/2011/03/20110303132238_41337.jpg" /></p>
-<p>亲爱的自己，从今天起为了自己骄傲的活着吧，好好爱自己，没有人会心疼你。</p>
-<p>亲爱的自己，不要太在意一些人太在乎一些事，顺其自然以最佳心态面对，因为这世界就是这么不公平往往在最在乎的事物面前我们最没有价值。</p>
-<p>亲爱的自己，永远不要为难自己，比如不吃饭、哭泣、自闭、抑郁，这些都是傻瓜才做的事。</p>
-<p>亲爱的自己，学会聪明一点，不要老是问周围的人一些很白痴的问题，那真的很无聊。</p>
-<p>亲爱的自己，如果不开心了就找个角落或者在被子里哭一下，你不需要别人同情可怜，哭过之后一样可以开心生活。</p>
-<p>亲爱的自己，学会控制自己的情绪，谁都不欠你，所以你没有道理跟别人随便发脾气，耍性子。</p>
-<p>亲爱的自己，你可以失望但不能绝望，你要始终相信，tomorrow is another day.</p>
-<p>亲爱的自己，你不要老是想依赖别人，更不能奢望别人在你需要的时候第一时间站出来，毕竟你们谁都不是谁的谁。</p>
-<p>亲爱的自己，永远不要轻易对别人许下承诺，许下的承诺就是欠下的债！</p>
-<p>亲爱的自己，这个世界只有回不去的而没有什么是过不去的。</p>
-<p>亲爱的自己，别人对你好，你要加倍对别人好，别人对你不好，你还是应该对别人好，因为那说明你还不够好 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/to-dear-myself/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li9.html">&larr; Previous</a></li>
@@ -400,6 +413,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
     <li class="active"><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/author/zhaoyu-li11.html">Next &rarr;</a></li>
 
@@ -442,7 +456,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://shikailun.com/">异泪</a></li>
                             <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
                             <li><a href="http://ilifezen.com/">iLifeZen</a></li>
                             <li><a href="http://techeric.info/">远方</a></li>

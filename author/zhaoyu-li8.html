@@ -60,6 +60,40 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/12/python-yield/"><h2>Python中yield备忘</h2></a>
+        <div class= "well small"> Mon 31 December 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
+<p>带有 yield 的函数在 Python 中被称之为 generator（生成器）。</p>
+<p>我们已生成斐波那契数列为例，来循序渐进了解yield。</p>
+<p>生成斐波那契数列：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
+        <span class="n">print</span> <span class="n">b</span> 
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
+        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
+</pre></div>
+
+
+<p>上面这个函数中直接用到了print函数，导致该函数复用性极差。我们想到可以返回一个List，改写如下：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
+    <span class="n">L ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/12/python-yield/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/"><h2>解密人人网应用“好友档案”与“X档案”</h2></a>
         <div class= "well small"> Thu 23 June 2011
 
@@ -337,28 +371,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>对于get和post数据大小限制的问题 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2010/09/some-notes-about-myself/"><h2>记录一些心情</h2></a>
-        <div class= "well small"> Sun 05 September 2010
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>刚刚写的状态：“所谓的理想，所谓的现实，所谓的差距，经历了太多以前未曾有过的挫折，或许是以前太顺利了。”其实也没什么，有些心情记录一下，会更好的。</p>
-<p>昨天与10级的班长支书见面，又看到了去年自己的影子。依稀记得去年这个时候，学长坐在那里给我们讲述他们的生活，而如今，我们坐在了他们的位置，给满怀期待的学弟学妹们讲述我们的生活。我能理解他们的心情，脑海中浮现出去年的一张张影像，好一个时光的交错更替。8月28号为新生党员带路，9月1号为新生家长带路，无一不是回忆，时隔一年，感觉时间还没有真正开始，却早已逝去，留下的都是追忆。</p>
-<p>都说自古才子多寂寞，我不是才子，为何有时也会孤单？其实一个人的生活，孤单但并不孤独。</p>
-<p>我曾经发过一条状态：“突然一下感觉要失去什么了，猛然想抓住那些曾经错过的东西。想要个移动硬盘，想保留的东西太多了，而且记性不好，就用它存储我的记忆；想要个数码相机，想多走走拍拍，免得以后老了或是忙了，才发现自己是为了生存而生活；想要一个单车，想结伙一起外出郊游或是锻炼，免得都市粉尘吸久了体质下降了。”</p>
-<p>我买了相机，开始记录我的生活，在那一幅幅静态的影像中，才能看到时间的足迹，换句话说 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2010/09/some-notes-about-myself/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li7.html">&larr; Previous</a></li>
@@ -374,6 +386,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/author/zhaoyu-li9.html">Next &rarr;</a></li>
 
@@ -416,7 +429,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://shikailun.com/">异泪</a></li>
                             <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
                             <li><a href="http://ilifezen.com/">iLifeZen</a></li>
                             <li><a href="http://techeric.info/">远方</a></li>

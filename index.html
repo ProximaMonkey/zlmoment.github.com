@@ -60,8 +60,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="http://hackecho.com/2012/12/travel-to-st-louis/"><h1>圣路易斯掠影</h1></a>
-            Sun 30 December 2012
+            <a href="http://hackecho.com/2012/12/python-yield/"><h1>Python中yield备忘</h1></a>
+            Mon 31 December 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
@@ -70,23 +70,139 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
  
         </div>
         
-        <div><p>Thanksgiving的时候，我们密苏里旅行分队加上另一支新泽西旅行分队，到美国西部拉斯维加斯、洛杉矶和科罗拉多大峡谷晃悠了5天。后来由于临近期末，也没有时间整理途中的经历。前两天圣诞节，为了体验一把美国圣诞节的气氛，我们一行四人驱车前往圣路易斯，这座离我们哥村最近的城市游览一番。</p>
+        <div><p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
+<p>带有 yield 的函数在 Python 中被称之为 generator（生成器）。</p>
+<p>我们已生成斐波那契数列为例，来循序渐进了解yield。</p>
+<p>生成斐波那契数列：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
+        <span class="n">print</span> <span class="n">b</span> 
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
+        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
+</pre></div>
+
+
+<p>上面这个函数中直接用到了print函数，导致该函数复用性极差。我们想到可以返回一个List，改写如下：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
+    <span class="n">L</span> <span class="p">=</span> <span class="p">[]</span> 
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
+        <span class="n">L</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> 
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
+        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
+    <span class="k">return</span> <span class="n">L</span> 
+</pre></div>
+
+
+<p>但这个函数的内存占用会随着max的增大而增大，如果要控制内存占用，最好不要用List保存中间结果，而是通过iterable对象来迭代。举个例子：</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="nb">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span>1000<span class="p">):</span> <span class="n">pass</span>
+</pre></div>
+
+
+<p>上述代码会生成一个1000元素的List；</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="nb">i</span> <span class="n">in</span> <span class="n">xrange</span><span class="p">(</span>1000<span class="p">):</span> <span class="n">pass</span> 
+</pre></div>
+
+
+<p>而上述代码则会产生一个iterable对象，每次迭代中返回下一个值，内存占用很小。</p>
+<p>我们来改写一下fab函数：</p>
+<div class="codehilite"><pre><span class="n">class</span> <span class="n">Fab</span><span class="p">(</span><span class="n">object</span><span class="p">):</span> 
+
+    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">max</span><span class="p">):</span> 
+        <span class="n">self</span><span class="p">.</span><span class="n">max</span> <span class="p">=</span> <span class="n">max</span> 
+        <span class="n">self</span><span class="p">.</span><span class="n">n</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">a</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
+
+    <span class="n">def</span> <span class="n">__iter__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="n">self</span> 
+
+    <span class="n">def</span> <span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">):</span> 
+        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">self</span><span class="p">.</span><span class="n">max</span><span class="p">:</span> 
+            <span class="n">r</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> 
+            <span class="n">self</span><span class="p">.</span><span class="n">a</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> 
+            <span class="n">self</span><span class="p">.</span><span class="n">n</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">n</span> <span class="o">+</span> 1 
+            <span class="k">return</span> <span class="n">r</span> 
+        <span class="n">raise</span> <span class="n">StopIteration</span><span class="p">()</span> 
+</pre></div>
+
+
+<p>这样就可以通过循环返回下一个值了：for n in Fab(5)。</p>
+<p>但毕竟使用类重写后函数显得更加复杂，这时，yield 就派上用场了。</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
+        <span class="n">yield</span> <span class="n">b</span> 
+        # <span class="n">print</span> <span class="n">b</span> 
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
+        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
+</pre></div>
+
+
+<p>简单地讲，yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator，调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是函数继续执行，直到再次遇到 yield。
+也可以手动调用 fab(5) 的 next() 方法（因为 fab(5) 是一个 generator 对象，该对象具有 next() 方法），这样我们就可以更清楚地看到 fab 的执行流程：</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="p">=</span> <span class="n">fab</span><span class="p">(</span>5<span class="p">)</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
+1 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
+1 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
+2 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
+3 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
+5 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span> 
+ <span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span> 
+<span class="n">StopIteration</span> 
+</pre></div>
+
+
+<p>yield 的好处是显而易见的，把一个函数改写为一个 generator 就获得了迭代能力，比起用类的实例保存状态来计算下一个 next() 的值，不仅代码简洁，而且执行流程异常清晰。</p>
+<p>每次调用 fab 函数都会生成一个新的 generator 实例，各实例互不影响。</p>
+<p><strong>另一个例子</strong></p>
+<p>另一个 yield 的例子来源于文件读取。如果直接对文件对象调用 read() 方法，会导致不可预测的内存占用。比较好的方法是利用固定长度的缓冲区来不断读取文件内容。通过 yield，我们不再需要编写读文件的迭代类，就可以轻松实现文件读取：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">read_file</span><span class="p">(</span><span class="n">fpath</span><span class="p">):</span> 
+    <span class="n">BLOCK_SIZE</span> <span class="p">=</span> 1024 
+    <span class="n">with</span> <span class="n">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="n">as</span> <span class="n">f</span><span class="p">:</span> 
+        <span class="k">while</span> <span class="n">True</span><span class="p">:</span> 
+            <span class="n">block</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCK_SIZE</span><span class="p">)</span> 
+            <span class="k">if</span> <span class="n">block</span><span class="p">:</span> 
+                <span class="n">yield</span> <span class="n">block</span> 
+            <span class="k">else</span><span class="p">:</span> 
+                <span class="k">return</span> 
+                # 在一个 <span class="n">generator</span> <span class="k">function</span> 中，如果没有 <span class="k">return</span>，则默认执行至函数完毕，如果在执行过程中 <span class="k">return</span>，则直接抛出 <span class="n">StopIteration</span> 终止迭代。
+</pre></div>
+
+
+<p>参考资料：<a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/">廖雪峰-Python yield 使用浅析</a></p></div>
+        <hr />
+    </div>
+		
+    
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://hackecho.com/2012/12/travel-to-st-louis/"><h2>圣路易斯掠影</h2></a>
+        <div class= "well small"> Sun 30 December 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Thanksgiving的时候，我们密苏里旅行分队加上另一支新泽西旅行分队，到美国西部拉斯维加斯、洛杉矶和科罗拉多大峡谷晃悠了5天。后来由于临近期末，也没有时间整理途中的经历。前两天圣诞节，为了体验一把美国圣诞节的气氛，我们一行四人驱车前往圣路易斯，这座离我们哥村最近的城市游览一番。</p>
 <p>圣路易斯是美国第十八大城市，但在密苏里州却是最大的城市，濒临密西西比河，几乎位于美国几何正中心。它的名字是为了纪念法国国王圣路易斯九世而得，因为之前这里是法国的殖民地。城市古老而又典雅，Downtown中到处可见欧式风范的古建筑和充满现代气息的楼宇，城市宁静而又沉稳。</p>
 <p>早上8点半，我们从哥伦比亚出发，差不多两个小时正好到酒店。酒店门外就是密西西比河畔和圣路易斯最著名的景点——大拱门。大拱门高192米，可以乘坐电梯上去，俯瞰整个圣路易斯。</p>
 <p><a href="/static/images/2012/12/arch.jpg"><img alt="" src="/static/images/2012/12/arch.jpg" /></a></p>
 <p><a href="/static/images/2012/12/arch-elevator.jpg"><img alt="" src="/static/images/2012/12/arch-elevator.jpg" /></a></p>
 <p>圣路易斯可游玩的地方还真不多，毕竟不是旅游城市。其著名的景点还要数一些博物馆和教堂了。</p>
-<p>第一天的时间还是比较充裕的，游览的也比较闲适。经过了布什体育场（Busch Stadium）（红雀队主场）、密西西比河畔、Union Station、City Museum等，印象最深的还要算City Museum了。这是最“名不副实”的Museum了！整个博物馆就是一幢大楼改造的游乐场…不过挺刺激的，各种钢架结构和滑梯，绝对让你过一把瘾。</p>
-<p><a href="/static/images/2012/12/citym1.jpg"><img alt="" src="/static/images/2012/12/citym1.jpg" /></a></p>
-<p><a href="/static/images/2012/12/citym2.jpg"><img alt="" src="/static/images/2012/12/citym2.jpg" /></a></p>
-<p><a href="/static/images/2012/12/citym3.jpg"><img alt="" src="/static/images/2012/12/citym3.jpg" /></a></p>
-<p>第二天行程比较紧，先后经过了大拱门、Cathedral Basilica、百威啤酒厂、Forest Park等，其中在百威啤酒厂品尝了免费的啤酒，在Forest Park走过了艺术博物馆、历史博物馆和动物园。最令人着迷的是百威啤酒厂，刚下车的时候便被空气中的稻谷香和酒香陶醉了，第一次觉得啤酒味道这么好！</p>
-<p><a href="/static/images/2012/12/baiwei1.jpg"><img alt="" src="/static/images/2012/12/baiwei1.jpg" /></a></p>
-<p><a href="/static/images/2012/12/baiwei2.jpg"><img alt="" src="/static/images/2012/12/baiwei2.jpg" /></a></p>
-<p>关于艺术博物馆和历史博物馆，像我等粗人还是无法完全理解艺术的魅力...临走前，圣路易斯飘起了雪，我们到Ryce Buffet吃了旅途中最后一顿大餐，便驱车回家，结束了2天的愉快旅程。</p></div>
-        <hr />
-    </div>
-		
+<p>第一天的时间还是比较充裕的，游览的也比较闲适。经过了布什体育场（Busch Stadium）（红雀队主场）、密西西比河畔、Union Station、City Museum等，印象最深的还要算City Museum了。这是最“名不副实”的Museum了！整个博物馆就是一幢大楼改造的游乐场…不过挺刺激的，各种钢架结构和滑梯，绝对让你过一把瘾 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/12/travel-to-st-louis/">read more</a></div>
+    </div>	
+				
     
  
         
@@ -282,37 +398,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/"><h2>解决MySQL无法通过localhost连接问题</h2></a>
-        <div class= "well small"> Sun 27 May 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
-<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
-<h3>安装MySQL</h3>
-<p>依次执行下列三个命令：</p>
-<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
-<span class="n">unset</span> <span class="n">TMPDIR</span>
-<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="p">=</span>`<span class="n">whoami</span>` <span class="o">--</span><span class="n">basedir</span><span class="p">=</span>&quot;$<span class="p">(</span><span class="n">brew</span> <span class="o">--</span><span class="n">prefix</span> <span class="n">mysql</span><span class="p">)</span>&quot; <span class="o">--</span><span class="n">datadir</span><span class="p">=</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="p">=</span><span class="o">/</span><span class="n">tmp</span>
-</pre></div>
-
-
-<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
-<h3>解决localhost问题</h3>
-<p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
@@ -328,6 +413,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
     <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
     <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/index2.html">Next &rarr;</a></li>
 
@@ -370,7 +456,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://shikailun.com/">异泪</a></li>
                             <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
                             <li><a href="http://ilifezen.com/">iLifeZen</a></li>
                             <li><a href="http://techeric.info/">远方</a></li>

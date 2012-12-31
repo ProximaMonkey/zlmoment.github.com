@@ -60,6 +60,47 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2011/04/thinkphp-notes/"><h2>ThinkPHP学习笔记（一）</h2></a>
+        <div class= "well small"> Mon 04 April 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>因为是自己的笔记，所以比较杂乱，见谅。</p>
+<p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
+<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
+<span class="o">&lt;?</span><span class="n">php</span>
+<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
+    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
+<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
+<span class="o">&lt;?</span><span class="n">php</span>
+    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
+    <span class="p">{}</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p>Action目录放置命名为xxxAction.class.php的控制器文件，Model目录放置对应数据库表的命名为xxxModel.class.php的类文件。</p>
+<p>1 在TP开发中，要增加一个应用模块，就在Action文件夹里建立一个类，类的文件命名格式是模块名称+Action.class.php ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/thinkphp-notes/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2011/04/open-source-knowledge/"><h2>补习一下开源软件协议的知识</h2></a>
         <div class= "well small"> Sat 02 April 2011
 
@@ -352,7 +393,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://shikailun.com/">异泪</a></li>
                             <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
                             <li><a href="http://ilifezen.com/">iLifeZen</a></li>
                             <li><a href="http://techeric.info/">远方</a></li>

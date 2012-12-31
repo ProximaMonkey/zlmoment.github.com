@@ -60,6 +60,28 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2010/09/some-notes-about-myself/"><h2>记录一些心情</h2></a>
+        <div class= "well small"> Sun 05 September 2010
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>刚刚写的状态：“所谓的理想，所谓的现实，所谓的差距，经历了太多以前未曾有过的挫折，或许是以前太顺利了。”其实也没什么，有些心情记录一下，会更好的。</p>
+<p>昨天与10级的班长支书见面，又看到了去年自己的影子。依稀记得去年这个时候，学长坐在那里给我们讲述他们的生活，而如今，我们坐在了他们的位置，给满怀期待的学弟学妹们讲述我们的生活。我能理解他们的心情，脑海中浮现出去年的一张张影像，好一个时光的交错更替。8月28号为新生党员带路，9月1号为新生家长带路，无一不是回忆，时隔一年，感觉时间还没有真正开始，却早已逝去，留下的都是追忆。</p>
+<p>都说自古才子多寂寞，我不是才子，为何有时也会孤单？其实一个人的生活，孤单但并不孤独。</p>
+<p>我曾经发过一条状态：“突然一下感觉要失去什么了，猛然想抓住那些曾经错过的东西。想要个移动硬盘，想保留的东西太多了，而且记性不好，就用它存储我的记忆；想要个数码相机，想多走走拍拍，免得以后老了或是忙了，才发现自己是为了生存而生活；想要一个单车，想结伙一起外出郊游或是锻炼，免得都市粉尘吸久了体质下降了。”</p>
+<p>我买了相机，开始记录我的生活，在那一幅幅静态的影像中，才能看到时间的足迹，换句话说 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2010/09/some-notes-about-myself/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2011/12/some-tips-of-learning/"><h2>[转]一点学习方法总结（作者：乱雪）</h2></a>
         <div class= "well small"> Tue 27 December 2011
 
@@ -268,48 +290,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/super-tool-homebrew/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/"><h2>利用.htaccess简单实现的10个功能</h2></a>
-        <div class= "well small"> Thu 12 April 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
-<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
-<ol>
-<li>防盗链</li>
-</ol>
-<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
-<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^$</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^http://(www.)?yoursite.com/.*$ [NC]</span>
-<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span>$ <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="p">=</span>302<span class="p">,</span><span class="n">L</span><span class="p">]</span>
-</pre></div>
-
-
-<ol>
-<li>防止目录浏览</li>
-</ol>
-<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
-<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
-</pre></div>
-
-
-<ol>
-<li>301永久重定向</li>
-</ol>
-<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li8.html">&larr; Previous</a></li>
@@ -325,6 +305,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class="active"><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/author/zhaoyu-li10.html">Next &rarr;</a></li>
 
@@ -367,7 +348,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://yilee.info/">异泪</a></li>
+                            <li><a href="http://shikailun.com/">异泪</a></li>
                             <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
                             <li><a href="http://ilifezen.com/">iLifeZen</a></li>
                             <li><a href="http://techeric.info/">远方</a></li>
