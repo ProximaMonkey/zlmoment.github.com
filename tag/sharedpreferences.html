@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2011/08/android-shared-preferences/"><h1>Android数据存储之Shared Preferences</h1></a>
-            Sat 06 August 2011
+        <a href="http://hackecho.com/2011/08/android-shared-preferences/"><h2>Android数据存储之Shared Preferences</h2></a>
+        <div class= "well small"> Sat 06 August 2011
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
+ </div>
+        <div class="summary"><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
 <p>1、Shared Preferences</p>
 <p>用来存储 “键-值”格式的数据。</p>
 <p>2、Files</p>
@@ -83,37 +80,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
 <p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
 <p>1、文件创建模式：Activity.MODE_APPEND</p>
-<p>如果该文件已经存在，然后将数据写入，而不是抹掉它现有文件的末尾。</p>
-<p>2、文件创建模式：MODE_PRIVATE</p>
-<p>默认模式，在那里创建的文件只能由应用程序调用,即为私有的</p>
-<p>3、文件创建模式：Activity.MODE_WORLD_READABLE</p>
-<p>允许所有其他应用程序有读取和创建文件的权限。</p>
-<p>4、文件创建模式：Activity.MODE_WORLD_WRITEABLE</p>
-<p>允许所有其他应用程序具有写入、访问和创建的文件权限。</p>
-<p>在每安装一个Android 应用程序时，data/data目录下都会产生一个对应的包文件夹，如果应用程序中使用了 Preferences 则会在该应用程序文件夹下产生一个shared_prefs文件夹保存我们的数据。</p>
-<p><strong>示例：</strong></p>
-<p>读取配置的方法：</p>
-<div class="codehilite"><pre><span class="c1">//读取当前的配置信息</span>
-<span class="n">private</span> <span class="n">SharedPreferences</span> <span class="k">config</span><span class="p">;</span>
-<span class="k">config</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="p">(</span><span class="s">&quot;CONFIG&quot;</span><span class="p">,</span><span class="n">ConfigActivity</span><span class="p">.</span><span class="no">MODE_WORLD_WRITEABLE</span><span class="p">);</span>
-<span class="n">minRecordTime</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;minRecordTime&quot;</span><span class="p">,</span> <span class="mh">1000</span><span class="p">);</span>
-<span class="n">minRecordDistance</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;minRecordDistance&quot;</span><span class="p">,</span> <span class="mh">1</span><span class="p">);</span>
-<span class="n">isGetMyLocAtStartAuto</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">getBoolean</span><span class="p">(</span><span class="s">&quot;isGetMyLocAtStartAuto&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
-</pre></div>
-
-
-<p>编辑配置的方法:</p>
-<div class="codehilite"><pre><span class="c1">//写入sharepreference</span>
-<span class="n">SharedPreferences</span> <span class="k">config</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="p">(</span><span class="s">&quot;CONFIG&quot;</span><span class="p">,</span><span class="n">ConfigActivity</span><span class="p">.</span><span class="no">MODE_WORLD_WRITEABLE</span><span class="p">);</span>
-<span class="n">SharedPreferences</span><span class="p">.</span><span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="k">config</span><span class="p">.</span><span class="n">edit</span><span class="p">();</span>
-<span class="n">editor</span><span class="p">.</span><span class="n">putInt</span><span class="p">(</span><span class="s">&quot;minRecordTime&quot;</span><span class="p">,</span> <span class="n">minRecordTime</span><span class="p">);</span>
-<span class="n">editor</span><span class="p">.</span><span class="n">commit</span><span class="p">();</span>
-</pre></div>
-
-
-<p>示例比较简略，但很典型，摘自我自己的应用BJTUer（暂定名）。</p></div>
-        <hr />
-    </div>
+<p>如果该文件已经存在，然后将数据写入 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/android-shared-preferences/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -162,13 +130,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -180,9 +148,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

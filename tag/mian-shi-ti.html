@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/"><h1>趣味算法面试题：男女比例问题</h1></a>
-            Mon 16 April 2012
+        <a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/"><h2>趣味算法面试题：男女比例问题</h2></a>
+        <div class= "well small"> Mon 16 April 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
+ </div>
+        <div class="summary"><p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
 <p>本能地反应男女比例还应该是1：1，但到底是不是呢，我们来用程序验证一下。</p>
 <p>思路：如果一个家庭生的是女孩，则继续让下一个家庭生；如果是男孩，则递归调用自己，直到结果为女孩。生男生女将由随机产生的0和1来决定。</p>
 <p>我们先看运行结果，程序代码附在文后。如果你有兴趣，可以自己实现一下。</p>
@@ -82,66 +79,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p><a href="/static/images/2012/04/skitched-20120416-192726.png"><img alt="" src="/static/images/2012/04/skitched-20120416-192726.png" /></a></p>
 <p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
 <h3>程序代码：</h3>
-<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;  </span>
-<span class="c">#include &lt;stdlib.h&gt;  </span>
-<span class="c">#define MAN    1  //男孩  </span>
-<span class="c">#define WOMAN  0  //女孩  </span>
-<span class="k">static</span> <span class="n">int</span> <span class="n">numOfMan</span> <span class="p">=</span> 0<span class="p">;</span>  <span class="o">//</span>男孩个数  
-<span class="k">static</span> <span class="n">int</span> <span class="n">numOfWoman</span> <span class="p">=</span> 0<span class="p">;</span>  <span class="o">//</span>女孩个数  
-
-<span class="k">static</span> <span class="n">void</span> <span class="n">PrintResult</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Man&#39;s number is %d, woman&#39;s number is %d.\n&quot;</span><span class="p">,</span> <span class="n">numOfMan</span><span class="p">,</span> <span class="n">numOfWoman</span><span class="p">);</span>
-    <span class="n">float</span> <span class="n">fResult</span> <span class="p">=</span> <span class="p">(</span><span class="n">float</span><span class="p">)</span><span class="n">numOfMan</span> <span class="o">/</span> <span class="p">(</span><span class="n">float</span><span class="p">)</span><span class="n">numOfWoman</span><span class="p">;</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Man / Woman is [%f]\n&quot;</span><span class="p">,</span> <span class="n">fResult</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">static</span> <span class="n">void</span> <span class="n">OneFamilyGetChild</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">int</span> <span class="n">iChildType</span> <span class="p">=</span> <span class="p">(</span><span class="nb">rand</span><span class="p">()</span><span class="c">%2);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">MAN</span> <span class="o">==</span> <span class="n">iChildType</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="o">//</span>如果是男孩，则递归调用，再生一个小孩，直到生出一个女孩为止  
-        <span class="n">numOfMan</span><span class="o">++</span><span class="p">;</span>
-        <span class="n">OneFamilyGetChild</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">WOMAN</span> <span class="o">==</span> <span class="n">iChildType</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">numOfWoman</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;child type is error!\n&quot;</span><span class="p">);</span>
-        <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">static</span> <span class="n">void</span> <span class="n">StatisticsOfAllFamily</span><span class="p">(</span><span class="n">int</span> <span class="n">iFamilyCount</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Total family count is %d.\n&quot;</span><span class="p">,</span> <span class="n">iFamilyCount</span><span class="p">);</span>
-
-    <span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">iFamilyCount</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">OneFamilyGetChild</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="n">PrintResult</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="n">int</span> <span class="n">main</span> <span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">srand</span><span class="p">(</span><span class="nb">time</span><span class="p">(</span><span class="n">NULL</span><span class="p">));</span>
-    <span class="n">StatisticsOfAllFamily</span><span class="p">(</span>1000000<span class="p">);</span>
-
-    <span class="k">return</span> 1<span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>参考资料：现代简明魔法</p></div>
-        <hr />
-    </div>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">read more</a></div>
+    </div>  
 		
     
  
@@ -215,13 +154,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -233,9 +172,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

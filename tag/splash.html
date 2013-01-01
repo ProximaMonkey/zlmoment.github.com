@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2011/08/splash-of-android/"><h1>创建Android应用程序启动界面（Splash）</h1></a>
-            Tue 02 August 2011
+        <a href="http://hackecho.com/2011/08/splash-of-android/"><h2>创建Android应用程序启动界面（Splash）</h2></a>
+        <div class= "well small"> Tue 02 August 2011
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
+ </div>
+        <div class="summary"><p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
 <p>首先新建一个splashscreen.xml布局文件，我们已经在res/drawable目录下放置了一张启动图片home_gradient.png：</p>
 <div class="codehilite"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">android:id=</span><span class="s">&quot;@+id/LinearLayout01&quot;</span>
               <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
@@ -79,98 +76,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
               <span class="na">android:gravity=</span><span class="s">&quot;center|bottom&quot;</span>
               <span class="na">android:background=</span><span class="s">&quot;@drawable/home_gradient&quot;</span>
               <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop=</span><span class="s">&quot;-60dip&quot;</span>
-               <span class="na">android:paddingLeft=</span><span class="s">&quot;20dip&quot;</span>
-               <span class="na">android:paddingRight=</span><span class="s">&quot;20dip&quot;</span>
-               <span class="na">android:scaleType=</span><span class="s">&quot;centerInside&quot;</span>
-               <span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-               <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-               <span class="na">android:id=</span><span class="s">&quot;@+id/logo&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/ImageView&gt;</span>
-    <span class="c">&lt;!--</span>
-<span class="c">    android:typeface 字体风格</span>
-<span class="c">    --&gt;</span>
-    <span class="nt">&lt;TextView</span> <span class="na">android:text=</span><span class="s">&quot;@+id/TextView01&quot;</span>
-              <span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-              <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-              <span class="na">android:layout_marginTop=</span><span class="s">&quot;20dip&quot;</span>
-              <span class="na">android:typeface=</span><span class="s">&quot;serif&quot;</span>
-              <span class="na">android:shadowDx=</span><span class="s">&quot;0&quot;</span>
-              <span class="na">android:shadowDy=</span><span class="s">&quot;2&quot;</span>
-              <span class="na">android:shadowRadius=</span><span class="s">&quot;1&quot;</span>
-              <span class="na">android:shadowColor=</span><span class="s">&quot;#FFFFFF&quot;</span>
-              <span class="na">android:textColor=</span><span class="s">&quot;@drawable/white&quot;</span>
-              <span class="na">android:textSize=</span><span class="s">&quot;20dip&quot;</span>
-              <span class="na">android:id=</span><span class="s">&quot;@+id/versionNumber&quot;</span>
-              <span class="na">android:gravity=</span><span class="s">&quot;center_horizontal&quot;</span>
-              <span class="nt">&gt;</span>
-    <span class="nt">&lt;/TextView&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</pre></div>
-
-
-<p>然后我们新建一个SplashScreen类：</p>
-<div class="codehilite"><pre><span class="n">package</span> <span class="n">com</span><span class="p">.</span><span class="n">uutroy</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">bjtuer</span><span class="p">;</span>
-
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">Activity</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">Intent</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">pm</span><span class="p">.</span><span class="n">PackageInfo</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">pm</span><span class="p">.</span><span class="n">PackageManager</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">pm</span><span class="p">.</span><span class="n">PackageManager</span><span class="p">.</span><span class="n">NameNotFoundException</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">graphics</span><span class="p">.</span><span class="n">PixelFormat</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">os</span><span class="p">.</span><span class="n">Bundle</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">os</span><span class="p">.</span><span class="n">Handler</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">WindowManager</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">TextView</span><span class="p">;</span>
-
-<span class="n">public</span> <span class="n">class</span> <span class="n">SplashScreen</span> <span class="n">extends</span> <span class="n">Activity</span> <span class="p">{</span>
-
-    <span class="p">@</span><span class="n">Override</span>
-    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
-        <span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
-        <span class="n">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
-        <span class="n">getWindow</span><span class="p">().</span><span class="n">setFormat</span><span class="p">(</span><span class="n">PixelFormat</span><span class="p">.</span><span class="n">RGBA_8888</span><span class="p">);</span>
-        <span class="n">getWindow</span><span class="p">().</span><span class="n">addFlags</span><span class="p">(</span><span class="n">WindowManager</span><span class="p">.</span><span class="n">LayoutParams</span><span class="p">.</span><span class="n">FLAG_DITHER</span><span class="p">);</span>
-
-        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">splashscreen</span><span class="p">);</span>
-
-        <span class="o">//</span> <span class="n">Display</span> <span class="n">the</span> <span class="n">current</span> <span class="n">version</span> <span class="n">number</span>
-        <span class="n">PackageManager</span> <span class="n">pm</span> <span class="p">=</span> <span class="n">getPackageManager</span><span class="p">();</span>
-        <span class="k">try</span> <span class="p">{</span>
-            <span class="n">PackageInfo</span> <span class="nb">pi</span> <span class="p">=</span> <span class="n">pm</span><span class="p">.</span><span class="n">getPackageInfo</span><span class="p">(</span>&quot;<span class="n">com</span><span class="p">.</span><span class="n">uutroy</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">bjtuer</span>&quot;<span class="p">,</span> 0<span class="p">);</span>
-            <span class="n">TextView</span> <span class="n">versionNumber</span> <span class="p">=</span> <span class="p">(</span><span class="n">TextView</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">versionNumber</span><span class="p">);</span>
-            <span class="n">versionNumber</span><span class="p">.</span><span class="n">setText</span><span class="p">(</span>&quot;<span class="n">Version</span> &quot; <span class="o">+</span> <span class="nb">pi</span><span class="p">.</span><span class="n">versionName</span> <span class="o">+</span>&quot;<span class="n">n</span>&quot;<span class="o">+</span>&quot;天堂皓月&quot;<span class="p">);</span>
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">NameNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">e</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="n">new</span> <span class="n">Handler</span><span class="p">().</span><span class="n">postDelayed</span><span class="p">(</span><span class="n">new</span> <span class="n">Runnable</span><span class="p">()</span> <span class="p">{</span>
-            <span class="n">public</span> <span class="n">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{</span>
-                <span class="o">/*</span> <span class="n">Create</span> <span class="n">an</span> <span class="n">Intent</span> <span class="n">that</span> <span class="n">will</span> <span class="n">start</span> <span class="n">the</span> <span class="n">Main</span> <span class="n">Activity</span><span class="p">.</span> <span class="o">*/</span>
-                <span class="n">Intent</span> <span class="n">mainIntent</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">SplashScreen</span><span class="p">.</span><span class="n">this</span><span class="p">,</span>
-                        <span class="n">BJTUerActivity</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
-                <span class="n">SplashScreen</span><span class="p">.</span><span class="n">this</span><span class="p">.</span><span class="n">startActivity</span><span class="p">(</span><span class="n">mainIntent</span><span class="p">);</span>
-                <span class="n">SplashScreen</span><span class="p">.</span><span class="n">this</span><span class="p">.</span><span class="n">finish</span><span class="p">();</span>
-            <span class="p">}</span>
-        <span class="p">},</span> 2500<span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>最后，不要忘了在AndroidManifest.xml中将SplashScreen定义为主加载：</p>
-<div class="codehilite"><pre><span class="nt">&lt;activity</span> <span class="na">android:screenOrientation=</span><span class="s">&quot;portrait&quot;</span>
-          <span class="na">android:name=</span><span class="s">&quot;.SplashScreen&quot;</span>
-          <span class="na">android:label=</span><span class="s">&quot;@string/app_name&quot;</span>
-          <span class="na">android:theme=</span><span class="s">&quot;@android:style/Theme.NoTitleBar&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;intent-filter&gt;</span>
-          <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.action.MAIN&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.LAUNCHER&quot;</span><span class="nt">/&gt;</span>
-     <span class="nt">&lt;/intent-filter&gt;</span>
-<span class="nt">&lt;/activity&gt;</span>
-</pre></div></div>
-        <hr />
-    </div>
+    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/splash-of-android/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -219,13 +126,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -237,9 +144,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/"><h1>单链表的一些算法实现</h1></a>
-            Thu 10 March 2011
+        <a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/"><h2>单链表的一些算法实现</h2></a>
+        <div class= "well small"> Thu 10 March 2011
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
+ </div>
+        <div class="summary"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
 <p><strong>首先定义节点：</strong></p>
 <div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
     <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
@@ -91,130 +88,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
         <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
         <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
         <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
-        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
-        <span class="n">p</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>在索引为i的位置插入数据为data的结点：</strong></p>
-<hr />
-<div class="codehilite"><pre><span class="n">bool</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Insert</span><span class="p">(</span><span class="n">int</span> <span class="nb">i</span><span class="p">,</span> <span class="n">int</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span>0 <span class="o">||</span> <span class="nb">i</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">GetLen</span><span class="p">()){</span>
-        <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">q</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">j</span> <span class="p">=</span> 0<span class="p">;</span> <span class="nb">j</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">i</span><span class="p">;</span> <span class="nb">j</span><span class="o">++</span><span class="p">){</span>
-        <span class="n">q</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">p</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">InsertNode</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">;</span>
-    <span class="n">InsertNode</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span> <span class="p">=</span> <span class="n">data</span><span class="p">;</span>
-    <span class="n">InsertNode</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">InsertNode</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>删除索引为i的结点：</strong></p>
-<div class="codehilite"><pre><span class="n">bool</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Delete</span><span class="p">(</span><span class="n">int</span> <span class="nb">i</span><span class="p">){</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> 0 <span class="o">||</span> <span class="nb">i</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;=</span> <span class="n">GetLen</span><span class="p">())</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">q</span>  <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">j</span> <span class="p">=</span> 0<span class="p">;</span> <span class="nb">j</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="nb">i</span><span class="p">;</span> <span class="nb">j</span><span class="o">++</span><span class="p">){</span>
-        <span class="n">q</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">p</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">DelNode</span> <span class="p">=</span> <span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">DelNode</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="n">delete</span> <span class="n">DelNode</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>归并单链表：</strong></p>
-<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Merge</span><span class="p">(</span><span class="n">LinkList</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">list</span><span class="p">){</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">){</span>
-        <span class="n">p</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">listNode</span> <span class="p">=</span> <span class="n">list</span><span class="p">.</span><span class="n">GetNode</span><span class="p">();</span>
-    <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">listNode</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>就地反转：</strong></p>
-<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Back</span><span class="p">(){</span>
-    <span class="o">/*</span>先把原来的链表头结点断开
-    <span class="o">*</span>建立一个新的链表，然后把原来的链表插入到新链表的头部
-    <span class="o">*</span>最后把原来链表头部指向新链表，最后注意要释放新链表的头部
-    <span class="o">*</span>也就是最后一个元素<span class="o">**************************************/</span>
-    <span class="n">LinkList</span> <span class="n">tempList</span><span class="p">;</span>
-    <span class="n">tempList</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">TempNode</span> <span class="p">=</span> <span class="n">tempList</span><span class="p">.</span><span class="n">GetNode</span><span class="p">();</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">n</span> <span class="p">=</span> <span class="n">TempNode</span><span class="p">;</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="p">){</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">q</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">p</span><span class="p">;</span>
-        <span class="n">temp</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">TempNode</span><span class="p">;</span>
-        <span class="n">temp</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span><span class="p">;</span>
-        <span class="n">TempNode</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
-        <span class="n">p</span> <span class="p">=</span> <span class="n">q</span><span class="p">;</span> 
-    <span class="p">}</span>
-    <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">TempNode</span><span class="p">;</span>
-    <span class="n">Delete</span><span class="p">(</span><span class="n">GetLen</span><span class="p">()</span> <span class="o">-</span> 1<span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>是否有环：</strong></p>
-<div class="codehilite"><pre><span class="n">bool</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">HaveCircle</span><span class="p">(){</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">q</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">((</span><span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> !<span class="p">=</span> <span class="n">NULL</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">(</span><span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> !<span class="p">=</span> <span class="n">NULL</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">(</span><span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> !<span class="p">=</span> <span class="n">NULL</span><span class="p">)){</span>
-        <span class="n">p</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">q</span> <span class="p">=</span> <span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="n">q</span><span class="p">){</span>
-            <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p><strong>选择排序：</strong></p>
-<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Sort</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="p">){</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">small</span> <span class="p">=</span> <span class="n">p</span><span class="p">;</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">q</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">q</span><span class="p">){</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">small</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">small</span> <span class="p">=</span> <span class="n">q</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="n">q</span> <span class="p">=</span> <span class="n">q</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p</span> !<span class="p">=</span> <span class="n">small</span><span class="p">){</span>
-            <span class="n">int</span> <span class="n">temp</span><span class="p">;</span>
-            <span class="n">temp</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span><span class="p">;</span>
-            <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span> <span class="p">=</span> <span class="n">small</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span><span class="p">;</span>
-            <span class="n">small</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">data</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="n">p</span> <span class="p">=</span> <span class="n">p</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div></div>
-        <hr />
-    </div>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">read more</a></div>
+    </div>  
 		
     
  
@@ -289,13 +164,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -307,9 +182,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

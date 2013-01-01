@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/"><h1>利用.htaccess简单实现的10个功能</h1></a>
-            Thu 12 April 2012
+        <a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/"><h2>利用.htaccess简单实现的10个功能</h2></a>
+        <div class= "well small"> Thu 12 April 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+ </div>
+        <div class="summary"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
 <p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
 <ol>
 <li>防盗链</li>
@@ -94,87 +91,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <ol>
 <li>301永久重定向</li>
 </ol>
-<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向，不但流量没有丢失，搜索引擎也迅速更新了收录。或者当要更改网站URL结构的时候，做301重定向也是一个好方法：</p>
-<div class="codehilite"><pre><span class="n">Redirect</span> 301 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">yoursite</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">article</span><span class="p">.</span><span class="n">html</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">yoursite</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">archives</span><span class="o">/</span><span class="n">article</span>
-</pre></div>
-
-
-<ol>
-<li>个性化 404 错误页面</li>
-</ol>
-<p>404页面是什么就不用解释了吧，通过下面的简单配置可以自定义404页面：</p>
-<div class="codehilite"><pre><span class="n">ErrorDocument</span> 404 <span class="o">/</span>404<span class="p">.</span><span class="n">html</span>
-</pre></div>
-
-
-<ol>
-<li>设置目录的默认页面</li>
-</ol>
-<p>假如需要为不同的目录设置不同的默认页面，可以很容易的通过 .htaccess 实现：</p>
-<div class="codehilite"><pre><span class="n">DirectoryIndex</span> <span class="n">about</span><span class="p">.</span><span class="n">html</span>
-</pre></div>
-
-
-<ol>
-<li>基于referer来限制网站访问</li>
-</ol>
-<p>当你想屏蔽一些网站的访问时（比如垃圾评论网站），可以这样配置：</p>
-<div class="codehilite"><pre><span class="nt">&lt;IfModule</span> <span class="err">mod_rewrite.c</span><span class="nt">&gt;</span>
-RewriteEngine on  RewriteCond %{HTTP_REFERER} spamteam.com [NC,OR]
-RewriteCond %{HTTP_REFERER} trollteam.com [NC,OR]
-RewriteRule .* – [F]
-<span class="nt">&lt;/ifModule&gt;</span>
-</pre></div>
-
-
-<ol>
-<li>限制PHP上传文件大小</li>
-</ol>
-<p>第一个是设置最大的上传文件大小，第二个是设置最大的POST请求大小，第三个PHP脚本最长的执行时间，最后一个是脚本解析上传文件的最长时间：</p>
-<div class="codehilite"><pre><span class="n">php_value</span> <span class="n">upload_max_filesize</span> 20<span class="n">M</span>
-<span class="n">php_value</span> <span class="n">post_max_size</span> 20<span class="n">M</span>
-<span class="n">php_value</span> <span class="n">max_execution_time</span> 200
-<span class="n">php_value</span> <span class="n">max_input_time</span> 200
-</pre></div>
-
-
-<ol>
-<li>压缩文件</li>
-</ol>
-<p>可以通过压缩文件来减少网络流量和页面装载时间：</p>
-<div class="codehilite"><pre><span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">plain</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">xml</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">text</span><span class="o">/</span><span class="n">css</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">xml</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">xhtml</span><span class="o">+</span><span class="n">xml</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">rss</span><span class="o">+</span><span class="n">xml</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">javascript</span>
-<span class="n">AddOutputFilterByType</span> <span class="n">DEFLATE</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">javascript</span>
-</pre></div>
-
-
-<ol>
-<li>缓存文件</li>
-</ol>
-<p>这一点还需要解释吗？</p>
-<div class="codehilite"><pre><span class="nt">&lt;FilesMatch</span> <span class="err">&quot;.(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf)$&quot;</span><span class="nt">&gt;</span>
-Header set Cache-Control &quot;max-age=2592000&quot;
-<span class="nt">&lt;/FilesMatch&gt;</span>
-</pre></div>
-
-
-<ol>
-<li>添加尾部的反斜杠</li>
-</ol>
-<p>很多人都说添加尾部反斜杠有益于SEO：</p>
-<div class="codehilite"><pre><span class="nt">&lt;IfModule</span> <span class="err">mod_rewrite.c</span><span class="nt">&gt;</span>
-RewriteCond %{REQUEST_URI} /+[^\.]+$
-RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
-<span class="nt">&lt;/IfModule&gt;</span>
-</pre></div></div>
-        <hr />
-    </div>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -223,13 +141,13 @@ RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -241,9 +159,9 @@ RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

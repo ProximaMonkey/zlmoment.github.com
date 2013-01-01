@@ -59,96 +59,21 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/"><h1>使用PHP将CSDN泄露数据导入数据库</h1></a>
-            Fri 23 December 2011
+        <a href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/"><h2>使用PHP将CSDN泄露数据导入数据库</h2></a>
+        <div class= "well small"> Fri 23 December 2011
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>有幸得到了CSDN泄露的600多万条用户数据，这可是做大容量数据测试和分析的好材料啊。但虽然是.sql文件，里面却是以纯文本保存的所有数据，而且以固定格式保存。这对于数据存储来讲没有任何问题，但如此大的纯文本文件，检索起来可就不是一般的慢啊（不信你拉一下滚动条试试，准死）！今天正好看到好友异泪在用Java写个小程序想将这些数据导入到MySQL里，于是索性也用PHP实现一个，正好借机对比一下PHP和Java的数据处理性能问题。</p>
+ </div>
+        <div class="summary"><p>有幸得到了CSDN泄露的600多万条用户数据，这可是做大容量数据测试和分析的好材料啊。但虽然是.sql文件，里面却是以纯文本保存的所有数据，而且以固定格式保存。这对于数据存储来讲没有任何问题，但如此大的纯文本文件，检索起来可就不是一般的慢啊（不信你拉一下滚动条试试，准死）！今天正好看到好友异泪在用Java写个小程序想将这些数据导入到MySQL里，于是索性也用PHP实现一个，正好借机对比一下PHP和Java的数据处理性能问题。</p>
 <p>原理很简单，因为原文件中每行保存一个用户，而且用户名、密码和邮箱之间都是以“#”分隔的，这样的话操作起来非常方便。</p>
 <p>Let's begin!</p>
 <h3><strong>执行环境：</strong></h3>
 <div class="codehilite"><pre><span class="n">Mac</span> <span class="n">OS</span> <span class="n">X</span> <span class="n">Lion</span> 10<span class="p">.</span>7<span class="p">.</span>2 <span class="o">|</span> 2<span class="p">.</span>8 <span class="n">GHz</span> <span class="n">Intel</span> <span class="n">Core</span> <span class="n">i7</span> <span class="o">|</span> 4 <span class="n">GB</span> 1333 <span class="n">MHz</span> <span class="n">DDR3</span>
-<span class="n">PHP</span> 5<span class="p">.</span>3<span class="p">.</span>1 <span class="o">|</span> <span class="n">MySQL</span> 5<span class="p">.</span>1<span class="p">.</span>44 <span class="o">|</span> <span class="n">Apache</span> 2
-</pre></div>
-
-
-<p><strong>源代码如下：</strong></p>
-<p>（执行前，请在php.ini中将内存最大配额和最大执行时间等调高一点，否则会出错。）</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>  
-<span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Content-Type: text/html; charset=utf-8&#39;</span><span class="p">);</span>  
-<span class="c1">//计算页面执行时间的runtime类  </span>
-<span class="k">class</span> <span class="nc">runtime</span>  
-<span class="p">{</span>   
-<span class="k">var</span> <span class="nv">$StartTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
-<span class="k">var</span> <span class="nv">$StopTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
-<span class="k">function</span> <span class="nf">get_microtime</span><span class="p">()</span>   
-<span class="p">{</span>   
-<span class="k">list</span><span class="p">(</span><span class="nv">$usec</span><span class="p">,</span> <span class="nv">$sec</span><span class="p">)</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nb">microtime</span><span class="p">());</span>   
-<span class="k">return</span> <span class="p">((</span><span class="nx">float</span><span class="p">)</span><span class="nv">$usec</span> <span class="o">+</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span><span class="nv">$sec</span><span class="p">);</span>   
-<span class="p">}</span>   
-<span class="k">function</span> <span class="nf">start</span><span class="p">()</span>   
-<span class="p">{</span>   
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">StartTime</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_microtime</span><span class="p">();</span>   
-<span class="p">}</span>   
-<span class="k">function</span> <span class="nf">stop</span><span class="p">()</span>   
-<span class="p">{</span>   
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">StopTime</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get_microtime</span><span class="p">();</span>   
-<span class="p">}</span>   
-<span class="k">function</span> <span class="nf">spent</span><span class="p">()</span>   
-<span class="p">{</span>   
-<span class="k">return</span> <span class="nx">round</span><span class="p">((</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">StopTime</span> <span class="o">-</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">StartTime</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>   
-<span class="p">}</span>   
-<span class="p">}</span>  
-
-<span class="nv">$runtime</span><span class="o">=</span> <span class="k">new</span> <span class="nx">runtime</span><span class="p">;</span>  
-<span class="nv">$runtime</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>  
-
-<span class="k">echo</span> <span class="s2">&quot;开始连接数据库...&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="p">;</span>  
-<span class="nv">$connect</span> <span class="o">=</span> <span class="o">@</span><span class="nb">mysql_connect</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="s2">&quot;root&quot;</span><span class="p">,</span><span class="s2">&quot;root&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span> <span class="p">(</span><span class="s2">&quot;Unable to connect database server!&quot;</span><span class="p">);</span>   
-<span class="nb">mysql_query</span><span class="p">(</span><span class="s2">&quot;set names &#39;utf8&#39;&quot;</span><span class="p">,</span><span class="nv">$connect</span><span class="p">);</span>   
-<span class="nv">$select</span> <span class="o">=</span> <span class="nb">mysql_select_db</span><span class="p">(</span><span class="s2">&quot;csdn&quot;</span> <span class="p">,</span> <span class="nv">$connect</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Can not connect this DB!&quot;</span><span class="p">);</span>   
-
-<span class="k">echo</span> <span class="s2">&quot;开始打开文件...&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="p">;</span>  
-<span class="nv">$fp</span><span class="o">=</span><span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;./csdn.txt&quot;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>  
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$fp</span><span class="p">)</span>  
-<span class="p">{</span>  
-<span class="k">echo</span><span class="s1">&#39;文件不存在&#39;</span><span class="p">;</span>  
-<span class="k">exit</span><span class="p">;</span>  
-<span class="p">}</span>  
-<span class="k">echo</span> <span class="s2">&quot;开始读入文件并写入数据库...&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="p">;</span>  
-<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span>  
-<span class="p">{</span>  
-<span class="nv">$singleline_explode</span><span class="o">=</span><span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span><span class="p">));</span>  
-<span class="nv">$username</span><span class="o">=</span><span class="nx">trim</span><span class="p">(</span><span class="nv">$singleline_explode</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>  
-<span class="nv">$password</span><span class="o">=</span><span class="nx">trim</span><span class="p">(</span><span class="nv">$singleline_explode</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>  
-<span class="nv">$mail</span><span class="o">=</span><span class="nx">trim</span><span class="p">(</span><span class="nv">$singleline_explode</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>  
-<span class="nb">mysql_query</span><span class="p">(</span><span class="s2">&quot;INSERT INTO `csdn` (`id`, `username`, `password`,`mail`) VALUES (NULL, &#39;</span><span class="si">$username</span><span class="s2">&#39;, &#39;</span><span class="si">$password</span><span class="s2">&#39;,&#39;</span><span class="si">$mail</span><span class="s2">&#39;)&quot;</span><span class="p">);</span>   
-<span class="p">}</span>  
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>  
-<span class="nb">mysql_close</span><span class="p">(</span><span class="nv">$connect</span><span class="p">);</span>   
-<span class="k">echo</span> <span class="s2">&quot;完成啦！！！&quot;</span><span class="p">;</span>  
-
-<span class="nv">$runtime</span><span class="o">-&gt;</span><span class="na">stop</span><span class="p">();</span>  
-<span class="k">echo</span> <span class="s2">&quot;页面执行时间: &quot;</span><span class="o">.</span><span class="nv">$runtime</span><span class="o">-&gt;</span><span class="na">spent</span><span class="p">()</span><span class="o">.</span><span class="s2">&quot; 毫秒&quot;</span><span class="p">;</span>  
-<span class="cp">?&gt;</span>  
-</pre></div>
-
-
-<p><strong>最后的执行结果如下：</strong></p>
-<p><img alt="" src="/static/images/2011/12/未命名.jpg" /></p>
-<p><img alt="" src="/static/images/2011/12/未命名2.jpg" /></p>
-<p>也就是说，用PHP执行导入，一共6427525条数据，用时7分40秒左右。</p>
-<p>关于Java呢，我没做测试，异泪也是在无法忍受80分钟导入了13万条数据的速度，只好暂时停止。期待异泪到时候为我们做的所有语言的导入速度比较，地址：<a href="http://www.yilee.info">异泪的博客</a>。</p>
-<p>网上有大牛直接用SQL Programing导入，5分钟搞定，下一步可能试试Shell脚本，据说很不错哦！</p></div>
-        <hr />
-    </div>
+<span class="n">PHP</span> 5<span class="p">.</span>3<span class="p">.</span>1 <span class="o">|</span> <span class="n">MySQL</span> 5<span class="p">.</span>1<span class="p">.</span>44 ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -197,13 +122,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -215,9 +140,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

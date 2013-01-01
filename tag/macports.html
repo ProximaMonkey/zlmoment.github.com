@@ -59,36 +59,17 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/05/homebrew-vs-macports/"><h1>Homebrew VS MacPorts</h1></a>
-            Tue 22 May 2012
+        <a href="http://hackecho.com/2012/05/homebrew-vs-macports/"><h2>Homebrew VS MacPorts</h2></a>
+        <div class= "well small"> Tue 22 May 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
-<p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options though. Two of them have been around for quite a while, MacPorts and Fink.</p>
-<p>MacPorts is strongly influenced by the BSD ‘ports’ system. Ports are essentially recipes for taking source code and build scripts and making them compile and install on the target operating system. BSD ports organize the recipes and source code into a tree that make adding software easy.</p>
-<p>Fink takes a different approach. It’s based around Debian’s packaging tools and apt-get. Fink mainly manages pre-compiled/pre-built applications. So the applications you install using Fink don’t need to be compiled and built on your system.</p>
-<p>Between the two of them, MacPorts tends to be the easier solution. Software is more up to date, there are more options, it’s somewhat less intrusive into your system and you get new versions faster when Apple updates OS/X. Ironic when you consider that MacPorts code is compiled on your system while Fink is just downloading binaries.</p>
-<p>But MacPorts is still no walk in the park. Even though it’s less intrusive then Fink, it still isn’t a great citizen on OS/X. MacPorts eschews many of the system libraries and software already available in OS/X for other variants. Installing a seemingly simple utility might somehow require a new version of Perl, Python or other set of large software.</p>
-<p>Homebrew is a reaction to the complexity of MacPorts. It’s extremely simple. Homebrew appears to be targeted more at individual packages. If you want to pull in the entire world of open source software and want every package, then you’re better off with MacPorts or Fink. But if you’re looking for the occasional tool or utility, Homebrew is for you.</p>
-<p>Installation is dead simple:</p>
-<div class="codehilite"><pre><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> &quot;$<span class="p">(</span><span class="n">curl</span> <span class="o">-</span><span class="n">fsS</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span>323731<span class="o">/</span><span class="n">install_homebrew</span><span class="p">.</span><span class="n">rb</span><span class="p">)</span>&quot;
-</pre></div>
-
-
-<p>That downloads the installer and executes it. Homebrew is based on Ruby and the install script is no exception.</p>
-<p>By default Homebrew will try to take over your /usr/local directory. If you’ve already installed anything there (MySQL, etc.) then Homebrew will complain. You can install Homebrew anywhere, but then you’ll have to add that directory to your PATH.</p>
-<p>Homebrew also assumes that you’re on a single user system. If that’s not you, then you definitely want to install it to a user-specific location and alter your PATH. But, for most people, the default works just fine.</p>
-<p>Once installed, you control Homebrew using the brew command. You can find packages using brew search, install them using brew install and remove them using brew uninstall. Just like any other package manager, Homebrew tracks package dependencies so it will pull in dependent packages as needed and warn you if you try to uninstall a required package.</p>
-<p>The major benefits of Homebrew over MacPorts are simplicity, lack of intrusiveness, and speed. Homebrew’s recipes try very hard to use the existing tools and libraries in OS/X, so they tend to build much faster and require fewer dependent libraries. The recipes themselves are Ruby scripts and are small, simple to understand and easy to create and modify. But, honestly, if all you want is to install wget and newer versions of git and other open source tools, you’ll never need to look at or understand Homebrew’s recipes. Just brew install wget, brew install git and be happy.</p></div>
-        <hr />
-    </div>
+ </div>
+        <div class="summary"><p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
+<p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/homebrew-vs-macports/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -137,13 +118,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -155,9 +136,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

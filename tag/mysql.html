@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/"><h1>解决MySQL无法通过localhost连接问题</h1></a>
-            Sun 27 May 2012
+        <a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/"><h2>解决MySQL无法通过localhost连接问题</h2></a>
+        <div class= "well small"> Sun 27 May 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
+ </div>
+        <div class="summary"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
 <p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
 <h3>安装MySQL</h3>
 <p>依次执行下列三个命令：</p>
@@ -83,36 +80,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>具体为什么有后两条命令，你安装的时候就知道了。</p>
 <h3>解决localhost问题</h3>
 <p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">local</span> <span class="n">MySQL</span> <span class="n">server</span> <span class="n">through</span> <span class="n">socket</span> ‘<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="p">.</span><span class="n">sock</span>
-</pre></div>
-
-
-<p>既然文件mysql.sock出问题了，那我们就拿它下手。</p>
-<div class="codehilite"><pre><span class="n">ls</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="p">.</span><span class="n">sock</span>
-</pre></div>
-
-
-<p>Terminal不给面子，给出一行错误提示：No such file or directory。</p>
-<p>既然文件不存在，那我们就找到它呗。（此处省略一万字）在Mac上，mysql.sock文件的正确地址是：</p>
-<div class="codehilite"><pre><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">mysql</span><span class="p">.</span><span class="n">sock</span>
-</pre></div>
-
-
-<p>终极解决办法：</p>
-<p>修改php.ini的相关配置</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="p">.</span><span class="n">ini</span>
-</pre></div>
-
-
-<p>找到mysql.default_socket和mysqli.default_socket，将其值修改为/tmp/mysql.sock。保存，退出，重启Apache。</p>
-<p>OK，搞定。</p>
-<p>当然，如果你的电脑上mysql.sock和php.ini文件和我的不一样（默认的话应该一样），要修改相关命令中的路径。</p>
-<p><em><strong>更新：</strong></em></p>
-<p>还有一种解决办法，创建一个符号链接过去：</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">mysql</span><span class="p">.</span><span class="n">sock</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="p">.</span><span class="n">sock</span>
-</pre></div></div>
-        <hr />
-    </div>
+<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">read more</a></div>
+    </div>  
 		
     
  
@@ -216,13 +185,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -234,9 +203,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

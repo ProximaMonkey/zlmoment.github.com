@@ -59,40 +59,21 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2011/03/find-password-of-win7/"><h1>Win 7忘记密码的恢复方法</h1></a>
-            Tue 08 March 2011
+        <a href="http://hackecho.com/2011/03/find-password-of-win7/"><h2>Win 7忘记密码的恢复方法</h2></a>
+        <div class= "well small"> Tue 08 March 2011
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p><strong>声明：本文只供学习交流之用，请勿将此方法用于非法用途，转载请注明来自<a href="http://www.hackecho.com">天堂皓月</a></strong></p>
+ </div>
+        <div class="summary"><p><strong>声明：本文只供学习交流之用，请勿将此方法用于非法用途，转载请注明来自<a href="http://www.hackecho.com">天堂皓月</a></strong></p>
 <p><strong>基本思想：</strong></p>
 <p>在登陆界面想办法启动cmd，取得管理员权限，开启（或新增）系统管理员，进入后重置密码。</p>
 <p><strong>实现方法：</strong></p>
 <p>大家注意登陆界面的“轻松访问”按钮，打开后可以看到一系列应用程序，如“讲述人”“放大镜”“高对比度”等，这些应用程序的可执行文件都在“C:Windowssystem32”(假设Windows7安装在C盘)目录里。</p>
-<p>我们可以通过第三方系统（如CE，另一个XP等）进入系统目录，更改（以“放大镜”为例）magnify.exe文件的权限，右击“magnify.exe”选择“权限”——高级——所有者，将当前系统管理员帐号设置为所有者(如果没有当前帐号在列表，则单击“其他账户”，手动输入当前账户名)。单击“确定”返回权限设置窗口，点击“添加”，将当前管理员帐户添加到列表，并将账户对该文件读取权限设置为“完全控制”。</p>
-<p>然后同第一步差不多，设置当前账户对“cmd.exe”权限为完全控制，然后将“magnify.exe”重命名为“magnify.exe.bak”（或其它），将“cmd.exe”重命名为“magnify.exe”。</p>
-<p>然后重启登录Windows7，在登录界面单击右下角的“轻松访问”按钮，在打开的窗口勾选“启动放大镜”，此时启动的就是cmd窗口了(是以system身份开启的，自然有管理员权限)，在cmd输入下面的命令开启administrator账户，重启即可使用administrator了：</p>
-<p>命令如下：</p>
-<div class="codehilite"><pre><span class="n">net</span> <span class="n">user</span> <span class="n">administrator</span> <span class="o">/</span><span class="n">active</span><span class="p">:</span><span class="n">yes</span><span class="p">(</span>解释：强制开启<span class="n">administrator</span>账户<span class="p">)</span>
-<span class="n">net</span> <span class="n">user</span> <span class="n">administrator</span> 123456 <span class="o">/</span><span class="n">add</span><span class="p">(</span>解释：强制将用户<span class="n">administrator</span>密码改为123456<span class="p">)</span>
-</pre></div>
-
-
-<p>最后，如果administrator账户无法使用，那么就创建另外一个具有相同权限的管理员账号，重启登录Windows7，在登录界面单击右下角的“轻松访问”按钮，在打开的窗口勾选“启动放大假”，启动cmd窗口，输入：</p>
-<div class="codehilite"><pre><span class="n">net</span> <span class="n">user</span> <span class="n">admin</span> 123 <span class="o">/</span><span class="n">add</span>回车
-<span class="n">net</span> <span class="n">localgroup</span> <span class="n">administrators</span> <span class="n">admin</span> <span class="o">/</span><span class="n">add</span>回车
-</pre></div>
-
-
-<p>恭喜，重启，进入admin账户就可以了。</p></div>
-        <hr />
-    </div>
+<p>我们可以通过第三方系统（如CE，另一个XP等）进入系统目录，更改（以“放大镜”为例）magnify.exe文件的权限，右击“magnify.exe”选择“权限”——高级——所有者，将当前系统管理员帐号设置为所有者(如果没有当前帐号在列表，则单击“其他账户”，手动输入当前账户名)。单击 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/find-password-of-win7/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -141,13 +122,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -159,9 +140,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

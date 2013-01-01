@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/"><h1>WordPress与Suhosin冲突的解决办法</h1></a>
-            Fri 23 March 2012
+        <a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/"><h2>WordPress与Suhosin冲突的解决办法</h2></a>
+        <div class= "well small"> Fri 23 March 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
+ </div>
+        <div class="summary"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
 <p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
 <p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
 <p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
@@ -101,25 +98,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 </pre></div>
 
 
-<p>对于get和post数据大小限制的问题，修改/etc/php5/conf.d/suhosin.ini，增加下列配置：</p>
-<div class="codehilite"><pre><span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="p">=</span> 256<span class="n">M</span>
-
-<span class="n">suhosin</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">max_varname_length</span> <span class="p">=</span> 512
-<span class="n">suhosin</span><span class="p">.</span><span class="n">post</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">post</span><span class="p">.</span><span class="n">max_name_length</span> <span class="p">=</span> 512
-<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_value_length</span> <span class="p">=</span> 1024
-<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_name_length</span> <span class="p">=</span> 512
-<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_totalname_length</span> <span class="p">=</span> 1024
-<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_name_length</span> <span class="p">=</span> 512
-</pre></div>
-
-
-<p>如果此方法不生效或找到更好的办法，本文会继续更新。</p></div>
-        <hr />
-    </div>
+<p>对于get和post数据大小限制的问题 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -168,13 +148,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -186,9 +166,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

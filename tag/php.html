@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/04/socket-programming-in-php/"><h1>PHP中的Socket编程</h1></a>
-            Tue 17 April 2012
+        <a href="http://hackecho.com/2012/04/socket-programming-in-php/"><h2>PHP中的Socket编程</h2></a>
+        <div class= "well small"> Tue 17 April 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
+ </div>
+        <div class="summary"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
 <h3>文章结构：</h3>
 <ul>
 <li>
@@ -97,255 +94,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
 </li>
 <li>
-<p>AF_INET6：与上面类似，不过是来用在IPv6的地址</p>
-</li>
-<li>
-<p>AF_UNIX：本地协议，使用在Unix和Linux系统上，它很少使用，一般都是当客户端和服务器在同一台及其上的时候使用</p>
-</li>
-</ul>
-<p><strong>Socket类型</strong></p>
-<ul>
-<li>
-<p>SOCK_STREAM：这个协议是按照顺序的、可靠的、数据完整的基于字节流的连接。这是一个使用最多的socket类型，这个socket是使用TCP来进行传输。</p>
-</li>
-<li>
-<p>SOCK_DGRAM：这个协议是无连接的、固定长度的传输调用。该协议是不可靠的，使用UDP来进行它的连接。</p>
-</li>
-<li>
-<p>SOCK_SEQPACKET：这个协议是双线路的、可靠的连接，发送固定长度的数据包进行传输。必须把这个包完整的接受才能进行读取。</p>
-</li>
-<li>
-<p>SOCK_RAW：这个socket类型提供单一的网络访问，这个socket类型使用ICMP公共协议。（ping、traceroute使用该协议）</p>
-</li>
-<li>
-<p>SOCK_RDM：这个类型是很少使用的，在大部分的操作系统上没有实现，它是提供给数据链路层使用，不保证数据包的顺序</p>
-</li>
-</ul>
-<p><strong>公共协议</strong></p>
-<ul>
-<li>
-<p>ICMP：互联网控制消息协议，主要使用在网关和主机上，用来检查网络状况和报告错误信息</p>
-</li>
-<li>
-<p>UDP：用户数据报文协议，它是一个无连接，不可靠的传输协议</p>
-</li>
-<li>
-<p>TCP：传输控制协议，这是一个使用最多的可靠的公共协议，它能保证数据包能够到达接受者那儿，如果在传输过程中发生错误，那么它将重新发送出错数据包。</p>
-</li>
-</ul>
-<p>在PHP中我们使用socket_create()函数来产生一个Socket。socket_create()函数运行成功返回一个包含Socket的资源类型，如果没有成功则返回false。</p>
-<p>1 resource socket_create(int protocol, int socketType, int commonProtocol);</p>
-<p>PHP提供了很多操作Socket的函数。现在我们来看一个例子，了解PHP是如何产生、接受和监听一个socket。</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="nv">$commonProtocol</span> <span class="o">=</span> <span class="nx">getprotobyname</span><span class="p">(</span><span class="err">“</span><span class="nx">tcp</span><span class="err">”</span><span class="p">);</span>
-<span class="nv">$socket</span> <span class="o">=</span> <span class="nb">socket_create</span><span class="p">(</span><span class="nx">AF_INET</span><span class="p">,</span> <span class="nx">SOCK_STREAM</span><span class="p">,</span> <span class="nv">$commonProtocol</span><span class="p">);</span>
-<span class="nb">socket_bind</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="err">‘</span><span class="nx">localhost</span><span class="err">’</span><span class="p">,</span> <span class="mi">1337</span><span class="p">);</span>
-<span class="nb">socket_listen</span><span class="p">(</span><span class="nv">$socket</span><span class="p">);</span>
-<span class="c1">// More socket functionality to come</span>
-<span class="cp">?&gt;</span>
-</pre></div>
-
-
-<p>我们来详细解释一下上面这个程序（基于行号）：</p>
-<p>第二行：使用公共协议名字来获取一个协议类型。在这里使用的是TCP公共协议，如果你想使用UDP或者ICMP协议，就应该把getprotobyname()函数的参数改为“udp”或“icmp”。我们也可以不使用getprotobyname()函数而是直接指定SOL_TCP或SOL_UDP。</p>
-<p>第三行：产生一个Socket并且返回一个Socket资源的实例。</p>
-<p>第四行：有了一个Socket资源的实例以后，就必须把Socket绑定到一个IP地址和某一端口上。在这里绑定socket到本地计算机（127.0.0.1）的1337端口。</p>
-<p>第五行：然后就需要监听所有进来的socket连接。</p>
-<p>这时，我们就需要了解一下PHP中Socket函数的使用方法了。官方手册的介绍非常不错（<a href="http://www.php.net/manual/en/ref.sockets.php">猛戳这个链接</a>），下面只是简单列举几个最常用的。</p>
-<ul>
-<li>
-<p>socket_accept() 接受一个Socket连接</p>
-</li>
-<li>
-<p>socket_bind() 把socket绑定在一个IP地址和端口上</p>
-</li>
-<li>
-<p>socket_close() 关闭一个socket资源</p>
-</li>
-<li>
-<p>socket_connect() 开始一个socket连接</p>
-</li>
-<li>
-<p>socket_create_listen() 在指定端口打开一个socket监听</p>
-</li>
-<li>
-<p>socket_create() 产生一个socket，相当于产生一个socket的数据结构</p>
-</li>
-<li>
-<p>socket_get_option() 获取socket选项</p>
-</li>
-<li>
-<p>socket_getpeername() 获取远程主机的ip地址</p>
-</li>
-<li>
-<p>socket_getsockname() 获取本地socket的ip地址</p>
-</li>
-<li>
-<p>socket_listen() 监听由指定socket的所有连接</p>
-</li>
-<li>
-<p>socket_read() 读取指定长度的数据</p>
-</li>
-<li>
-<p>socket_readv() 读取从分散/聚合数组过来的数据</p>
-</li>
-<li>
-<p>socket_recv() 从socket里结束数据到缓存</p>
-</li>
-<li>
-<p>socket_recvfrom() 接受数据从指定的socket，如果没有指定则默认当前socket</p>
-</li>
-<li>
-<p>socket_recvmsg() 从iovec里接受消息</p>
-</li>
-<li>
-<p>socket_select() 多路选择</p>
-</li>
-<li>
-<p>socket_send() 这个函数发送数据到已连接的socket</p>
-</li>
-<li>
-<p>socket_sendmsg() 发送消息到socket</p>
-</li>
-<li>
-<p>socket_sendto() 发送消息到指定地址的socket</p>
-</li>
-<li>
-<p>socket_set_block() 在socket里设置为块模式</p>
-</li>
-<li>
-<p>socket_set_nonblock() socket里设置为非块模式</p>
-</li>
-<li>
-<p>socket_set_option() 设置socket选项</p>
-</li>
-<li>
-<p>socket_shutdown() 这个函数允许你关闭读、写、或者指定的socket</p>
-</li>
-<li>
-<p>socket_write() 写数据到socket缓存</p>
-</li>
-</ul>
-<p>关于PHP Socket的基础知识就介绍到这里，还有不明白的可查看官方手册。下面介绍编写一个Socket服务器。</p>
-<h3>编写服务器</h3>
-<p>现在我们把第一个例子完善，使其能够监听一个指定的Socket并处理用户的连接。</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="nv">$commonProtocol</span> <span class="o">=</span> <span class="nx">getprotobyname</span><span class="p">(</span><span class="s2">&quot;tcp&quot;</span><span class="p">);</span>
-<span class="nv">$socket</span> <span class="o">=</span> <span class="nb">socket_create</span><span class="p">(</span><span class="nx">AF_INET</span><span class="p">,</span> <span class="nx">SOCK_STREAM</span><span class="p">,</span> <span class="nv">$commonProtocol</span><span class="p">);</span>
-<span class="nb">socket_bind</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">1337</span><span class="p">);</span>
-<span class="nb">socket_listen</span><span class="p">(</span><span class="nv">$socket</span><span class="p">);</span>
-<span class="c1">// Accept any incoming connections to the server</span>
-<span class="nv">$connection</span> <span class="o">=</span> <span class="nb">socket_accept</span><span class="p">(</span><span class="nv">$socket</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nv">$connection</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="err">  </span> <span class="nb">socket_write</span><span class="p">(</span><span class="nv">$connection</span><span class="p">,</span> <span class="s2">&quot;You have connected to the socket...</span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
-</pre></div>
-
-
-<p>注意这不是一个Web页面，如果你尝试使用Web浏览器来运行这个脚本，那么很有可能它会超过PHP运行30秒的限时。当然你可以使用下面的代码来设置一个无限的运行时间</p>
-<blockquote>
-<p>set_time_limit(0);</p>
-</blockquote>
-<p>但最好的办法还是直接使用命令提示符来运行：</p>
-<blockquote>
-<p>php server.php</p>
-</blockquote>
-<p>但截至目前，上面的服务器端有<strong>三个问题</strong>：</p>
-<ol>
-<li>
-<p>它不能接受多个连接。</p>
-</li>
-<li>
-<p>它只完成唯一的一个命令。</p>
-</li>
-<li>
-<p>你不能通过Web浏览器连接这个服务器。</p>
-</li>
-</ol>
-<p>在上一个代码的基础上再改进，使用下面的代码来做新服务器端：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">// Set up our socket </span>
-<span class="nv">$commonProtocol</span> <span class="o">=</span> <span class="nx">getprotobyname</span><span class="p">(</span><span class="s2">&quot;tcp&quot;</span><span class="p">);</span>
-<span class="nv">$socket</span> <span class="o">=</span> <span class="nb">socket_create</span><span class="p">(</span><span class="nx">AF_INET</span><span class="p">,</span> <span class="nx">SOCK_STREAM</span><span class="p">,</span> <span class="nv">$commonProtocol</span><span class="p">);</span>
-<span class="nb">socket_bind</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">1337</span><span class="p">);</span>
-<span class="nb">socket_listen</span><span class="p">(</span><span class="nv">$socket</span><span class="p">);</span>
-<span class="c1">// Initialize the buffer </span>
-<span class="nv">$buffer</span> <span class="o">=</span> <span class="s2">&quot;NO DATA&quot;</span><span class="p">;</span>
-<span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// Accept any connections coming in on this socket</span>
-    <span class="nv">$connection</span> <span class="o">=</span> <span class="nb">socket_accept</span><span class="p">(</span><span class="nv">$socket</span><span class="p">);</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Socket connected</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-    <span class="c1">// Check to see if there is anything in the buffer</span>
-    <span class="k">if</span><span class="p">(</span><span class="nv">$buffer</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Something is in the buffer...sending data...</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-        <span class="nb">socket_write</span><span class="p">(</span><span class="nv">$connection</span><span class="p">,</span> <span class="nv">$buffer</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-        <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Wrote to socket</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;No Data in the buffer</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// Get the input</span>
-    <span class="k">while</span><span class="p">(</span><span class="nv">$data</span> <span class="o">=</span> <span class="nb">socket_read</span><span class="p">(</span><span class="nv">$connection</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="nx">PHP_NORMAL_READ</span><span class="p">))</span>
-    <span class="p">{</span>
-        <span class="nv">$buffer</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
-        <span class="nb">socket_write</span><span class="p">(</span><span class="nv">$connection</span><span class="p">,</span> <span class="s2">&quot;Information Received</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-        <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Buffer: &quot;</span> <span class="o">.</span> <span class="nv">$buffer</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nb">socket_close</span><span class="p">(</span><span class="nv">$connection</span><span class="p">);</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Closed the socket</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
-</pre></div>
-
-
-<p>这段程序初始化一个socket并且打开一个缓冲区收发数据。然后服务器开始等待连接，此时一旦产生一个连接，服务器将打印“Socket connected”。然后服务器检查缓冲区，如果缓冲区里有数据，服务器就把这些数据发送到连接的计算机客户端。然后服务器等待接收信息，并把接收到的信息保存，然后让连接的客户端知道信息接收成功后，服务器将关闭连接。连接关闭后，服务器将开始下一次处理连接的循环。</p>
-<h3>编写客户端</h3>
-<p>解决上面提到的第二个问题还是比较容易的。我们需要一个连接到服务器的页面来处理数据并发送到服务器。</p>
-<p>我们来看下面的代码：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">// Create the socket and connect </span>
-<span class="nv">$socket</span> <span class="o">=</span> <span class="nb">socket_create</span><span class="p">(</span><span class="nx">AF_INET</span><span class="p">,</span> <span class="nx">SOCK_STREAM</span><span class="p">,</span> <span class="nx">SOL_TCP</span><span class="p">);</span>
-<span class="nv">$connection</span> <span class="o">=</span> <span class="nb">socket_connect</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span><span class="err">’</span><span class="nx">localhost</span><span class="err">’</span><span class="p">,</span> <span class="mi">1337</span><span class="p">);</span>
-<span class="k">while</span><span class="p">(</span><span class="nv">$buffer</span> <span class="o">=</span> <span class="nb">socket_read</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="nx">PHP_NORMAL_READ</span><span class="p">))</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nv">$buffer</span> <span class="o">==</span> <span class="err">“</span><span class="nx">NO</span> <span class="nx">DATA</span><span class="err">”</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">echo</span><span class="p">(</span><span class="err">“</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">NO</span> <span class="nx">DATA</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">”</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="c1">// Do something with the data in the buffer </span>
-        <span class="k">echo</span><span class="p">(</span><span class="err">“</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Buffer</span> <span class="nx">Data</span><span class="o">:</span> <span class="err">“</span> <span class="o">.</span> <span class="nv">$buffer</span> <span class="o">.</span> <span class="err">“</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">”</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">echo</span><span class="p">(</span><span class="err">“</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Writing</span> <span class="nx">to</span> <span class="nx">Socket</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">”</span><span class="p">);</span>
-<span class="c1">// Write some test data to our socket</span>
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">socket_write</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="err">“</span><span class="nx">SOME</span> <span class="nx">DATA\r\n</span><span class="err">”</span><span class="p">))</span>
-<span class="p">{</span>
-    <span class="k">echo</span><span class="p">(</span><span class="err">“</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Write</span> <span class="nx">failed</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">”</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="c1">// Read any response from the socket</span>
-<span class="k">while</span><span class="p">(</span><span class="nv">$buffer</span> <span class="o">=</span> <span class="nb">socket_read</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="nx">PHP_NORMAL_READ</span><span class="p">))</span>
-<span class="p">{</span>
-    <span class="k">echo</span><span class="p">(</span><span class="err">“</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Data</span> <span class="nx">sent</span> <span class="nx">was</span><span class="o">:</span> <span class="nx">SOME</span> <span class="nx">DATA</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span> <span class="nx">Response</span> <span class="nx">was</span><span class="o">:</span><span class="err">”</span> <span class="o">.</span> <span class="nv">$buffer</span> <span class="o">.</span> <span class="err">“</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">”</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="k">echo</span><span class="p">(</span><span class="err">“</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Done</span> <span class="nx">Reading</span> <span class="nx">from</span> <span class="nx">Socket</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">”</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
-</pre></div>
-
-
-<p>这个例子的客户端连接到服务器后，客户端读取数据。如果这是客户端第一次连接服务器，服务器将发送“NO DATA”给客户端。如果客户端收到“NO DATA”说明其连接成功，客户端发送它的数据到服务器并等待服务器响应。一旦客户端接收到服务器的响应，客户端将把响应内容输出到屏幕上。</p>
-<h3>总结</h3>
-<p>如果还想深入了解PHP Socket，建议阅读更多的第三方资料或到PHP官方查询官方文档。今天就介绍到这里，如果有错误欢迎指正。</p>
-<p>参考资料：《PHP Game Programming》</p></div>
-        <hr />
-    </div>
+<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/socket-programming-in-php/">read more</a></div>
+    </div>  
 		
     
  
@@ -489,13 +239,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -507,9 +257,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

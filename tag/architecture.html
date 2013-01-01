@@ -59,93 +59,17 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/06/three-software-architecture-style/"><h1>3 Software Architecture Style</h1></a>
-            Sat 02 June 2012
+        <a href="http://hackecho.com/2012/06/three-software-architecture-style/"><h2>3 Software Architecture Style</h2></a>
+        <div class= "well small"> Sat 02 June 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
-<p>This brief introduction of three software architecture style is from my homework of Software Architecture Course. Thanks for the guidance of Prof. Zhenyan Ji. All right reserved by hackecho.com.</p>
-<p>Actually there are nine SA styles right in class and in this task I'm responsible of Event Driven, SOA and C2 style. I'm very glad to share it with you and if there is anything wrong in my article please leave a comment and let's have a discussion. Thank you.</p>
-<h3>Event Driven Style</h3>
-<p>事件驱动的意思是指程序执行流程是由使用者的动作（如鼠标的按键，键盘的按键动作）或者是由其他程序的信息来决定的。事件驱动模型有三大要素：</p>
-<ul>
-<li>
-<p>事件源：能够接受外部事件的源体</p>
-</li>
-<li>
-<p>侦听器：能够接受事件源通知的对象</p>
-</li>
-<li>
-<p>事件处理程序：用于处理事件的对象</p>
-</li>
-</ul>
-<p>一般来讲有两种事件驱动控制模型：</p>
-<p>1.Broadcast models</p>
-<p>这种模型中，有两种广播方式：第一种是无目的广播，靠接收者自行决定是否加以处理或简单抛弃。第二种是选择广播式，各个组件（即事件处理程序）会在事件源中注册侦听器，当此侦听器被触发后，系统再调用相应的组件。</p>
-<p>2.Interrupt-driven models</p>
-<p>这种模型大多数应用于实时响应的系统中，在这些系统中有一个中断处理器（事件源）来监测外部的中断信号，然后再调用响应的组件（事件处理程序）处理中断。</p>
-<p><strong>1. Broadcast models</strong></p>
-<p><em>系统描述</em></p>
-<p>本案例取自我们平常编程时经常使用的调试器（Debugger）工作原理。</p>
-<p><em>设计思路</em></p>
-<p>编辑器与变量检测器向调试器注册，接收“断点事件”；一旦遇到断点，调试器发布事件，从而触发“编辑器”与“变量监测器”；这时编辑器将源代码滚动到断点处，变量监测器则更新当前变量值并显示出来。</p>
-<p><em> 架构图</em></p>
-<p><img alt="" src="/static/images/2012/06/1.png" /></p>
-<p><strong>2. Interrupt-driven models</strong></p>
-<p><em>系统描述</em></p>
-<p>本案例取自我们学习的课程《操作系统基本概念》。</p>
-<p>在操作系统中，中断是用以提高计算机工作效率、增强计算机功能的一项重要技术。最初引入硬件中断，只是出于性能上的考量。如果计算机系统没有中断，则处理器与外部设备通信时，它必须在向该设备发出指令后进行忙等待(Busy waiting)，反复轮询该设备是否完成了动作并返回结果。这就造成了大量处理器周期被浪费。引入中断以后，当处理器发出设备请求后就可以立即返回以处理其他任务，而当设备完成动作后，发送中断信号给处理器，后者就可以再回过头获取处理结果。这样，在设备进行处理的周期内，处理器可以执行其他一些有意义的工作，而只付出一些很小的、切换上下文所引发的时间代价。后来被用于CPU外部与内部紧急事件的处理、机器故障的处理、时间控制等多个方面，并产生通过软件方式进入中断处理（软中断）的概念。</p>
-<p><em>设计思路</em></p>
-<p>在硬件实现上，中断可以是一个包含控制线路的独立系统，也可以被整合进存储器子系统中。</p>
-<p>对于前者，在IBM个人机上，广泛使用可编程中断控制器（Programmable Interrupt Controller，PIC）来负责中断响应和处理。PIC被连接在若干中断请求设备和处理器的中断引脚之间，从而实现对处理器中断请求线路的复用。</p>
-<p>作为另一种中断实现的形式，即存储器子系统实现方式，可以将中断端口映射到存储器的地址空间，这样对特定存储器地址的访问实际上是中断请求。</p>
-<p><em>架构图</em></p>
-<p>第一种实现（中断是包含控制线路的独立系统）：</p>
-<p><img alt="" src="/static/images/2012/06/2.png" /></p>
-<p>第二种实现（中断被整合进存储器子系统中）：</p>
-<p><a href="/static/images/2012/06/3.png"><img alt="" src="/static/images/2012/06/3.png" /></a></p>
-<h3>SOA</h3>
-<p>面向服务的体系结构（Service-Oriented Architecture，SOA）是一个组件模型，它将应用程序的不同功能单元（称为服务）通过这些服务之间定义良好的接口和契约联系起来。接口是采用中立的方式进行定义的，它应该独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在各种这样的系统中的服务可以一种统一和通用的方式进行交互。</p>
-<p>SOA中的三种角色：</p>
-<ol>
-<li>服务提供者</li>
-</ol>
-<p>发布服务，并对使用服务的请求进行响应</p>
-<ol>
-<li>服务代理</li>
-</ol>
-<p>注册已经发布的服务提供者，对其进行分类，并提供服务搜索功能</p>
-<ol>
-<li>服务请求者</li>
-</ol>
-<p>利用服务代理查找所需服务，然后使用服务</p>
-<p><em>系统描述</em></p>
-<p>SOA本身是个概念性非常强的东西，为了更好地说明，这里以一个简单的网上买书来理解一下这个概念。</p>
-<p><em>设计思路</em></p>
-<p>加入说一个人现在想在网上买书，流程大概是这样的：首先要登录网站，找到要买的书，然后在线付款。如果用面向对象思维去考虑，这些过程应该是一个工程的不同类。但事实上卖书的网站是不可能拿到银行的付款类并操作银行的数据库的。所以这时候我们用SOA的思维去考虑。卖书的网站提供一个服务，你可以在这里选择书并订购；银行提供一个服务，是检查你的帐户上是否有钱，并取得一定金额；此时再返回网站提供的服务进行结帐，交易成功之后，银行那边的服务也会做出结算。这样就完成了一次交易。</p>
-<p>在这个系统中，银行和网站都是服务提供者，他们将各自的服务注册到服务代理（这个可以由网站来做），然后需要用的时候请求服务即可。其间的数据大部分情况时通过XML来进行传递。</p>
-<p><em>架构图</em></p>
-<p><img alt="" src="/static/images/2012/06/4.png" /></p>
-<h3>C2</h3>
-<p>C2是一种基于构件和消息的架构风格，可用于创建灵活的、可伸缩的软件系统。可以将C2架构看做是按照一定的规则由连接件（如消息路由设备）连接的许多构件组成的层次网络：系统中的构件和连接件都有一个“顶部”和“底部”。一个构件的“顶部”或“底部”可以连接到另一个连接件的“顶部”或“底部”。对于一个连接件，和其相连的构件或连接件的数量没有限制，但是构件和构件之间不能直接相连。</p>
-<p>C2风格定义了两种类型的消息：向上发送的请求消息（Request）和向下发送的通知消息（Notification）。请求是通过向上层构件发送消息以获得某种服务，而通知则是告知构件的内部状态发生了改变。连接件负责消息的路由、过滤和广播，构件之间不存在直接的通信手段，而只能通过交换连接件发送的异步消息进行通信。</p>
-<p><em>系统描述</em></p>
-<p>我们以《软件体系结构》这门课补课安排为例，简单理解一下C2风格。</p>
-<p><em>设计思路</em></p>
-<p>这个例子中包含三种构件：教师构件、学生构件、教学科构件。</p>
-<p>需要补课的时候，冀老师首先分别向学生和教学科发出补课请求，并提供一个自己期望的补课时间和地点的集合；同时，冀老师分别向学生和教学科发出请求获取学生和教学科期望的补课时间和地点的集合。学生与教学科收到老师的补课请求和参数（时间和地点）后，结合自身情况和教室的使用情况，选出学生和教学科期望老师补课的时间和地点的集合后返回给老师。老师接收到学生与教学科的返回集合后，再结合自己的期望集合最后得出准确的补课时间和地点，并通知学生与教学科。</p>
-<p><em>架构图</em></p>
-<p><img alt="" src="/static/images/2012/06/5.png" /></p>
-<p>再次感谢冀振燕老师的指导，如若转载请注明出处。</p></div>
-        <hr />
-    </div>
+ </div>
+        <div class="summary"><p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
+<p>This brief introduction of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/three-software-architecture-style/">read more</a></div>
+    </div>  
 		
             <div class="pagination">
 <ul>
@@ -194,13 +118,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -212,9 +136,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>

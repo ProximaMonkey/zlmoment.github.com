@@ -59,18 +59,15 @@
 
 
     <div class='article'>
-        <div class="content-title">
-            <a href="http://hackecho.com/2012/04/algorithm-of-24-game/"><h1>24点游戏（速算24）算法</h1></a>
-            Mon 23 April 2012
+        <a href="http://hackecho.com/2012/04/algorithm-of-24-game/"><h2>24点游戏（速算24）算法</h2></a>
+        <div class= "well small"> Mon 23 April 2012
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
- 
-        </div>
-        
-        <div><p>24点游戏规则：任取1－13之间的4个数字，用＋－＊／（）连结成算式，使得式子的计算结果为24。很多人玩的都是用扑克牌玩的那种，两人各出2张牌，谁先算出来谁赢，赢家收回已经算过的4张牌。最后看谁手里的牌多。</p>
+ </div>
+        <div class="summary"><p>24点游戏规则：任取1－13之间的4个数字，用＋－＊／（）连结成算式，使得式子的计算结果为24。很多人玩的都是用扑克牌玩的那种，两人各出2张牌，谁先算出来谁赢，赢家收回已经算过的4张牌。最后看谁手里的牌多。</p>
 <p>解决此问题一般使用<strong>穷举法</strong>，即穷举4个整数和运算符的所有可能的表达式，然后对表达式求值。</p>
 <p>注：以下文字中“运算”两字都表示对＋－＊／分别计算。</p>
 <p>思路一：</p>
@@ -85,50 +82,8 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>(2) 在数组中取两个数字的排列，共有 P(4,2) 种排列。对每一个排列，</p>
 </li>
 <li>
-<p>(2.1) 对 + - * / 每一个运算符，</p>
-</li>
-<li>
-<p>(2.1.1) 根据此排列的两个数字和运算符，计算结果，</p>
-</li>
-<li>
-<p>(2.1.2) 改表数组：将此排列的两个数字从数组中去除掉，将 2.1.1 计算的结果放入数组中，</p>
-</li>
-<li>
-<p>(2.1.3) 对新的数组，重复步骤 2，</p>
-</li>
-<li>
-<p>(2.1.4) 恢复数组：将此排列的两个数字加入数组中，将 2.1.1 计算的结果从数组中去除掉。</p>
-</li>
-</ul>
-<p>当然还有很多很多其它的思路，效率也许更高。等待大家自己去探索。</p>
-<p>这里贴出一个Python实现的代码，请读者自己研究：</p>
-<p><strong>需要拷贝无行号代码、查看运行结果的读者请点击：<a href="http://codepad.org/DpgJbDfG">http://codepad.org/DpgJbDfG</a></strong></p>
-<div class="codehilite"><pre><span class="n">funs</span> <span class="p">=</span> <span class="p">[</span> <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">item</span><span class="p">[</span>0<span class="p">],</span><span class="n">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;+(&#39;</span><span class="o">+</span><span class="n">item</span><span class="p">[</span>1<span class="p">]</span><span class="o">+</span><span class="s">&#39;)&#39;</span><span class="p">),</span>
-        <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">item</span><span class="p">[</span>0<span class="p">],</span><span class="n">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;-(&#39;</span><span class="o">+</span><span class="n">item</span><span class="p">[</span>1<span class="p">]</span><span class="o">+</span><span class="s">&#39;)&#39;</span><span class="p">),</span>
-        <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="n">item</span><span class="p">[</span>0<span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;(&#39;</span><span class="o">+</span><span class="n">item</span><span class="p">[</span>1<span class="p">]</span><span class="o">+</span><span class="s">&#39;)-&#39;</span><span class="o">+</span><span class="n">str</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
-        <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">item</span><span class="p">[</span>0<span class="p">],</span><span class="n">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;*(&#39;</span><span class="o">+</span><span class="n">item</span><span class="p">[</span>1<span class="p">]</span><span class="o">+</span><span class="s">&#39;)&#39;</span><span class="p">),</span>
-        <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="n">item</span><span class="p">[</span>0<span class="p">]</span><span class="o">==</span>0 <span class="n">and</span> <span class="p">(</span>0<span class="p">,</span><span class="s">&#39;ZZZ&#39;</span><span class="p">))</span> <span class="n">or</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">item</span><span class="p">[</span>0<span class="p">,</span><span class="n">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;/(&#39;</span><span class="o">+</span><span class="n">item</span><span class="p">[</span>1<span class="p">]</span><span class="o">+</span><span class="s">&#39;)&#39;</span><span class="p">),</span>
-        <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">==</span>0 <span class="n">and</span> <span class="p">(</span>0<span class="p">,</span><span class="s">&#39;ZZZ&#39;</span><span class="p">))</span> <span class="n">or</span> <span class="p">(</span><span class="n">item</span><span class="p">[</span>0<span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;(&#39;</span><span class="o">+</span><span class="n">item</span><span class="p">[</span>1<span class="p">]</span><span class="o">+</span><span class="s">&#39;)/&#39;</span><span class="o">+</span><span class="n">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
- <span class="p">]</span>
-
-<span class="n">def</span> <span class="n">con</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="n">l</span> <span class="p">=</span> <span class="n">len</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-    <span class="n">p</span> <span class="p">=</span> <span class="n">list</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">l</span><span class="o">==</span>1<span class="p">:</span> <span class="k">return</span> <span class="p">{</span><span class="n">num</span><span class="p">[</span>0<span class="p">]:</span><span class="n">str</span><span class="p">(</span><span class="n">num</span><span class="p">[</span>0<span class="p">])}</span>
-    <span class="k">for</span> <span class="nb">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">f</span> <span class="n">in</span> <span class="n">funs</span><span class="p">:</span>
-            <span class="n">p</span> <span class="o">+</span><span class="p">=</span> <span class="n">map</span><span class="p">(</span><span class="n">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="nb">i</span><span class="p">],</span><span class="n">item</span><span class="p">),</span><span class="n">con</span><span class="p">(</span><span class="n">num</span><span class="p">[:</span><span class="nb">i</span><span class="p">]</span><span class="o">+</span><span class="n">num</span><span class="p">[</span><span class="nb">i</span><span class="o">+</span>1<span class="p">:]).</span><span class="n">items</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">dict</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-
-<span class="n">print</span> <span class="n">con</span><span class="p">(</span><span class="n">map</span><span class="p">(</span><span class="n">float</span><span class="p">,[</span>3<span class="p">,</span>3<span class="p">,</span>8<span class="p">,</span>8<span class="p">])).</span><span class="n">get</span><span class="p">(</span>21<span class="p">.</span>0<span class="p">,</span>0<span class="p">)</span>
-</pre></div>
-
-
-<p>参考资料：</p>
-<p><a href="http://eidolon.iteye.com/blog/312476">《趣味编程：24点算法实现》</a></p>
-<p><a href="http://blog.csdn.net/lizhongkan/article/details/4746289">《关于24点算法的思想和代码实现》</a></p></div>
-        <hr />
-    </div>
+<p>(2.1) 对 + - * / 每一个运算符 ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/algorithm-of-24-game/">read more</a></div>
+    </div>  
 		
     
  
@@ -232,13 +187,13 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Links
                 </li>
             
-                            <li><a href="http://shikailun.com/">异泪</a></li>
-                            <li><a href="http://www.gaodayue.com/">Gaodayue的日志</a></li>
-                            <li><a href="http://ilifezen.com/">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/">冰河的博客</a></li>
+                            <li><a href="http://shikailun.com/" target="_blank">异泪</a></li>
+                            <li><a href="http://www.gaodayue.com/" target="_blank">Gaodayue的日志</a></li>
+                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
+                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
+                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
+                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
+                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
                         </ul>
             </div>
             
@@ -250,9 +205,9 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
                 Social
                 </li>
            
-                                <li><a href="https://www.facebook.com/hackecho">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee">微博</a></li>
+                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
+                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
                             </ul>
             </div>
             </div>
