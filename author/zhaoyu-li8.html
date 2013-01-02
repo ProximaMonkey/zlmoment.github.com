@@ -60,6 +60,54 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/05/python-decorator/"><h2>Python中的装饰器Decorator</h2></a>
+        <div class= "well small"> Fri 11 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
+<p>如果使用如下的代码：</p>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
+<span class="p">@</span><span class="n">makeitalic</span>
+<span class="n">def</span> <span class="n">say</span><span class="p">():</span>
+    <span class="k">return</span> &quot;<span class="n">Hello</span>&quot;
+</pre></div>
+
+
+<p>打印出如下的输出：</p>
+<div class="codehilite"><pre><span class="nt">&lt;b&gt;&lt;i&gt;</span>Hello<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
+</pre></div>
+
+
+<p>你会怎么做？最后给出的答案是：</p>
+<div class="codehilite"><pre>def makebold(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;b&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/b&gt;</span>&quot;
+    return wrapped
+
+def makeitalic(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;i&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/i&gt;</span>&quot;
+    return wrapped
+
+@makebold
+@makeitalic
+def hello():
+    return &quot;hello world&quot;
+
+print hello() ## 返回 ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/python-decorator/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2012/12/python-yield/"><h2>Python中yield备忘</h2></a>
         <div class= "well small"> Mon 31 December 2012
 
@@ -320,55 +368,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 
 <p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
 <p>针对有高级管理权限的用户，如服务器或 VPS ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/"><h2>WordPress与Suhosin冲突的解决办法</h2></a>
-        <div class= "well small"> Fri 23 March 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
-<p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
-<p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
-<p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
-<p>主要参考文章：</p>
-<ul>
-<li>
-<p><a href="http://www.cnblogs.com/droko/archive/2012/03/06/2381966.html">《PHP进程高负载》</a></p>
-</li>
-<li>
-<p><a href="http://changblog.com/582">《大战suhosin》</a></p>
-</li>
-<li>
-<p><a href="http://changblog.com/981">《解决wordpress引起的suhosin报错》</a></p>
-</li>
-<li>
-<p><a href="http://core.trac.wordpress.org/ticket/13847">《WP increasing the memory above other server limit》</a></p>
-</li>
-<li>
-<p><a href="http://demon.tw/software/suhosin-php.html">《Suhosin，PHP保护神？》</a></p>
-</li>
-</ul>
-<p>先观察些时日再说。</p>
-<p><em>补充（2012-3-23 20:40）：</em></p>
-<p>放上我的临时解决办法：</p>
-<p>对于上面日志中的问题，原因是suhosin的memory_limit限制了脚本内存的分配。解决办法是在php.ini中搜索memory_limit关键字，修改如下：</p>
-<div class="codehilite"><pre><span class="n">extension</span><span class="p">=</span><span class="n">suhosin</span><span class="p">.</span><span class="n">so</span>
-<span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="p">=</span> 256<span class="n">M</span>
-</pre></div>
-
-
-<p>对于get和post数据大小限制的问题 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">read more</a></div>
     </div>	
 				
             <div class="pagination">

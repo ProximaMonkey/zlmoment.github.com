@@ -290,24 +290,24 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
  
 
     <div class='article'>
-        <a href="http://hackecho.com/2011/09/intro-to-thinkphp/"><h2>深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</h2></a>
-        <div class= "well small"> Mon 26 September 2011
+        <a href="http://hackecho.com/2013/01/intro-to-magnet-link/"><h2>Magnet Link 和 Torrent</h2></a>
+        <div class= "well small"> Tue 01 January 2013
 
 by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
  
 
 
  </div>
-        <div class="summary"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
-<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
-<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
-<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
-<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
-<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
-<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
-<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
-<p><strong>加速开发过程：</strong></p>
-<p>PHP框架 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/09/intro-to-thinkphp/">read more</a></div>
+        <div class="summary"><p>今天是美国的元旦（New-Year），本来打算到工程院度过一天，没想到整个学校导出都是大门紧闭。回家后准备下载一部电影，于是折腾中竟然对磁力链接和种子产生了兴趣。不做深究，只谈表层原理。</p>
+<p>著名的BT搜索站海盗湾已经声明，不再托管任何种子文件，将全部更改为提供磁力链接（Magnet Links）。如果你还没有使用过磁力链接，这里将告诉你磁力链接和种子文件的关系（当然，磁力链接本身不仅限于种子文件）。</p>
+<p><strong>磁力链接和种子文件的区别</strong></p>
+<p>当你下载一个种子文件时，其实是下载了一个包含了资源文件信息的小文件，这个小文件告诉BT客户端资源文件的名称、tracker的URI等。然后BT客户端会根据种子文件计算一个hash值（就像ISBN一样），再根据哈希值找到此刻正在分享这个文件的用户，然后开始P2P的传输。</p>
+<p>而磁力链接就像上述过程的一个中间人。最基本的磁力链接包含了上述过程中计算出来的hash值，好让BT客户端可以直接搜索资源。磁力链接不需要tracker，因为其使用了DHT网络（<a href="http://lifehacker.com/5411311/bittorrents-future-dht-pex-and-magnet-links-explained">阅读更多</a>），也不需要你下载任何文件，只需要一串文本字符串即可。</p>
+<p><strong>怎样使用磁力链接</strong></p>
+<p>磁力链接的形式是以magnet:开头的一串字符，你只需要直接点击磁力链接或把它复制到支持磁力下载的客户端即可。</p>
+<p><strong>有什么意义</strong></p>
+<p>这有什么意义呢？只是把种子文件换了一种形式而已。如果你这样以为就错了，否则海盗湾也不会全站进行转换。</p>
+<p>最重要原因是，使用磁力链接可以使像海盗湾这样的种子站摆脱法律纠缠。因为海盗湾本身将不再存储任何链接到受版权保护的资源上（比如.torrent文件）。这样将无法说海盗湾本身<em>直接 ...</em></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2013/01/intro-to-magnet-link/">read more</a></div>
     </div>	
 				
             <div class="pagination">

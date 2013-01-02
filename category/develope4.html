@@ -60,6 +60,46 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/01/git-notes/"><h2>Git 学习笔记</h2></a>
+        <div class= "well small"> Sun 29 January 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>学习Git的笔记，会不定期更新。</p>
+<p>我的Github地址：<a href="https://github.com/uutroy">https://github.com/uutroy</a></p>
+<p>首先推荐两篇非常好的入门：</p>
+<ul>
+<li>
+<p><a href="http://gitimmersion.com/">Git Immersion</a></p>
+</li>
+<li>
+<p><a href="http://www.ralfebert.de/tutorials/git/#commit_a">Git Tutorial</a></p>
+</li>
+</ul>
+<p>一般流程：取代码 → 更新到最新版本 → 修改代码 → 提交</p>
+<h2>Creating a new repository</h2>
+<blockquote>
+<p>$ git init</p>
+</blockquote>
+<h2>取代码及修改全局设置</h2>
+<p>git在创建提交的时候会记录你的名字和email地址，所以你应该告诉git这些内容。可以使用’git config’命令来设置，如果传递参数’-global’ ，它会将这些值记录在~/.gitconfig文件里，作为这些配置的默认值。</p>
+<p>设置用户名与邮箱</p>
+<blockquote>
+<p>git config –global user.name “name”</p>
+</blockquote>
+<p>git config –global user.email “username@email.com ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/01/git-notes/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2012/01/the-zen-of-python/"><h2>Python之禅 - The Zen of Python</h2></a>
         <div class= "well small"> Tue 24 January 2012
 
@@ -357,45 +397,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/"><h2>深入浅出ThinkPHP系列教程(四) 模块与操作</h2></a>
-        <div class= "well small"> Wed 12 October 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
-<p>具体如下图所示：</p>
-<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
-<p>我们来详细了解一下图中所示的模块和操作。</p>
-<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
-<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
-<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
-<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
-        <span class="err">具体代码略……</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
-<span class="err">```</span><span class="nx">PHP</span>
-
-<span class="err">该文件已经演示了一个基于</span> <span class="nx">ThinkPHP</span> <span class="err">的实际应用。</span>
-
-<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
-
-<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/category/develope3.html">&larr; Previous</a></li>
@@ -407,6 +408,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/category/develope5.html">5</a></li>
     <li class=""><a href="http://hackecho.com/category/develope6.html">6</a></li>
     <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope8.html">8</a></li>
 
     <li class="next"><a href="http://hackecho.com/category/develope5.html">Next &rarr;</a></li>
 

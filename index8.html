@@ -60,6 +60,36 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/"><h2>用CBitmapButton实现按钮四态的方法</h2></a>
+        <div class= "well small"> Fri 15 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>今天上午由于特殊原因重装了系统，下午四点左右开始了交大一软通的界面绘制。这次一软通界面全面更新，各种控件该自绘的自绘，该贴图的贴图，力争给用户最好的视觉和操作体验。</p>
+<p>第二个选项卡效果是鼠标悬浮时的效果，其实这不是TabControl，而是普普通通的Button，但用到了按钮的四态。</p>
+<p>下面简单总结一下四态按钮的实现，以备日后之需。</p>
+<p>为了实现一些按钮的特效，网上遍布着从CButton派生的各种各样的按钮类，其中最为著名的就是CButtonST类。但考虑到各方面原因，最好的选择还是自己努力实现想要的效果，一方面可以消除代码冗余，另一方面自己也学习到了知识。</p>
+<p>今天的主角是CBitmapButton类，可以参考MSDN自带的例子“CTRLTEST”学习CBitmapButton的用法。这里简单总结一些要点：</p>
+<p>按钮选中Owner Draw属性，不需要选择Bitmap属性；</p>
+<p>按钮成员变量的类型定义为CBitmapButton，不可用ClassWizard生成CButton类进行修改，否则会出错；</p>
+<p>将位图与按钮进行关联，一般有两种方法：</p>
+<p>（一）使用CBitmapButton::LoadBitmaps装载各种状态的图片,使用SubclassDlgItem关联到想要的按钮，使用CBitmapButton::SizeToContent函数使按钮适合图片大小。注意Loadbitmaps一定要在关联到按钮之前进行！</p>
+<p>（二）使用CBitmapButton::AutoLoad函数关联到想要的按钮。</p>
+<p>在第三点中推荐使用第二种方法，但有一些注意事项：</p>
+<p>A、之前不能使用CBitmapButton::LoadBitmaps装载各种状态的图片，否则会出错。</p>
+<p>B、AutoLoad函数完成的关联和改变按钮大小的CBitmapButton ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2011/07/something-about-google-plus/"><h2>关于Google+的种种</h2></a>
         <div class= "well small"> Fri 08 July 2011
 
@@ -337,38 +367,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>前两段是小发一些感慨，今晚刷夜做一个项目，因为周四就要交了，不是我拖延，而是一个月的开发周期里，我得从头开始学几门新的技术来开发，再加上学校的课业和考试，我已经尽力了。我的同伴们也很给力，感谢他们。</p>
 <p>刚刚看了一篇文章，原文题目叫《每个程序员上辈子都是折翼的天使》（后附原文），有一些心得，不知对不对，当不当说，说出来合不合适，但简单总结一下吧。（个人观点，请勿跨省）</p>
 <p>貌似现在社会上对程序员的看法褒贬不一，不像几年前，程序员的工作是神圣的，能让黑黑的屏幕滚动几行字就很牛X的。那时计算机普及率不高，开发语言也有限，不像现在这么丰富、易学（当年要是有Python这样的脚本语言，估计扫地的老太太早出现了）。当时程序员的翅膀是硬的，受万人敬仰倒谈不上，找工作起码不是问题。如今，有一个新名词叫做 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/05/fly-of-promgrammer/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/05/mother-day-of-programmer/"><h2>程序猿的母亲节</h2></a>
-        <div class= "well small"> Sun 08 May 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><em>转自<a href="http://t.sina.com.cn/2093492691">@程序员的那些事</a></em></p>
-<p>母亲节（Mother's Day），作为一个感谢母亲的节日，最早出现在古希腊，时间是每年的1月8日，而在中国、美国、加拿大和一些其他国家，则是每年5月的第2个星期天，其他一些国家的日期也并不相同。</p>
-<p>母亲们在这一天通常会收到礼物。康乃馨被视为献给母亲的花，中国的母亲花是萱草花，也称忘忧草。作为一个特殊的群体——程序员，我们的表述方式自然也会有些特色。我们这一辈程序员的父母（至少是绝大部分父母），别说这下面的编程语言，有些甚至都还不知道如何操作电脑。虽然也许母亲们会看不懂，但这种表述你我都能领会。或许几十年后，等我们自己的儿女用这种方式来表达他们对父母的爱，你我绝对不会陌生。</p>
-<div class="codehilite"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">MothersDayFromCodeMonkeyView</span>
-    <span class="p">{</span>
-        <span class="n">public</span> <span class="n">MothersDayFromCodeMonkeyView</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">int</span> <span class="n">age</span><span class="p">=</span>0<span class="p">;</span> <span class="o">//</span>猿猿刚出生的时候
-            <span class="n">saying</span><span class="p">=</span>&quot;<span class="n">crying</span>&quot;<span class="p">;</span> <span class="o">//</span>除了哭啼，还不知道如何去表达
-
-            <span class="k">while</span><span class="p">(</span><span class="n">true</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">try</span>
-                <span class="p">{</span>
-                    <span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span>365<span class="o">*</span>24 ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/05/mother-day-of-programmer/">read more</a></div>
     </div>	
 				
             <div class="pagination">

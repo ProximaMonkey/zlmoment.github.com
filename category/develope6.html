@@ -60,6 +60,43 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2011/07/asynctask-in-android/"><h2>Android中使用AsyncTask实现简单的异步处理</h2></a>
+        <div class= "well small"> Sun 24 July 2011
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
+<p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
+<p>Android提供了几种在其他线程中访问UI线程的方法：</p>
+<p><code>Java
+  Activity.runOnUiThread( Runnable )
+  View.post( Runnable )
+  View.postDelayed( Runnable, long )
+  Hanlder</code></p>
+<p>这些类或方法同样会使你的代码很复杂很难理解。然而当你需要实现一些很复杂的操作并需要频繁地更新UI时这会变得更糟糕。</p>
+<p>为了解决这个问题，Android 1.5提供了一个工具类：AsyncTask，它使创建需要与用户界面交互的长时间运行的任务变得更简单。不需要借助线程和Handler即可实现。</p>
+<p>AsyncTask是抽象类.AsyncTask定义了三种泛型类型 Params，Progress和Result。</p>
+<ul>
+<li>
+<p>Params 启动任务执行的输入参数，比如HTTP请求的URL。</p>
+</li>
+<li>
+<p>Progress 后台任务执行的百分比。</p>
+</li>
+<li>
+<p>Result ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/asynctask-in-android/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/"><h2>用CBitmapButton实现按钮四态的方法</h2></a>
         <div class= "well small"> Fri 15 July 2011
 
@@ -298,31 +335,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>很早以前，我喜欢打篮球，被分配到一个水平比较高的队里。一开始适应的确很困难，但环境的压力越大（重大比赛），我的长进也就越明显 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/be-programmer-best/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/04/level-of-programmer/"><h2>传说中程序员的层次</h2></a>
-        <div class= "well small"> Mon 11 April 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>记得很久以前看过这篇文章，本以为当时的我怎么说也应该达到第三级了吧，可读完第一级就发现我已经落后了...</p>
-<p>自西方文艺复兴以来，中国在自然科学方面落后西方很多，软件领域也不例外。当然现在中国的许多程序员们对此可能有许多不同的意见，有些人认为中国的程序员水平远落后于西方，有些则认为中国的程序员个人能力并不比西方的程序员差，只是整个软件产业落后而已。</p>
-<p>那么，到底中国的程序员水平比西方程序员水平差，还是中国有许多优秀的程序员达到或超过了西方程序员同等水平呢？要解决这个问题，必须先知道程序员有多少种技术层级，每个层级需要什么样的技术水平，然后再比较中国和西方在各个技术层级的人数，就可以知道到底有没有差距，差距有多大。</p>
-<p>当然，对于如何划分程序员的技术层级，不同公司或不同人会有不同的划分标准，下面的划分仅代表个人的观点，如有不当之处，还请砸板砖予以纠正。</p>
-<p><strong>第1层  菜鸟</strong></p>
-<p>第1层楼属于地板层，迈进这层楼的门槛是很低的。基本上懂计算机的基本操作，了解计算机专业的一些基础知识，掌握一门基本的编程语言如C/C++，或者Java，或者JavaScript，...，均可入门迈进这层。</p>
-<p>在这层上，中国有着绝对的优势，除了从计算机专业毕业的众多人数外，还有大量的通信、自动化、数学等相关专业的人士进入这一行，此外还有众多的其他专业转行的人士，人数绝对比西方多出甚多。并且还有一个优势就是我们这层人员的平均智商比西方肯定高。</p>
-<p>没有多少人愿意一辈子做菜鸟，因为做"菜鸟"的滋味实在是不咋的，整天被老大们吆喝着去装装机器 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/level-of-programmer/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/category/develope5.html">&larr; Previous</a></li>
@@ -334,6 +346,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/category/develope5.html">5</a></li>
     <li class="active"><a href="http://hackecho.com/category/develope6.html">6</a></li>
     <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope8.html">8</a></li>
 
     <li class="next"><a href="http://hackecho.com/category/develope7.html">Next &rarr;</a></li>
 

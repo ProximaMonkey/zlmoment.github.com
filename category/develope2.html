@@ -60,6 +60,54 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/05/python-decorator/"><h2>Python中的装饰器Decorator</h2></a>
+        <div class= "well small"> Fri 11 May 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
+<p>如果使用如下的代码：</p>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
+<span class="p">@</span><span class="n">makeitalic</span>
+<span class="n">def</span> <span class="n">say</span><span class="p">():</span>
+    <span class="k">return</span> &quot;<span class="n">Hello</span>&quot;
+</pre></div>
+
+
+<p>打印出如下的输出：</p>
+<div class="codehilite"><pre><span class="nt">&lt;b&gt;&lt;i&gt;</span>Hello<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
+</pre></div>
+
+
+<p>你会怎么做？最后给出的答案是：</p>
+<div class="codehilite"><pre>def makebold(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;b&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/b&gt;</span>&quot;
+    return wrapped
+
+def makeitalic(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;i&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/i&gt;</span>&quot;
+    return wrapped
+
+@makebold
+@makeitalic
+def hello():
+    return &quot;hello world&quot;
+
+print hello() ## 返回 ...</pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/python-decorator/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2012/05/websocket-server-with-tornado/"><h2>用Tornado实现WebSocket服务器</h2></a>
         <div class= "well small"> Tue 01 May 2012
 
@@ -382,31 +430,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">read more</a></div>
     </div>	
 				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/03/letter-to-software-colleagues/"><h2>[转载] 给浮躁的软件业同仁</h2></a>
-        <div class= "well small"> Thu 22 March 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><strong>文章来源：网络    作者：未知</strong></p>
-<p>中国有很多小朋友，他们18,9岁或21,2岁，通过自学也写了不少代码，他们有的代码写的很漂亮，一些技术细节相当出众，也很有钻研精神，但是他们被一些错误的认识和观点左右，缺乏对系统，对程序的整体理解能力，这些人，一个网上的朋友说得很好，他们实际是fans，压根没有资格称为程序员，但是据我所知，不少小网络公司的Cfans,拿着吓人的工资，做着吓人的项目，项目的结局通常也很吓人。</p>
-<p>程序员基本素质：</p>
-<p>作一个真正合格的程序员，或者说就是可以真正合格完成一些代码工作的程序员，应该具有的素质：</p>
-<p>1.团队精神和协作能力</p>
-<p>把它作为基本素质，并不是不重要，恰恰相反，这是程序员应该具备的最基本的，也是最重要的安身立命之本。把高水平程序员说成独行侠的都是在呓语，任何个人的力量都是有限的，即便如linus这样的天才，也需要通过组成强大的团队来创造奇迹，那些遍布全球的为linux写核心的高手们，没有协作精神是不可想象的。独行侠可以作一些赚钱的小软件发点小财，但是一旦进入一些大系统的研发团队，进入商业化和产品化的开发任务，缺乏这种素质的人就完全不合格了。</p>
-<p>2.文档习惯</p>
-<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/letter-to-software-colleagues/">read more</a></div>
-    </div>	
-				
             <div class="pagination">
 <ul>
     <li class="prev"><a href="http://hackecho.com/category/develope.html">&larr; Previous</a></li>
@@ -418,6 +441,7 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <li class=""><a href="http://hackecho.com/category/develope5.html">5</a></li>
     <li class=""><a href="http://hackecho.com/category/develope6.html">6</a></li>
     <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope8.html">8</a></li>
 
     <li class="next"><a href="http://hackecho.com/category/develope3.html">Next &rarr;</a></li>
 

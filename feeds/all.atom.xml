@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hackecho</title><link href="http://hackecho.com/" rel="alternate"></link><link href="http://hackecho.com/feeds/all.atom.xml" rel="self"></link><id>http://hackecho.com/</id><updated>2012-12-31T13:57:00-06:00</updated><entry><title>Python中yield备忘</title><link href="http://hackecho.com/2012/12/python-yield/" rel="alternate"></link><updated>2012-12-31T13:57:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2012-12-31:2012/12/python-yield/</id><summary type="html">&lt;p&gt;总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hackecho</title><link href="http://hackecho.com/" rel="alternate"></link><link href="http://hackecho.com/feeds/all.atom.xml" rel="self"></link><id>http://hackecho.com/</id><updated>2013-01-01T18:03:00-06:00</updated><entry><title>Magnet Link 和 Torrent</title><link href="http://hackecho.com/2013/01/intro-to-magnet-link/" rel="alternate"></link><updated>2013-01-01T18:03:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2013-01-01:2013/01/intro-to-magnet-link/</id><summary type="html">&lt;p&gt;今天是美国的元旦（New-Year），本来打算到工程院度过一天，没想到整个学校导出都是大门紧闭。回家后准备下载一部电影，于是折腾中竟然对磁力链接和种子产生了兴趣。不做深究，只谈表层原理。&lt;/p&gt;
+&lt;p&gt;著名的BT搜索站海盗湾已经声明，不再托管任何种子文件，将全部更改为提供磁力链接（Magnet Links）。如果你还没有使用过磁力链接，这里将告诉你磁力链接和种子文件的关系（当然，磁力链接本身不仅限于种子文件）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;磁力链接和种子文件的区别&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当你下载一个种子文件时，其实是下载了一个包含了资源文件信息的小文件，这个小文件告诉BT客户端资源文件的名称、tracker的URI等。然后BT客户端会根据种子文件计算一个hash值（就像ISBN一样），再根据哈希值找到此刻正在分享这个文件的用户，然后开始P2P的传输。&lt;/p&gt;
+&lt;p&gt;而磁力链接就像上述过程的一个中间人。最基本的磁力链接包含了上述过程中计算出来的hash值，好让BT客户端可以直接搜索资源。磁力链接不需要tracker，因为其使用了DHT网络（&lt;a href="http://lifehacker.com/5411311/bittorrents-future-dht-pex-and-magnet-links-explained"&gt;阅读更多&lt;/a&gt;），也不需要你下载任何文件，只需要一串文本字符串即可。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;怎样使用磁力链接&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;磁力链接的形式是以magnet:开头的一串字符，你只需要直接点击磁力链接或把它复制到支持磁力下载的客户端即可。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;有什么意义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这有什么意义呢？只是把种子文件换了一种形式而已。如果你这样以为就错了，否则海盗湾也不会全站进行转换。&lt;/p&gt;
+&lt;p&gt;最重要原因是，使用磁力链接可以使像海盗湾这样的种子站摆脱法律纠缠。因为海盗湾本身将不再存储任何链接到受版权保护的资源上（比如.torrent文件）。这样将无法说海盗湾本身&lt;em&gt;直接&lt;/em&gt;允许用户下载版权保护内容了。不知道以后会不会有新的法律法规颁布，但目前来看，海盗湾大可高枕无忧了。&lt;/p&gt;
+&lt;p&gt;如果你想了解更多关于磁力链接的知识，请阅读&lt;a href="http://en.wikipedia.org/wiki/Magnet_uri"&gt;维基百科&lt;/a&gt;。&lt;/p&gt;</summary><category term="Magnet Link"></category><category term="Torrent"></category></entry><entry><title>Python中yield备忘</title><link href="http://hackecho.com/2012/12/python-yield/" rel="alternate"></link><updated>2012-12-31T13:57:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2012-12-31:2012/12/python-yield/</id><summary type="html">&lt;p&gt;总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。&lt;/p&gt;
 &lt;p&gt;带有 yield 的函数在 Python 中被称之为 generator（生成器）。&lt;/p&gt;
 &lt;p&gt;我们已生成斐波那契数列为例，来循序渐进了解yield。&lt;/p&gt;
 &lt;p&gt;生成斐波那契数列：&lt;/p&gt;

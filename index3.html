@@ -60,6 +60,36 @@
  
 
     <div class='article'>
+        <a href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/"><h2>WebSocket新版Hybi-10协议介绍</h2></a>
+        <div class= "well small"> Sun 29 April 2012
+
+by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>不知道问什么，网上的几乎所有关于WebSocket的讲解都是旧版协议，开源的PHP-WebSocket也早不更新了。一开始还以为是服务器程序的原因，后来发现是协议变更了。而且好不容易将握手协议更换为新版后，发现传送的数据都是乱码（见<a href="http://weibo.com/1784705505/ygyi4A0Pj">这里</a>），原来数据报文的格式也进行了非常大的变更！</p>
+<p>之前我们曾介绍过基于WebSocket协议的服务器实现，但那篇文章中提到的WebSocket协议标准还是草案7.5、7.6的标准，如今只有Safari支持此版本的协议，Chrome和Firefox最新版都已升级至Hybi-10（<a href="http://tools.ietf.org/html/draft-ietf-hybi-thewebsocketprotocol-10">协议地址</a>）。因此，我们再来介绍一下WebSocket新版协议Hybi-10。这次协议变更非常大，主要集中在握手协议和数据传输的格式上。下面我们来详细介绍一下。</p>
+<h3>握手协议</h3>
+<p>我们先来看一下大致的区别：</p>
+<ol>
+<li>
+<p>最老的websocket草案标准中是没有安全key，草案7.5、7.6中有两个安全key，而现在的草案10中只有一个安全key，即将7.5、7.6中http头中的"Sec-WebSocket-Key1"与"Sec-WebSocket-Key2"合并为了一个"Sec-WebSocket-Key"</p>
+</li>
+<li>
+<p>把http头中Upgrade的值由"WebSocket"修改为了"websocket"；http头中的"-Origin"修改为了"Sec-WebSocket-Origin";</p>
+</li>
+<li>
+<p>增加了http头"Sec-WebSocket-Accept ...</p></li></ol> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">read more</a></div>
+    </div>	
+				
+    
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="http://hackecho.com/2012/04/algorithm-of-24-game/"><h2>24点游戏（速算24）算法</h2></a>
         <div class= "well small"> Mon 23 April 2012
 
@@ -382,30 +412,6 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 
 
 <p>当然 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/"><h2>[转]快速构建实时定向抓取集群</h2></a>
-        <div class= "well small"> Sat 10 March 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>定义：</p>
-<p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
-<p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
-<h3>名词解析：</h3>
-<p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
-<p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
-<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">read more</a></div>
     </div>	
 				
             <div class="pagination">
