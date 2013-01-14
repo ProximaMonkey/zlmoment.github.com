@@ -1,75 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Hackecho</title>
-    <meta name="description" content="">
-    <meta name="author" content="Zhaoyu Li">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
+  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackecho - Articles by Zhaoyu Li</title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://hackecho.com/theme/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
-    <!-- Le styles -->
-    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
-
-</head>
-
+  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
+  </head>
 <body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="http://hackecho.com">Hackecho</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    <li><a href="/archives.html">Archives</a></li>
-                    <li><a href="/tags.html">Tags</a></li>
-                    
-                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-                    <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-                        </ul>
-        </div>
-        
+<header class="main-header">
+  <a href="http://github.com/zlmoment">
+<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+  <hgroup>
+    <div>
+      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
     </div>
-    </div>
-</div>
+    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
+    <h2>Software engineer, Pythonista and Love Wed.</h2>
+  </hgroup>
+  <nav>
+    <ul class="main-nav">
+      
+            <li><a href="/archives.html">Archives</a></li>
+      
+      
+                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+              
 
-<div class="container">
-    <div class="content">
-    <div class="row">
+    </ul>
+  </nav>
+  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
 
-        <div class="span9">
-                
-
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/"><h2>WordPress与Suhosin冲突的解决办法</h2></a>
-        <div class= "well small"> Fri 23 March 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
+</header>
+<section class="main-section blog-section" id="blog-posts">
+    <h3 class="date">Fri 23 March 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/" title="Permalink to WordPress与Suhosin冲突的解决办法">WordPress与Suhosin冲突的解决办法</a></h2>
+	
+	</hgroup>
+	<p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
 <p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
 <p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
 <p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
@@ -100,92 +80,56 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 </pre></div>
 
 
-<p>对于get和post数据大小限制的问题 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2010/09/some-notes-about-myself/"><h2>记录一些心情</h2></a>
-        <div class= "well small"> Sun 05 September 2010
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>刚刚写的状态：“所谓的理想，所谓的现实，所谓的差距，经历了太多以前未曾有过的挫折，或许是以前太顺利了。”其实也没什么，有些心情记录一下，会更好的。</p>
+<p>对于get和post数据大小限制的问题 ...</p>
+	<div><a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 05 September 2010</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2010/09/some-notes-about-myself/" title="Permalink to 记录一些心情">记录一些心情</a></h2>
+	
+	</hgroup>
+	<p>刚刚写的状态：“所谓的理想，所谓的现实，所谓的差距，经历了太多以前未曾有过的挫折，或许是以前太顺利了。”其实也没什么，有些心情记录一下，会更好的。</p>
 <p>昨天与10级的班长支书见面，又看到了去年自己的影子。依稀记得去年这个时候，学长坐在那里给我们讲述他们的生活，而如今，我们坐在了他们的位置，给满怀期待的学弟学妹们讲述我们的生活。我能理解他们的心情，脑海中浮现出去年的一张张影像，好一个时光的交错更替。8月28号为新生党员带路，9月1号为新生家长带路，无一不是回忆，时隔一年，感觉时间还没有真正开始，却早已逝去，留下的都是追忆。</p>
 <p>都说自古才子多寂寞，我不是才子，为何有时也会孤单？其实一个人的生活，孤单但并不孤独。</p>
 <p>我曾经发过一条状态：“突然一下感觉要失去什么了，猛然想抓住那些曾经错过的东西。想要个移动硬盘，想保留的东西太多了，而且记性不好，就用它存储我的记忆；想要个数码相机，想多走走拍拍，免得以后老了或是忙了，才发现自己是为了生存而生活；想要一个单车，想结伙一起外出郊游或是锻炼，免得都市粉尘吸久了体质下降了。”</p>
-<p>我买了相机，开始记录我的生活，在那一幅幅静态的影像中，才能看到时间的足迹，换句话说 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2010/09/some-notes-about-myself/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/12/some-tips-of-learning/"><h2>[转]一点学习方法总结（作者：乱雪）</h2></a>
-        <div class= "well small"> Tue 27 December 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>摘自“绿色兵团”论坛。（<a href="http://baike.baidu.com/view/994419.htm#sub7225157">点击查看绿色兵团组织介绍</a>）</p>
+<p>我买了相机，开始记录我的生活，在那一幅幅静态的影像中，才能看到时间的足迹，换句话说 ...</p>
+	<div><a href="http://hackecho.com/2010/09/some-notes-about-myself/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 27 December 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/12/some-tips-of-learning/" title="Permalink to [转]一点学习方法总结（作者：乱雪）">[转]一点学习方法总结（作者：乱雪）</a></h2>
+	
+	</hgroup>
+	<p>摘自“绿色兵团”论坛。（<a href="http://baike.baidu.com/view/994419.htm#sub7225157">点击查看绿色兵团组织介绍</a>）</p>
 <p>早已经习惯熬夜的我，今天，我学到很多东西，也明白很多，所以写下此文。</p>
 <p>我没有师傅，也没有拜过师，只有老师，是现实生活中学校的计算机老师，并非网上找的所谓的“高手”，有人问过我，没有师傅怎么学习？难道学习技术就一定要找师傅吗？找师傅你们的条件就是技术好，无非就是多入侵了几个站的，试问他们能帮助你们什么？帮助引导你们犯罪吗？再说高一点，就是一些精通一门甚至几门技术的，他们是真正高手，但是他们又能帮助你们什么？技术革新太快，科技日益进步，我们如果想立足就一定要不断学习知识，即使技术再高超，也需要学习技术，否则到头会落后，那么他们也需要学习，但是我没见几个真正的高手是有师傅的，即使有，也没有对他太多帮助，学习是靠自己的。换个角度，你是高手，别人找你当师傅，天天问一堆简单的问题，你有耐心回答吗？没有人会耐心回答你的，更没有耐心教你什么，既然是高手，他们不会把时间放在你身上的，而是放在更深入的地方 !</p>
-<p>从中美黑客大战以后，网上许多界内的人不断建立组织，黑客站点到处是 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/12/some-tips-of-learning/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/something-about-google-plus/"><h2>关于Google+的种种</h2></a>
-        <div class= "well small"> Fri 08 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="" src="/static/images/2011/07/Google-Plus1-e1310058522662.png" /></p>
+<p>从中美黑客大战以后，网上许多界内的人不断建立组织，黑客站点到处是 ...</p>
+	<div><a href="http://hackecho.com/2011/12/some-tips-of-learning/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 08 July 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/07/something-about-google-plus/" title="Permalink to 关于Google+的种种">关于Google+的种种</a></h2>
+	
+	</hgroup>
+	<p><img alt="" src="/static/images/2011/07/Google-Plus1-e1310058522662.png" /></p>
 <p>应好友<a href="http://yihuxingkong.kuandao.com/">@一湖星空</a>的邀请，第一时间体验了Google最新推出的社交项目Google+，看看这位在社交领域屡次失败的巨头是怎样发动最后一轮进攻的。</p>
 <h3>Google+是什么</h3>
 <p>Google+是Google高管维克·冈多特拉(Vic Gundotra)和布拉德利·霍洛维茨(Bradley Horowitz)负责的一项社交服务项目，其用户界面出自苹果前Mac软件团队设计师安迪·赫兹菲尔德(Andy Hertzfeld)之手。Gundotra和Horowitz认为Google+不只是一个产品，也不是一种战略方案，而是一个扩展后的Google。Google+目的是让Google在线资产在日常生活中更普及，而不只是网上冲浪时偶然点击、搜索一个网站。Google+于2011年6月28日亮相，仍处于测试阶段。</p>
 <p>在过去的一年里，Google+的开发一直秘密进行着，期间传闻不断，也有过官方辟谣，但最终它还是出现了。</p>
 <h3>Google+项目负责人谈产品</h3>
-<p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/something-about-google-plus/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/08/splash-of-android/"><h2>创建Android应用程序启动界面（Splash）</h2></a>
-        <div class= "well small"> Tue 02 August 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
+<p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p>
+	<div><a href="http://hackecho.com/2011/07/something-about-google-plus/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 02 August 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/08/splash-of-android/" title="Permalink to 创建Android应用程序启动界面（Splash）">创建Android应用程序启动界面（Splash）</a></h2>
+	
+	</hgroup>
+	<p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
 <p>首先新建一个splashscreen.xml布局文件，我们已经在res/drawable目录下放置了一张启动图片home_gradient.png：</p>
 <div class="codehilite"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">android:id=</span><span class="s">&quot;@+id/LinearLayout01&quot;</span>
               <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
@@ -194,25 +138,16 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
               <span class="na">android:gravity=</span><span class="s">&quot;center|bottom&quot;</span>
               <span class="na">android:background=</span><span class="s">&quot;@drawable/home_gradient&quot;</span>
               <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/splash-of-android/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/"><h2>用HP Scrawlr检测数据库SQL注入漏洞</h2></a>
-        <div class= "well small"> Wed 30 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
+    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div>
+	<div><a href="http://hackecho.com/2011/08/splash-of-android/">Read More...</a></div>
+	</article>
+  <h3 class="date">Wed 30 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/sql-injection-with-hp-scrawlr/" title="Permalink to 用HP Scrawlr检测数据库SQL注入漏洞">用HP Scrawlr检测数据库SQL注入漏洞</a></h2>
+	
+	</hgroup>
+	<p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
 <p><strong>引言</strong></p>
 <p>SQL数据库是目前世界上最快的一种数据库，每秒钟可以完成数百万次的事务处理。使用PHP和ASP代码处理SQL连接的时候，如果代码写的不好的 话，就会为网站的安全留下隐患：黑客可以通过插入代码来获得您的服务器上数据库的控制权。所以，一定要保护好您的SQL数据库。测试软件和网络的安全性应 该成为安全审计的一部分。HP为我们提供了扫描网站的SQL漏洞的免费软件。Scrawlr只可用于合法地扫描您自己的站点，而不得用于您的组织之外的站 点。安全分析人员进行渗透测试时，应当将这款软件也纳入到他们的安全工具库中。</p>
 <p><strong>HP Scrawlr</strong></p>
@@ -222,68 +157,41 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527390.jpg" /></p>
 <p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527391.jpg" /></p>
 <p><strong>SQL注入</strong></p>
-<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2009/07/start-of-web-dev/"><h2>春风化雨——初涉网站建设领域</h2></a>
-        <div class= "well small"> Wed 22 July 2009
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>近来没有写过日志，主要是因为忙于自己的网站。今天完成了当天的任务，便写一些近来做网站的一些感受吧！­</p>
+<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p>
+	<div><a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">Read More...</a></div>
+	</article>
+  <h3 class="date">Wed 22 July 2009</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2009/07/start-of-web-dev/" title="Permalink to 春风化雨——初涉网站建设领域">春风化雨——初涉网站建设领域</a></h2>
+	
+	</hgroup>
+	<p>近来没有写过日志，主要是因为忙于自己的网站。今天完成了当天的任务，便写一些近来做网站的一些感受吧！­</p>
 <p>个人站长很少有独立开发整站程序的人，我也算是一个，一方面没有相关的技术，二来没有时间和精力来学习、编写和调试。所以我便很佩服DEDECMS的开发者柏拉图，因为著名的DEDECMS起初便是由他一人独立开发的。网上流行的CMS很多，但运行于PHP环境的就屈指可数了，因为我的空间是UNIX型，只能使用基于PHP的CMS。下面说一下我认识CMS的过程吧。­</p>
 <p>我接触的第一款CMS是DEDECMS，但那还是一年前，出于好奇，也并没有想去建一个自己的网站，即使想，那时也没有时间。当初没有怎么深入研究，只迷迷糊糊知道CMS可以进行网站内容管理。现在，高考结束，在北交大的录取通知书马上就要到来的情况下，我便购置了空间和域名，将身心全部投入到我的爱好中来。­</p>
-<p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2009/07/start-of-web-dev/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2009/11/stay-in-my-mind/"><h2>驻足在马路边的秋殇</h2></a>
-        <div class= "well small"> Sun 01 November 2009
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><strong>又是落叶纷飞的季节。我抬起头，让风中落叶夹杂的沧桑流过脸颊，听瑟瑟中睫毛舞动的轻扬，耳发飘浮的潇洒。</strong></p>
+<p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p>
+	<div><a href="http://hackecho.com/2009/07/start-of-web-dev/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 01 November 2009</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2009/11/stay-in-my-mind/" title="Permalink to 驻足在马路边的秋殇">驻足在马路边的秋殇</a></h2>
+	
+	</hgroup>
+	<p><strong>又是落叶纷飞的季节。我抬起头，让风中落叶夹杂的沧桑流过脸颊，听瑟瑟中睫毛舞动的轻扬，耳发飘浮的潇洒。</strong></p>
 <p>来北京整整两个月了。</p>
 <p>校园里还是那种特有的宁静，但清爽了很多，也沉郁了很多。彳亍在湖边，感受夜的侵袭，虽然少了点雨，少了把油纸伞，但垂柳依旧撩动人儿的记忆，撩动那丁香一样的惆怅。</p>
 <p>逐渐习惯了在外的生活，习惯了这座大城市，习惯了每天忙忙碌碌。朋友形容我“日理万机”，我笑一笑，我很忙，但我也会偶尔在自行车上骤然停下，看着校园里为数已不多的红果树，怀念起儿时爬过的老黄铜，亲手种过的小葫芦！如今，黄叶飘飞，风过，叶子们抓住空气，扯住地面，拖住灰尘，最终却还是会远离，与地面摩擦唱着自豪的歌。</p>
-<p>月是故乡明。十五的月亮，被我在天安门前看得清清楚楚。故乡的歌是一枝清远的笛，总在有月亮的晚上响起。不管是余光中还是席慕容都曾醉倒、梦倒在这轮光影之中。虽然未有“近乡情更怯,不敢问来人”的恐慌，却有“身在异乡为异客，每逢佳节倍思亲”的寂寞。天安门外光影浮动 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2009/11/stay-in-my-mind/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/10/stay-in-my-mind-2/"><h2>驻足在马路边的秋殇（二）</h2></a>
-        <div class= "well small"> Sun 23 October 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="" src="/static/images/2011/10/a8206193_s-300x199.jpg" /></p>
+<p>月是故乡明。十五的月亮，被我在天安门前看得清清楚楚。故乡的歌是一枝清远的笛，总在有月亮的晚上响起。不管是余光中还是席慕容都曾醉倒、梦倒在这轮光影之中。虽然未有“近乡情更怯,不敢问来人”的恐慌，却有“身在异乡为异客，每逢佳节倍思亲”的寂寞。天安门外光影浮动 ...</p>
+	<div><a href="http://hackecho.com/2009/11/stay-in-my-mind/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 23 October 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/10/stay-in-my-mind-2/" title="Permalink to 驻足在马路边的秋殇（二）">驻足在马路边的秋殇（二）</a></h2>
+	
+	</hgroup>
+	<p><img alt="" src="/static/images/2011/10/a8206193_s-300x199.jpg" /></p>
 <hr />
 <p>09年10月末，秋殇（一）发表在我的QQ空间里。后来我把它导入了这个博客（地址：<a href="http://www.hackecho.com/archives/52.html">《驻足在马路边的秋殇》</a>），留存纪念。如今，两年过去了，我已很少再动文字。偶尔会去红袖一把，期望能添些墨香，或者仅仅是不想失去这种感觉。如今的时间不多，或者，心累了。</p>
 <p>秋，到了。</p>
@@ -292,153 +200,74 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <hr />
 <p><strong>遗忘</strong></p>
 <p>一位以前很要好的哥们儿昨天打电话给我，寒暄过后，竟然问我：“你知道我是谁吧？”我说废话，你的声音变成灰也认识。朋友笑到：“好多人跟我聊半天了才问我你是谁，竟然不记得我了！这才几年啊，真是的！”</p>
-<p>是啊，这是第三年，可又能怪谁呢。QQ的好友列表里有这样三个分组，分别是小学 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/10/stay-in-my-mind-2/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/11/suds-problems/"><h2>SUDS错误和实例</h2></a>
-        <div class= "well small"> Tue 13 November 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+<p>是啊，这是第三年，可又能怪谁呢。QQ的好友列表里有这样三个分组，分别是小学 ...</p>
+	<div><a href="http://hackecho.com/2011/10/stay-in-my-mind-2/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 13 November 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/11/suds-problems/" title="Permalink to SUDS错误和实例">SUDS错误和实例</a></h2>
+	
+	</hgroup>
+	<p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
 <p>错误信息：</p>
 <div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s">&quot;test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">12</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
   <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages/suds-0.4-py2.7.egg/suds/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">112</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__init__</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">wsdl</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/11/suds-problems/">read more</a></div>
-    </div>	
-				
-            <div class="pagination">
-<ul>
-    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li8.html">&larr; Previous</a></li>
+  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div>
+	<div><a href="http://hackecho.com/2012/11/suds-problems/">Read More...</a></div>
+	</article>
 
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
-    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
+<p class="paginator">
+						<a href="http://hackecho.com/author/zhaoyu-li8.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
+						<a href="http://hackecho.com/author/zhaoyu-li10.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
+	</p>
 
-    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li10.html">Next &rarr;</a></li>
+</section>
+<div class="mobile-nav">
+  <span class="nav-btn" id="mobile-nav-btn">
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+  </span>
+  <h3>
+    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
+  </h3>
+</div>
 
-</ul>
-</div>    
- 
-  
-        </div>
-        
-        <div class="span3">
+    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
 
-            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                RSS
-                </li>
-                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
-                            </ul>
-            </div>
-            -->
+<script>
+    // Function to get the Maximam value in Array
+    Array.max = function( array ) {
+        return Math.max.apply( Math, array );
+    };
 
+    var heights = [];
+    heights.push($('.main-header').height());
+    heights.push($('.main-section').height());
+    heights.push($(window).height());
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
-                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
-                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
-                                   
-            </ul>
-            </div>
-            
+    var max_height = Array.max(heights);
+    $('.main-header').height(max_height+80);
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://vicdory.com/" target="_blank">Shikailun的日志</a></li>
-                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
-                            <li><a href="http://mgnt.me" target="_blank">玛格磁力搜索</a></li>
-                        </ul>
-            </div>
-            
-
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-                
-                <li>
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-5514094937222077";
-                /* sidebar */
-                google_ad_slot = "5654046552";
-                google_ad_width = 200;
-                google_ad_height = 200;
-                //-->
-                </script>
-                <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-                </li>                 
-            </ul>
-            </div>
+    $('#mobile-title').text(window.location.hostname);
 
 
 
-        </div>  
-    </div>     </div> 
-<footer>
-<br />
-<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
-</footer>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
- 
+</script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37227120-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
 </body>
-</html>

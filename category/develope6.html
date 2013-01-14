@@ -1,75 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Hackecho</title>
-    <meta name="description" content="">
-    <meta name="author" content="Zhaoyu Li">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
+  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackecho</title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://hackecho.com/theme/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
-    <!-- Le styles -->
-    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
-
-</head>
-
+  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
+  </head>
 <body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="http://hackecho.com">Hackecho</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    <li><a href="/archives.html">Archives</a></li>
-                    <li><a href="/tags.html">Tags</a></li>
-                    
-                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-                    <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-                        </ul>
-        </div>
-        
+<header class="main-header">
+  <a href="http://github.com/zlmoment">
+<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+  <hgroup>
+    <div>
+      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
     </div>
-    </div>
-</div>
+    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
+    <h2>Software engineer, Pythonista and Love Wed.</h2>
+  </hgroup>
+  <nav>
+    <ul class="main-nav">
+      
+            <li><a href="/archives.html">Archives</a></li>
+      
+      
+                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+              
 
-<div class="container">
-    <div class="content">
-    <div class="row">
+    </ul>
+  </nav>
+  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
 
-        <div class="span9">
-                
-
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/asynctask-in-android/"><h2>Android中使用AsyncTask实现简单的异步处理</h2></a>
-        <div class= "well small"> Sun 24 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
+</header>
+<section class="main-section blog-section" id="blog-posts">
+    <h3 class="date">Sun 24 July 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/07/asynctask-in-android/" title="Permalink to Android中使用AsyncTask实现简单的异步处理">Android中使用AsyncTask实现简单的异步处理</a></h2>
+	
+	</hgroup>
+	<p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
 <p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
 <p>Android提供了几种在其他线程中访问UI线程的方法：</p>
 <p><code>Java
@@ -88,25 +68,16 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>Progress 后台任务执行的百分比。</p>
 </li>
 <li>
-<p>Result ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/asynctask-in-android/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/"><h2>用CBitmapButton实现按钮四态的方法</h2></a>
-        <div class= "well small"> Fri 15 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>今天上午由于特殊原因重装了系统，下午四点左右开始了交大一软通的界面绘制。这次一软通界面全面更新，各种控件该自绘的自绘，该贴图的贴图，力争给用户最好的视觉和操作体验。</p>
+<p>Result ...</p></li></ul>
+	<div><a href="http://hackecho.com/2011/07/asynctask-in-android/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 15 July 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/07/4-status-button-with-cbitmapbutton/" title="Permalink to 用CBitmapButton实现按钮四态的方法">用CBitmapButton实现按钮四态的方法</a></h2>
+	
+	</hgroup>
+	<p>今天上午由于特殊原因重装了系统，下午四点左右开始了交大一软通的界面绘制。这次一软通界面全面更新，各种控件该自绘的自绘，该贴图的贴图，力争给用户最好的视觉和操作体验。</p>
 <p>第二个选项卡效果是鼠标悬浮时的效果，其实这不是TabControl，而是普普通通的Button，但用到了按钮的四态。</p>
 <p>下面简单总结一下四态按钮的实现，以备日后之需。</p>
 <p>为了实现一些按钮的特效，网上遍布着从CButton派生的各种各样的按钮类，其中最为著名的就是CButtonST类。但考虑到各方面原因，最好的选择还是自己努力实现想要的效果，一方面可以消除代码冗余，另一方面自己也学习到了知识。</p>
@@ -118,49 +89,31 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>（二）使用CBitmapButton::AutoLoad函数关联到想要的按钮。</p>
 <p>在第三点中推荐使用第二种方法，但有一些注意事项：</p>
 <p>A、之前不能使用CBitmapButton::LoadBitmaps装载各种状态的图片，否则会出错。</p>
-<p>B、AutoLoad函数完成的关联和改变按钮大小的CBitmapButton ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/something-about-google-plus/"><h2>关于Google+的种种</h2></a>
-        <div class= "well small"> Fri 08 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="" src="/static/images/2011/07/Google-Plus1-e1310058522662.png" /></p>
+<p>B、AutoLoad函数完成的关联和改变按钮大小的CBitmapButton ...</p>
+	<div><a href="http://hackecho.com/2011/07/4-status-button-with-cbitmapbutton/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 08 July 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/07/something-about-google-plus/" title="Permalink to 关于Google+的种种">关于Google+的种种</a></h2>
+	
+	</hgroup>
+	<p><img alt="" src="/static/images/2011/07/Google-Plus1-e1310058522662.png" /></p>
 <p>应好友<a href="http://yihuxingkong.kuandao.com/">@一湖星空</a>的邀请，第一时间体验了Google最新推出的社交项目Google+，看看这位在社交领域屡次失败的巨头是怎样发动最后一轮进攻的。</p>
 <h3>Google+是什么</h3>
 <p>Google+是Google高管维克·冈多特拉(Vic Gundotra)和布拉德利·霍洛维茨(Bradley Horowitz)负责的一项社交服务项目，其用户界面出自苹果前Mac软件团队设计师安迪·赫兹菲尔德(Andy Hertzfeld)之手。Gundotra和Horowitz认为Google+不只是一个产品，也不是一种战略方案，而是一个扩展后的Google。Google+目的是让Google在线资产在日常生活中更普及，而不只是网上冲浪时偶然点击、搜索一个网站。Google+于2011年6月28日亮相，仍处于测试阶段。</p>
 <p>在过去的一年里，Google+的开发一直秘密进行着，期间传闻不断，也有过官方辟谣，但最终它还是出现了。</p>
 <h3>Google+项目负责人谈产品</h3>
-<p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/something-about-google-plus/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/10-open-source-android-project/"><h2>10个非常值得学习的Android开源项目</h2></a>
-        <div class= "well small"> Tue 05 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="android开源项目" src="/static/images/2011/07/2010073016245383.png" /></p>
+<p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p>
+	<div><a href="http://hackecho.com/2011/07/something-about-google-plus/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 05 July 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/07/10-open-source-android-project/" title="Permalink to 10个非常值得学习的Android开源项目">10个非常值得学习的Android开源项目</a></h2>
+	
+	</hgroup>
+	<p><img alt="android开源项目" src="/static/images/2011/07/2010073016245383.png" /></p>
 <p>暑假要学习Android的同学们请注意了，这里是非常经典的10个Android开源项目，倘若能深入研究，一定会有所收获。</p>
 <h3>1.Android官方团队提供的示例项目</h3>
 <p>如果不是从学习Android SDK中提供的那些样例代码开始，可能没有更好的方法来掌握在Android这个平台上开发。</p>
@@ -175,45 +128,27 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <h3>3.TorProxy和Shadow</h3>
 <p>TorProxy应用实现了Android手机无线电电传通讯(TOR)，和Shadow应用一起使用，可以使用手机匿名上网。</p>
 <p>从该项目源代码中，可以掌握socket连接、管理cookie等方法。</p>
-<p>项目地址：<a href="http://www.cl.cam.ac.uk/research/dtg/code/svn/android-tor/">http://www.cl ...</a></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/10-open-source-android-project/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/"><h2>[转] Advice From An Old Programmer</h2></a>
-        <div class= "well small"> Mon 27 June 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>本文是《Learn Python The Hard Way， 2nd Edition》这本书的尾声部分。</p>
+<p>项目地址：<a href="http://www.cl.cam.ac.uk/research/dtg/code/svn/android-tor/">http://www.cl ...</a></p>
+	<div><a href="http://hackecho.com/2011/07/10-open-source-android-project/">Read More...</a></div>
+	</article>
+  <h3 class="date">Mon 27 June 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/06/advice-from-an-old-programmer/" title="Permalink to [转] Advice From An Old Programmer">[转] Advice From An Old Programmer</a></h2>
+	
+	</hgroup>
+	<p>本文是《Learn Python The Hard Way， 2nd Edition》这本书的尾声部分。</p>
 <p><img alt="" src="http://pic003.cnblogs.com/2011/1/201106/2011062108360289.png" /></p>
-<p>You've finished this book and have decided to continue with programming. Maybe it will be a career for you, or maybe it will be a hobby. You'll need some advice to make sure you continue on the right path ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/"><h2>解密人人网应用“好友档案”与“X档案”</h2></a>
-        <div class= "well small"> Thu 23 June 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
+<p>You've finished this book and have decided to continue with programming. Maybe it will be a career for you, or maybe it will be a hobby. You'll need some advice to make sure you continue on the right path ...</p>
+	<div><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">Read More...</a></div>
+	</article>
+  <h3 class="date">Thu 23 June 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/06/secret-of-truth-of-friends-app-in-renren/" title="Permalink to 解密人人网应用“好友档案”与“X档案”">解密人人网应用“好友档案”与“X档案”</a></h2>
+	
+	</hgroup>
+	<p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
 <h3>接口分析</h3>
 <p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
 <p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
@@ -228,50 +163,32 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>blog.getComments()</p>
 </li>
 </ol>
-<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/05/coal-transportation-algorithm/"><h2>面试题：火车运煤问题</h2></a>
-        <div class= "well small"> Thu 19 May 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>这个可能是一个比较经典的智力题了，其题目如下：</p>
+<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p>
+	<div><a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read More...</a></div>
+	</article>
+  <h3 class="date">Thu 19 May 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/05/coal-transportation-algorithm/" title="Permalink to 面试题：火车运煤问题">面试题：火车运煤问题</a></h2>
+	
+	</hgroup>
+	<p>这个可能是一个比较经典的智力题了，其题目如下：</p>
 <p>你是山西的一个煤老板，你在矿区开采了有3000吨煤需要运送到市场上去卖，从你的矿区到市场有1000公里，你手里有一列烧煤的火车，这个火车最多只能装1000吨煤，且每一公里需要耗一吨煤。请问，作为一个<strong>懂编程</strong>的煤老板的你，你会怎么运送才能运最多的煤到集市？</p>
 <p>这道题一开始看上去好像是无解的，因为你的火车每一公里就要消耗一吨煤，而到目的地有1000公里，而火车最多只能装1000吨媒。如果你的火车可以全部装下，到目的地也会被全部烧光，一丁点也不剩。所以，很多人的第一反应都是觉得这个不太可能。</p>
 <p>如果你一开始就觉得不太可能的话，这是很正常的。不过我不知道你还会不会继续思考下去，如果你不想思考下去了，那么我很为你担忧，因为你可能并不是一个不善于思考的人，而是一个畏难的人，还有可能是一个容易放弃的人。这对于你做好 一个需要大量思考的工作的程序员来说可能并不适合。</p>
 <p>我一开始也觉得不可能，后来想了一想，想到一个解法可以最多运送500吨煤到市场（当然还有更好的结果），方法如下：（希望你先自己想一想再查看这个答案）</p>
 <p>答案之一：</p>
 <p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
-<p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/05/coal-transportation-algorithm/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/05/5-cool-css-hover/"><h2>5种非常酷的CSS Hover效果</h2></a>
-        <div class= "well small"> Wed 11 May 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>在现代浏览器（所谓现代浏览器，是指以Mozilla和Webkit为核心的浏览器，IE的表现稍微差强人意）中，我们可以运用CSS来实现一些非常炫酷的效果。</p>
+<p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p>
+	<div><a href="http://hackecho.com/2011/05/coal-transportation-algorithm/">Read More...</a></div>
+	</article>
+  <h3 class="date">Wed 11 May 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/05/5-cool-css-hover/" title="Permalink to 5种非常酷的CSS Hover效果">5种非常酷的CSS Hover效果</a></h2>
+	
+	</hgroup>
+	<p>在现代浏览器（所谓现代浏览器，是指以Mozilla和Webkit为核心的浏览器，IE的表现稍微差强人意）中，我们可以运用CSS来实现一些非常炫酷的效果。</p>
 <h3>Bump Up</h3>
 <p><img alt="" src="http://images.cnblogs.com/cnblogs_com/powertoolsteam/201105/201105101418072144.png" /><strong>Live Demo:</strong> <a href="http://designshack.co.uk/tutorialexamples/HoverEffects/Ex1.html">Click Here to Launch</a></p>
 <div class="codehilite"><pre><span class="na">.ex1</span> <span class="no">img</span><span class="err">{</span>
@@ -283,47 +200,29 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
     <span class="err">-</span><span class="nf">o</span><span class="p">-</span><span class="no">transition</span><span class="p">:</span> <span class="no">margin</span> <span class="mi">0</span><span class="no">.5s</span> <span class="no">ease</span><span class="p">-</span><span class="no">out</span><span class="err">;</span>
 <span class="err">}</span>
 
-<span class="na">.ex1</span> <span class="no">img</span><span class="p">:</span><span class="no">hover ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/05/5-cool-css-hover/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/05/what-the-programmer-should-know/"><h2>程序员，你应该知道</h2></a>
-        <div class= "well small"> Sun 01 May 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>（说明：本文转自博客园知识库的一篇原创文章，作者：李瑞宽)</p>
+<span class="na">.ex1</span> <span class="no">img</span><span class="p">:</span><span class="no">hover ...</span></pre></div>
+	<div><a href="http://hackecho.com/2011/05/5-cool-css-hover/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 01 May 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/05/what-the-programmer-should-know/" title="Permalink to 程序员，你应该知道">程序员，你应该知道</a></h2>
+	
+	</hgroup>
+	<p>（说明：本文转自博客园知识库的一篇原创文章，作者：李瑞宽)</p>
 <p>想象你是一个初出茅庐的小菜鸟，上头交代你做任务，你对其中的一项任务有那么一小点疑问，你怯生生地问：“我觉得这项任务说得不是很清楚，那样做行吗？为什么呢？我觉得应该这样做更好。”项目很紧，上头头大着呢，他很不耐烦地对你说：“不要问那么多！我都考虑清楚了，只要照着做就行！”你应该怎么办呢？你是就这样屁颠屁颠地去做了，还是还是觉得你应该知道为什么要按照他说的做，而不是按照你说的做吗？ 你应该知道。而且你要一直坚持“我应该知道”这种想法，因为这种想法，会带领你走进一片新天地。你可能还意识不到，你现在的是否坚持和你后续的发展休戚相关。坚持了，你会向着更深的层次迈进；放弃了，你就一直呆在原地，没有办法进步。</p>
 <p>依我看来，技术人员的发展，不外乎往深度发展或者往广度发展。</p>
 <p>什么是深度呢？就是你对技术的掌握程度，你一套扎进去，对技术有自己越来越深的理解，你从不会到会，从会到精，你会显著感觉到自己能力的提升，等到精通了技术之后，使用这项技术自然是挥洒自如，易如反掌。</p>
-<p>什么是广度呢？就是十八般武艺 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/05/what-the-programmer-should-know/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/04/be-programmer-best/"><h2>做一个有理想的程序猿</h2></a>
-        <div class= "well small"> Fri 22 April 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>我想，程序员只是一个代名词，我们是一群爱IT的人，希望通过自己的技术改变世界的人，我们是一群热爱生活、热爱世界的人。（蓝色文字皆为Troy注解）</p>
+<p>什么是广度呢？就是十八般武艺 ...</p>
+	<div><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 22 April 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/04/be-programmer-best/" title="Permalink to 做一个有理想的程序猿">做一个有理想的程序猿</a></h2>
+	
+	</hgroup>
+	<p>我想，程序员只是一个代名词，我们是一群爱IT的人，希望通过自己的技术改变世界的人，我们是一群热爱生活、热爱世界的人。（蓝色文字皆为Troy注解）</p>
 <p>作为程序员，要取得非凡成就需要记住的15件事。</p>
 <p><strong>1.走一条不一样的路</strong></p>
 <p>在有利于自己的市场中竞争，如果你满足于“泯然众人矣”，那恐怕就得跟那些低工资国家的程序员们同场竞技了。</p>
@@ -333,124 +232,58 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>不同公司的运营模式差异极大。如果你理解企业的运营模式，那你就不一样了！在这家公司中（或者对客户而言），你是参与业务运营的资产，你的工作能直接产生效益！</p>
 <p>如果一个人能够在他/她喜欢的公司工作，还用得着努力地去重新了解它吗？某种程度上我们喜欢某家公司的原因恰恰是我们喜欢它的运营理念。</p>
 <p><strong>3.与最优秀的人为伍</strong></p>
-<p>很早以前，我喜欢打篮球，被分配到一个水平比较高的队里。一开始适应的确很困难，但环境的压力越大（重大比赛），我的长进也就越明显 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/be-programmer-best/">read more</a></div>
-    </div>	
-				
-            <div class="pagination">
-<ul>
-    <li class="prev"><a href="http://hackecho.com/category/develope5.html">&larr; Previous</a></li>
+<p>很早以前，我喜欢打篮球，被分配到一个水平比较高的队里。一开始适应的确很困难，但环境的压力越大（重大比赛），我的长进也就越明显 ...</p>
+	<div><a href="http://hackecho.com/2011/04/be-programmer-best/">Read More...</a></div>
+	</article>
 
-    <li class=""><a href="http://hackecho.com/category/develope.html">1</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope2.html">2</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope3.html">3</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope4.html">4</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope5.html">5</a></li>
-    <li class="active"><a href="http://hackecho.com/category/develope6.html">6</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope8.html">8</a></li>
+<p class="paginator">
+						<a href="http://hackecho.com/category/develope5.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
+						<a href="http://hackecho.com/category/develope7.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
+	</p>
 
-    <li class="next"><a href="http://hackecho.com/category/develope7.html">Next &rarr;</a></li>
+</section>
+<div class="mobile-nav">
+  <span class="nav-btn" id="mobile-nav-btn">
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+  </span>
+  <h3>
+    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
+  </h3>
+</div>
 
-</ul>
-</div>    
- 
-  
-        </div>
-        
-        <div class="span3">
+    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
 
-            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                RSS
-                </li>
-                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
-                            </ul>
-            </div>
-            -->
+<script>
+    // Function to get the Maximam value in Array
+    Array.max = function( array ) {
+        return Math.max.apply( Math, array );
+    };
 
+    var heights = [];
+    heights.push($('.main-header').height());
+    heights.push($('.main-section').height());
+    heights.push($(window).height());
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
-                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
-                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
-                                   
-            </ul>
-            </div>
-            
+    var max_height = Array.max(heights);
+    $('.main-header').height(max_height+80);
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://vicdory.com/" target="_blank">Shikailun的日志</a></li>
-                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
-                            <li><a href="http://mgnt.me" target="_blank">玛格磁力搜索</a></li>
-                        </ul>
-            </div>
-            
-
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-                
-                <li>
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-5514094937222077";
-                /* sidebar */
-                google_ad_slot = "5654046552";
-                google_ad_width = 200;
-                google_ad_height = 200;
-                //-->
-                </script>
-                <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-                </li>                 
-            </ul>
-            </div>
+    $('#mobile-title').text(window.location.hostname);
 
 
 
-        </div>  
-    </div>     </div> 
-<footer>
-<br />
-<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
-</footer>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
- 
+</script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37227120-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
 </body>
-</html>

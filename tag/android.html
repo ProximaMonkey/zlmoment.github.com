@@ -1,74 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Hackecho</title>
-    <meta name="description" content="">
-    <meta name="author" content="Zhaoyu Li">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
+  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts tagged 'Android' | Hackecho </title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://hackecho.com/theme/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
-    <!-- Le styles -->
-    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
-
-</head>
-
+  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
+  </head>
 <body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="http://hackecho.com">Hackecho</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    <li><a href="/archives.html">Archives</a></li>
-                    <li><a href="/tags.html">Tags</a></li>
-                    
-                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-                    <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-                        </ul>
-        </div>
-        
+<header class="main-header">
+  <a href="http://github.com/zlmoment">
+<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+  <hgroup>
+    <div>
+      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
     </div>
-    </div>
-</div>
+    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
+    <h2>Software engineer, Pythonista and Love Wed.</h2>
+  </hgroup>
+  <nav>
+    <ul class="main-nav">
+      
+            <li><a href="/archives.html">Archives</a></li>
+      
+      
+                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+              
 
-<div class="container">
-    <div class="content">
-    <div class="row">
+    </ul>
+  </nav>
+  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
 
-        <div class="span9">
-                
-
-        
-
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/08/android-shared-preferences/"><h2>Android数据存储之Shared Preferences</h2></a>
-        <div class= "well small"> Sat 06 August 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
+</header>
+<section class="main-section blog-section" id="blog-posts">
+      <h3 class="date">Sat 06 August 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/08/android-shared-preferences/" title="Permalink to Android数据存储之Shared Preferences">Android数据存储之Shared Preferences</a></h2>
+	
+	</hgroup>
+	<p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
 <p>1、Shared Preferences</p>
 <p>用来存储 “键-值”格式的数据。</p>
 <p>2、Files</p>
@@ -81,47 +62,27 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
 <p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
 <p>1、文件创建模式：Activity.MODE_APPEND</p>
-<p>如果该文件已经存在，然后将数据写入 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/android-shared-preferences/">read more</a></div>
-    </div>  
-		
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/"><h2>使用友盟SNS_SDK为Android应用加入SNS分享功能</h2></a>
-        <div class= "well small"> Wed 03 August 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>很多朋友在开发Android应用的过程中，都想加入社会化的分享功能，如将自己的应用使用状态或心得同步到新浪微博、人人网或腾讯微博等。这些社交网络或微博都已经发布了针对开发者的开放平台（关于开放平台的相关信息，请参考<a href="http://www.hackecho.com/archives/127.html">《说说微创业——关于开放平台和微时代》</a>），因此我们可以将这些分享功能集成到自己的应用中，提高用户的互动性和产品推广效果。将应用与社会化网络联系起来已经成为现在移动开发的主流趋势之一。</p>
+<p>如果该文件已经存在，然后将数据写入 ...</p>
+	</article>
+    <h3 class="date">Wed 03 August 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/08/add-sns-sharing-with-umeng-sns-sdk/" title="Permalink to 使用友盟SNS_SDK为Android应用加入SNS分享功能">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></h2>
+	
+	</hgroup>
+	<p>很多朋友在开发Android应用的过程中，都想加入社会化的分享功能，如将自己的应用使用状态或心得同步到新浪微博、人人网或腾讯微博等。这些社交网络或微博都已经发布了针对开发者的开放平台（关于开放平台的相关信息，请参考<a href="http://www.hackecho.com/archives/127.html">《说说微创业——关于开放平台和微时代》</a>），因此我们可以将这些分享功能集成到自己的应用中，提高用户的互动性和产品推广效果。将应用与社会化网络联系起来已经成为现在移动开发的主流趋势之一。</p>
 <p>可对于新手而言，各大开放平台的SDK使用方法还需要花费很大精力来学习，如果仅仅是开发Demo的话，其实没有必要花费过多的时间在此。近两天我也在想办法给自己的应用加入社会化分享功能，偶然的机会看到了友盟提供的SNS_SDK（测试版），简单的试用过以后感觉不错，因此分享给大家，让我们的产品在开发初期也能快速方便的拥有SNS分享同步功能。</p>
 <p>友盟SNS_SDK目前提供两种分享方式：一种是文字分享，另一种是图文（图片+文字）分享。支持的开放平台目前有新浪微博、人人网和腾讯微博。首先我们要下载相应的SDK。</p>
 <p>进入<a href="http://www.umeng.com/doc/home.html">友盟文档中心</a>，点击左侧的<strong>开发工具SDK</strong>目录，在右侧点击下载即可。这里是一个简要的开发文档（<a href="http://www.umeng.com/doc/home.html#op_con_kfzn/adsdk_shhfx">点击查看</a>），当然我们会在下面为大家详细介绍其使用方法。</p>
-<p>首先我们应该注册一个友盟账号（<a href="http://www.umeng.com">点击注册</a>），注册完成后登录，进入友盟的管理后台，点击“添加新应用”，进入新应用信息填写的页面。App 建立成功后，自动会跳转到该App管理页面的开发指南页面 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/08/splash-of-android/"><h2>创建Android应用程序启动界面（Splash）</h2></a>
-        <div class= "well small"> Tue 02 August 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
+<p>首先我们应该注册一个友盟账号（<a href="http://www.umeng.com">点击注册</a>），注册完成后登录，进入友盟的管理后台，点击“添加新应用”，进入新应用信息填写的页面。App 建立成功后，自动会跳转到该App管理页面的开发指南页面 ...</p>
+	</article>
+    <h3 class="date">Tue 02 August 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/08/splash-of-android/" title="Permalink to 创建Android应用程序启动界面（Splash）">创建Android应用程序启动界面（Splash）</a></h2>
+	
+	</hgroup>
+	<p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
 <p>首先新建一个splashscreen.xml布局文件，我们已经在res/drawable目录下放置了一张启动图片home_gradient.png：</p>
 <div class="codehilite"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">android:id=</span><span class="s">&quot;@+id/LinearLayout01&quot;</span>
               <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
@@ -130,25 +91,15 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
               <span class="na">android:gravity=</span><span class="s">&quot;center|bottom&quot;</span>
               <span class="na">android:background=</span><span class="s">&quot;@drawable/home_gradient&quot;</span>
               <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/08/splash-of-android/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/asynctask-in-android/"><h2>Android中使用AsyncTask实现简单的异步处理</h2></a>
-        <div class= "well small"> Sun 24 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
+    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div>
+	</article>
+    <h3 class="date">Sun 24 July 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/07/asynctask-in-android/" title="Permalink to Android中使用AsyncTask实现简单的异步处理">Android中使用AsyncTask实现简单的异步处理</a></h2>
+	
+	</hgroup>
+	<p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
 <p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
 <p>Android提供了几种在其他线程中访问UI线程的方法：</p>
 <p><code>Java
@@ -167,25 +118,15 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>Progress 后台任务执行的百分比。</p>
 </li>
 <li>
-<p>Result ...</p></li></ul> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/asynctask-in-android/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/07/10-open-source-android-project/"><h2>10个非常值得学习的Android开源项目</h2></a>
-        <div class= "well small"> Tue 05 July 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="android开源项目" src="/static/images/2011/07/2010073016245383.png" /></p>
+<p>Result ...</p></li></ul>
+	</article>
+    <h3 class="date">Tue 05 July 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/07/10-open-source-android-project/" title="Permalink to 10个非常值得学习的Android开源项目">10个非常值得学习的Android开源项目</a></h2>
+	
+	</hgroup>
+	<p><img alt="android开源项目" src="/static/images/2011/07/2010073016245383.png" /></p>
 <p>暑假要学习Android的同学们请注意了，这里是非常经典的10个Android开源项目，倘若能深入研究，一定会有所收获。</p>
 <h3>1.Android官方团队提供的示例项目</h3>
 <p>如果不是从学习Android SDK中提供的那些样例代码开始，可能没有更好的方法来掌握在Android这个平台上开发。</p>
@@ -200,140 +141,53 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <h3>3.TorProxy和Shadow</h3>
 <p>TorProxy应用实现了Android手机无线电电传通讯(TOR)，和Shadow应用一起使用，可以使用手机匿名上网。</p>
 <p>从该项目源代码中，可以掌握socket连接、管理cookie等方法。</p>
-<p>项目地址：<a href="http://www.cl.cam.ac.uk/research/dtg/code/svn/android-tor/">http://www.cl ...</a></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/07/10-open-source-android-project/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/where-to-go-this-summer/"><h2>今年夏天，什么季</h2></a>
-        <div class= "well small"> Fri 04 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
+<p>项目地址：<a href="http://www.cl.cam.ac.uk/research/dtg/code/svn/android-tor/">http://www.cl ...</a></p>
+	</article>
+</section>
 
 
- </div>
-        <div class="summary"><p>去年大一夏天，我一人独自外出流浪。我深知，大学四年的暑假绝不能荒废，我们应该做一些有意义的事情。大一那时没有技术，实习的话什么也干不了，于是干脆利用这个时间到处走走，旅行，也能给人很多收获。</p>
-<p>去年暑假回来后，我一直处在思考的状态。明白了很多，懂了很多。明白了有些事情发生了，有些人离开了，有些爱情丢失了，就再也回不来了；至少我曾经拥有过，我学会了珍惜，也学会了珍藏。</p>
-<p>这一段时间里，我看到了很多新兴领域的崛起，这些领域包括了移动开发和互联网开发等等。不能说我“见证了”Android的成长，但起码看到了它是怎样一步一步走来，走出一个全新领域的过程；也不能说我又非凡的“前瞻”力，但我依稀感觉到了它巨大的发展潜力。</p>
-<p>我对互联网虽没有达到痴迷的程度，但着实非常喜欢。喜欢那B/S架构带来的体验，喜欢从一个小小的窗口、从head/body里看世界，喜欢一种connection。当然，应用软件也很喜欢，C/S架构的胖客户端也是很有潜力的！</p>
-<p>今年夏天，会是什么季呢。。</p>
-<p>那么从现在就开始吧。</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/where-to-go-this-summer/">read more</a></div>
-    </div>	
-				
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+<div class="mobile-nav">
+  <span class="nav-btn" id="mobile-nav-btn">
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+  </span>
+  <h3>
+    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
+  </h3>
+</div>
 
-    <li class="active"><a href="http://hackecho.com/tag/android.html">1</a></li>
+    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
 
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+<script>
+    // Function to get the Maximam value in Array
+    Array.max = function( array ) {
+        return Math.max.apply( Math, array );
+    };
 
-</ul>
-</div>    
- 
-  
-        </div>
-        
-        <div class="span3">
+    var heights = [];
+    heights.push($('.main-header').height());
+    heights.push($('.main-section').height());
+    heights.push($(window).height());
 
-            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                RSS
-                </li>
-                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
-                            </ul>
-            </div>
-            -->
+    var max_height = Array.max(heights);
+    $('.main-header').height(max_height+80);
 
-
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
-                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
-                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
-                                   
-            </ul>
-            </div>
-            
-
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://vicdory.com/" target="_blank">Shikailun的日志</a></li>
-                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
-                            <li><a href="http://mgnt.me" target="_blank">玛格磁力搜索</a></li>
-                        </ul>
-            </div>
-            
-
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-                
-                <li>
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-5514094937222077";
-                /* sidebar */
-                google_ad_slot = "5654046552";
-                google_ad_width = 200;
-                google_ad_height = 200;
-                //-->
-                </script>
-                <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-                </li>                 
-            </ul>
-            </div>
+    $('#mobile-title').text(window.location.hostname);
 
 
 
-        </div>  
-    </div>     </div> 
-<footer>
-<br />
-<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
-</footer>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
- 
+</script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37227120-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
 </body>
-</html>

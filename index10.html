@@ -1,75 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Hackecho</title>
-    <meta name="description" content="">
-    <meta name="author" content="Zhaoyu Li">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
+  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackecho</title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://hackecho.com/theme/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
-    <!-- Le styles -->
-    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
-
-</head>
-
+  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
+  </head>
 <body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="http://hackecho.com">Hackecho</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    <li><a href="/archives.html">Archives</a></li>
-                    <li><a href="/tags.html">Tags</a></li>
-                    
-                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-                    <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-                        </ul>
-        </div>
-        
+<header class="main-header">
+  <a href="http://github.com/zlmoment">
+<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+  <hgroup>
+    <div>
+      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
     </div>
-    </div>
-</div>
+    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
+    <h2>Software engineer, Pythonista and Love Wed.</h2>
+  </hgroup>
+  <nav>
+    <ul class="main-nav">
+      
+            <li><a href="/archives.html">Archives</a></li>
+      
+      
+                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+              
 
-<div class="container">
-    <div class="content">
-    <div class="row">
+    </ul>
+  </nav>
+  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
 
-        <div class="span9">
-                
-
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/04/open-source-knowledge/"><h2>补习一下开源软件协议的知识</h2></a>
-        <div class= "well small"> Sat 02 April 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>近日接触到很多开源的东西，都有各自的开源协议。记得以前Linux操作系统老师讲过一些，但已记不大清楚。为了更好的使用这些开源软件，只好再补习一下了。</p>
+</header>
+<section class="main-section blog-section" id="blog-posts">
+    <h3 class="date">Sat 02 April 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/04/open-source-knowledge/" title="Permalink to 补习一下开源软件协议的知识">补习一下开源软件协议的知识</a></h2>
+	
+	</hgroup>
+	<p>近日接触到很多开源的东西，都有各自的开源协议。记得以前Linux操作系统老师讲过一些，但已记不大清楚。为了更好的使用这些开源软件，只好再补习一下了。</p>
 <p>下面只是一些常见的协议，具体的详解请参照<a href="http://www.opensource.org/licenses/alphabetical">http://www.opensource.org/licenses/alphabetical</a></p>
 <ul>
 <li><strong>Mozilla Public License</strong></li>
@@ -82,25 +62,16 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>1． 如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。</p>
 <p>2． 如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议。</p>
 <p>3． 不可以用开源代码的作者/机构名字和原来产品的名字做市场推广。</p>
-<p>BSD代码鼓励代码共享，但需要尊重代码作者的著作权 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/04/open-source-knowledge/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/"><h2>用HP Scrawlr检测数据库SQL注入漏洞</h2></a>
-        <div class= "well small"> Wed 30 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
+<p>BSD代码鼓励代码共享，但需要尊重代码作者的著作权 ...</p>
+	<div><a href="http://hackecho.com/2011/04/open-source-knowledge/">Read More...</a></div>
+	</article>
+  <h3 class="date">Wed 30 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/sql-injection-with-hp-scrawlr/" title="Permalink to 用HP Scrawlr检测数据库SQL注入漏洞">用HP Scrawlr检测数据库SQL注入漏洞</a></h2>
+	
+	</hgroup>
+	<p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
 <p><strong>引言</strong></p>
 <p>SQL数据库是目前世界上最快的一种数据库，每秒钟可以完成数百万次的事务处理。使用PHP和ASP代码处理SQL连接的时候，如果代码写的不好的 话，就会为网站的安全留下隐患：黑客可以通过插入代码来获得您的服务器上数据库的控制权。所以，一定要保护好您的SQL数据库。测试软件和网络的安全性应 该成为安全审计的一部分。HP为我们提供了扫描网站的SQL漏洞的免费软件。Scrawlr只可用于合法地扫描您自己的站点，而不得用于您的组织之外的站 点。安全分析人员进行渗透测试时，应当将这款软件也纳入到他们的安全工具库中。</p>
 <p><strong>HP Scrawlr</strong></p>
@@ -110,115 +81,70 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527390.jpg" /></p>
 <p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527391.jpg" /></p>
 <p><strong>SQL注入</strong></p>
-<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/you-were-in-my-youth/"><h2>我的青春，你来过 - 【转自豆瓣】</h2></a>
-        <div class= "well small"> Tue 29 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>伴着一阵阵隐隐的心痛，看完了《致我们终将逝去的青春》。泪眼朦胧的挥别了郑微，挥别了年少时的那个“玉面小飞龙”。我知道她们终将要离开我，一转身，便是个诀别，今后都不会再见。即使多年后的梦里，当我们再次遇见那个曾经深深爱过的陈孝正，也只能说一声，我们再也回不去了，对不对？</p>
+<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p>
+	<div><a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 29 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/you-were-in-my-youth/" title="Permalink to 我的青春，你来过 - 【转自豆瓣】">我的青春，你来过 - 【转自豆瓣】</a></h2>
+	
+	</hgroup>
+	<p>伴着一阵阵隐隐的心痛，看完了《致我们终将逝去的青春》。泪眼朦胧的挥别了郑微，挥别了年少时的那个“玉面小飞龙”。我知道她们终将要离开我，一转身，便是个诀别，今后都不会再见。即使多年后的梦里，当我们再次遇见那个曾经深深爱过的陈孝正，也只能说一声，我们再也回不去了，对不对？</p>
 <p>青春终将腐朽，曲终人散时，才发现爱是那样铭心，而伤害却也同样刻骨。那个曾经如此飞扬跋扈的小飞龙，那个曾经如此孤傲冷峻的阿正，那棵老槐树，那本《安徒生童话&gt;&gt;,那场7年的失约，那个陪你一起走过青春的阮阮，那个一生中最亮的月光，统统都将被埋葬。</p>
 <p>正如故乡是用来怀念的，青春就是用来追忆的，当你怀揣着它时，它一文不值，只有将它耗尽后，再回过头看，一切才有了意义――爱过我们的人和伤害过我们的人，都是我们青春存在的意义。</p>
 <p>每个人或多或少都可以在郑微身上找到自己当年的影子，每个年轻的女孩都会遇到自己生命中的阵孝正，而每一个陈孝正都要在经历过失去后才会蜕变成林静，而每个郑微在长大后都知道林静才是最终最好的选择。</p>
-<p>成长的代价就是要失去一些东西，而那些东西当时不觉得有什么珍贵，若干年后，过尽千帆才明白这些将不会在以后的人生路上再次出现。可是没关系，每个人的成长之路都是如此，但愿我们失去后会懂得好好珍惜现在所拥有的一切，因为那些都是用青春，用眼泪 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/you-were-in-my-youth/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/how-to-recognize-false-geek/"><h2>如何分辨极客与伪极</h2></a>
-        <div class= "well small"> Sat 26 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>有着非常强健的体魄，或者非常专业的某项体育技能的，100%不是极客。极客没有时间也没有兴趣刻意锻炼身体。身体非常虚弱的，100%不是极 客，70%是伪极，呆极客或者宅。极客虽然不会进行长期稳定的体育运动，但是他们享受户外的活动。绝不会始终宅在家里。所以身体一定是健康的，却不是好坏 两个极端。</p>
+<p>成长的代价就是要失去一些东西，而那些东西当时不觉得有什么珍贵，若干年后，过尽千帆才明白这些将不会在以后的人生路上再次出现。可是没关系，每个人的成长之路都是如此，但愿我们失去后会懂得好好珍惜现在所拥有的一切，因为那些都是用青春，用眼泪 ...</p>
+	<div><a href="http://hackecho.com/2011/03/you-were-in-my-youth/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 26 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/how-to-recognize-false-geek/" title="Permalink to 如何分辨极客与伪极">如何分辨极客与伪极</a></h2>
+	
+	</hgroup>
+	<p>有着非常强健的体魄，或者非常专业的某项体育技能的，100%不是极客。极客没有时间也没有兴趣刻意锻炼身体。身体非常虚弱的，100%不是极 客，70%是伪极，呆极客或者宅。极客虽然不会进行长期稳定的体育运动，但是他们享受户外的活动。绝不会始终宅在家里。所以身体一定是健康的，却不是好坏 两个极端。</p>
 <p>不戴眼镜的，100%不是极客。</p>
 <p>出门站在衣柜犹豫不知穿什么衣服的，80%不是极客。极客们讲求效率，不会在穿衣戴帽等事情上浪费时间。另一方面，他们也没有太多的衣物供不同场合的选择。出门随手拽两件衣服披上就走的，90%是极客。</p>
 <p>拥有一辆不错的个人车的，70%不是极客。极客开车的机会不多，也不会下血本买费钱费油的好车。</p>
 <p>酒量特别好的，100%不是极客。极客们饮酒的机会不多。不过由于常常帮朋友修理电脑导致被请客在外就餐的机会也不少，所以酒量比宅要高很多。</p>
-<p>经常哭穷的，100%不是极客。极客们手头都是相对宽裕的。他们的心态比较中置，对于不同的家庭背景或者收入状况不会加以打击或者憧憬，因为他们所追求的不是纯物质生活，更多的在于精神上 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/my-recent-life-notes/"><h2>近日小记</h2></a>
-        <div class= "well small"> Sat 26 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>有一段时间没更新博客了，主要是这段时间全部心思都在知行客团购网上。那天晚上，脑海中突然闪现出这样一个想法，便激动地无法入眠。以前也有过很多次灵感的爆发，比如今年寒假时想到的“优惯网”创意。当时我在微博上说，每天一觉醒来，上网一看，我的想法还没有人实现，便又可以安心地度过一天了。可当时忽略了重要的一点，就是执行力的问题。这也是后来在一次创新工场的宣讲会上我学习到的，执行力永远是第一位。当时有很多同学支持我，我很感动，不过，优惯网流产了，终究现在没有出现。至于将来会不会出现，我们可以wait and see，呵呵。</p>
+<p>经常哭穷的，100%不是极客。极客们手头都是相对宽裕的。他们的心态比较中置，对于不同的家庭背景或者收入状况不会加以打击或者憧憬，因为他们所追求的不是纯物质生活，更多的在于精神上 ...</p>
+	<div><a href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 26 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/my-recent-life-notes/" title="Permalink to 近日小记">近日小记</a></h2>
+	
+	</hgroup>
+	<p>有一段时间没更新博客了，主要是这段时间全部心思都在知行客团购网上。那天晚上，脑海中突然闪现出这样一个想法，便激动地无法入眠。以前也有过很多次灵感的爆发，比如今年寒假时想到的“优惯网”创意。当时我在微博上说，每天一觉醒来，上网一看，我的想法还没有人实现，便又可以安心地度过一天了。可当时忽略了重要的一点，就是执行力的问题。这也是后来在一次创新工场的宣讲会上我学习到的，执行力永远是第一位。当时有很多同学支持我，我很感动，不过，优惯网流产了，终究现在没有出现。至于将来会不会出现，我们可以wait and see，呵呵。</p>
 <p>想到“知行客团购网”时，我给自己下了一个目标，从网站策划，到域名和服务器以及网站程序的到位，最后到联系商家，上线第一个产品的时间，一定要控制在10天之内。如今，刚刚正好12天，商家已经初步到位，预计近一周内一定上线。鉴于所有的工作都是在课余时间完成的，所以我觉得，还行。我还有与我一同为这个网站努力的同伴，在这个过程中，收获的绝不仅仅是一个网站。</p>
-<p>细细数来，还有四个近在眼前的各类软件比赛摆在面前。3天后新软攀峰 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/my-recent-life-notes/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/30-days-after-no-facebook/"><h2>戒掉Facebook的三十天后（附原文）</h2></a>
-        <div class= "well small"> Fri 18 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><strong>下面是从无名处转来的一篇简单翻译后的文章，最后附有英文原版。</strong></p>
+<p>细细数来，还有四个近在眼前的各类软件比赛摆在面前。3天后新软攀峰 ...</p>
+	<div><a href="http://hackecho.com/2011/03/my-recent-life-notes/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 18 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/30-days-after-no-facebook/" title="Permalink to 戒掉Facebook的三十天后（附原文）">戒掉Facebook的三十天后（附原文）</a></h2>
+	
+	</hgroup>
+	<p><strong>下面是从无名处转来的一篇简单翻译后的文章，最后附有英文原版。</strong></p>
 <p>注：Facebook：世界最大的社交网络，中国同类网站有人人网、开心网等。</p>
 <p>————————</p>
 <p>在这个社交网络泛滥的年代，朋友转发了一个博客链接，讲的是一个重度“脸书”用户“挑战自己”，决定停用这个社交网络平台，并且记录下自己的心得体会。有很多有意思的观点，有些直指这个“最牛浪费时间机器”（world’s biggest time sink）的痛处。原文很长，并且不可否认，作者的有些观点，连我都持保留性意见。根据曾经的师太在康大研究网络交流的一些经验，有些还是以偏概全了，所以只是节选了一些有意思的词句，就不逐句翻译了。</p>
 <p>————————</p>
 <p>终于完成了这个“离开Facebook”三十天的计划！在过去的两年里，我一直是Facebook的忠实用户。我不能保证，在过去的这三十天里，我所有的感悟都能够引起你的共鸣，但愿某些共通之处，会引发你的思考。</p>
 <p><strong>Facebook上的交流通常都是都是“次重要的”</strong></p>
-<p>我意识到当我停止使用Facebook后，生活中的交流量（communication volume）大幅减少，但是那些重要的有意义的交流却没有受到影响 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/30-days-after-no-facebook/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/"><h2>单链表的一些算法实现</h2></a>
-        <div class= "well small"> Thu 10 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
+<p>我意识到当我停止使用Facebook后，生活中的交流量（communication volume）大幅减少，但是那些重要的有意义的交流却没有受到影响 ...</p>
+	<div><a href="http://hackecho.com/2011/03/30-days-after-no-facebook/">Read More...</a></div>
+	</article>
+  <h3 class="date">Thu 10 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/algorithm-of-single-linked-list/" title="Permalink to 单链表的一些算法实现">单链表的一些算法实现</a></h2>
+	
+	</hgroup>
+	<p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
 <p><strong>首先定义节点：</strong></p>
 <div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
     <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
@@ -239,48 +165,30 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
         <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
         <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
         <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
-        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/find-password-of-win7/"><h2>Win 7忘记密码的恢复方法</h2></a>
-        <div class= "well small"> Tue 08 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><strong>声明：本文只供学习交流之用，请勿将此方法用于非法用途，转载请注明来自<a href="http://www.hackecho.com">天堂皓月</a></strong></p>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div>
+	<div><a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 08 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/find-password-of-win7/" title="Permalink to Win 7忘记密码的恢复方法">Win 7忘记密码的恢复方法</a></h2>
+	
+	</hgroup>
+	<p><strong>声明：本文只供学习交流之用，请勿将此方法用于非法用途，转载请注明来自<a href="http://www.hackecho.com">天堂皓月</a></strong></p>
 <p><strong>基本思想：</strong></p>
 <p>在登陆界面想办法启动cmd，取得管理员权限，开启（或新增）系统管理员，进入后重置密码。</p>
 <p><strong>实现方法：</strong></p>
 <p>大家注意登陆界面的“轻松访问”按钮，打开后可以看到一系列应用程序，如“讲述人”“放大镜”“高对比度”等，这些应用程序的可执行文件都在“C:Windowssystem32”(假设Windows7安装在C盘)目录里。</p>
-<p>我们可以通过第三方系统（如CE，另一个XP等）进入系统目录，更改（以“放大镜”为例）magnify.exe文件的权限，右击“magnify.exe”选择“权限”——高级——所有者，将当前系统管理员帐号设置为所有者(如果没有当前帐号在列表，则单击“其他账户”，手动输入当前账户名)。单击 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/find-password-of-win7/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/intro-of-mvc-structure/"><h2>对MVC架构的简单解读</h2></a>
-        <div class= "well small"> Sat 05 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>因最近开发的需要，开始自学PHP，学习中的一些心得和技巧将会记录在博客里。作为一名初学者，我选择了使用SpeedPHP开发框架，因为它是个轻量级的框架。这篇文章是SP教程里的，简单摘录一下，以加深理解。</p>
+<p>我们可以通过第三方系统（如CE，另一个XP等）进入系统目录，更改（以“放大镜”为例）magnify.exe文件的权限，右击“magnify.exe”选择“权限”——高级——所有者，将当前系统管理员帐号设置为所有者(如果没有当前帐号在列表，则单击“其他账户”，手动输入当前账户名)。单击 ...</p>
+	<div><a href="http://hackecho.com/2011/03/find-password-of-win7/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 05 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/intro-of-mvc-structure/" title="Permalink to 对MVC架构的简单解读">对MVC架构的简单解读</a></h2>
+	
+	</hgroup>
+	<p>因最近开发的需要，开始自学PHP，学习中的一些心得和技巧将会记录在博客里。作为一名初学者，我选择了使用SpeedPHP开发框架，因为它是个轻量级的框架。这篇文章是SP教程里的，简单摘录一下，以加深理解。</p>
 <p>本文将讲述在网络系统（WEB系统）开发中，MVC（模型-视图-控制器）架构的理念、设计以及在sp框架中的实际应用方式等。</p>
 <p>首先我们来看看MVC架构的示意图：</p>
 <p><a href="http://www.hackecho.com/?attachment_id=139"><img alt="MVC" src="/static/images/2011/03/捕获-300x118.png" /></a></p>
@@ -289,151 +197,72 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>对数据库进行存取的是模型层（Model层），在sp框架中，全部的模型器类都必须继承于spModel。</p>
 <p>显示页面模板的是视图层（View层），在sp框架中，视图层被集成到了控制器内，所以在实际开发中，视图层所要制作的只有页面模板。</p>
 <p>上面简单描述了MVC架构的理解。下面讲述一下关于sp框架中的MVC理念，可能比较抽象而不好理解，但是还请耐心去阅读，毕竟在实际开发中，对MVC理念的理解是非常必要和重要的。</p>
-<p>sp框架中的MVC理念，是将网络系统划分为三个关注点：交互、数据、页面模板；也就是我们设计或分析一个网络系统 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/intro-of-mvc-structure/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2011/03/where-to-go-this-summer/"><h2>今年夏天，什么季</h2></a>
-        <div class= "well small"> Fri 04 March 2011
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>去年大一夏天，我一人独自外出流浪。我深知，大学四年的暑假绝不能荒废，我们应该做一些有意义的事情。大一那时没有技术，实习的话什么也干不了，于是干脆利用这个时间到处走走，旅行，也能给人很多收获。</p>
+<p>sp框架中的MVC理念，是将网络系统划分为三个关注点：交互、数据、页面模板；也就是我们设计或分析一个网络系统 ...</p>
+	<div><a href="http://hackecho.com/2011/03/intro-of-mvc-structure/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 04 March 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/03/where-to-go-this-summer/" title="Permalink to 今年夏天，什么季">今年夏天，什么季</a></h2>
+	
+	</hgroup>
+	<p>去年大一夏天，我一人独自外出流浪。我深知，大学四年的暑假绝不能荒废，我们应该做一些有意义的事情。大一那时没有技术，实习的话什么也干不了，于是干脆利用这个时间到处走走，旅行，也能给人很多收获。</p>
 <p>去年暑假回来后，我一直处在思考的状态。明白了很多，懂了很多。明白了有些事情发生了，有些人离开了，有些爱情丢失了，就再也回不来了；至少我曾经拥有过，我学会了珍惜，也学会了珍藏。</p>
 <p>这一段时间里，我看到了很多新兴领域的崛起，这些领域包括了移动开发和互联网开发等等。不能说我“见证了”Android的成长，但起码看到了它是怎样一步一步走来，走出一个全新领域的过程；也不能说我又非凡的“前瞻”力，但我依稀感觉到了它巨大的发展潜力。</p>
 <p>我对互联网虽没有达到痴迷的程度，但着实非常喜欢。喜欢那B/S架构带来的体验，喜欢从一个小小的窗口、从head/body里看世界，喜欢一种connection。当然，应用软件也很喜欢，C/S架构的胖客户端也是很有潜力的！</p>
 <p>今年夏天，会是什么季呢。。</p>
-<p>那么从现在就开始吧。</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2011/03/where-to-go-this-summer/">read more</a></div>
-    </div>	
-				
-            <div class="pagination">
-<ul>
-    <li class="prev"><a href="http://hackecho.com/index9.html">&larr; Previous</a></li>
+<p>那么从现在就开始吧。</p>
+	<div><a href="http://hackecho.com/2011/03/where-to-go-this-summer/">Read More...</a></div>
+	</article>
 
-    <li class=""><a href="http://hackecho.com/index.html">1</a></li>
-    <li class=""><a href="http://hackecho.com/index2.html">2</a></li>
-    <li class=""><a href="http://hackecho.com/index3.html">3</a></li>
-    <li class=""><a href="http://hackecho.com/index4.html">4</a></li>
-    <li class=""><a href="http://hackecho.com/index5.html">5</a></li>
-    <li class=""><a href="http://hackecho.com/index6.html">6</a></li>
-    <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
-    <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
-    <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
-    <li class="active"><a href="http://hackecho.com/index10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
+<p class="paginator">
+						<a href="http://hackecho.com/index9.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
+						<a href="http://hackecho.com/index11.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
+	</p>
 
-    <li class="next"><a href="http://hackecho.com/index11.html">Next &rarr;</a></li>
+</section>
+<div class="mobile-nav">
+  <span class="nav-btn" id="mobile-nav-btn">
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+  </span>
+  <h3>
+    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
+  </h3>
+</div>
 
-</ul>
-</div>    
- 
-  
-        </div>
-        
-        <div class="span3">
+    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
 
-            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                RSS
-                </li>
-                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
-                            </ul>
-            </div>
-            -->
+<script>
+    // Function to get the Maximam value in Array
+    Array.max = function( array ) {
+        return Math.max.apply( Math, array );
+    };
 
+    var heights = [];
+    heights.push($('.main-header').height());
+    heights.push($('.main-section').height());
+    heights.push($(window).height());
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
-                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
-                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
-                                   
-            </ul>
-            </div>
-            
+    var max_height = Array.max(heights);
+    $('.main-header').height(max_height+80);
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://vicdory.com/" target="_blank">Shikailun的日志</a></li>
-                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
-                            <li><a href="http://mgnt.me" target="_blank">玛格磁力搜索</a></li>
-                        </ul>
-            </div>
-            
-
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-                
-                <li>
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-5514094937222077";
-                /* sidebar */
-                google_ad_slot = "5654046552";
-                google_ad_width = 200;
-                google_ad_height = 200;
-                //-->
-                </script>
-                <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-                </li>                 
-            </ul>
-            </div>
+    $('#mobile-title').text(window.location.hostname);
 
 
 
-        </div>  
-    </div>     </div> 
-<footer>
-<br />
-<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
-</footer>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
- 
+</script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37227120-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
 </body>
-</html>

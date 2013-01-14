@@ -1,74 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Hackecho</title>
-    <meta name="description" content="">
-    <meta name="author" content="Zhaoyu Li">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
+  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackecho</title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://hackecho.com/theme/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
-    <!-- Le styles -->
-    <link href="http://hackecho.com/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/local.css" rel="stylesheet">
-    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
-
-</head>
-
+  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
+  </head>
 <body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="http://hackecho.com">Hackecho</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    <li><a href="/archives.html">Archives</a></li>
-                    <li><a href="/tags.html">Tags</a></li>
-                    
-                            <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-                    <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-                    <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-                        </ul>
-        </div>
-        
+<header class="main-header">
+  <a href="http://github.com/zlmoment">
+<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+  <hgroup>
+    <div>
+      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
     </div>
-    </div>
-</div>
+    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
+    <h2>Software engineer, Pythonista and Love Wed.</h2>
+  </hgroup>
+  <nav>
+    <ul class="main-nav">
+      
+            <li><a href="/archives.html">Archives</a></li>
+      
+      
+                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+              
 
-<div class="container">
-    <div class="content">
-    <div class="row">
+    </ul>
+  </nav>
+  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
 
-        <div class="span9">
-                
-
-        
-
-
-    <div class='article'>
-        <a href="http://hackecho.com/2013/01/intro-to-magnet-link/"><h2>Magnet Link 和 Torrent</h2></a>
-        <div class= "well small"> Tue 01 January 2013
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>今天是美国的元旦（New-Year），本来打算到工程院度过一天，没想到整个学校到处都是大门紧闭。回家后准备下载一部电影，于是折腾中对磁力链接和种子产生了兴趣。不做深究，只谈表层原理。</p>
+</header>
+<section class="main-section blog-section" id="blog-posts">
+    <h3 class="date">Tue 01 January 2013</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2013/01/intro-to-magnet-link/" title="Permalink to Magnet Link 和 Torrent">Magnet Link 和 Torrent</a></h2>
+	
+	</hgroup>
+	<p>今天是美国的元旦（New-Year），本来打算到工程院度过一天，没想到整个学校到处都是大门紧闭。回家后准备下载一部电影，于是折腾中对磁力链接和种子产生了兴趣。不做深究，只谈表层原理。</p>
 <p>著名的BT搜索站海盗湾已经声明，不再托管任何种子文件，将全部更改为提供磁力链接（Magnet Links）。如果你还没有使用过磁力链接，这里将告诉你磁力链接和种子文件的关系（当然，磁力链接本身不仅限于种子文件）。</p>
 <p><strong>磁力链接和种子文件的区别</strong></p>
 <p>当你下载一个种子文件时，其实是下载了一个包含了资源文件信息的小文件，这个小文件告诉BT客户端资源文件的名称、tracker的URI等。然后BT客户端会根据种子文件计算一个hash值（就像ISBN一样），再根据哈希值找到此刻正在分享这个资源的用户，然后开始P2P的传输。</p>
@@ -77,25 +58,16 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>磁力链接的形式是以magnet:开头的一串字符，你只需要直接点击磁力链接或把它复制到支持磁力下载的客户端即可。</p>
 <p><strong>有什么意义</strong></p>
 <p>这有什么意义呢？只是把种子文件换了一种形式而已。如果你这样以为就错了，否则海盗湾也不会全站进行转换。</p>
-<p>最重要原因是，使用磁力链接可以使像海盗湾这样的种子站摆脱法律纠缠。因为海盗湾本身将不再存储任何链接到受版权保护的资源上（比如.torrent文件）。这样将无法说海盗湾本身<em>直接 ...</em></p> <a class="btn btn-info xsmall" href="http://hackecho.com/2013/01/intro-to-magnet-link/">read more</a></div>
-    </div>  
-		
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/12/python-yield/"><h2>Python中yield备忘</h2></a>
-        <div class= "well small"> Mon 31 December 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
+<p>最重要原因是，使用磁力链接可以使像海盗湾这样的种子站摆脱法律纠缠。因为海盗湾本身将不再存储任何链接到受版权保护的资源上（比如.torrent文件）。这样将无法说海盗湾本身<em>直接 ...</em></p>
+	<div><a href="http://hackecho.com/2013/01/intro-to-magnet-link/">Read More...</a></div>
+	</article>
+  <h3 class="date">Mon 31 December 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/12/python-yield/" title="Permalink to Python中yield备忘">Python中yield备忘</a></h2>
+	
+	</hgroup>
+	<p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
 <p>带有 yield 的函数在 Python 中被称之为 generator（生成器）。</p>
 <p>我们已生成斐波那契数列为例，来循序渐进了解yield。</p>
 <p>生成斐波那契数列：</p>
@@ -111,50 +83,32 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>上面这个函数中直接用到了print函数，导致该函数复用性极差。我们想到可以返回一个List，改写如下：</p>
 <div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
     <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="n">L ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/12/python-yield/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/11/suds-problems/"><h2>SUDS错误和实例</h2></a>
-        <div class= "well small"> Tue 13 November 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+    <span class="n">L ...</span></pre></div>
+	<div><a href="http://hackecho.com/2012/12/python-yield/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 13 November 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/11/suds-problems/" title="Permalink to SUDS错误和实例">SUDS错误和实例</a></h2>
+	
+	</hgroup>
+	<p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
 <p>错误信息：</p>
 <div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s">&quot;test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">12</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
   <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages/suds-0.4-py2.7.egg/suds/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">112</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__init__</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">wsdl</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/11/suds-problems/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/07/socket-work-model/"><h2>Socket的几种工作模式</h2></a>
-        <div class= "well small"> Tue 17 July 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
+  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div>
+	<div><a href="http://hackecho.com/2012/11/suds-problems/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 17 July 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/07/socket-work-model/" title="Permalink to Socket的几种工作模式">Socket的几种工作模式</a></h2>
+	
+	</hgroup>
+	<p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
 <h2>阻塞模式</h2>
 <p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
 <p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
@@ -168,25 +122,16 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <span class="c">#include &lt;netinet/in.h&gt;</span>
 <span class="c">#include &lt;sys/socket.h&gt;</span>
 <span class="c">#include &lt;sys/wait.h&gt;</span>
-<span class="c">#define ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/07/socket-work-model/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/07/fhs-introduction/"><h2>Linux文件系统备忘录</h2></a>
-        <div class= "well small"> Sun 01 July 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
+<span class="c">#define ...</span></pre></div>
+	<div><a href="http://hackecho.com/2012/07/socket-work-model/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 01 July 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/07/fhs-introduction/" title="Permalink to Linux文件系统备忘录">Linux文件系统备忘录</a></h2>
+	
+	</hgroup>
+	<p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
 <p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
 <h2>根文件系统</h2>
 <p><strong>/bin</strong></p>
@@ -198,63 +143,36 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p><strong>/etc</strong></p>
 <p>该目录中包含系统和应用软件的配置文件。</p>
 <p><strong>/etc/passwd</strong></p>
-<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/07/fhs-introduction/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/06/three-software-architecture-style/"><h2>3 Software Architecture Style</h2></a>
-        <div class= "well small"> Sat 02 June 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
-<p>This brief introduction of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/three-software-architecture-style/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/"><h2>Sequences and Proxy Services in WSO2 ESB</h2></a>
-        <div class= "well small"> Sat 02 June 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
-<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/"><h2>解决MySQL无法通过localhost连接问题</h2></a>
-        <div class= "well small"> Sun 27 May 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p>
+	<div><a href="http://hackecho.com/2012/07/fhs-introduction/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 02 June 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/06/three-software-architecture-style/" title="Permalink to 3 Software Architecture Style">3 Software Architecture Style</a></h2>
+	
+	</hgroup>
+	<p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
+<p>This brief introduction of ...</p>
+	<div><a href="http://hackecho.com/2012/06/three-software-architecture-style/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 02 June 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/06/sequences-and-proxy-services-in-wso2-esb/" title="Permalink to Sequences and Proxy Services in WSO2 ESB">Sequences and Proxy Services in WSO2 ESB</a></h2>
+	
+	</hgroup>
+	<p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
+<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p>
+	<div><a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 27 May 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/05/mysql-localhost-connect-problem/" title="Permalink to 解决MySQL无法通过localhost连接问题">解决MySQL无法通过localhost连接问题</a></h2>
+	
+	</hgroup>
+	<p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
 <p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
 <h3>安装MySQL</h3>
 <p>依次执行下列三个命令：</p>
@@ -267,163 +185,78 @@ by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li<
 <p>具体为什么有后两条命令，你安装的时候就知道了。</p>
 <h3>解决localhost问题</h3>
 <p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">read more</a></div>
-    </div>	
-				
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="http://hackecho.com/2012/05/super-tool-homebrew/"><h2>开发者神器 - Homebrew简介</h2></a>
-        <div class= "well small"> Fri 25 May 2012
-
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
-
-
- </div>
-        <div class="summary"><p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
+<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div>
+	<div><a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 25 May 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/05/super-tool-homebrew/" title="Permalink to 开发者神器 - Homebrew简介">开发者神器 - Homebrew简介</a></h2>
+	
+	</hgroup>
+	<p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
 <p><img alt="" src="/static/images/2012/05/homebrew.jpg" /></p>
-<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/super-tool-homebrew/">read more</a></div>
-    </div>	
-				
-    
- 
-        
+<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p>
+	<div><a href="http://hackecho.com/2012/05/super-tool-homebrew/">Read More...</a></div>
+	</article>
+  <h3 class="date">Tue 22 May 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/05/homebrew-vs-macports/" title="Permalink to Homebrew VS MacPorts">Homebrew VS MacPorts</a></h2>
+	
+	</hgroup>
+	<p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
+<p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p>
+	<div><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Read More...</a></div>
+	</article>
 
- 
+<p class="paginator">
+				<a href="http://hackecho.com/category/develope2.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
+	</p>
 
-    <div class='article'>
-        <a href="http://hackecho.com/2012/05/homebrew-vs-macports/"><h2>Homebrew VS MacPorts</h2></a>
-        <div class= "well small"> Tue 22 May 2012
+</section>
+<div class="mobile-nav">
+  <span class="nav-btn" id="mobile-nav-btn">
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+  </span>
+  <h3>
+    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
+  </h3>
+</div>
 
-by <a class="url fn" href="http://hackecho.com/author/zhaoyu-li.html">Zhaoyu Li</a>
- 
+    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
 
+<script>
+    // Function to get the Maximam value in Array
+    Array.max = function( array ) {
+        return Math.max.apply( Math, array );
+    };
 
- </div>
-        <div class="summary"><p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
-<p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p> <a class="btn btn-info xsmall" href="http://hackecho.com/2012/05/homebrew-vs-macports/">read more</a></div>
-    </div>	
-				
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+    var heights = [];
+    heights.push($('.main-header').height());
+    heights.push($('.main-section').height());
+    heights.push($(window).height());
 
-    <li class="active"><a href="http://hackecho.com/category/develope.html">1</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope2.html">2</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope3.html">3</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope4.html">4</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope5.html">5</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope6.html">6</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope8.html">8</a></li>
+    var max_height = Array.max(heights);
+    $('.main-header').height(max_height+80);
 
-    <li class="next"><a href="http://hackecho.com/category/develope2.html">Next &rarr;</a></li>
-
-</ul>
-</div>    
- 
-  
-        </div>
-        
-        <div class="span3">
-
-            <!--<div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                RSS
-                </li>
-                <li><a href="http://hackecho.com/" rel="alternate">Atom feed</a></li>
-                            </ul>
-            </div>
-            -->
-
-
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="http://hackecho.com/category/develope.html">Develope</a></li>
-                                <li><a href="http://hackecho.com/category/life.html">Life</a></li>
-                                <li><a href="http://hackecho.com/category/other.html">Other</a></li>
-                                   
-            </ul>
-            </div>
-            
-
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://vicdory.com/" target="_blank">Shikailun的日志</a></li>
-                            <li><a href="http://ilifezen.com/" target="_blank">iLifeZen</a></li>
-                            <li><a href="http://techeric.info/" target="_blank">远方</a></li>
-                            <li><a href="http://mingplusplus.com/blog/" target="_blank">Ming++</a></li>
-                            <li><a href="http://tsenmu.com/" target="_blank">Tsenmu</a></li>
-                            <li><a href="http://www.binghe.org/" target="_blank">冰河的博客</a></li>
-                            <li><a href="http://mgnt.me" target="_blank">玛格磁力搜索</a></li>
-                        </ul>
-            </div>
-            
-
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="https://www.facebook.com/hackecho" target="_blank">Facebook</a></li>
-                                <li><a href="https://twitter.com/zlmoment" target="_blank">Twitter</a></li>
-                                <li><a href="http://weibo.com/zhaoyulee" target="_blank">微博</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-                
-                <li>
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-5514094937222077";
-                /* sidebar */
-                google_ad_slot = "5654046552";
-                google_ad_width = 200;
-                google_ad_height = 200;
-                //-->
-                </script>
-                <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-                </li>                 
-            </ul>
-            </div>
+    $('#mobile-title').text(window.location.hostname);
 
 
 
-        </div>  
-    </div>     </div> 
-<footer>
-<br />
-<p><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2012</p>
-</footer>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
- 
+</script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37227120-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
 </body>
-</html>
