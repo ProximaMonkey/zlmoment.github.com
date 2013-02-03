@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -44,6 +44,16 @@
 </header>
 <section class="main-section blog-section" id="blog-posts">
     <h3 class="date">Sat 02 June 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/06/three-software-architecture-style/" title="Permalink to 3 Software Architecture Style">3 Software Architecture Style</a></h2>
+	
+	</hgroup>
+	<p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
+<p>This brief introduction of ...</p>
+	<div><a href="http://hackecho.com/2012/06/three-software-architecture-style/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 02 June 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/06/sequences-and-proxy-services-in-wso2-esb/" title="Permalink to Sequences and Proxy Services in WSO2 ESB">Sequences and Proxy Services in WSO2 ESB</a></h2>
@@ -192,25 +202,6 @@ print hello() ## 返回 ...</pre></div>
 <p>Habit 6: Synergize 协同合作</p>
 <p>Habit 7: Sharpen the Saw 磨亮锯子（意指不断自我提高 ...</p>
 	<div><a href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 01 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/websocket-server-with-tornado/" title="Permalink to 用Tornado实现WebSocket服务器">用Tornado实现WebSocket服务器</a></h2>
-	
-	</hgroup>
-	<p>为什么昨天才发现还有这么好的框架：）简洁，非阻塞。Tornado是一个HTTP服务器，也是一个Web开发框架，最初是由FriendFeed网站的幕后团队开发的，后被Facebook收购开源，现主要服务于Facebook。昨晚用它实现了新的WebSocket服务器，最简单的EchoBack，代码行数骤减，开发效率非常高，稳定性也比PHP略高一筹。</p>
-<p>Tornado是非阻塞的，所以我觉得对于非阻塞式IO (nonblocking IO) 和异步IO (asynchronous IO  AIO)很有必要谈一谈。</p>
-<h3>Non-blocking IO 和 Asynchronous IO</h3>
-<p>我们假设你正在写的应用程序需要去远程服务器上请求数据（比如数据库中的数据，或一些远程API），这步请求假设需要花费5秒钟的时间。在很多Web开发框架中，它们是这样处理的：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">handler_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="n">answ</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">remote_server</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> # <span class="n">this</span> <span class="n">takes</span> 5 <span class="n">seconds</span>
-    <span class="n">request</span><span class="p">.</span><span class="n">write_response</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
-</pre></div>
-
-
-<p>如果你在单线程中运行 ...</p>
-	<div><a href="http://hackecho.com/2012/05/websocket-server-with-tornado/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

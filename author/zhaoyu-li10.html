@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,23 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Fri 25 May 2012</h3>
+    <h3 class="date">Tue 13 November 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/11/suds-problems/" title="Permalink to SUDS错误和实例">SUDS错误和实例</a></h2>
+	
+	</hgroup>
+	<p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+<p>错误信息：</p>
+<div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">12</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages/suds-0.4-py2.7.egg/suds/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">112</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__init__</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">wsdl</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div>
+	<div><a href="http://hackecho.com/2012/11/suds-problems/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 25 May 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/05/super-tool-homebrew/" title="Permalink to 开发者神器 - Homebrew简介">开发者神器 - Homebrew简介</a></h2>
@@ -266,38 +282,6 @@
 
 <span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div>
 	<div><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 04 April 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/04/thinkphp-notes/" title="Permalink to ThinkPHP学习笔记（一）">ThinkPHP学习笔记（一）</a></h2>
-	
-	</hgroup>
-	<p>因为是自己的笔记，所以比较杂乱，见谅。</p>
-<p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
-<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
-    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
-        <span class="p">....</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="o">?&gt;</span>
-</pre></div>
-
-
-<p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
-<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
-    <span class="p">{}</span>
-<span class="o">?&gt;</span>
-</pre></div>
-
-
-<p>Action目录放置命名为xxxAction.class.php的控制器文件，Model目录放置对应数据库表的命名为xxxModel.class.php的类文件。</p>
-<p>1 在TP开发中，要增加一个应用模块，就在Action文件夹里建立一个类，类的文件命名格式是模块名称+Action.class.php ...</p>
-	<div><a href="http://hackecho.com/2011/04/thinkphp-notes/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

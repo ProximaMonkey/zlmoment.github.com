@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,26 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Sun 29 April 2012</h3>
+    <h3 class="date">Tue 01 May 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/05/websocket-server-with-tornado/" title="Permalink to 用Tornado实现WebSocket服务器">用Tornado实现WebSocket服务器</a></h2>
+	
+	</hgroup>
+	<p>为什么昨天才发现还有这么好的框架：）简洁，非阻塞。Tornado是一个HTTP服务器，也是一个Web开发框架，最初是由FriendFeed网站的幕后团队开发的，后被Facebook收购开源，现主要服务于Facebook。昨晚用它实现了新的WebSocket服务器，最简单的EchoBack，代码行数骤减，开发效率非常高，稳定性也比PHP略高一筹。</p>
+<p>Tornado是非阻塞的，所以我觉得对于非阻塞式IO (nonblocking IO) 和异步IO (asynchronous IO  AIO)很有必要谈一谈。</p>
+<h3>Non-blocking IO 和 Asynchronous IO</h3>
+<p>我们假设你正在写的应用程序需要去远程服务器上请求数据（比如数据库中的数据，或一些远程API），这步请求假设需要花费5秒钟的时间。在很多Web开发框架中，它们是这样处理的：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">handler_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">answ</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">remote_server</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> # <span class="n">this</span> <span class="n">takes</span> 5 <span class="n">seconds</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">write_response</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
+</pre></div>
+
+
+<p>如果你在单线程中运行 ...</p>
+	<div><a href="http://hackecho.com/2012/05/websocket-server-with-tornado/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 29 April 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/04/new-hybi-10-protocol-of-websocket/" title="Permalink to WebSocket新版Hybi-10协议介绍">WebSocket新版Hybi-10协议介绍</a></h2>
@@ -287,32 +306,6 @@
 <p>2.文档习惯</p>
 <p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p>
 	<div><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sun 18 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/born-of-the-first-hackecho-spider/" title="Permalink to 第一个HackEcho爬虫诞生记">第一个HackEcho爬虫诞生记</a></h2>
-	
-	</hgroup>
-	<p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
-<p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
-<p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
-<p>当然，爬取的数据也不多，具体只有以下几项：</p>
-<div class="codehilite"><pre><span class="n">from</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">item</span> <span class="n">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
-
-<span class="n">class</span> <span class="n">YileeItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
-    # <span class="n">DEFINE</span> <span class="n">THE</span> <span class="n">FIELDS</span> <span class="n">FOR</span> <span class="n">YOUR</span> <span class="n">ITEM</span> <span class="n">HERE</span> <span class="n">LIKE</span><span class="p">:</span>
-    # <span class="n">NAME</span> <span class="p">=</span> <span class="n">FIELD</span><span class="p">()</span>
-    <span class="n">url</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">title</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">release_time</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">category</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">content_html</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-</pre></div>
-
-
-<p>当然 ...</p>
-	<div><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

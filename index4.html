@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,33 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Sat 10 March 2012</h3>
+    <h3 class="date">Sun 18 March 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/03/born-of-the-first-hackecho-spider/" title="Permalink to 第一个HackEcho爬虫诞生记">第一个HackEcho爬虫诞生记</a></h2>
+	
+	</hgroup>
+	<p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
+<p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
+<p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
+<p>当然，爬取的数据也不多，具体只有以下几项：</p>
+<div class="codehilite"><pre><span class="n">from</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">item</span> <span class="n">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="n">class</span> <span class="n">YileeItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    # <span class="n">DEFINE</span> <span class="n">THE</span> <span class="n">FIELDS</span> <span class="n">FOR</span> <span class="n">YOUR</span> <span class="n">ITEM</span> <span class="n">HERE</span> <span class="n">LIKE</span><span class="p">:</span>
+    # <span class="n">NAME</span> <span class="p">=</span> <span class="n">FIELD</span><span class="p">()</span>
+    <span class="n">url</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">title</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">release_time</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">category</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+    <span class="n">content_html</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
+</pre></div>
+
+
+<p>当然 ...</p>
+	<div><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 10 March 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/03/how-to-build-real-time-directional-crawl-cluster/" title="Permalink to [转]快速构建实时定向抓取集群">[转]快速构建实时定向抓取集群</a></h2>
@@ -221,21 +247,6 @@ $ <span class="n">make</span>
 <p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
 <p><strong>插件下载地址</strong>：暂无 </p>
 	<div><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 13 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/no-struggle-no-life/" title="Permalink to 无折腾，不生活">无折腾，不生活</a></h2>
-	
-	</hgroup>
-	<p>看看这几天都折腾了些啥...</p>
-<p>1.换博客程序，更换域名</p>
-<p>开学前，抱着“无折腾，不生活”的态度，将博客的程序换成了国人开发的Emlog。整个转换过程基本用了一天时间，网上可以找到很多emlog转Worpdress的程序，但逆向的话却很少。最后，采取了一种最笨的方法，将文章一篇一篇手工复制...不过也正好借此机会整理下文章。至于评论，由于数量多而且分散，更恐怖的是有级联关系（即谁回复了谁的关系），但看了一下发现两个程序的评论表差不多，便用PHP写了个小脚本将评论迁移了过来。当然，经过修复无数个小bug之后，博客终于又全新上线了。</p>
-<p>不过你也许看到了，现在的博客依旧是WordPress...因为后来我又折腾回来了...不解释。</p>
-<p>遗憾的是，在折腾过程中，一不小心将最新的备份给 rm -rf 掉了，因此博客所有的数据只能还原到2011年12月底。不过幸运的是，在转换程序的时候在本地还有一次数据导入，因此又找回了几篇文章，但最新的一些评论却永远丢失了...</p>
-<p>哦对了，还换了个域名：hackecho.com，原来域名还有一年多到期，进行了301永久重定向到新域名，原来的二级域名因指向不同的host，依旧有效。 </p>
-<p>2 ...</p>
-	<div><a href="http://hackecho.com/2012/02/no-struggle-no-life/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

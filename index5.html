@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,22 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Sun 29 January 2012</h3>
+    <h3 class="date">Mon 13 February 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/02/no-struggle-no-life/" title="Permalink to 无折腾，不生活">无折腾，不生活</a></h2>
+	
+	</hgroup>
+	<p>看看这几天都折腾了些啥...</p>
+<p>1.换博客程序，更换域名</p>
+<p>开学前，抱着“无折腾，不生活”的态度，将博客的程序换成了国人开发的Emlog。整个转换过程基本用了一天时间，网上可以找到很多emlog转Worpdress的程序，但逆向的话却很少。最后，采取了一种最笨的方法，将文章一篇一篇手工复制...不过也正好借此机会整理下文章。至于评论，由于数量多而且分散，更恐怖的是有级联关系（即谁回复了谁的关系），但看了一下发现两个程序的评论表差不多，便用PHP写了个小脚本将评论迁移了过来。当然，经过修复无数个小bug之后，博客终于又全新上线了。</p>
+<p>不过你也许看到了，现在的博客依旧是WordPress...因为后来我又折腾回来了...不解释。</p>
+<p>遗憾的是，在折腾过程中，一不小心将最新的备份给 rm -rf 掉了，因此博客所有的数据只能还原到2011年12月底。不过幸运的是，在转换程序的时候在本地还有一次数据导入，因此又找回了几篇文章，但最新的一些评论却永远丢失了...</p>
+<p>哦对了，还换了个域名：hackecho.com，原来域名还有一年多到期，进行了301永久重定向到新域名，原来的二级域名因指向不同的host，依旧有效。 </p>
+<p>2 ...</p>
+	<div><a href="http://hackecho.com/2012/02/no-struggle-no-life/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 29 January 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/01/git-notes/" title="Permalink to Git 学习笔记">Git 学习笔记</a></h2>
@@ -256,39 +271,6 @@
 <p>由于很多电脑名词不明白，便买书、查资料。什么《注册表终极操作》、《BIOS配置指南》、《电脑上网故障1000问》、《榨干你的电脑》等等，还有全年的《电脑迷》、《电脑爱好者》、《IT新闻周刊》和不怎么看得懂的《CHIP新电脑》等。尤记得当时第一次重装系统时的激动，第一次电脑崩溃时的伤心，第一次编译通过一个程序，第一次入侵别人电脑等等的第一次，现在回想起来，真有一番体味。</p>
 <p>跟所有少年一样，在当时那个年龄段，都有一个黑客梦。当时最崇拜的人是陈盈豪，因为他的CIH病毒第一次颠覆了我的观念：病毒原来还可以破坏硬件设备 ...</p>
 	<div><a href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 10 November 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/11/login-to-linux-with-ssh/" title="Permalink to 用SSH远程登录Linux">用SSH远程登录Linux</a></h2>
-	
-	</hgroup>
-	<p>今天配好服务器，发现如果直接远程连接主机无法打开控制台，于是果断采用SSH来登录。很简单，只需几步：</p>
-<p>首先需要在服务器安装SSH的服务器端。</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span>
-</pre></div>
-
-
-<p>Ubuntu中默认安装了OpenSSH的client端，我们不用重复安装。如果需要安装，只需将上述命令中的server改为client即可。</p>
-<p>安装好后启动OpenSSH。</p>
-<div class="codehilite"><pre><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">ssh</span> <span class="n">restart</span>
-</pre></div>
-
-
-<p>然后确认一下SSH Server是否启动。</p>
-<div class="codehilite"><pre><span class="n">ps</span> <span class="o">-</span><span class="n">e</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">ssh</span>
-</pre></div>
-
-
-<p>如果只有ssh-agent那ssh-server还没有启动。</p>
-<p>最后就是登录了：</p>
-<div class="codehilite"><pre><span class="n">ssh</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> 202<span class="p">.</span>112<span class="o">.***.***</span>
-</pre></div>
-
-
-<p>其中username是用户名，后面是服务器IP。</p>
-<p>接下来会提示输入密码，然后就成功登录到服务器了。经测试，可以使用sudo -i取得管理员权限，可以执行脚本。哈哈，enjoy it！</p>
-	<div><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

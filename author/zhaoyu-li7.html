@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -178,6 +178,21 @@
 <p>最后一软通中用了这种方法，只需导入一个头文件和一个源文件就可以了。这是官方的下载地址<a href="http://www.firstobject.com/dn_markup.htm">http://www.firstobject.com/dn_markup.htm</a>，官网上还有详细的说明文档 ...</p>
 	<div><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">Read More...</a></div>
 	</article>
+  <h3 class="date">Sat 02 February 2013</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2013/02/posix-threads-programming/" title="Permalink to POSIX Threads Programming">POSIX Threads Programming</a></h2>
+	
+	</hgroup>
+	<p>I am writing this article for a memo of CS8860, Parallel and distributed system.</p>
+<h3>Overview</h3>
+<p>Technically, a thread is defined as an independent stream of instructions that can be scheduled to run as such by the operating system.</p>
+<p>In the UNIX environment a thread:</p>
+<ul>
+<li>
+<p>Exists within a process and uses ...</p></li></ul>
+	<div><a href="http://hackecho.com/2013/02/posix-threads-programming/">Read More...</a></div>
+	</article>
   <h3 class="date">Sat 06 August 2011</h3>
     <article>
 	<hgroup>
@@ -190,26 +205,6 @@
 <p>在这个ppt中，Paul Adams还讲述了社会化网络，人是以群分的，讲了人与人之间的关系，有的人你经常联系，有的人只是认识而已，还有很多人和你只是一面之缘，在Facebook上平均每个用户有130个好友，而经常联系互动的只有4到6个而已。</p>
 <p>在影响力这个章节中，提到了社交网络对于商业的影响，之前有一篇讨论比较热烈的文章 ...</p>
 	<div><a href="http://hackecho.com/2011/08/ppt-that-create-google-plus/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 07 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/preferences-spider-with-priority-queue/" title="Permalink to 带偏好的爬虫——优先级队列">带偏好的爬虫——优先级队列</a></h2>
-	
-	</hgroup>
-	<p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
-<p>那么怎样来判断网页的重要性呢？</p>
-<p>其因素很多，主要有链接的欢迎度、链接的重要度和平均链接深度、网站质量、历史权重等。</p>
-<p>链接的欢迎度主要由反向链接（Backlinks）的数量和质量决定，我们定义为IB(P)。</p>
-<p>链接的重要度，是一个关于URL字符串的函数，仅仅考察字符串本身，比如认为".com"和"home"的URL重要度比".cc"和"map"高，我们定义为IL(P)。</p>
-<p>平均连接深度，计算出全站的平均链接深度，然后认为距离种子站点越近的重要性越高。我们定义为ID(P)。</p>
-<p>如果定义网页的重要性为I(P)，那么其重要度有下面的公式决定：</p>
-<div class="codehilite"><pre><span class="n">I</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="p">=</span> <span class="n">X</span><span class="o">*</span><span class="n">IB</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="n">IL</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
-</pre></div>
-
-
-<p>其中，X和Y两个参数用来调整IB ...</p>
-	<div><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,39 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Sat 02 April 2011</h3>
+    <h3 class="date">Mon 04 April 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/04/thinkphp-notes/" title="Permalink to ThinkPHP学习笔记（一）">ThinkPHP学习笔记（一）</a></h2>
+	
+	</hgroup>
+	<p>因为是自己的笔记，所以比较杂乱，见谅。</p>
+<p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
+<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
+<span class="o">&lt;?</span><span class="n">php</span>
+<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
+    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
+        <span class="p">....</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
+<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
+<span class="o">&lt;?</span><span class="n">php</span>
+    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
+    <span class="p">{}</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p>Action目录放置命名为xxxAction.class.php的控制器文件，Model目录放置对应数据库表的命名为xxxModel.class.php的类文件。</p>
+<p>1 在TP开发中，要增加一个应用模块，就在Action文件夹里建立一个类，类的文件命名格式是模块名称+Action.class.php ...</p>
+	<div><a href="http://hackecho.com/2011/04/thinkphp-notes/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sat 02 April 2011</h3>
     <article>
 	<hgroup>
 	<h2><a href="2011/04/open-source-knowledge/" title="Permalink to 补习一下开源软件协议的知识">补习一下开源软件协议的知识</a></h2>
@@ -199,20 +231,6 @@
 <p>上面简单描述了MVC架构的理解。下面讲述一下关于sp框架中的MVC理念，可能比较抽象而不好理解，但是还请耐心去阅读，毕竟在实际开发中，对MVC理念的理解是非常必要和重要的。</p>
 <p>sp框架中的MVC理念，是将网络系统划分为三个关注点：交互、数据、页面模板；也就是我们设计或分析一个网络系统 ...</p>
 	<div><a href="http://hackecho.com/2011/03/intro-of-mvc-structure/">Read More...</a></div>
-	</article>
-  <h3 class="date">Fri 04 March 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/03/where-to-go-this-summer/" title="Permalink to 今年夏天，什么季">今年夏天，什么季</a></h2>
-	
-	</hgroup>
-	<p>去年大一夏天，我一人独自外出流浪。我深知，大学四年的暑假绝不能荒废，我们应该做一些有意义的事情。大一那时没有技术，实习的话什么也干不了，于是干脆利用这个时间到处走走，旅行，也能给人很多收获。</p>
-<p>去年暑假回来后，我一直处在思考的状态。明白了很多，懂了很多。明白了有些事情发生了，有些人离开了，有些爱情丢失了，就再也回不来了；至少我曾经拥有过，我学会了珍惜，也学会了珍藏。</p>
-<p>这一段时间里，我看到了很多新兴领域的崛起，这些领域包括了移动开发和互联网开发等等。不能说我“见证了”Android的成长，但起码看到了它是怎样一步一步走来，走出一个全新领域的过程；也不能说我又非凡的“前瞻”力，但我依稀感觉到了它巨大的发展潜力。</p>
-<p>我对互联网虽没有达到痴迷的程度，但着实非常喜欢。喜欢那B/S架构带来的体验，喜欢从一个小小的窗口、从head/body里看世界，喜欢一种connection。当然，应用软件也很喜欢，C/S架构的胖客户端也是很有潜力的！</p>
-<p>今年夏天，会是什么季呢。。</p>
-<p>那么从现在就开始吧。</p>
-	<div><a href="http://hackecho.com/2011/03/where-to-go-this-summer/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
+  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POSIX Threads Programming</title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
+
+  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
+      </head>
+<body>
+<header class="main-header">
+  <a href="http://github.com/zlmoment">
+<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+  <hgroup>
+    <div>
+      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+    </div>
+    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
+    <h2>Software engineer, Pythonista and Love Wed.</h2>
+  </hgroup>
+  <nav>
+    <ul class="main-nav">
+      
+            <li><a href="/archives.html">Archives</a></li>
+      
+      
+                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+              
+
+    </ul>
+  </nav>
+  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+
+</header>
+<section class="main-section blog-section" id="blog-posts">
+	<h3 class="date">Sat 02 February 2013</h3>
+  <article>
+	<hgroup>
+	
+	<h2><a href="http://hackecho.com/2013/02/posix-threads-programming/">POSIX Threads Programming</a></h2>
+		    
+	</hgroup>
+	<p>I am writing this article for a memo of CS8860, Parallel and distributed system.</p>
+<h3>Overview</h3>
+<p>Technically, a thread is defined as an independent stream of instructions that can be scheduled to run as such by the operating system.</p>
+<p>In the UNIX environment a thread:</p>
+<ul>
+<li>
+<p>Exists within a process and uses the process resources</p>
+</li>
+<li>
+<p>Has its own independent flow of control as long as its parent process exists and the OS supports it</p>
+</li>
+<li>
+<p>Duplicates only the essential resources it needs to be independently schedulable</p>
+</li>
+<li>
+<p>May share the process resources with other threads that act equally independently (and dependently)</p>
+</li>
+<li>
+<p>Dies if the parent process dies - or something similar</p>
+</li>
+<li>
+<p>Is "lightweight" because most of the overhead has already been accomplished through the creation of its process.</p>
+</li>
+</ul>
+<p>All threads within a process share the same address space.</p>
+<h3>Several common models</h3>
+<p>Several common models for threaded programs exist:</p>
+<ul>
+<li>
+<p><strong>Manager/worker:</strong> a single thread, the manager assigns work to other threads, the workers. Typically, the manager handles all input and parcels out work to the other tasks. At least two forms of the manager/worker model are common: static worker pool and dynamic worker pool.</p>
+</li>
+<li>
+<p><strong>Pipeline:</strong> a task is broken into a series of suboperations, each of which is handled in series, but concurrently, by a different thread. An automobile assembly line best describes this model.</p>
+</li>
+<li>
+<p><strong>Peer:</strong> similar to the manager/worker model, but after the main thread creates other threads, it participates in the work.</p>
+</li>
+</ul>
+<h3>Shared Memory Model:</h3>
+<ul>
+<li>
+<p>All threads have access to the same global, shared memory</p>
+</li>
+<li>
+<p>Threads also have their own private data</p>
+</li>
+<li>
+<p>Programmers are responsible for synchronizing access (protecting) globally shared data.</p>
+</li>
+</ul>
+<h3>The Pthreads API</h3>
+<p>The Pthreads API contains around 100 subroutines. This article will focus on a subset of these.</p>
+<h3>Compiling Threaded Programs</h3>
+<div class="codehilite"><pre><span class="n">INTEL</span> <span class="n">Linux</span><span class="p">:</span>          <span class="n">icc</span> <span class="o">-</span><span class="n">pthread</span>
+<span class="n">PGI</span> <span class="n">Linux</span><span class="p">:</span>            <span class="n">pgcc</span> <span class="o">-</span><span class="n">lpthread</span>
+<span class="n">GNU</span> <span class="n">Linux</span><span class="p">:</span>            <span class="n">gcc</span> <span class="o">-</span><span class="n">pthread</span>
+</pre></div>
+
+
+<h3>Threading Management</h3>
+<p><strong> Creating and Terminating Threads </strong></p>
+<p>Initially, your <code>main()</code> program comprises a single, default thread. All other threads must be explicitly created by the programmer.</p>
+<p><code>pthread_create</code> creates a new thread and makes it executable. This routine can be called any number of times from anywhere within your code.</p>
+<p><code>pthread_create</code> arguments:</p>
+<ul>
+<li>
+<p><code>thread:</code> An opaque, unique identifier for the new thread returned by the subroutine.</p>
+</li>
+<li>
+<p><code>attr:</code> An opaque attribute object that may be used to set thread attributes. You can specify a thread attributes object, or NULL for the default values.</p>
+</li>
+<li>
+<p><code>start_routine:</code> the C routine that the thread will execute once it is created.</p>
+</li>
+<li>
+<p><code>arg:</code> A single argument that may be passed to start_routine. It must be passed by reference as a pointer cast of type void. NULL may be used if no argument is to be passed.</p>
+</li>
+</ul>
+<p>Once created, threads are peers, and may create other threads. There is no implied hierarchy or dependency between threads.</p>
+<p>There are several ways in which a thread may be terminated:</p>
+<ul>
+<li>
+<p>The thread returns normally from its starting routine. It's work is done.</p>
+</li>
+<li>
+<p>The thread makes a call to the <code>pthread_exit</code> subroutine - whether its work is done or not.</p>
+</li>
+<li>
+<p>The thread is canceled by another thread via the <code>pthread_cancel</code> routine.</p>
+</li>
+<li>
+<p>The entire process is terminated due to making a call to either the <code>exec()</code> or <code>exit()</code></p>
+</li>
+<li>
+<p>If <code>main()</code> finishes first, without calling <code>pthread_exit</code> explicitly itself</p>
+</li>
+</ul>
+<p>Pay attention, the pthread_exit() routine does not close files; any files opened inside the thread will remain open after the thread is terminated.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span class="c">#include &lt;pthread.h&gt; </span>
+<span class="c">#include &lt;stdio.h&gt; </span>
+<span class="c">#define NUM_THREADS  5 </span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">PrintHello</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">threadid</span><span class="p">)</span> 
+<span class="p">{</span> 
+   <span class="n">int</span> <span class="n">tid</span><span class="p">;</span> 
+   <span class="n">tid</span> <span class="p">=</span> <span class="p">(</span><span class="n">int</span><span class="p">)</span><span class="n">threadid</span><span class="p">;</span> 
+   <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Hello World! It&#39;s me, thread #%d!\n&quot;</span><span class="p">,</span> <span class="n">tid</span><span class="p">);</span> 
+   <span class="n">pthread_exit</span><span class="p">(</span><span class="n">NULL</span><span class="p">);</span> 
+<span class="p">}</span> 
+
+<span class="n">int</span> <span class="n">main</span> <span class="p">(</span><span class="n">int</span> <span class="n">argc</span><span class="p">,</span> <span class="nb">char</span> <span class="o">*</span><span class="nb">argv</span><span class="p">[])</span> 
+<span class="p">{</span> 
+   <span class="n">pthread_t</span> <span class="n">threads</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span> 
+   <span class="n">int</span> <span class="n">rc</span><span class="p">,</span> <span class="n">t</span><span class="p">;</span> 
+   <span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="p">=</span>0<span class="p">;</span> <span class="n">t</span><span class="o">&lt;</span><span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">t</span><span class="o">++</span><span class="p">){</span> 
+      <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;In main: creating thread %d\n&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span> 
+      <span class="n">rc</span> <span class="p">=</span> <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">PrintHello</span><span class="p">,</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span><span class="n">t</span><span class="p">);</span> 
+      <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">){</span> 
+         <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;ERROR; return code from pthread_create() is %d\n&quot;</span><span class="p">,</span> <span class="n">rc</span><span class="p">);</span> 
+         <span class="nb">exit</span><span class="p">(</span><span class="o">-</span>1<span class="p">);</span> 
+      <span class="p">}</span> 
+   <span class="p">}</span> 
+   <span class="n">pthread_exit</span><span class="p">(</span><span class="n">NULL</span><span class="p">);</span> 
+<span class="p">}</span> 
+</pre></div>
+
+
+<p><strong> Passing Arguments to Threads </strong></p>
+<p>All arguments must be passed by reference and cast to (void *).</p>
+<p><strong> Joining and Detaching Threads </strong></p>
+<div class="codehilite"><pre><span class="n">int</span> <span class="n">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="n">target_thread</span><span class="p">,</span> <span class="n">void</span> <span class="o">**</span><span class="n">status</span><span class="p">);</span>
+</pre></div>
+
+
+<p>"Joining" is one way to accomplish synchronization between threads. This means that some other thread is required to call pthread_join to collect a terminated thread, in a fashion similar to the requirement for a parent process to collect status for terminated child processes.For example:</p>
+<p><a href="/static/images/2013/02/forkjoin.gif"><img alt="" src="/static/images/2013/02/forkjoin.gif" /></a></p>
+<p>The <code>pthread_join()</code> subroutine blocks the calling thread until the specified threadid thread terminates.</p>
+<p>To explicitly create a thread as joinable or detached, the attr argument in the <code>pthread_create()</code> routine is used. The typical 4 step process is:</p>
+<ul>
+<li>
+<p>Declare a pthread attribute variable of the <code>pthread_attr_t</code> data type</p>
+</li>
+<li>
+<p>Initialize the attribute variable with <code>pthread_attr_init()</code></p>
+</li>
+<li>
+<p>Set the attribute detached status with <code>pthread_attr_setdetachstate()</code></p>
+</li>
+<li>
+<p>When done, free library resources used by the attribute with p<code>thread_attr_destroy()</code></p>
+</li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span class="cm">/*****************************************************************************</span>
+<span class="cm"> * FILE: join.c</span>
+<span class="cm"> * DESCRIPTION:</span>
+<span class="cm"> *   This example demonstrates how to &quot;wait&quot; for thread completions by using</span>
+<span class="cm"> *   the Pthread join routine.  Threads are explicitly created in a joinable</span>
+<span class="cm"> *   state for portability reasons. Use of the pthread_exit status argument is</span>
+<span class="cm"> *   also shown. Compare to detached.c</span>
+<span class="cm"> * AUTHOR: 8/98 Blaise Barney</span>
+<span class="cm"> * LAST REVISED:  01/30/09</span>
+<span class="cm"> ******************************************************************************/</span>
+<span class="p">#</span><span class="k">include</span> <span class="o">&lt;</span><span class="n">pthread</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<span class="p">#</span><span class="k">include</span> <span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<span class="p">#</span><span class="k">include</span> <span class="o">&lt;</span><span class="n">stdlib</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<span class="p">#</span><span class="n">define</span> <span class="no">NUM_THREADS</span> <span class="mh">4</span>
+
+<span class="k">void</span> <span class="o">*</span><span class="n">BusyWork</span><span class="p">(</span><span class="k">void</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">long</span> <span class="n">tid</span><span class="p">;</span>
+    <span class="n">double</span> <span class="n">result</span><span class="o">=</span><span class="mf">0.0</span><span class="p">;</span>
+    <span class="n">tid</span> <span class="o">=</span> <span class="p">(</span><span class="n">long</span><span class="p">)</span><span class="n">t</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Thread %ld starting...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">tid</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mh">1000000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">sin</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">tan</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Thread %ld done. Result = %e</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">tid</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="n">pthread_exit</span><span class="p">((</span><span class="k">void</span><span class="o">*</span><span class="p">)</span> <span class="n">t</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">int</span> <span class="n">main</span> <span class="p">(</span><span class="k">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">pthread_t</span> <span class="n">thread</span><span class="p">[</span><span class="no">NUM_THREADS</span><span class="p">];</span>
+    <span class="n">pthread_attr_t</span> <span class="n">attr</span><span class="p">;</span>
+    <span class="k">int</span> <span class="n">rc</span><span class="p">;</span>
+    <span class="n">long</span> <span class="n">t</span><span class="p">;</span>
+    <span class="k">void</span> <span class="o">*</span><span class="n">status</span><span class="p">;</span>
+
+    <span class="cm">/* Initialize and set thread detached attribute */</span>
+    <span class="n">pthread_attr_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attr</span><span class="p">);</span>
+    <span class="n">pthread_attr_setdetachstate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attr</span><span class="p">,</span> <span class="no">PTHREAD_CREATE_JOINABLE</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span> <span class="n">t</span><span class="o">&lt;</span><span class="no">NUM_THREADS</span><span class="p">;</span> <span class="n">t</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Main: creating thread %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">thread</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">attr</span><span class="p">,</span> <span class="n">BusyWork</span><span class="p">,</span> <span class="p">(</span><span class="k">void</span> <span class="o">*</span><span class="p">)</span><span class="n">t</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR; return code from pthread_create() is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">rc</span><span class="p">);</span>
+            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mh">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Free attribute and wait for the other threads */</span>
+    <span class="n">pthread_attr_destroy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attr</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span> <span class="n">t</span><span class="o">&lt;</span><span class="no">NUM_THREADS</span><span class="p">;</span> <span class="n">t</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_join</span><span class="p">(</span><span class="n">thread</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR; return code from pthread_join() is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">rc</span><span class="p">);</span>
+            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mh">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Main: completed join with thread %ld having a status of %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,(</span><span class="n">long</span><span class="p">)</span><span class="n">status</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Main: program completed. Exiting.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="n">pthread_exit</span><span class="p">(</span><span class="no">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+	<br/>	
+	<footer>
+		<h4>TAGS</h4>
+	<ul class="tags">
+		<li><a href="http://hackecho.com/tag/pthread.html" class="tag">pthread</a></li>
+		</ul>
+	
+	<br/>
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</footer>
+	</article>
+</section>
+
+
+<div class="mobile-nav">
+  <span class="nav-btn" id="mobile-nav-btn">
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+    <span class="nav-btn-bar"></span>
+  </span>
+  <h3>
+    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
+  </h3>
+</div>
+
+    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+
+<script>
+    // Function to get the Maximam value in Array
+    Array.max = function( array ) {
+        return Math.max.apply( Math, array );
+    };
+
+    var heights = [];
+    heights.push($('.main-header').height());
+    heights.push($('.main-section').height());
+    heights.push($(window).height());
+
+    var max_height = Array.max(heights);
+    $('.main-header').height(max_height+80);
+
+    $('#mobile-title').text(window.location.hostname);
+
+
+
+
+</script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37227120-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>

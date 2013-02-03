@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -44,6 +44,40 @@
 </header>
 <section class="main-section blog-section" id="blog-posts">
     <h3 class="date">Thu 22 March 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/03/how-to-create-a-personal-blog/" title="Permalink to 如何搭建个人独立博客">如何搭建个人独立博客</a></h2>
+	
+	</hgroup>
+	<p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
+<p>文章结构：</p>
+<ul>
+<li>
+<p>独立博客与BSP的区别</p>
+</li>
+<li>
+<p>申请域名</p>
+</li>
+<li>
+<p>服务器主机</p>
+</li>
+<li>
+<p>域名绑定</p>
+</li>
+<li>
+<p>安装程序</p>
+</li>
+<li>
+<p>开始使用</p>
+</li>
+</ul>
+<h3>独立博客与BSP的区别</h3>
+<p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p>
+	<div><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read More...</a></div>
+	</article>
+  <h3 class="date">Thu 22 March 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/03/letter-to-software-colleagues/" title="Permalink to [转载] 给浮躁的软件业同仁">[转载] 给浮躁的软件业同仁</a></h2>
@@ -223,24 +257,6 @@ $ <span class="n">make</span>
 <span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
 <span class="n">iconv ...</span></pre></div>
 	<div><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 15 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/how-to-remove-auto-jump-in-google-search-results/" title="Permalink to [原创Chrome插件]去除Google搜索结果的自动跳转">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h2>
-	
-	</hgroup>
-	<p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
-<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
-<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
-<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
-<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
-<p>使用这款插件后，效果如下：</p>
-<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
-<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
-<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
-<p><strong>插件下载地址</strong>：暂无 </p>
-	<div><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

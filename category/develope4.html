@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,25 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Sun 29 January 2012</h3>
+    <h3 class="date">Wed 15 February 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/02/how-to-remove-auto-jump-in-google-search-results/" title="Permalink to [原创Chrome插件]去除Google搜索结果的自动跳转">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h2>
+	
+	</hgroup>
+	<p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
+<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
+<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
+<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
+<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
+<p>使用这款插件后，效果如下：</p>
+<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
+<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
+<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
+<p><strong>插件下载地址</strong>：暂无 </p>
+	<div><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read More...</a></div>
+	</article>
+  <h3 class="date">Sun 29 January 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/01/git-notes/" title="Permalink to Git 学习笔记">Git 学习笔记</a></h2>
@@ -279,23 +297,6 @@
 <p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
 <p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像 ...</p>
 	<div><a href="http://hackecho.com/2011/11/deployment-of-thinkphp/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 13 October 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/10/fixed-scroll-of-webpage/" title="Permalink to 页面滚动时层智能浮动定位的实现">页面滚动时层智能浮动定位的实现</a></h2>
-	
-	</hgroup>
-	<p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
-<p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
-<p>当我们滑动网页时，可以看到如下效果：</p>
-<p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
-<p>右上角的通知栏始终固定不动，不管网页怎么滑动。</p>
-<p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
-<p>下面我们就来利用jQuery实现这种效果。</p>
-<p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
-<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div>
-	<div><a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,24 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Wed 12 October 2011</h3>
+    <h3 class="date">Thu 13 October 2011</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2011/10/fixed-scroll-of-webpage/" title="Permalink to 页面滚动时层智能浮动定位的实现">页面滚动时层智能浮动定位的实现</a></h2>
+	
+	</hgroup>
+	<p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
+<p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
+<p>当我们滑动网页时，可以看到如下效果：</p>
+<p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
+<p>右上角的通知栏始终固定不动，不管网页怎么滑动。</p>
+<p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
+<p>下面我们就来利用jQuery实现这种效果。</p>
+<p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
+<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div>
+	<div><a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">Read More...</a></div>
+	</article>
+  <h3 class="date">Wed 12 October 2011</h3>
     <article>
 	<hgroup>
 	<h2><a href="2011/10/thinkphp-model-and-operation/" title="Permalink to 深入浅出ThinkPHP系列教程(四) 模块与操作">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h2>
@@ -230,24 +247,6 @@
 <p>进入<a href="http://www.umeng.com/doc/home.html">友盟文档中心</a>，点击左侧的<strong>开发工具SDK</strong>目录，在右侧点击下载即可。这里是一个简要的开发文档（<a href="http://www.umeng.com/doc/home.html#op_con_kfzn/adsdk_shhfx">点击查看</a>），当然我们会在下面为大家详细介绍其使用方法。</p>
 <p>首先我们应该注册一个友盟账号（<a href="http://www.umeng.com">点击注册</a>），注册完成后登录，进入友盟的管理后台，点击“添加新应用”，进入新应用信息填写的页面。App 建立成功后，自动会跳转到该App管理页面的开发指南页面 ...</p>
 	<div><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 02 August 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/08/splash-of-android/" title="Permalink to 创建Android应用程序启动界面（Splash）">创建Android应用程序启动界面（Splash）</a></h2>
-	
-	</hgroup>
-	<p>一般的Android应用程序在启动时都会显示一个启动界面，可以显示产品的LOGO，作者的信息或者应用的版本信息等，当然，除了这些，在这段时间内还可以对系统状况进行检测，比如网络是否通，电源是否充足等，或者，预先加载程序所需要的相关数据等。下面我们来看一看怎样制作Splash界面。</p>
-<p>首先新建一个splashscreen.xml布局文件，我们已经在res/drawable目录下放置了一张启动图片home_gradient.png：</p>
-<div class="codehilite"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">android:id=</span><span class="s">&quot;@+id/LinearLayout01&quot;</span>
-              <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
-              <span class="na">android:layout_height=</span><span class="s">&quot;fill_parent&quot;</span>
-              <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-              <span class="na">android:gravity=</span><span class="s">&quot;center|bottom&quot;</span>
-              <span class="na">android:background=</span><span class="s">&quot;@drawable/home_gradient&quot;</span>
-              <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ImageView</span> <span class="na">android:layout_marginTop ...</span></pre></div>
-	<div><a href="http://hackecho.com/2011/08/splash-of-android/">Read More...</a></div>
 	</article>
 
 <p class="paginator">

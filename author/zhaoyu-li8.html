@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
 
   <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-  </head>
+    </head>
 <body>
 <header class="main-header">
   <a href="http://github.com/zlmoment">
@@ -43,7 +43,27 @@
 
 </header>
 <section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Fri 11 May 2012</h3>
+    <h3 class="date">Wed 07 March 2012</h3>
+    <article>
+	<hgroup>
+	<h2><a href="2012/03/preferences-spider-with-priority-queue/" title="Permalink to 带偏好的爬虫——优先级队列">带偏好的爬虫——优先级队列</a></h2>
+	
+	</hgroup>
+	<p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
+<p>那么怎样来判断网页的重要性呢？</p>
+<p>其因素很多，主要有链接的欢迎度、链接的重要度和平均链接深度、网站质量、历史权重等。</p>
+<p>链接的欢迎度主要由反向链接（Backlinks）的数量和质量决定，我们定义为IB(P)。</p>
+<p>链接的重要度，是一个关于URL字符串的函数，仅仅考察字符串本身，比如认为".com"和"home"的URL重要度比".cc"和"map"高，我们定义为IL(P)。</p>
+<p>平均连接深度，计算出全站的平均链接深度，然后认为距离种子站点越近的重要性越高。我们定义为ID(P)。</p>
+<p>如果定义网页的重要性为I(P)，那么其重要度有下面的公式决定：</p>
+<div class="codehilite"><pre><span class="n">I</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="p">=</span> <span class="n">X</span><span class="o">*</span><span class="n">IB</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="n">IL</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+
+
+<p>其中，X和Y两个参数用来调整IB ...</p>
+	<div><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read More...</a></div>
+	</article>
+  <h3 class="date">Fri 11 May 2012</h3>
     <article>
 	<hgroup>
 	<h2><a href="2012/05/python-decorator/" title="Permalink to Python中的装饰器Decorator">Python中的装饰器Decorator</a></h2>
@@ -246,29 +266,6 @@ print hello() ## 返回 ...</pre></div>
 
 <span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div>
 	<div><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 14 January 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/01/solution-to-need-of-ftp-account-in-wordpress/" title="Permalink to Wordpress提示填写FTP信息的解决办法">Wordpress提示填写FTP信息的解决办法</a></h2>
-	
-	</hgroup>
-	<p>在上一篇文章《<a href="http://www.hackecho.com/archives/710.html">VPS折腾记</a>》中提到在升级Wordpress或添加删除主题和插件的时候需要填写FTP账户信息的问题，提示一般如下：</p>
-<blockquote>
-<p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</p>
-</blockquote>
-<p>一般情况下，虚拟主机很少会出现这样的情况，如果使用 VPS 的话，这种情况就会比较多。主要原因是网站服务器运行PHP的用户和Wordpress文件夹的所有者不一样，目的就是为了安全，Wordpress在升级时会创建一个临时文件看看owner是不是和当前运行的PHP是否一样，如果不一样，就会出现这个界面。</p>
-<p>第一种解决办法很简单，就是直接在wp-config.php 中加入FTP的配置代码：</p>
-<div class="codehilite"><pre><span class="c1">// ** FTP SETTINGS FOR AUTO-UPDATE ** //</span>
-<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_HOST</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">localhost</span><span class="err">’</span><span class="p">);</span>
-<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_USER</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">帐号’</span><span class="p">);</span>
-<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_PASS</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">密码’</span><span class="p">);</span>
-</pre></div>
-
-
-<p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
-<p>针对有高级管理权限的用户，如服务器或 VPS ...</p>
-	<div><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Read More...</a></div>
 	</article>
 
 <p class="paginator">
