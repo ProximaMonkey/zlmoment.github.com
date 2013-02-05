@@ -55,6 +55,39 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 12 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
+<p>具体如下图所示：</p>
+<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
+<p>我们来详细了解一下图中所示的模块和操作。</p>
+<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
+<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
+<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="err">具体代码略……</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="err">```</span><span class="nx">PHP</span>
+
+<span class="err">该文件已经演示了一个基于</span> <span class="nx">ThinkPHP</span> <span class="err">的实际应用。</span>
+
+<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
+
+<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/thinkphp-notes/">ThinkPHP学习笔记（一）</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 04 April 2011
 
@@ -242,23 +275,6 @@ by Zhaoyu Li
 <p>我对互联网虽没有达到痴迷的程度，但着实非常喜欢。喜欢那B/S架构带来的体验，喜欢从一个小小的窗口、从head/body里看世界，喜欢一种connection。当然，应用软件也很喜欢，C/S架构的胖客户端也是很有潜力的！</p>
 <p>今年夏天，会是什么季呢。。</p>
 <p>那么从现在就开始吧。</p> <a class="" href="http://hackecho.com/2011/03/where-to-go-this-summer/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/why-you-must-write-blog-from-now-on/">(转)为什么你应该（从现在开始就）写博客</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 23 February 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>（一）为什么你应该（从现在开始就）写博客</strong></p>
-<p>用一句话来说就是，<strong>写一个博客有很多好处，却没有任何明显的坏处</strong>。（阿士顿的情况属于例外，而非常态，就像不能拿抽烟活到一百岁的英国老太太的个例来反驳抽烟对健康的极大损伤一样）</p>
-<p>让我说得更明确一点：<strong>用博客的形式来记录下你有价值的思考，会带来很多好处，却没有任何明显的坏处</strong>。Note：碎碎念不算思考、心情琐记不算思考、唠唠叨叨也不算思考、没话找话也不算思考，请以此类推。</p>
-<p>下面是我个人认为写一个长期的<strong>价值博客</strong>的最大的几点好处：</p>
-<p>1) <strong>能够交到很多志同道合的朋友</strong>。我自己既写博客，也读别人的博客，在这个时代，对于生活中的绝大多数人来说，拓宽朋友圈子的途径几乎只有一个，通过网络，而如何在网络中寻找到气味相投的朋友，如何判断别人和自己是否有共同语言？显然，通过天天在SNS上碎碎念的那些日记是难以做到的。我佩服的一些朋友几乎全都是长期用博客记录想法的人，<strong>因此，和他们即便不打照面，也是心照不宣</strong>。即便素未谋面也能坐下来就聊得热火朝天。</p>
-<p>为什么博客在结交志同道合的朋友方面的潜力要远胜于原始的交谈方式？很简单，<strong>第一，博客无地域限制，整个互联网上从A到B只有一个点击的距离</strong>，而传统的建立朋友圈子的方法则受到地域限制。<strong>第二</strong>，也是更重要的一点，即如果按照以前结交朋友的方式，需要互相聊天 ...</p> <a class="" href="http://hackecho.com/2011/02/why-you-must-write-blog-from-now-on/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -55,6 +55,26 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 25 February 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>昨天突发奇想，准备在交大一软通的第二个版本中加入RSS阅读器的功能，以便可以快速阅读知行论坛的帖子和获取晨光上的资源。今天下午开始研究怎样用VC来解析XML文件，现在总算把这一模块写完了。如果单独分离出来，应该是一个不错的RSS阅读器。</p>
+<p>记得前不久学期实训时我们小组做播放器，其中的网络搜索模块中用到了解析XML文件（百度MP3未公开的API哦，自己谷歌下就知道了）。当时由于这个模块归我负责，所以开始接触了XML，由于知识有欠缺，稀里糊涂中，也算可以一次性获得5首百度搜索返回的结果了。今天想找出来当时写的实验代码看看，结果却发现已经删了，不得已，重新开始学习一下吧。</p>
+<p>自己写一个全新的XML解析引擎出来对我来说还有点难度，于是我把目光放在了现成类库或组件上。目前找到三种方法：</p>
+<p><strong>1.免费的易火RSS解析引擎</strong></p>
+<p>很强大的引擎，而且免费，但因为是COM组件，需要系统注册使用，所以放弃了（一软通是绿色软件）；</p>
+<p><strong>2.利用MSXML解析XML文档</strong></p>
+<p>这是我在实训时用的方法，实现起来很简单，但要做的很强大就需要进行深度学习了。因为考虑到有些电脑上可能没有安装MSXML组件，所以放弃了；</p>
+<p><strong>3.利用Markup类库</strong></p>
+<p>最后一软通中用了这种方法，只需导入一个头文件和一个源文件就可以了。这是官方的下载地址<a href="http://www.firstobject.com/dn_markup.htm">http://www.firstobject.com/dn_markup.htm</a>，官网上还有详细的说明文档 ...</p> <a class="" href="http://hackecho.com/2011/02/parse-xml-in-vc/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/finish-of-bjtuer/">交大一软通 V2.0 开发完毕</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 February 2011
 

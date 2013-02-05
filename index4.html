@@ -55,6 +55,25 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">[转载] 给浮躁的软件业同仁</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>文章来源：网络    作者：未知</strong></p>
+<p>中国有很多小朋友，他们18,9岁或21,2岁，通过自学也写了不少代码，他们有的代码写的很漂亮，一些技术细节相当出众，也很有钻研精神，但是他们被一些错误的认识和观点左右，缺乏对系统，对程序的整体理解能力，这些人，一个网上的朋友说得很好，他们实际是fans，压根没有资格称为程序员，但是据我所知，不少小网络公司的Cfans,拿着吓人的工资，做着吓人的项目，项目的结局通常也很吓人。</p>
+<p>程序员基本素质：</p>
+<p>作一个真正合格的程序员，或者说就是可以真正合格完成一些代码工作的程序员，应该具有的素质：</p>
+<p>1.团队精神和协作能力</p>
+<p>把它作为基本素质，并不是不重要，恰恰相反，这是程序员应该具备的最基本的，也是最重要的安身立命之本。把高水平程序员说成独行侠的都是在呓语，任何个人的力量都是有限的，即便如linus这样的天才，也需要通过组成强大的团队来创造奇迹，那些遍布全球的为linux写核心的高手们，没有协作精神是不可想象的。独行侠可以作一些赚钱的小软件发点小财，但是一旦进入一些大系统的研发团队，进入商业化和产品化的开发任务，缺乏这种素质的人就完全不合格了。</p>
+<p>2.文档习惯</p>
+<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p> <a class="" href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">第一个HackEcho爬虫诞生记</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 March 2012
 
@@ -266,27 +285,6 @@ by Zhaoyu Li
 <span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
 <span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
 <span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
-<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
-<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
-<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
-<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
-<p>使用这款插件后，效果如下：</p>
-<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
-<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
-<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
-<p><strong>插件下载地址</strong>：暂无 </p> <a class="" href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

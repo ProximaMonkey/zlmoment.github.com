@@ -55,6 +55,37 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/asynctask-in-android/">Android中使用AsyncTask实现简单的异步处理</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 24 July 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
+<p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
+<p>Android提供了几种在其他线程中访问UI线程的方法：</p>
+<p><code>Java
+  Activity.runOnUiThread( Runnable )
+  View.post( Runnable )
+  View.postDelayed( Runnable, long )
+  Hanlder</code></p>
+<p>这些类或方法同样会使你的代码很复杂很难理解。然而当你需要实现一些很复杂的操作并需要频繁地更新UI时这会变得更糟糕。</p>
+<p>为了解决这个问题，Android 1.5提供了一个工具类：AsyncTask，它使创建需要与用户界面交互的长时间运行的任务变得更简单。不需要借助线程和Handler即可实现。</p>
+<p>AsyncTask是抽象类.AsyncTask定义了三种泛型类型 Params，Progress和Result。</p>
+<ul>
+<li>
+<p>Params 启动任务执行的输入参数，比如HTTP请求的URL。</p>
+</li>
+<li>
+<p>Progress 后台任务执行的百分比。</p>
+</li>
+<li>
+<p>Result ...</p></li></ul> <a class="" href="http://hackecho.com/2011/07/asynctask-in-android/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/worry-about-life/">看似积极，其实焦虑</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 19 July 2011
 
@@ -284,30 +315,6 @@ by Zhaoyu Li
 <p>答案之一：</p>
 <p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
 <p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p> <a class="" href="http://hackecho.com/2011/05/coal-transportation-algorithm/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/5-cool-css-hover/">5种非常酷的CSS Hover效果</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 11 May 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>在现代浏览器（所谓现代浏览器，是指以Mozilla和Webkit为核心的浏览器，IE的表现稍微差强人意）中，我们可以运用CSS来实现一些非常炫酷的效果。</p>
-<h3>Bump Up</h3>
-<p><img alt="" src="http://images.cnblogs.com/cnblogs_com/powertoolsteam/201105/201105101418072144.png" /><strong>Live Demo:</strong> <a href="http://designshack.co.uk/tutorialexamples/HoverEffects/Ex1.html">Click Here to Launch</a></p>
-<div class="codehilite"><pre><span class="na">.ex1</span> <span class="no">img</span><span class="err">{</span>
-    <span class="nl">border:</span> <span class="err">5</span><span class="nf">px</span> <span class="no">solid</span> <span class="c">#ccc;</span>
-    <span class="nl">float:</span> <span class="nf">left</span><span class="err">;</span>
-    <span class="nl">margin:</span> <span class="err">15</span><span class="nf">px</span><span class="err">;</span>
-    <span class="err">-</span><span class="nf">webkit</span><span class="p">-</span><span class="no">transition</span><span class="p">:</span> <span class="no">margin</span> <span class="mi">0</span><span class="no">.5s</span> <span class="no">ease</span><span class="p">-</span><span class="no">out</span><span class="err">;</span>
-    <span class="err">-</span><span class="nf">moz</span><span class="p">-</span><span class="no">transition</span><span class="p">:</span> <span class="no">margin</span> <span class="mi">0</span><span class="no">.5s</span> <span class="no">ease</span><span class="p">-</span><span class="no">out</span><span class="err">;</span>
-    <span class="err">-</span><span class="nf">o</span><span class="p">-</span><span class="no">transition</span><span class="p">:</span> <span class="no">margin</span> <span class="mi">0</span><span class="no">.5s</span> <span class="no">ease</span><span class="p">-</span><span class="no">out</span><span class="err">;</span>
-<span class="err">}</span>
-
-<span class="na">.ex1</span> <span class="no">img</span><span class="p">:</span><span class="no">hover ...</span></pre></div> <a class="" href="http://hackecho.com/2011/05/5-cool-css-hover/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

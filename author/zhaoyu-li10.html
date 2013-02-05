@@ -55,6 +55,27 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/stay-in-my-mind-2/">驻足在马路边的秋殇（二）</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 23 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2011/10/a8206193_s-300x199.jpg" /></p>
+<hr />
+<p>09年10月末，秋殇（一）发表在我的QQ空间里。后来我把它导入了这个博客（地址：<a href="http://www.hackecho.com/archives/52.html">《驻足在马路边的秋殇》</a>），留存纪念。如今，两年过去了，我已很少再动文字。偶尔会去红袖一把，期望能添些墨香，或者仅仅是不想失去这种感觉。如今的时间不多，或者，心累了。</p>
+<p>秋，到了。</p>
+<p>少年不识愁滋味，爱上层楼，爱上层楼，为赋新词强说愁。而今识尽愁滋味，欲说还休，欲说还休，却道天凉好个秋。</p>
+<p>不及幼安忧国忧民，却也能体会此情此景。秋殇总能让人若有所感，泛起一些思绪，安静下来，仔细地体会。</p>
+<hr />
+<p><strong>遗忘</strong></p>
+<p>一位以前很要好的哥们儿昨天打电话给我，寒暄过后，竟然问我：“你知道我是谁吧？”我说废话，你的声音变成灰也认识。朋友笑到：“好多人跟我聊半天了才问我你是谁，竟然不记得我了！这才几年啊，真是的！”</p>
+<p>是啊，这是第三年，可又能怪谁呢。QQ的好友列表里有这样三个分组，分别是小学 ...</p> <a class="" href="http://hackecho.com/2011/10/stay-in-my-mind-2/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/suds-problems/">SUDS错误和实例</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 13 November 2012
 
@@ -289,39 +310,6 @@ by Zhaoyu Li
 <p><strong>视图</strong></p>
 <p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
 <p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 12 October 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
-<p>具体如下图所示：</p>
-<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
-<p>我们来详细了解一下图中所示的模块和操作。</p>
-<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
-<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
-<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
-<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
-        <span class="err">具体代码略……</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
-<span class="err">```</span><span class="nx">PHP</span>
-
-<span class="err">该文件已经演示了一个基于</span> <span class="nx">ThinkPHP</span> <span class="err">的实际应用。</span>
-
-<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
-
-<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

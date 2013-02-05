@@ -55,6 +55,24 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
+<p>就不细细介绍了，看下面的例子，就都懂了：</p>
+<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
+<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
+<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
+<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
 
@@ -320,23 +338,6 @@ by Zhaoyu Li
 
 <p>其中username是用户名，后面是服务器IP。</p>
 <p>接下来会提示输入密码，然后就成功登录到服务器了。经测试，可以使用sudo -i取得管理员权限，可以执行脚本。哈哈，enjoy it！</p> <a class="" href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/deployment-of-thinkphp/">ThinkPHP部署二三事儿</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 09 November 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
-<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
-<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
-<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
-<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
-<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像 ...</p> <a class="" href="http://hackecho.com/2011/11/deployment-of-thinkphp/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
