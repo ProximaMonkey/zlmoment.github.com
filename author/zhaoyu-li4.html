@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackecho - Articles by Zhaoyu Li</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">页面滚动时层智能浮动定位的实现</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 13 October 2011
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Thu 13 October 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/10/fixed-scroll-of-webpage/" title="Permalink to 页面滚动时层智能浮动定位的实现">页面滚动时层智能浮动定位的实现</a></h2>
-	
-	</hgroup>
-	<p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
 <p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
 <p>当我们滑动网页时，可以看到如下效果：</p>
 <p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
@@ -57,42 +71,51 @@
 <p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
 <p>下面我们就来利用jQuery实现这种效果。</p>
 <p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
-<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div>
-	<div><a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 10 May 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/05/fly-of-promgrammer/" title="Permalink to 程序员的翅膀">程序员的翅膀</a></h2>
-	
-	</hgroup>
-	<p>有时候在思考一个问题，如果我们现在这些在IT领域里混迹的人出生在了100年前（ENIAC诞生于1946年），会从事些什么呢？当今很多对计算机有天赋的人是否会感到生不逢时呢？也许扎克伯格会成为宅男，拉里佩奇会去研究数学或物理，那么，我会干什么呢？（No offence）</p>
+<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/fly-of-promgrammer/">程序员的翅膀</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 10 May 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有时候在思考一个问题，如果我们现在这些在IT领域里混迹的人出生在了100年前（ENIAC诞生于1946年），会从事些什么呢？当今很多对计算机有天赋的人是否会感到生不逢时呢？也许扎克伯格会成为宅男，拉里佩奇会去研究数学或物理，那么，我会干什么呢？（No offence）</p>
 <p>当然时代是要有人来开创的，比尔盖茨如果没有出生，会有另一个比尔出来的。</p>
 <p>前两段是小发一些感慨，今晚刷夜做一个项目，因为周四就要交了，不是我拖延，而是一个月的开发周期里，我得从头开始学几门新的技术来开发，再加上学校的课业和考试，我已经尽力了。我的同伴们也很给力，感谢他们。</p>
 <p>刚刚看了一篇文章，原文题目叫《每个程序员上辈子都是折翼的天使》（后附原文），有一些心得，不知对不对，当不当说，说出来合不合适，但简单总结一下吧。（个人观点，请勿跨省）</p>
-<p>貌似现在社会上对程序员的看法褒贬不一，不像几年前，程序员的工作是神圣的，能让黑黑的屏幕滚动几行字就很牛X的。那时计算机普及率不高，开发语言也有限，不像现在这么丰富、易学（当年要是有Python这样的脚本语言，估计扫地的老太太早出现了）。当时程序员的翅膀是硬的，受万人敬仰倒谈不上，找工作起码不是问题。如今，有一个新名词叫做 ...</p>
-	<div><a href="http://hackecho.com/2011/05/fly-of-promgrammer/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 14 September 2010</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2010/09/fragment-of-life/" title="Permalink to 日子的碎片">日子的碎片</a></h2>
-	
-	</hgroup>
-	<p><em><strong>安意如：“原来，需等到风住尘香花已尽， 才可以看到最后的风清月朗，花好月圆。”</strong></em></p>
+<p>貌似现在社会上对程序员的看法褒贬不一，不像几年前，程序员的工作是神圣的，能让黑黑的屏幕滚动几行字就很牛X的。那时计算机普及率不高，开发语言也有限，不像现在这么丰富、易学（当年要是有Python这样的脚本语言，估计扫地的老太太早出现了）。当时程序员的翅膀是硬的，受万人敬仰倒谈不上，找工作起码不是问题。如今，有一个新名词叫做 ...</p> <a class="" href="http://hackecho.com/2011/05/fly-of-promgrammer/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2010/09/fragment-of-life/">日子的碎片</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 14 September 2010
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><em><strong>安意如：“原来，需等到风住尘香花已尽， 才可以看到最后的风清月朗，花好月圆。”</strong></em></p>
 <p>关于我：</p>
 <p>日子就这样流逝着。高兴的是，我选择回到软件科协，共同推进科协的发展。昨晚经历了对10级的面试，也有很多感触。我要做的，不仅仅是从被面试者到面试官的转变，更重要的是，从理事到部长的转变。其它不说，只想说，科协会越来越好的，项目部的同志们，加油！</p>
 <p>说说自己的网站吧。我曾经回复兴华说：“任何爱IT的人，都曾有过开一个网站的梦想...”，我想我的这个梦想怎么就这么艰难呢？！哈，记得在初中的时候，自己执着地用FrontPage做“李昭谕工作室”，还帮同学做了一个所谓的军事图片网站。那些可爱的源文件我已经打包好，珍藏在我的电脑里，偶尔拿出来翻一翻，甜甜的感觉。遗憾的是，那些在现在看来丑陋无比的网页，只能永远静静躺在我的硬盘里，以前是，现在也是。这算不算一个梦想的开端呢？也许是吧，那也许不是呢，那是什么呢？</p>
-<p>这几天在考虑域名和服务器的选择，我喜欢的域名被拍卖到3000元，我只能望而却步了。不过已经锁定好目标，尽快就可以落实下来了，哈哈 ...</p>
-	<div><a href="http://hackecho.com/2010/09/fragment-of-life/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 16 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/funny-algorithm-ratio-of-male-and-femal/" title="Permalink to 趣味算法面试题：男女比例问题">趣味算法面试题：男女比例问题</a></h2>
-	
-	</hgroup>
-	<p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
+<p>这几天在考虑域名和服务器的选择，我喜欢的域名被拍卖到3000元，我只能望而却步了。不过已经锁定好目标，尽快就可以落实下来了，哈哈 ...</p> <a class="" href="http://hackecho.com/2010/09/fragment-of-life/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">趣味算法面试题：男女比例问题</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 16 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
 <p>本能地反应男女比例还应该是1：1，但到底是不是呢，我们来用程序验证一下。</p>
 <p>思路：如果一个家庭生的是女孩，则继续让下一个家庭生；如果是男孩，则递归调用自己，直到结果为女孩。生男生女将由随机产生的0和1来决定。</p>
 <p>我们先看运行结果，程序代码附在文后。如果你有兴趣，可以自己实现一下。</p>
@@ -104,16 +127,19 @@
 <p><a href="/static/images/2012/04/skitched-20120416-192726.png"><img alt="" src="/static/images/2012/04/skitched-20120416-192726.png" /></a></p>
 <p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
 <h3>程序代码：</h3>
-<div class="codehilite"><pre><span class="c">#include &lt;stdio ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sun 29 January 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/01/git-notes/" title="Permalink to Git 学习笔记">Git 学习笔记</a></h2>
-	
-	</hgroup>
-	<p>学习Git的笔记，会不定期更新。</p>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/git-notes/">Git 学习笔记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 29 January 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>学习Git的笔记，会不定期更新。</p>
 <p>我的Github地址：<a href="https://github.com/uutroy">https://github.com/uutroy</a></p>
 <p>首先推荐两篇非常好的入门：</p>
 <ul>
@@ -135,16 +161,19 @@
 <blockquote>
 <p>git config –global user.name “name”</p>
 </blockquote>
-<p>git config –global user.email “username@email.com ...</p>
-	<div><a href="http://hackecho.com/2012/01/git-notes/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 27 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/glimpse-of-the-architechture-of-scrapy/" title="Permalink to 初探Scrapy的架构">初探Scrapy的架构</a></h2>
-	
-	</hgroup>
-	<p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>git config –global user.email “username@email.com ...</p> <a class="" href="http://hackecho.com/2012/01/git-notes/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
 <p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
 <h3>概览</h3>
 <p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
@@ -157,26 +186,32 @@
 <p><strong>Downloader（下载器）</strong></p>
 <p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
 <p><strong>Spiders（蜘蛛）</strong></p>
-<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p>
-	<div><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 22 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/homebrew-vs-macports/" title="Permalink to Homebrew VS MacPorts">Homebrew VS MacPorts</a></h2>
-	
-	</hgroup>
-	<p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
-<p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p>
-	<div><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 19 May 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/05/how-others-read-your-resume/" title="Permalink to 人事部门和别的程序员是怎样阅读你的简历的">人事部门和别的程序员是怎样阅读你的简历的</a></h2>
-	
-	</hgroup>
-	<h3>人事部门是这样阅读简历的</h3>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 22 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
+<p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p> <a class="" href="http://hackecho.com/2012/05/homebrew-vs-macports/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/how-others-read-your-resume/">人事部门和别的程序员是怎样阅读你的简历的</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 19 May 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><h3>人事部门是这样阅读简历的</h3>
 <ul>
 <li>
 <p>（+15分）如果简历中说到了和工作职位相符的技能超过5次以上。</p>
@@ -230,31 +265,37 @@
 <p>（+6分）使用动态语言（Python/Perl/Ruby）写过非试验性的程序。</p>
 </li>
 <li>
-<p>（+5分 ...</p></li></ul>
-	<div><a href="http://hackecho.com/2011/05/how-others-read-your-resume/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 10 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/how-to-build-real-time-directional-crawl-cluster/" title="Permalink to [转]快速构建实时定向抓取集群">[转]快速构建实时定向抓取集群</a></h2>
-	
-	</hgroup>
-	<p>定义：</p>
+<p>（+5分 ...</p></li></ul> <a class="" href="http://hackecho.com/2011/05/how-others-read-your-resume/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>定义：</p>
 <p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
 <p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
 <h3>名词解析：</h3>
 <p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
 <p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
-<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p>
-	<div><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 22 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/how-to-create-a-personal-blog/" title="Permalink to 如何搭建个人独立博客">如何搭建个人独立博客</a></h2>
-	
-	</hgroup>
-	<p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
 <p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
 <p>文章结构：</p>
 <ul>
@@ -279,58 +320,39 @@
 </ul>
 <h3>独立博客与BSP的区别</h3>
 <p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
-<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p>
-	<div><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read More...</a></div>
-	</article>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li3.html">&larr; Previous</a></li>
 
-<p class="paginator">
-						<a href="http://hackecho.com/author/zhaoyu-li3.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
-						<a href="http://hackecho.com/author/zhaoyu-li5.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
-	</p>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
+    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
-</section>
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li5.html">Next &rarr;</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

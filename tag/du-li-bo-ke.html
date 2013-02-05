@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Posts tagged '独立博客' | Hackecho </title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-      <h3 class="date">Thu 22 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/how-to-create-a-personal-blog/" title="Permalink to 如何搭建个人独立博客">如何搭建个人独立博客</a></h2>
-	
-	</hgroup>
-	<p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
 <p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
 <p>文章结构：</p>
 <ul>
@@ -74,53 +88,28 @@
 </ul>
 <h3>独立博客与BSP的区别</h3>
 <p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
-<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p>
-	</article>
-</section>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
+    <li class="active"><a href="http://hackecho.com/tag/du-li-bo-ke.html">1</a></li>
 
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

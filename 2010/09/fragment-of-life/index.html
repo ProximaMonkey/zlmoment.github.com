@@ -1,56 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日子的碎片</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>日子的碎片
+</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-      </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <style>
+.article {
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 30px;
+    position: relative;
+    margin: 24px auto 30px;
+    z-index: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     1px 1px 0 rgba(0, 0, 0, .1),
+     3px 3px 0 rgba(255, 255, 255, 1),
+     4px 4px 0 rgba(0, 0, 0, .1),
+     6px 6px 0 rgba(255, 255, 255, 1), 
+     7px 7px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+}
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-	<h3 class="date">Tue 14 September 2010</h3>
-  <article>
-	<hgroup>
-	
-	<h2><a href="http://hackecho.com/2010/09/fragment-of-life/">日子的碎片</a></h2>
-		    
-	</hgroup>
-	<p><em><strong>安意如：“原来，需等到风住尘香花已尽， 才可以看到最后的风清月朗，花好月圆。”</strong></em></p>
+</style>
+<div class="span12" style="margin:0;">
+    <div class="row" style="text-align:center;margin-top: -21px;">
+        <h3>日子的碎片</h3>
+        Tue 14 September 2010
+
+by Zhaoyu Li
+ 
+
+
+    </div>
+    <div class="article">
+        <p><em><strong>安意如：“原来，需等到风住尘香花已尽， 才可以看到最后的风清月朗，花好月圆。”</strong></em></p>
 <p>关于我：</p>
 <p>日子就这样流逝着。高兴的是，我选择回到软件科协，共同推进科协的发展。昨晚经历了对10级的面试，也有很多感触。我要做的，不仅仅是从被面试者到面试官的转变，更重要的是，从理事到部长的转变。其它不说，只想说，科协会越来越好的，项目部的同志们，加油！</p>
 <p>说说自己的网站吧。我曾经回复兴华说：“任何爱IT的人，都曾有过开一个网站的梦想...”，我想我的这个梦想怎么就这么艰难呢？！哈，记得在初中的时候，自己执着地用FrontPage做“李昭谕工作室”，还帮同学做了一个所谓的军事图片网站。那些可爱的源文件我已经打包好，珍藏在我的电脑里，偶尔拿出来翻一翻，甜甜的感觉。遗憾的是，那些在现在看来丑陋无比的网页，只能永远静静躺在我的硬盘里，以前是，现在也是。这算不算一个梦想的开端呢？也许是吧，那也许不是呢，那是什么呢？</p>
@@ -58,17 +104,17 @@
 <p>我不得不对生活进行重新规划，工作，学习，还有什么，爱情？呵呵，现在没有了，心中感觉失去的那份东西，是它吗？“昙花一现的惊艳，只要出现一次已经可以。荒芜的本身就是一种保留。因为静默，你永远不会了解它蕴藏了怎样深沉如海的情感。”</p>
 <p>今晚与1004班举行联谊晚会，大家坐在一起聊一聊生活、学习，聊一聊军训、活动。一年的时间，代沟有，共同语言也有。我们这代属于什么呢？八零后的终结者，或者是九零后的开创者？或者只是一个旁观者。你们一年后将成为我们，我们一年后将会成为另一个他们，亲爱的学弟学妹们，你们到时候会是怎样的呢？</p>
 <p><em><strong>“人生的旅程深邃幽长，我们对未来一无所知，亦未尝是什么坏事。如果我们一早确知结局，还有多少人敢去赴那茫茫的前路？”</strong></em></p>
-
-	<br/>	
-	<footer>
-		<h4>TAGS</h4>
-	<ul class="tags">
-		<li><a href="http://hackecho.com/tag/生活.html" class="tag">生活</a></li>
-		<li><a href="http://hackecho.com/tag/科协.html" class="tag">科协</a></li>
-		</ul>
-	
-	<br/>
-	<div id="disqus_thread"></div>
+                <br>
+        <h4>TAGS</h4>
+        <div class="btn-group">
+                  <a href="http://hackecho.com/tag/生活.html" class="btn">生活</a>
+                  <a href="http://hackecho.com/tag/科协.html" class="btn">科协</a>
+                </div>
+            </div>
+</div>
+<hr>
+<h3>Comments</h3>
+<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'zlmoment'; 
 
@@ -79,53 +125,16 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	</footer>
-	</article>
-</section>
+    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
+</div> <!-- /container -->
 
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
-
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
-
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
-
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

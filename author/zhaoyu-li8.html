@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackecho - Articles by Zhaoyu Li</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">带偏好的爬虫——优先级队列</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 07 March 2012
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Wed 07 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/preferences-spider-with-priority-queue/" title="Permalink to 带偏好的爬虫——优先级队列">带偏好的爬虫——优先级队列</a></h2>
-	
-	</hgroup>
-	<p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
 <p>那么怎样来判断网页的重要性呢？</p>
 <p>其因素很多，主要有链接的欢迎度、链接的重要度和平均链接深度、网站质量、历史权重等。</p>
 <p>链接的欢迎度主要由反向链接（Backlinks）的数量和质量决定，我们定义为IB(P)。</p>
@@ -60,16 +74,19 @@
 </pre></div>
 
 
-<p>其中，X和Y两个参数用来调整IB ...</p>
-	<div><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read More...</a></div>
-	</article>
-  <h3 class="date">Fri 11 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/python-decorator/" title="Permalink to Python中的装饰器Decorator">Python中的装饰器Decorator</a></h2>
-	
-	</hgroup>
-	<p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
+<p>其中，X和Y两个参数用来调整IB ...</p> <a class="" href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/python-decorator/">Python中的装饰器Decorator</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 11 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
 <p>如果使用如下的代码：</p>
 <div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
 <span class="p">@</span><span class="n">makeitalic</span>
@@ -99,16 +116,19 @@ def makeitalic(fn):
 def hello():
     return &quot;hello world&quot;
 
-print hello() ## 返回 ...</pre></div>
-	<div><a href="http://hackecho.com/2012/05/python-decorator/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 31 December 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/12/python-yield/" title="Permalink to Python中yield备忘">Python中yield备忘</a></h2>
-	
-	</hgroup>
-	<p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
+print hello() ## 返回 ...</pre></div> <a class="" href="http://hackecho.com/2012/05/python-decorator/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/12/python-yield/">Python中yield备忘</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 31 December 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
 <p>带有 yield 的函数在 Python 中被称之为 generator（生成器）。</p>
 <p>我们已生成斐波那契数列为例，来循序渐进了解yield。</p>
 <p>生成斐波那契数列：</p>
@@ -124,16 +144,19 @@ print hello() ## 返回 ...</pre></div>
 <p>上面这个函数中直接用到了print函数，导致该函数复用性极差。我们想到可以返回一个List，改写如下：</p>
 <div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
     <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="n">L ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/12/python-yield/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 23 June 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/06/secret-of-truth-of-friends-app-in-renren/" title="Permalink to 解密人人网应用“好友档案”与“X档案”">解密人人网应用“好友档案”与“X档案”</a></h2>
-	
-	</hgroup>
-	<p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
+    <span class="n">L ...</span></pre></div> <a class="" href="http://hackecho.com/2012/12/python-yield/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">解密人人网应用“好友档案”与“X档案”</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 23 June 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
 <h3>接口分析</h3>
 <p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
 <p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
@@ -148,26 +171,32 @@ print hello() ## 返回 ...</pre></div>
 <p>blog.getComments()</p>
 </li>
 </ol>
-<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p>
-	<div><a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 02 June 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/06/sequences-and-proxy-services-in-wso2-esb/" title="Permalink to Sequences and Proxy Services in WSO2 ESB">Sequences and Proxy Services in WSO2 ESB</a></h2>
-	
-	</hgroup>
-	<p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
-<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p>
-	<div><a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 03 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/seven-habits-of-hight-effective-people/" title="Permalink to 高效人士的七种习惯（中英对照）">高效人士的七种习惯（中英对照）</a></h2>
-	
-	</hgroup>
-	<p><img alt="" src="/static/images/2012/05/ogwAq.jpg" /></p>
+<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Sequences and Proxy Services in WSO2 ESB</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 June 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
+<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/">高效人士的七种习惯（中英对照）</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 03 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2012/05/ogwAq.jpg" /></p>
 <p><strong>摘要：</strong></p>
 <p>Habit 1: Be Proactive 凡事积极主动</p>
 <p>Habit 2: Begin with the End in Mind 先定目标而后有行动</p>
@@ -175,29 +204,35 @@ print hello() ## 返回 ...</pre></div>
 <p>Habit 4: Think Win-Win 为了大家都赢</p>
 <p>Habit 5: Seek First to Understand, Then to Be Understood 先理解别人，再让别人理解自己</p>
 <p>Habit 6: Synergize 协同合作</p>
-<p>Habit 7: Sharpen the Saw 磨亮锯子（意指不断自我提高 ...</p>
-	<div><a href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sun 13 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/sing-a-song-in-my-young/" title="Permalink to 年华一度，梦如歌">年华一度，梦如歌</a></h2>
-	
-	</hgroup>
-	<p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
+<p>Habit 7: Sharpen the Saw 磨亮锯子（意指不断自我提高 ...</p> <a class="" href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">年华一度，梦如歌</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 13 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
 <p>多年以前，当我们还是孩童的时候，曾是那么的渴望着长大。长大以后，懵懵懂懂的，我们又希望能够早些成熟。而当我们都成熟之后才明白，原来，成熟真的不是一件幸福的事情，我们为此付出了太大的代价。生活的种种无奈要面对，人生的诸多曲折要经历，所以我们不得不抛却内心的纯真，挂上虚伪的笑容，冷漠着自己的视线，用伪装将自己层层包裹，时间久了，最真实的自我也就忘了。</p>
 <p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
 <p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
-<p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p>
-	<div><a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 17 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/socket-programming-in-php/" title="Permalink to PHP中的Socket编程">PHP中的Socket编程</a></h2>
-	
-	</hgroup>
-	<p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
+<p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p> <a class="" href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/socket-programming-in-php/">PHP中的Socket编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
 <h3>文章结构：</h3>
 <ul>
 <li>
@@ -224,16 +259,19 @@ print hello() ## 返回 ...</pre></div>
 <p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
 </li>
 <li>
-<p>AF_INET6：与上面类似 ...</p></li></ul>
-	<div><a href="http://hackecho.com/2012/04/socket-programming-in-php/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 17 July 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/07/socket-work-model/" title="Permalink to Socket的几种工作模式">Socket的几种工作模式</a></h2>
-	
-	</hgroup>
-	<p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
+<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/socket-programming-in-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/socket-work-model/">Socket的几种工作模式</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 July 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
 <h2>阻塞模式</h2>
 <p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
 <p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
@@ -247,16 +285,19 @@ print hello() ## 返回 ...</pre></div>
 <span class="c">#include &lt;netinet/in.h&gt;</span>
 <span class="c">#include &lt;sys/socket.h&gt;</span>
 <span class="c">#include &lt;sys/wait.h&gt;</span>
-<span class="c">#define ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/07/socket-work-model/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 18 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/solution-to-missing-libmysqlclient-18-dylib/" title="Permalink to 找不到libmysqlclient.18.dylib库的解决办法">找不到libmysqlclient.18.dylib库的解决办法</a></h2>
-	
-	</hgroup>
-	<p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<span class="c">#define ...</span></pre></div> <a class="" href="http://hackecho.com/2012/07/socket-work-model/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">找不到libmysqlclient.18.dylib库的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
 <p>问题描述：</p>
 <p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
 <div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
@@ -264,58 +305,39 @@ print hello() ## 返回 ...</pre></div>
 <span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
 <span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
-<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read More...</a></div>
-	</article>
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li7.html">&larr; Previous</a></li>
 
-<p class="paginator">
-						<a href="http://hackecho.com/author/zhaoyu-li7.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
-						<a href="http://hackecho.com/author/zhaoyu-li9.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
-	</p>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
+    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
-</section>
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li9.html">Next &rarr;</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

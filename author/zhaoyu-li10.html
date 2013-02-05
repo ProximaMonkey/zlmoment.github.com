@@ -1,82 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackecho - Articles by Zhaoyu Li</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/suds-problems/">SUDS错误和实例</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 13 November 2012
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Tue 13 November 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/11/suds-problems/" title="Permalink to SUDS错误和实例">SUDS错误和实例</a></h2>
-	
-	</hgroup>
-	<p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
 <p>错误信息：</p>
 <div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s">&quot;test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">12</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
   <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages/suds-0.4-py2.7.egg/suds/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">112</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__init__</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">wsdl</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/11/suds-problems/">Read More...</a></div>
-	</article>
-  <h3 class="date">Fri 25 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/super-tool-homebrew/" title="Permalink to 开发者神器 - Homebrew简介">开发者神器 - Homebrew简介</a></h2>
-	
-	</hgroup>
-	<p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
+  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div> <a class="" href="http://hackecho.com/2012/11/suds-problems/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/super-tool-homebrew/">开发者神器 - Homebrew简介</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 25 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
 <p><img alt="" src="/static/images/2012/05/homebrew.jpg" /></p>
-<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p>
-	<div><a href="http://hackecho.com/2012/05/super-tool-homebrew/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 12 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/ten-extra-functions-with-htaccess-file/" title="Permalink to 利用.htaccess简单实现的10个功能">利用.htaccess简单实现的10个功能</a></h2>
-	
-	</hgroup>
-	<p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p> <a class="" href="http://hackecho.com/2012/05/super-tool-homebrew/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">利用.htaccess简单实现的10个功能</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 12 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
 <p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
 <ol>
 <li>防盗链</li>
@@ -100,16 +120,19 @@
 <ol>
 <li>301永久重定向</li>
 </ol>
-<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p>
-	<div><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 26 July 2010</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2010/07/the-movie-earthquake-in-tangshan/" title="Permalink to 23秒，32年——《唐山大地震》观后感">23秒，32年——《唐山大地震》观后感</a></h2>
-	
-	</hgroup>
-	<p>巧合，还是必然...</p>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2010/07/the-movie-earthquake-in-tangshan/">23秒，32年——《唐山大地震》观后感</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 26 July 2010
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>巧合，还是必然...</p>
 <p>23秒，改变了命运；32年，换回了真情...</p>
 <p>纯真年代的姐弟俩，虽然清贫、弱小，但却快乐地生活在这片土地上。姐姐护着弟弟，为弟弟“报仇”，把西红柿让给弟弟...殊不知，西红柿，两个“天安门”“长城”书包，成就了姐弟俩、母亲子女重逢的缘...</p>
 <p><em>——“妈，方达都吃了，我也要吃。”</em></p>
@@ -117,16 +140,19 @@
 <p><em>——“骗人！”</em></p>
 <p><em>——“没骗你，妈说话算话，好吧？”</em></p>
 <p>谁会知道，为了一句简单的诺言，母亲苦苦守了32年。“妈没骗你。”当这句话最后从母亲嘴里说出时，是释怀，还是愧疚？母亲没有骗人，漫漫32年，好长的一个黑夜，但母亲不后悔，黑夜终于过去了，“明儿”，方登拿到的西红柿，其实是母亲的心！</p>
-<p>地震改变了母亲的一生。“没了，才知道什么叫没了”。面对艰难的抉择 ...</p>
-	<div><a href="http://hackecho.com/2010/07/the-movie-earthquake-in-tangshan/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 24 January 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/01/the-zen-of-python/" title="Permalink to Python之禅 - The Zen of Python">Python之禅 - The Zen of Python</a></h2>
-	
-	</hgroup>
-	<p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
+<p>地震改变了母亲的一生。“没了，才知道什么叫没了”。面对艰难的抉择 ...</p> <a class="" href="http://hackecho.com/2010/07/the-movie-earthquake-in-tangshan/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 24 January 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
 <p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
 <h2>The Zen of Python, by Tim Peters</h2>
 <ul>
@@ -143,31 +169,37 @@
 <p>Complex is better than complicated.</p>
 </li>
 <li>
-<p>Flat is better ...</p></li></ul>
-	<div><a href="http://hackecho.com/2012/01/the-zen-of-python/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 27 April 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/04/thinking-in-baidu-web-app-dev-conference/" title="Permalink to 由百度Web App应用开发者大会想到的">由百度Web App应用开发者大会想到的</a></h2>
-	
-	</hgroup>
-	<p><img alt="百度Web App应用开发者大会图片" src="/static/images/2011/04/1303884171_98102200.jpg" /></p>
+<p>Flat is better ...</p></li></ul> <a class="" href="http://hackecho.com/2012/01/the-zen-of-python/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/thinking-in-baidu-web-app-dev-conference/">由百度Web App应用开发者大会想到的</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 27 April 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="百度Web App应用开发者大会图片" src="/static/images/2011/04/1303884171_98102200.jpg" /></p>
 <p>今天一天时间参加了百度Web App应用开发者大会，学习了一些新的理念，分享给大家。</p>
 <p>用官方的话说，这次大会是“面向App应用开发者和互联网技术人群，围绕“开放、共赢、创富”主题，广邀行业专家和资深开发者，与大家一同分享百度应用开放平台“全开放”策略以及Web App应用的设计思想、开发方法和市场前景”的活动。期间百度技术副总裁王梦秋女士做了关于"百度框计算架构与Web应用开放平台"的演讲，DCCI互联网数据创始人&amp;总裁胡延平做了关于"生态之变与网络迁徙"的演讲，百度产品架构师田晓萌做了关于"框搜索世界，应用成就未来"的演讲，Zynga亚洲区首席技术官郑皓做了关于“数据推动Web App的飞速发展”的主题演讲，以及下午的第一分论坛中一系列非常好的主题演讲。</p>
 <p>下面基于全程中我听到的一些理念发表一下自己的看法和见解，不足之处欢迎指正。</p>
 <p><strong>1.什么是好技术、好产品？</strong></p>
 <p>满足用户需求的技术和产品就是好技术、好产品。</p>
-<p>评价一个技术、一款产品的好坏，根本程度上要看是否符合了用户需求。需求至上，我们开发新技术、设计新产品，本来就是给用户使用，方便用户的 ...</p>
-	<div><a href="http://hackecho.com/2011/04/thinking-in-baidu-web-app-dev-conference/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 19 November 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/11/thinking-of-multi-level-classification/" title="Permalink to 关于多级分类的一个思考">关于多级分类的一个思考</a></h2>
-	
-	</hgroup>
-	<p>最近做的几个项目都设计到了多级分类，不太清楚数据表怎样设计。经过一番探究后，发现一般有以下几种解决方案：</p>
+<p>评价一个技术、一款产品的好坏，根本程度上要看是否符合了用户需求。需求至上，我们开发新技术、设计新产品，本来就是给用户使用，方便用户的 ...</p> <a class="" href="http://hackecho.com/2011/04/thinking-in-baidu-web-app-dev-conference/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">关于多级分类的一个思考</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近做的几个项目都设计到了多级分类，不太清楚数据表怎样设计。经过一番探究后，发现一般有以下几种解决方案：</p>
 <ul>
 <li>
 <p>每级分类一张表</p>
@@ -195,16 +227,19 @@
 <p>cname（分类名称）</p>
 <p>parentcid（上级分类ID）</p>
 <p>cat_level（当前分类层次）</p>
-<p>cat_path ...</p></blockquote>
-	<div><a href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 01 October 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/10/thinkphp-hello-world/" title="Permalink to 深入浅出ThinkPHP系列教程(三) Hello World！">深入浅出ThinkPHP系列教程(三) Hello World！</a></h2>
-	
-	</hgroup>
-	<p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
+<p>cat_path ...</p></blockquote> <a class="" href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">深入浅出ThinkPHP系列教程(三) Hello World！</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 01 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
 <p><strong>入口文件</strong></p>
 <p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
 <p><strong>创建入口文件</strong></p>
@@ -223,16 +258,19 @@
 </pre></div>
 
 
-<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p>
-	<div><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 28 September 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/09/thinkphp-intro-to-mvc/" title="Permalink to 深入浅出ThinkPHP系列教程(二) MVC简介">深入浅出ThinkPHP系列教程(二) MVC简介</a></h2>
-	
-	</hgroup>
-	<p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 28 September 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
 <p>通过这篇教程，让我们来简单熟悉一下MVC的基本思想，这也是使用ThinkPHP开发应用不可或缺的知识，否则你将寸步难行。</p>
 <p>MVC主要由三部分组成：</p>
 <ul>
@@ -250,16 +288,19 @@
 <p>本博客以前发布过一篇关于MVC的简单介绍，详情请点击这里：<a href="http://www.hackecho.com/archives/138.html">《对MVC架构的简单解读》</a></p>
 <p><strong>视图</strong></p>
 <p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
-<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p>
-	<div><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 12 October 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/10/thinkphp-model-and-operation/" title="Permalink to 深入浅出ThinkPHP系列教程(四) 模块与操作">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h2>
-	
-	</hgroup>
-	<p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
+<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 12 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
 <p>具体如下图所示：</p>
 <p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
 <p>我们来详细了解一下图中所示的模块和操作。</p>
@@ -280,58 +321,39 @@
 
 <span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
 
-<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div>
-	<div><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read More...</a></div>
-	</article>
+<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li9.html">&larr; Previous</a></li>
 
-<p class="paginator">
-						<a href="http://hackecho.com/author/zhaoyu-li9.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
-						<a href="http://hackecho.com/author/zhaoyu-li11.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
-	</p>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
-</section>
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li11.html">Next &rarr;</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

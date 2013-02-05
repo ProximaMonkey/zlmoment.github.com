@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Posts tagged 'Python' | Hackecho </title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/12/python-yield/">Python中yield备忘</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 31 December 2012
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-      <h3 class="date">Mon 31 December 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/12/python-yield/" title="Permalink to Python中yield备忘">Python中yield备忘</a></h2>
-	
-	</hgroup>
-	<p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
 <p>带有 yield 的函数在 Python 中被称之为 generator（生成器）。</p>
 <p>我们已生成斐波那契数列为例，来循序渐进了解yield。</p>
 <p>生成斐波那契数列：</p>
@@ -65,30 +79,38 @@
 <p>上面这个函数中直接用到了print函数，导致该函数复用性极差。我们想到可以返回一个List，改写如下：</p>
 <div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
     <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="n">L ...</span></pre></div>
-	</article>
-    <h3 class="date">Tue 13 November 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/11/suds-problems/" title="Permalink to SUDS错误和实例">SUDS错误和实例</a></h2>
-	
-	</hgroup>
-	<p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
+    <span class="n">L ...</span></pre></div> <a class="" href="http://hackecho.com/2012/12/python-yield/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/suds-problems/">SUDS错误和实例</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 13 November 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
 <p>错误信息：</p>
 <div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s">&quot;test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">12</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
   <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages/suds-0.4-py2.7.egg/suds/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">112</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__init__</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">wsdl</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div>
-	</article>
-    <h3 class="date">Fri 11 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/python-decorator/" title="Permalink to Python中的装饰器Decorator">Python中的装饰器Decorator</a></h2>
-	
-	</hgroup>
-	<p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
+  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div> <a class="" href="http://hackecho.com/2012/11/suds-problems/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/python-decorator/">Python中的装饰器Decorator</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 11 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
 <p>如果使用如下的代码：</p>
 <div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
 <span class="p">@</span><span class="n">makeitalic</span>
@@ -118,15 +140,19 @@ def makeitalic(fn):
 def hello():
     return &quot;hello world&quot;
 
-print hello() ## 返回 ...</pre></div>
-	</article>
-    <h3 class="date">Mon 27 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/glimpse-of-the-architechture-of-scrapy/" title="Permalink to 初探Scrapy的架构">初探Scrapy的架构</a></h2>
-	
-	</hgroup>
-	<p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+print hello() ## 返回 ...</pre></div> <a class="" href="http://hackecho.com/2012/05/python-decorator/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
 <p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
 <h3>概览</h3>
 <p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
@@ -139,15 +165,19 @@ print hello() ## 返回 ...</pre></div>
 <p><strong>Downloader（下载器）</strong></p>
 <p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
 <p><strong>Spiders（蜘蛛）</strong></p>
-<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p>
-	</article>
-    <h3 class="date">Sat 25 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/macvim-with-python/" title="Permalink to 配置MacVim的Pyhton编程环境">配置MacVim的Pyhton编程环境</a></h2>
-	
-	</hgroup>
-	<p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
 <p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
 <p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
 <h3>安装MacVim和Python</h3>
@@ -168,53 +198,100 @@ $ <span class="n">make</span>
 </pre></div>
 
 
-<p>然后键入 ...</p>
-	</article>
-</section>
+<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">找不到libmysqlclient.18.dylib库的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+
+by Zhaoyu Li
+ 
 
 
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
 </div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<p>问题描述：</p>
+<p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>  
+<span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Mac OS X上装MySQL for Python的辛酸经历</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
-
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
+by Zhaoyu Li
+ 
 
 
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>折腾了一下午，只为一个MySQL for Python...</p>
+<p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
+<p>首先说一下安装环境：</p>
+<blockquote>
+<p>操作系统：Mac OS X Lion</p>
+<p>Python版本：2.7</p>
+<p>MySQL for Python版本：1.2.3</p>
+</blockquote>
+<h3>问题：</h3>
+<p>编译MySQL for Python的源码时，出现如下错误提示：</p>
+<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 24 January 2012
 
-</script>
+by Zhaoyu Li
+ 
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
+<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
+<h2>The Zen of Python, by Tim Peters</h2>
+<ul>
+<li>
+<p>Beautiful is better than ugly.</p>
+</li>
+<li>
+<p>Explicit is better than implicit.</p>
+</li>
+<li>
+<p>Simple is better than complex.</p>
+</li>
+<li>
+<p>Complex is better than complicated.</p>
+</li>
+<li>
+<p>Flat is better ...</p></li></ul> <a class="" href="http://hackecho.com/2012/01/the-zen-of-python/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/python.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
+
+</div> <!-- /container -->
+
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

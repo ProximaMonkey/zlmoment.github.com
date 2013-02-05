@@ -1,56 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>杜绝拖延，提高工作学习效率</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>杜绝拖延，提高工作学习效率
+</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-      </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <style>
+.article {
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 30px;
+    position: relative;
+    margin: 24px auto 30px;
+    z-index: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     1px 1px 0 rgba(0, 0, 0, .1),
+     3px 3px 0 rgba(255, 255, 255, 1),
+     4px 4px 0 rgba(0, 0, 0, .1),
+     6px 6px 0 rgba(255, 255, 255, 1), 
+     7px 7px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+}
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-	<h3 class="date">Sat 08 October 2011</h3>
-  <article>
-	<hgroup>
-	
-	<h2><a href="http://hackecho.com/2011/10/work-with-high-efficiency/">杜绝拖延，提高工作学习效率</a></h2>
-		    
-	</hgroup>
-	<p>导致工作效率降低的最大原因是拖延，说明这是一种耽误工作效率的糟糕习惯。辟如某事的行事方式，如果你发现有问题，那么你就应该立刻站出来，干脆利索的将事情解决掉，改掉拖延症，找出高效工作的方法。</p>
+</style>
+<div class="span12" style="margin:0;">
+    <div class="row" style="text-align:center;margin-top: -21px;">
+        <h3>杜绝拖延，提高工作学习效率</h3>
+        Sat 08 October 2011
+
+by Zhaoyu Li
+ 
+
+
+    </div>
+    <div class="article">
+        <p>导致工作效率降低的最大原因是拖延，说明这是一种耽误工作效率的糟糕习惯。辟如某事的行事方式，如果你发现有问题，那么你就应该立刻站出来，干脆利索的将事情解决掉，改掉拖延症，找出高效工作的方法。</p>
 <p>希腊神话告诉人们，智慧女神雅典娜，有一天从宙斯的头脑中披甲执戈一跃而出。人的最大梦想、最大创意、最大憧憬，就像雅典娜一样，也往往是在某一瞬间突然从头脑中很完备、很有力地跃出来的。但有计划而不去执行，使之烟消云散，这对于你的品格力量会产生非常不良的影响。</p>
 <p>一个生动而强烈的意象、观念闪入一位作家的脑海，使他灵光乍现，产生出一种不可阻遏的冲动——要想提起笔来，将那美丽生动的意象、观念移向白纸；但那时他或许有些不方便，所以不能立刻就写。那个意象不断的在他脑海中跳跃、催促，然而他还是拖延，最后灵感就会逐渐的模糊、暗淡，终于整个消失。</p>
 <p><strong>1、拖延症就像容易上瘾的诱惑，需要坚定意志，努力克服。</strong></p>
@@ -64,16 +110,16 @@
 <p>搁着今天的事不做而想留等明天做，在这个拖延中所耗去的时间、精力，实际上也够将那件事做好。</p>
 <p>做以前堆积下来的事，你会觉得厌烦！在当初可以很愉快并很容易做好的事，拖延了数日、数星期之后，就会显得讨厌与困难了。</p>
 <p>接到信件，应该立刻作复，最为容易；因此有的机关、公司中订下规则：不准任何来函隔夜不复。</p>
-
-	<br/>	
-	<footer>
-		<h4>TAGS</h4>
-	<ul class="tags">
-		<li><a href="http://hackecho.com/tag/拖延症.html" class="tag">拖延症</a></li>
-		</ul>
-	
-	<br/>
-	<div id="disqus_thread"></div>
+                <br>
+        <h4>TAGS</h4>
+        <div class="btn-group">
+                  <a href="http://hackecho.com/tag/拖延症.html" class="btn">拖延症</a>
+                </div>
+            </div>
+</div>
+<hr>
+<h3>Comments</h3>
+<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'zlmoment'; 
 
@@ -84,53 +130,16 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	</footer>
-	</article>
-</section>
+    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
+</div> <!-- /container -->
 
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
-
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
-
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
-
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

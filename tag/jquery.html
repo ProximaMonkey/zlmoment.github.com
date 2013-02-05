@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Posts tagged 'jQuery' | Hackecho </title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">页面滚动时层智能浮动定位的实现</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 13 October 2011
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-      <h3 class="date">Thu 13 October 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/10/fixed-scroll-of-webpage/" title="Permalink to 页面滚动时层智能浮动定位的实现">页面滚动时层智能浮动定位的实现</a></h2>
-	
-	</hgroup>
-	<p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
 <p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
 <p>当我们滑动网页时，可以看到如下效果：</p>
 <p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
@@ -57,15 +71,19 @@
 <p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
 <p>下面我们就来利用jQuery实现这种效果。</p>
 <p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
-<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div>
-	</article>
-    <h3 class="date">Fri 16 September 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/09/10-cool-jquery-slides/" title="Permalink to 10款非常酷的 jQuery 内容滑块插件">10款非常酷的 jQuery 内容滑块插件</a></h2>
-	
-	</hgroup>
-	<p>我们在做网站前端开发的时候经常会用到内容滑块插件，而网上又难以找到系统的、功能强大的完整教程。Troy在这里收藏最最经典而且效果非常酷炫、功能强大的10款 jQuery 内容滑块插件。每个插件下面都有针对这款插件详细介绍的链接。</p>
+<div class="codehilite"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 16 September 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>我们在做网站前端开发的时候经常会用到内容滑块插件，而网上又难以找到系统的、功能强大的完整教程。Troy在这里收藏最最经典而且效果非常酷炫、功能强大的10款 jQuery 内容滑块插件。每个插件下面都有针对这款插件详细介绍的链接。</p>
 <p><strong>1.jQuery HTML Content Slider</strong></p>
 <p><img alt="" src="https://sn2files.storage.live.com/y1pAGZ2hcCfv2CQOJ2flJ0Hl3gzZEHz4EkYHMKve6aLAc78X-8991UHBdVXuV5nCZQuuZQngArt0-XgNY_Lkj3Pcw/1.PNG?psid=1" /></p>
 <p><a href="http://bxslider.com/">More Information on jQuery HTML Content Slider</a></p>
@@ -77,53 +95,28 @@
 <p><a href="http://www.pixedelic.com/plugins/diapo/">More Information on Diapo</a></p>
 <p><strong>4.Smooth Div Scroll</strong></p>
 <p><img alt="" src="https://sn2files.storage.live.com/y1pyHHBkYkEfsr0fvzitqKR718_X_H2IUCdftFfBVIDp1hNM5GzMkAagwuOFFpERnDyfGAVX5GKfaa4QDoFhusRJg/4.PNG?psid=1" /></p>
-<p><a href="http://www.smoothdivscroll.com/#quickdemo">More Information on Smooth Div Scroll ...</a></p>
-	</article>
-</section>
+<p><a href="http://www.smoothdivscroll.com/#quickdemo">More Information on Smooth Div Scroll ...</a></p> <a class="" href="http://hackecho.com/2011/09/10-cool-jquery-slides/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
+    <li class="active"><a href="http://hackecho.com/tag/jquery.html">1</a></li>
 
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

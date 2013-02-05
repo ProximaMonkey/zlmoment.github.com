@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackecho</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">第一个HackEcho爬虫诞生记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 March 2012
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Sun 18 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/born-of-the-first-hackecho-spider/" title="Permalink to 第一个HackEcho爬虫诞生记">第一个HackEcho爬虫诞生记</a></h2>
-	
-	</hgroup>
-	<p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
 <p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
 <p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
 <p>当然，爬取的数据也不多，具体只有以下几项：</p>
@@ -66,31 +80,37 @@
 </pre></div>
 
 
-<p>当然 ...</p>
-	<div><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 10 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/how-to-build-real-time-directional-crawl-cluster/" title="Permalink to [转]快速构建实时定向抓取集群">[转]快速构建实时定向抓取集群</a></h2>
-	
-	</hgroup>
-	<p>定义：</p>
+<p>当然 ...</p> <a class="" href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>定义：</p>
 <p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
 <p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
 <h3>名词解析：</h3>
 <p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
 <p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
-<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p>
-	<div><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 07 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/preferences-spider-with-priority-queue/" title="Permalink to 带偏好的爬虫——优先级队列">带偏好的爬虫——优先级队列</a></h2>
-	
-	</hgroup>
-	<p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
+<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">带偏好的爬虫——优先级队列</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 07 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
 <p>那么怎样来判断网页的重要性呢？</p>
 <p>其因素很多，主要有链接的欢迎度、链接的重要度和平均链接深度、网站质量、历史权重等。</p>
 <p>链接的欢迎度主要由反向链接（Backlinks）的数量和质量决定，我们定义为IB(P)。</p>
@@ -101,16 +121,19 @@
 </pre></div>
 
 
-<p>其中，X和Y两个参数用来调整IB ...</p>
-	<div><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 29 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/dreams-not-just-words/" title="Permalink to 梦想，不是说说而已">梦想，不是说说而已</a></h2>
-	
-	</hgroup>
-	<p><strong>原文/meiya，转载时有删减。</strong></p>
+<p>其中，X和Y两个参数用来调整IB ...</p> <a class="" href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/dreams-not-just-words/">梦想，不是说说而已</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 29 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>原文/meiya，转载时有删减。</strong></p>
 <p>我们是否有为梦想真正的实干一把？</p>
 <p>我从西藏回来以后，我在空间中上传了一些旅行时拍的照片，一个大学同学在很多照片下留了言。</p>
 <blockquote>
@@ -123,16 +146,19 @@
 <p>这个同学是大学睡在我上铺的姐妹，她比我更想去西藏旅行，当年有好多个夜晚我们兴奋地聊着西藏，聊着西藏旅行的梦想，她说她从高中起就想去西藏旅行了。</p>
 <p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
 <p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
-<p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p>
-	<div><a href="http://hackecho.com/2012/02/dreams-not-just-words/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 27 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/glimpse-of-the-architechture-of-scrapy/" title="Permalink to 初探Scrapy的架构">初探Scrapy的架构</a></h2>
-	
-	</hgroup>
-	<p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="" href="http://hackecho.com/2012/02/dreams-not-just-words/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
 <p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
 <h3>概览</h3>
 <p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
@@ -145,16 +171,19 @@
 <p><strong>Downloader（下载器）</strong></p>
 <p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
 <p><strong>Spiders（蜘蛛）</strong></p>
-<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p>
-	<div><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 25 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/macvim-with-python/" title="Permalink to 配置MacVim的Pyhton编程环境">配置MacVim的Pyhton编程环境</a></h2>
-	
-	</hgroup>
-	<p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
 <p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
 <p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
 <h3>安装MacVim和Python</h3>
@@ -175,16 +204,19 @@ $ <span class="n">make</span>
 </pre></div>
 
 
-<p>然后键入 ...</p>
-	<div><a href="http://hackecho.com/2012/02/macvim-with-python/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 18 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/solution-to-missing-libmysqlclient-18-dylib/" title="Permalink to 找不到libmysqlclient.18.dylib库的解决办法">找不到libmysqlclient.18.dylib库的解决办法</a></h2>
-	
-	</hgroup>
-	<p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">找不到libmysqlclient.18.dylib库的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
 <p>问题描述：</p>
 <p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
 <div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
@@ -192,16 +224,19 @@ $ <span class="n">make</span>
 <span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
 <span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
-<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 18 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/install-mysql-for-python-on-mac/" title="Permalink to Mac OS X上装MySQL for Python的辛酸经历">Mac OS X上装MySQL for Python的辛酸经历</a></h2>
-	
-	</hgroup>
-	<p>折腾了一下午，只为一个MySQL for Python...</p>
+<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Mac OS X上装MySQL for Python的辛酸经历</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>折腾了一下午，只为一个MySQL for Python...</p>
 <p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
 <p>首先说一下安装环境：</p>
 <blockquote>
@@ -212,31 +247,37 @@ $ <span class="n">make</span>
 <h3>问题：</h3>
 <p>编译MySQL for Python的源码时，出现如下错误提示：</p>
 <div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
-<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read More...</a></div>
-	</article>
-  <h3 class="date">Fri 17 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/convertion-of-gbk-and-utf8-on-mac/" title="Permalink to Mac下GBK与UTF8编码文件的批量转换">Mac下GBK与UTF8编码文件的批量转换</a></h2>
-	
-	</hgroup>
-	<p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
 <p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
 <p>就不细细介绍了，看下面的例子，就都懂了：</p>
 <div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
 <span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
 <span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
-<span class="n">iconv ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 15 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/how-to-remove-auto-jump-in-google-search-results/" title="Permalink to [原创Chrome插件]去除Google搜索结果的自动跳转">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h2>
-	
-	</hgroup>
-	<p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
+<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
 <p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
 <p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
 <p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
@@ -245,58 +286,39 @@ $ <span class="n">make</span>
 <p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
 <p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
 <p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
-<p><strong>插件下载地址</strong>：暂无 </p>
-	<div><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read More...</a></div>
-	</article>
+<p><strong>插件下载地址</strong>：暂无 </p> <a class="" href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/index3.html">&larr; Previous</a></li>
 
-<p class="paginator">
-						<a href="http://hackecho.com/index3.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
-						<a href="http://hackecho.com/index5.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
-	</p>
+    <li class=""><a href="http://hackecho.com/index.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/index2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/index3.html">3</a></li>
+    <li class="active"><a href="http://hackecho.com/index4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/index5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/index6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
-</section>
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next"><a href="http://hackecho.com/index5.html">Next &rarr;</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

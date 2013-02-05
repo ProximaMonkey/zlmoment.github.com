@@ -1,56 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>年华一度，梦如歌</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>年华一度，梦如歌
+</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-      </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <style>
+.article {
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 30px;
+    position: relative;
+    margin: 24px auto 30px;
+    z-index: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     1px 1px 0 rgba(0, 0, 0, .1),
+     3px 3px 0 rgba(255, 255, 255, 1),
+     4px 4px 0 rgba(0, 0, 0, .1),
+     6px 6px 0 rgba(255, 255, 255, 1), 
+     7px 7px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+}
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-	<h3 class="date">Sun 13 May 2012</h3>
-  <article>
-	<hgroup>
-	
-	<h2><a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">年华一度，梦如歌</a></h2>
-		    
-	</hgroup>
-	<p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
+</style>
+<div class="span12" style="margin:0;">
+    <div class="row" style="text-align:center;margin-top: -21px;">
+        <h3>年华一度，梦如歌</h3>
+        Sun 13 May 2012
+
+by Zhaoyu Li
+ 
+
+
+    </div>
+    <div class="article">
+        <p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
 <p>多年以前，当我们还是孩童的时候，曾是那么的渴望着长大。长大以后，懵懵懂懂的，我们又希望能够早些成熟。而当我们都成熟之后才明白，原来，成熟真的不是一件幸福的事情，我们为此付出了太大的代价。生活的种种无奈要面对，人生的诸多曲折要经历，所以我们不得不抛却内心的纯真，挂上虚伪的笑容，冷漠着自己的视线，用伪装将自己层层包裹，时间久了，最真实的自我也就忘了。</p>
 <p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
 <p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
@@ -68,16 +114,16 @@
 <p>年华一度水一歌。流连于半梦花开的世界，朦朦胧胧的，我仿佛看到了那些消逝的风景，幼时的身影，立时的红颜，成片的爬山虎和几只奔跑的野兔，慢慢的从记忆的湖底向我涌来。而我，却依旧无法醒来，全然忘了自己身在何方。</p>
 <p>年华如梦，梦却如歌，唱着唱着，便再也回不去了…</p>
 <p>来源：网络 文/残月</p>
-
-	<br/>	
-	<footer>
-		<h4>TAGS</h4>
-	<ul class="tags">
-		<li><a href="http://hackecho.com/tag/美文.html" class="tag">美文</a></li>
-		</ul>
-	
-	<br/>
-	<div id="disqus_thread"></div>
+                <br>
+        <h4>TAGS</h4>
+        <div class="btn-group">
+                  <a href="http://hackecho.com/tag/美文.html" class="btn">美文</a>
+                </div>
+            </div>
+</div>
+<hr>
+<h3>Comments</h3>
+<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'zlmoment'; 
 
@@ -88,53 +134,16 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	</footer>
-	</article>
-</section>
+    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
+</div> <!-- /container -->
 
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
-
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
-
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
-
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

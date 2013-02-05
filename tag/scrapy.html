@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Posts tagged 'Scrapy' | Hackecho </title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">第一个HackEcho爬虫诞生记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 March 2012
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-      <h3 class="date">Sun 18 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/born-of-the-first-hackecho-spider/" title="Permalink to 第一个HackEcho爬虫诞生记">第一个HackEcho爬虫诞生记</a></h2>
-	
-	</hgroup>
-	<p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
 <p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
 <p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
 <p>当然，爬取的数据也不多，具体只有以下几项：</p>
@@ -66,29 +80,37 @@
 </pre></div>
 
 
-<p>当然 ...</p>
-	</article>
-    <h3 class="date">Sat 10 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/how-to-build-real-time-directional-crawl-cluster/" title="Permalink to [转]快速构建实时定向抓取集群">[转]快速构建实时定向抓取集群</a></h2>
-	
-	</hgroup>
-	<p>定义：</p>
+<p>当然 ...</p> <a class="" href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>定义：</p>
 <p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
 <p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
 <h3>名词解析：</h3>
 <p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
 <p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
-<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p>
-	</article>
-    <h3 class="date">Mon 27 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/glimpse-of-the-architechture-of-scrapy/" title="Permalink to 初探Scrapy的架构">初探Scrapy的架构</a></h2>
-	
-	</hgroup>
-	<p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
 <p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
 <h3>概览</h3>
 <p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
@@ -101,53 +123,28 @@
 <p><strong>Downloader（下载器）</strong></p>
 <p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
 <p><strong>Spiders（蜘蛛）</strong></p>
-<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p>
-	</article>
-</section>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
+    <li class="active"><a href="http://hackecho.com/tag/scrapy.html">1</a></li>
 
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

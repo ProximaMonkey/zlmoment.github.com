@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackecho - Articles by Zhaoyu Li</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/intro-to-thinkphp/">深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 26 September 2011
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Mon 26 September 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/09/intro-to-thinkphp/" title="Permalink to 深入浅出ThinkPHP系列教程(一) 初识ThinkPHP">深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</a></h2>
-	
-	</hgroup>
-	<p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
 <p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
 <p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
 <p><strong>&gt;&gt;什么是PHP框架？</strong></p>
@@ -58,16 +72,19 @@
 <p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
 <p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
 <p><strong>加速开发过程：</strong></p>
-<p>PHP框架 ...</p>
-	<div><a href="http://hackecho.com/2011/09/intro-to-thinkphp/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sun 11 December 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/12/journal-writing-and-programming/" title="Permalink to [转] 旅行，写作，编程">[转] 旅行，写作，编程</a></h2>
-	
-	</hgroup>
-	<p>感谢外刊IT评论翻译这篇文章，原文地址：<a href="http://www.aqee.net/traveling-writing-programming/">《旅行，写作，编程》</a> ，转载请注明原作者地址。</p>
+<p>PHP框架 ...</p> <a class="" href="http://hackecho.com/2011/09/intro-to-thinkphp/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/journal-writing-and-programming/">[转] 旅行，写作，编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 11 December 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>感谢外刊IT评论翻译这篇文章，原文地址：<a href="http://www.aqee.net/traveling-writing-programming/">《旅行，写作，编程》</a> ，转载请注明原作者地址。</p>
 <p>概括起来，今年到目前为止，我所做的事情包括：</p>
 <ul>
 <li>
@@ -95,60 +112,72 @@
 <p>最后，我在<a href="https://twitter.com/about/employees">Twitter</a>公司找到了一份工作</p>
 </li>
 </ul>
-<p>那么，让我从一年前开始，那是2010年9月，我刚好从一个我合作创办的公司里出来，尽管这段经历是很有价值的 ...</p>
-	<div><a href="http://hackecho.com/2011/12/journal-writing-and-programming/">Read More...</a></div>
-	</article>
-  <h3 class="date">Wed 10 August 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/08/json-operation-in-php/" title="Permalink to PHP中JSON的处理">PHP中JSON的处理</a></h2>
-	
-	</hgroup>
-	<p>近日因为小组项目的需要，要为一款Android应用（Howdy，敬请期待）开发服务器端。在HTTP协议的基础上，服务器需要根据请求返回JSON数据包（当然也可以返回XML，有关XML与JSON的转换请参看《<a href="http://www.hackecho.com/archives/444.html">XML与JSON的格式转换方法</a>》），因此简单研究了一下PHP处理JSON数据的方法。</p>
+<p>那么，让我从一年前开始，那是2010年9月，我刚好从一个我合作创办的公司里出来，尽管这段经历是很有价值的 ...</p> <a class="" href="http://hackecho.com/2011/12/journal-writing-and-programming/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>近日因为小组项目的需要，要为一款Android应用（Howdy，敬请期待）开发服务器端。在HTTP协议的基础上，服务器需要根据请求返回JSON数据包（当然也可以返回XML，有关XML与JSON的转换请参看《<a href="http://www.hackecho.com/archives/444.html">XML与JSON的格式转换方法</a>》），因此简单研究了一下PHP处理JSON数据的方法。</p>
 <p>从5.2版本开始，PHP原生提供json_encode()和json_decode()函数，前者用于编码，后者用于解码。5.2以前的版本请自行到网上下载相应的JSON解析类。</p>
 <p>我们先来了解一下<strong>索引数组</strong>和<strong>关联数组</strong>：</p>
-<p>PHP支持两种数组，一种是只保存"值"（value）的索引数组（indexed array），另一种是保存"名值对"（name/value）的关联数组（associative array）。一般在JSON数据格式中，索引数组的用<code>[]</code>包围，各个值之间用英文逗号分隔，如<code>["one","two","three"]</code>；关联数组用{}包围，键值之间用英文冒号一一对应，如 ...</p>
-	<div><a href="http://hackecho.com/2011/08/json-operation-in-php/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 22 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/letter-to-software-colleagues/" title="Permalink to [转载] 给浮躁的软件业同仁">[转载] 给浮躁的软件业同仁</a></h2>
-	
-	</hgroup>
-	<p><strong>文章来源：网络    作者：未知</strong></p>
+<p>PHP支持两种数组，一种是只保存"值"（value）的索引数组（indexed array），另一种是保存"名值对"（name/value）的关联数组（associative array）。一般在JSON数据格式中，索引数组的用<code>[]</code>包围，各个值之间用英文逗号分隔，如<code>["one","two","three"]</code>；关联数组用{}包围，键值之间用英文冒号一一对应，如 ...</p> <a class="" href="http://hackecho.com/2011/08/json-operation-in-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">[转载] 给浮躁的软件业同仁</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>文章来源：网络    作者：未知</strong></p>
 <p>中国有很多小朋友，他们18,9岁或21,2岁，通过自学也写了不少代码，他们有的代码写的很漂亮，一些技术细节相当出众，也很有钻研精神，但是他们被一些错误的认识和观点左右，缺乏对系统，对程序的整体理解能力，这些人，一个网上的朋友说得很好，他们实际是fans，压根没有资格称为程序员，但是据我所知，不少小网络公司的Cfans,拿着吓人的工资，做着吓人的项目，项目的结局通常也很吓人。</p>
 <p>程序员基本素质：</p>
 <p>作一个真正合格的程序员，或者说就是可以真正合格完成一些代码工作的程序员，应该具有的素质：</p>
 <p>1.团队精神和协作能力</p>
 <p>把它作为基本素质，并不是不重要，恰恰相反，这是程序员应该具备的最基本的，也是最重要的安身立命之本。把高水平程序员说成独行侠的都是在呓语，任何个人的力量都是有限的，即便如linus这样的天才，也需要通过组成强大的团队来创造奇迹，那些遍布全球的为linux写核心的高手们，没有协作精神是不可想象的。独行侠可以作一些赚钱的小软件发点小财，但是一旦进入一些大系统的研发团队，进入商业化和产品化的开发任务，缺乏这种素质的人就完全不合格了。</p>
 <p>2.文档习惯</p>
-<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p>
-	<div><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 11 April 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/04/level-of-programmer/" title="Permalink to 传说中程序员的层次">传说中程序员的层次</a></h2>
-	
-	</hgroup>
-	<p>记得很久以前看过这篇文章，本以为当时的我怎么说也应该达到第三级了吧，可读完第一级就发现我已经落后了...</p>
+<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p> <a class="" href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/level-of-programmer/">传说中程序员的层次</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 11 April 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>记得很久以前看过这篇文章，本以为当时的我怎么说也应该达到第三级了吧，可读完第一级就发现我已经落后了...</p>
 <p>自西方文艺复兴以来，中国在自然科学方面落后西方很多，软件领域也不例外。当然现在中国的许多程序员们对此可能有许多不同的意见，有些人认为中国的程序员水平远落后于西方，有些则认为中国的程序员个人能力并不比西方的程序员差，只是整个软件产业落后而已。</p>
 <p>那么，到底中国的程序员水平比西方程序员水平差，还是中国有许多优秀的程序员达到或超过了西方程序员同等水平呢？要解决这个问题，必须先知道程序员有多少种技术层级，每个层级需要什么样的技术水平，然后再比较中国和西方在各个技术层级的人数，就可以知道到底有没有差距，差距有多大。</p>
 <p>当然，对于如何划分程序员的技术层级，不同公司或不同人会有不同的划分标准，下面的划分仅代表个人的观点，如有不当之处，还请砸板砖予以纠正。</p>
 <p><strong>第1层  菜鸟</strong></p>
 <p>第1层楼属于地板层，迈进这层楼的门槛是很低的。基本上懂计算机的基本操作，了解计算机专业的一些基础知识，掌握一门基本的编程语言如C/C++，或者Java，或者JavaScript，...，均可入门迈进这层。</p>
 <p>在这层上，中国有着绝对的优势，除了从计算机专业毕业的众多人数外，还有大量的通信、自动化、数学等相关专业的人士进入这一行，此外还有众多的其他专业转行的人士，人数绝对比西方多出甚多。并且还有一个优势就是我们这层人员的平均智商比西方肯定高。</p>
-<p>没有多少人愿意一辈子做菜鸟，因为做"菜鸟"的滋味实在是不咋的，整天被老大们吆喝着去装装机器 ...</p>
-	<div><a href="http://hackecho.com/2011/04/level-of-programmer/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 10 November 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/11/login-to-linux-with-ssh/" title="Permalink to 用SSH远程登录Linux">用SSH远程登录Linux</a></h2>
-	
-	</hgroup>
-	<p>今天配好服务器，发现如果直接远程连接主机无法打开控制台，于是果断采用SSH来登录。很简单，只需几步：</p>
+<p>没有多少人愿意一辈子做菜鸟，因为做"菜鸟"的滋味实在是不咋的，整天被老大们吆喝着去装装机器 ...</p> <a class="" href="http://hackecho.com/2011/04/level-of-programmer/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天配好服务器，发现如果直接远程连接主机无法打开控制台，于是果断采用SSH来登录。很简单，只需几步：</p>
 <p>首先需要在服务器安装SSH的服务器端。</p>
 <div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span>
 </pre></div>
@@ -172,16 +201,19 @@
 
 
 <p>其中username是用户名，后面是服务器IP。</p>
-<p>接下来会提示输入密码，然后就成功登录到服务器了。经测试，可以使用sudo -i取得管理员权限，可以执行脚本。哈哈，enjoy it！</p>
-	<div><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 25 February 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/02/macvim-with-python/" title="Permalink to 配置MacVim的Pyhton编程环境">配置MacVim的Pyhton编程环境</a></h2>
-	
-	</hgroup>
-	<p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>接下来会提示输入密码，然后就成功登录到服务器了。经测试，可以使用sudo -i取得管理员权限，可以执行脚本。哈哈，enjoy it！</p> <a class="" href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
 <p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
 <p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
 <h3>安装MacVim和Python</h3>
@@ -202,30 +234,36 @@ $ <span class="n">make</span>
 </pre></div>
 
 
-<p>然后键入 ...</p>
-	<div><a href="http://hackecho.com/2012/02/macvim-with-python/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 05 April 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/04/missing-when-you-knowing/" title="Permalink to 当你懂得，或已错过">当你懂得，或已错过</a></h2>
-	
-	</hgroup>
-	<p>文/马德</p>
+<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/missing-when-you-knowing/">当你懂得，或已错过</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 April 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>文/马德</p>
 <p>一天上午,一位母亲风风火火地找到我。</p>
 <p>老师,你看到小萍了吗,我家闺女!母亲的头发枯黄,被风刮得东一绺西一绺的,像秋天的衰草,是一种刺痛人心的乱。</p>
 <p>我一愣。小萍,不是回家了吗?昨天学校月休,学生们都回家了,难道她没回去?我也有些乱了方寸,心紧跟着“怦怦”跳起来。</p>
 <p>哦,昨天,她倒是回来了,可是,今天早上,她,她就没影了……都怨我,唠叨了几句……这孩子,怎么就跑了呢!母亲像是向我解释,又像是自言自语,一副手足无措的样子。</p>
-<p>哦,这样啊。没事,她不会跑到哪里,我给你问问吧。我找出班级电话簿,挨个给小萍的同学打电话。但打了一个遍,都说没见到。突然间,母亲的情绪有些失控,怎么办,这可怎么办啊。她一边说,一边捶胸顿足 ...</p>
-	<div><a href="http://hackecho.com/2011/04/missing-when-you-knowing/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sun 08 May 2011</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2011/05/mother-day-of-programmer/" title="Permalink to 程序猿的母亲节">程序猿的母亲节</a></h2>
-	
-	</hgroup>
-	<p><em>转自<a href="http://t.sina.com.cn/2093492691">@程序员的那些事</a></em></p>
+<p>哦,这样啊。没事,她不会跑到哪里,我给你问问吧。我找出班级电话簿,挨个给小萍的同学打电话。但打了一个遍,都说没见到。突然间,母亲的情绪有些失控,怎么办,这可怎么办啊。她一边说,一边捶胸顿足 ...</p> <a class="" href="http://hackecho.com/2011/04/missing-when-you-knowing/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/mother-day-of-programmer/">程序猿的母亲节</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 08 May 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><em>转自<a href="http://t.sina.com.cn/2093492691">@程序员的那些事</a></em></p>
 <p>母亲节（Mother's Day），作为一个感谢母亲的节日，最早出现在古希腊，时间是每年的1月8日，而在中国、美国、加拿大和一些其他国家，则是每年5月的第2个星期天，其他一些国家的日期也并不相同。</p>
 <p>母亲们在这一天通常会收到礼物。康乃馨被视为献给母亲的花，中国的母亲花是萱草花，也称忘忧草。作为一个特殊的群体——程序员，我们的表述方式自然也会有些特色。我们这一辈程序员的父母（至少是绝大部分父母），别说这下面的编程语言，有些甚至都还不知道如何操作电脑。虽然也许母亲们会看不懂，但这种表述你我都能领会。或许几十年后，等我们自己的儿女用这种方式来表达他们对父母的爱，你我绝对不会陌生。</p>
 <div class="codehilite"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">MothersDayFromCodeMonkeyView</span>
@@ -239,72 +277,56 @@ $ <span class="n">make</span>
             <span class="p">{</span>
                 <span class="k">try</span>
                 <span class="p">{</span>
-                    <span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span>365<span class="o">*</span>24 ...</pre></div>
-	<div><a href="http://hackecho.com/2011/05/mother-day-of-programmer/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sat 23 June 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/06/my-faile-can-be-copied/" title="Permalink to 我的失败可以复制">我的失败可以复制</a></h2>
-	
-	</hgroup>
-	<p>常听人说，如果你开始回忆过去，说明你老了。而我却时常会怀念过去，或者说，是忏悔。</p>
+                    <span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span>365<span class="o">*</span>24 ...</pre></div> <a class="" href="http://hackecho.com/2011/05/mother-day-of-programmer/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-faile-can-be-copied/">我的失败可以复制</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 23 June 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>常听人说，如果你开始回忆过去，说明你老了。而我却时常会怀念过去，或者说，是忏悔。</p>
 <p>有时候会想，如果大学的前三年可以重新来过，让我们都回到那个懵懂的年纪，重新开始全新的大学生活，一定会选择一种完全不一样的生活。我一直以为，世界上有另外一个我，在过着我想过的生活，在做着我想做的事，而我却永远无法重新选择。</p>
 <p>永远不能回头，在不断的选择中，我们创造了自己的生活。然而，当我们回首时看到的却满是错误与失去，多想穿越时空告诉那时的自己，你的选择，错了。可是，这些都是没有用的，回不去的事情再勉强也是幻想，走好余下的路才是最重要的，过去的错误永远是最宝贵的财富。</p>
 <p>生命中，我们竭尽全力都无法改变的事情：倒向你的墙，离你而去的人，流逝的时间，和永远的过去。</p>
 <p>就像这句歌词一样：“如果骄傲没被现实大海冷冷拍下，又怎会懂得要多努力才走得到远方；如果梦想不曾坠落悬崖千钧一发，又怎会晓得执着的人有隐形翅牓。”</p>
-<p>所以，不要难过了。离过去越近，离未来就越远。过精彩的生活，遇到精彩的人，找到精彩的未来。</p>
-	<div><a href="http://hackecho.com/2012/06/my-faile-can-be-copied/">Read More...</a></div>
-	</article>
+<p>所以，不要难过了。离过去越近，离未来就越远。过精彩的生活，遇到精彩的人，找到精彩的未来。</p> <a class="" href="http://hackecho.com/2012/06/my-faile-can-be-copied/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/author/zhaoyu-li5.html">&larr; Previous</a></li>
 
-<p class="paginator">
-						<a href="http://hackecho.com/author/zhaoyu-li5.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
-						<a href="http://hackecho.com/author/zhaoyu-li7.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
-	</p>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li2.html">2</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li5.html">5</a></li>
+    <li class="active"><a href="http://hackecho.com/author/zhaoyu-li6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
-</section>
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next"><a href="http://hackecho.com/author/zhaoyu-li7.html">Next &rarr;</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>

@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="与互联网、编程、计算机有关的个人博客。" />
-  <meta name="keywords" content="编程,程序员,Python,C,JAVA" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackecho</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <title>Hackecho</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
 
-    <link rel="stylesheet" href="http://hackecho.com/theme/css/styles.min.css?2a1fc9d5">
-
-  <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" />
-    </head>
 <body>
-<header class="main-header">
-  <a href="http://github.com/zlmoment">
-<img style="position: absolute; top: 0; left: 128px; border: 0; height: 119px;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-  <hgroup>
-    <div>
-      <img src="http://www.gravatar.com/avatar/44a1e675878445f1bdea9686cb091197.png" style="margin-left: 34px; margin-top: 30px;">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
     </div>
-    <h1><a href=http://hackecho.com id="home-link">Hackecho</a></h1>
-    <h2>Software engineer, Pythonista and Love Wed.</h2>
-  </hgroup>
-  <nav>
-    <ul class="main-nav">
-      
-            <li><a href="/archives.html">Archives</a></li>
-      
-      
-                    <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
-              <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
-              <li><a href="http://hackecho.com/pages/about.html">About</a></li>
-              <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
-              <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
-              
 
-    </ul>
-  </nav>
-  <a href="http://pelican.notmyidea.org" class="fork-me">Powered by Pelican.</a>
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/websocket-server-with-tornado/">用Tornado实现WebSocket服务器</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 01 May 2012
 
-</header>
-<section class="main-section blog-section" id="blog-posts">
-    <h3 class="date">Tue 01 May 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/05/websocket-server-with-tornado/" title="Permalink to 用Tornado实现WebSocket服务器">用Tornado实现WebSocket服务器</a></h2>
-	
-	</hgroup>
-	<p>为什么昨天才发现还有这么好的框架：）简洁，非阻塞。Tornado是一个HTTP服务器，也是一个Web开发框架，最初是由FriendFeed网站的幕后团队开发的，后被Facebook收购开源，现主要服务于Facebook。昨晚用它实现了新的WebSocket服务器，最简单的EchoBack，代码行数骤减，开发效率非常高，稳定性也比PHP略高一筹。</p>
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>为什么昨天才发现还有这么好的框架：）简洁，非阻塞。Tornado是一个HTTP服务器，也是一个Web开发框架，最初是由FriendFeed网站的幕后团队开发的，后被Facebook收购开源，现主要服务于Facebook。昨晚用它实现了新的WebSocket服务器，最简单的EchoBack，代码行数骤减，开发效率非常高，稳定性也比PHP略高一筹。</p>
 <p>Tornado是非阻塞的，所以我觉得对于非阻塞式IO (nonblocking IO) 和异步IO (asynchronous IO  AIO)很有必要谈一谈。</p>
 <h3>Non-blocking IO 和 Asynchronous IO</h3>
 <p>我们假设你正在写的应用程序需要去远程服务器上请求数据（比如数据库中的数据，或一些远程API），这步请求假设需要花费5秒钟的时间。在很多Web开发框架中，它们是这样处理的：</p>
@@ -59,16 +73,19 @@
 </pre></div>
 
 
-<p>如果你在单线程中运行 ...</p>
-	<div><a href="http://hackecho.com/2012/05/websocket-server-with-tornado/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sun 29 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/new-hybi-10-protocol-of-websocket/" title="Permalink to WebSocket新版Hybi-10协议介绍">WebSocket新版Hybi-10协议介绍</a></h2>
-	
-	</hgroup>
-	<p>不知道问什么，网上的几乎所有关于WebSocket的讲解都是旧版协议，开源的PHP-WebSocket也早不更新了。一开始还以为是服务器程序的原因，后来发现是协议变更了。而且好不容易将握手协议更换为新版后，发现传送的数据都是乱码（见<a href="http://weibo.com/1784705505/ygyi4A0Pj">这里</a>），原来数据报文的格式也进行了非常大的变更！</p>
+<p>如果你在单线程中运行 ...</p> <a class="" href="http://hackecho.com/2012/05/websocket-server-with-tornado/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">WebSocket新版Hybi-10协议介绍</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 29 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>不知道问什么，网上的几乎所有关于WebSocket的讲解都是旧版协议，开源的PHP-WebSocket也早不更新了。一开始还以为是服务器程序的原因，后来发现是协议变更了。而且好不容易将握手协议更换为新版后，发现传送的数据都是乱码（见<a href="http://weibo.com/1784705505/ygyi4A0Pj">这里</a>），原来数据报文的格式也进行了非常大的变更！</p>
 <p>之前我们曾介绍过基于WebSocket协议的服务器实现，但那篇文章中提到的WebSocket协议标准还是草案7.5、7.6的标准，如今只有Safari支持此版本的协议，Chrome和Firefox最新版都已升级至Hybi-10（<a href="http://tools.ietf.org/html/draft-ietf-hybi-thewebsocketprotocol-10">协议地址</a>）。因此，我们再来介绍一下WebSocket新版协议Hybi-10。这次协议变更非常大，主要集中在握手协议和数据传输的格式上。下面我们来详细介绍一下。</p>
 <h3>握手协议</h3>
 <p>我们先来看一下大致的区别：</p>
@@ -80,16 +97,19 @@
 <p>把http头中Upgrade的值由"WebSocket"修改为了"websocket"；http头中的"-Origin"修改为了"Sec-WebSocket-Origin";</p>
 </li>
 <li>
-<p>增加了http头"Sec-WebSocket-Accept ...</p></li></ol>
-	<div><a href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 23 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/algorithm-of-24-game/" title="Permalink to 24点游戏（速算24）算法">24点游戏（速算24）算法</a></h2>
-	
-	</hgroup>
-	<p>24点游戏规则：任取1－13之间的4个数字，用＋－＊／（）连结成算式，使得式子的计算结果为24。很多人玩的都是用扑克牌玩的那种，两人各出2张牌，谁先算出来谁赢，赢家收回已经算过的4张牌。最后看谁手里的牌多。</p>
+<p>增加了http头"Sec-WebSocket-Accept ...</p></li></ol> <a class="" href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/algorithm-of-24-game/">24点游戏（速算24）算法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 23 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>24点游戏规则：任取1－13之间的4个数字，用＋－＊／（）连结成算式，使得式子的计算结果为24。很多人玩的都是用扑克牌玩的那种，两人各出2张牌，谁先算出来谁赢，赢家收回已经算过的4张牌。最后看谁手里的牌多。</p>
 <p>解决此问题一般使用<strong>穷举法</strong>，即穷举4个整数和运算符的所有可能的表达式，然后对表达式求值。</p>
 <p>注：以下文字中“运算”两字都表示对＋－＊／分别计算。</p>
 <p>思路一：</p>
@@ -104,16 +124,19 @@
 <p>(2) 在数组中取两个数字的排列，共有 P(4,2) 种排列。对每一个排列，</p>
 </li>
 <li>
-<p>(2.1) 对 + - * / 每一个运算符 ...</p></li></ul>
-	<div><a href="http://hackecho.com/2012/04/algorithm-of-24-game/">Read More...</a></div>
-	</article>
-  <h3 class="date">Tue 17 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/socket-programming-in-php/" title="Permalink to PHP中的Socket编程">PHP中的Socket编程</a></h2>
-	
-	</hgroup>
-	<p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
+<p>(2.1) 对 + - * / 每一个运算符 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/algorithm-of-24-game/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/socket-programming-in-php/">PHP中的Socket编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
 <h3>文章结构：</h3>
 <ul>
 <li>
@@ -140,16 +163,19 @@
 <p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
 </li>
 <li>
-<p>AF_INET6：与上面类似 ...</p></li></ul>
-	<div><a href="http://hackecho.com/2012/04/socket-programming-in-php/">Read More...</a></div>
-	</article>
-  <h3 class="date">Mon 16 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/funny-algorithm-ratio-of-male-and-femal/" title="Permalink to 趣味算法面试题：男女比例问题">趣味算法面试题：男女比例问题</a></h2>
-	
-	</hgroup>
-	<p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
+<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/socket-programming-in-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">趣味算法面试题：男女比例问题</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 16 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
 <p>本能地反应男女比例还应该是1：1，但到底是不是呢，我们来用程序验证一下。</p>
 <p>思路：如果一个家庭生的是女孩，则继续让下一个家庭生；如果是男孩，则递归调用自己，直到结果为女孩。生男生女将由随机产生的0和1来决定。</p>
 <p>我们先看运行结果，程序代码附在文后。如果你有兴趣，可以自己实现一下。</p>
@@ -161,16 +187,19 @@
 <p><a href="/static/images/2012/04/skitched-20120416-192726.png"><img alt="" src="/static/images/2012/04/skitched-20120416-192726.png" /></a></p>
 <p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
 <h3>程序代码：</h3>
-<div class="codehilite"><pre><span class="c">#include &lt;stdio ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">Read More...</a></div>
-	</article>
-  <h3 class="date">Sun 15 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/html5-websocket-communication-protocol/" title="Permalink to HTML5 之 WebSocket 通信协议介绍">HTML5 之 WebSocket 通信协议介绍</a></h2>
-	
-	</hgroup>
-	<p><strong>更新：Chrome和Firefox的WebSocket协议已更新到最新版，不再支持旧版协议。关于新版协议的介绍请看<a href="http://www.hackecho.com/archives/1104.html">《WebSocket新版Hybi-10协议介绍》</a>，本篇文章中的握手协议和数据报文已不再适用。</strong></p>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">HTML5 之 WebSocket 通信协议介绍</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 15 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>更新：Chrome和Firefox的WebSocket协议已更新到最新版，不再支持旧版协议。关于新版协议的介绍请看<a href="http://www.hackecho.com/archives/1104.html">《WebSocket新版Hybi-10协议介绍》</a>，本篇文章中的握手协议和数据报文已不再适用。</strong></p>
 <p>最近参与一个有关HTML5的比赛，要用到WebSocket，经过一些实验后简单总结一下WebSocket的基础用法。</p>
 <p>WebSocket是HTML5的一种新的协议，它是实现了浏览器与服务器的双向通讯。</p>
 <p>在 WebSocket API 中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。（这两小段介绍摘自维基百科）</p>
@@ -181,16 +210,19 @@
 <span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hackecho</span><span class="p">.</span><span class="n">com</span> 
 <span class="n">Cookie</span><span class="p">:</span> <span class="n">__utma</span><span class="p">=</span>99<span class="n">as</span>
 <span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">hackecho ...</span></pre></div>
-	<div><a href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 12 April 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/04/ten-extra-functions-with-htaccess-file/" title="Permalink to 利用.htaccess简单实现的10个功能">利用.htaccess简单实现的10个功能</a></h2>
-	
-	</hgroup>
-	<p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+<span class="n">Host</span><span class="p">:</span> <span class="n">hackecho ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">利用.htaccess简单实现的10个功能</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 12 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
 <p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
 <ol>
 <li>防盗链</li>
@@ -214,16 +246,19 @@
 <ol>
 <li>301永久重定向</li>
 </ol>
-<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p>
-	<div><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read More...</a></div>
-	</article>
-  <h3 class="date">Fri 23 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/" title="Permalink to WordPress与Suhosin冲突的解决办法">WordPress与Suhosin冲突的解决办法</a></h2>
-	
-	</hgroup>
-	<p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">WordPress与Suhosin冲突的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
 <p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
 <p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
 <p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
@@ -254,16 +289,19 @@
 </pre></div>
 
 
-<p>对于get和post数据大小限制的问题 ...</p>
-	<div><a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 22 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/how-to-create-a-personal-blog/" title="Permalink to 如何搭建个人独立博客">如何搭建个人独立博客</a></h2>
-	
-	</hgroup>
-	<p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p>对于get和post数据大小限制的问题 ...</p> <a class="" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
 <p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
 <p>文章结构：</p>
 <ul>
@@ -288,74 +326,58 @@
 </ul>
 <h3>独立博客与BSP的区别</h3>
 <p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
-<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p>
-	<div><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read More...</a></div>
-	</article>
-  <h3 class="date">Thu 22 March 2012</h3>
-    <article>
-	<hgroup>
-	<h2><a href="2012/03/letter-to-software-colleagues/" title="Permalink to [转载] 给浮躁的软件业同仁">[转载] 给浮躁的软件业同仁</a></h2>
-	
-	</hgroup>
-	<p><strong>文章来源：网络    作者：未知</strong></p>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">[转载] 给浮躁的软件业同仁</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>文章来源：网络    作者：未知</strong></p>
 <p>中国有很多小朋友，他们18,9岁或21,2岁，通过自学也写了不少代码，他们有的代码写的很漂亮，一些技术细节相当出众，也很有钻研精神，但是他们被一些错误的认识和观点左右，缺乏对系统，对程序的整体理解能力，这些人，一个网上的朋友说得很好，他们实际是fans，压根没有资格称为程序员，但是据我所知，不少小网络公司的Cfans,拿着吓人的工资，做着吓人的项目，项目的结局通常也很吓人。</p>
 <p>程序员基本素质：</p>
 <p>作一个真正合格的程序员，或者说就是可以真正合格完成一些代码工作的程序员，应该具有的素质：</p>
 <p>1.团队精神和协作能力</p>
 <p>把它作为基本素质，并不是不重要，恰恰相反，这是程序员应该具备的最基本的，也是最重要的安身立命之本。把高水平程序员说成独行侠的都是在呓语，任何个人的力量都是有限的，即便如linus这样的天才，也需要通过组成强大的团队来创造奇迹，那些遍布全球的为linux写核心的高手们，没有协作精神是不可想象的。独行侠可以作一些赚钱的小软件发点小财，但是一旦进入一些大系统的研发团队，进入商业化和产品化的开发任务，缺乏这种素质的人就完全不合格了。</p>
 <p>2.文档习惯</p>
-<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p>
-	<div><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read More...</a></div>
-	</article>
+<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p> <a class="" href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev"><a href="http://hackecho.com/index2.html">&larr; Previous</a></li>
 
-<p class="paginator">
-						<a href="http://hackecho.com/index2.html" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;newer</a>
-						<a href="http://hackecho.com/index4.html" class="button_accent" style="float:right; right: 0;">continue&nbsp;&nbsp;&nbsp;&rarr;</a>
-	</p>
+    <li class=""><a href="http://hackecho.com/index.html">1</a></li>
+    <li class=""><a href="http://hackecho.com/index2.html">2</a></li>
+    <li class="active"><a href="http://hackecho.com/index3.html">3</a></li>
+    <li class=""><a href="http://hackecho.com/index4.html">4</a></li>
+    <li class=""><a href="http://hackecho.com/index5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/index6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
+    <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
-</section>
-<div class="mobile-nav">
-  <span class="nav-btn" id="mobile-nav-btn">
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-    <span class="nav-btn-bar"></span>
-  </span>
-  <h3>
-    <a href="http://hackecho.com/" id="mobile-title">http://hackecho.com</a>
-  </h3>
-</div>
+    <li class="next"><a href="http://hackecho.com/index4.html">Next &rarr;</a></li>
 
-    <script src="http://hackecho.com/theme/gen/packed.js?0db83157"></script>
+</ul>
+</div>    </div> 
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
 
-<script>
-    // Function to get the Maximam value in Array
-    Array.max = function( array ) {
-        return Math.max.apply( Math, array );
-    };
+</div> <!-- /container -->
 
-    var heights = [];
-    heights.push($('.main-header').height());
-    heights.push($('.main-section').height());
-    heights.push($(window).height());
-
-    var max_height = Array.max(heights);
-    $('.main-header').height(max_height+80);
-
-    $('#mobile-title').text(window.location.hostname);
-
-
-
-
-</script>
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37227120-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 </body>
+</html>
