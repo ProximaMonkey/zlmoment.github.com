@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Unix Multiprocess Programming - Hackecho
+</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <style>
+.article {
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 30px;
+    position: relative;
+    margin: 24px auto 30px;
+    z-index: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     1px 1px 0 rgba(0, 0, 0, .1),
+     3px 3px 0 rgba(255, 255, 255, 1),
+     4px 4px 0 rgba(0, 0, 0, .1),
+     6px 6px 0 rgba(255, 255, 255, 1), 
+     7px 7px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+}
+
+</style>
+<div class="span12" style="margin:0;">
+    <div class="row" style="text-align:center;margin-top: -21px;">
+        <h3>Unix Multiprocess Programming</h3>
+        Wed 06 February 2013
+
+by Zhaoyu Li
+ 
+
+
+    </div>
+    <div class="article">
+        <p>This post is about process operations and shared memory.</p>
+<h3>Outline</h3>
+<ul>
+<li>
+<p>Process Operations</p>
+<ul>
+<li>
+<p>fork()</p>
+</li>
+<li>
+<p>wait()</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Shared Memory</p>
+<ul>
+<li>
+<p>Overview</p>
+</li>
+<li>
+<p>Allocating</p>
+</li>
+<li>
+<p>Attaching And Detaching</p>
+</li>
+<li>
+<p>Placing Data In Shared Memory</p>
+</li>
+<li>
+<p>Examples</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Now, let's begin.</p>
+<h3>Process Operations</h3>
+<p>One of the strong features of Unix-like operating systems, is their ability to run several processes simultaneously, and let them all share the CPU(s), memory, and other resources. An unix process is an entity that executes a given piece of code, has its own execution stack, its own set of memory pages, its own file descriptors table, and a unique process ID.</p>
+<h4>fork()</h4>
+<p>This system call causes the current process to be split into two processes - a parent process, and a child process. All of the memory pages used by the original process get duplicated during the fork() call, so both parent and child process see the exact same image. The only distinction is when the call returns. When it returns in the parent process, its return value is the process ID (PID) of the child process. When it returns inside the child process, its return value is '0'. If for some reason this call failed (not enough memory, too many processes, etc.), no new process is created, and the return value of the call is '-1'. In case the process was created successfully, both child process and parent process continue from the same place in the code where the fork() call was used.</p>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
+<span class="c">#include &lt;sys/types.h&gt;</span>
+
+<span class="n">void</span> <span class="n">ChildProcess</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>                <span class="o">/*</span> <span class="n">child</span> <span class="n">process</span> <span class="n">prototype</span>  <span class="o">*/</span>
+<span class="n">void</span> <span class="n">ParentProcess</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>               <span class="o">/*</span> <span class="n">parent</span> <span class="n">process</span> <span class="n">prototype</span> <span class="o">*/</span>
+
+<span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">pid_t</span>  <span class="n">child_pid</span><span class="p">;</span>
+
+     <span class="n">child_pid</span> <span class="p">=</span> <span class="nb">fork</span><span class="p">();</span>
+
+     <span class="o">/*</span> <span class="n">check</span> <span class="nb">what</span> <span class="n">the</span> <span class="nb">fork</span><span class="p">()</span> <span class="n">call</span> <span class="n">actually</span> <span class="n">did</span> <span class="o">*/</span>
+     <span class="k">switch</span> <span class="p">(</span><span class="n">child_pid</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">case</span> <span class="o">-</span>1<span class="p">:</span>   <span class="o">/*</span> <span class="nb">fork</span><span class="p">()</span> <span class="n">failed</span> <span class="o">*/</span>
+          <span class="n">perror</span><span class="p">(</span><span class="s">&quot;fork&quot;</span><span class="p">);</span>     <span class="o">/*</span> <span class="nb">print</span> <span class="n">a</span> <span class="nb">system</span><span class="o">-</span><span class="n">defined</span> <span class="nb">error</span> <span class="n">message</span> <span class="o">*/</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+         <span class="k">case</span> 0<span class="p">:</span>    <span class="o">/*</span> <span class="nb">fork</span><span class="p">()</span> <span class="n">succeeded</span><span class="p">,</span> <span class="n">we</span><span class="o">&#39;</span><span class="n">re</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">child</span> <span class="n">process</span> <span class="o">*/</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;hello world\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>  <span class="o">/*</span> <span class="n">here</span> <span class="n">the</span> <span class="n">CHILD</span> <span class="n">process</span> <span class="n">exits</span><span class="p">,</span> <span class="nb">not</span> <span class="n">the</span> <span class="n">parent</span><span class="p">.</span> <span class="o">*/</span>
+         <span class="n">default</span><span class="p">:</span>   <span class="o">/*</span> <span class="nb">fork</span><span class="p">()</span> <span class="n">succeeded</span><span class="p">,</span> <span class="n">we</span><span class="o">&#39;</span><span class="n">re</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">parent</span> <span class="n">process</span> <span class="o">*/</span>
+          <span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">child_status</span><span class="p">);</span>     <span class="o">/*</span> <span class="n">wait</span> <span class="n">till</span> <span class="n">the</span> <span class="n">child</span> <span class="n">process</span> <span class="n">exits</span> <span class="o">*/</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>wait()</h4>
+<p>The wait() system call waits until any child process exits, and stores its exit status in the variable supplied. </p>
+<p>The execution of wait() could have two possible situations.</p>
+<ul>
+<li>
+<p>If there are at least one child processes running when the call to wait() is made, the caller will be blocked until one of its child processes exits. At that moment, the caller resumes its execution.</p>
+</li>
+<li>
+<p>If there is no child process running when the call to wait() is made, then this wait() has no effect at all. That is, it is as if no wait() is there.</p>
+</li>
+</ul>
+<p>Here is an example, you will understand more clearly if you run it yourself.</p>
+<div class="codehilite"><pre><span class="c">#include  &lt;stdio.h&gt;</span>
+<span class="c">#include  &lt;string.h&gt;</span>
+<span class="c">#include  &lt;sys/types.h&gt;</span>
+
+<span class="c">#define   MAX_COUNT  200</span>
+<span class="c">#define   BUF_SIZE   100</span>
+
+<span class="n">void</span>  <span class="n">ChildProcess</span><span class="p">(</span><span class="nb">char</span> <span class="p">[],</span> <span class="nb">char</span> <span class="p">[]);</span>    <span class="o">/*</span> <span class="n">child</span> <span class="n">process</span> <span class="n">prototype</span>  <span class="o">*/</span>
+
+<span class="n">void</span>  <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">pid_t</span>   <span class="n">pid1</span><span class="p">,</span> <span class="n">pid2</span><span class="p">,</span> <span class="n">pid</span><span class="p">;</span>
+     <span class="n">int</span>     <span class="n">status</span><span class="p">;</span>
+     <span class="n">int</span>     <span class="n">i</span><span class="p">;</span>
+     <span class="nb">char</span>    <span class="n">buf</span><span class="p">[</span><span class="n">BUF_SIZE</span><span class="p">];</span>
+
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** Parent is about to fork process 1 ***\n&quot;</span><span class="p">);</span>
+     <span class="k">if</span> <span class="p">((</span><span class="n">pid1</span> <span class="p">=</span> <span class="nb">fork</span><span class="p">())</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Failed to fork process 1\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pid1</span> <span class="o">==</span> 0<span class="p">)</span> 
+          <span class="n">ChildProcess</span><span class="p">(</span><span class="s">&quot;First&quot;</span><span class="p">,</span> <span class="s">&quot;   &quot;</span><span class="p">);</span>
+
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** Parent is about to fork process 2 ***\n&quot;</span><span class="p">);</span>
+     <span class="k">if</span> <span class="p">((</span><span class="n">pid2</span> <span class="p">=</span> <span class="nb">fork</span><span class="p">())</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Failed to fork process 2\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pid2</span> <span class="o">==</span> 0<span class="p">)</span> 
+          <span class="n">ChildProcess</span><span class="p">(</span><span class="s">&quot;Second&quot;</span><span class="p">,</span> <span class="s">&quot;      &quot;</span><span class="p">);</span>
+
+     <span class="nb">sprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;*** Parent enters waiting status .....\n&quot;</span><span class="p">);</span>
+     <span class="n">write</span><span class="p">(</span>1<span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+     <span class="n">pid</span> <span class="p">=</span> <span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+     <span class="nb">sprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;*** Parent detects process %d was done ***\n&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+     <span class="n">write</span><span class="p">(</span>1<span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+     <span class="n">pid</span> <span class="p">=</span> <span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** Parent detects process %d is done ***\n&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** Parent exits ***\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">void</span>  <span class="n">ChildProcess</span><span class="p">(</span><span class="nb">char</span> <span class="o">*</span><span class="n">number</span><span class="p">,</span> <span class="nb">char</span> <span class="o">*</span><span class="n">space</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">pid_t</span>  <span class="n">pid</span><span class="p">;</span>
+     <span class="n">int</span>    <span class="n">i</span><span class="p">;</span>
+     <span class="nb">char</span>   <span class="n">buf</span><span class="p">[</span><span class="n">BUF_SIZE</span><span class="p">];</span>
+
+     <span class="n">pid</span> <span class="p">=</span> <span class="nb">getpid</span><span class="p">();</span>
+     <span class="nb">sprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;%s%s child process starts (pid = %d)\n&quot;</span><span class="p">,</span> 
+             <span class="n">space</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+     <span class="n">write</span><span class="p">(</span>1<span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+     <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="p">=</span> 1<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="p">=</span> <span class="n">MAX_COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nb">sprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;%s%s child&#39;s output, value = %d\n&quot;</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> 
+          <span class="n">write</span><span class="p">(</span>1<span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+     <span class="p">}</span>
+     <span class="nb">sprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;%s%s child (pid = %d) is about to exit\n&quot;</span><span class="p">,</span> 
+             <span class="n">space</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+     <span class="n">write</span><span class="p">(</span>1<span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>     
+     <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>Shared Memory</h3>
+<h4>Overview</h4>
+<p>If a <code>fork()</code> call was called, the two process shared nothing and have no way to communicate with each other. A shared memory is an extra piece of memory that is attached to some address spaces for their owners to use, that is all of these processes share the same memory segment and have access to it. Consequently, race conditions may occur if memory accesses are not handled properly.</p>
+<p>One process must explicitly ask for an area, using a key, to be shared by other processes. This process will be called the server. All other processes, the clients, that know the shared area can access it. However, there is no protection to a shared memory and any process that knows it can access it freely. To protect a shared memory from being accessed at the same time by several processes, a synchronization protocol must be setup.</p>
+<p>A shared memory segment is identified by a unique integer, the <strong>shared memory ID</strong>. The shared memory itself is described by a structure of type shmid_ds in header file sys/shm.h. To use this file, files <code>sys/types.h</code> and <code>sys/ipc.h</code> must be included. Therefore, your program should start with the following lines:</p>
+<div class="codehilite"><pre><span class="c">#include  &lt;sys/types.h&gt;</span>
+<span class="c">#include  &lt;sys/ipc.h&gt;</span>
+<span class="c">#include  &lt;sys/shm.h&gt;</span>
+</pre></div>
+
+
+<p>A general scheme of using shared memory is the following:</p>
+<ul>
+<li>
+<p>For a server, it should be started before any client. The server should perform the following tasks:</p>
+<ol>
+<li>
+<p>Ask for a shared memory with a memory key and memorize the returned shared memory ID. This is performed by system call shmget().</p>
+</li>
+<li>
+<p>Attach this shared memory to the server's address space with system call shmat().</p>
+</li>
+<li>
+<p>Initialize the shared memory, if necessary.</p>
+</li>
+<li>
+<p>Do something and wait for all clients' completion.</p>
+</li>
+<li>
+<p>Detach the shared memory with system call shmdt().</p>
+</li>
+<li>
+<p>Remove the shared memory with system call shmctl().</p>
+</li>
+</ol>
+</li>
+<li>
+<p>For the client part, the procedure is almost the same:</p>
+<ol>
+<li>
+<p>Ask for a shared memory with the same memory key and memorize the returned shared memory ID.</p>
+</li>
+<li>
+<p>Attach this shared memory to the client's address space.</p>
+</li>
+<li>
+<p>Use the memory.</p>
+</li>
+<li>
+<p>Detach all shared memory segments, if necessary.</p>
+</li>
+<li>
+<p>Exit.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4>Allocating</h4>
+<p>A shared memory can be allocated using the shmget() system call.</p>
+<div class="codehilite"><pre><span class="n">shm_id</span> <span class="p">=</span> <span class="n">shmget</span><span class="p">(</span>
+               <span class="n">key_t</span>     <span class="n">k</span><span class="p">,</span>        <span class="o">/*</span> <span class="n">the</span> <span class="n">key</span> <span class="k">for</span> <span class="n">the</span> <span class="n">segment</span>         <span class="o">*/</span>
+               <span class="n">int</span>       <span class="nb">size</span><span class="p">,</span>     <span class="o">/*</span> <span class="n">the</span> <span class="nb">size</span> <span class="n">of</span> <span class="n">the</span> <span class="n">segment</span>         <span class="o">*/</span>
+               <span class="n">int</span>       <span class="n">flag</span><span class="p">);</span>    <span class="o">/*</span> <span class="n">create</span><span class="o">/</span><span class="n">use</span> <span class="n">flag</span>                 <span class="o">*/</span>
+</pre></div>
+
+
+<p>In the above definition, <code>k</code> is of type <code>key_t</code> or <code>IPC_PRIVATE</code>. It is the numeric key to be assigned to the returned shared memory segment. <code>size</code> is the size of the requested shared memory. The purpose of <code>flag</code> is to specify the way that the shared memory will be used. For our purpose, only the following two values are important:</p>
+<ul>
+<li>
+<p><code>IPC_CREAT | 0666</code> for a <strong>server</strong></p>
+</li>
+<li>
+<p><code>0666</code> for any <strong>client</strong></p>
+</li>
+</ul>
+<p>If <code>shmget()</code> can successfully get the requested shared memory, its function value is a non-negative integer, the shared memory ID; otherwise, the function value is negative. </p>
+<div class="codehilite"><pre><span class="c">#include  &lt;sys/types.h&gt;</span>
+<span class="c">#include  &lt;sys/ipc.h&gt;</span>
+<span class="c">#include  &lt;sys/shm.h&gt;</span>
+<span class="c">#include  &lt;stdio.h&gt;</span>
+     <span class="p">.....</span>
+<span class="n">int</span>       <span class="n">shm_id</span><span class="p">;</span>        <span class="o">/*</span> <span class="n">shared</span> <span class="n">memory</span> <span class="n">ID</span>      <span class="o">*/</span>
+     <span class="p">.....</span>
+<span class="n">shm_id</span> <span class="p">=</span> <span class="n">shmget</span><span class="p">(</span><span class="n">IPC_PRIVATE</span><span class="p">,</span> 4<span class="o">*</span><span class="nb">sizeof</span><span class="p">(</span><span class="n">int</span><span class="p">),</span> <span class="n">IPC_CREAT</span> <span class="o">|</span> 0666<span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">shm_id</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;shmget error\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">/*</span> <span class="nb">now</span> <span class="n">the</span> <span class="n">shared</span> <span class="n">memory</span> <span class="n">ID</span> <span class="n">is</span> <span class="n">stored</span> <span class="n">in</span> <span class="n">shm_id</span> <span class="o">*/</span>
+</pre></div>
+
+
+<p>If a client wants to use a shared memory created with IPC_PRIVATE, it must be a child process of the server, created after the parent has obtained the shared memory, so that the private key value can be passed to the child when it is created. For a client, changing IPC_CREAT | 0666 to 0666 works fine. </p>
+<p>Server and clients can have a parent/client relationship or run as separate and unrelated processes. In the former case, if a shared memory is requested and attached prior to forking the child client process, then the server may want to use IPC_PRIVATE since the child receives an identical copy of the server's address space which includes the attached shared memory. However, if the server and clients are separate processes, using IPC_PRIVATE is unwise since the clients will not be able to request the same shared memory segment with a unique and unknown key.</p>
+<h4>Attaching And Detaching</h4>
+<p>After a shared memory ID is returned, the next step is to attach it to the address space of a process. This is done using the <code>shmat()</code> system call. </p>
+<div class="codehilite"><pre><span class="n">shm_ptr</span> <span class="p">=</span> <span class="n">shmat</span><span class="p">(</span>
+               <span class="n">int</span>       <span class="n">shm_id</span><span class="p">,</span>        <span class="o">/*</span> <span class="n">shared</span> <span class="n">memory</span> <span class="n">ID</span>    <span class="o">*/</span>
+               <span class="n">char</span>      <span class="o">*</span><span class="n">ptr</span><span class="p">,</span>          <span class="o">/*</span> <span class="n">a</span> <span class="n">character</span> <span class="n">pointer</span> <span class="o">*/</span>
+               <span class="n">int</span>       <span class="n">flag</span><span class="p">);</span>         <span class="o">/*</span> <span class="n">access</span> <span class="n">flag</span>         <span class="o">*/</span>
+</pre></div>
+
+
+<p>System call <code>shmat()</code> accepts a shared memory ID, <code>shm_id</code>, and attaches the indicated shared memory to the program's address space. The returned value is a pointer of type <code>(void *)</code> to the attached shared memory. Thus, casting is usually necessary. If this call is unsuccessful, the return value is -1. Normally, the second parameter is NULL. If the flag is <code>SHM_RDONLY</code>, this shared memory is attached as a read-only memory; otherwise, it is readable and writable.</p>
+<p>In the following server's program, it asks for and attaches a shared memory of four integers.</p>
+<div class="codehilite"><pre><span class="c">#include  &lt;sys/types.h&gt;</span>
+<span class="c">#include  &lt;sys/ipc.h&gt;</span>
+<span class="c">#include  &lt;sys/shm.h&gt;</span>
+<span class="c">#include  &lt;stdio.h&gt;</span>
+
+<span class="n">int</span>       <span class="n">shm_id</span><span class="p">;</span>
+<span class="n">key_t</span>     <span class="n">mem_key</span><span class="p">;</span>
+<span class="n">int</span>       <span class="o">*</span><span class="n">shm_ptr</span><span class="p">;</span>
+
+<span class="n">mem_key</span> <span class="p">=</span> <span class="n">ftok</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">);</span>
+<span class="n">shm_id</span> <span class="p">=</span> <span class="n">shmget</span><span class="p">(</span><span class="n">mem_key</span><span class="p">,</span> 4<span class="o">*</span><span class="nb">sizeof</span><span class="p">(</span><span class="n">int</span><span class="p">),</span> <span class="n">IPC_CREAT</span> <span class="o">|</span> 0666<span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">shm_id</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmget error (server) ***\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">shm_ptr</span> <span class="p">=</span> <span class="p">(</span><span class="n">int</span> <span class="o">*</span><span class="p">)</span> <span class="n">shmat</span><span class="p">(</span><span class="n">shm_id</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> 0<span class="p">);</span>  <span class="o">/*</span> <span class="n">attach</span> <span class="o">*/</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">int</span><span class="p">)</span> <span class="n">shm_ptr</span> <span class="o">==</span> <span class="o">-</span>1<span class="p">)</span> <span class="p">{</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmat error (server) ***\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The following is the counterpart of a client.</p>
+<div class="codehilite"><pre><span class="c">#include  &lt;sys/types.h&gt;</span>
+<span class="c">#include  &lt;sys/ipc.h&gt;</span>
+<span class="c">#include  &lt;sys/shm.h&gt;</span>
+<span class="c">#include  &lt;stdio.h&gt;</span>
+
+<span class="n">int</span>       <span class="n">shm_id</span><span class="p">;</span>
+<span class="n">key_t</span>     <span class="n">mem_key</span><span class="p">;</span>
+<span class="n">int</span>       <span class="o">*</span><span class="n">shm_ptr</span><span class="p">;</span>
+
+<span class="n">mem_key</span> <span class="p">=</span> <span class="n">ftok</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">);</span>
+<span class="n">shm_id</span> <span class="p">=</span> <span class="n">shmget</span><span class="p">(</span><span class="n">mem_key</span><span class="p">,</span> 4<span class="o">*</span><span class="nb">sizeof</span><span class="p">(</span><span class="n">int</span><span class="p">),</span> 0666<span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">shm_id</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmget error (client) ***\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">shm_ptr</span> <span class="p">=</span> <span class="p">(</span><span class="n">int</span> <span class="o">*</span><span class="p">)</span> <span class="n">shmat</span><span class="p">(</span><span class="n">shm_id</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> 0<span class="p">);</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">int</span><span class="p">)</span> <span class="n">shm_ptr</span> <span class="o">==</span> <span class="o">-</span>1<span class="p">)</span> <span class="p">{</span> <span class="o">/*</span> <span class="n">attach</span> <span class="o">*/</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmat error (client) ***\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><a href="/static/images/2013/02/shm.jpg"><img alt="" src="/static/images/2013/02/shm.jpg" /></a></p>
+<h4>Placing Data In Shared Memory</h4>
+<p>Placing data in a shared memory segment is done by using the pointer returned by the <code>shmat()</code> system call. Any kind of data may be placed in a shared segment, except for pointers. </p>
+<p>After you going through the two examples below, you will understand more clearly.</p>
+<h4>Examples</h4>
+<p><strong>Communicating Between Parent and Child</strong></p>
+<p>The following main function runs as a server. It uses IPC_PRIVATE to request a private shared memory. Since the client is the server's child process created after the shared memory has been created and attached, the child client process will receive the shared memory in its address space and as a result no shared memory operations are required. </p>
+<div class="codehilite"><pre><span class="c">#include  &lt;stdio.h&gt;</span>
+<span class="c">#include  &lt;stdlib.h&gt;</span>
+<span class="c">#include  &lt;sys/types.h&gt;</span>
+<span class="c">#include  &lt;sys/ipc.h&gt;</span>
+<span class="c">#include  &lt;sys/shm.h&gt;</span>
+
+<span class="n">void</span>  <span class="n">ClientProcess</span><span class="p">(</span><span class="n">int</span> <span class="p">[]);</span>
+
+<span class="n">void</span>  <span class="n">main</span><span class="p">(</span><span class="n">int</span>  <span class="n">argc</span><span class="p">,</span> <span class="nb">char</span> <span class="o">*</span><span class="nb">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+     <span class="n">int</span>    <span class="n">ShmID</span><span class="p">;</span>
+     <span class="n">int</span>    <span class="o">*</span><span class="n">ShmPTR</span><span class="p">;</span>
+     <span class="n">pid_t</span>  <span class="n">pid</span><span class="p">;</span>
+     <span class="n">int</span>    <span class="n">status</span><span class="p">;</span>
+
+     <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> 5<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Use: %s #1 #2 #3 #4\n&quot;</span><span class="p">,</span> <span class="nb">argv</span><span class="p">[</span>0<span class="p">]);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="n">ShmID</span> <span class="p">=</span> <span class="n">shmget</span><span class="p">(</span><span class="n">IPC_PRIVATE</span><span class="p">,</span> 4<span class="o">*</span><span class="nb">sizeof</span><span class="p">(</span><span class="n">int</span><span class="p">),</span> <span class="n">IPC_CREAT</span> <span class="o">|</span> 0666<span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">ShmID</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmget error (server) ***\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has received a shared memory of four integers...\n&quot;</span><span class="p">);</span>
+
+     <span class="n">ShmPTR</span> <span class="p">=</span> <span class="p">(</span><span class="n">int</span> <span class="o">*</span><span class="p">)</span> <span class="n">shmat</span><span class="p">(</span><span class="n">ShmID</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> 0<span class="p">);</span>
+     <span class="k">if</span> <span class="p">((</span><span class="n">int</span><span class="p">)</span> <span class="n">ShmPTR</span> <span class="o">==</span> <span class="o">-</span>1<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmat error (server) ***\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has attached the shared memory...\n&quot;</span><span class="p">);</span>
+
+     <span class="n">ShmPTR</span><span class="p">[</span>0<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>1<span class="p">]);</span>
+     <span class="n">ShmPTR</span><span class="p">[</span>1<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>2<span class="p">]);</span>
+     <span class="n">ShmPTR</span><span class="p">[</span>2<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>3<span class="p">]);</span>
+     <span class="n">ShmPTR</span><span class="p">[</span>3<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>4<span class="p">]);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has filled %d %d %d %d in shared memory...\n&quot;</span><span class="p">,</span>
+            <span class="n">ShmPTR</span><span class="p">[</span>0<span class="p">],</span> <span class="n">ShmPTR</span><span class="p">[</span>1<span class="p">],</span> <span class="n">ShmPTR</span><span class="p">[</span>2<span class="p">],</span> <span class="n">ShmPTR</span><span class="p">[</span>3<span class="p">]);</span>
+
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server is about to fork a child process...\n&quot;</span><span class="p">);</span>
+     <span class="n">pid</span> <span class="p">=</span> <span class="nb">fork</span><span class="p">();</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** fork error (server) ***\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> 0<span class="p">)</span> <span class="p">{</span>
+          <span class="n">ClientProcess</span><span class="p">(</span><span class="n">ShmPTR</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has detected the completion of its child...\n&quot;</span><span class="p">);</span>
+     <span class="n">shmdt</span><span class="p">((</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">ShmPTR</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has detached its shared memory...\n&quot;</span><span class="p">);</span>
+     <span class="n">shmctl</span><span class="p">(</span><span class="n">ShmID</span><span class="p">,</span> <span class="n">IPC_RMID</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has removed its shared memory...\n&quot;</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server exits...\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">void</span>  <span class="n">ClientProcess</span><span class="p">(</span><span class="n">int</span>  <span class="n">SharedMem</span><span class="p">[])</span>
+<span class="p">{</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client process started\n&quot;</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client found %d %d %d %d in shared memory\n&quot;</span><span class="p">,</span>
+                <span class="n">SharedMem</span><span class="p">[</span>0<span class="p">],</span> <span class="n">SharedMem</span><span class="p">[</span>1<span class="p">],</span> <span class="n">SharedMem</span><span class="p">[</span>2<span class="p">],</span> <span class="n">SharedMem</span><span class="p">[</span>3<span class="p">]);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client is about to exit\n&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Communicating Between Two Separate Processes</strong></p>
+<p>Assume that the server and client are in the current directory. The server uses <code>ftok()</code> to generate a key (about how to use <code>ftok()</code> please google it by yourself, it's so easy) and uses it for requesting a shared memory. Before the shared memory is filled with data, status is set to NOT_READY. After the shared memory is filled, the server sets status to FILLED. Then, the server waits until status becomes TAKEN, meaning that the client has taken the data.</p>
+<p>The following is the server program. </p>
+<div class="codehilite"><pre><span class="c">#include  &lt;stdio.h&gt;</span>
+<span class="c">#include  &lt;stdlib.h&gt;</span>
+<span class="c">#include  &lt;sys/types.h&gt;</span>
+<span class="c">#include  &lt;sys/ipc.h&gt;</span>
+<span class="c">#include  &lt;sys/shm.h&gt;</span>
+
+<span class="c">#define  NOT_READY  -1</span>
+<span class="c">#define  FILLED     0</span>
+<span class="c">#define  TAKEN      1</span>
+
+<span class="nb">struct</span> <span class="n">Memory</span> <span class="p">{</span>
+     <span class="n">int</span>  <span class="n">status</span><span class="p">;</span>
+     <span class="n">int</span>  <span class="n">data</span><span class="p">[</span>4<span class="p">];</span>
+<span class="p">};</span>
+
+<span class="n">void</span>  <span class="n">main</span><span class="p">(</span><span class="n">int</span>  <span class="n">argc</span><span class="p">,</span> <span class="nb">char</span> <span class="o">*</span><span class="nb">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+     <span class="n">key_t</span>          <span class="n">ShmKEY</span><span class="p">;</span>
+     <span class="n">int</span>            <span class="n">ShmID</span><span class="p">;</span>
+     <span class="nb">struct</span> <span class="n">Memory</span>  <span class="o">*</span><span class="n">ShmPTR</span><span class="p">;</span>
+
+     <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> 5<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Use: %s #1 #2 #3 #4\n&quot;</span><span class="p">,</span> <span class="nb">argv</span><span class="p">[</span>0<span class="p">]);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="n">ShmKEY</span> <span class="p">=</span> <span class="n">ftok</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">);</span>
+     <span class="n">ShmID</span> <span class="p">=</span> <span class="n">shmget</span><span class="p">(</span><span class="n">ShmKEY</span><span class="p">,</span> <span class="nb">sizeof</span><span class="p">(</span><span class="nb">struct</span> <span class="n">Memory</span><span class="p">),</span> <span class="n">IPC_CREAT</span> <span class="o">|</span> 0666<span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">ShmID</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmget error (server) ***\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has received a shared memory of four integers...\n&quot;</span><span class="p">);</span>
+
+     <span class="n">ShmPTR</span> <span class="p">=</span> <span class="p">(</span><span class="nb">struct</span> <span class="n">Memory</span> <span class="o">*</span><span class="p">)</span> <span class="n">shmat</span><span class="p">(</span><span class="n">ShmID</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> 0<span class="p">);</span>
+     <span class="k">if</span> <span class="p">((</span><span class="n">int</span><span class="p">)</span> <span class="n">ShmPTR</span> <span class="o">==</span> <span class="o">-</span>1<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmat error (server) ***\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has attached the shared memory...\n&quot;</span><span class="p">);</span>
+
+     <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">status</span>  <span class="p">=</span> <span class="n">NOT_READY</span><span class="p">;</span>
+     <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>0<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>1<span class="p">]);</span>
+     <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>1<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>2<span class="p">]);</span>
+     <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>2<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>3<span class="p">]);</span>
+     <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>3<span class="p">]</span> <span class="p">=</span> <span class="n">atoi</span><span class="p">(</span><span class="nb">argv</span><span class="p">[</span>4<span class="p">]);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has filled %d %d %d %d to shared memory...\n&quot;</span><span class="p">,</span>
+            <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>0<span class="p">],</span> <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>1<span class="p">],</span> 
+            <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>2<span class="p">],</span> <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>3<span class="p">]);</span>
+     <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">status</span> <span class="p">=</span> <span class="n">FILLED</span><span class="p">;</span>
+
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Please start the client in another window...\n&quot;</span><span class="p">);</span>
+
+     <span class="k">while</span> <span class="p">(</span><span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">!=</span> <span class="n">TAKEN</span><span class="p">)</span>
+          <span class="nb">sleep</span><span class="p">(</span>1<span class="p">);</span>
+
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has detected the completion of its child...\n&quot;</span><span class="p">);</span>
+     <span class="n">shmdt</span><span class="p">((</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">ShmPTR</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has detached its shared memory...\n&quot;</span><span class="p">);</span>
+     <span class="n">shmctl</span><span class="p">(</span><span class="n">ShmID</span><span class="p">,</span> <span class="n">IPC_RMID</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server has removed its shared memory...\n&quot;</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Server exits...\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The client part is similar to the server. It waits until status is FILLED. Then, the clients retrieves the data and sets status to TAKEN, informing the server that data have been taken. The following is the client program. </p>
+<div class="codehilite"><pre><span class="c">#include  &lt;stdio.h&gt;</span>
+<span class="c">#include  &lt;stdlib.h&gt;</span>
+<span class="c">#include  &lt;sys/types.h&gt;</span>
+<span class="c">#include  &lt;sys/ipc.h&gt;</span>
+<span class="c">#include  &lt;sys/shm.h&gt;</span>
+
+<span class="c">#define  NOT_READY  -1</span>
+<span class="c">#define  FILLED     0</span>
+<span class="c">#define  TAKEN      1</span>
+
+<span class="nb">struct</span> <span class="n">Memory</span> <span class="p">{</span>
+     <span class="n">int</span>  <span class="n">status</span><span class="p">;</span>
+     <span class="n">int</span>  <span class="n">data</span><span class="p">[</span>4<span class="p">];</span>
+<span class="p">};</span>
+
+<span class="n">void</span>  <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">key_t</span>          <span class="n">ShmKEY</span><span class="p">;</span>
+     <span class="n">int</span>            <span class="n">ShmID</span><span class="p">;</span>
+     <span class="nb">struct</span> <span class="n">Memory</span>  <span class="o">*</span><span class="n">ShmPTR</span><span class="p">;</span>
+
+     <span class="n">ShmKEY</span> <span class="p">=</span> <span class="n">ftok</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">);</span>
+     <span class="n">ShmID</span> <span class="p">=</span> <span class="n">shmget</span><span class="p">(</span><span class="n">ShmKEY</span><span class="p">,</span> <span class="nb">sizeof</span><span class="p">(</span><span class="nb">struct</span> <span class="n">Memory</span><span class="p">),</span> 0666<span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">ShmID</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmget error (client) ***\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client has received a shared memory of four integers...\n&quot;</span><span class="p">);</span>
+
+     <span class="n">ShmPTR</span> <span class="p">=</span> <span class="p">(</span><span class="nb">struct</span> <span class="n">Memory</span> <span class="o">*</span><span class="p">)</span> <span class="n">shmat</span><span class="p">(</span><span class="n">ShmID</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> 0<span class="p">);</span>
+     <span class="k">if</span> <span class="p">((</span><span class="n">int</span><span class="p">)</span> <span class="n">ShmPTR</span> <span class="o">==</span> <span class="o">-</span>1<span class="p">)</span> <span class="p">{</span>
+          <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;*** shmat error (client) ***\n&quot;</span><span class="p">);</span>
+          <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+     <span class="p">}</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client has attached the shared memory...\n&quot;</span><span class="p">);</span>
+
+     <span class="k">while</span> <span class="p">(</span><span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">!=</span> <span class="n">FILLED</span><span class="p">)</span>
+          <span class="p">;</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client found the data is ready...\n&quot;</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client found %d %d %d %d in shared memory...\n&quot;</span><span class="p">,</span>
+                <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>0<span class="p">],</span> <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>1<span class="p">],</span> 
+                <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>2<span class="p">],</span> <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span>3<span class="p">]);</span>
+
+     <span class="n">ShmPTR</span><span class="o">-&gt;</span><span class="n">status</span> <span class="p">=</span> <span class="n">TAKEN</span><span class="p">;</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client has informed server data have been taken...\n&quot;</span><span class="p">);</span>
+     <span class="n">shmdt</span><span class="p">((</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">ShmPTR</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client has detached its shared memory...\n&quot;</span><span class="p">);</span>
+     <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;   Client exits...\n&quot;</span><span class="p">);</span>
+     <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Since the server program must allocate a shared memory segment to be used by the client, the server must run before running the client. </p>
+<h4>References</h4>
+<p>[1] "Unix Multi-Process Programming and Inter-Process Communications (IPC)" http://users.actcom.co.il/~choo/lupg/tutorials/multi-process/multi-process.html</p>
+<p>[2] "Unix Multiprocess Programming" http://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/process.html</p>
+                <br>
+        <h4>TAGS</h4>
+        <div class="btn-group">
+                  <a href="http://hackecho.com/tag/multiprocess.html" class="btn">multiprocess</a>
+                </div>
+            </div>
+</div>
+<hr>
+<h3>Comments</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div> 
+    <div style="clear:both;"></div>
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013</p>
+    </footer>
+
+</div> <!-- /container -->
+
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+</body>
+</html>

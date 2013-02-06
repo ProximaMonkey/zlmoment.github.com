@@ -55,6 +55,43 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
+<p>文章结构：</p>
+<ul>
+<li>
+<p>独立博客与BSP的区别</p>
+</li>
+<li>
+<p>申请域名</p>
+</li>
+<li>
+<p>服务器主机</p>
+</li>
+<li>
+<p>域名绑定</p>
+</li>
+<li>
+<p>安装程序</p>
+</li>
+<li>
+<p>开始使用</p>
+</li>
+</ul>
+<h3>独立博客与BSP的区别</h3>
+<p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">[转载] 给浮躁的软件业同仁</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
 
@@ -267,24 +304,6 @@ by Zhaoyu Li
 <p>编译MySQL for Python的源码时，出现如下错误提示：</p>
 <div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
 <span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
-<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
-<p>就不细细介绍了，看下面的例子，就都懂了：</p>
-<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
-<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
-<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
-<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -55,6 +55,55 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/unix-multiprocess-programming/">Unix Multiprocess Programming</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 06 February 2013
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>This post is about process operations and shared memory.</p>
+<h3>Outline</h3>
+<ul>
+<li>
+<p>Process Operations</p>
+<ul>
+<li>
+<p>fork()</p>
+</li>
+<li>
+<p>wait()</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Shared Memory</p>
+<ul>
+<li>
+<p>Overview</p>
+</li>
+<li>
+<p>Allocating</p>
+</li>
+<li>
+<p>Attaching And Detaching</p>
+</li>
+<li>
+<p>Placing Data In Shared Memory</p>
+</li>
+<li>
+<p>Examples</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Now, let's begin.</p>
+<h3>Process Operations</h3>
+<p>One of the strong features of Unix-like operating systems, is their ability to run several processes simultaneously ...</p> <a class="" href="http://hackecho.com/2013/02/unix-multiprocess-programming/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/make-your-program/">Make Your Program</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 February 2013
 
@@ -232,31 +281,6 @@ by Zhaoyu Li
 </div>
         <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
 <p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">解决MySQL无法通过localhost连接问题</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 27 May 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
-<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
-<h3>安装MySQL</h3>
-<p>依次执行下列三个命令：</p>
-<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
-<span class="n">unset</span> <span class="n">TMPDIR</span>
-<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="p">=</span>`<span class="n">whoami</span>` <span class="o">--</span><span class="n">basedir</span><span class="p">=</span>&quot;$<span class="p">(</span><span class="n">brew</span> <span class="o">--</span><span class="n">prefix</span> <span class="n">mysql</span><span class="p">)</span>&quot; <span class="o">--</span><span class="n">datadir</span><span class="p">=</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="p">=</span><span class="o">/</span><span class="n">tmp</span>
-</pre></div>
-
-
-<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
-<h3>解决localhost问题</h3>
-<p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

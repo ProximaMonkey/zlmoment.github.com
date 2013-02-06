@@ -55,6 +55,42 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">利用.htaccess简单实现的10个功能</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 12 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
+<ol>
+<li>防盗链</li>
+</ol>
+<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
+<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
+<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^$</span>
+<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^http://(www.)?yoursite.com/.*$ [NC]</span>
+<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span>$ <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="p">=</span>302<span class="p">,</span><span class="n">L</span><span class="p">]</span>
+</pre></div>
+
+
+<ol>
+<li>防止目录浏览</li>
+</ol>
+<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
+<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
+</pre></div>
+
+
+<ol>
+<li>301永久重定向</li>
+</ol>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">WordPress与Suhosin冲突的解决办法</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 March 2012
 
@@ -299,29 +335,6 @@ by Zhaoyu Li
 <span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
 <span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Mac OS X上装MySQL for Python的辛酸经历</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>折腾了一下午，只为一个MySQL for Python...</p>
-<p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
-<p>首先说一下安装环境：</p>
-<blockquote>
-<p>操作系统：Mac OS X Lion</p>
-<p>Python版本：2.7</p>
-<p>MySQL for Python版本：1.2.3</p>
-</blockquote>
-<h3>问题：</h3>
-<p>编译MySQL for Python的源码时，出现如下错误提示：</p>
-<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
-<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

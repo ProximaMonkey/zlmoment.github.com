@@ -55,6 +55,27 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/intro-of-mvc-structure/">对MVC架构的简单解读</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 05 March 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>因最近开发的需要，开始自学PHP，学习中的一些心得和技巧将会记录在博客里。作为一名初学者，我选择了使用SpeedPHP开发框架，因为它是个轻量级的框架。这篇文章是SP教程里的，简单摘录一下，以加深理解。</p>
+<p>本文将讲述在网络系统（WEB系统）开发中，MVC（模型-视图-控制器）架构的理念、设计以及在sp框架中的实际应用方式等。</p>
+<p>首先我们来看看MVC架构的示意图：</p>
+<p><a href="http://www.hackecho.com/?attachment_id=139"><img alt="MVC" src="/static/images/2011/03/捕获-300x118.png" /></a></p>
+<p>从上图我们可以将MVC简单地理解成：</p>
+<p>和访问者交互的是控制层（Controller层），控制器（controller）是同类交互的集合，每一个交互的操作，都对应了一个动作（action）。在sp框架中，全部的控制器类都必须继承于spController。</p>
+<p>对数据库进行存取的是模型层（Model层），在sp框架中，全部的模型器类都必须继承于spModel。</p>
+<p>显示页面模板的是视图层（View层），在sp框架中，视图层被集成到了控制器内，所以在实际开发中，视图层所要制作的只有页面模板。</p>
+<p>上面简单描述了MVC架构的理解。下面讲述一下关于sp框架中的MVC理念，可能比较抽象而不好理解，但是还请耐心去阅读，毕竟在实际开发中，对MVC理念的理解是非常必要和重要的。</p>
+<p>sp框架中的MVC理念，是将网络系统划分为三个关注点：交互、数据、页面模板；也就是我们设计或分析一个网络系统 ...</p> <a class="" href="http://hackecho.com/2011/03/intro-of-mvc-structure/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 25 February 2011
 

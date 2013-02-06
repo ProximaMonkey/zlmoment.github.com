@@ -55,6 +55,24 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
+<p>就不细细介绍了，看下面的例子，就都懂了：</p>
+<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
+<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
+<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
+<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
 
@@ -277,46 +295,6 @@ by Zhaoyu Li
 </li>
 </ul>
 <p>那么，让我从一年前开始，那是2010年9月，我刚好从一个我合作创办的公司里出来，尽管这段经历是很有价值的 ...</p> <a class="" href="http://hackecho.com/2011/12/journal-writing-and-programming/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">关于多级分类的一个思考</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 November 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>最近做的几个项目都设计到了多级分类，不太清楚数据表怎样设计。经过一番探究后，发现一般有以下几种解决方案：</p>
-<ul>
-<li>
-<p>每级分类一张表</p>
-</li>
-<li>
-<p>只有一张分类表</p>
-</li>
-<li>
-<p>一张分类名称表+一张分类关系表</p>
-</li>
-</ul>
-<p>第三种方法是参考了Wordpress本身的分类方法，个人感觉用在手里的项目中有点大材小用，于是主要目标是在前两种中选择一种。</p>
-<p>首先来看第一种，这是一般最先想到的方法，而且相对比较简单。但马上一想就会发现这种方法的弊端，如果只有两级分类还可以凑合，但如果涉及到多级分类或无限极分类就麻烦了，如果是五级分类就会有五张表，这明显不以维护而且不符合数据库设计原则。</p>
-<p>再来看第二种方案：</p>
-<p>如果只有一张表，那么我们必须能够标识各个分类之间的层次关系，层级等级。第一次的设计是这样的：</p>
-<blockquote>
-<p>cid</p>
-<p>cname（分类名称）</p>
-<p>parentcid（上级分类ID）</p>
-<p>cat_level（当前分类层次）</p>
-</blockquote>
-<p>貌似很完美的样子，而且支持无限级分类。但在使用过程中发现一个问题：虽然有一个分类层次，但排序后它们的层次还是无法直接显示出来。（在其中一个项目中曾经使用过这种方法，当时的解决方案是在View层又加了一次排序来动态的生成HTML代码，每次排序都要遍历一次父类，很恐怖。）。于是，第二次设计修改如下：</p>
-<blockquote>
-<p>cid</p>
-<p>cname（分类名称）</p>
-<p>parentcid（上级分类ID）</p>
-<p>cat_level（当前分类层次）</p>
-<p>cat_path ...</p></blockquote> <a class="" href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
