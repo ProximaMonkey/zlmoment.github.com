@@ -55,6 +55,21 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>近日因为小组项目的需要，要为一款Android应用（Howdy，敬请期待）开发服务器端。在HTTP协议的基础上，服务器需要根据请求返回JSON数据包（当然也可以返回XML，有关XML与JSON的转换请参看《<a href="http://www.hackecho.com/archives/444.html">XML与JSON的格式转换方法</a>》），因此简单研究了一下PHP处理JSON数据的方法。</p>
+<p>从5.2版本开始，PHP原生提供json_encode()和json_decode()函数，前者用于编码，后者用于解码。5.2以前的版本请自行到网上下载相应的JSON解析类。</p>
+<p>我们先来了解一下<strong>索引数组</strong>和<strong>关联数组</strong>：</p>
+<p>PHP支持两种数组，一种是只保存"值"（value）的索引数组（indexed array），另一种是保存"名值对"（name/value）的关联数组（associative array）。一般在JSON数据格式中，索引数组的用<code>[]</code>包围，各个值之间用英文逗号分隔，如<code>["one","two","three"]</code>；关联数组用{}包围，键值之间用英文冒号一一对应，如 ...</p> <a class="" href="http://hackecho.com/2011/08/json-operation-in-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/android-shared-preferences/">Android数据存储之Shared Preferences</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 06 August 2011
 
@@ -255,25 +270,6 @@ by Zhaoyu Li
 </li>
 </ol>
 <p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/coal-transportation-algorithm/">面试题：火车运煤问题</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 19 May 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>这个可能是一个比较经典的智力题了，其题目如下：</p>
-<p>你是山西的一个煤老板，你在矿区开采了有3000吨煤需要运送到市场上去卖，从你的矿区到市场有1000公里，你手里有一列烧煤的火车，这个火车最多只能装1000吨煤，且每一公里需要耗一吨煤。请问，作为一个<strong>懂编程</strong>的煤老板的你，你会怎么运送才能运最多的煤到集市？</p>
-<p>这道题一开始看上去好像是无解的，因为你的火车每一公里就要消耗一吨煤，而到目的地有1000公里，而火车最多只能装1000吨媒。如果你的火车可以全部装下，到目的地也会被全部烧光，一丁点也不剩。所以，很多人的第一反应都是觉得这个不太可能。</p>
-<p>如果你一开始就觉得不太可能的话，这是很正常的。不过我不知道你还会不会继续思考下去，如果你不想思考下去了，那么我很为你担忧，因为你可能并不是一个不善于思考的人，而是一个畏难的人，还有可能是一个容易放弃的人。这对于你做好 一个需要大量思考的工作的程序员来说可能并不适合。</p>
-<p>我一开始也觉得不可能，后来想了一想，想到一个解法可以最多运送500吨煤到市场（当然还有更好的结果），方法如下：（希望你先自己想一想再查看这个答案）</p>
-<p>答案之一：</p>
-<p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
-<p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p> <a class="" href="http://hackecho.com/2011/05/coal-transportation-algorithm/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

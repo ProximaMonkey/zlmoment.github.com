@@ -55,6 +55,30 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
+<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
+<h2>根文件系统</h2>
+<p><strong>/bin</strong></p>
+<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong></p>
+<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong></p>
+<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong></p>
+<p>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong></p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-faile-can-be-copied/">我的失败可以复制</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 23 June 2012
 
@@ -200,48 +224,6 @@ by Zhaoyu Li
 <p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
 <p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
 <p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p> <a class="" href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/python-decorator/">Python中的装饰器Decorator</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 11 May 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
-<p>如果使用如下的代码：</p>
-<div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
-<span class="p">@</span><span class="n">makeitalic</span>
-<span class="n">def</span> <span class="n">say</span><span class="p">():</span>
-    <span class="k">return</span> &quot;<span class="n">Hello</span>&quot;
-</pre></div>
-
-
-<p>打印出如下的输出：</p>
-<div class="codehilite"><pre><span class="nt">&lt;b&gt;&lt;i&gt;</span>Hello<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
-</pre></div>
-
-
-<p>你会怎么做？最后给出的答案是：</p>
-<div class="codehilite"><pre>def makebold(fn):
-    def wrapped():
-        return &quot;<span class="nt">&lt;b&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/b&gt;</span>&quot;
-    return wrapped
-
-def makeitalic(fn):
-    def wrapped():
-        return &quot;<span class="nt">&lt;i&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/i&gt;</span>&quot;
-    return wrapped
-
-@makebold
-@makeitalic
-def hello():
-    return &quot;hello world&quot;
-
-print hello() ## 返回 ...</pre></div> <a class="" href="http://hackecho.com/2012/05/python-decorator/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hackecho - 天堂皓月博客</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <div style="margin-top: 20px;">
+                
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/ipc-semaphores/">IPC Semaphores</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 11 February 2013
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><h3>Initializing a Semaphore Set</h3>
+<p>The function <code>semget()</code> initializes or gains access to a semaphore.</p>
+<div class="codehilite"><pre><span class="n">int</span> <span class="n">semget</span><span class="p">(</span><span class="n">key_t</span> <span class="n">key</span><span class="p">,</span> <span class="n">int</span> <span class="n">nsems</span><span class="p">,</span> <span class="n">int</span> <span class="n">semflg</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>The <code>key</code> argument is a access value associated with the semaphore ID.</p>
+</li>
+<li>
+<p>The <code>nsems</code> argument specifies the number of elements in a semaphore array. The call fails when ...</p></li></ul> <a class="" href="http://hackecho.com/2013/02/ipc-semaphores/">Read more...</a></div>
+    </div>
+          </div>
+<div class="pagination pagination-centered">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://hackecho.com/tag/semaphores.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>    </div> 
+    <div style="clear:both;"></div>
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013 | Theme by Zhaoyu Li</p>
+    </footer>
+
+</div> <!-- /container -->
+
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+
+<div id="tongji"><script language="javascript" type="text/javascript" src="http://js.users.51.la/15469132.js"></script></div>
+
+<style>
+#tongji {text-align:center;font-size:12px;margin-bottom:12px;}
+#tongji a {color:gray;}
+#tongji img {border:none;padding:0;}
+</style></body>
+</html>

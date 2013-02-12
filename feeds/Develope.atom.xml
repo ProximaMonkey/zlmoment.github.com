@@ -1,5 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hackecho</title><link href="http://hackecho.com/" rel="alternate"></link><link href="http://hackecho.com/feeds/Develope.atom.xml" rel="self"></link><id>http://hackecho.com/</id><updated>2013-02-06T15:15:00-06:00</updated><entry><title>Unix Multiprocess Programming</title><link href="http://hackecho.com/2013/02/unix-multiprocess-programming/" rel="alternate"></link><updated>2013-02-06T15:15:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2013-02-06:2013/02/unix-multiprocess-programming/</id><summary type="html">&lt;p&gt;This post is about process operations and shared memory.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hackecho</title><link href="http://hackecho.com/" rel="alternate"></link><link href="http://hackecho.com/feeds/Develope.atom.xml" rel="self"></link><id>http://hackecho.com/</id><updated>2013-02-11T21:48:00-06:00</updated><entry><title>IPC Semaphores</title><link href="http://hackecho.com/2013/02/ipc-semaphores/" rel="alternate"></link><updated>2013-02-11T21:48:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2013-02-11:2013/02/ipc-semaphores/</id><summary type="html">&lt;h3&gt;Initializing a Semaphore Set&lt;/h3&gt;
+&lt;p&gt;The function &lt;code&gt;semget()&lt;/code&gt; initializes or gains access to a semaphore.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key_t&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;nsems&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semflg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; argument is a access value associated with the semaphore ID.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;nsems&lt;/code&gt; argument specifies the number of elements in a semaphore array. The call fails when nsems is greater than the number of elements in an existing array; when the correct count is not known, supplying 0 for this argument ensures that it will succeed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;semflg&lt;/code&gt; argument specifies the initial access permissions and creation control flags.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When the call succeeds, it returns the semaphore ID (semid).&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#include &amp;lt;sys/types.h&amp;gt; &lt;/span&gt;
+&lt;span class="c"&gt;#include &amp;lt;sys/ipc.h&amp;gt; &lt;/span&gt;
+&lt;span class="c"&gt;#include &amp;lt;sys/sem.h&amp;gt; &lt;/span&gt;
+
+&lt;span class="p"&gt;...&lt;/span&gt; 
+&lt;span class="n"&gt;key_t&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;semget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt; 
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semflg&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;semflg&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;tosemget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt; 
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;nsems&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;nsems&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;semget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt; 
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;semget&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt; 
+
+&lt;span class="p"&gt;...&lt;/span&gt; 
+
+&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; 123456&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;nsems&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; 1&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;semflg&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;IPC_CREAT&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; 0666&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Flag&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;rw&lt;/span&gt; &lt;span class="n"&gt;permissions&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Create&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt;
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;identifier&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;semid&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;semget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nsems&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;semflg&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;1&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;perror&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;semget: semget failed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; 
+     &lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;1&lt;span class="p"&gt;);&lt;/span&gt; 
+&lt;span class="p"&gt;}&lt;/span&gt; 
+&lt;span class="k"&gt;else&lt;/span&gt; 
+   &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Controlling Semaphores&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;semctl()&lt;/code&gt; changes permissions and other characteristics of a semaphore set. It is prototyped as follows:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semctl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semnum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;cmd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;union&lt;/span&gt; &lt;span class="n"&gt;semun&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It must be called with a valid semaphore ID, semid. The &lt;code&gt;semnum&lt;/code&gt; value selects a semaphore within an array by its index. The &lt;code&gt;cmd&lt;/code&gt; argument is one of the following control flags:&lt;/p&gt;
+&lt;p&gt;GETVAL
+-- Return the value of a single semaphore.&lt;/p&gt;
+&lt;p&gt;SETVAL
+-- Set the value of a single semaphore. In this case, arg is taken as arg.val, an int.&lt;/p&gt;
+&lt;p&gt;GETPID
+-- Return the PID of the process that performed the last operation on the semaphore or array.&lt;/p&gt;
+&lt;p&gt;GETNCNT
+-- Return the number of processes waiting for the value of a semaphore to increase.&lt;/p&gt;
+&lt;p&gt;GETZCNT
+-- Return the number of processes waiting for the value of a particular semaphore to reach zero.&lt;/p&gt;
+&lt;p&gt;GETALL
+-- Return the values for all semaphores in a set. In this case, arg is taken as arg.array, a pointer to an array of unsigned shorts (see below).&lt;/p&gt;
+&lt;p&gt;SETALL
+-- Set values for all semaphores in a set. In this case, arg is taken as arg.array, a pointer to an array of unsigned shorts.&lt;/p&gt;
+&lt;p&gt;IPC_STAT
+-- Return the status information from the control structure for the semaphore set and place it in the data structure pointed to by arg.buf, a pointer to a buffer of type semid_ds.&lt;/p&gt;
+&lt;p&gt;IPC_SET
+-- Set the effective user and group identification and permissions. In this case, arg is taken as arg.buf.&lt;/p&gt;
+&lt;p&gt;IPC_RMID
+-- Remove the specified semaphore set.&lt;/p&gt;
+&lt;p&gt;The fourth argument &lt;code&gt;union semun&lt;/code&gt; arg is optional, depending upon the operation requested. If required it is of type union semun, which must be explicitly declared by the application program as:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;union&lt;/span&gt; &lt;span class="n"&gt;semun&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;semid_ds&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;ushort&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#include &amp;lt;sys/types.h&amp;gt; &lt;/span&gt;
+&lt;span class="c"&gt;#include &amp;lt;sys/ipc.h&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;#include &amp;lt;sys/sem.h&amp;gt; &lt;/span&gt;
+
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;Initialize&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt;
+&lt;span class="nb"&gt;union&lt;/span&gt; &lt;span class="n"&gt;semun&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="nb"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;semid_ds&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;ushort&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semnum&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;....;&lt;/span&gt;
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;GETALL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;   &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;
+
+&lt;span class="p"&gt;...&lt;/span&gt; 
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;semctl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;semid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;semnum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cmd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; 0&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; 
+    &lt;span class="n"&gt;perror&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;semctl: semctl failed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; 
+    &lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;1&lt;span class="p"&gt;);&lt;/span&gt; 
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Semaphore Operations&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;semop()&lt;/code&gt; performs operations on a semaphore set.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;sembuf&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sops&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;size_t&lt;/span&gt; &lt;span class="n"&gt;nsops&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;sops&lt;/code&gt; argument is a pointer to an array of structures, each containing the following information about a semaphore operation:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;
+&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;operation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;performed&lt;/span&gt;
+&lt;span class="n"&gt;Control&lt;/span&gt; &lt;span class="n"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;sembuf&lt;/code&gt; structure specifies a semaphore operation, as defined in &lt;code&gt;sys/sem.h&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;sembuf&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;ushort_t&lt;/span&gt;    &lt;span class="n"&gt;sem_num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;        &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;
+    &lt;span class="n"&gt;short&lt;/span&gt;       &lt;span class="n"&gt;sem_op&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;         &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="n"&gt;operation&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;
+    &lt;span class="n"&gt;short&lt;/span&gt;       &lt;span class="n"&gt;sem_flg&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;        &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;operation&lt;/span&gt; &lt;span class="n"&gt;flags&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The operation to be performed is determined as follows:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;positive&lt;/span&gt; &lt;span class="n"&gt;integer&lt;/span&gt; &lt;span class="n"&gt;increments&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;negative&lt;/span&gt; &lt;span class="n"&gt;integer&lt;/span&gt; &lt;span class="n"&gt;decrements&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;attempt&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;less&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;zero&lt;/span&gt; &lt;span class="n"&gt;fails&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;blocks&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;depending&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;whether&lt;/span&gt; &lt;span class="n"&gt;IPC_NOWAIT&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;effect&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;zero&lt;/span&gt; &lt;span class="n"&gt;means&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;wait&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;reach&lt;/span&gt; &lt;span class="n"&gt;zero&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#include &amp;lt;sys/types.h&amp;gt; &lt;/span&gt;
+&lt;span class="c"&gt;#include &amp;lt;sys/ipc.h&amp;gt; &lt;/span&gt;
+&lt;span class="c"&gt;#include &amp;lt;sys/sem.h&amp;gt; &lt;/span&gt;
+
+&lt;span class="p"&gt;...&lt;/span&gt; 
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;nsops&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt; 
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;semid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;semid&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt; &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt; 
+&lt;span class="nb"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;sembuf&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sops&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;/*&lt;/span&gt; &lt;span class="n"&gt;ptr&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;perform&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt; 
+
+&lt;span class="p"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;semop&lt;/span&gt; &lt;span class="n"&gt;performs&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;semaphore&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;semid&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;semop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;semid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sops&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nsops&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;1&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="p"&gt;{&lt;/span&gt; 
+    &lt;span class="n"&gt;perror&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;semop: semop failed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; 
+    &lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;1&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt; 
+&lt;span class="k"&gt;else&lt;/span&gt; 
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nb"&gt;fprintf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;stderr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;semop: returned %d\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; 
+    &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;补充&lt;/h3&gt;
+&lt;p&gt;以一个停车场的运作为例。简单起见，假设停车场只有三个车位，一开始三个车位都是空的。这时如果同时来了五辆车，看门人允许其中三辆直接进入，然后放下车拦，剩下的车则必须在入口等待，此后来的车也都不得不在入口处等待。这时，有一辆车离开停车场，看门人得知后，打开车拦，放入外面的一辆进去，如果又离开两辆，则又可以放入两辆，如此往复。&lt;/p&gt;
+&lt;p&gt;在这个停车场系统中，车位是公共资源，每辆车好比一个线程，看门人起的就是信号量的作用。&lt;/p&gt;
+&lt;p&gt;抽象的来讲，信号量的特性如下：信号量是一个非负整数（车位数），所有通过它的线程/进程（车辆）都会将该整数减一（通过它当然是为了使用资源），当该整数值为零时，所有试图通过它的线程都将处于等待状态。在信号量上我们定义两种操作： Wait（等待） 和 Release（释放）。当一个线程调用Wait操作时，它要么得到资源然后将信号量减一，要么一直等下去（指放入阻塞队列），直到信号量大于等于一时。Release（释放）实际上是在信号量上执行加操作，对应于车辆离开停车场，该操作之所以叫做“释放”是因为释放了由信号量守护的资源。&lt;/p&gt;</summary><category term="ipc"></category><category term="semaphores"></category></entry><entry><title>Unix Multiprocess Programming</title><link href="http://hackecho.com/2013/02/unix-multiprocess-programming/" rel="alternate"></link><updated>2013-02-06T15:15:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2013-02-06:2013/02/unix-multiprocess-programming/</id><summary type="html">&lt;p&gt;This post is about process operations and shared memory.&lt;/p&gt;
 &lt;h3&gt;Outline&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;

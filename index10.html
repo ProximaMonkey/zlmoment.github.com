@@ -55,6 +55,25 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/level-of-programmer/">传说中程序员的层次</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 11 April 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>记得很久以前看过这篇文章，本以为当时的我怎么说也应该达到第三级了吧，可读完第一级就发现我已经落后了...</p>
+<p>自西方文艺复兴以来，中国在自然科学方面落后西方很多，软件领域也不例外。当然现在中国的许多程序员们对此可能有许多不同的意见，有些人认为中国的程序员水平远落后于西方，有些则认为中国的程序员个人能力并不比西方的程序员差，只是整个软件产业落后而已。</p>
+<p>那么，到底中国的程序员水平比西方程序员水平差，还是中国有许多优秀的程序员达到或超过了西方程序员同等水平呢？要解决这个问题，必须先知道程序员有多少种技术层级，每个层级需要什么样的技术水平，然后再比较中国和西方在各个技术层级的人数，就可以知道到底有没有差距，差距有多大。</p>
+<p>当然，对于如何划分程序员的技术层级，不同公司或不同人会有不同的划分标准，下面的划分仅代表个人的观点，如有不当之处，还请砸板砖予以纠正。</p>
+<p><strong>第1层  菜鸟</strong></p>
+<p>第1层楼属于地板层，迈进这层楼的门槛是很低的。基本上懂计算机的基本操作，了解计算机专业的一些基础知识，掌握一门基本的编程语言如C/C++，或者Java，或者JavaScript，...，均可入门迈进这层。</p>
+<p>在这层上，中国有着绝对的优势，除了从计算机专业毕业的众多人数外，还有大量的通信、自动化、数学等相关专业的人士进入这一行，此外还有众多的其他专业转行的人士，人数绝对比西方多出甚多。并且还有一个优势就是我们这层人员的平均智商比西方肯定高。</p>
+<p>没有多少人愿意一辈子做菜鸟，因为做"菜鸟"的滋味实在是不咋的，整天被老大们吆喝着去装装机器 ...</p> <a class="" href="http://hackecho.com/2011/04/level-of-programmer/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/if-we-meet-first-time/">若，人生只是初见</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 10 April 2011
 
@@ -236,39 +255,6 @@ by Zhaoyu Li
 <p>终于完成了这个“离开Facebook”三十天的计划！在过去的两年里，我一直是Facebook的忠实用户。我不能保证，在过去的这三十天里，我所有的感悟都能够引起你的共鸣，但愿某些共通之处，会引发你的思考。</p>
 <p><strong>Facebook上的交流通常都是都是“次重要的”</strong></p>
 <p>我意识到当我停止使用Facebook后，生活中的交流量（communication volume）大幅减少，但是那些重要的有意义的交流却没有受到影响 ...</p> <a class="" href="http://hackecho.com/2011/03/30-days-after-no-facebook/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">单链表的一些算法实现</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 March 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
-<p><strong>首先定义节点：</strong></p>
-<div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
-    <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
-    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span><span class="o">//</span>下一个结点
-<span class="p">};</span>
-</pre></div>
-
-
-<p><strong>创建带n个数据的单链表：</strong></p>
-<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Init</span><span class="p">(){</span>
-    <span class="n">head</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
-    <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Create</span><span class="p">(</span><span class="n">int</span> <span class="n">n</span><span class="p">){</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">i</span> <span class="p">=</span> 1 <span class="p">;</span> <span class="nb">i</span> <span class="o">&lt;</span><span class="p">=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="nb">i</span><span class="p">)</span>  <span class="p">{</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
-        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
-        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
-        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

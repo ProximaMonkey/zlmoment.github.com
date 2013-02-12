@@ -55,6 +55,24 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/posix-threads-programming/">POSIX Threads Programming</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 February 2013
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>I am writing this article for a memo of CS8860, Parallel and distributed system.</p>
+<h3>Overview</h3>
+<p>Technically, a thread is defined as an independent stream of instructions that can be scheduled to run as such by the operating system.</p>
+<p>In the UNIX environment a thread:</p>
+<ul>
+<li>
+<p>Exists within a process and uses ...</p></li></ul> <a class="" href="http://hackecho.com/2013/02/posix-threads-programming/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/ppt-that-create-google-plus/">给Google+带来灵感的一份PPT</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 06 August 2011
 
@@ -276,32 +294,6 @@ by Zhaoyu Li
 </li>
 <li>
 <p>AF_INET6：与上面类似 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/socket-programming-in-php/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/socket-work-model/">Socket的几种工作模式</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 July 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
-<h2>阻塞模式</h2>
-<p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
-<p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
-<p><img alt="" src="/static/images/2012/07/1.jpg" /></p>
-<p>可参见下面的例子：</p>
-<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
-<span class="c">#include &lt;stdlib.h&gt;</span>
-<span class="c">#include &lt;errno.h&gt;</span>
-<span class="c">#include &lt;string.h&gt;</span>
-<span class="c">#include &lt;sys/types.h&gt;</span>
-<span class="c">#include &lt;netinet/in.h&gt;</span>
-<span class="c">#include &lt;sys/socket.h&gt;</span>
-<span class="c">#include &lt;sys/wait.h&gt;</span>
-<span class="c">#define ...</span></pre></div> <a class="" href="http://hackecho.com/2012/07/socket-work-model/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

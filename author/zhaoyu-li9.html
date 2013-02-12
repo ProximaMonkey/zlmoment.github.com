@@ -55,6 +55,32 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/socket-work-model/">Socket的几种工作模式</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 July 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
+<h2>阻塞模式</h2>
+<p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
+<p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
+<p><img alt="" src="/static/images/2012/07/1.jpg" /></p>
+<p>可参见下面的例子：</p>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
+<span class="c">#include &lt;stdlib.h&gt;</span>
+<span class="c">#include &lt;errno.h&gt;</span>
+<span class="c">#include &lt;string.h&gt;</span>
+<span class="c">#include &lt;sys/types.h&gt;</span>
+<span class="c">#include &lt;netinet/in.h&gt;</span>
+<span class="c">#include &lt;sys/socket.h&gt;</span>
+<span class="c">#include &lt;sys/wait.h&gt;</span>
+<span class="c">#define ...</span></pre></div> <a class="" href="http://hackecho.com/2012/07/socket-work-model/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">找不到libmysqlclient.18.dylib库的解决办法</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
 
@@ -248,22 +274,6 @@ by Zhaoyu Li
 <p>个人站长很少有独立开发整站程序的人，我也算是一个，一方面没有相关的技术，二来没有时间和精力来学习、编写和调试。所以我便很佩服DEDECMS的开发者柏拉图，因为著名的DEDECMS起初便是由他一人独立开发的。网上流行的CMS很多，但运行于PHP环境的就屈指可数了，因为我的空间是UNIX型，只能使用基于PHP的CMS。下面说一下我认识CMS的过程吧。­</p>
 <p>我接触的第一款CMS是DEDECMS，但那还是一年前，出于好奇，也并没有想去建一个自己的网站，即使想，那时也没有时间。当初没有怎么深入研究，只迷迷糊糊知道CMS可以进行网站内容管理。现在，高考结束，在北交大的录取通知书马上就要到来的情况下，我便购置了空间和域名，将身心全部投入到我的爱好中来。­</p>
 <p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p> <a class="" href="http://hackecho.com/2009/07/start-of-web-dev/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/11/stay-in-my-mind/">驻足在马路边的秋殇</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 November 2009
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>又是落叶纷飞的季节。我抬起头，让风中落叶夹杂的沧桑流过脸颊，听瑟瑟中睫毛舞动的轻扬，耳发飘浮的潇洒。</strong></p>
-<p>来北京整整两个月了。</p>
-<p>校园里还是那种特有的宁静，但清爽了很多，也沉郁了很多。彳亍在湖边，感受夜的侵袭，虽然少了点雨，少了把油纸伞，但垂柳依旧撩动人儿的记忆，撩动那丁香一样的惆怅。</p>
-<p>逐渐习惯了在外的生活，习惯了这座大城市，习惯了每天忙忙碌碌。朋友形容我“日理万机”，我笑一笑，我很忙，但我也会偶尔在自行车上骤然停下，看着校园里为数已不多的红果树，怀念起儿时爬过的老黄铜，亲手种过的小葫芦！如今，黄叶飘飞，风过，叶子们抓住空气，扯住地面，拖住灰尘，最终却还是会远离，与地面摩擦唱着自豪的歌。</p>
-<p>月是故乡明。十五的月亮，被我在天安门前看得清清楚楚。故乡的歌是一枝清远的笛，总在有月亮的晚上响起。不管是余光中还是席慕容都曾醉倒、梦倒在这轮光影之中。虽然未有“近乡情更怯,不敢问来人”的恐慌，却有“身在异乡为异客，每逢佳节倍思亲”的寂寞。天安门外光影浮动 ...</p> <a class="" href="http://hackecho.com/2009/11/stay-in-my-mind/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

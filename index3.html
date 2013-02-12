@@ -55,6 +55,48 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/python-decorator/">Python中的装饰器Decorator</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 11 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
+<p>如果使用如下的代码：</p>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
+<span class="p">@</span><span class="n">makeitalic</span>
+<span class="n">def</span> <span class="n">say</span><span class="p">():</span>
+    <span class="k">return</span> &quot;<span class="n">Hello</span>&quot;
+</pre></div>
+
+
+<p>打印出如下的输出：</p>
+<div class="codehilite"><pre><span class="nt">&lt;b&gt;&lt;i&gt;</span>Hello<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
+</pre></div>
+
+
+<p>你会怎么做？最后给出的答案是：</p>
+<div class="codehilite"><pre>def makebold(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;b&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/b&gt;</span>&quot;
+    return wrapped
+
+def makeitalic(fn):
+    def wrapped():
+        return &quot;<span class="nt">&lt;i&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/i&gt;</span>&quot;
+    return wrapped
+
+@makebold
+@makeitalic
+def hello():
+    return &quot;hello world&quot;
+
+print hello() ## 返回 ...</pre></div> <a class="" href="http://hackecho.com/2012/05/python-decorator/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/my-recent-life-things/">近况 & 忙里偷闲</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 May 2012
 
@@ -282,49 +324,6 @@ by Zhaoyu Li
 <li>301永久重定向</li>
 </ol>
 <p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">WordPress与Suhosin冲突的解决办法</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 March 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
-<p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
-<p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
-<p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
-<p>主要参考文章：</p>
-<ul>
-<li>
-<p><a href="http://www.cnblogs.com/droko/archive/2012/03/06/2381966.html">《PHP进程高负载》</a></p>
-</li>
-<li>
-<p><a href="http://changblog.com/582">《大战suhosin》</a></p>
-</li>
-<li>
-<p><a href="http://changblog.com/981">《解决wordpress引起的suhosin报错》</a></p>
-</li>
-<li>
-<p><a href="http://core.trac.wordpress.org/ticket/13847">《WP increasing the memory above other server limit》</a></p>
-</li>
-<li>
-<p><a href="http://demon.tw/software/suhosin-php.html">《Suhosin，PHP保护神？》</a></p>
-</li>
-</ul>
-<p>先观察些时日再说。</p>
-<p><em>补充（2012-3-23 20:40）：</em></p>
-<p>放上我的临时解决办法：</p>
-<p>对于上面日志中的问题，原因是suhosin的memory_limit限制了脚本内存的分配。解决办法是在php.ini中搜索memory_limit关键字，修改如下：</p>
-<div class="codehilite"><pre><span class="n">extension</span><span class="p">=</span><span class="n">suhosin</span><span class="p">.</span><span class="n">so</span>
-<span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="p">=</span> 256<span class="n">M</span>
-</pre></div>
-
-
-<p>对于get和post数据大小限制的问题 ...</p> <a class="" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -55,6 +55,36 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 28 September 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>通过这篇教程，让我们来简单熟悉一下MVC的基本思想，这也是使用ThinkPHP开发应用不可或缺的知识，否则你将寸步难行。</p>
+<p>MVC主要由三部分组成：</p>
+<ul>
+<li>
+<p>（控制器Controller）- 负责转发请求，对请求进行处理。</p>
+</li>
+<li>
+<p>（视图View） - 界面设计人员进行图形界面设计。</p>
+</li>
+<li>
+<p>（模型Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</p>
+</li>
+</ul>
+<p><img alt="" src="/static/images/2011/09/ModelViewControllerDiagramZh.png" /></p>
+<p>本博客以前发布过一篇关于MVC的简单介绍，详情请点击这里：<a href="http://www.hackecho.com/archives/138.html">《对MVC架构的简单解读》</a></p>
+<p><strong>视图</strong></p>
+<p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
+<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/intro-to-thinkphp/">深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 26 September 2011
 
@@ -231,22 +261,6 @@ by Zhaoyu Li
 <p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
 <p>1、文件创建模式：Activity.MODE_APPEND</p>
 <p>如果该文件已经存在，然后将数据写入 ...</p> <a class="" href="http://hackecho.com/2011/08/android-shared-preferences/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 03 August 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>很多朋友在开发Android应用的过程中，都想加入社会化的分享功能，如将自己的应用使用状态或心得同步到新浪微博、人人网或腾讯微博等。这些社交网络或微博都已经发布了针对开发者的开放平台（关于开放平台的相关信息，请参考<a href="http://www.hackecho.com/archives/127.html">《说说微创业——关于开放平台和微时代》</a>），因此我们可以将这些分享功能集成到自己的应用中，提高用户的互动性和产品推广效果。将应用与社会化网络联系起来已经成为现在移动开发的主流趋势之一。</p>
-<p>可对于新手而言，各大开放平台的SDK使用方法还需要花费很大精力来学习，如果仅仅是开发Demo的话，其实没有必要花费过多的时间在此。近两天我也在想办法给自己的应用加入社会化分享功能，偶然的机会看到了友盟提供的SNS_SDK（测试版），简单的试用过以后感觉不错，因此分享给大家，让我们的产品在开发初期也能快速方便的拥有SNS分享同步功能。</p>
-<p>友盟SNS_SDK目前提供两种分享方式：一种是文字分享，另一种是图文（图片+文字）分享。支持的开放平台目前有新浪微博、人人网和腾讯微博。首先我们要下载相应的SDK。</p>
-<p>进入<a href="http://www.umeng.com/doc/home.html">友盟文档中心</a>，点击左侧的<strong>开发工具SDK</strong>目录，在右侧点击下载即可。这里是一个简要的开发文档（<a href="http://www.umeng.com/doc/home.html#op_con_kfzn/adsdk_shhfx">点击查看</a>），当然我们会在下面为大家详细介绍其使用方法。</p>
-<p>首先我们应该注册一个友盟账号（<a href="http://www.umeng.com">点击注册</a>），注册完成后登录，进入友盟的管理后台，点击“添加新应用”，进入新应用信息填写的页面。App 建立成功后，自动会跳转到该App管理页面的开发指南页面 ...</p> <a class="" href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

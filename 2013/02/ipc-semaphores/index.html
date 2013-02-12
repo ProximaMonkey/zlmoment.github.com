@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>IPC Semaphores - Hackecho
+</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <style>
+    img{
+        background-color: #ffffff;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+    }
+    .content {
+        font-family: 'Rosario', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    }
+    .article h3{
+        font-size:20px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li><a href="/archives.html">Archives</a></li>
+                                                                  <li><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank">Github</a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <style>
+.article {
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 30px;
+    position: relative;
+    margin: 24px auto 30px;
+    z-index: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     1px 1px 0 rgba(0, 0, 0, .1),
+     3px 3px 0 rgba(255, 255, 255, 1),
+     4px 4px 0 rgba(0, 0, 0, .1),
+     6px 6px 0 rgba(255, 255, 255, 1), 
+     7px 7px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+}
+
+</style>
+<div class="span12" style="margin:0;">
+    <div class="row" style="text-align:center;margin-top: -21px;">
+        <h3>IPC Semaphores</h3>
+        Mon 11 February 2013
+
+by Zhaoyu Li
+ 
+
+
+    </div>
+    <div class="article">
+        <h3>Initializing a Semaphore Set</h3>
+<p>The function <code>semget()</code> initializes or gains access to a semaphore.</p>
+<div class="codehilite"><pre><span class="n">int</span> <span class="n">semget</span><span class="p">(</span><span class="n">key_t</span> <span class="n">key</span><span class="p">,</span> <span class="n">int</span> <span class="n">nsems</span><span class="p">,</span> <span class="n">int</span> <span class="n">semflg</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>The <code>key</code> argument is a access value associated with the semaphore ID.</p>
+</li>
+<li>
+<p>The <code>nsems</code> argument specifies the number of elements in a semaphore array. The call fails when nsems is greater than the number of elements in an existing array; when the correct count is not known, supplying 0 for this argument ensures that it will succeed.</p>
+</li>
+<li>
+<p>The <code>semflg</code> argument specifies the initial access permissions and creation control flags.</p>
+</li>
+</ul>
+<p>When the call succeeds, it returns the semaphore ID (semid).</p>
+<div class="codehilite"><pre><span class="c">#include &lt;sys/types.h&gt; </span>
+<span class="c">#include &lt;sys/ipc.h&gt; </span>
+<span class="c">#include &lt;sys/sem.h&gt; </span>
+
+<span class="p">...</span> 
+<span class="n">key_t</span> <span class="n">key</span><span class="p">;</span> <span class="o">/*</span> <span class="n">key</span> <span class="n">to</span> <span class="n">pass</span> <span class="n">to</span> <span class="n">semget</span><span class="p">()</span> <span class="o">*/</span> 
+<span class="n">int</span> <span class="n">semflg</span><span class="p">;</span> <span class="o">/*</span> <span class="n">semflg</span> <span class="n">to</span> <span class="n">pass</span> <span class="n">tosemget</span><span class="p">()</span> <span class="o">*/</span> 
+<span class="n">int</span> <span class="n">nsems</span><span class="p">;</span> <span class="o">/*</span> <span class="n">nsems</span> <span class="n">to</span> <span class="n">pass</span> <span class="n">to</span> <span class="n">semget</span><span class="p">()</span> <span class="o">*/</span> 
+<span class="n">int</span> <span class="n">semid</span><span class="p">;</span> <span class="o">/*</span> <span class="k">return</span> <span class="n">value</span> <span class="n">from</span> <span class="n">semget</span><span class="p">()</span> <span class="o">*/</span> 
+
+<span class="p">...</span> 
+
+<span class="n">key</span> <span class="p">=</span> 123456<span class="p">;</span> 
+<span class="n">nsems</span> <span class="p">=</span> 1<span class="p">;</span>
+<span class="n">semflg</span> <span class="p">=</span> <span class="n">IPC_CREAT</span> <span class="o">|</span> 0666<span class="p">;</span> <span class="o">//</span> <span class="n">Flag</span> <span class="n">to</span> <span class="n">create</span> <span class="n">with</span> <span class="n">rw</span> <span class="n">permissions</span>
+<span class="o">//</span> <span class="n">Create</span> <span class="n">the</span> <span class="n">semaphore</span>
+<span class="o">//</span> <span class="n">The</span> <span class="k">return</span> <span class="n">value</span> <span class="n">is</span> <span class="n">the</span> <span class="n">semaphore</span> <span class="k">set</span> <span class="n">identifier</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">semid</span> <span class="p">=</span> <span class="n">semget</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">nsems</span><span class="p">,</span> <span class="n">semflg</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span>1<span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">&quot;semget: semget failed&quot;</span><span class="p">);</span> 
+     <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span> 
+<span class="p">}</span> 
+<span class="k">else</span> 
+   <span class="p">...</span>
+</pre></div>
+
+
+<h3>Controlling Semaphores</h3>
+<p><code>semctl()</code> changes permissions and other characteristics of a semaphore set. It is prototyped as follows:</p>
+<div class="codehilite"><pre><span class="n">int</span> <span class="n">semctl</span><span class="p">(</span><span class="n">int</span> <span class="n">semid</span><span class="p">,</span> <span class="n">int</span> <span class="n">semnum</span><span class="p">,</span> <span class="n">int</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">union</span> <span class="n">semun</span> <span class="n">arg</span><span class="p">);</span>
+</pre></div>
+
+
+<p>It must be called with a valid semaphore ID, semid. The <code>semnum</code> value selects a semaphore within an array by its index. The <code>cmd</code> argument is one of the following control flags:</p>
+<p>GETVAL
+-- Return the value of a single semaphore.</p>
+<p>SETVAL
+-- Set the value of a single semaphore. In this case, arg is taken as arg.val, an int.</p>
+<p>GETPID
+-- Return the PID of the process that performed the last operation on the semaphore or array.</p>
+<p>GETNCNT
+-- Return the number of processes waiting for the value of a semaphore to increase.</p>
+<p>GETZCNT
+-- Return the number of processes waiting for the value of a particular semaphore to reach zero.</p>
+<p>GETALL
+-- Return the values for all semaphores in a set. In this case, arg is taken as arg.array, a pointer to an array of unsigned shorts (see below).</p>
+<p>SETALL
+-- Set values for all semaphores in a set. In this case, arg is taken as arg.array, a pointer to an array of unsigned shorts.</p>
+<p>IPC_STAT
+-- Return the status information from the control structure for the semaphore set and place it in the data structure pointed to by arg.buf, a pointer to a buffer of type semid_ds.</p>
+<p>IPC_SET
+-- Set the effective user and group identification and permissions. In this case, arg is taken as arg.buf.</p>
+<p>IPC_RMID
+-- Remove the specified semaphore set.</p>
+<p>The fourth argument <code>union semun</code> arg is optional, depending upon the operation requested. If required it is of type union semun, which must be explicitly declared by the application program as:</p>
+<div class="codehilite"><pre><span class="n">union</span> <span class="n">semun</span> <span class="p">{</span>
+   <span class="n">int</span> <span class="n">val</span><span class="p">;</span>
+   <span class="n">struct</span> <span class="n">semid_ds</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+   <span class="n">ushort</span> <span class="o">*</span><span class="n">array</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">arg</span><span class="p">;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="c">#include &lt;sys/types.h&gt; </span>
+<span class="c">#include &lt;sys/ipc.h&gt;</span>
+<span class="c">#include &lt;sys/sem.h&gt; </span>
+
+<span class="o">//</span> <span class="n">Initialize</span> <span class="n">the</span> <span class="n">semaphore</span>
+<span class="nb">union</span> <span class="n">semun</span> <span class="p">{</span>
+   <span class="n">int</span> <span class="n">val</span><span class="p">;</span>
+   <span class="nb">struct</span> <span class="n">semid_ds</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+   <span class="n">ushort</span> <span class="o">*</span><span class="n">array</span><span class="p">;</span>
+<span class="p">}</span> <span class="nb">arg</span><span class="p">;</span>
+
+<span class="n">int</span> <span class="n">semnum</span> <span class="p">=</span> <span class="p">....;</span>
+<span class="n">int</span> <span class="n">cmd</span> <span class="p">=</span> <span class="n">GETALL</span><span class="p">;</span>   <span class="o">/*</span> <span class="k">get</span> <span class="n">value</span> <span class="o">*/</span>
+
+<span class="p">...</span> 
+<span class="k">if</span> <span class="p">(</span><span class="n">semctl</span><span class="p">(</span><span class="n">semid</span><span class="p">,</span> <span class="n">semnum</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="nb">arg</span><span class="p">)</span> <span class="o">&lt;</span> 0<span class="p">)</span> <span class="p">{</span> 
+    <span class="n">perror</span><span class="p">(</span><span class="s">&quot;semctl: semctl failed&quot;</span><span class="p">);</span> 
+    <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span> 
+<span class="p">}</span>
+<span class="k">else</span>
+    <span class="p">...</span>
+</pre></div>
+
+
+<h3>Semaphore Operations</h3>
+<p><code>semop()</code> performs operations on a semaphore set.</p>
+<div class="codehilite"><pre><span class="n">int</span> <span class="n">semop</span><span class="p">(</span><span class="n">int</span> <span class="n">semid</span><span class="p">,</span> <span class="n">struct</span> <span class="n">sembuf</span> <span class="o">*</span><span class="n">sops</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nsops</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The <code>sops</code> argument is a pointer to an array of structures, each containing the following information about a semaphore operation:</p>
+<div class="codehilite"><pre><span class="n">The</span> <span class="n">semaphore</span> <span class="n">number</span>
+<span class="n">The</span> <span class="n">operation</span> <span class="n">to</span> <span class="n">be</span> <span class="n">performed</span>
+<span class="n">Control</span> <span class="n">flags</span><span class="p">,</span> <span class="k">if</span> <span class="n">any</span><span class="p">.</span>
+</pre></div>
+
+
+<p>The <code>sembuf</code> structure specifies a semaphore operation, as defined in <code>sys/sem.h</code>.</p>
+<div class="codehilite"><pre><span class="n">struct</span> <span class="n">sembuf</span> <span class="p">{</span>
+    <span class="n">ushort_t</span>    <span class="n">sem_num</span><span class="p">;</span>        <span class="o">/*</span> <span class="n">semaphore</span> <span class="n">number</span> <span class="o">*/</span>
+    <span class="n">short</span>       <span class="n">sem_op</span><span class="p">;</span>         <span class="o">/*</span> <span class="n">semaphore</span> <span class="n">operation</span> <span class="o">*/</span>
+    <span class="n">short</span>       <span class="n">sem_flg</span><span class="p">;</span>        <span class="o">/*</span> <span class="n">operation</span> <span class="n">flags</span> <span class="o">*/</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>The operation to be performed is determined as follows:</p>
+<div class="codehilite"><pre><span class="n">A</span> <span class="n">positive</span> <span class="n">integer</span> <span class="n">increments</span> <span class="n">the</span> <span class="n">semaphore</span> <span class="n">value</span> <span class="n">by</span> <span class="n">that</span> <span class="n">amount</span><span class="p">.</span>
+<span class="n">A</span> <span class="n">negative</span> <span class="n">integer</span> <span class="n">decrements</span> <span class="n">the</span> <span class="n">semaphore</span> <span class="n">value</span> <span class="n">by</span> <span class="n">that</span> <span class="n">amount</span><span class="p">.</span> <span class="n">An</span> <span class="n">attempt</span> <span class="n">to</span> <span class="n">set</span> <span class="n">a</span> <span class="n">semaphore</span> <span class="n">to</span> <span class="n">a</span> <span class="n">value</span> <span class="n">less</span> <span class="n">than</span> <span class="n">zero</span> <span class="n">fails</span> <span class="n">or</span> <span class="n">blocks</span><span class="p">,</span> <span class="n">depending</span> <span class="n">on</span> <span class="n">whether</span> <span class="n">IPC_NOWAIT</span> <span class="n">is</span> <span class="n">in</span> <span class="n">effect</span><span class="p">.</span>
+<span class="n">A</span> <span class="n">value</span> <span class="n">of</span> <span class="n">zero</span> <span class="n">means</span> <span class="n">to</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">the</span> <span class="n">semaphore</span> <span class="n">value</span> <span class="n">to</span> <span class="n">reach</span> <span class="n">zero</span><span class="p">.</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="c">#include &lt;sys/types.h&gt; </span>
+<span class="c">#include &lt;sys/ipc.h&gt; </span>
+<span class="c">#include &lt;sys/sem.h&gt; </span>
+
+<span class="p">...</span> 
+<span class="n">int</span> <span class="n">i</span><span class="p">;</span> 
+<span class="n">int</span> <span class="n">nsops</span><span class="p">;</span> <span class="o">/*</span> <span class="n">number</span> <span class="n">of</span> <span class="n">operations</span> <span class="n">to</span> <span class="k">do</span> <span class="o">*/</span> 
+<span class="n">int</span> <span class="n">semid</span><span class="p">;</span> <span class="o">/*</span> <span class="n">semid</span> <span class="n">of</span> <span class="n">semaphore</span> <span class="k">set</span> <span class="o">*/</span> 
+<span class="nb">struct</span> <span class="n">sembuf</span> <span class="o">*</span><span class="n">sops</span><span class="p">;</span> <span class="o">/*</span> <span class="n">ptr</span> <span class="n">to</span> <span class="n">operations</span> <span class="n">to</span> <span class="n">perform</span> <span class="o">*/</span> 
+
+<span class="p">...</span> 
+<span class="o">//</span> <span class="n">semop</span> <span class="n">performs</span> <span class="n">the</span> <span class="n">operations</span> <span class="n">on</span> <span class="n">the</span> <span class="n">semaphore</span><span class="p">:</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">semid</span> <span class="p">=</span> <span class="n">semop</span><span class="p">(</span><span class="n">semid</span><span class="p">,</span> <span class="n">sops</span><span class="p">,</span> <span class="n">nsops</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span>1<span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">perror</span><span class="p">(</span><span class="s">&quot;semop: semop failed&quot;</span><span class="p">);</span> 
+    <span class="nb">exit</span><span class="p">(</span>1<span class="p">);</span>
+<span class="p">}</span> 
+<span class="k">else</span> 
+    <span class="p">(</span><span class="n">void</span><span class="p">)</span> <span class="nb">fprintf</span><span class="p">(</span><span class="nb">stderr</span><span class="p">,</span> <span class="s">&quot;semop: returned %d\n&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> 
+    <span class="p">...</span>
+</pre></div>
+
+
+<h3>补充</h3>
+<p>以一个停车场的运作为例。简单起见，假设停车场只有三个车位，一开始三个车位都是空的。这时如果同时来了五辆车，看门人允许其中三辆直接进入，然后放下车拦，剩下的车则必须在入口等待，此后来的车也都不得不在入口处等待。这时，有一辆车离开停车场，看门人得知后，打开车拦，放入外面的一辆进去，如果又离开两辆，则又可以放入两辆，如此往复。</p>
+<p>在这个停车场系统中，车位是公共资源，每辆车好比一个线程，看门人起的就是信号量的作用。</p>
+<p>抽象的来讲，信号量的特性如下：信号量是一个非负整数（车位数），所有通过它的线程/进程（车辆）都会将该整数减一（通过它当然是为了使用资源），当该整数值为零时，所有试图通过它的线程都将处于等待状态。在信号量上我们定义两种操作： Wait（等待） 和 Release（释放）。当一个线程调用Wait操作时，它要么得到资源然后将信号量减一，要么一直等下去（指放入阻塞队列），直到信号量大于等于一时。Release（释放）实际上是在信号量上执行加操作，对应于车辆离开停车场，该操作之所以叫做“释放”是因为释放了由信号量守护的资源。</p>
+                <br>
+        <h4>TAGS</h4>
+        <div class="btn-group">
+                  <a href="http://hackecho.com/tag/ipc.html" class="btn">ipc</a>
+                  <a href="http://hackecho.com/tag/semaphores.html" class="btn">semaphores</a>
+                </div>
+            </div>
+</div>
+<hr>
+<h3>Comments</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div> 
+    <div style="clear:both;"></div>
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013 | Theme by Zhaoyu Li</p>
+    </footer>
+
+</div> <!-- /container -->
+
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+
+<div id="tongji"><script language="javascript" type="text/javascript" src="http://js.users.51.la/15469132.js"></script></div>
+
+<style>
+#tongji {text-align:center;font-size:12px;margin-bottom:12px;}
+#tongji a {color:gray;}
+#tongji img {border:none;padding:0;}
+</style></body>
+</html>
