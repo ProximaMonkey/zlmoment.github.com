@@ -257,7 +257,16 @@ by Zhaoyu Li
 <p>在这个停车场系统中，车位是公共资源，每辆车好比一个线程，看门人起的就是信号量的作用。</p>
 <p>抽象的来讲，信号量的特性如下：信号量是一个非负整数（车位数），所有通过它的线程/进程（车辆）都会将该整数减一（通过它当然是为了使用资源），当该整数值为零时，所有试图通过它的线程都将处于等待状态。在信号量上我们定义两种操作： Wait（等待） 和 Release（释放）。当一个线程调用Wait操作时，它要么得到资源然后将信号量减一，要么一直等下去（指放入阻塞队列），直到信号量大于等于一时。Release（释放）实际上是在信号量上执行加操作，对应于车辆离开停车场，该操作之所以叫做“释放”是因为释放了由信号量守护的资源。</p>
                 <br>
-        <h4>TAGS</h4>
+        <h4>Related Posts</h4>
+                    <ul>
+                            <li><a href="2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
+                            <li><a href="2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></li>
+                            <li><a href="2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></li>
+                            <li><a href="2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></li>
+                            <li><a href="2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
+                        </ul>
+                <br>
+        <h4>Tags</h4>
         <div class="btn-group">
                   <a href="http://hackecho.com/tag/ipc.html" class="btn">ipc</a>
                   <a href="http://hackecho.com/tag/semaphores.html" class="btn">semaphores</a>
