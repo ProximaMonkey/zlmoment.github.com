@@ -43,6 +43,39 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
+<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
+<h3>安装MacVim和Python</h3>
+<p>下列两种方式中的任一种均可用来安装MacVim。</p>
+<p><strong>方式一：通过Mac ports</strong></p>
+<p>首先确保你的Mac ports是最新版：</p>
+<p>1 $ sudo port -v selfupdate</p>
+<p>安装：</p>
+<div class="codehilite"><pre>$ <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
+</pre></div>
+
+
+<p><strong>方式二：自己编译</strong></p>
+<div class="codehilite"><pre>$ <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">b4winckler</span><span class="o">/</span><span class="n">macvim</span><span class="p">.</span><span class="n">git</span>
+$ <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
+$ <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="p">=</span>10<span class="p">.</span>6
+$ <span class="n">make</span>
+</pre></div>
+
+
+<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">找不到libmysqlclient.18.dylib库的解决办法</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
 
@@ -254,21 +287,6 @@ by Zhaoyu Li
 <p>安装完后记住将Nginx和PHP升级到最新版，安装包中的不是最新版。</p>
 <h2>安装Wordpress</h2>
 <p>不知为何，按照LNMP官方教程安装VSFTPD总是不成功，于是放弃之安装了PureFTPd ...</p> <a class="" href="http://hackecho.com/2012/01/vps-struggle/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/some-tips-of-learning/">[转]一点学习方法总结（作者：乱雪）</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 27 December 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>摘自“绿色兵团”论坛。（<a href="http://baike.baidu.com/view/994419.htm#sub7225157">点击查看绿色兵团组织介绍</a>）</p>
-<p>早已经习惯熬夜的我，今天，我学到很多东西，也明白很多，所以写下此文。</p>
-<p>我没有师傅，也没有拜过师，只有老师，是现实生活中学校的计算机老师，并非网上找的所谓的“高手”，有人问过我，没有师傅怎么学习？难道学习技术就一定要找师傅吗？找师傅你们的条件就是技术好，无非就是多入侵了几个站的，试问他们能帮助你们什么？帮助引导你们犯罪吗？再说高一点，就是一些精通一门甚至几门技术的，他们是真正高手，但是他们又能帮助你们什么？技术革新太快，科技日益进步，我们如果想立足就一定要不断学习知识，即使技术再高超，也需要学习技术，否则到头会落后，那么他们也需要学习，但是我没见几个真正的高手是有师傅的，即使有，也没有对他太多帮助，学习是靠自己的。换个角度，你是高手，别人找你当师傅，天天问一堆简单的问题，你有耐心回答吗？没有人会耐心回答你的，更没有耐心教你什么，既然是高手，他们不会把时间放在你身上的，而是放在更深入的地方 !</p>
-<p>从中美黑客大战以后，网上许多界内的人不断建立组织，黑客站点到处是 ...</p> <a class="" href="http://hackecho.com/2011/12/some-tips-of-learning/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

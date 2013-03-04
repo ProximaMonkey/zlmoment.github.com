@@ -43,6 +43,28 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">用HP Scrawlr检测数据库SQL注入漏洞</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 30 March 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
+<p><strong>引言</strong></p>
+<p>SQL数据库是目前世界上最快的一种数据库，每秒钟可以完成数百万次的事务处理。使用PHP和ASP代码处理SQL连接的时候，如果代码写的不好的 话，就会为网站的安全留下隐患：黑客可以通过插入代码来获得您的服务器上数据库的控制权。所以，一定要保护好您的SQL数据库。测试软件和网络的安全性应 该成为安全审计的一部分。HP为我们提供了扫描网站的SQL漏洞的免费软件。Scrawlr只可用于合法地扫描您自己的站点，而不得用于您的组织之外的站 点。安全分析人员进行渗透测试时，应当将这款软件也纳入到他们的安全工具库中。</p>
+<p><strong>HP Scrawlr</strong></p>
+<p>Hewlett  Packard公司提供了一款免费的工具，供人们用来爬行他们的站点，并从中查找安全漏洞。Scrawlr是由HP的web安全研究团队开发的，可用于对 单独的网页进行SQL注入漏洞的检测和利用。这个程序运行速度非常快；在运行期间，它可以利用HP的智能引擎技术来创建和动态执行SQL注入。最后，它还 能提高一份简单的报告来供管理员分析有关结果。如果该程序成功的话，您就会看到数据库和各种表。</p>
+<p><strong>Scrawlr</strong></p>
+<p>下面是Scrawlr的两个截图：</p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527390.jpg" /></p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527391.jpg" /></p>
+<p><strong>SQL注入</strong></p>
+<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p> <a class="" href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 22 July 2009
 
@@ -228,46 +250,6 @@ by Zhaoyu Li
 <p><strong>1.什么是好技术、好产品？</strong></p>
 <p>满足用户需求的技术和产品就是好技术、好产品。</p>
 <p>评价一个技术、一款产品的好坏，根本程度上要看是否符合了用户需求。需求至上，我们开发新技术、设计新产品，本来就是给用户使用，方便用户的 ...</p> <a class="" href="http://hackecho.com/2011/04/thinking-in-baidu-web-app-dev-conference/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">关于多级分类的一个思考</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 November 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>最近做的几个项目都设计到了多级分类，不太清楚数据表怎样设计。经过一番探究后，发现一般有以下几种解决方案：</p>
-<ul>
-<li>
-<p>每级分类一张表</p>
-</li>
-<li>
-<p>只有一张分类表</p>
-</li>
-<li>
-<p>一张分类名称表+一张分类关系表</p>
-</li>
-</ul>
-<p>第三种方法是参考了Wordpress本身的分类方法，个人感觉用在手里的项目中有点大材小用，于是主要目标是在前两种中选择一种。</p>
-<p>首先来看第一种，这是一般最先想到的方法，而且相对比较简单。但马上一想就会发现这种方法的弊端，如果只有两级分类还可以凑合，但如果涉及到多级分类或无限极分类就麻烦了，如果是五级分类就会有五张表，这明显不以维护而且不符合数据库设计原则。</p>
-<p>再来看第二种方案：</p>
-<p>如果只有一张表，那么我们必须能够标识各个分类之间的层次关系，层级等级。第一次的设计是这样的：</p>
-<blockquote>
-<p>cid</p>
-<p>cname（分类名称）</p>
-<p>parentcid（上级分类ID）</p>
-<p>cat_level（当前分类层次）</p>
-</blockquote>
-<p>貌似很完美的样子，而且支持无限级分类。但在使用过程中发现一个问题：虽然有一个分类层次，但排序后它们的层次还是无法直接显示出来。（在其中一个项目中曾经使用过这种方法，当时的解决方案是在View层又加了一次排序来动态的生成HTML代码，每次排序都要遍历一次父类，很恐怖。）。于是，第二次设计修改如下：</p>
-<blockquote>
-<p>cid</p>
-<p>cname（分类名称）</p>
-<p>parentcid（上级分类ID）</p>
-<p>cat_level（当前分类层次）</p>
-<p>cat_path ...</p></blockquote> <a class="" href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -43,6 +43,33 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">解密人人网应用“好友档案”与“X档案”</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 23 June 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
+<h3>接口分析</h3>
+<p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
+<p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
+<ol>
+<li>
+<p>status.getComment()</p>
+</li>
+<li>
+<p>photos.getComments()</p>
+</li>
+<li>
+<p>blog.getComments()</p>
+</li>
+</ol>
+<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/06/try-your-best-to-live/">你必须很努力，才能看起来毫不费力</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 06 June 2011
 
@@ -261,28 +288,6 @@ by Zhaoyu Li
 <p>2.任何原则唯一存在的价值就是应用于实践。很多人读了不少书，还把课堂笔记带回家温习，并积极参加形形色色的各种讲座，可终其一生都无法取得进步，无法体现相关原则的价值。</p>
 <p>3.自然界中最强大的力量乃是不可见的力量，我们发现人类最强大的力量也是不可见的，即精神的力量。而精神力得以体现的唯一途径则见诸于思考的过程。思考正是精神拥有的唯一活动，而思想乃是思想的唯一产物。</p>
 <p>4.这正是由失败转化为成功的过程。代表着勇气、力量、灵感、和谐的思想取代了代表失败、缺失、沮丧、局限以及不和思想，这些新的思想扎下根来，身体组织也随之发生改变，人生的前景变得一片光明，旧有的一切都已烟消云散，所有的事物都呈现出崭新的面貌，你因此获得了新生。这是一次精神的重生，生命因而被赋予了新的意义，而你本人则脱胎换骨，洋溢着欢欣、自信、希望与活力。在以前从未发现机遇的地方你发现了通向成功的机遇。你发现了新的可能性，放在以前，它对你毫无意义。你沉浸在成功的信念之中，而这些信念影响着你身边的人，他们反过来又推动你不断向前进 ...</p> <a class="" href="http://hackecho.com/2011/04/0423-reading-notes/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 22 April 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>我想，程序员只是一个代名词，我们是一群爱IT的人，希望通过自己的技术改变世界的人，我们是一群热爱生活、热爱世界的人。（蓝色文字皆为Troy注解）</p>
-<p>作为程序员，要取得非凡成就需要记住的15件事。</p>
-<p><strong>1.走一条不一样的路</strong></p>
-<p>在有利于自己的市场中竞争，如果你满足于“泯然众人矣”，那恐怕就得跟那些低工资国家的程序员们同场竞技了。</p>
-<p>“走一条不同的路”，“走自己喜欢的路”从来都是一个人成功的重要条件，但是更为重要的是，选定的一条路，一定要好好地、坚持地走下去。与其他半途而废的人来比，我们就是笑到最后的人。</p>
-<p><strong>2.了解自己的公司</strong></p>
-<p>以我在医院、咨询公司、物流企业以及大技术公司工作的经验来看，这一点所言不虚。</p>
-<p>不同公司的运营模式差异极大。如果你理解企业的运营模式，那你就不一样了！在这家公司中（或者对客户而言），你是参与业务运营的资产，你的工作能直接产生效益！</p>
-<p>如果一个人能够在他/她喜欢的公司工作，还用得着努力地去重新了解它吗？某种程度上我们喜欢某家公司的原因恰恰是我们喜欢它的运营理念。</p>
-<p><strong>3.与最优秀的人为伍</strong></p>
-<p>很早以前，我喜欢打篮球，被分配到一个水平比较高的队里。一开始适应的确很困难，但环境的压力越大（重大比赛），我的长进也就越明显 ...</p> <a class="" href="http://hackecho.com/2011/04/be-programmer-best/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

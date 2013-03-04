@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hackecho</title><link href="http://hackecho.com/" rel="alternate"></link><link href="http://hackecho.com/feeds/all-en.atom.xml" rel="self"></link><id>http://hackecho.com/</id><updated>2013-03-03T22:35:00-06:00</updated><entry><title>Boost Thread</title><link href="http://hackecho.com/2013/03/boost-thread/" rel="alternate"></link><updated>2013-03-03T22:35:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2013-03-03:2013/03/boost-thread/</id><summary type="html">&lt;p&gt;这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 &lt;code&gt;Boost.Thread&lt;/code&gt; ，用于开发独立于平台的多线程应用程序。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hackecho</title><link href="http://hackecho.com/" rel="alternate"></link><link href="http://hackecho.com/feeds/all-en.atom.xml" rel="self"></link><id>http://hackecho.com/</id><updated>2013-03-04T10:18:00-06:00</updated><entry><title>GCC 基础</title><link href="http://hackecho.com/2013/03/basic-of-gcc/" rel="alternate"></link><updated>2013-03-04T10:18:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2013-03-04:2013/03/basic-of-gcc/</id><summary type="html">&lt;p&gt;GCC，糊里糊涂地用了好长时间，每次也都是简简单单的 &lt;code&gt;gcc test.cpp&lt;/code&gt; 这样简单的命令，偶尔会用一下 &lt;code&gt;-o&lt;/code&gt;。说实话C和C++写的确实也不多，大一的时候还处于懵懂时期，跟着老师用VC6，后来面向对象编程之后，几乎工作都在IDE下完成，对这类命令行下的编译指令接触更是甚少。如今才体会到什么叫书到用时方恨少，不得不回过头来再打基础，认真学习。&lt;/p&gt;
+&lt;p&gt;鉴于这不是一篇Tutorial，只是我的一篇笔记，所以并不会涵盖所有内容。&lt;/p&gt;
+&lt;h3&gt;基础&lt;/h3&gt;
+&lt;p&gt;gcc 命令只能编译 C++ 源文件，而不能自动和 C++ 程序使用的库连接。因此，通常使用 g++ 命令来完成 C++ 程序的编译和连接，该程序会自动调用 gcc 实现编译。&lt;/p&gt;
+&lt;p&gt;一般来讲，编译过程分为四个阶段：预处理(也称预编译，Preprocessing)、编译(Compilation)、汇编 (Assembly)和连接(Linking)。下面举几个例子，关于参数的详细解释在文后会有。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;预编译&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;i&lt;/span&gt; 或 &lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;预编译之后的文件还是代码文件，比如将会将 &lt;code&gt;stdio.h&lt;/code&gt; 文件中的内容插入到自己程序中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;编译&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;i&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;汇编&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;连接&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;库文件&lt;/h3&gt;
+&lt;p&gt;函数库实际上就是一些头文件（.h）和库文件（so、或lib、dll）的集合。Linux下的大多数函数都默认将头文件放到 &lt;code&gt;/usr/include/&lt;/code&gt; 目录下，而库文件则放到 &lt;code&gt;/usr/lib/&lt;/code&gt; 目录下；Windows所使用的库文件主要放在Visual Stido的目录下的 &lt;code&gt;include&lt;/code&gt; 和 &lt;code&gt;lib&lt;/code&gt; ，以及系统文件夹下。放在 &lt;code&gt;/lib&lt;/code&gt; 和 &lt;code&gt;/usr/lib&lt;/code&gt; 和 &lt;code&gt;/usr/local/lib&lt;/code&gt; 里的库直接用 &lt;code&gt;-l&lt;/code&gt; 参数就能链接了（关于 &lt;code&gt;-l&lt;/code&gt; 参数见文后详解）。&lt;/p&gt;
+&lt;p&gt;Linux下的库文件分为两大类分别是动态链接库（通常以.so结尾）和静态链接库（通常以.a结尾），二者的区别仅在于程序执行时所需的代码是在运行时动态加载的，还是在编译时静态加载的。默认情况下， GCC在链接时优先使用动态链接库，只有当动态链接库不存在时才考虑使用静态链接库，如果需要的话可以在编译时加上-static选项，强制使用静态链接库。&lt;/p&gt;
+&lt;p&gt;静态库链接搜索路径顺序：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;参数-L&lt;/li&gt;
+&lt;li&gt;gcc的环境变量LIBRARY_PATH&lt;/li&gt;
+&lt;li&gt;内定目录 &lt;code&gt;/lib&lt;/code&gt; &lt;code&gt;/usr/lib&lt;/code&gt; &lt;code&gt;/usr/local/lib&lt;/code&gt; ，这是当初compile gcc时写在程序内的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;动态链接时、执行时搜索路径顺序:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;编译目标代码时指定的动态库搜索路径&lt;/li&gt;
+&lt;li&gt;环境变量LD_LIBRARY_PATH指定的动态库搜索路径&lt;/li&gt;
+&lt;li&gt;配置文件/etc/ld.so.conf中指定的动态库搜索路径&lt;/li&gt;
+&lt;li&gt;默认的动态库搜索路径 &lt;code&gt;/lib&lt;/code&gt; &lt;code&gt;/usr/lib&lt;/code&gt; &lt;code&gt;/usr/local/lib&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有关环境变量：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;LIBRARY_PATH&lt;/code&gt; ：指定程序静态链接库文件搜索路径&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LD_LIBRARY_PATH&lt;/code&gt; ：指定程序动态链接库文件搜索路径&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;参数&lt;/h3&gt;
+&lt;p&gt;先看几个比较重要的，常用的。&lt;/p&gt;
+&lt;p&gt;&lt;span class="label label-info"&gt;-l 和 -L&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-l&lt;/code&gt; 用来指定连接的库，其后紧跟&lt;strong&gt;库名&lt;/strong&gt;。库名是把真实文件名的头部 &lt;code&gt;lib&lt;/code&gt; 和尾部 &lt;code&gt;.so&lt;/code&gt; 去掉，如要链接 &lt;code&gt;libmysqlclient.so&lt;/code&gt; 库，则应使用 &lt;code&gt;-lmysqlclient&lt;/code&gt; 命令。其中，放在 &lt;code&gt;/lib&lt;/code&gt; &lt;code&gt;/usr/lib&lt;/code&gt; &lt;code&gt;/usr/local/lib&lt;/code&gt; 中的库可以直接调用（见上一部分中的搜索路径说明）。然而，放在其它目录的库则需要使用 &lt;code&gt;-L&lt;/code&gt; 调用，其使用方法是在 -L 后紧跟&lt;strong&gt;库目录&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;span class="label label-info"&gt;-o FILE&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;生成指定的输出可执行文件。&lt;/p&gt;
+&lt;p&gt;&lt;span class="label label-info"&gt;-include 和 -I&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-include&lt;/code&gt; 用来包含头文件，但一般情况下包含头文件都在源码里用 #include 实现。-I参数是用来指定&lt;strong&gt;头文件目录&lt;/strong&gt;，路径参数可以使用绝对路径，也可以使用相对路径。&lt;/p&gt;
+&lt;p&gt;头文件的搜索路径顺序：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;参数-I&lt;/li&gt;
+&lt;li&gt;gcc的环境变量 C_INCLUDE_PATH, CPLUS_INCLUDE_PATH, OBJC_INCLUDE_PATH&lt;/li&gt;
+&lt;li&gt;内定目录&lt;ul&gt;
+&lt;li&gt;/usr/include  &lt;/li&gt;
+&lt;li&gt;/usr/local/include&lt;/li&gt;
+&lt;li&gt;/usr/lib/gcc-lib/i386-linux/2.95.2/include&lt;/li&gt;
+&lt;li&gt;/usr/lib/gcc-lib/i386-linux/2.95.2/../../../../include/g++-3&lt;/li&gt;
+&lt;li&gt;/usr/lib/gcc-lib/i386-linux/2.95.2/../../../../i386-linux/include&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span class="label label-info"&gt;-O&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-O0 不进行优化处理。 &lt;/li&gt;
+&lt;li&gt;-O 或 -O1 优化生成代码。 &lt;/li&gt;
+&lt;li&gt;-O2 进一步优化。 &lt;/li&gt;
+&lt;li&gt;-O3 比 -O2 更进一步优化，包括 inline 函数。 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;其它&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-w&lt;/span&gt; ：不生成任何警告信息。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-Wall&lt;/span&gt; ：生成所有警告信息。&lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-DMACRO&lt;/span&gt; ：以字符串“1”定义 MACRO 宏。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-DMACRO=DEFN&lt;/span&gt; ：以字符串“DEFN”定义 MACRO 宏。&lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-c&lt;/span&gt; ：只编译并生成目标文件。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-E&lt;/span&gt; ：只运行 C 预编译器。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-g&lt;/span&gt; ：生成调试信息。GNU 调试器可利用该信息。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-m486&lt;/span&gt; ：针对 486 进行代码优化。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-shared&lt;/span&gt; ：生成共享目标文件。通常用在建立共享库时。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-static&lt;/span&gt; ：强制使用静态链接。 &lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-UMACRO&lt;/span&gt; ：取消对 MACRO 宏的定义。&lt;/li&gt;
+&lt;li&gt;&lt;span class="label label-info"&gt;-ansi&lt;/span&gt; ：只支持 ANSI 标准的 C 语法。这一选项将禁止 GNU C 的某些特色，例如 asm 或 typeof 关键词。 &lt;/li&gt;
+&lt;/ul&gt;</summary><category term="gcc"></category></entry><entry><title>Boost Thread</title><link href="http://hackecho.com/2013/03/boost-thread/" rel="alternate"></link><updated>2013-03-03T22:35:00-06:00</updated><author><name>Zhaoyu Li</name></author><id>tag:hackecho.com,2013-03-03:2013/03/boost-thread/</id><summary type="html">&lt;p&gt;这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 &lt;code&gt;Boost.Thread&lt;/code&gt; ，用于开发独立于平台的多线程应用程序。&lt;/p&gt;
 &lt;h3&gt;线程创建&lt;/h3&gt;
 &lt;p&gt;相关类为 &lt;code&gt;boost::thread&lt;/code&gt; ，定义在 &lt;code&gt;boost/thread.hpp&lt;/code&gt; 中，用于创建一个新线程。&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#include &amp;lt;boost/thread.hpp&amp;gt; &lt;/span&gt;

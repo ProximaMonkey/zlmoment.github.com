@@ -43,6 +43,22 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/basic-of-gcc/">GCC 基础</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 04 March 2013
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>GCC，糊里糊涂地用了好长时间，每次也都是简简单单的 <code>gcc test.cpp</code> 这样简单的命令，偶尔会用一下 <code>-o</code>。说实话C和C++写的确实也不多，大一的时候还处于懵懂时期，跟着老师用VC6，后来面向对象编程之后，几乎工作都在IDE下完成，对这类命令行下的编译指令接触更是甚少。如今才体会到什么叫书到用时方恨少，不得不回过头来再打基础，认真学习。</p>
+<p>鉴于这不是一篇Tutorial，只是我的一篇笔记，所以并不会涵盖所有内容。</p>
+<h3>基础</h3>
+<p>gcc 命令只能编译 C++ 源文件，而不能自动和 C++ 程序使用的库连接。因此，通常使用 g++ 命令来完成 C++ 程序的编译和连接，该程序会自动调用 gcc 实现编译。</p>
+<p>一般来讲，编译过程分为四个阶段：预处理(也称预编译，Preprocessing)、编译(Compilation)、汇编 (Assembly)和连接(Linking ...</p> <a class="" href="http://hackecho.com/2013/03/basic-of-gcc/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/boost-thread/">Boost Thread</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 03 March 2013
 
@@ -270,30 +286,6 @@ by Zhaoyu Li
 <span class="c">#include &lt;sys/socket.h&gt;</span>
 <span class="c">#include &lt;sys/wait.h&gt;</span>
 <span class="c">#define ...</span></pre></div> <a class="" href="http://hackecho.com/2012/07/socket-work-model/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
-<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
-<h2>根文件系统</h2>
-<p><strong>/bin</strong></p>
-<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
-<p><strong>/boot</strong></p>
-<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
-<p><strong>/dev</strong></p>
-<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
-<p><strong>/etc</strong></p>
-<p>该目录中包含系统和应用软件的配置文件。</p>
-<p><strong>/etc/passwd</strong></p>
-<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -43,6 +43,25 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">[转]如何在保证睡眠的情况下高效学习</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 20 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>来源：http://blog.renren.com/blog/230557688/844071536</p>
+<p>少睡不是长久之计，关键还是要高效地管理时间，提供十条高效做事的经验。</p>
+<p>每天都过的很快，好像起床以后忙活几下，又到了晚上，很快又要睡觉了。To-do-list上的事好像总是做不完，有的时候积压地太多以至于都不想去碰了。每天从早到晚都是忙碌状态，但是总觉得做不了几件事，要是给我1天48小时该多好。</p>
+<p>事情太多时间不够，但是睡少了又效率低下，这实在是个悖论。似乎很多牛人都可以睡的很少，每天4-5小时睡眠，或者间歇式的睡眠，就可以高效地做事。这个境界我总是达不到，也没有想去达到。少睡不是长久之计，关键还是要高效地管理时间。</p>
+<p>我今天和一个朋友请教了这个问题，很受启发。我朋友是卡内基梅陇大学的计算机在读博士，发表了好几篇顶级论文，科研做的很牛。除学术以外，他还忙活不少其他的事，他是云飞跃留学平台的兼职编辑，他业余时间喜欢研究摄影，最近又在开发一款手机游戏，他周末也会花不少时间陪女朋友。尽管做那么多事，他告诉我说他每天都精力充沛，做事效率很高！</p>
+<p>但是他每天可以睡8小时！</p>
+<p>他讲了好几条高效做事的经验：</p>
+<h3>1、作息要规律，这是重中之重 ...</h3> <a class="" href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">年华一度，梦如歌</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 13 May 2012
 
@@ -269,29 +288,6 @@ by Zhaoyu Li
 <p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
 <h3>程序代码：</h3>
 <div class="codehilite"><pre><span class="c">#include &lt;stdio ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">HTML5 之 WebSocket 通信协议介绍</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 15 April 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>更新：Chrome和Firefox的WebSocket协议已更新到最新版，不再支持旧版协议。关于新版协议的介绍请看<a href="http://www.hackecho.com/archives/1104.html">《WebSocket新版Hybi-10协议介绍》</a>，本篇文章中的握手协议和数据报文已不再适用。</strong></p>
-<p>最近参与一个有关HTML5的比赛，要用到WebSocket，经过一些实验后简单总结一下WebSocket的基础用法。</p>
-<p>WebSocket是HTML5的一种新的协议，它是实现了浏览器与服务器的双向通讯。</p>
-<p>在 WebSocket API 中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。（这两小段介绍摘自维基百科）</p>
-<h3>WebSocket协议</h3>
-<p>WebSocket的协议非常简单，这也是其最大的优点之一。</p>
-<p>在客户端（如浏览器），可以利用JavaScript直接new WebSocket来实例化一个WebSocket对象，其参数格式为ws://yourdomain:port/path。WebSocket会根据这段字符串，发送Header到指定服务器端口，其数据格式大概如下：</p>
-<div class="codehilite"><pre><span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span>1<span class="p">.</span>1
-<span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hackecho</span><span class="p">.</span><span class="n">com</span> 
-<span class="n">Cookie</span><span class="p">:</span> <span class="n">__utma</span><span class="p">=</span>99<span class="n">as</span>
-<span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">hackecho ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
