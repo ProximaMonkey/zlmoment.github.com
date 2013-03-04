@@ -43,6 +43,26 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 25 February 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>昨天突发奇想，准备在交大一软通的第二个版本中加入RSS阅读器的功能，以便可以快速阅读知行论坛的帖子和获取晨光上的资源。今天下午开始研究怎样用VC来解析XML文件，现在总算把这一模块写完了。如果单独分离出来，应该是一个不错的RSS阅读器。</p>
+<p>记得前不久学期实训时我们小组做播放器，其中的网络搜索模块中用到了解析XML文件（百度MP3未公开的API哦，自己谷歌下就知道了）。当时由于这个模块归我负责，所以开始接触了XML，由于知识有欠缺，稀里糊涂中，也算可以一次性获得5首百度搜索返回的结果了。今天想找出来当时写的实验代码看看，结果却发现已经删了，不得已，重新开始学习一下吧。</p>
+<p>自己写一个全新的XML解析引擎出来对我来说还有点难度，于是我把目光放在了现成类库或组件上。目前找到三种方法：</p>
+<p><strong>1.免费的易火RSS解析引擎</strong></p>
+<p>很强大的引擎，而且免费，但因为是COM组件，需要系统注册使用，所以放弃了（一软通是绿色软件）；</p>
+<p><strong>2.利用MSXML解析XML文档</strong></p>
+<p>这是我在实训时用的方法，实现起来很简单，但要做的很强大就需要进行深度学习了。因为考虑到有些电脑上可能没有安装MSXML组件，所以放弃了；</p>
+<p><strong>3.利用Markup类库</strong></p>
+<p>最后一软通中用了这种方法，只需导入一个头文件和一个源文件就可以了。这是官方的下载地址<a href="http://www.firstobject.com/dn_markup.htm">http://www.firstobject.com/dn_markup.htm</a>，官网上还有详细的说明文档 ...</p> <a class="" href="http://hackecho.com/2011/02/parse-xml-in-vc/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/posix-threads-programming/">POSIX Threads Programming</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 February 2013
 
@@ -243,45 +263,6 @@ by Zhaoyu Li
 <p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
 <p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
 <p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p> <a class="" href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/socket-programming-in-php/">PHP中的Socket编程</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 April 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
-<h3>文章结构：</h3>
-<ul>
-<li>
-<p>Socket基础知识</p>
-</li>
-<li>
-<p>编写服务器</p>
-</li>
-<li>
-<p>编写客户端</p>
-</li>
-<li>
-<p>总结</p>
-</li>
-</ul>
-<p>通过这三部分你将会体验到Socket的魅力，并了解怎样去编写一个服务器，怎样通过Sockets连接到服务器，服务器怎样处理信息并将信息发送给相应的客户端。</p>
-<p>不管你信不信，只要你用过PHP，就一定用过Sockets。HTTP服务器就是一个Socket服务器，浏览器就是客户端，也就是最简单的C/S模式。</p>
-<h3>Socket基础知识</h3>
-<p>我们可以把Socket当做是一种数据结构，客户端和服务器间通过这种数据结构来交换数据。服务器开始监听连接，当客户端想要连接服务器时，会通过服务器监听的端口开启一个会话，服务器收到客户端的请求后，建立连接完毕，然后继续监听下一次连接。</p>
-<p>要产生一个Socket，你我们需要三个变量：一个协议（protocol）、一个socket类型（socket type）和一个公共协议类型（common protocol type）。下面将会详细介绍各个部分的具体内容。</p>
-<p><strong>协议</strong></p>
-<ul>
-<li>
-<p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
-</li>
-<li>
-<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/socket-programming-in-php/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

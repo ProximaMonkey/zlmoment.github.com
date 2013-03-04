@@ -43,6 +43,37 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">深入浅出ThinkPHP系列教程(三) Hello World！</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 01 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
+<p><strong>入口文件</strong></p>
+<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
+<p><strong>创建入口文件</strong></p>
+<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">//定义ThinkPHP框架路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
+<span class="c1">//定义项目名称和路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="c1">//加载框架入口文件</span>
+<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
+<span class="c1">//实例化一个网站应用实例</span>
+<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 28 September 2011
 
@@ -287,28 +318,6 @@ by Zhaoyu Li
 <p>安装完后记住将Nginx和PHP升级到最新版，安装包中的不是最新版。</p>
 <h2>安装Wordpress</h2>
 <p>不知为何，按照LNMP官方教程安装VSFTPD总是不成功，于是放弃之安装了PureFTPd ...</p> <a class="" href="http://hackecho.com/2012/01/vps-struggle/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/websocket-server-with-tornado/">用Tornado实现WebSocket服务器</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 01 May 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>为什么昨天才发现还有这么好的框架：）简洁，非阻塞。Tornado是一个HTTP服务器，也是一个Web开发框架，最初是由FriendFeed网站的幕后团队开发的，后被Facebook收购开源，现主要服务于Facebook。昨晚用它实现了新的WebSocket服务器，最简单的EchoBack，代码行数骤减，开发效率非常高，稳定性也比PHP略高一筹。</p>
-<p>Tornado是非阻塞的，所以我觉得对于非阻塞式IO (nonblocking IO) 和异步IO (asynchronous IO  AIO)很有必要谈一谈。</p>
-<h3>Non-blocking IO 和 Asynchronous IO</h3>
-<p>我们假设你正在写的应用程序需要去远程服务器上请求数据（比如数据库中的数据，或一些远程API），这步请求假设需要花费5秒钟的时间。在很多Web开发框架中，它们是这样处理的：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">handler_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="n">answ</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">remote_server</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> # <span class="n">this</span> <span class="n">takes</span> 5 <span class="n">seconds</span>
-    <span class="n">request</span><span class="p">.</span><span class="n">write_response</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
-</pre></div>
-
-
-<p>如果你在单线程中运行 ...</p> <a class="" href="http://hackecho.com/2012/05/websocket-server-with-tornado/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

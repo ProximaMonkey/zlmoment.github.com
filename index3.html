@@ -43,6 +43,22 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">年华一度，梦如歌</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 13 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
+<p>多年以前，当我们还是孩童的时候，曾是那么的渴望着长大。长大以后，懵懵懂懂的，我们又希望能够早些成熟。而当我们都成熟之后才明白，原来，成熟真的不是一件幸福的事情，我们为此付出了太大的代价。生活的种种无奈要面对，人生的诸多曲折要经历，所以我们不得不抛却内心的纯真，挂上虚伪的笑容，冷漠着自己的视线，用伪装将自己层层包裹，时间久了，最真实的自我也就忘了。</p>
+<p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
+<p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
+<p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p> <a class="" href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/python-decorator/">Python中的装饰器Decorator</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 11 May 2012
 
@@ -276,42 +292,6 @@ by Zhaoyu Li
 <span class="n">Cookie</span><span class="p">:</span> <span class="n">__utma</span><span class="p">=</span>99<span class="n">as</span>
 <span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">hackecho ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">利用.htaccess简单实现的10个功能</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 12 April 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
-<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
-<ol>
-<li>防盗链</li>
-</ol>
-<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
-<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^$</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^http://(www.)?yoursite.com/.*$ [NC]</span>
-<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span>$ <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="p">=</span>302<span class="p">,</span><span class="n">L</span><span class="p">]</span>
-</pre></div>
-
-
-<ol>
-<li>防止目录浏览</li>
-</ol>
-<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
-<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
-</pre></div>
-
-
-<ol>
-<li>301永久重定向</li>
-</ol>
-<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

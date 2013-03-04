@@ -43,6 +43,37 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">深入浅出ThinkPHP系列教程(三) Hello World！</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 01 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
+<p><strong>入口文件</strong></p>
+<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
+<p><strong>创建入口文件</strong></p>
+<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">//定义ThinkPHP框架路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
+<span class="c1">//定义项目名称和路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="c1">//加载框架入口文件</span>
+<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
+<span class="c1">//实例化一个网站应用实例</span>
+<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 28 September 2011
 
@@ -224,31 +255,6 @@ by Zhaoyu Li
 <p>而如今Google+很多地方都是遵循了这些研究理念，比如说圈子，在这份ppt中刚开始就是以一个名叫Debbie的人开始，通过比较其再Facebook上的社交关系和现实中的社交关系，指出目前的社交网络没有解决一个把特定的信息传递给特定的人这个问题，而这个问题有时候会让我们很尴尬，PPT举的一个例子就是这个叫Debbie的人一不小心在Facebook评论了其在同性恋酒吧工作朋友的照片，而被她Facebook上的学生好到了。在现实生活中，白天是教授，和一群学生上课，晚上是禽兽，和一般死党鬼混，但你从不敢把鬼混的照片发在比如新浪微博、比如Facebook上，因为哪里，大家都是你的朋友，甚至还有很多朋友的朋友。</p>
 <p>在这个ppt中，Paul Adams还讲述了社会化网络，人是以群分的，讲了人与人之间的关系，有的人你经常联系，有的人只是认识而已，还有很多人和你只是一面之缘，在Facebook上平均每个用户有130个好友，而经常联系互动的只有4到6个而已。</p>
 <p>在影响力这个章节中，提到了社交网络对于商业的影响，之前有一篇讨论比较热烈的文章 ...</p> <a class="" href="http://hackecho.com/2011/08/ppt-that-create-google-plus/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/android-shared-preferences/">Android数据存储之Shared Preferences</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 06 August 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
-<p>1、Shared Preferences</p>
-<p>用来存储 “键-值”格式的数据。</p>
-<p>2、Files</p>
-<p>通过FileInputStream和FileOutputStream对文件进行操作。</p>
-<p>3、SQLite</p>
-<p>标准数据库，支持SQL语句。</p>
-<p>4、NetWork</p>
-<p>通过网络存储和获取数据。</p>
-<p><strong>下面我们来着重介绍一下Shared Preferences的使用方法。</strong></p>
-<p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
-<p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
-<p>1、文件创建模式：Activity.MODE_APPEND</p>
-<p>如果该文件已经存在，然后将数据写入 ...</p> <a class="" href="http://hackecho.com/2011/08/android-shared-preferences/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

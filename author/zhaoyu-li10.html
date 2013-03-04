@@ -43,6 +43,21 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 22 July 2009
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>近来没有写过日志，主要是因为忙于自己的网站。今天完成了当天的任务，便写一些近来做网站的一些感受吧！­</p>
+<p>个人站长很少有独立开发整站程序的人，我也算是一个，一方面没有相关的技术，二来没有时间和精力来学习、编写和调试。所以我便很佩服DEDECMS的开发者柏拉图，因为著名的DEDECMS起初便是由他一人独立开发的。网上流行的CMS很多，但运行于PHP环境的就屈指可数了，因为我的空间是UNIX型，只能使用基于PHP的CMS。下面说一下我认识CMS的过程吧。­</p>
+<p>我接触的第一款CMS是DEDECMS，但那还是一年前，出于好奇，也并没有想去建一个自己的网站，即使想，那时也没有时间。当初没有怎么深入研究，只迷迷糊糊知道CMS可以进行网站内容管理。现在，高考结束，在北交大的录取通知书马上就要到来的情况下，我便购置了空间和域名，将身心全部投入到我的爱好中来。­</p>
+<p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p> <a class="" href="http://hackecho.com/2009/07/start-of-web-dev/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/11/stay-in-my-mind/">驻足在马路边的秋殇</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 November 2009
 
@@ -253,37 +268,6 @@ by Zhaoyu Li
 <p>parentcid（上级分类ID）</p>
 <p>cat_level（当前分类层次）</p>
 <p>cat_path ...</p></blockquote> <a class="" href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">深入浅出ThinkPHP系列教程(三) Hello World！</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 01 October 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
-<p><strong>入口文件</strong></p>
-<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
-<p><strong>创建入口文件</strong></p>
-<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">//定义ThinkPHP框架路径</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
-<span class="c1">//定义项目名称和路径</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
-<span class="c1">//加载框架入口文件</span>
-<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
-<span class="c1">//实例化一个网站应用实例</span>
-<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
-</pre></div>
-
-
-<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

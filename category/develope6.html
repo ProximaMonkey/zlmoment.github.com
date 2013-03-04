@@ -43,6 +43,26 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">XML与JSON的格式转换方法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
+<p>废话不多说，直接上代码：</p>
+<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
+    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
+    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
+    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
+    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
+    return ...</pre></div> <a class="" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
 
@@ -231,33 +251,6 @@ by Zhaoyu Li
         <div class="summary" style="margin:18px 0 0 0;"><p>本文是《Learn Python The Hard Way， 2nd Edition》这本书的尾声部分。</p>
 <p><img alt="" src="http://pic003.cnblogs.com/2011/1/201106/2011062108360289.png" /></p>
 <p>You've finished this book and have decided to continue with programming. Maybe it will be a career for you, or maybe it will be a hobby. You'll need some advice to make sure you continue on the right path ...</p> <a class="" href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">解密人人网应用“好友档案”与“X档案”</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 23 June 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
-<h3>接口分析</h3>
-<p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
-<p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
-<ol>
-<li>
-<p>status.getComment()</p>
-</li>
-<li>
-<p>photos.getComments()</p>
-</li>
-<li>
-<p>blog.getComments()</p>
-</li>
-</ol>
-<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

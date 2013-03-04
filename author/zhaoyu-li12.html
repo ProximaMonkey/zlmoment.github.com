@@ -43,6 +43,28 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/websocket-server-with-tornado/">用Tornado实现WebSocket服务器</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 01 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>为什么昨天才发现还有这么好的框架：）简洁，非阻塞。Tornado是一个HTTP服务器，也是一个Web开发框架，最初是由FriendFeed网站的幕后团队开发的，后被Facebook收购开源，现主要服务于Facebook。昨晚用它实现了新的WebSocket服务器，最简单的EchoBack，代码行数骤减，开发效率非常高，稳定性也比PHP略高一筹。</p>
+<p>Tornado是非阻塞的，所以我觉得对于非阻塞式IO (nonblocking IO) 和异步IO (asynchronous IO  AIO)很有必要谈一谈。</p>
+<h3>Non-blocking IO 和 Asynchronous IO</h3>
+<p>我们假设你正在写的应用程序需要去远程服务器上请求数据（比如数据库中的数据，或一些远程API），这步请求假设需要花费5秒钟的时间。在很多Web开发框架中，它们是这样处理的：</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">handler_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">answ</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">remote_server</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> # <span class="n">this</span> <span class="n">takes</span> 5 <span class="n">seconds</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">write_response</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
+</pre></div>
+
+
+<p>如果你在单线程中运行 ...</p> <a class="" href="http://hackecho.com/2012/05/websocket-server-with-tornado/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 May 2011
 

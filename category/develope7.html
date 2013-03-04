@@ -43,6 +43,33 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">解密人人网应用“好友档案”与“X档案”</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 23 June 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
+<h3>接口分析</h3>
+<p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
+<p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
+<ol>
+<li>
+<p>status.getComment()</p>
+</li>
+<li>
+<p>photos.getComments()</p>
+</li>
+<li>
+<p>blog.getComments()</p>
+</li>
+</ol>
+<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/coal-transportation-algorithm/">面试题：火车运煤问题</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 19 May 2011
 
@@ -239,39 +266,6 @@ by Zhaoyu Li
 <p>拥有一辆不错的个人车的，70%不是极客。极客开车的机会不多，也不会下血本买费钱费油的好车。</p>
 <p>酒量特别好的，100%不是极客。极客们饮酒的机会不多。不过由于常常帮朋友修理电脑导致被请客在外就餐的机会也不少，所以酒量比宅要高很多。</p>
 <p>经常哭穷的，100%不是极客。极客们手头都是相对宽裕的。他们的心态比较中置，对于不同的家庭背景或者收入状况不会加以打击或者憧憬，因为他们所追求的不是纯物质生活，更多的在于精神上 ...</p> <a class="" href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">单链表的一些算法实现</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 March 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
-<p><strong>首先定义节点：</strong></p>
-<div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
-    <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
-    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span><span class="o">//</span>下一个结点
-<span class="p">};</span>
-</pre></div>
-
-
-<p><strong>创建带n个数据的单链表：</strong></p>
-<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Init</span><span class="p">(){</span>
-    <span class="n">head</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
-    <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Create</span><span class="p">(</span><span class="n">int</span> <span class="n">n</span><span class="p">){</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">i</span> <span class="p">=</span> 1 <span class="p">;</span> <span class="nb">i</span> <span class="o">&lt;</span><span class="p">=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="nb">i</span><span class="p">)</span>  <span class="p">{</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
-        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
-        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
-        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

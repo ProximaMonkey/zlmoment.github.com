@@ -43,6 +43,30 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">趣味算法面试题：男女比例问题</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 16 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
+<p>本能地反应男女比例还应该是1：1，但到底是不是呢，我们来用程序验证一下。</p>
+<p>思路：如果一个家庭生的是女孩，则继续让下一个家庭生；如果是男孩，则递归调用自己，直到结果为女孩。生男生女将由随机产生的0和1来决定。</p>
+<p>我们先看运行结果，程序代码附在文后。如果你有兴趣，可以自己实现一下。</p>
+<h3>编译环境：</h3>
+<blockquote>
+<p>i686-apple-darwin11-llvm-gcc-4.2 (GCC) 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)</p>
+</blockquote>
+<h3>运行结果：</h3>
+<p><a href="/static/images/2012/04/skitched-20120416-192726.png"><img alt="" src="/static/images/2012/04/skitched-20120416-192726.png" /></a></p>
+<p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
+<h3>程序代码：</h3>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">HTML5 之 WebSocket 通信协议介绍</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 15 April 2012
 
@@ -293,39 +317,6 @@ by Zhaoyu Li
 <p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
 <p><strong>Spiders（蜘蛛）</strong></p>
 <p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
-<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
-<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
-<h3>安装MacVim和Python</h3>
-<p>下列两种方式中的任一种均可用来安装MacVim。</p>
-<p><strong>方式一：通过Mac ports</strong></p>
-<p>首先确保你的Mac ports是最新版：</p>
-<p>1 $ sudo port -v selfupdate</p>
-<p>安装：</p>
-<div class="codehilite"><pre>$ <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
-</pre></div>
-
-
-<p><strong>方式二：自己编译</strong></p>
-<div class="codehilite"><pre>$ <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">b4winckler</span><span class="o">/</span><span class="n">macvim</span><span class="p">.</span><span class="n">git</span>
-$ <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
-$ <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="p">=</span>10<span class="p">.</span>6
-$ <span class="n">make</span>
-</pre></div>
-
-
-<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -43,6 +43,34 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/boost-thread/">Boost Thread</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 03 March 2013
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 <code>Boost.Thread</code> ，用于开发独立于平台的多线程应用程序。</p>
+<h3>线程创建</h3>
+<p>相关类为 <code>boost::thread</code> ，定义在 <code>boost/thread.hpp</code> 中，用于创建一个新线程。</p>
+<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
+<span class="c">#include &lt;iostream&gt; </span>
+
+<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span> 
+
+<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span> 
+        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
+        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl ...</span></pre></div> <a class="" href="http://hackecho.com/2013/03/boost-thread/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/ipc-semaphores/">IPC Semaphores</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 11 February 2013
 
@@ -251,32 +279,6 @@ by Zhaoyu Li
 <p>也许有一天，我会将这些见闻与经历写一写，而现在还没有准备好。因为没有经过沉淀的思想，永远都是肤浅的。有一天回忆的时候，我要找寻那种想哭的感动。</p>
 <p>不过，我喜欢这种充实的生活，每一天都在创造价值，哥伦比亚是个小镇，宁静安详，不吵不闹，这里有传统的美国文化，也有纯真朴实的来自世界各地的人们，每天都有新发现，每天都会带给你新的的感受。</p>
 <p>明天又将是充实的一天 ...</p> <a class="" href="http://hackecho.com/2012/11/disappear-day/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/socket-work-model/">Socket的几种工作模式</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 July 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
-<h2>阻塞模式</h2>
-<p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
-<p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
-<p><img alt="" src="/static/images/2012/07/1.jpg" /></p>
-<p>可参见下面的例子：</p>
-<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
-<span class="c">#include &lt;stdlib.h&gt;</span>
-<span class="c">#include &lt;errno.h&gt;</span>
-<span class="c">#include &lt;string.h&gt;</span>
-<span class="c">#include &lt;sys/types.h&gt;</span>
-<span class="c">#include &lt;netinet/in.h&gt;</span>
-<span class="c">#include &lt;sys/socket.h&gt;</span>
-<span class="c">#include &lt;sys/wait.h&gt;</span>
-<span class="c">#define ...</span></pre></div> <a class="" href="http://hackecho.com/2012/07/socket-work-model/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -43,6 +43,46 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/journal-writing-and-programming/">[转] 旅行，写作，编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 11 December 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>感谢外刊IT评论翻译这篇文章，原文地址：<a href="http://www.aqee.net/traveling-writing-programming/">《旅行，写作，编程》</a> ，转载请注明原作者地址。</p>
+<p>概括起来，今年到目前为止，我所做的事情包括：</p>
+<ul>
+<li>
+<p>花了10个月的时间做世界环游，途经非洲，东南亚，澳洲，中南美洲里的17个国家和地区。这次旅行的主题就是冲浪和摄影。</p>
+</li>
+<li>
+<p>出席在香港，日本，美国和伦敦举行的会议</p>
+</li>
+<li>
+<p>启程时给O’Reilly出版公司写了一本书，书名叫做《<a href="http://bit.ly/uFbFJR">JavaScript Web Applications</a>》</p>
+</li>
+<li>
+<p>另外写了一本关于<a href="http://arcturo.github.com/library/coffeescript/">CoffeeScript</a>的书，很快就会由O’Reilly公司出版。</p>
+</li>
+<li>
+<p>写了大量的开源库，例如<a href="http://spinejs.com/">Spine</a>, <a href="https://spinejs.com/mobile">Spine.Mobile</a>, <a href="http://maccman.github.com/gfx">GFX</a>, 和 <a href="http://github.com/maccman/juggernaut">Juggernaut</a>.</p>
+</li>
+<li>
+<p>筹划了一个创业公司的框架</p>
+</li>
+<li>
+<p>出席伦敦2011<a href="http://futureofwebapps.com/london-2011/">FOWA</a>会议</p>
+</li>
+<li>
+<p>最后，我在<a href="https://twitter.com/about/employees">Twitter</a>公司找到了一份工作</p>
+</li>
+</ul>
+<p>那么，让我从一年前开始，那是2010年9月，我刚好从一个我合作创办的公司里出来，尽管这段经历是很有价值的 ...</p> <a class="" href="http://hackecho.com/2011/12/journal-writing-and-programming/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">关于多级分类的一个思考</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 November 2011
 
@@ -292,26 +332,6 @@ by Zhaoyu Li
 <p><strong>4.Smooth Div Scroll</strong></p>
 <p><img alt="" src="https://sn2files.storage.live.com/y1pyHHBkYkEfsr0fvzitqKR718_X_H2IUCdftFfBVIDp1hNM5GzMkAagwuOFFpERnDyfGAVX5GKfaa4QDoFhusRJg/4.PNG?psid=1" /></p>
 <p><a href="http://www.smoothdivscroll.com/#quickdemo">More Information on Smooth Div Scroll ...</a></p> <a class="" href="http://hackecho.com/2011/09/10-cool-jquery-slides/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">XML与JSON的格式转换方法</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
-<p>废话不多说，直接上代码：</p>
-<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
-    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
-    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
-    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
-    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
-    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
-    return ...</pre></div> <a class="" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

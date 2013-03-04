@@ -43,6 +43,23 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">使用PHP将CSDN泄露数据导入数据库</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 December 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有幸得到了CSDN泄露的600多万条用户数据，这可是做大容量数据测试和分析的好材料啊。但虽然是.sql文件，里面却是以纯文本保存的所有数据，而且以固定格式保存。这对于数据存储来讲没有任何问题，但如此大的纯文本文件，检索起来可就不是一般的慢啊（不信你拉一下滚动条试试，准死）！今天正好看到好友异泪在用Java写个小程序想将这些数据导入到MySQL里，于是索性也用PHP实现一个，正好借机对比一下PHP和Java的数据处理性能问题。</p>
+<p>原理很简单，因为原文件中每行保存一个用户，而且用户名、密码和邮箱之间都是以“#”分隔的，这样的话操作起来非常方便。</p>
+<p>Let's begin!</p>
+<h3><strong>执行环境：</strong></h3>
+<div class="codehilite"><pre><span class="n">Mac</span> <span class="n">OS</span> <span class="n">X</span> <span class="n">Lion</span> 10<span class="p">.</span>7<span class="p">.</span>2 <span class="o">|</span> 2<span class="p">.</span>8 <span class="n">GHz</span> <span class="n">Intel</span> <span class="n">Core</span> <span class="n">i7</span> <span class="o">|</span> 4 <span class="n">GB</span> 1333 <span class="n">MHz</span> <span class="n">DDR3</span>
+<span class="n">PHP</span> 5<span class="p">.</span>3<span class="p">.</span>1 <span class="o">|</span> <span class="n">MySQL</span> 5<span class="p">.</span>1<span class="p">.</span>44 ...</pre></div> <a class="" href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/journal-writing-and-programming/">[转] 旅行，写作，编程</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 11 December 2011
 
@@ -280,37 +297,6 @@ by Zhaoyu Li
 <p>习惯中最足以误人的莫过于拖延，有许多人都是因为此种习惯所累而陷入困境。拖延的习惯，最能损害及减低人的做事能力。你应该极力避免拖延的习惯，就像避免一种罪恶的引诱一样。</p>
 <p><strong>2、第一时间当机立断的着手解决问题。</strong></p>
 <p>假使对于某一件事，你发觉自己有着拖延的倾向，你应该跳起来 ...</p> <a class="" href="http://hackecho.com/2011/10/work-with-high-efficiency/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">深入浅出ThinkPHP系列教程(三) Hello World！</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 01 October 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
-<p><strong>入口文件</strong></p>
-<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
-<p><strong>创建入口文件</strong></p>
-<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">//定义ThinkPHP框架路径</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
-<span class="c1">//定义项目名称和路径</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
-<span class="c1">//加载框架入口文件</span>
-<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
-<span class="c1">//实例化一个网站应用实例</span>
-<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
-</pre></div>
-
-
-<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -43,6 +43,39 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">单链表的一些算法实现</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 March 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
+<p><strong>首先定义节点：</strong></p>
+<div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
+    <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
+    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span><span class="o">//</span>下一个结点
+<span class="p">};</span>
+</pre></div>
+
+
+<p><strong>创建带n个数据的单链表：</strong></p>
+<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Init</span><span class="p">(){</span>
+    <span class="n">head</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
+    <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Create</span><span class="p">(</span><span class="n">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">i</span> <span class="p">=</span> 1 <span class="p">;</span> <span class="nb">i</span> <span class="o">&lt;</span><span class="p">=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="nb">i</span><span class="p">)</span>  <span class="p">{</span>
+        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
+        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
+        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/find-password-of-win7/">Win 7忘记密码的恢复方法</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 08 March 2011
 

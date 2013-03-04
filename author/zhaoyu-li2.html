@@ -192,6 +192,34 @@ by Zhaoyu Li
     </div>
             
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/boost-thread/">Boost Thread</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 03 March 2013
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 <code>Boost.Thread</code> ，用于开发独立于平台的多线程应用程序。</p>
+<h3>线程创建</h3>
+<p>相关类为 <code>boost::thread</code> ，定义在 <code>boost/thread.hpp</code> 中，用于创建一个新线程。</p>
+<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
+<span class="c">#include &lt;iostream&gt; </span>
+
+<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span> 
+
+<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span> 
+        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
+        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl ...</span></pre></div> <a class="" href="http://hackecho.com/2013/03/boost-thread/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">第一个HackEcho爬虫诞生记</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 March 2012
 
@@ -252,24 +280,6 @@ by Zhaoyu Li
 <p>答案之一：</p>
 <p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
 <p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p> <a class="" href="http://hackecho.com/2011/05/coal-transportation-algorithm/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
-<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
-<p>就不细细介绍了，看下面的例子，就都懂了：</p>
-<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
-<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
-<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
-<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

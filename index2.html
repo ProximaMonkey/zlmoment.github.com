@@ -43,6 +43,32 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/socket-work-model/">Socket的几种工作模式</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 July 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
+<h2>阻塞模式</h2>
+<p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
+<p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
+<p><img alt="" src="/static/images/2012/07/1.jpg" /></p>
+<p>可参见下面的例子：</p>
+<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
+<span class="c">#include &lt;stdlib.h&gt;</span>
+<span class="c">#include &lt;errno.h&gt;</span>
+<span class="c">#include &lt;string.h&gt;</span>
+<span class="c">#include &lt;sys/types.h&gt;</span>
+<span class="c">#include &lt;netinet/in.h&gt;</span>
+<span class="c">#include &lt;sys/socket.h&gt;</span>
+<span class="c">#include &lt;sys/wait.h&gt;</span>
+<span class="c">#define ...</span></pre></div> <a class="" href="http://hackecho.com/2012/07/socket-work-model/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
 
@@ -196,22 +222,6 @@ by Zhaoyu Li
 <p>但是他每天可以睡8小时！</p>
 <p>他讲了好几条高效做事的经验：</p>
 <h3>1、作息要规律，这是重中之重 ...</h3> <a class="" href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">年华一度，梦如歌</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 13 May 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
-<p>多年以前，当我们还是孩童的时候，曾是那么的渴望着长大。长大以后，懵懵懂懂的，我们又希望能够早些成熟。而当我们都成熟之后才明白，原来，成熟真的不是一件幸福的事情，我们为此付出了太大的代价。生活的种种无奈要面对，人生的诸多曲折要经历，所以我们不得不抛却内心的纯真，挂上虚伪的笑容，冷漠着自己的视线，用伪装将自己层层包裹，时间久了，最真实的自我也就忘了。</p>
-<p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
-<p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
-<p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p> <a class="" href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

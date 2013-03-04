@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Boost Thread - Hackecho
+</title>
+    <meta name="description" content="与互联网、编程、计算机有关的个人博客。">
+    <meta name="keywords" content="编程,程序员,Python,C,JAVA">
+    <meta name="author" content="Zhaoyu Li">
+    <link href="http://hackecho.com/theme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/pygments.css" rel="stylesheet">
+    <link href="http://hackecho.com/theme/css/hackecho.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://hackecho.com"><strong>Hackecho</strong></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                              <li ><a href="/archives.html">Archives</a></li>
+                                                                  <li ><a href="http://hackecho.com/pages/projects.html">Projects</a></li>
+                                      <li ><a href="http://hackecho.com/pages/ideas.html">Ideas</a></li>
+                                      <li ><a href="http://hackecho.com/pages/about.html">About</a></li>
+                                      <li ><a href="http://hackecho.com/pages/links.html">Links</a></li>
+                                      <li ><a href="http://hackecho.com/pages/guestbook.html">Guestbook</a></li>
+                                            </ul> 
+          </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li ><a href="http://www.github.com/zlmoment" target="_blank"><small>Github</small></a></li>
+            </ul> 
+            <ul class="nav">
+              <li ><a href="http://hackecho.com/feeds/all.atom.xml" target="_blank"><small>RSS</small></a></li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container" style="padding-top:50px;">
+    <div class="content">
+    <style>
+.article {
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 30px;
+    position: relative;
+    margin: 24px auto 30px;
+    z-index: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     1px 1px 0 rgba(0, 0, 0, .1),
+     3px 3px 0 rgba(255, 255, 255, 1),
+     4px 4px 0 rgba(0, 0, 0, .1),
+     6px 6px 0 rgba(255, 255, 255, 1), 
+     7px 7px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 
+     0 1px 1px rgba(0, 0, 0, .2),
+     0 3px 0 #fff,
+     0 4px 0 rgba(0, 0, 0, .2),
+     0 6px 0 #fff, 
+     0 7px 0 rgba(0, 0, 0, .2);
+}
+
+</style>
+<div class="span12" style="margin:0;">
+    <div class="row" style="text-align:center;margin-top: -21px;">
+        <h3>Boost Thread</h3>
+        Sun 03 March 2013
+
+by Zhaoyu Li
+ 
+
+
+    </div>
+    <div class="article">
+        <p>这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 <code>Boost.Thread</code> ，用于开发独立于平台的多线程应用程序。</p>
+<h3>线程创建</h3>
+<p>相关类为 <code>boost::thread</code> ，定义在 <code>boost/thread.hpp</code> 中，用于创建一个新线程。</p>
+<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
+<span class="c">#include &lt;iostream&gt; </span>
+
+<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span> 
+
+<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span> 
+        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
+        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span> 
+    <span class="p">}</span> 
+<span class="p">}</span> 
+
+<span class="n">int</span> <span class="n">main</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">thread</span> <span class="n">t</span><span class="p">(</span><span class="n">thread</span><span class="p">);</span> 
+    <span class="n">t</span><span class="p">.</span><span class="n">join</span><span class="p">();</span> 
+<span class="p">}</span> 
+</pre></div>
+
+
+<p><strong>Notes:</strong></p>
+<p>一旦上面例子中的变量 <code>t</code> 被创建，该 <code>thread()</code> 函数就在其所在线程中被立即执行， <code>join()</code> 的方法跟POSIX pthread中意义一样。</p>
+<h3>线程中断</h3>
+<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
+<span class="c">#include &lt;iostream&gt; </span>
+
+<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span> 
+
+<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="k">try</span> 
+    <span class="p">{</span> 
+        <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+        <span class="p">{</span> 
+            <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
+            <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span> 
+        <span class="p">}</span> 
+    <span class="p">}</span> 
+    <span class="k">catch</span> <span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">thread_interrupted</span><span class="o">&amp;</span><span class="p">)</span> 
+    <span class="p">{</span> 
+
+<span class="p">}</span> 
+
+<span class="n">int</span> <span class="n">main</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">thread</span> <span class="n">t</span><span class="p">(</span><span class="n">thread</span><span class="p">);</span> 
+    <span class="n">wait</span><span class="p">(</span>3<span class="p">);</span> 
+    <span class="n">t</span><span class="p">.</span><span class="n">interrupt</span><span class="p">();</span> 
+    <span class="n">t</span><span class="p">.</span><span class="n">join</span><span class="p">();</span> 
+<span class="p">}</span> 
+</pre></div>
+
+
+<p>在一个线程对象上调用 <code>interrupt()</code> 会中断相应的线程，就是说一个类型为 <code>boost::thread_interrupted</code> 的异常会在这个线程中抛出。 然后这只有在线程达到中断点时才会发生。如果给定的线程不包含任何中断点，简单调用 <code>interrupt()</code> 就不会起作用。每当遇到一个线程中断点，它就会检查 <code>interrupt()</code> 是否被调用过。只有被调用过了， <code>boost::thread_interrupted</code> 异常才会相应地抛出。</p>
+<p>下列函数中包含线程的中断检查点：</p>
+<ul>
+<li>boost::thread::join()</li>
+<li>boost::thread::timed_join()</li>
+<li>boost::thread::try_join_for(),</li>
+<li>boost::thread::try_join_until(),</li>
+<li>boost::condition_variable::wait()</li>
+<li>boost::condition_variable::timed_wait()</li>
+<li>boost::condition_variable::wait_for()</li>
+<li>boost::condition_variable::wait_until()</li>
+<li>boost::condition_variable_any::wait()</li>
+<li>boost::condition_variable_any::timed_wait()</li>
+<li>boost::condition_variable_any::wait_for()</li>
+<li>boost::condition_variable_any::wait_until()</li>
+<li>boost::thread::sleep()</li>
+<li>boost::this_thread::sleep_for()</li>
+<li>boost::this_thread::sleep_until()</li>
+<li>boost::this_thread::interruption_point()</li>
+</ul>
+<h3>同步</h3>
+<p>设计到线程的地方就会出现竞争条件(race condition)，所以进行同步是必不可少的。</p>
+<p>最简单的 <code>boost::mutex</code> 类。</p>
+<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
+<span class="c">#include &lt;iostream&gt; </span>
+
+<span class="n">boost</span><span class="p">::</span><span class="n">mutex</span> <span class="n">mutex</span><span class="p">;</span> 
+
+<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span> 
+
+<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span> 
+        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
+        <span class="n">mutex</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span> 
+        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Thread &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="n">get_id</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span> 
+        <span class="n">mutex</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span> 
+    <span class="p">}</span> 
+<span class="p">}</span> 
+
+<span class="n">int</span> <span class="n">main</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">thread</span> <span class="n">t1</span><span class="p">(</span><span class="n">thread</span><span class="p">);</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">thread</span> <span class="n">t2</span><span class="p">(</span><span class="n">thread</span><span class="p">);</span> 
+    <span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span> 
+    <span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span> 
+<span class="p">}</span> 
+</pre></div>
+
+
+<p>也可以使用 <code>boost::lock_guard</code> 类，来避免直接调用 <code>lock()</code> 和 <code>unlock()</code> 。</p>
+<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
+<span class="c">#include &lt;iostream&gt; </span>
+
+<span class="n">boost</span><span class="p">::</span><span class="n">mutex</span> <span class="n">mutex</span><span class="p">;</span> 
+
+<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span> 
+
+<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span> 
+        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
+        <span class="n">boost</span><span class="p">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">boost</span><span class="p">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span> 
+        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Thread &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="n">get_id</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span> 
+    <span class="p">}</span> 
+<span class="p">}</span> 
+
+<span class="n">int</span> <span class="n">main</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">thread</span> <span class="n">t1</span><span class="p">(</span><span class="n">thread</span><span class="p">);</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">thread</span> <span class="n">t2</span><span class="p">(</span><span class="n">thread</span><span class="p">);</span> 
+    <span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span> 
+    <span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span> 
+<span class="p">}</span> 
+</pre></div>
+
+
+<p><code>boost::lock_guard</code> 在其构造和析构函数分别自动调用 <code>lock()</code> 和 <code>unlock()</code> 。</p>
+<h3>Reference</h3>
+<ul>
+<li>
+<p>Boost多线程 <a href="http://zh.highscore.de/cpp/boost/">http://zh.highscore.de/cpp/boost/</a></p>
+</li>
+<li>
+<p>Boost Thread Documentation <a href="http://www.boost.org/doc/libs/1_53_0/doc/html/thread.html">http://www.boost.org/doc/libs/1_53_0/doc/html/thread.html</a></p>
+</li>
+</ul>
+                <br>
+        <h4>Related Posts</h4>
+                    <ul>
+                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
+                            <li><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></li>
+                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
+                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
+                            <li><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></li>
+                        </ul>
+                <br>
+        <h4>Tags</h4>
+        <div class="btn-group">
+                  <a href="http://hackecho.com/tag/boost.html" class="btn">boost</a>
+                  <a href="http://hackecho.com/tag/thread.html" class="btn">thread</a>
+                </div>
+            </div>
+</div>
+<hr>
+<h3>Comments</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zlmoment'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div> 
+    <div style="clear:both;"></div>
+    <footer>
+    <br />
+    <p style="text-align:center;"><a href="http://hackecho.com">Hackecho</a> &copy; Zhaoyu Li 2013 | Theme by Zhaoyu Li</p>
+    <p style="text-align:center;"><a href="http://hackecho.com/sitemap.xml">Sitemap</a></p>
+    </footer>
+
+</div> <!-- /container -->
+
+<script src="http://hackecho.com/theme/js/jquery-1.8.2.min.js"></script>
+<script src="http://hackecho.com/theme/js/bootstrap.min.js"></script>
+<script>var _gaq=[['_setAccount','UA-37227120-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+</body>
+</html>

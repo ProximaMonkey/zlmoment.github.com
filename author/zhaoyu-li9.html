@@ -43,6 +43,45 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/socket-programming-in-php/">PHP中的Socket编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
+<h3>文章结构：</h3>
+<ul>
+<li>
+<p>Socket基础知识</p>
+</li>
+<li>
+<p>编写服务器</p>
+</li>
+<li>
+<p>编写客户端</p>
+</li>
+<li>
+<p>总结</p>
+</li>
+</ul>
+<p>通过这三部分你将会体验到Socket的魅力，并了解怎样去编写一个服务器，怎样通过Sockets连接到服务器，服务器怎样处理信息并将信息发送给相应的客户端。</p>
+<p>不管你信不信，只要你用过PHP，就一定用过Sockets。HTTP服务器就是一个Socket服务器，浏览器就是客户端，也就是最简单的C/S模式。</p>
+<h3>Socket基础知识</h3>
+<p>我们可以把Socket当做是一种数据结构，客户端和服务器间通过这种数据结构来交换数据。服务器开始监听连接，当客户端想要连接服务器时，会通过服务器监听的端口开启一个会话，服务器收到客户端的请求后，建立连接完毕，然后继续监听下一次连接。</p>
+<p>要产生一个Socket，你我们需要三个变量：一个协议（protocol）、一个socket类型（socket type）和一个公共协议类型（common protocol type）。下面将会详细介绍各个部分的具体内容。</p>
+<p><strong>协议</strong></p>
+<ul>
+<li>
+<p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
+</li>
+<li>
+<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/socket-programming-in-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/socket-work-model/">Socket的几种工作模式</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 July 2012
 
@@ -247,21 +286,6 @@ by Zhaoyu Li
 <p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527391.jpg" /></p>
 <p><strong>SQL注入</strong></p>
 <p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p> <a class="" href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 22 July 2009
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>近来没有写过日志，主要是因为忙于自己的网站。今天完成了当天的任务，便写一些近来做网站的一些感受吧！­</p>
-<p>个人站长很少有独立开发整站程序的人，我也算是一个，一方面没有相关的技术，二来没有时间和精力来学习、编写和调试。所以我便很佩服DEDECMS的开发者柏拉图，因为著名的DEDECMS起初便是由他一人独立开发的。网上流行的CMS很多，但运行于PHP环境的就屈指可数了，因为我的空间是UNIX型，只能使用基于PHP的CMS。下面说一下我认识CMS的过程吧。­</p>
-<p>我接触的第一款CMS是DEDECMS，但那还是一年前，出于好奇，也并没有想去建一个自己的网站，即使想，那时也没有时间。当初没有怎么深入研究，只迷迷糊糊知道CMS可以进行网站内容管理。现在，高考结束，在北交大的录取通知书马上就要到来的情况下，我便购置了空间和域名，将身心全部投入到我的爱好中来。­</p>
-<p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p> <a class="" href="http://hackecho.com/2009/07/start-of-web-dev/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

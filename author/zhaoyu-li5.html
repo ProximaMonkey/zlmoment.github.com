@@ -43,6 +43,43 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
+<p>文章结构：</p>
+<ul>
+<li>
+<p>独立博客与BSP的区别</p>
+</li>
+<li>
+<p>申请域名</p>
+</li>
+<li>
+<p>服务器主机</p>
+</li>
+<li>
+<p>域名绑定</p>
+</li>
+<li>
+<p>安装程序</p>
+</li>
+<li>
+<p>开始使用</p>
+</li>
+</ul>
+<h3>独立博客与BSP的区别</h3>
+<p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">[转]如何在保证睡眠的情况下高效学习</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 20 May 2012
 
@@ -216,27 +253,6 @@ by Zhaoyu Li
 <p>显示页面模板的是视图层（View层），在sp框架中，视图层被集成到了控制器内，所以在实际开发中，视图层所要制作的只有页面模板。</p>
 <p>上面简单描述了MVC架构的理解。下面讲述一下关于sp框架中的MVC理念，可能比较抽象而不好理解，但是还请耐心去阅读，毕竟在实际开发中，对MVC理念的理解是非常必要和重要的。</p>
 <p>sp框架中的MVC理念，是将网络系统划分为三个关注点：交互、数据、页面模板；也就是我们设计或分析一个网络系统 ...</p> <a class="" href="http://hackecho.com/2011/03/intro-of-mvc-structure/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/01/intro-to-magnet-link/">Magnet Link 和 Torrent</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 01 January 2013
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今天是美国的元旦（New-Year），本来打算到工程院度过一天，没想到整个学校到处都是大门紧闭。回家后准备下载一部电影，于是折腾中对磁力链接和种子产生了兴趣。不做深究，只谈表层原理。</p>
-<p>著名的BT搜索站海盗湾已经声明，不再托管任何种子文件，将全部更改为提供磁力链接（Magnet Links）。如果你还没有使用过磁力链接，这里将告诉你磁力链接和种子文件的关系（当然，磁力链接本身不仅限于种子文件）。</p>
-<p><strong>磁力链接和种子文件的区别</strong></p>
-<p>当你下载一个种子文件时，其实是下载了一个包含了资源文件信息的小文件，这个小文件告诉BT客户端资源文件的名称、tracker的URI等。然后BT客户端会根据种子文件计算一个hash值（就像ISBN一样），再根据哈希值找到此刻正在分享这个资源的用户，然后开始P2P的传输。</p>
-<p>而磁力链接就像上述过程的一个中间人。最基本的磁力链接包含了上述过程中计算出来的hash值，好让BT客户端可以直接搜索资源。磁力链接不需要tracker，因为其使用了DHT网络（<a href="http://lifehacker.com/5411311/bittorrents-future-dht-pex-and-magnet-links-explained">阅读更多</a>），也不需要你下载任何文件，只需要一串文本字符即可。</p>
-<p><strong>怎样使用磁力链接</strong></p>
-<p>磁力链接的形式是以magnet:开头的一串字符，你只需要直接点击磁力链接或把它复制到支持磁力下载的客户端即可。</p>
-<p><strong>有什么意义</strong></p>
-<p>这有什么意义呢？只是把种子文件换了一种形式而已。如果你这样以为就错了，否则海盗湾也不会全站进行转换。</p>
-<p>最重要原因是，使用磁力链接可以使像海盗湾这样的种子站摆脱法律纠缠。因为海盗湾本身将不再存储任何链接到受版权保护的资源上（比如.torrent文件）。这样将无法说海盗湾本身<em>直接 ...</em></p> <a class="" href="http://hackecho.com/2013/01/intro-to-magnet-link/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

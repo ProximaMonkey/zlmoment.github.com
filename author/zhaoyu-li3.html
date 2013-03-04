@@ -43,6 +43,24 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
+<p>就不细细介绍了，看下面的例子，就都懂了：</p>
+<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
+<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
+<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
+<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">XML与JSON的格式转换方法</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
 
@@ -223,28 +241,6 @@ by Zhaoyu Li
 <p><strong>实现方法：</strong></p>
 <p>大家注意登陆界面的“轻松访问”按钮，打开后可以看到一系列应用程序，如“讲述人”“放大镜”“高对比度”等，这些应用程序的可执行文件都在“C:Windowssystem32”(假设Windows7安装在C盘)目录里。</p>
 <p>我们可以通过第三方系统（如CE，另一个XP等）进入系统目录，更改（以“放大镜”为例）magnify.exe文件的权限，右击“magnify.exe”选择“权限”——高级——所有者，将当前系统管理员帐号设置为所有者(如果没有当前帐号在列表，则单击“其他账户”，手动输入当前账户名)。单击 ...</p> <a class="" href="http://hackecho.com/2011/03/find-password-of-win7/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/finish-of-bjtuer/">交大一软通 V2.0 开发完毕</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 February 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>首先感谢大家对1.0版本的支持，收到大家的意见反馈后，经过努力，V2.0版交大一软通发布！</p>
-<p>更新啦~~~：</p>
-<p>1.增加“知行快读”模块，可以快速、方便地在软件内阅读知行论坛热门板块，以及晨光BT的资源，让你第一时间获得最新信息，体验酣畅淋漓的“刷论坛”阅读感受！</p>
-<p>2.修正“免流量上网通道”无法使用的问题，更换了代理地址并且增加为两条通道，通道1无法使用时可以使用通道2。修复了其导致的无法上网的问题，程序退出时将自动关闭通道。</p>
-<p>3.主页增加了“快捷启动”栏目，直达各个常用功能，方便快捷！</p>
-<p>4.一软通内置了网络浏览系统，不再调用系统默认浏览器。</p>
-<p>5.增加“实用工具”模块，混在交大，这些工具少得了？！工具还在不断添加中！</p>
-<p>6“交大导航”新增许多地址，而且还在不断增加，导航更齐全！</p>
-<p>7.增加的功能详细介绍如下：</p>
-<blockquote>
-<p>知行快读 ...</p></blockquote> <a class="" href="http://hackecho.com/2011/02/finish-of-bjtuer/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

@@ -43,6 +43,34 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/boost-thread/">Boost Thread</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 03 March 2013
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 <code>Boost.Thread</code> ，用于开发独立于平台的多线程应用程序。</p>
+<h3>线程创建</h3>
+<p>相关类为 <code>boost::thread</code> ，定义在 <code>boost/thread.hpp</code> 中，用于创建一个新线程。</p>
+<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
+<span class="c">#include &lt;iostream&gt; </span>
+
+<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span> 
+
+<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span> 
+        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
+        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl ...</span></pre></div> <a class="" href="http://hackecho.com/2013/03/boost-thread/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/ipc-semaphores/">IPC Semaphores</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 11 February 2013
 
@@ -266,19 +294,6 @@ by Zhaoyu Li
 <p>该目录中包含系统和应用软件的配置文件。</p>
 <p><strong>/etc/passwd</strong></p>
 <p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/three-software-architecture-style/">3 Software Architecture Style</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 June 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
-<p>This brief introduction of ...</p> <a class="" href="http://hackecho.com/2012/06/three-software-architecture-style/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
