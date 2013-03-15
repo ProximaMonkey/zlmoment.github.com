@@ -43,61 +43,287 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/intro-of-mvc-structure/">对MVC架构的简单解读</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 05 March 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">使用PHP将CSDN泄露数据导入数据库</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 December 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>因最近开发的需要，开始自学PHP，学习中的一些心得和技巧将会记录在博客里。作为一名初学者，我选择了使用SpeedPHP开发框架，因为它是个轻量级的框架。这篇文章是SP教程里的，简单摘录一下，以加深理解。</p>
-<p>本文将讲述在网络系统（WEB系统）开发中，MVC（模型-视图-控制器）架构的理念、设计以及在sp框架中的实际应用方式等。</p>
-<p>首先我们来看看MVC架构的示意图：</p>
-<p><a href="http://www.hackecho.com/?attachment_id=139"><img alt="MVC" src="/static/images/2011/03/捕获-300x118.png" /></a></p>
-<p>从上图我们可以将MVC简单地理解成：</p>
-<p>和访问者交互的是控制层（Controller层），控制器（controller）是同类交互的集合，每一个交互的操作，都对应了一个动作（action）。在sp框架中，全部的控制器类都必须继承于spController。</p>
-<p>对数据库进行存取的是模型层（Model层），在sp框架中，全部的模型器类都必须继承于spModel。</p>
-<p>显示页面模板的是视图层（View层），在sp框架中，视图层被集成到了控制器内，所以在实际开发中，视图层所要制作的只有页面模板。</p>
-<p>上面简单描述了MVC架构的理解。下面讲述一下关于sp框架中的MVC理念，可能比较抽象而不好理解，但是还请耐心去阅读，毕竟在实际开发中，对MVC理念的理解是非常必要和重要的。</p>
-<p>sp框架中的MVC理念，是将网络系统划分为三个关注点：交互、数据、页面模板；也就是我们设计或分析一个网络系统 ...</p> <a class="" href="http://hackecho.com/2011/03/intro-of-mvc-structure/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有幸得到了CSDN泄露的600多万条用户数据，这可是做大容量数据测试和分析的好材料啊。但虽然是.sql文件，里面却是以纯文本保存的所有数据，而且以固定格式保存。这对于数据存储来讲没有任何问题，但如此大的纯文本文件，检索起来可就不是一般的慢啊（不信你拉一下滚动条试试，准死）！今天正好看到好友异泪在用Java写个小程序想将这些数据导入到MySQL里，于是索性也用PHP实现一个，正好借机对比一下PHP和Java的数据处理性能问题。</p>
+<p>原理很简单，因为原文件中每行保存一个用户，而且用户名、密码和邮箱之间都是以“#”分隔的，这样的话操作起来非常方便。</p>
+<p>Let's begin!</p>
+<h3><strong>执行环境：</strong></h3>
+<div class="codehilite"><pre><span class="n">Mac</span> <span class="n">OS</span> <span class="n">X</span> <span class="n">Lion</span> <span class="mf">10.7.2</span> <span class="o">|</span><span class="err"> </span><span class="mf">2.8</span> <span class="n">GHz</span> <span class="n">Intel</span> <span class="n">Core</span> <span class="n">i7</span> <span class="o">|</span><span class="err"> </span><span class="mi">4</span> <span class="n">GB</span> <span class="mi">1333</span> <span class="n">MHz</span> <span class="n">DDR3</span>
+<span class="n">PHP</span> <span class="mf">5.3.1</span> <span class="o">|</span> <span class="n">MySQL</span> <span class="mf">5.1.44 ...</span></pre></div> <a class="" href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/finish-of-bjtuer/">交大一软通 V2.0 开发完毕</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 February 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/journal-writing-and-programming/">[转] 旅行，写作，编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 11 December 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>首先感谢大家对1.0版本的支持，收到大家的意见反馈后，经过努力，V2.0版交大一软通发布！</p>
-<p>更新啦~~~：</p>
-<p>1.增加“知行快读”模块，可以快速、方便地在软件内阅读知行论坛热门板块，以及晨光BT的资源，让你第一时间获得最新信息，体验酣畅淋漓的“刷论坛”阅读感受！</p>
-<p>2.修正“免流量上网通道”无法使用的问题，更换了代理地址并且增加为两条通道，通道1无法使用时可以使用通道2。修复了其导致的无法上网的问题，程序退出时将自动关闭通道。</p>
-<p>3.主页增加了“快捷启动”栏目，直达各个常用功能，方便快捷！</p>
-<p>4.一软通内置了网络浏览系统，不再调用系统默认浏览器。</p>
-<p>5.增加“实用工具”模块，混在交大，这些工具少得了？！工具还在不断添加中！</p>
-<p>6“交大导航”新增许多地址，而且还在不断增加，导航更齐全！</p>
-<p>7.增加的功能详细介绍如下：</p>
+        <div class="summary" style="margin:18px 0 0 0;"><p>感谢外刊IT评论翻译这篇文章，原文地址：<a href="http://www.aqee.net/traveling-writing-programming/">《旅行，写作，编程》</a> ，转载请注明原作者地址。</p>
+<p>概括起来，今年到目前为止，我所做的事情包括：</p>
+<ul>
+<li>
+<p>花了10个月的时间做世界环游，途经非洲，东南亚，澳洲，中南美洲里的17个国家和地区。这次旅行的主题就是冲浪和摄影。</p>
+</li>
+<li>
+<p>出席在香港，日本，美国和伦敦举行的会议</p>
+</li>
+<li>
+<p>启程时给O’Reilly出版公司写了一本书，书名叫做《<a href="http://bit.ly/uFbFJR">JavaScript Web Applications</a>》</p>
+</li>
+<li>
+<p>另外写了一本关于<a href="http://arcturo.github.com/library/coffeescript/">CoffeeScript</a>的书，很快就会由O’Reilly公司出版。</p>
+</li>
+<li>
+<p>写了大量的开源库，例如<a href="http://spinejs.com/">Spine</a>, <a href="https://spinejs.com/mobile">Spine.Mobile</a>, <a href="http://maccman.github.com/gfx">GFX</a>, 和 <a href="http://github.com/maccman/juggernaut">Juggernaut</a>.</p>
+</li>
+<li>
+<p>筹划了一个创业公司的框架</p>
+</li>
+<li>
+<p>出席伦敦2011<a href="http://futureofwebapps.com/london-2011/">FOWA</a>会议</p>
+</li>
+<li>
+<p>最后，我在<a href="https://twitter.com/about/employees">Twitter</a>公司找到了一份工作</p>
+</li>
+</ul>
+<p>那么，让我从一年前开始，那是2010年9月，我刚好从一个我合作创办的公司里出来，尽管这段经历是很有价值的 ...</p> <a class="" href="http://hackecho.com/2011/12/journal-writing-and-programming/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">关于多级分类的一个思考</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近做的几个项目都设计到了多级分类，不太清楚数据表怎样设计。经过一番探究后，发现一般有以下几种解决方案：</p>
+<ul>
+<li>
+<p>每级分类一张表</p>
+</li>
+<li>
+<p>只有一张分类表</p>
+</li>
+<li>
+<p>一张分类名称表+一张分类关系表</p>
+</li>
+</ul>
+<p>第三种方法是参考了Wordpress本身的分类方法，个人感觉用在手里的项目中有点大材小用，于是主要目标是在前两种中选择一种。</p>
+<p>首先来看第一种，这是一般最先想到的方法，而且相对比较简单。但马上一想就会发现这种方法的弊端，如果只有两级分类还可以凑合，但如果涉及到多级分类或无限极分类就麻烦了，如果是五级分类就会有五张表，这明显不以维护而且不符合数据库设计原则。</p>
+<p>再来看第二种方案：</p>
+<p>如果只有一张表，那么我们必须能够标识各个分类之间的层次关系，层级等级。第一次的设计是这样的：</p>
 <blockquote>
-<p>知行快读 ...</p></blockquote> <a class="" href="http://hackecho.com/2011/02/finish-of-bjtuer/">Read more...</a></div>
+<p>cid</p>
+<p>cname（分类名称）</p>
+<p>parentcid（上级分类ID）</p>
+<p>cat_level（当前分类层次）</p>
+</blockquote>
+<p>貌似很完美的样子，而且支持无限级分类。但在使用过程中发现一个问题：虽然有一个分类层次，但排序后它们的层次还是无法直接显示出来。（在其中一个项目中曾经使用过这种方法，当时的解决方案是在View层又加了一次排序来动态的生成HTML代码，每次排序都要遍历一次父类，很恐怖。）。于是，第二次设计修改如下：</p>
+<blockquote>
+<p>cid</p>
+<p>cname（分类名称）</p>
+<p>parentcid（上级分类ID）</p>
+<p>cat_level（当前分类层次）</p>
+<p>cat_path ...</p></blockquote> <a class="" href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 22 July 2009
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 November 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>近来没有写过日志，主要是因为忙于自己的网站。今天完成了当天的任务，便写一些近来做网站的一些感受吧！­</p>
-<p>个人站长很少有独立开发整站程序的人，我也算是一个，一方面没有相关的技术，二来没有时间和精力来学习、编写和调试。所以我便很佩服DEDECMS的开发者柏拉图，因为著名的DEDECMS起初便是由他一人独立开发的。网上流行的CMS很多，但运行于PHP环境的就屈指可数了，因为我的空间是UNIX型，只能使用基于PHP的CMS。下面说一下我认识CMS的过程吧。­</p>
-<p>我接触的第一款CMS是DEDECMS，但那还是一年前，出于好奇，也并没有想去建一个自己的网站，即使想，那时也没有时间。当初没有怎么深入研究，只迷迷糊糊知道CMS可以进行网站内容管理。现在，高考结束，在北交大的录取通知书马上就要到来的情况下，我便购置了空间和域名，将身心全部投入到我的爱好中来。­</p>
-<p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p> <a class="" href="http://hackecho.com/2009/07/start-of-web-dev/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天配好服务器，发现如果直接远程连接主机无法打开控制台，于是果断采用SSH来登录。很简单，只需几步：</p>
+<p>首先需要在服务器安装SSH的服务器端。</p>
+<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+
+
+<p>Ubuntu中默认安装了OpenSSH的client端，我们不用重复安装。如果需要安装，只需将上述命令中的server改为client即可。</p>
+<p>安装好后启动OpenSSH。</p>
+<div class="codehilite"><pre><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">ssh</span> <span class="n">restart</span>
+</pre></div>
+
+
+<p>然后确认一下SSH Server是否启动。</p>
+<div class="codehilite"><pre><span class="n">ps</span> <span class="o">-</span><span class="n">e</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">ssh</span>
+</pre></div>
+
+
+<p>如果只有ssh-agent那ssh-server还没有启动。</p>
+<p>最后就是登录了：</p>
+<div class="codehilite"><pre><span class="n">ssh</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="mf">202.112</span><span class="p">.</span><span class="o">***</span><span class="p">.</span><span class="o">***</span>
+</pre></div>
+
+
+<p>其中username是用户名，后面是服务器IP。</p>
+<p>接下来会提示输入密码，然后就成功登录到服务器了。经测试，可以使用sudo -i取得管理员权限，可以执行脚本。哈哈，enjoy it！</p> <a class="" href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/deployment-of-thinkphp/">ThinkPHP部署二三事儿</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 09 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
+<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
+<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
+<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
+<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
+<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像 ...</p> <a class="" href="http://hackecho.com/2011/11/deployment-of-thinkphp/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">页面滚动时层智能浮动定位的实现</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 13 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
+<p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
+<p>当我们滑动网页时，可以看到如下效果：</p>
+<p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
+<p>右上角的通知栏始终固定不动，不管网页怎么滑动。</p>
+<p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
+<p>下面我们就来利用jQuery实现这种效果。</p>
+<p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 12 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
+<p>具体如下图所示：</p>
+<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
+<p>我们来详细了解一下图中所示的模块和操作。</p>
+<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
+<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
+<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="err">具体代码略……</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+
+<p>该文件已经演示了一个基于 ThinkPHP 的实际应用。</p>
+<p><strong>&gt;&gt; ThinkPHP 控制器</strong></p>
+<p>像上面这个 IndexAction.class ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">深入浅出ThinkPHP系列教程(三) Hello World！</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 01 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
+<p><strong>入口文件</strong></p>
+<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
+<p><strong>创建入口文件</strong></p>
+<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">//定义ThinkPHP框架路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
+<span class="c1">//定义项目名称和路径</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="c1">//加载框架入口文件</span>
+<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
+<span class="c1">//实例化一个网站应用实例</span>
+<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+
+<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 28 September 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>通过这篇教程，让我们来简单熟悉一下MVC的基本思想，这也是使用ThinkPHP开发应用不可或缺的知识，否则你将寸步难行。</p>
+<p>MVC主要由三部分组成：</p>
+<ul>
+<li>
+<p>（控制器Controller）- 负责转发请求，对请求进行处理。</p>
+</li>
+<li>
+<p>（视图View） - 界面设计人员进行图形界面设计。</p>
+</li>
+<li>
+<p>（模型Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</p>
+</li>
+</ul>
+<p><img alt="" src="/static/images/2011/09/ModelViewControllerDiagramZh.png" /></p>
+<p>本博客以前发布过一篇关于MVC的简单介绍，详情请点击这里：<a href="http://www.hackecho.com/archives/138.html">《对MVC架构的简单解读》</a></p>
+<p><strong>视图</strong></p>
+<p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
+<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/intro-to-thinkphp/">深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 26 September 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
+<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
+<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
+<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
+<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
+<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
+<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
+<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
+<p><strong>加速开发过程：</strong></p>
+<p>PHP框架 ...</p> <a class="" href="http://hackecho.com/2011/09/intro-to-thinkphp/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -109,8 +335,11 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/category/develope3.html">3</a></li>
     <li class=""><a href="http://hackecho.com/category/develope4.html">4</a></li>
     <li class="active"><a href="http://hackecho.com/category/develope5.html">5</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope6.html">6</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
+    <li class=""><a href="http://hackecho.com/category/develope8.html">8</a></li>
 
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+    <li class="next"><a href="http://hackecho.com/category/develope6.html">Next &rarr;</a></li>
 
 </ul>
 </div>    </div> 

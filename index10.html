@@ -153,23 +153,23 @@ by Zhaoyu Li
 </div>
         <div class="summary" style="margin:18px 0 0 0;"><p>因为是自己的笔记，所以比较杂乱，见谅。</p>
 <p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
-<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
-    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
-        <span class="p">....</span>
+<div class="codehilite"><pre><span class="x">//IndexAction.class.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="o">....</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="o">?&gt;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 
 <p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
-<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
+<div class="codehilite"><pre><span class="x">//UserModel.class.php</span>
+<span class="cp">&lt;?php</span>
+    <span class="k">class</span> <span class="nc">UserModel</span> <span class="k">extends</span> <span class="nx">Model</span>
     <span class="p">{}</span>
-<span class="o">?&gt;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 

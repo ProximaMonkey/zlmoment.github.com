@@ -90,23 +90,23 @@ by Zhaoyu Li
 <p>gcc 命令只能编译 C++ 源文件，而不能自动和 C++ 程序使用的库连接。因此，通常使用 g++ 命令来完成 C++ 程序的编译和连接，该程序会自动调用 gcc 实现编译。</p>
 <p>一般来讲，编译过程分为四个阶段：预处理(也称预编译，Preprocessing)、编译(Compilation)、汇编 (Assembly)和连接(Linking)。下面举几个例子，关于参数的详细解释在文后会有。</p>
 <p><strong>预编译</strong></p>
-<div class="codehilite"><pre><span class="n">gcc</span> <span class="o">-</span><span class="n">E</span> <span class="n">test</span><span class="p">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span><span class="p">.</span><span class="nb">i</span> 或 <span class="n">gcc</span> <span class="o">-</span><span class="n">E</span> <span class="n">test</span><span class="p">.</span><span class="n">c</span>
+<div class="codehilite"><pre>gcc -E test.c -o test.i 或 gcc -E test.c
 </pre></div>
 
 
 <p>预编译之后的文件还是代码文件，比如将会将 <code>stdio.h</code> 文件中的内容插入到自己程序中。</p>
 <p><strong>编译</strong></p>
-<div class="codehilite"><pre><span class="n">gcc</span> <span class="o">-</span><span class="n">S</span> <span class="n">test</span><span class="p">.</span><span class="nb">i</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span><span class="p">.</span><span class="n">s</span>
+<div class="codehilite"><pre>gcc -S test.i -o test.s
 </pre></div>
 
 
 <p><strong>汇编</strong></p>
-<div class="codehilite"><pre><span class="n">gcc</span> <span class="o">-</span><span class="n">c</span> <span class="n">test</span><span class="p">.</span><span class="n">s</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span><span class="p">.</span><span class="n">o</span>
+<div class="codehilite"><pre>gcc -c test.s -o test.o
 </pre></div>
 
 
 <p><strong>连接</strong></p>
-<div class="codehilite"><pre><span class="n">gcc</span> <span class="n">test</span><span class="p">.</span><span class="n">o</span> <span class="o">-</span><span class="n">o</span> <span class="n">test</span>
+<div class="codehilite"><pre>gcc test.o -o <span class="nb">test</span>
 </pre></div>
 
 
@@ -177,11 +177,11 @@ by Zhaoyu Li
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
-                            <li><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></li>
+                            <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
                             <li><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></li>
-                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
                             <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
+                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

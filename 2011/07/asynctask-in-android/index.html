@@ -87,11 +87,13 @@ by Zhaoyu Li
         <p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
 <p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
 <p>Android提供了几种在其他线程中访问UI线程的方法：</p>
-<p><code>Java
-  Activity.runOnUiThread( Runnable )
-  View.post( Runnable )
-  View.postDelayed( Runnable, long )
-  Hanlder</code></p>
+<div class="codehilite"><pre><span class="n">Activity</span><span class="o">.</span><span class="na">runOnUiThread</span><span class="o">(</span><span class="err"> </span><span class="n">Runnable</span><span class="err"> </span><span class="o">)</span>
+<span class="n">View</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="err"> </span><span class="n">Runnable</span><span class="err"> </span><span class="o">)</span>
+<span class="n">View</span><span class="o">.</span><span class="na">postDelayed</span><span class="o">(</span><span class="err"> </span><span class="n">Runnable</span><span class="o">,</span><span class="err"> </span><span class="kt">long</span><span class="err"> </span><span class="o">)</span>
+<span class="n">Hanlder</span>
+</pre></div>
+
+
 <p>这些类或方法同样会使你的代码很复杂很难理解。然而当你需要实现一些很复杂的操作并需要频繁地更新UI时这会变得更糟糕。</p>
 <p>为了解决这个问题，Android 1.5提供了一个工具类：AsyncTask，它使创建需要与用户界面交互的长时间运行的任务变得更简单。不需要借助线程和Handler即可实现。</p>
 <p>AsyncTask是抽象类.AsyncTask定义了三种泛型类型 Params，Progress和Result。</p>
@@ -120,145 +122,145 @@ by Zhaoyu Li
 <p>如果必须要停止一个线程，我们可以采用这个线程中设置一个标志位，然后在线程run方法或AsyncTask的doInBackground方法中的关键步骤判断这个标志位以决定是否继续执行。然后在需要终止此线程的地方改变这个标志位以达到停止线程的目的。</p>
 <p>从外部调用AsyncTask的cancel方法并不能停止一个已经启动的AsyncTask。这个cancel方法的作用与线程的interrupt方法相似，调用了一个线程的interrupt方法之后线程仍然运行，但是如果该线程的run方法里面调用过sleep的或者wait方法后，处于sleep或wait状态，则sleep和wait立即结束并且抛出InterruptedException异常。AsyncTask的cancel方法也一样，如果在这个Task的doInBackground方法中调用了sleep或wait方法，当在UI线程中调用了这个Task实例的cancel方法之后，sleep或wait立即结束并且抛出InterruptedException异常，但是如果捕获该异常的代码后面还有其他代码，则这些代码还会继续执行。</p>
 <p>一个简单的例子：从网上获取一个网页，在一个TextView中将其源代码显示出来：</p>
-<div class="codehilite"><pre><span class="n">package</span> <span class="n">test</span><span class="p">.</span><span class="n">list</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">ByteArrayOutputStream</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">InputStream</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">ArrayList</span><span class="p">;</span>  
+<div class="codehilite"><pre><span class="kn">package</span> <span class="n">test</span><span class="o">.</span><span class="na">list</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 
-<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">http</span><span class="p">.</span><span class="n">HttpEntity</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">http</span><span class="p">.</span><span class="n">HttpResponse</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HttpClient</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="k">methods</span><span class="p">.</span><span class="n">HttpGet</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">http</span><span class="p">.</span><span class="n">impl</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">DefaultHttpClient</span><span class="p">;</span>  
+<span class="kn">import</span> <span class="nn">org.apache.http.HttpEntity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.HttpResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.client.HttpClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.client.methods.HttpGet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.impl.client.DefaultHttpClient</span><span class="o">;</span>
 
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">Activity</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">ProgressDialog</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">Context</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">DialogInterface</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">os</span><span class="p">.</span><span class="n">AsyncTask</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">os</span><span class="p">.</span><span class="n">Bundle</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">os</span><span class="p">.</span><span class="n">Handler</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">os</span><span class="p">.</span><span class="n">Message</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">View</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">Button</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">EditText</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">android</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">TextView</span><span class="p">;</span>  
+<span class="kn">import</span> <span class="nn">android.app.Activity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.app.ProgressDialog</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.DialogInterface</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.AsyncTask</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Handler</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Message</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
 
-<span class="n">public</span> <span class="n">class</span> <span class="n">NetworkActivity</span> <span class="n">extends</span> <span class="n">Activity</span><span class="p">{</span>
-    <span class="n">private</span> <span class="n">TextView</span> <span class="n">message</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">Button</span> <span class="n">open</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">EditText</span> <span class="n">url</span><span class="p">;</span>  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NetworkActivity</span> <span class="kd">extends</span> <span class="n">Activity</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">TextView</span> <span class="n">message</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Button</span> <span class="n">open</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">EditText</span> <span class="n">url</span><span class="o">;</span>
 
-    <span class="p">@</span><span class="n">Override</span>
-    <span class="n">public</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
-       <span class="n">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
-       <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">network</span><span class="p">);</span>
-       <span class="n">message</span><span class="p">=</span> <span class="p">(</span><span class="n">TextView</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
-       <span class="n">url</span><span class="p">=</span> <span class="p">(</span><span class="n">EditText</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">url</span><span class="p">);</span>
-       <span class="n">open</span><span class="p">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">open</span><span class="p">);</span>
-       <span class="n">open</span><span class="p">.</span><span class="n">setOnClickListener</span><span class="p">(</span><span class="n">new</span> <span class="n">View</span><span class="p">.</span><span class="n">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
-           <span class="n">public</span> <span class="n">void</span> <span class="n">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">arg0</span><span class="p">)</span> <span class="p">{</span>
-              <span class="n">connect</span><span class="p">();</span>
-           <span class="p">}</span>
-       <span class="p">});</span>
-    <span class="p">}</span>  
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+       <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+       <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">network</span><span class="o">);</span>
+       <span class="n">message</span><span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">message</span><span class="o">);</span>
+       <span class="n">url</span><span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">url</span><span class="o">);</span>
+       <span class="n">open</span><span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">open</span><span class="o">);</span>
+       <span class="n">open</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+           <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">connect</span><span class="o">();</span>
+           <span class="o">}</span>
+       <span class="o">});</span>
+    <span class="o">}</span>
 
-    <span class="n">private</span> <span class="n">void</span> <span class="n">connect</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">PageTask</span> <span class="n">task</span> <span class="p">=</span> <span class="n">new</span> <span class="n">PageTask</span><span class="p">(</span><span class="n">this</span><span class="p">);</span>
-        <span class="n">task</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="n">getText</span><span class="p">().</span><span class="n">toString</span><span class="p">());</span>
-    <span class="p">}</span>  
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">connect</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">PageTask</span> <span class="n">task</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PageTask</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">task</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
 
-    <span class="n">class</span> <span class="n">PageTask</span> <span class="n">extends</span> <span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
-        <span class="o">//</span> 可变长的输入参数，与<span class="n">AsyncTask</span><span class="p">.</span><span class="n">exucute</span><span class="p">()</span>对应
-    <span class="n">ProgressDialog</span> <span class="n">pdialog</span><span class="p">;</span>
-        <span class="n">public</span> <span class="n">PageTask</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">){</span>
-        <span class="n">pdialog</span> <span class="p">=</span> <span class="n">new</span> <span class="n">ProgressDialog</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> 0<span class="p">);</span>
-        <span class="n">pdialog</span><span class="p">.</span><span class="n">setButton</span><span class="p">(</span>&quot;<span class="n">cancel</span>&quot;<span class="p">,</span> <span class="n">new</span> <span class="n">DialogInterface</span><span class="p">.</span><span class="n">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="n">void</span> <span class="n">onClick</span><span class="p">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="p">,</span> <span class="n">int</span> <span class="nb">i</span><span class="p">)</span> <span class="p">{</span>
-           <span class="n">dialog</span><span class="p">.</span><span class="n">cancel</span><span class="p">();</span>
-    <span class="p">}</span>
-        <span class="p">});</span>
-        <span class="n">pdialog</span><span class="p">.</span><span class="n">setOnCancelListener</span><span class="p">(</span><span class="n">new</span> <span class="n">DialogInterface</span><span class="p">.</span><span class="n">OnCancelListener</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="n">void</span> <span class="n">onCancel</span><span class="p">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="p">)</span> <span class="p">{</span>
-           <span class="n">finish</span><span class="p">();</span>
-    <span class="p">}</span>
-        <span class="p">});</span>
-        <span class="n">pdialog</span><span class="p">.</span><span class="n">setCancelable</span><span class="p">(</span><span class="n">true</span><span class="p">);</span>
-        <span class="n">pdialog</span><span class="p">.</span><span class="n">setMax</span><span class="p">(</span>100<span class="p">);</span>
-        <span class="n">pdialog</span><span class="p">.</span><span class="n">setProgressStyle</span><span class="p">(</span><span class="n">ProgressDialog</span><span class="p">.</span><span class="n">STYLE_HORIZONTAL</span><span class="p">);</span>
-        <span class="n">pdialog</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
-        <span class="p">}</span>  
+    <span class="kd">class</span> <span class="nc">PageTask</span> <span class="kd">extends</span> <span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="c1">// 可变长的输入参数，与AsyncTask.exucute()对应</span>
+    <span class="n">ProgressDialog</span> <span class="n">pdialog</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="nf">PageTask</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">){</span>
+        <span class="n">pdialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProgressDialog</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="n">pdialog</span><span class="o">.</span><span class="na">setButton</span><span class="o">(</span><span class="s">&quot;cancel&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">DialogInterface</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+           <span class="n">dialog</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+    <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">pdialog</span><span class="o">.</span><span class="na">setOnCancelListener</span><span class="o">(</span><span class="k">new</span> <span class="n">DialogInterface</span><span class="o">.</span><span class="na">OnCancelListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCancel</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">)</span> <span class="o">{</span>
+           <span class="n">finish</span><span class="o">();</span>
+    <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">pdialog</span><span class="o">.</span><span class="na">setCancelable</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">pdialog</span><span class="o">.</span><span class="na">setMax</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+        <span class="n">pdialog</span><span class="o">.</span><span class="na">setProgressStyle</span><span class="o">(</span><span class="n">ProgressDialog</span><span class="o">.</span><span class="na">STYLE_HORIZONTAL</span><span class="o">);</span>
+        <span class="n">pdialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        <span class="p">@</span><span class="n">Override</span>
-        <span class="n">protected</span> <span class="n">String</span> <span class="n">doInBackground</span><span class="p">(</span><span class="n">String</span><span class="p">...</span> <span class="n">params</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">try</span><span class="p">{</span>
-               <span class="n">HttpClient</span> <span class="n">client</span> <span class="p">=</span> <span class="n">new</span> <span class="n">DefaultHttpClient</span><span class="p">();</span>
-               <span class="o">//</span> <span class="n">params</span><span class="p">[</span>0<span class="p">]</span>代表连接的<span class="n">url</span>
-               <span class="n">HttpGet</span> <span class="n">get</span> <span class="p">=</span> <span class="n">new</span> <span class="n">HttpGet</span><span class="p">(</span><span class="n">params</span><span class="p">[</span>0<span class="p">]);</span>
-               <span class="n">HttpResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">get</span><span class="p">);</span>
-               <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">getEntity</span><span class="p">();</span>
-               <span class="n">long</span> <span class="nb">length</span> <span class="p">=</span> <span class="n">entity</span><span class="p">.</span><span class="n">getContentLength</span><span class="p">();</span>
-               <span class="n">InputStream</span> <span class="n">is</span> <span class="p">=</span> <span class="n">entity</span><span class="p">.</span><span class="n">getContent</span><span class="p">();</span>
-               <span class="n">String</span> <span class="n">s</span> <span class="p">=</span> <span class="n">null</span><span class="p">;</span>
-               <span class="k">if</span><span class="p">(</span><span class="n">is</span> !<span class="p">=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
-                   <span class="n">ByteArrayOutputStream</span> <span class="n">baos</span> <span class="p">=</span> <span class="n">new</span> <span class="n">ByteArrayOutputStream</span><span class="p">();</span>
-                   <span class="n">byte</span><span class="p">[]</span> <span class="n">buf</span> <span class="p">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span>128<span class="p">];</span>
-                   <span class="n">int</span> <span class="n">ch</span> <span class="p">=</span> <span class="o">-</span>1<span class="p">;</span>
-                   <span class="n">int</span> <span class="n">count</span> <span class="p">=</span> 0<span class="p">;</span>
-                   <span class="k">while</span><span class="p">((</span><span class="n">ch</span> <span class="p">=</span> <span class="n">is</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">buf</span><span class="p">))</span> !<span class="p">=</span> <span class="o">-</span>1<span class="p">)</span> <span class="p">{</span>
-                      <span class="n">baos</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> 0<span class="p">,</span> <span class="n">ch</span><span class="p">);</span>
-                      <span class="n">count</span> <span class="o">+</span><span class="p">=</span> <span class="n">ch</span><span class="p">;</span>
-                      <span class="k">if</span><span class="p">(</span><span class="nb">length</span> <span class="o">&gt;</span> 0<span class="p">)</span> <span class="p">{</span>
-                          <span class="o">//</span> 如果知道响应的长度，调用<span class="n">publishProgress</span>（）更新进度
-                          <span class="n">publishProgress</span><span class="p">((</span><span class="n">int</span><span class="p">)</span> <span class="p">((</span><span class="n">count</span> <span class="o">/</span> <span class="p">(</span><span class="n">float</span><span class="p">)</span> <span class="nb">length</span><span class="p">)</span> <span class="o">*</span> 100<span class="p">));</span>
-                      <span class="p">}</span>
-                      <span class="o">//</span> 让线程休眠100<span class="n">ms</span>
-                      <span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span>100<span class="p">);</span>
-                   <span class="p">}</span>
-                   <span class="n">s</span> <span class="p">=</span> <span class="n">new</span> <span class="n">String</span><span class="p">(</span><span class="n">baos</span><span class="p">.</span><span class="n">toByteArray</span><span class="p">());</span>              <span class="p">}</span>
-               <span class="o">//</span> 返回结果
-               <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-               <span class="n">e</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">();</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
-        <span class="p">}</span>  
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="n">String</span> <span class="nf">doInBackground</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span><span class="o">{</span>
+               <span class="n">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultHttpClient</span><span class="o">();</span>
+               <span class="c1">// params[0]代表连接的url</span>
+               <span class="n">HttpGet</span> <span class="n">get</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpGet</span><span class="o">(</span><span class="n">params</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+               <span class="n">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">get</span><span class="o">);</span>
+               <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+               <span class="kt">long</span> <span class="n">length</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContentLength</span><span class="o">();</span>
+               <span class="n">InputStream</span> <span class="n">is</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContent</span><span class="o">();</span>
+               <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+               <span class="k">if</span><span class="o">(</span><span class="n">is</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                   <span class="n">ByteArrayOutputStream</span> <span class="n">baos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+                   <span class="kt">byte</span><span class="o">[]</span> <span class="n">buf</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">128</span><span class="o">];</span>
+                   <span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                   <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                   <span class="k">while</span><span class="o">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">is</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buf</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                      <span class="n">baos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">ch</span><span class="o">);</span>
+                      <span class="n">count</span> <span class="o">+=</span> <span class="n">ch</span><span class="o">;</span>
+                      <span class="k">if</span><span class="o">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                          <span class="c1">// 如果知道响应的长度，调用publishProgress（）更新进度</span>
+                          <span class="n">publishProgress</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span> <span class="o">((</span><span class="n">count</span> <span class="o">/</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="n">length</span><span class="o">)</span> <span class="o">*</span> <span class="mi">100</span><span class="o">));</span>
+                      <span class="o">}</span>
+                      <span class="c1">// 让线程休眠100ms</span>
+                      <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+                   <span class="o">}</span>
+                   <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">baos</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span>              <span class="o">}</span>
+               <span class="c1">// 返回结果</span>
+               <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+               <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        <span class="p">@</span><span class="n">Override</span>
-        <span class="n">protected</span> <span class="n">void</span> <span class="n">onCancelled</span><span class="p">()</span> <span class="p">{</span>
-            <span class="n">super</span><span class="p">.</span><span class="n">onCancelled</span><span class="p">();</span>
-        <span class="p">}</span>  
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCancelled</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">.</span><span class="na">onCancelled</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        <span class="p">@</span><span class="n">Override</span>
-        <span class="n">protected</span> <span class="n">void</span> <span class="n">onPostExecute</span><span class="p">(</span><span class="n">String</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">//</span> 返回<span class="n">HTML</span>页面的内容
-            <span class="n">message</span><span class="p">.</span><span class="n">setText</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-            <span class="n">pdialog</span><span class="p">.</span><span class="n">dismiss</span><span class="p">();</span>
-        <span class="p">}</span>  
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPostExecute</span><span class="o">(</span><span class="n">String</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 返回HTML页面的内容</span>
+            <span class="n">message</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+            <span class="n">pdialog</span><span class="o">.</span><span class="na">dismiss</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        <span class="p">@</span><span class="n">Override</span>
-        <span class="n">protected</span> <span class="n">void</span> <span class="n">onPreExecute</span><span class="p">()</span> <span class="p">{</span>
-            <span class="o">//</span> 任务启动，可以在这里显示一个对话框，这里简单处理
-            <span class="n">message</span><span class="p">.</span><span class="n">setText</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">task_started</span><span class="p">);</span>
-        <span class="p">}</span>  
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPreExecute</span><span class="o">()</span> <span class="o">{</span>
+            <span class="c1">// 任务启动，可以在这里显示一个对话框，这里简单处理</span>
+            <span class="n">message</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">task_started</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        <span class="p">@</span><span class="n">Override</span>
-        <span class="n">protected</span> <span class="n">void</span> <span class="n">onProgressUpdate</span><span class="p">(</span><span class="n">Integer</span><span class="p">...</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">//</span> 更新进度
-              <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span>&quot;&quot;<span class="o">+</span><span class="n">values</span><span class="p">[</span>0<span class="p">]);</span>
-              <span class="n">message</span><span class="p">.</span><span class="n">setText</span><span class="p">(</span>&quot;&quot;<span class="o">+</span><span class="n">values</span><span class="p">[</span>0<span class="p">]);</span>
-              <span class="n">pdialog</span><span class="p">.</span><span class="n">setProgress</span><span class="p">(</span><span class="n">values</span><span class="p">[</span>0<span class="p">]);</span>
-        <span class="p">}</span>
-     <span class="p">}</span>
-<span class="p">}</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onProgressUpdate</span><span class="o">(</span><span class="n">Integer</span><span class="o">...</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 更新进度</span>
+              <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">+</span><span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+              <span class="n">message</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">+</span><span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+              <span class="n">pdialog</span><span class="o">.</span><span class="na">setProgress</span><span class="o">(</span><span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="o">}</span>
+     <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
                 <br>
         <h4>Related Posts</h4>
                     <ul>
                             <li><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></li>
-                            <li><a href="http://hackecho.com/2011/07/10-open-source-android-project/">10个非常值得学习的Android开源项目</a></li>
                             <li><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></li>
                             <li><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></li>
+                            <li><a href="http://hackecho.com/2011/07/10-open-source-android-project/">10个非常值得学习的Android开源项目</a></li>
                             <li><a href="http://hackecho.com/2011/04/level-of-programmer/">传说中程序员的层次</a></li>
                         </ul>
                 <br>

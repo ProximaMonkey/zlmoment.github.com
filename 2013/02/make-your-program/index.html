@@ -103,29 +103,29 @@ by Zhaoyu Li
 <p>Under the UNIX shell, make is a command generator. The makefile is a description file which creates a sequence of commands for execution by the UNIX shell.</p>
 <p>Generally, a program is built from one or more files and each of these files may have other files as prerequisites in turn. In a makefile, the prerequisites should be carefully stated. There are two important types of lines in a description file. A dependency line or rule line contains a colon, and a command line always starts <strong>with a tab</strong>.</p>
 <p>To the left of the colon on the dependency line is a target; to the right of the colon are the target's prerequisites. If myprog has prerequisites a.c and b.c, we have</p>
-<div class="codehilite"><pre><span class="n">myprog</span> <span class="o">:</span>  <span class="n">a</span><span class="o">.</span><span class="na">c</span>  <span class="n">b</span><span class="o">.</span><span class="na">c</span>
+<div class="codehilite"><pre> <span class="n">myprog</span> <span class="o">:</span>  <span class="n">a</span><span class="p">.</span><span class="n">c</span>  <span class="n">b</span><span class="p">.</span><span class="n">c</span>
 </pre></div>
 
 
 <p>The command lines just tells make how to make the target. For example,</p>
-<div class="codehilite"><pre><span class="n">myprog</span> <span class="o">:</span> <span class="n">a</span><span class="o">.</span><span class="na">c</span> <span class="n">b</span><span class="o">.</span><span class="na">c</span>
-     <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">myprog</span> <span class="n">a</span><span class="o">.</span><span class="na">c</span> <span class="n">b</span><span class="o">.</span><span class="na">c</span>
+<div class="codehilite"><pre> <span class="n">myprog</span> <span class="o">:</span> <span class="n">a</span><span class="p">.</span><span class="n">c</span> <span class="n">b</span><span class="p">.</span><span class="n">c</span>
+      <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">myprog</span> <span class="n">a</span><span class="p">.</span><span class="n">c</span> <span class="n">b</span><span class="p">.</span><span class="n">c</span>
 </pre></div>
 
 
 <p>Then, type <code>make</code>, the UNIX prompt will excute the command as you typed.</p>
 <h3>Generating Multiple Targets</h3>
 <p>If we want to generate more than one programs, for example, let program prog01 depend on a.c and b.c, prog02 depend on m.c and n.c, and prog03 depend on u.c, v.c and w.c. </p>
-<div class="codehilite"><pre><span class="n">all</span> <span class="o">:</span> <span class="n">prog01</span> <span class="n">prog02</span> <span class="n">prog03</span>
+<div class="codehilite"><pre> <span class="n">all</span> <span class="o">:</span> <span class="n">prog01</span> <span class="n">prog02</span> <span class="n">prog03</span>
 
-<span class="n">prog01</span> <span class="o">:</span> <span class="n">a</span><span class="o">.</span><span class="na">c</span> <span class="n">b</span><span class="o">.</span><span class="na">c</span>
-     <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">prog01</span> <span class="n">a</span><span class="o">.</span><span class="na">c</span> <span class="n">b</span><span class="o">.</span><span class="na">c</span>
+ <span class="n">prog01</span> <span class="o">:</span> <span class="n">a</span><span class="p">.</span><span class="n">c</span> <span class="n">b</span><span class="p">.</span><span class="n">c</span>
+      <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">prog01</span> <span class="n">a</span><span class="p">.</span><span class="n">c</span> <span class="n">b</span><span class="p">.</span><span class="n">c</span>
 
-<span class="n">prog02</span> <span class="o">:</span> <span class="n">m</span><span class="o">.</span><span class="na">c</span> <span class="n">n</span><span class="o">.</span><span class="na">c</span>
-     <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">prog02</span> <span class="n">m</span><span class="o">.</span><span class="na">c</span> <span class="n">n</span><span class="o">.</span><span class="na">c</span>
+ <span class="n">prog02</span> <span class="o">:</span> <span class="n">m</span><span class="p">.</span><span class="n">c</span> <span class="n">n</span><span class="p">.</span><span class="n">c</span>
+      <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">prog02</span> <span class="n">m</span><span class="p">.</span><span class="n">c</span> <span class="n">n</span><span class="p">.</span><span class="n">c</span>
 
-<span class="n">prog03</span> <span class="o">:</span> <span class="n">u</span><span class="o">.</span><span class="na">c</span> <span class="n">v</span><span class="o">.</span><span class="na">c</span> <span class="n">w</span><span class="o">.</span><span class="na">c</span>
-     <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">prog03</span> <span class="n">u</span><span class="o">.</span><span class="na">c</span> <span class="n">v</span><span class="o">.</span><span class="na">c</span> <span class="n">w</span><span class="o">.</span><span class="na">c</span>
+ <span class="n">prog03</span> <span class="o">:</span> <span class="n">u</span><span class="p">.</span><span class="n">c</span> <span class="n">v</span><span class="p">.</span><span class="n">c</span> <span class="n">w</span><span class="p">.</span><span class="n">c</span>
+      <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">prog03</span> <span class="n">u</span><span class="p">.</span><span class="n">c</span> <span class="n">v</span><span class="p">.</span><span class="n">c</span> <span class="n">w</span><span class="p">.</span><span class="n">c</span>
 </pre></div>
 
 
@@ -133,57 +133,57 @@ by Zhaoyu Li
 <h3>Macros</h3>
 <p>A macro definition is a line containing an equal sign (=). When make encounters a name that appears to the left of the equal sign, that name is replaced by the contents to the right of the equal sign. It is not necessary to delimit the text string with double quote (") or single quote ('). If they are used, they become part of the text string.</p>
 <p>If we have the macro definition as follows,</p>
-<div class="codehilite"><pre><span class="n">NAME</span> <span class="p">=</span> <span class="n">Zhaoyu</span> <span class="n">Li</span>
+<div class="codehilite"><pre> <span class="n">NAME</span> <span class="o">=</span> <span class="n">Zhaoyu</span> <span class="n">Li</span>
 </pre></div>
 
 
 <p>Then subsequent references to <code>${NAME}</code> or <code>$(NAME)</code> are interpreted as <code>Zhaoyu Li</code>.</p>
 <h3>Examples</h3>
 <p>Here are two examples,</p>
-<div class="codehilite"><pre><span class="n">SUBDIRS</span> <span class="p">=</span> <span class="n">src</span> <span class="n">analyze</span>
+<div class="codehilite"><pre> <span class="n">SUBDIRS</span> <span class="o">=</span> <span class="n">src</span> <span class="n">analyze</span>
 
-<span class="n">all</span><span class="p">:</span> <span class="n">subdirs</span> <span class="n">test</span> <span class="n">analysis</span>
-     <span class="p">@</span><span class="n">echo</span> &quot;<span class="n">After</span> <span class="n">Build</span><span class="p">,</span> <span class="n">run</span> <span class="s">&#39;make analysis&#39;</span> <span class="n">to</span> <span class="n">run</span> <span class="n">analysis</span>&quot;
+ <span class="nl">all:</span> <span class="n">subdirs</span> <span class="n">test</span> <span class="n">analysis</span>
+      <span class="err">@</span><span class="n">echo</span> <span class="s">&quot;After Build, run &#39;make analysis&#39; to run analysis&quot;</span>
 
-<span class="n">test</span><span class="p">:</span> 
-     <span class="p">@</span><span class="n">echo</span> &quot;<span class="n">About</span> <span class="n">to</span> <span class="n">self</span><span class="o">-</span><span class="n">test</span>&quot;<span class="p">;</span> <span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">hw1</span>
+ <span class="nl">test:</span> 
+      <span class="err">@</span><span class="n">echo</span> <span class="s">&quot;About to self-test&quot;</span><span class="p">;</span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">hw1</span>
 
-<span class="n">analysis</span><span class="p">:</span> 
-     <span class="p">@</span><span class="n">cd</span> <span class="n">analyze</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">analysis</span>
+ <span class="nl">analysis:</span> 
+      <span class="err">@</span><span class="n">cd</span> <span class="n">analyze</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">analysis</span>
 
-<span class="n">subdirs</span><span class="p">:</span>
-     <span class="p">@</span><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> $<span class="p">(</span><span class="n">SUBDIRS</span><span class="p">);</span> <span class="n">do</span> <span class="o">\</span>
-          $<span class="p">(</span><span class="n">MAKE</span><span class="p">)</span> <span class="o">-</span><span class="n">C</span> $$<span class="n">dir</span><span class="p">;</span> <span class="o">\</span>
-     <span class="n">done</span>
+ <span class="nl">subdirs:</span>
+      <span class="err">@</span><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="err">$</span><span class="p">(</span><span class="n">SUBDIRS</span><span class="p">);</span> <span class="k">do</span> \
+           <span class="err">$</span><span class="p">(</span><span class="n">MAKE</span><span class="p">)</span> <span class="o">-</span><span class="n">C</span> <span class="err">$$</span><span class="n">dir</span><span class="p">;</span> \
+      <span class="n">done</span>
 
-<span class="n">clean</span><span class="p">:</span>
-     <span class="p">@</span><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> $<span class="p">(</span><span class="n">SUBDIRS</span><span class="p">);</span> <span class="n">do</span> <span class="o">\</span>
-          $<span class="p">(</span><span class="n">MAKE</span><span class="p">)</span> <span class="o">-</span><span class="n">C</span> $$<span class="n">dir</span> <span class="n">clean</span><span class="p">;</span> <span class="o">\</span>
-     <span class="n">done</span>
+ <span class="nl">clean:</span>
+      <span class="err">@</span><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="err">$</span><span class="p">(</span><span class="n">SUBDIRS</span><span class="p">);</span> <span class="k">do</span> \
+           <span class="err">$</span><span class="p">(</span><span class="n">MAKE</span><span class="p">)</span> <span class="o">-</span><span class="n">C</span> <span class="err">$$</span><span class="n">dir</span> <span class="n">clean</span><span class="p">;</span> \
+      <span class="n">done</span>
 </pre></div>
 
 
 <p>Let's see another example. Suppose you are provided with two files, MyThreads.h and MyThreads.o. The former is a header file that has to be included into your source files and the latter is a library of functions for you to use. In other words, your source files in which multithreaded capability is used depend on MyThreads.h and your executable depends on MyThreads.o.</p>
 <p>Suppose your assignment has the following files, prog01.c (the main function), and abc.c, def.c and xyz.c. All of these files contain access to multithread functions defined in MyThreads.h. You also designed some utility functions collected in files ut1.c and ut2.c. None of these two have access to the multithread capability. However, in your judgment, you believe any change made to ut1.c and ut2.c requires recompilation of abc.c and xyz.c. Therefore, on the source level, prog01.c, abc.c, def.c and xyz.c depend on MyThreads.h, and abc.c and xyz.c also depend on ut1.c and ut2.c. Suppose the final executable is to be called prog01.</p>
-<div class="codehilite"><pre>CC = gcc -ansi
+<div class="codehilite"><pre> CC = gcc -ansi
 
-prog01 : prog01.o abc.o def.o xyz.o ut1.o ut2.o MyThreads.o
-     <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -o prog01 prog01.o abc.o def.o xyz.o ut1.o ut2.o MyThreads.o -lthread
+ prog01 : prog01.o abc.o def.o xyz.o ut1.o ut2.o MyThreads.o
+      <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -o prog01 prog01.o abc.o def.o xyz.o ut1.o ut2.o MyThreads.o -lthread
 
-prog01.o : prog01.c MyThreads.h
-     <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c prog01.c
+ prog01.o : prog01.c MyThreads.h
+      <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c prog01.c
 
-abc.o : abc.c c ut2.c MyThreads.h
-     <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c abc.c
-def.o : def.c MyThreads.h
-     <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c def.c
-xyz.o : xyz.c ut1.c ut2.c MyThreads.h
-     <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c xyz.c
+ abc.o : abc.c c ut2.c MyThreads.h
+      <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c abc.c
+ def.o : def.c MyThreads.h
+      <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c def.c
+ xyz.o : xyz.c ut1.c ut2.c MyThreads.h
+      <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c xyz.c
 
-ut1.o : ut1.c
-     <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c ut1.c
-ut2.o : ut2.c
-     <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c ut2.c
+ ut1.o : ut1.c
+      <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c ut1.c
+ ut2.o : ut2.c
+      <span class="cp">${</span><span class="n">CC</span><span class="cp">}</span> -c ut2.c
 </pre></div>
 
 
@@ -191,11 +191,11 @@ ut2.o : ut2.c
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
-                            <li><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></li>
+                            <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
                             <li><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></li>
-                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
                             <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
+                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

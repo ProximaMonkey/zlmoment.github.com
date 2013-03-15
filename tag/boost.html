@@ -54,20 +54,20 @@ by Zhaoyu Li
         <div class="summary" style="margin:18px 0 0 0;"><p>这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 <code>Boost.Thread</code> ，用于开发独立于平台的多线程应用程序。</p>
 <h3>线程创建</h3>
 <p>相关类为 <code>boost::thread</code> ，定义在 <code>boost/thread.hpp</code> 中，用于创建一个新线程。</p>
-<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
-<span class="c">#include &lt;iostream&gt; </span>
+<div class="codehilite"><pre><span class="cp">#include &lt;boost/thread.hpp&gt; </span>
+<span class="cp">#include &lt;iostream&gt;</span>
 
-<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
+<span class="kt">void</span> <span class="nf">wait</span><span class="p">(</span><span class="kt">int</span> <span class="n">seconds</span><span class="p">)</span> 
 <span class="p">{</span> 
-    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
-<span class="p">}</span> 
+    <span class="n">boost</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
+<span class="p">}</span>
 
-<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
+<span class="kt">void</span> <span class="nf">thread</span><span class="p">()</span> 
 <span class="p">{</span> 
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
     <span class="p">{</span> 
-        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
-        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl ...</span></pre></div> <a class="" href="http://hackecho.com/2013/03/boost-thread/">Read more...</a></div>
+        <span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> 
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl ...</span></pre></div> <a class="" href="http://hackecho.com/2013/03/boost-thread/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

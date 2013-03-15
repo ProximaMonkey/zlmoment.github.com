@@ -43,6 +43,80 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/socket-programming-in-php/">PHP中的Socket编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>关于PHP socket的资料网上着实不多，或者讲的都不是很全面。为了更好地用PHP来处理socket，天堂皓月博客特地来简单总结一下其用法，尽量会做到深入浅出：）</p>
+<h3>文章结构：</h3>
+<ul>
+<li>
+<p>Socket基础知识</p>
+</li>
+<li>
+<p>编写服务器</p>
+</li>
+<li>
+<p>编写客户端</p>
+</li>
+<li>
+<p>总结</p>
+</li>
+</ul>
+<p>通过这三部分你将会体验到Socket的魅力，并了解怎样去编写一个服务器，怎样通过Sockets连接到服务器，服务器怎样处理信息并将信息发送给相应的客户端。</p>
+<p>不管你信不信，只要你用过PHP，就一定用过Sockets。HTTP服务器就是一个Socket服务器，浏览器就是客户端，也就是最简单的C/S模式。</p>
+<h3>Socket基础知识</h3>
+<p>我们可以把Socket当做是一种数据结构，客户端和服务器间通过这种数据结构来交换数据。服务器开始监听连接，当客户端想要连接服务器时，会通过服务器监听的端口开启一个会话，服务器收到客户端的请求后，建立连接完毕，然后继续监听下一次连接。</p>
+<p>要产生一个Socket，你我们需要三个变量：一个协议（protocol）、一个socket类型（socket type）和一个公共协议类型（common protocol type）。下面将会详细介绍各个部分的具体内容。</p>
+<p><strong>协议</strong></p>
+<ul>
+<li>
+<p>AF_INET：这是大多数用来产生socket的协议，使用TCP或UDP来传输，用在IPv4的地址</p>
+</li>
+<li>
+<p>AF_INET6：与上面类似 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/socket-programming-in-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">XML与JSON的格式转换方法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
+<p>废话不多说，直接上代码：</p>
+<div class="codehilite"><pre><span class="kd">public</span> <span class="n">function</span> <span class="nf">json_to_xml</span><span class="o">(</span><span class="n">$source</span><span class="o">,</span><span class="n">$charset</span><span class="o">=</span><span class="err">&#39;</span><span class="n">utf8</span><span class="err">&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">$array</span> <span class="o">=</span> <span class="n">json_decode</span><span class="o">(</span><span class="n">$source</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+    <span class="n">$xml</span>  <span class="o">=</span><span class="err">&#39;</span><span class="o">&lt;?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.0&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="o">?&gt;</span> <span class="err">&#39;</span><span class="o">;</span>
+    <span class="n">$xml</span> <span class="o">.=</span><span class="err">&#39;</span><span class="o">&lt;</span><span class="n">data</span><span class="o">&gt;</span><span class="err">&#39;</span><span class="o">;</span>
+    <span class="n">$xml</span> <span class="o">.=</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">change</span><span class="o">(</span><span class="n">$array</span><span class="o">);</span>
+    <span class="n">$xml</span> <span class="o">.=</span><span class="err">&#39;</span><span class="o">&lt;/</span><span class="n">data</span><span class="o">&gt;</span><span class="err">&#39;</span><span class="o">;</span>
+    <span class="k">return ...</span></pre></div> <a class="" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>近日因为小组项目的需要，要为一款Android应用（Howdy，敬请期待）开发服务器端。在HTTP协议的基础上，服务器需要根据请求返回JSON数据包（当然也可以返回XML，有关XML与JSON的转换请参看《<a href="http://www.hackecho.com/archives/444.html">XML与JSON的格式转换方法</a>》），因此简单研究了一下PHP处理JSON数据的方法。</p>
+<p>从5.2版本开始，PHP原生提供json_encode()和json_decode()函数，前者用于编码，后者用于解码。5.2以前的版本请自行到网上下载相应的JSON解析类。</p>
+<p>我们先来了解一下<strong>索引数组</strong>和<strong>关联数组</strong>：</p>
+<p>PHP支持两种数组，一种是只保存"值"（value）的索引数组（indexed array），另一种是保存"名值对"（name/value）的关联数组（associative array）。一般在JSON数据格式中，索引数组的用<code>[]</code>包围，各个值之间用英文逗号分隔，如<code>["one","two","three"]</code>；关联数组用{}包围，键值之间用英文冒号一一对应，如 ...</p> <a class="" href="http://hackecho.com/2011/08/json-operation-in-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/intro-of-mvc-structure/">对MVC架构的简单解读</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 05 March 2011
 

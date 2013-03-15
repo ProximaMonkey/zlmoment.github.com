@@ -86,10 +86,10 @@ by Zhaoyu Li
     <div class="article">
         <p>Stackoverflow上面有一个问题（<a href="http://stackoverflow.com/questions/739654/understanding-python-decorators">Here</a>），问题是这样的：</p>
 <p>如果使用如下的代码：</p>
-<div class="codehilite"><pre><span class="p">@</span><span class="n">makebold</span>
-<span class="p">@</span><span class="n">makeitalic</span>
-<span class="n">def</span> <span class="n">say</span><span class="p">():</span>
-    <span class="k">return</span> &quot;<span class="n">Hello</span>&quot;
+<div class="codehilite"><pre><span class="nd">@makebold</span>
+<span class="nd">@makeitalic</span>
+<span class="k">def</span> <span class="nf">say</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">&quot;Hello&quot;</span>
 </pre></div>
 
 
@@ -99,83 +99,83 @@ by Zhaoyu Li
 
 
 <p>你会怎么做？最后给出的答案是：</p>
-<div class="codehilite"><pre>def makebold(fn):
-    def wrapped():
-        return &quot;<span class="nt">&lt;b&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/b&gt;</span>&quot;
-    return wrapped
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">makebold</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s">&quot;&lt;b&gt;&quot;</span> <span class="o">+</span> <span class="n">fn</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;&lt;/b&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">wrapped</span>
 
-def makeitalic(fn):
-    def wrapped():
-        return &quot;<span class="nt">&lt;i&gt;</span>&quot; + fn() + &quot;<span class="nt">&lt;/i&gt;</span>&quot;
-    return wrapped
+<span class="k">def</span> <span class="nf">makeitalic</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s">&quot;&lt;i&gt;&quot;</span> <span class="o">+</span> <span class="n">fn</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;&lt;/i&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">wrapped</span>
 
-@makebold
-@makeitalic
-def hello():
-    return &quot;hello world&quot;
+<span class="nd">@makebold</span>
+<span class="nd">@makeitalic</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">&quot;hello world&quot;</span>
 
-print hello() ## 返回 <span class="nt">&lt;b&gt;&lt;i&gt;</span>hello world<span class="nt">&lt;/i&gt;&lt;/b&gt;</span>
+<span class="k">print</span> <span class="n">hello</span><span class="p">()</span> <span class="c">## 返回 &lt;b&gt;&lt;i&gt;hello world&lt;/i&gt;&lt;/b&gt;</span>
 </pre></div>
 
 
 <p>其中的@其实就是Python的装饰器。</p>
 <p>装饰器模式可以在不影响其它对象的情况下，以动态、透明的方式给单个对象添加职责，也能够处理那些可以撤销的职责。经常用于日志记录、性能测试等场合。</p>
 <p>想象一下这个很常见的场景，你写了一个方法只提供给以登陆的用户访问，你可以写以下代码：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">A</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">A</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">is_login</span><span class="p">():</span>
         <span class="n">do</span> <span class="n">something</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">pass</span>
+        <span class="k">pass</span>
 </pre></div>
 
 
 <p>这当然没什么问题，但是你又写了一个方法B，也要求只有登录用户可以访问，于是有写了以下代码：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">B</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">B</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">is_login</span><span class="p">():</span>
         <span class="n">do</span> <span class="n">something</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">pass</span>
+        <span class="k">pass</span>
 </pre></div>
 
 
 <p>问题出来了，如果不是两个方法而是一堆方法，你可能就有点受不了啦。当然聪明的你可以想出这个方法：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">A</span><span class="p">():</span>
-    <span class="n">pass</span>
-<span class="n">def</span> <span class="n">B</span><span class="p">():</span>
-    <span class="n">pass</span>
-<span class="n">def</span> <span class="n">login_required</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
-    <span class="n">def</span> <span class="n">ff</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">A</span><span class="p">():</span>
+    <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">B</span><span class="p">():</span>
+    <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">login_required</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">ff</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">is_login</span><span class="p">():</span>
             <span class="n">fn</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">pass</span>
+            <span class="k">pass</span>
     <span class="k">return</span> <span class="n">ff</span>
 
-<span class="n">A</span> <span class="p">=</span> <span class="n">login_required</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="n">B</span> <span class="p">=</span> <span class="n">login_required</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">login_required</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">login_required</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 </pre></div>
 
 
 <p>你可能没有想到，对于这么好用的东西，python优雅的支持，这就是@修饰符：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">login_required</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
-    <span class="n">def</span> <span class="n">ff</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">is_login</span><span class="p">():</span>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">login_required</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">ff</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">is_login</span><span class="p">():</span>
             <span class="n">fn</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">pass</span>
+            <span class="k">pass</span>
     <span class="k">return</span> <span class="n">ff</span>
 
-<span class="p">@</span><span class="n">login_required</span>
-<span class="n">def</span> <span class="n">A</span><span class="p">():</span>
-    <span class="n">pass</span>
-<span class="p">@</span><span class="n">login_required</span>
-<span class="n">def</span> <span class="n">B</span><span class="p">():</span>
-    <span class="n">pass</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">A</span><span class="p">():</span>
+    <span class="k">pass</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">B</span><span class="p">():</span>
+    <span class="k">pass</span>
 </pre></div>
 
 
 <p><strong>在方法A上边写一个@修饰符，调用方法A的时候会调用修饰符后边的方法B，方法B以A方法为参数，而且需要返回一个可调用的对象，这个可调用的对象会使用A方法提供的参数执行。</strong>看这个例子：</p>
-<div class="codehilite"><pre><span class="c">#!/usr/bin/env python  </span>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
 
 <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">&#39;a&#39;</span>
@@ -202,11 +202,11 @@ print hello() ## 返回 <span class="nt">&lt;b&gt;&lt;i&gt;</span>hello world<sp
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
-                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
+                            <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
                             <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
-                            <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
-                            <li><a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">趣味算法面试题：男女比例问题</a></li>
+                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
+                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
+                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

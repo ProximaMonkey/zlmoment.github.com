@@ -43,6 +43,26 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">页面滚动时层智能浮动定位的实现</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 13 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>你可能第一时间注意到了本博客的导航条在向上拉动页面时，如果导航条到了页面顶端便会自动停靠，我们称之为层的智能浮动效果。很早之前国外许多网站上已经开始使用这种效果。近年来国内许多门户也开始使用层的智能浮动来给用户带来更好的体验，如淘宝网搜索结果页的导航条，会自动浮动。再如下面的例子，是我们熟知的新浪微博的通知栏：</p>
+<p><a href="/static/images/2011/10/previous.png"><img alt="" src="/static/images/2011/10/previous.png" /></a></p>
+<p>当我们滑动网页时，可以看到如下效果：</p>
+<p><a href="/static/images/2011/10/last.png"><img alt="" src="/static/images/2011/10/last.png" /></a></p>
+<p>右上角的通知栏始终固定不动，不管网页怎么滑动。</p>
+<p>当然，这并不完全是我们想要实现的效果，因为一开始，这个通知栏就是固定的，即CSS里定义position:fixed。我们想要实现的效果是，一开始素并不是固定的，而是随网页滚动的，只有当这个元素滚动到浏览器边缘时，才会固定不动，当页面又回滚到原来位置时，元素解除固定，继续随网页进行滚动，如本博客的导航栏一样。</p>
+<p>下面我们就来利用jQuery实现这种效果。</p>
+<p>当然，因为要用到jQuery，我们首先要做的就是引入jQuery文件：</p>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/fixed-scroll-of-webpage/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 16 September 2011
 

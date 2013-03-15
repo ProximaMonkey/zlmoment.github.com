@@ -93,50 +93,50 @@ by Zhaoyu Li
 <p>描述：Returns a string containing the JSON representation of value.</p>
 <p>其中第二个参数为可选参数，<strong>一般当传入true值是返回数组类型，不传值则返回对象。</strong></p>
 <p>我们先看一个数组转换的例子：</p>
-<div class="codehilite"><pre>$<span class="n">arr</span> <span class="p">=</span> <span class="n">array</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">=</span><span class="o">&gt;</span>1<span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">=</span><span class="o">&gt;</span>2<span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">=</span><span class="o">&gt;</span>3<span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">=</span><span class="o">&gt;</span>4<span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">=</span><span class="o">&gt;</span>5<span class="p">);</span>
-<span class="n">echo</span> <span class="n">json_encode</span><span class="p">(</span>$<span class="n">arr</span><span class="p">);</span>
+<div class="codehilite"><pre><span class="x">$arr = array (&#39;a&#39;=&gt;1,&#39;b&#39;=&gt;2,&#39;c&#39;=&gt;3,&#39;d&#39;=&gt;4,&#39;e&#39;=&gt;5);</span>
+<span class="x">echo json_encode($arr);</span>
 </pre></div>
 
 
 <p>输出结果为</p>
-<div class="codehilite"><pre><span class="p">{</span>&quot;<span class="n">a</span>&quot;<span class="p">:</span>1<span class="p">,</span>&quot;<span class="n">b</span>&quot;<span class="p">:</span>2<span class="p">,</span>&quot;<span class="n">c</span>&quot;<span class="p">:</span>3<span class="p">,</span>&quot;<span class="n">d</span>&quot;<span class="p">:</span>4<span class="p">,</span>&quot;<span class="n">e</span>&quot;<span class="p">:</span>5<span class="p">}</span>
+<div class="codehilite"><pre><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="o">:</span><span class="mi">3</span><span class="p">,</span><span class="s">&quot;d&quot;</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span><span class="s">&quot;e&quot;</span><span class="o">:</span><span class="mi">5</span><span class="p">}</span>
 </pre></div>
 
 
 <p>再看一个对象转换的例子：</p>
-<div class="codehilite"><pre>$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">body</span> <span class="p">=</span> <span class="s">&#39;another post&#39;</span><span class="p">;</span>
-$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">id</span> <span class="p">=</span> 21<span class="p">;</span>
-$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">approved</span> <span class="p">=</span> <span class="n">true</span><span class="p">;</span>
-$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">favorite_count</span> <span class="p">=</span> 1<span class="p">;</span>
-$<span class="n">obj</span><span class="o">-&gt;</span><span class="n">status</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
-<span class="n">echo</span> <span class="n">json_encode</span><span class="p">(</span>$<span class="n">obj</span><span class="p">);</span>
+<div class="codehilite"><pre><span class="x">$obj-&gt;body = &#39;another post&#39;;</span>
+<span class="x">$obj-&gt;id = 21;</span>
+<span class="x">$obj-&gt;approved = true;</span>
+<span class="x">$obj-&gt;favorite_count = 1;</span>
+<span class="x">$obj-&gt;status = NULL;</span>
+<span class="x">echo json_encode($obj);</span>
 </pre></div>
 
 
 <p>输出结果为</p>
-<div class="codehilite"><pre><span class="p">{</span>
-　　&quot;<span class="n">body</span>&quot;<span class="p">:</span>&quot;<span class="n">another</span> <span class="n">post</span>&quot;<span class="p">,</span>
-　　&quot;<span class="n">id</span>&quot;<span class="p">:</span>21<span class="p">,</span>
-　　&quot;<span class="n">approved</span>&quot;<span class="p">:</span><span class="n">true</span><span class="p">,</span>
-　　&quot;<span class="n">favorite_count</span>&quot;<span class="p">:</span>1<span class="p">,</span>
-　　&quot;<span class="n">status</span>&quot;<span class="p">:</span><span class="n">null</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span class="x">{</span>
+<span class="x">　　&quot;body&quot;:&quot;another post&quot;,</span>
+<span class="x">　　&quot;id&quot;:21,</span>
+<span class="x">　　&quot;approved&quot;:true,</span>
+<span class="x">　　&quot;favorite_count&quot;:1,</span>
+<span class="x">　　&quot;status&quot;:null</span>
+<span class="x">}</span>
 </pre></div>
 
 
 <p>注意：由于JSON只接受utf-8编码的字符，所以json_encode()的参数<strong>必须</strong>是utf-8编码，否则会得到空字符或者null。</p>
 <p>我们来看一个具体的例子：</p>
-<div class="codehilite"><pre>$<span class="n">arr</span> <span class="p">=</span> <span class="n">array</span><span class="p">(</span>
-    <span class="s">&#39;name&#39;</span> <span class="p">=</span><span class="o">&gt;</span><span class="s">&#39;李昭谕&#39;</span><span class="p">,</span>
-    <span class="s">&#39;nick&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;天堂皓月&#39;</span><span class="p">,</span>
-    <span class="s">&#39;contact&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="n">array</span><span class="p">(</span>
-        <span class="s">&#39;email&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;zhaoyulee@126.com&#39;</span><span class="p">,</span>
-        <span class="s">&#39;website&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;http://www.hackecho.com&#39;</span><span class="p">,</span>
-        <span class="p">),</span>
-    <span class="s">&#39;sex&#39;</span> <span class="p">=</span><span class="o">&gt;</span> <span class="s">&#39;男&#39;</span><span class="p">,</span>
-<span class="p">);</span>
-$<span class="n">json_string</span> <span class="p">=</span> <span class="n">json_encode</span><span class="p">(</span>$<span class="n">arr</span><span class="p">);</span>
-<span class="n">echo</span> $<span class="n">json_string</span><span class="p">.</span><span class="s">&#39;&lt;br&gt;&lt;br&gt;&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span class="x">$arr = array(</span>
+<span class="x">    &#39;name&#39; =&gt;&#39;李昭谕&#39;,</span>
+<span class="x">    &#39;nick&#39; =&gt; &#39;天堂皓月&#39;,</span>
+<span class="x">    &#39;contact&#39; =&gt; array(</span>
+<span class="x">        &#39;email&#39; =&gt; &#39;zhaoyulee@126.com&#39;,</span>
+<span class="x">        &#39;website&#39; =&gt; &#39;http://www.hackecho.com&#39;,</span>
+<span class="x">        ),</span>
+<span class="x">    &#39;sex&#39; =&gt; &#39;男&#39;,</span>
+<span class="x">);</span>
+<span class="x">$json_string = json_encode($arr);</span>
+<span class="x">echo $json_string.&#39;&lt;br&gt;&lt;br&gt;&#39;;</span>
 </pre></div>
 
 
@@ -148,11 +148,11 @@ $<span class="n">json_string</span> <span class="p">=</span> <span class="n">jso
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
                             <li><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></li>
-                            <li><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></li>
+                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
                             <li><a href="http://hackecho.com/2011/03/intro-of-mvc-structure/">对MVC架构的简单解读</a></li>
                             <li><a href="http://hackecho.com/2011/04/level-of-programmer/">传说中程序员的层次</a></li>
+                            <li><a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">XML与JSON的格式转换方法</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

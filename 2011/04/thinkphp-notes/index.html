@@ -86,23 +86,23 @@ by Zhaoyu Li
     <div class="article">
         <p>因为是自己的笔记，所以比较杂乱，见谅。</p>
 <p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
-<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
-    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
-        <span class="p">....</span>
+<div class="codehilite"><pre><span class="x">//IndexAction.class.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="o">....</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="o">?&gt;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 
 <p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
-<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
+<div class="codehilite"><pre><span class="x">//UserModel.class.php</span>
+<span class="cp">&lt;?php</span>
+    <span class="k">class</span> <span class="nc">UserModel</span> <span class="k">extends</span> <span class="nx">Model</span>
     <span class="p">{}</span>
-<span class="o">?&gt;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 
@@ -113,49 +113,49 @@ by Zhaoyu Li
 <p>配置设置可以利用C函数动态改变。</p>
 <p><strong>有关TP的模板引擎的变量输出：</strong></p>
 <p>在应用模块中，如果某个操作是需要页面显示的，只要对应在Myapp/Tpl/default/里建立一个文件夹，文件夹以模块的名称来命名，然后在这个文件夹下建立一个以这个function名称来命名的html文件，就可以在这个方法中使用$this-&gt;display()方法来直接调用该模板。（也可以调用其它模块的其它模板或显式指定模板文件位置和名称，先忽略）</p>
-<div class="codehilite"><pre><span class="n">Tpl</span> <span class="o">-&gt;</span> <span class="n">default</span> <span class="o">-&gt;</span> 模块名的文件夹 <span class="o">-&gt;</span> 函数名的<span class="n">html</span>文件（即模板）
+<div class="codehilite"><pre><span class="n">Tpl</span> <span class="o">-&gt;</span> <span class="k">default</span> <span class="o">-&gt;</span> <span class="err">模块名的文件夹</span> <span class="o">-&gt;</span> <span class="err">函数名的</span><span class="n">html</span><span class="err">文件（即模板）</span>
 </pre></div>
 
 
 <p>在Action类里面使用 assign方法对模板变量赋值：</p>
-<div class="codehilite"><pre><span class="p">$</span><span class="nv">this</span>-&gt;assign(&#39;name&#39;,<span class="p">$</span><span class="nv">value</span>);
-// 下面的写法是等效的
-<span class="p">$</span><span class="nv">this</span>-&gt;name = <span class="p">$</span><span class="nv">value</span> ;
-// 模板变量赋值后就需要调用模板文件来输出相关的变量，模板调用通过display方法来实现
-<span class="p">$</span><span class="nv">this</span>-&gt;;display();
-<span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span><span class="err">{</span><span class="p">$</span><span class="nv">name</span><span class="p">}</span><span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-    测试输出：<span class="err">{</span><span class="p">$</span><span class="nv">name</span><span class="p">}</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<div class="codehilite"><pre><span class="x">$this-&gt;assign(&#39;name&#39;,$value);</span>
+<span class="x">// 下面的写法是等效的</span>
+<span class="x">$this-&gt;name = $value ;</span>
+<span class="x">// 模板变量赋值后就需要调用模板文件来输出相关的变量，模板调用通过display方法来实现</span>
+<span class="x">$this-&gt;;display();</span>
+<span class="x">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;title&gt;{$name}&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    测试输出：{$name}</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
 </pre></div>
 
 
 <p>如果要同时输出多个模板变量，可以使用下面的方式：</p>
-<div class="codehilite"><pre>$<span class="n">array</span> <span class="p">=</span> <span class="n">array</span><span class="p">();</span>
-$<span class="n">array</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>  <span class="p">=</span>   <span class="s">&#39;thinkphp&#39;</span><span class="p">;</span>
-$<span class="n">array</span><span class="p">[</span><span class="s">&#39;email&#39;</span><span class="p">]</span> <span class="p">=</span>   <span class="s">&#39;abc@123.com&#39;</span><span class="p">;</span>
-$<span class="n">array</span><span class="p">[</span><span class="s">&#39;phone&#39;</span><span class="p">]</span> <span class="p">=</span>   <span class="s">&#39;12345678&#39;</span><span class="p">;</span>
+<div class="codehilite"><pre><span class="x">$array = array();</span>
+<span class="x">$array[&#39;name&#39;]  =   &#39;thinkphp&#39;;</span>
+<span class="x">$array[&#39;email&#39;] =   &#39;abc@123.com&#39;;</span>
+<span class="x">$array[&#39;phone&#39;] =   &#39;12345678&#39;;</span>
 </pre></div>
 
 
 <p>用{$array.name}在模板中输出
 智能模式下的URL基本结构是这样的</p>
-<div class="codehilite"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">servername</span><span class="o">/</span><span class="n">appName</span><span class="o">/</span><span class="n">moduleName</span><span class="o">/</span><span class="n">actionName</span><span class="o">/</span><span class="n">params</span>
+<div class="codehilite"><pre><span class="nl">http:</span><span class="c1">//servername/appName/moduleName/actionName/params</span>
 </pre></div>
 
 
 <p>你可以理解为</p>
-<div class="codehilite"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span> 服务器地址 <span class="o">/</span> 入口文件位置 <span class="o">/</span> 应用模块名称 <span class="o">/</span>具体操作名称<span class="o">/</span> <span class="n">GET</span>变量参数
+<div class="codehilite"><pre><span class="nl">http:</span><span class="c1">// 服务器地址 / 入口文件位置 / 应用模块名称 /具体操作名称/ GET变量参数</span>
 </pre></div>
 
 
 <p>如：</p>
-<div class="codehilite"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span>127<span class="p">.</span>0<span class="p">.</span>0<span class="p">.</span>1<span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="o">/</span><span class="n">Index</span><span class="o">/</span><span class="n">index</span>
+<div class="codehilite"><pre><span class="nl">http:</span><span class="c1">//127.0.0.1/index.php/Index/index</span>
 </pre></div>
 
 
@@ -165,74 +165,74 @@ $<span class="n">array</span><span class="p">[</span><span class="s">&#39;phone&
 <p>关于MVC模式的经典语录：C的作用，就是从M中取得数据到V</p>
 <p>自动完成功能要详细阅读手册。</p>
 <p><strong>模板常量：</strong></p>
-<div class="codehilite"><pre><span class="n">__ROOT__</span>    网站根目录地址
-<span class="n">__APP__</span>         当前项目（入口文件）地址
-<span class="n">__URL__</span>         当前模块地址
-<span class="n">__ACTION__</span>   当前操作地址
-<span class="n">__SELF__</span>       当前 <span class="n">URL</span> 地址
+<div class="codehilite"><pre><span class="n">__ROOT__</span><span class="err">   </span> <span class="err">网站根目录地址</span>
+<span class="n">__APP__</span><span class="err">        </span> <span class="err">当前项目（入口文件）地址</span>
+<span class="n">__URL__</span><span class="err">        </span> <span class="err">当前模块地址</span>
+<span class="n">__ACTION__</span><span class="err">  </span> <span class="err">当前操作地址</span>
+<span class="n">__SELF__</span><span class="err">      </span> <span class="err">当前</span> <span class="n">URL</span> <span class="err">地址</span>
 </pre></div>
 
 
 <p><strong>dump($var, $echo=true,$label=null, $strict=true)</strong>函数。浏览器友好的变量输出。</p>
 <p>连贯操作:所谓连贯操作，是TP利用__call方法来实现的一些特殊的Model类方法，可以对数据对象连续调用数个方法(参数)来设定特定的条件，然后执行最终所指定的操作，这类特定方法的命名都很直观易记：
 用于查询表达式的</p>
-<div class="codehilite"><pre><span class="s">&#39;field&#39;</span><span class="o">//</span>要查询的字段名
-<span class="s">&#39;table&#39;</span><span class="o">//</span>数据表名称 不指定时，默认为当前数据对象所对应的表
-<span class="s">&#39;where&#39;</span><span class="o">//</span>查询条件
-<span class="s">&#39;order&#39;</span><span class="o">//</span> 排序
-<span class="s">&#39;limit&#39;</span><span class="o">//</span>结果限制
-<span class="s">&#39;having&#39;</span><span class="o">//</span><span class="n">having</span>支持
-<span class="s">&#39;group&#39;</span><span class="o">//</span><span class="n">group</span>支持
-<span class="s">&#39;distinct&#39;</span><span class="o">//</span><span class="n">distinct</span>筛选支持
-<span class="s">&#39;lazy&#39;</span><span class="o">//</span>惰性查询支持
+<div class="codehilite"><pre><span class="err">&#39;</span><span class="n">field</span><span class="err">&#39;</span><span class="c1">//要查询的字段名</span>
+<span class="err">&#39;</span><span class="n">table</span><span class="err">&#39;</span><span class="c1">//数据表名称 不指定时，默认为当前数据对象所对应的表</span>
+<span class="err">&#39;</span><span class="n">where</span><span class="err">&#39;</span><span class="c1">//查询条件</span>
+<span class="err">&#39;</span><span class="n">order</span><span class="err">&#39;</span><span class="c1">// 排序</span>
+<span class="err">&#39;</span><span class="n">limit</span><span class="err">&#39;</span><span class="c1">//结果限制</span>
+<span class="err">&#39;</span><span class="n">having</span><span class="err">&#39;</span><span class="c1">//having支持</span>
+<span class="err">&#39;</span><span class="n">group</span><span class="err">&#39;</span><span class="c1">//group支持</span>
+<span class="err">&#39;</span><span class="n">distinct</span><span class="err">&#39;</span><span class="c1">//distinct筛选支持</span>
+<span class="err">&#39;</span><span class="n">lazy</span><span class="err">&#39;</span><span class="c1">//惰性查询支持</span>
 </pre></div>
 
 
 <p>用于统计查询的</p>
-<div class="codehilite"><pre><span class="s">&#39;count&#39;</span><span class="o">//</span>统计满足条件的记录个数
-<span class="s">&#39;sum&#39;</span><span class="o">//</span>统计某个字段的总和
-<span class="s">&#39;min&#39;</span><span class="o">//</span>取得某个字段的最小值
-<span class="s">&#39;max&#39;</span><span class="o">//</span>取得某个字段的最大值
-<span class="s">&#39;avg&#39;</span><span class="o">//</span>统计某个字段的平均值
+<div class="codehilite"><pre><span class="err">&#39;</span><span class="n">count</span><span class="err">&#39;</span><span class="c1">//统计满足条件的记录个数</span>
+<span class="err">&#39;</span><span class="n">sum</span><span class="err">&#39;</span><span class="c1">//统计某个字段的总和</span>
+<span class="err">&#39;</span><span class="n">min</span><span class="err">&#39;</span><span class="c1">//取得某个字段的最小值</span>
+<span class="err">&#39;</span><span class="n">max</span><span class="err">&#39;</span><span class="c1">//取得某个字段的最大值</span>
+<span class="err">&#39;</span><span class="n">avg</span><span class="err">&#39;</span><span class="c1">//统计某个字段的平均值</span>
 </pre></div>
 
 
 <p><strong>获取单条记录：</strong></p>
-<div class="codehilite"><pre><span class="nb">find</span><span class="p">(</span>$<span class="n">options</span><span class="p">=</span><span class="n">array</span><span class="p">());</span>
-<span class="o">//</span>$<span class="n">options</span><span class="p">=</span><span class="n">array</span><span class="p">()</span>是查询条件表达式。
+<div class="codehilite"><pre><span class="x">find($options=array());</span>
+<span class="x">//$options=array()是查询条件表达式。</span>
 </pre></div>
 
 
 <p>利用find方法进行查询，会自动加上limit=1来得到指定条件的一条记录。</p>
-<div class="codehilite"><pre><span class="c1">//SELECT * FROM `think_form` WHERE id=&#39;2&#39; LIMIT 1</span>
-<span class="err">$</span><span class="n">data</span> <span class="o">=</span> <span class="err">$</span><span class="n">Form</span><span class="o">-&gt;</span><span class="n">find</span><span class="p">(</span><span class="mh">2</span><span class="p">);</span>
-<span class="n">dump</span> <span class="p">(</span> <span class="err">$</span><span class="n">data</span> <span class="p">);</span>
-<span class="n">dump</span><span class="p">(</span> <span class="err">$</span><span class="n">Form</span><span class="o">-&gt;</span><span class="n">getLastSql</span><span class="p">()</span> <span class="p">);</span>
-<span class="n">exit</span><span class="p">;</span>
+<div class="codehilite"><pre><span class="x">//SELECT * FROM `think_form` WHERE id=&#39;2&#39; LIMIT 1</span>
+<span class="x">$data = $Form-&gt;find(2);</span>
+<span class="x">dump ( $data );</span>
+<span class="x">dump( $Form-&gt;getLastSql() );</span>
+<span class="x">exit;</span>
 
-<span class="c1">// SELECT * FROM `think_form` WHERE ( `email` = &#39;abcdefg&#39; ) LIMIT 1</span>
-<span class="err">$</span><span class="n">where</span><span class="p">[&#39;</span><span class="n">email</span><span class="p">&#39;]</span> <span class="o">=</span> <span class="p">&#39;</span><span class="n">abcdefg</span><span class="p">&#39;;</span>
-<span class="err">$</span><span class="n">options</span><span class="p">[&#39;</span><span class="n">where</span><span class="p">&#39;]</span> <span class="o">=</span> <span class="err">$</span><span class="n">where</span><span class="p">;</span>
-<span class="err">$</span><span class="n">data</span> <span class="o">=</span> <span class="err">$</span><span class="n">Form</span><span class="o">-&gt;</span><span class="n">find</span><span class="p">(</span><span class="err">$</span><span class="n">options</span><span class="p">);</span>
-<span class="n">dump</span> <span class="p">(</span> <span class="err">$</span><span class="n">data</span> <span class="p">);</span>
-<span class="n">dump</span><span class="p">(</span> <span class="err">$</span><span class="n">Form</span><span class="o">-&gt;</span><span class="p">;</span><span class="n">getLastSql</span><span class="p">()</span> <span class="p">);</span>
-<span class="n">exit</span><span class="p">;</span>
+<span class="x">// SELECT * FROM `think_form` WHERE ( `email` = &#39;abcdefg&#39; ) LIMIT 1</span>
+<span class="x">$where[&#39;email&#39;] = &#39;abcdefg&#39;;</span>
+<span class="x">$options[&#39;where&#39;] = $where;</span>
+<span class="x">$data = $Form-&gt;find($options);</span>
+<span class="x">dump ( $data );</span>
+<span class="x">dump( $Form-&gt;;getLastSql() );</span>
+<span class="x">exit;</span>
 </pre></div>
 
 
 <p>但是这样未免麻烦了些，这时我们可以使用连贯操作，结果是一样的。不过这样就直观了很多</p>
-<div class="codehilite"><pre>$<span class="n">where</span><span class="p">[</span><span class="s">&#39;email&#39;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#39;abcdefg&#39;</span><span class="p">;</span> <span class="o">//</span>多个条件时同样如此设置
-$<span class="n">data</span> <span class="p">=</span> $<span class="n">Form</span><span class="o">-&gt;</span><span class="n">where</span><span class="p">(</span>$<span class="n">where</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">find</span><span class="p">();</span>
-<span class="n">dump</span> <span class="p">(</span> $<span class="n">data</span> <span class="p">);</span>
-<span class="n">dump</span><span class="p">(</span> $<span class="n">Form</span><span class="o">-&gt;</span><span class="n">getLastSql</span><span class="p">()</span> <span class="p">);</span>
-<span class="n">exit</span><span class="p">;</span>
+<div class="codehilite"><pre><span class="x">$where[&#39;email&#39;] = &#39;abcdefg&#39;; //多个条件时同样如此设置</span>
+<span class="x">$data = $Form-&gt;where($where)-&gt;find();</span>
+<span class="x">dump ( $data );</span>
+<span class="x">dump( $Form-&gt;getLastSql() );</span>
+<span class="x">exit;</span>
 </pre></div>
 
 
 <p><strong>2 getField($field,$condition='') 获取一条记录的某个字段的值</strong></p>
-<div class="codehilite"><pre><span class="c1">//SELECT `email` AS `abcdefg` FROM `think_form` LIMIT 1</span>
-<span class="err">$</span><span class="n">where</span><span class="p">[&#39;</span><span class="n">email</span><span class="p">&#39;]</span> <span class="o">=</span> <span class="p">&#39;</span><span class="n">abcdefg</span><span class="p">&#39;;</span>
-<span class="err">$</span><span class="n">data</span> <span class="o">=</span> <span class="err">$</span><span class="n">Form</span><span class="o">-&gt;</span><span class="n">getField</span><span class="p">(</span><span class="err">$</span><span class="n">where</span><span class="p">);</span>
+<div class="codehilite"><pre><span class="x">//SELECT `email` AS `abcdefg` FROM `think_form` LIMIT 1</span>
+<span class="x">$where[&#39;email&#39;] = &#39;abcdefg&#39;;</span>
+<span class="x">$data = $Form-&gt;getField($where);</span>
 </pre></div>
 
 
@@ -240,94 +240,94 @@ $<span class="n">data</span> <span class="p">=</span> $<span class="n">Form</spa
 返回的将会是这个条件的id值
 sql将会是<code>SELECT * FROM <code>think_form</code> WHERE ( <code>email</code> = 'abcdefg' ) LIMIT 1</code></p>
 <p><strong>3 getFields($field,$condition='',$sepa=' ')获取数据集的个别字段值</strong></p>
-<div class="codehilite"><pre>$<span class="n">data</span> <span class="p">=</span> $<span class="n">Form</span><span class="o">-&gt;</span><span class="n">getFields</span><span class="p">(</span><span class="s">&#39;email&#39;</span><span class="p">);</span>
-<span class="o">//</span> <span class="n">SELECT</span> `<span class="n">email</span>` <span class="n">FROM</span> `<span class="n">think_form</span>
+<div class="codehilite"><pre><span class="x">$data = $Form-&gt;getFields(&#39;email&#39;);</span>
+<span class="x">// SELECT `email` FROM `think_form</span>
 </pre></div>
 
 
 <p><strong>4 getby字段名('字段值') --动态根据指定字段获取一条数据</strong></p>
-<div class="codehilite"><pre>$<span class="n">data</span> <span class="p">=</span> $<span class="n">Form</span><span class="o">-&gt;</span><span class="n">getbyemail</span><span class="p">(</span><span class="s">&#39;abcdefg&#39;</span><span class="p">);</span>
-<span class="o">//</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> `<span class="n">think_form</span>` <span class="n">WHERE</span> <span class="n">email</span><span class="p">=</span><span class="s">&#39;abcdefg&#39;</span> <span class="n">LIMIT</span> 1
+<div class="codehilite"><pre><span class="x">$data = $Form-&gt;getbyemail(&#39;abcdefg&#39;);</span>
+<span class="x">//SELECT * FROM `think_form` WHERE email=&#39;abcdefg&#39; LIMIT 1</span>
 </pre></div>
 
 
 <p><strong>5 获取多条记录select($options=array()) 或 findAll($options=array())</strong></p>
 <p>$option 参数设定的是查询表达式，不设置时，默认是获取全部数据.参数支持如下键名</p>
-<div class="codehilite"><pre><span class="n">table</span> 指定表名称，可以跨表访问，若不填则是当前<span class="n">DAO</span>
-<span class="n">distinct</span> 指定是否只列出不重复数据，如果想列出不重复数据，则为<span class="n">true</span>，不填则无此功能
-<span class="n">field</span> 指定要搜索的字段，不填则为<span class="o">*</span>
-<span class="n">join</span> 填写<span class="n">join</span>，可以支持数组或者直接使用字符串，如果是字符串，那么只支持<span class="n">LEFT</span> <span class="n">JOIN</span>，
-       如果想使用<span class="n">RIGHT</span> <span class="n">JOIN</span>，那么只能使用数组定义，并且必须写清<span class="n">RIGHT</span> <span class="n">JOIN</span>
-<span class="n">where</span> 指定查询条件<span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-<span class="n">where</span>可以多说点，功能很多。
+<div class="codehilite"><pre><span class="n">table</span> <span class="err">指定表名称，可以跨表访问，若不填则是当前</span><span class="n">DAO</span>
+<span class="n">distinct</span> <span class="err">指定是否只列出不重复数据，如果想列出不重复数据，则为</span><span class="nb">true</span><span class="err">，不填则无此功能</span>
+<span class="n">field</span> <span class="err">指定要搜索的字段，不填则为</span><span class="o">*</span>
+<span class="n">join</span> <span class="err">填写</span><span class="n">join</span><span class="err">，可以支持数组或者直接使用字符串，如果是字符串，那么只支持</span><span class="n">LEFT</span> <span class="n">JOIN</span><span class="err">，</span>
+<span class="err">      </span> <span class="err">如果想使用</span><span class="n">RIGHT</span> <span class="n">JOIN</span><span class="err">，那么只能使用数组定义，并且必须写清</span><span class="n">RIGHT</span> <span class="n">JOIN</span>
+<span class="n">where</span> <span class="err">指定查询条件</span><span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+<span class="n">where</span><span class="err">可以多说点，功能很多。</span>
 </pre></div>
 
 
 <p>首先说最简单的字符串查询，直接执行就OK了。
 使用数组指定查询条件。</p>
-<div class="codehilite"><pre>$<span class="n">whereArr</span><span class="p">=</span><span class="n">array</span><span class="p">(</span>
-    &quot;<span class="n">account</span>&quot;<span class="p">=</span><span class="o">&gt;</span>&quot;<span class="n">tdweb</span>&quot;<span class="p">,</span>
-    &quot;<span class="n">home</span>&quot;<span class="p">=</span><span class="o">&gt;</span>&quot;<span class="n">China</span>&quot;
-<span class="p">);</span>
-$<span class="n">options</span><span class="p">=</span><span class="n">array</span><span class="p">(</span>
-    &quot;<span class="n">where</span>&quot;<span class="p">=</span><span class="o">&gt;</span>$<span class="n">whereArr</span>
-<span class="p">);</span>
-$<span class="n">Dao</span><span class="o">-&gt;</span><span class="n">select</span><span class="p">(</span>$<span class="n">options</span><span class="p">);</span>
+<div class="codehilite"><pre><span class="x">$whereArr=array(</span>
+<span class="x">    &quot;account&quot;=&gt;&quot;tdweb&quot;,</span>
+<span class="x">    &quot;home&quot;=&gt;&quot;China&quot;</span>
+<span class="x">);</span>
+<span class="x">$options=array(</span>
+<span class="x">    &quot;where&quot;=&gt;$whereArr</span>
+<span class="x">);</span>
+<span class="x">$Dao-&gt;select($options);</span>
 </pre></div>
 
 
 <p>这样默认是查询<code>SELECT * FROM <code>test</code> WHERE ( <code>account</code> = 'tdweb' ) AND ( <code>home</code> = 'China' )</code>是查询相等条件的。
 那如果我想查询like条件怎么办？
 解决方法之一是定义LIKE_MATCH_FIELDS配置，这里指明要进行like查询的字段。现在我们稍微改下程序。</p>
-<div class="codehilite"><pre><span class="n">public</span> <span class="k">function</span> <span class="n">testDb</span><span class="p">()</span>  
-<span class="p">{</span>  
-    <span class="n">C</span><span class="p">(</span><span class="s">&#39;LIKE_MATCH_FIELDS&#39;</span><span class="p">,</span>&quot;<span class="n">account</span>&quot;<span class="p">);</span>  
-    $<span class="n">Dao</span><span class="p">=</span><span class="n">D</span><span class="p">(</span>&quot;<span class="n">Test</span>&quot;<span class="p">);</span>  
-    $<span class="n">whereArr</span><span class="p">=</span><span class="n">array</span><span class="p">(</span>  
-    &quot;<span class="n">account</span>&quot;<span class="p">=</span><span class="o">&gt;</span>&quot;<span class="n">tdweb</span>&quot;<span class="p">,</span>  
-    &quot;<span class="n">home</span>&quot;<span class="p">=</span><span class="o">&gt;</span>&quot;<span class="n">China</span>&quot;  
-<span class="p">);</span>  
-$<span class="n">options</span><span class="p">=</span><span class="n">array</span><span class="p">(</span>  
+<div class="codehilite"><pre><span class="x">public function testDb()  </span>
+<span class="x">{  </span>
+<span class="x">    C(&#39;LIKE_MATCH_FIELDS&#39;,&quot;account&quot;);  </span>
+<span class="x">    $Dao=D(&quot;Test&quot;);  </span>
+<span class="x">    $whereArr=array(  </span>
+<span class="x">    &quot;account&quot;=&gt;&quot;tdweb&quot;,  </span>
+<span class="x">    &quot;home&quot;=&gt;&quot;China&quot;  </span>
+<span class="x">);  </span>
+<span class="x">$options=array(</span>
 
-<span class="p">);</span>  
-<span class="n">dump</span><span class="p">(</span>$<span class="n">Dao</span><span class="o">-&gt;</span><span class="n">select</span><span class="p">(</span>$<span class="n">options</span><span class="p">));</span>  
-<span class="n">echo</span> $<span class="n">Dao</span><span class="o">-&gt;</span><span class="n">getLastSql</span><span class="p">();</span>  
-<span class="p">}</span>  
+<span class="x">);  </span>
+<span class="x">dump($Dao-&gt;select($options));  </span>
+<span class="x">echo $Dao-&gt;getLastSql();  </span>
+<span class="x">}</span>
 </pre></div>
 
 
 <p>得到的SQL就是<code>SELECT * FROM <code>test</code> WHERE ( <code>account</code> LIKE '%tdweb%' ) AND ( <code>home</code> = 'China' )</code></p>
 <p>接着，可以看如下代码</p>
-<div class="codehilite"><pre><span class="n">public</span> <span class="k">function</span> <span class="n">testDb</span><span class="p">()</span>  
-<span class="p">{</span>  
-    $<span class="n">Dao</span><span class="p">=</span><span class="n">D</span><span class="p">(</span>&quot;<span class="n">Test</span>&quot;<span class="p">);</span>  
-    $<span class="n">whereArr</span><span class="p">=</span><span class="n">array</span><span class="p">(</span>  
-    &quot;<span class="n">account</span>&quot;<span class="p">=</span><span class="o">&gt;</span><span class="n">array</span><span class="p">(</span>&quot;<span class="n">eq</span>&quot;<span class="p">,</span>&quot;<span class="n">tdweb</span>&quot;<span class="p">),</span>  
-    &quot;<span class="n">home</span>&quot;<span class="p">=</span><span class="o">&gt;</span><span class="n">array</span><span class="p">(</span>&quot;<span class="n">like</span>&quot;<span class="p">,</span>&quot;<span class="c">%Chi%&quot;),  </span>
-    &quot;<span class="n">age</span>&quot;<span class="p">=</span><span class="o">&gt;</span><span class="n">array</span><span class="p">(</span>&quot;<span class="n">between</span>&quot;<span class="p">,</span>&quot;1<span class="p">,</span>3&quot;<span class="p">)</span>  
-<span class="p">);</span>  
-$<span class="n">options</span><span class="p">=</span><span class="n">array</span><span class="p">(</span>  
-    &quot;<span class="n">where</span>&quot;<span class="p">=</span><span class="o">&gt;</span>$<span class="n">whereArr</span>  
-<span class="p">);</span>  
-<span class="n">dump</span><span class="p">(</span>$<span class="n">Dao</span><span class="o">-&gt;</span><span class="n">select</span><span class="p">(</span>$<span class="n">options</span><span class="p">));</span>  
-<span class="n">echo</span> $<span class="n">Dao</span><span class="o">-&gt;</span><span class="n">getLastSql</span><span class="p">();</span>  
-<span class="p">}</span>  
+<div class="codehilite"><pre><span class="x">public function testDb()  </span>
+<span class="x">{  </span>
+<span class="x">    $Dao=D(&quot;Test&quot;);  </span>
+<span class="x">    $whereArr=array(  </span>
+<span class="x">    &quot;account&quot;=&gt;array(&quot;eq&quot;,&quot;tdweb&quot;),  </span>
+<span class="x">    &quot;home&quot;=&gt;array(&quot;like&quot;,&quot;%Chi%&quot;),  </span>
+<span class="x">    &quot;age&quot;=&gt;array(&quot;between&quot;,&quot;1,3&quot;)  </span>
+<span class="x">);  </span>
+<span class="x">$options=array(  </span>
+<span class="x">    &quot;where&quot;=&gt;$whereArr  </span>
+<span class="x">);  </span>
+<span class="x">dump($Dao-&gt;select($options));  </span>
+<span class="x">echo $Dao-&gt;getLastSql();  </span>
+<span class="x">}</span>
 </pre></div>
 
 
 <p>这里的$whereArr定义为一个二级数组，没一个字段都定义了一个数组，这样可以支持更高级复杂的查询。
 其中支持的关键字：</p>
-<div class="codehilite"><pre><span class="n">EQ</span> 相等  
-<span class="n">NEQ</span> 不相等  
-<span class="n">GT</span> 大于  
-<span class="n">EGT</span> 不大于  
-<span class="n">LT</span> 小于  
-<span class="n">ELT</span> 不小于  
-<span class="n">NOTLIKE</span> 不相似  
-<span class="n">LIKE</span> 相似  
-<span class="n">NULL</span> 空  
-<span class="n">NOTNULL</span> 不为空  
-<span class="n">EXP</span> 使用自己写的表达式
+<div class="codehilite"><pre><span class="n">EQ</span> <span class="err">相等</span>  
+<span class="n">NEQ</span> <span class="err">不相等</span>  
+<span class="n">GT</span> <span class="err">大于</span>  
+<span class="n">EGT</span> <span class="err">不大于</span>  
+<span class="n">LT</span> <span class="err">小于</span>  
+<span class="n">ELT</span> <span class="err">不小于</span>  
+<span class="n">NOTLIKE</span> <span class="err">不相似</span>  
+<span class="n">LIKE</span> <span class="err">相似</span>  
+<span class="nb">NULL</span> <span class="err">空</span>  
+<span class="n">NOTNULL</span> <span class="err">不为空</span>  
+<span class="n">EXP</span> <span class="err">使用自己写的表达式</span>
 </pre></div>
 
 
@@ -335,8 +335,8 @@ $<span class="n">options</span><span class="p">=</span><span class="n">array</sp
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></li>
                             <li><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></li>
+                            <li><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

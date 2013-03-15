@@ -55,9 +55,9 @@ by Zhaoyu Li
 <p>Tornado是非阻塞的，所以我觉得对于非阻塞式IO (nonblocking IO) 和异步IO (asynchronous IO  AIO)很有必要谈一谈。</p>
 <h3>Non-blocking IO 和 Asynchronous IO</h3>
 <p>我们假设你正在写的应用程序需要去远程服务器上请求数据（比如数据库中的数据，或一些远程API），这步请求假设需要花费5秒钟的时间。在很多Web开发框架中，它们是这样处理的：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">handler_request</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="n">answ</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">remote_server</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> # <span class="n">this</span> <span class="n">takes</span> 5 <span class="n">seconds</span>
-    <span class="n">request</span><span class="p">.</span><span class="n">write_response</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">handler_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">answ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">remote_server</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="c"># this takes 5 seconds</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">write_response</span><span class="p">(</span><span class="n">answ</span><span class="p">)</span>
 </pre></div>
 
 

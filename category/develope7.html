@@ -114,16 +114,17 @@ by Zhaoyu Li
         <div class="summary" style="margin:18px 0 0 0;"><p>在现代浏览器（所谓现代浏览器，是指以Mozilla和Webkit为核心的浏览器，IE的表现稍微差强人意）中，我们可以运用CSS来实现一些非常炫酷的效果。</p>
 <h3>Bump Up</h3>
 <p><img alt="" src="http://images.cnblogs.com/cnblogs_com/powertoolsteam/201105/201105101418072144.png" /><strong>Live Demo:</strong> <a href="http://designshack.co.uk/tutorialexamples/HoverEffects/Ex1.html">Click Here to Launch</a></p>
-<div class="codehilite"><pre><span class="na">.ex1</span> <span class="no">img</span><span class="err">{</span>
-    <span class="nl">border:</span> <span class="err">5</span><span class="nf">px</span> <span class="no">solid</span> <span class="c">#ccc;</span>
-    <span class="nl">float:</span> <span class="nf">left</span><span class="err">;</span>
-    <span class="nl">margin:</span> <span class="err">15</span><span class="nf">px</span><span class="err">;</span>
-    <span class="err">-</span><span class="nf">webkit</span><span class="p">-</span><span class="no">transition</span><span class="p">:</span> <span class="no">margin</span> <span class="mi">0</span><span class="no">.5s</span> <span class="no">ease</span><span class="p">-</span><span class="no">out</span><span class="err">;</span>
-    <span class="err">-</span><span class="nf">moz</span><span class="p">-</span><span class="no">transition</span><span class="p">:</span> <span class="no">margin</span> <span class="mi">0</span><span class="no">.5s</span> <span class="no">ease</span><span class="p">-</span><span class="no">out</span><span class="err">;</span>
-    <span class="err">-</span><span class="nf">o</span><span class="p">-</span><span class="no">transition</span><span class="p">:</span> <span class="no">margin</span> <span class="mi">0</span><span class="no">.5s</span> <span class="no">ease</span><span class="p">-</span><span class="no">out</span><span class="err">;</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span class="nc">.ex1</span> <span class="nt">img</span><span class="p">{</span>
+    <span class="k">border</span><span class="o">:</span> <span class="m">5px</span> <span class="k">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+    <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="k">margin</span> <span class="m">0.5s</span> <span class="n">ease</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="k">margin</span> <span class="m">0.5s</span> <span class="n">ease</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+    <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="k">margin</span> <span class="m">0.5s</span> <span class="n">ease</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="na">.ex1</span> <span class="no">img</span><span class="p">:</span><span class="no">hover ...</span></pre></div> <a class="" href="http://hackecho.com/2011/05/5-cool-css-hover/">Read more...</a></div>
+<span class="nc">.ex1</span> <span class="nt">img</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="o">:</span> <span class="m">2px ...</span></pre></div> <a class="" href="http://hackecho.com/2011/05/5-cool-css-hover/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
@@ -194,23 +195,23 @@ by Zhaoyu Li
 </div>
         <div class="summary" style="margin:18px 0 0 0;"><p>因为是自己的笔记，所以比较杂乱，见谅。</p>
 <p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
-<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
-    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
-        <span class="p">....</span>
+<div class="codehilite"><pre><span class="x">//IndexAction.class.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="o">....</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="o">?&gt;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 
 <p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
-<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
+<div class="codehilite"><pre><span class="x">//UserModel.class.php</span>
+<span class="cp">&lt;?php</span>
+    <span class="k">class</span> <span class="nc">UserModel</span> <span class="k">extends</span> <span class="nx">Model</span>
     <span class="p">{}</span>
-<span class="o">?&gt;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 

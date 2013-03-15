@@ -96,18 +96,18 @@ by Zhaoyu Li
 <p>以下是我在使用Markup过程中的两个感受，写下来以防忘记。</p>
 <p>①预编译的问题</p>
 <p>官网上说要使用这个类库，需要把VC的预编译取消。这是一种方法，不过对于大一点的工程来说，取消预编译真的是对编程人员的一种折磨！其实还有一个很简单的方法可以使编译通过，在Markup.cpp文件头部加入下面一句代码就可以了：</p>
-<div class="codehilite"><pre><span class="c">#include &quot;stdafx.h&quot;</span>
+<div class="codehilite"><pre><span class="cp">#include &quot;stdafx.h&quot;</span>
 </pre></div>
 
 
 <p>②浏览特定元素</p>
 <div class="codehilite"><pre><span class="n">CMarkup</span> <span class="n">xml</span><span class="p">;</span>
-<span class="n">xml</span><span class="p">.</span><span class="n">Load</span><span class="p">(</span>&quot;<span class="n">UserInfo</span><span class="p">.</span><span class="n">xml</span>&quot;<span class="p">);</span>
-<span class="k">while</span> <span class="p">(</span> <span class="n">xml</span><span class="p">.</span><span class="n">FindChildElem</span><span class="p">(</span>&quot;<span class="n">ITEM</span>&quot;<span class="p">))</span>
+<span class="n">xml</span><span class="p">.</span><span class="n">Load</span><span class="p">(</span><span class="s">&quot;UserInfo.xml&quot;</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span> <span class="n">xml</span><span class="p">.</span><span class="n">FindChildElem</span><span class="p">(</span><span class="s">&quot;ITEM&quot;</span><span class="p">))</span>
 <span class="p">{</span>
     <span class="n">xml</span><span class="p">.</span><span class="n">IntoElem</span><span class="p">();</span>
-    <span class="n">xml</span><span class="p">.</span><span class="n">FindChildElem</span><span class="p">(</span> &quot;<span class="n">SN</span>&quot; <span class="p">);</span>
-    <span class="n">CString</span> <span class="n">csSN</span> <span class="p">=</span> <span class="n">xml</span><span class="p">.</span><span class="n">GetChildData</span><span class="p">();</span>
+    <span class="n">xml</span><span class="p">.</span><span class="n">FindChildElem</span><span class="p">(</span> <span class="s">&quot;SN&quot;</span> <span class="p">);</span>
+    <span class="n">CString</span> <span class="n">csSN</span> <span class="o">=</span> <span class="n">xml</span><span class="p">.</span><span class="n">GetChildData</span><span class="p">();</span>
     <span class="n">xml</span><span class="p">.</span><span class="n">OutOfElem</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>

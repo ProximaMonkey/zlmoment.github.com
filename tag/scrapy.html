@@ -43,6 +43,35 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">第一个HackEcho爬虫诞生记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
+<p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
+<p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
+<p>当然，爬取的数据也不多，具体只有以下几项：</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">scrapy.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">class</span> <span class="nc">YileeItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+<span class="err">    </span><span class="c"># DEFINE THE FIELDS FOR YOUR ITEM HERE LIKE:</span>
+<span class="err">    </span><span class="c"># NAME = FIELD()</span>
+<span class="err">    </span><span class="n">url</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
+<span class="err">    </span><span class="n">title</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
+<span class="err">    </span><span class="n">release_time</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
+<span class="err">    </span><span class="n">category</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
+<span class="err">    </span><span class="n">content_html</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
+</pre></div>
+
+
+<p>当然 ...</p> <a class="" href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
 

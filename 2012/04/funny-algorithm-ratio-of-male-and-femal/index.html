@@ -96,26 +96,26 @@ by Zhaoyu Li
 <p><a href="/static/images/2012/04/skitched-20120416-192726.png"><img alt="" src="/static/images/2012/04/skitched-20120416-192726.png" /></a></p>
 <p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
 <h3>程序代码：</h3>
-<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;  </span>
-<span class="c">#include &lt;stdlib.h&gt;  </span>
-<span class="c">#define MAN    1  //男孩  </span>
-<span class="c">#define WOMAN  0  //女孩  </span>
-<span class="k">static</span> <span class="n">int</span> <span class="n">numOfMan</span> <span class="p">=</span> 0<span class="p">;</span>  <span class="o">//</span>男孩个数  
-<span class="k">static</span> <span class="n">int</span> <span class="n">numOfWoman</span> <span class="p">=</span> 0<span class="p">;</span>  <span class="o">//</span>女孩个数  
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;  </span>
+<span class="cp">#include &lt;stdlib.h&gt;  </span>
+<span class="cp">#define MAN    1  </span><span class="c1">//男孩  </span>
+<span class="cp">#define WOMAN  0  </span><span class="c1">//女孩  </span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">numOfMan</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="err"> </span> <span class="c1">//男孩个数  </span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">numOfWoman</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="err"> </span> <span class="c1">//女孩个数</span>
 
-<span class="k">static</span> <span class="n">void</span> <span class="n">PrintResult</span><span class="p">()</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">PrintResult</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Man&#39;s number is %d, woman&#39;s number is %d.\n&quot;</span><span class="p">,</span> <span class="n">numOfMan</span><span class="p">,</span> <span class="n">numOfWoman</span><span class="p">);</span>
-    <span class="n">float</span> <span class="n">fResult</span> <span class="p">=</span> <span class="p">(</span><span class="n">float</span><span class="p">)</span><span class="n">numOfMan</span> <span class="o">/</span> <span class="p">(</span><span class="n">float</span><span class="p">)</span><span class="n">numOfWoman</span><span class="p">;</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Man / Woman is [%f]\n&quot;</span><span class="p">,</span> <span class="n">fResult</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Man&#39;s number is %d, woman&#39;s number is %d.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">numOfMan</span><span class="p">,</span> <span class="n">numOfWoman</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="n">fResult</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">numOfMan</span> <span class="o">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">numOfWoman</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Man / Woman is [%f]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fResult</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="n">void</span> <span class="n">OneFamilyGetChild</span><span class="p">()</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">OneFamilyGetChild</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="n">int</span> <span class="n">iChildType</span> <span class="p">=</span> <span class="p">(</span><span class="nb">rand</span><span class="p">()</span><span class="c">%2);</span>
+    <span class="kt">int</span> <span class="n">iChildType</span> <span class="o">=</span> <span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">MAN</span> <span class="o">==</span> <span class="n">iChildType</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="o">//</span>如果是男孩，则递归调用，再生一个小孩，直到生出一个女孩为止  
+        <span class="c1">//如果是男孩，则递归调用，再生一个小孩，直到生出一个女孩为止  </span>
         <span class="n">numOfMan</span><span class="o">++</span><span class="p">;</span>
         <span class="n">OneFamilyGetChild</span><span class="p">();</span>
     <span class="p">}</span>
@@ -125,17 +125,17 @@ by Zhaoyu Li
     <span class="p">}</span>
     <span class="k">else</span>
     <span class="p">{</span>
-        <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;child type is error!\n&quot;</span><span class="p">);</span>
-        <span class="nb">exit</span><span class="p">(</span>0<span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child type is error!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="n">void</span> <span class="n">StatisticsOfAllFamily</span><span class="p">(</span><span class="n">int</span> <span class="n">iFamilyCount</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">StatisticsOfAllFamily</span><span class="p">(</span><span class="kt">int</span> <span class="n">iFamilyCount</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="nb">printf</span><span class="p">(</span><span class="s">&quot;Total family count is %d.\n&quot;</span><span class="p">,</span> <span class="n">iFamilyCount</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Total family count is %d.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">iFamilyCount</span><span class="p">);</span>
 
-    <span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">iFamilyCount</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">iFamilyCount</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">OneFamilyGetChild</span><span class="p">();</span>
     <span class="p">}</span>
@@ -143,12 +143,12 @@ by Zhaoyu Li
     <span class="n">PrintResult</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="n">int</span> <span class="n">main</span> <span class="p">()</span>
+<span class="kt">int</span> <span class="n">main</span> <span class="p">()</span>
 <span class="p">{</span>
-    <span class="n">srand</span><span class="p">(</span><span class="nb">time</span><span class="p">(</span><span class="n">NULL</span><span class="p">));</span>
-    <span class="n">StatisticsOfAllFamily</span><span class="p">(</span>1000000<span class="p">);</span>
+    <span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+    <span class="n">StatisticsOfAllFamily</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
 
-    <span class="k">return</span> 1<span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -157,11 +157,11 @@ by Zhaoyu Li
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
                             <li><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></li>
-                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
-                            <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
                             <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
+                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
+                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

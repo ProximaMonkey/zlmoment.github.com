@@ -99,20 +99,20 @@ by Zhaoyu Li
 <p>B、AutoLoad函数完成的关联和改变按钮大小的CBitmapButton::SizeToContent函数的功能。</p>
 <p>C、CBitmapButton::AutoLoad使用的位图是默认资源ID的，即它会自动装载相关资源位图。位图的资源ID格式为："按钮Caption+U"、"按钮Caption+D"、"按钮Caption+F"、"按钮Caption+X"，分别代表Up、Down、Focus、Disable状态。如资源编辑时，希望关联的按钮的Caption为Test，那么其默认装载的位图资源的ID为："TestU"/"TestD"/"TestF"/"TestX"，注意分号""也是其ID的一部分。
 最后，将按钮的MouseMove消息在PreTranslateMessage中处理即可，代码如下：</p>
-<div class="codehilite"><pre><span class="n">BOOL</span> <span class="n">Cyrt30Dlg</span><span class="p">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">MSG</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="n">BOOL</span> <span class="n">Cyrt30Dlg</span><span class="o">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">MSG</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">WM_MOUSEMOVE</span> <span class="o">==</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">POINT</span> <span class="n">p</span><span class="p">;</span>
         <span class="n">GetCursorPos</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
         <span class="n">CString</span> <span class="n">s</span><span class="p">;</span>
-        <span class="n">CWnd</span> <span class="o">*</span><span class="n">hwnd</span><span class="p">=</span><span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_TabNav</span><span class="p">);</span>
-        <span class="n">s</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span>&quot;<span class="c">%d&quot;,hwnd=WindowFromPoint(p));</span>
+        <span class="n">CWnd</span> <span class="o">*</span><span class="n">hwnd</span><span class="o">=</span><span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_TabNav</span><span class="p">);</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">hwnd</span><span class="o">=</span><span class="n">WindowFromPoint</span><span class="p">(</span><span class="n">p</span><span class="p">));</span>
 
-        <span class="n">CWnd</span> <span class="o">*</span><span class="n">hwndTabNav</span><span class="p">=</span><span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_TabNav</span><span class="p">);</span>
+        <span class="n">CWnd</span> <span class="o">*</span><span class="n">hwndTabNav</span><span class="o">=</span><span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_TabNav</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">hwndTabNav</span> <span class="o">==</span> <span class="n">hwnd</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">GetFocus</span><span class="p">()</span>!<span class="p">=</span><span class="n">hwndTabNav</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">GetFocus</span><span class="p">()</span><span class="o">!=</span><span class="n">hwndTabNav</span><span class="p">)</span>
                 <span class="n">hwndTabNav</span><span class="o">-&gt;</span><span class="n">SetFocus</span><span class="p">();</span>
         <span class="p">}</span>
         <span class="k">else</span>
@@ -122,7 +122,7 @@ by Zhaoyu Li
 
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">CDialogEx</span><span class="p">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">pMsg</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">CDialogEx</span><span class="o">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">pMsg</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -132,8 +132,8 @@ by Zhaoyu Li
         <h4>Related Posts</h4>
                     <ul>
                             <li><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></li>
-                            <li><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></li>
                             <li><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></li>
+                            <li><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></li>
                             <li><a href="http://hackecho.com/2011/04/level-of-programmer/">传说中程序员的层次</a></li>
                         </ul>
                 <br>

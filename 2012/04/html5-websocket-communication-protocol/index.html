@@ -91,26 +91,26 @@ by Zhaoyu Li
 <h3>WebSocket协议</h3>
 <p>WebSocket的协议非常简单，这也是其最大的优点之一。</p>
 <p>在客户端（如浏览器），可以利用JavaScript直接new WebSocket来实例化一个WebSocket对象，其参数格式为ws://yourdomain:port/path。WebSocket会根据这段字符串，发送Header到指定服务器端口，其数据格式大概如下：</p>
-<div class="codehilite"><pre><span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span>1<span class="p">.</span>1
-<span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hackecho</span><span class="p">.</span><span class="n">com</span> 
-<span class="n">Cookie</span><span class="p">:</span> <span class="n">__utma</span><span class="p">=</span>99<span class="n">as</span>
-<span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">hackecho</span><span class="p">.</span><span class="n">com</span>
-<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="n">uRovscZjNol</span><span class="o">/</span><span class="n">umbTt5uKmw</span><span class="o">==</span>
-<span class="n">Upgrade</span><span class="p">:</span> <span class="n">websocket</span> <span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Version</span><span class="p">:</span> 13
+<div class="codehilite"><pre><span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nl">Origin:</span> <span class="n">http</span><span class="o">:</span><span class="c1">//hackecho.com </span>
+<span class="nl">Cookie:</span> <span class="n">__utma</span><span class="o">=</span><span class="mi">99</span><span class="n">as</span>
+<span class="nl">Connection:</span> <span class="n">Upgrade</span>
+<span class="nl">Host:</span> <span class="n">hackecho</span><span class="p">.</span><span class="n">com</span>
+<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Key</span><span class="o">:</span> <span class="n">uRovscZjNol</span><span class="o">/</span><span class="n">umbTt5uKmw</span><span class="o">==</span>
+<span class="nl">Upgrade:</span> <span class="n">websocket</span> <span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Version</span><span class="o">:</span> <span class="mi">13</span>
 </pre></div>
 
 
 <p>此时服务端应该返回的信息是：</p>
-<div class="codehilite"><pre><span class="n">HTTP</span><span class="o">/</span>1<span class="p">.</span> <span class="n">WebSocket</span> <span class="n">Protocol</span> <span class="n">Handshake</span>
-<span class="n">Date</span><span class="p">:</span> <span class="n">Fri</span><span class="p">,</span>  <span class="n">Feb</span>     17<span class="p">:</span>38<span class="p">:</span>  <span class="n">GMT</span>
-<span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
-<span class="n">Server</span><span class="p">:</span> <span class="n">HackEcho</span> <span class="n">Server</span>
-<span class="n">Upgrade</span><span class="p">:</span> <span class="n">WebSocket</span>
-<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hackecho</span><span class="p">.</span><span class="n">com</span> 
-<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Credentials</span><span class="p">:</span> <span class="n">true</span>
-<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Accept</span><span class="p">:</span> <span class="n">rLHCkw</span><span class="o">/</span><span class="n">SKsO9GAH</span><span class="o">/</span><span class="n">ZSFhBATDKrU</span><span class="p">=</span>
-<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Headers</span><span class="p">:</span> <span class="n">content</span><span class="o">-</span><span class="n">type</span>
+<div class="codehilite"><pre><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.</span> <span class="n">WebSocket</span> <span class="n">Protocol</span> <span class="n">Handshake</span>
+<span class="nl">Date:</span> <span class="n">Fri</span><span class="p">,</span>  <span class="n">Feb</span>     <span class="mi">17</span><span class="o">:</span><span class="mi">38</span><span class="o">:</span>  <span class="n">GMT</span>
+<span class="nl">Connection:</span> <span class="n">Upgrade</span>
+<span class="nl">Server:</span> <span class="n">HackEcho</span> <span class="n">Server</span>
+<span class="nl">Upgrade:</span> <span class="n">WebSocket</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span><span class="o">:</span> <span class="n">http</span><span class="o">:</span><span class="c1">//hackecho.com </span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Credentials</span><span class="o">:</span> <span class="nb">true</span>
+<span class="n">Sec</span><span class="o">-</span><span class="n">WebSocket</span><span class="o">-</span><span class="n">Accept</span><span class="o">:</span> <span class="n">rLHCkw</span><span class="o">/</span><span class="n">SKsO9GAH</span><span class="o">/</span><span class="n">ZSFhBATDKrU</span><span class="o">=</span>
+<span class="n">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Headers</span><span class="o">:</span> <span class="n">content</span><span class="o">-</span><span class="n">type</span>
 </pre></div>
 
 
@@ -133,53 +133,53 @@ by Zhaoyu Li
 <span class="nt">&lt;title&gt;</span>
     WebSocket Test
 <span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">language=</span><span class="s">&quot;javascript&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-    var wsUri = &quot;ws://echo.websocket.org/&quot;;
-    var output;
-    function init() {
-        output = document.getElementById(&quot;output&quot;);
-        testWebSocket();
-    }
-    function testWebSocket() {
-        websocket = new WebSocket(wsUri);
-        websocket.onopen = function(evt) {
-            onOpen(evt)
-        };
-        websocket.onclose = function(evt) {
-            onClose(evt)
-        };
-        websocket.onmessage = function(evt) {
-            onMessage(evt)
-        };
-        websocket.onerror = function(evt) {
-            onError(evt)
-        };
-    }
-    function onOpen(evt) {
-        writeToScreen(&quot;CONNECTED&quot;);
-        doSend(&quot;WebSocket rocks&quot;);
-    }
-    function onClose(evt) {
-        writeToScreen(&quot;DISCONNECTED&quot;);
-    }
-    function onMessage(evt) {
-        writeToScreen(&#39;<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: blue;&quot;</span><span class="nt">&gt;</span>RESPONSE: &#39; + evt.data + &#39;<span class="nt">&lt;/span&gt;</span>&#39;);
-        websocket.close();
-    }
-    function onError(evt) {
-        writeToScreen(&#39;<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: red;&quot;</span><span class="nt">&gt;</span>ERROR:<span class="nt">&lt;/span&gt;</span> &#39; + evt.data);
-    }
-    function doSend(message) {
-        writeToScreen(&quot;SENT: &quot; + message);
-        websocket.send(message);
-    }
-    function writeToScreen(message) {
-        var pre = document.createElement(&quot;p&quot;);
-        pre.style.wordWrap = &quot;break-word&quot;;
-        pre.innerHTML = message;
-        output.appendChild(pre);
-    }
-    window.addEventListener(&quot;load&quot;, init, false);
+<span class="nt">&lt;script </span><span class="na">language=</span><span class="s">&quot;javascript&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<span class="err">   </span> <span class="kd">var</span> <span class="nx">wsUri</span> <span class="o">=</span> <span class="s2">&quot;ws://echo.websocket.org/&quot;</span><span class="p">;</span>
+<span class="err">   </span> <span class="kd">var</span> <span class="nx">output</span><span class="p">;</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+<span class="err">       </span> <span class="nx">output</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">testWebSocket</span><span class="p">();</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">testWebSocket</span><span class="p">()</span> <span class="p">{</span>
+<span class="err">       </span> <span class="nx">websocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="nx">wsUri</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">websocket</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">           </span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span>
+<span class="err">       </span> <span class="p">};</span>
+<span class="err">       </span> <span class="nx">websocket</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">           </span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span>
+<span class="err">       </span> <span class="p">};</span>
+<span class="err">       </span> <span class="nx">websocket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">           </span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span>
+<span class="err">       </span> <span class="p">};</span>
+<span class="err">       </span> <span class="nx">websocket</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">           </span> <span class="nx">onError</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span>
+<span class="err">       </span> <span class="p">};</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="nx">writeToScreen</span><span class="p">(</span><span class="s2">&quot;CONNECTED&quot;</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">doSend</span><span class="p">(</span><span class="s2">&quot;WebSocket rocks&quot;</span><span class="p">);</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="nx">writeToScreen</span><span class="p">(</span><span class="s2">&quot;DISCONNECTED&quot;</span><span class="p">);</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="nx">writeToScreen</span><span class="p">(</span><span class="s1">&#39;&lt;span style=&quot;color: blue;&quot;&gt;RESPONSE: &#39;</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">data</span> <span class="o">+</span> <span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">websocket</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="nx">writeToScreen</span><span class="p">(</span><span class="s1">&#39;&lt;span style=&quot;color: red;&quot;&gt;ERROR:&lt;/span&gt; &#39;</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">doSend</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="nx">writeToScreen</span><span class="p">(</span><span class="s2">&quot;SENT: &quot;</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">websocket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="kd">function</span> <span class="nx">writeToScreen</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="kd">var</span> <span class="nx">pre</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">pre</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">wordWrap</span> <span class="o">=</span> <span class="s2">&quot;break-word&quot;</span><span class="p">;</span>
+<span class="err">       </span> <span class="nx">pre</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+<span class="err">       </span> <span class="nx">output</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">pre</span><span class="p">);</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="nx">init</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;h2&gt;</span>
     WebSocket Test
@@ -347,7 +347,7 @@ by Zhaoyu Li
 <span class="err">   </span> <span class="k">var</span> <span class="nv">$handshake</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="cp">?&gt;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 
 
@@ -358,46 +358,46 @@ by Zhaoyu Li
 <span class="nt">&lt;title&gt;</span>WebSocket<span class="nt">&lt;/title&gt;</span>
 
 <span class="nt">&lt;style&gt;</span>
-html,body{font:normal 0.9em arial,helvetica;}
-#log {width:440px; height:200px; border:1px solid #7F9DB9; overflow:auto;}
-#msg {width:330px;}
+<span class="nt">html</span><span class="o">,</span><span class="nt">body</span><span class="p">{</span><span class="k">font</span><span class="o">:</span><span class="k">normal</span> <span class="m">0.9em</span> <span class="n">arial</span><span class="o">,</span><span class="n">helvetica</span><span class="p">;}</span>
+<span class="nf">#log</span> <span class="p">{</span><span class="k">width</span><span class="o">:</span><span class="m">440px</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span><span class="m">200px</span><span class="p">;</span> <span class="k">border</span><span class="o">:</span><span class="m">1px</span> <span class="k">solid</span> <span class="m">#7F9DB9</span><span class="p">;</span> <span class="k">overflow</span><span class="o">:</span><span class="k">auto</span><span class="p">;}</span>
+<span class="nf">#msg</span> <span class="p">{</span><span class="k">width</span><span class="o">:</span><span class="m">330px</span><span class="p">;}</span>
 <span class="nt">&lt;/style&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
-var socket;
+<span class="kd">var</span> <span class="nx">socket</span><span class="p">;</span>
 
-function init(){
-    var host = &quot;ws://localhost:12345/websocket/server.php&quot;;
-    try{
-        socket = new WebSocket(host);
-        log(&#39;WebSocket - status &#39;+socket.readyState);
-        socket.onopen    = function(msg){ log(&quot;Welcome - status &quot;+this.readyState); };
-        socket.onmessage = function(msg){ log(&quot;Received: &quot;+msg.data); };
-        socket.onclose   = function(msg){ log(&quot;Disconnected - status &quot;+this.readyState); };
-    }
-    catch(ex){ log(ex); }
-    $(&quot;msg&quot;).focus();
-}
+<span class="kd">function</span> <span class="nx">init</span><span class="p">(){</span>
+<span class="err">   </span> <span class="kd">var</span> <span class="nx">host</span> <span class="o">=</span> <span class="s2">&quot;ws://localhost:12345/websocket/server.php&quot;</span><span class="p">;</span>
+<span class="err">   </span> <span class="k">try</span><span class="p">{</span>
+<span class="err">       </span> <span class="nx">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="nx">host</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;WebSocket - status &#39;</span><span class="o">+</span><span class="nx">socket</span><span class="p">.</span><span class="nx">readyState</span><span class="p">);</span>
+<span class="err">       </span> <span class="nx">socket</span><span class="p">.</span><span class="nx">onopen</span><span class="err">   </span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span> <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Welcome - status &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="p">);</span> <span class="p">};</span>
+<span class="err">       </span> <span class="nx">socket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span> <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Received: &quot;</span><span class="o">+</span><span class="nx">msg</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span> <span class="p">};</span>
+<span class="err">       </span> <span class="nx">socket</span><span class="p">.</span><span class="nx">onclose</span><span class="err">  </span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span> <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Disconnected - status &quot;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="p">);</span> <span class="p">};</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="err">   </span> <span class="k">catch</span><span class="p">(</span><span class="nx">ex</span><span class="p">){</span> <span class="nx">log</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span> <span class="p">}</span>
+<span class="err">   </span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;msg&quot;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+<span class="p">}</span>
 
-function send(){
-    var txt,msg;
-    txt = $(&quot;msg&quot;);
-    msg = txt.value;
-    if(!msg){ alert(&quot;Message can not be empty&quot;); return; }
-    txt.value=&quot;&quot;;
-    txt.focus();
-    try{ socket.send(msg); log(&#39;Sent: &#39;+msg); } catch(ex){ log(ex); }
-}
-function quit(){
-    log(&quot;Goodbye!&quot;);
-    socket.close();
-    socket=null;
-}
+<span class="kd">function</span> <span class="nx">send</span><span class="p">(){</span>
+<span class="err">   </span> <span class="kd">var</span> <span class="nx">txt</span><span class="p">,</span><span class="nx">msg</span><span class="p">;</span>
+<span class="err">   </span> <span class="nx">txt</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;msg&quot;</span><span class="p">);</span>
+<span class="err">   </span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">txt</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<span class="err">   </span> <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">msg</span><span class="p">){</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Message can not be empty&quot;</span><span class="p">);</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
+<span class="err">   </span> <span class="nx">txt</span><span class="p">.</span><span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="err">   </span> <span class="nx">txt</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+<span class="err">   </span> <span class="k">try</span><span class="p">{</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span> <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Sent: &#39;</span><span class="o">+</span><span class="nx">msg</span><span class="p">);</span> <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">ex</span><span class="p">){</span> <span class="nx">log</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">quit</span><span class="p">(){</span>
+<span class="err">   </span> <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Goodbye!&quot;</span><span class="p">);</span>
+<span class="err">   </span> <span class="nx">socket</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="err">   </span> <span class="nx">socket</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
 
-// Utilities
-function $(id){ return document.getElementById(id); }
-function log(msg){ $(&quot;log&quot;).innerHTML+=&quot;<span class="nt">&lt;br&gt;</span>&quot;+msg; }
-function onkey(event){ if(event.keyCode==13){ send(); } }
+<span class="c1">// Utilities</span>
+<span class="kd">function</span> <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span> <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span> <span class="p">}</span>
+<span class="kd">function</span> <span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="o">+=</span><span class="s2">&quot;&lt;br&gt;&quot;</span><span class="o">+</span><span class="nx">msg</span><span class="p">;</span> <span class="p">}</span>
+<span class="kd">function</span> <span class="nx">onkey</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span> <span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">==</span><span class="mi">13</span><span class="p">){</span> <span class="nx">send</span><span class="p">();</span> <span class="p">}</span> <span class="p">}</span>
 <span class="nt">&lt;/script&gt;</span>
 
 <span class="nt">&lt;/head&gt;</span>
@@ -423,11 +423,11 @@ function onkey(event){ if(event.keyCode==13){ send(); } }
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
                             <li><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></li>
-                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
-                            <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
                             <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
+                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
+                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

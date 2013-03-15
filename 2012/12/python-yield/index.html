@@ -88,87 +88,87 @@ by Zhaoyu Li
 <p>带有 yield 的函数在 Python 中被称之为 generator（生成器）。</p>
 <p>我们已生成斐波那契数列为例，来循序渐进了解yield。</p>
 <p>生成斐波那契数列：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
-    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
-        <span class="n">print</span> <span class="n">b</span> 
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
-        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> 
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span> 
+        <span class="k">print</span> <span class="n">b</span> 
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 
 
 <p>上面这个函数中直接用到了print函数，导致该函数复用性极差。我们想到可以返回一个List，改写如下：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
-    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="n">L</span> <span class="p">=</span> <span class="p">[]</span> 
-    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
-        <span class="n">L</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> 
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
-        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
-    <span class="k">return</span> <span class="n">L</span> 
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> 
+    <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span> 
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span> 
+        <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> 
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> 
+    <span class="k">return</span> <span class="n">L</span>
 </pre></div>
 
 
 <p>但这个函数的内存占用会随着max的增大而增大，如果要控制内存占用，最好不要用List保存中间结果，而是通过iterable对象来迭代。举个例子：</p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="nb">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span>1000<span class="p">):</span> <span class="n">pass</span>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span> <span class="k">pass</span>
 </pre></div>
 
 
 <p>上述代码会生成一个1000元素的List；</p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="nb">i</span> <span class="n">in</span> <span class="n">xrange</span><span class="p">(</span>1000<span class="p">):</span> <span class="n">pass</span> 
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span> <span class="k">pass</span>
 </pre></div>
 
 
 <p>而上述代码则会产生一个iterable对象，每次迭代中返回下一个值，内存占用很小。</p>
 <p>我们来改写一下fab函数：</p>
-<div class="codehilite"><pre><span class="n">class</span> <span class="n">Fab</span><span class="p">(</span><span class="n">object</span><span class="p">):</span> 
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">Fab</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">max</span><span class="p">):</span> 
-        <span class="n">self</span><span class="p">.</span><span class="n">max</span> <span class="p">=</span> <span class="n">max</span> 
-        <span class="n">self</span><span class="p">.</span><span class="n">n</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">a</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">max</span> <span class="o">=</span> <span class="nb">max</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
 
-    <span class="n">def</span> <span class="n">__iter__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span> 
-        <span class="k">return</span> <span class="n">self</span> 
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="bp">self</span>
 
-    <span class="n">def</span> <span class="n">next</span><span class="p">(</span><span class="n">self</span><span class="p">):</span> 
-        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">self</span><span class="p">.</span><span class="n">max</span><span class="p">:</span> 
-            <span class="n">r</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> 
-            <span class="n">self</span><span class="p">.</span><span class="n">a</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span> 
-            <span class="n">self</span><span class="p">.</span><span class="n">n</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">n</span> <span class="o">+</span> 1 
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max</span><span class="p">:</span> 
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> 
             <span class="k">return</span> <span class="n">r</span> 
-        <span class="n">raise</span> <span class="n">StopIteration</span><span class="p">()</span> 
+        <span class="k">raise</span> <span class="ne">StopIteration</span><span class="p">()</span>
 </pre></div>
 
 
 <p>这样就可以通过循环返回下一个值了：for n in Fab(5)。</p>
 <p>但毕竟使用类重写后函数显得更加复杂，这时，yield 就派上用场了。</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
-    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
-        <span class="n">yield</span> <span class="n">b</span> 
-        # <span class="n">print</span> <span class="n">b</span> 
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
-        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">fab</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span> 
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> 
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span> 
+        <span class="k">yield</span> <span class="n">b</span> 
+        <span class="c"># print b </span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 
 
 <p>简单地讲，yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator，调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是函数继续执行，直到再次遇到 yield。
 也可以手动调用 fab(5) 的 next() 方法（因为 fab(5) 是一个 generator 对象，该对象具有 next() 方法），这样我们就可以更清楚地看到 fab 的执行流程：</p>
-<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="p">=</span> <span class="n">fab</span><span class="p">(</span>5<span class="p">)</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
-1 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
-1 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
-2 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
-3 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
-5 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">.</span><span class="n">next</span><span class="p">()</span> 
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="n">fab</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
+<span class="mi">1</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
+<span class="mi">1</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
+<span class="mi">2</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
+<span class="mi">3</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
+<span class="mi">5</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> 
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span> 
- <span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span> 
-<span class="n">StopIteration</span> 
+ <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span> 
+<span class="ne">StopIteration</span>
 </pre></div>
 
 
@@ -176,16 +176,16 @@ by Zhaoyu Li
 <p>每次调用 fab 函数都会生成一个新的 generator 实例，各实例互不影响。</p>
 <p><strong>另一个例子</strong></p>
 <p>另一个 yield 的例子来源于文件读取。如果直接对文件对象调用 read() 方法，会导致不可预测的内存占用。比较好的方法是利用固定长度的缓冲区来不断读取文件内容。通过 yield，我们不再需要编写读文件的迭代类，就可以轻松实现文件读取：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">read_file</span><span class="p">(</span><span class="n">fpath</span><span class="p">):</span> 
-    <span class="n">BLOCK_SIZE</span> <span class="p">=</span> 1024 
-    <span class="n">with</span> <span class="n">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="n">as</span> <span class="n">f</span><span class="p">:</span> 
-        <span class="k">while</span> <span class="n">True</span><span class="p">:</span> 
-            <span class="n">block</span> <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCK_SIZE</span><span class="p">)</span> 
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">fpath</span><span class="p">):</span> 
+    <span class="n">BLOCK_SIZE</span> <span class="o">=</span> <span class="mi">1024</span> 
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> 
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span> 
+            <span class="n">block</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCK_SIZE</span><span class="p">)</span> 
             <span class="k">if</span> <span class="n">block</span><span class="p">:</span> 
-                <span class="n">yield</span> <span class="n">block</span> 
+                <span class="k">yield</span> <span class="n">block</span> 
             <span class="k">else</span><span class="p">:</span> 
                 <span class="k">return</span> 
-                # 在一个 <span class="n">generator</span> <span class="k">function</span> 中，如果没有 <span class="k">return</span>，则默认执行至函数完毕，如果在执行过程中 <span class="k">return</span>，则直接抛出 <span class="n">StopIteration</span> 终止迭代。
+                <span class="c"># 在一个 generator function 中，如果没有 return，则默认执行至函数完毕，如果在执行过程中 return，则直接抛出 StopIteration 终止迭代。</span>
 </pre></div>
 
 
@@ -193,11 +193,11 @@ by Zhaoyu Li
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
-                            <li><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></li>
+                            <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
                             <li><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></li>
-                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
                             <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
+                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

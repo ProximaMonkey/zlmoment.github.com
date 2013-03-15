@@ -43,92 +43,81 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
-<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
-<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
-<h3>安装MacVim和Python</h3>
-<p>下列两种方式中的任一种均可用来安装MacVim。</p>
-<p><strong>方式一：通过Mac ports</strong></p>
-<p>首先确保你的Mac ports是最新版：</p>
-<p>1 $ sudo port -v selfupdate</p>
-<p>安装：</p>
-<div class="codehilite"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
-</pre></div>
-
-
-<p><strong>方式二：自己编译</strong></p>
-<div class="codehilite"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/b4winckler/macvim.git</span>
-<span class="err">$</span> <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
-<span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="o">=</span><span class="mf">10.6</span>
-<span class="err">$</span> <span class="n">make</span>
-</pre></div>
-
-
-<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>定义：</p>
+<p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
+<p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
+<h3>名词解析：</h3>
+<p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
+<p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
+<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/missing-when-you-knowing/">当你懂得，或已错过</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 April 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>文/马德</p>
-<p>一天上午,一位母亲风风火火地找到我。</p>
-<p>老师,你看到小萍了吗,我家闺女!母亲的头发枯黄,被风刮得东一绺西一绺的,像秋天的衰草,是一种刺痛人心的乱。</p>
-<p>我一愣。小萍,不是回家了吗?昨天学校月休,学生们都回家了,难道她没回去?我也有些乱了方寸,心紧跟着“怦怦”跳起来。</p>
-<p>哦,昨天,她倒是回来了,可是,今天早上,她,她就没影了……都怨我,唠叨了几句……这孩子,怎么就跑了呢!母亲像是向我解释,又像是自言自语,一副手足无措的样子。</p>
-<p>哦,这样啊。没事,她不会跑到哪里,我给你问问吧。我找出班级电话簿,挨个给小萍的同学打电话。但打了一个遍,都说没见到。突然间,母亲的情绪有些失控,怎么办,这可怎么办啊。她一边说,一边捶胸顿足 ...</p> <a class="" href="http://hackecho.com/2011/04/missing-when-you-knowing/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
+<p>文章结构：</p>
+<ul>
+<li>
+<p>独立博客与BSP的区别</p>
+</li>
+<li>
+<p>申请域名</p>
+</li>
+<li>
+<p>服务器主机</p>
+</li>
+<li>
+<p>域名绑定</p>
+</li>
+<li>
+<p>安装程序</p>
+</li>
+<li>
+<p>开始使用</p>
+</li>
+</ul>
+<h3>独立博客与BSP的区别</h3>
+<p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-faile-can-be-copied/">我的失败可以复制</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 23 June 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">[转]如何在保证睡眠的情况下高效学习</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 20 May 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>常听人说，如果你开始回忆过去，说明你老了。而我却时常会怀念过去，或者说，是忏悔。</p>
-<p>有时候会想，如果大学的前三年可以重新来过，让我们都回到那个懵懂的年纪，重新开始全新的大学生活，一定会选择一种完全不一样的生活。我一直以为，世界上有另外一个我，在过着我想过的生活，在做着我想做的事，而我却永远无法重新选择。</p>
-<p>永远不能回头，在不断的选择中，我们创造了自己的生活。然而，当我们回首时看到的却满是错误与失去，多想穿越时空告诉那时的自己，你的选择，错了。可是，这些都是没有用的，回不去的事情再勉强也是幻想，走好余下的路才是最重要的，过去的错误永远是最宝贵的财富。</p>
-<p>生命中，我们竭尽全力都无法改变的事情：倒向你的墙，离你而去的人，流逝的时间，和永远的过去。</p>
-<p>就像这句歌词一样：“如果骄傲没被现实大海冷冷拍下，又怎会懂得要多努力才走得到远方；如果梦想不曾坠落悬崖千钧一发，又怎会晓得执着的人有隐形翅牓。”</p>
-<p>所以，不要难过了。离过去越近，离未来就越远。过精彩的生活，遇到精彩的人，找到精彩的未来。</p> <a class="" href="http://hackecho.com/2012/06/my-faile-can-be-copied/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>来源：http://blog.renren.com/blog/230557688/844071536</p>
+<p>少睡不是长久之计，关键还是要高效地管理时间，提供十条高效做事的经验。</p>
+<p>每天都过的很快，好像起床以后忙活几下，又到了晚上，很快又要睡觉了。To-do-list上的事好像总是做不完，有的时候积压地太多以至于都不想去碰了。每天从早到晚都是忙碌状态，但是总觉得做不了几件事，要是给我1天48小时该多好。</p>
+<p>事情太多时间不够，但是睡少了又效率低下，这实在是个悖论。似乎很多牛人都可以睡的很少，每天4-5小时睡眠，或者间歇式的睡眠，就可以高效地做事。这个境界我总是达不到，也没有想去达到。少睡不是长久之计，关键还是要高效地管理时间。</p>
+<p>我今天和一个朋友请教了这个问题，很受启发。我朋友是卡内基梅陇大学的计算机在读博士，发表了好几篇顶级论文，科研做的很牛。除学术以外，他还忙活不少其他的事，他是云飞跃留学平台的兼职编辑，他业余时间喜欢研究摄影，最近又在开发一款手机游戏，他周末也会花不少时间陪女朋友。尽管做那么多事，他告诉我说他每天都精力充沛，做事效率很高！</p>
+<p>但是他每天可以睡8小时！</p>
+<p>他讲了好几条高效做事的经验：</p>
+<h3>1、作息要规律，这是重中之重 ...</h3> <a class="" href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-ncee/">我的高考</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 June 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>后天就要高考了，但这似乎已经与我无关。那段时光已经过去三年，可每每到这个时候，都会禁不住想起当年的我，当年的18班。</p>
-<p>时间正在将过往一丝一丝地抹去，我想在淡忘之前，再次品味一下那年的生活。</p>
-<p>关键字：运动场，角落，封闭的军事化管理，星空，考试那天</p>
-<h3>运动场</h3>
-<p>每天晚饭吃过以后，大约6点半，我们会三三两两到运动场上跑步，一般是跑6圈，然后满头大汗地回到教室等待晚自修。不管天气多么热，尤其是临近6月的时候，跑道上塑胶的味道很具有冲击感，但我们都依旧坚持着。当时的想法很简单，身体好才能保证学习，而要想身体好就要锻炼。那时候跟我一起跑的通常是永明，我高三时的同桌，物理超牛逼的一个人，现在在北大学物理系。跑步完之后，有时候我们会坐在草坪上，望着天空，莫名地感叹一下高三的生活，憧憬一下美好的未来，讨论一下大学，讨论一下理想。那时候没有多余的想法，黑色的高三也没那么苦，只是觉得很充实，很带感。</p>
-<h3>角落</h3>
-<p>后来，我们在教室的位置换成了桌子和桌子相互隔开的布局，谁也不是谁的同桌。我特别向往教室最后面的角落里的那个座位，或许只是想求得一份宁静，在聒噪的高三里 ...</p> <a class="" href="http://hackecho.com/2012/06/my-ncee/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/my-recent-life-notes/">近日小记</a></h3>
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">如何分辨极客与伪极</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 26 March 2011
 
 by Zhaoyu Li
@@ -136,108 +125,131 @@ by Zhaoyu Li
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>有一段时间没更新博客了，主要是这段时间全部心思都在知行客团购网上。那天晚上，脑海中突然闪现出这样一个想法，便激动地无法入眠。以前也有过很多次灵感的爆发，比如今年寒假时想到的“优惯网”创意。当时我在微博上说，每天一觉醒来，上网一看，我的想法还没有人实现，便又可以安心地度过一天了。可当时忽略了重要的一点，就是执行力的问题。这也是后来在一次创新工场的宣讲会上我学习到的，执行力永远是第一位。当时有很多同学支持我，我很感动，不过，优惯网流产了，终究现在没有出现。至于将来会不会出现，我们可以wait and see，呵呵。</p>
-<p>想到“知行客团购网”时，我给自己下了一个目标，从网站策划，到域名和服务器以及网站程序的到位，最后到联系商家，上线第一个产品的时间，一定要控制在10天之内。如今，刚刚正好12天，商家已经初步到位，预计近一周内一定上线。鉴于所有的工作都是在课余时间完成的，所以我觉得，还行。我还有与我一同为这个网站努力的同伴，在这个过程中，收获的绝不仅仅是一个网站。</p>
-<p>细细数来，还有四个近在眼前的各类软件比赛摆在面前。3天后新软攀峰 ...</p> <a class="" href="http://hackecho.com/2011/03/my-recent-life-notes/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有着非常强健的体魄，或者非常专业的某项体育技能的，100%不是极客。极客没有时间也没有兴趣刻意锻炼身体。身体非常虚弱的，100%不是极 客，70%是伪极，呆极客或者宅。极客虽然不会进行长期稳定的体育运动，但是他们享受户外的活动。绝不会始终宅在家里。所以身体一定是健康的，却不是好坏 两个极端。</p>
+<p>不戴眼镜的，100%不是极客。</p>
+<p>出门站在衣柜犹豫不知穿什么衣服的，80%不是极客。极客们讲求效率，不会在穿衣戴帽等事情上浪费时间。另一方面，他们也没有太多的衣物供不同场合的选择。出门随手拽两件衣服披上就走的，90%是极客。</p>
+<p>拥有一辆不错的个人车的，70%不是极客。极客开车的机会不多，也不会下血本买费钱费油的好车。</p>
+<p>酒量特别好的，100%不是极客。极客们饮酒的机会不多。不过由于常常帮朋友修理电脑导致被请客在外就餐的机会也不少，所以酒量比宅要高很多。</p>
+<p>经常哭穷的，100%不是极客。极客们手头都是相对宽裕的。他们的心态比较中置，对于不同的家庭背景或者收入状况不会加以打击或者憧憬，因为他们所追求的不是纯物质生活，更多的在于精神上 ...</p> <a class="" href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/my-recent-life-things/">近况 & 忙里偷闲</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 May 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>我觉得有必要记录一下生活。</p>
-<p>两年前，我对自己的生活就一个要求：“每天都要创造价值”。当时还和某某人深入探讨过，什么是价值，怎样去创造的问题。不知到某某人还记得否，当年为此想法兴高采烈，一致认为应该将其写本书，也像那谁谁一样火一把。后来遗憾的是，再也没有机会和某某人探讨这个问题了，只好躬身而行，久而久之，竟然也成了一种习惯性的思维。如果某天不能创造点价值（在自己看来），就没有勇气结束一天。不过毕竟人无完人，长期以来，这种思维导致的直接后果就是养成了晚睡的好习惯...看来必须调整一下了。</p>
-<p>最近几天，除了迫在眉睫的TOEFL、GRE外，其它时间全部沉浸在Tornado中。想起以前的时候，阿北坐在星巴克，用四五个月的时间创造了豆瓣，我就有种莫名的冲动。但我创造的不是豆瓣，而是一个中国的关于Python的开源社区。细节就不透露了，PyPub.com，敬请期待。</p>
-<p>其实我想吐槽一下Tornado，就不能有一个像样的文档吗！各种问题搞不清楚，查不到资料。还好Tornado是个轻量级的框架，还可以读一读源码找找问题。其实也是一举两得的事情，就像当我把Markdown的Python实现的源码过了一遍的时候，其语法也就了解的差不多了，也就是说，如果你把JAVA的C++源码读一遍，大抵也就可以用JAVA编程了 ...</p> <a class="" href="http://hackecho.com/2012/05/my-recent-life-things/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
+<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
+<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
+<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
+<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
+<p>使用这款插件后，效果如下：</p>
+<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
+<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
+<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
+<p><strong>插件下载地址</strong>：暂无 </p> <a class="" href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">解决MySQL无法通过localhost连接问题</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 27 May 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">HTML5 之 WebSocket 通信协议介绍</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 15 April 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
-<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
-<h3>安装MySQL</h3>
-<p>依次执行下列三个命令：</p>
-<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
-<span class="n">unset</span> <span class="n">TMPDIR</span>
-<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="err">`</span><span class="n">whoami</span><span class="err">`</span> <span class="o">--</span><span class="n">basedir</span><span class="o">=</span><span class="s">&quot;$(brew --prefix mysql)&quot;</span> <span class="o">--</span><span class="n">datadir</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="o">=/</span><span class="n">tmp</span>
-</pre></div>
-
-
-<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
-<h3>解决localhost问题</h3>
-<p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span><span class="err">’</span><span class="n">t ...</span></pre></div> <a class="" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>更新：Chrome和Firefox的WebSocket协议已更新到最新版，不再支持旧版协议。关于新版协议的介绍请看<a href="http://www.hackecho.com/archives/1104.html">《WebSocket新版Hybi-10协议介绍》</a>，本篇文章中的握手协议和数据报文已不再适用。</strong></p>
+<p>最近参与一个有关HTML5的比赛，要用到WebSocket，经过一些实验后简单总结一下WebSocket的基础用法。</p>
+<p>WebSocket是HTML5的一种新的协议，它是实现了浏览器与服务器的双向通讯。</p>
+<p>在 WebSocket API 中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。（这两小段介绍摘自维基百科）</p>
+<h3>WebSocket协议</h3>
+<p>WebSocket的协议非常简单，这也是其最大的优点之一。</p>
+<p>在客户端（如浏览器），可以利用JavaScript直接new WebSocket来实例化一个WebSocket对象，其参数格式为ws://yourdomain:port/path。WebSocket会根据这段字符串，发送Header到指定服务器端口，其数据格式大概如下：</p>
+<div class="codehilite"><pre><span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nl">Origin:</span> <span class="n">http</span><span class="o">:</span><span class="c1">//hackecho.com </span>
+<span class="nl">Cookie:</span> <span class="n">__utma</span><span class="o">=</span><span class="mi">99</span><span class="n">as</span>
+<span class="nl">Connection:</span> <span class="n">Upgrade</span>
+<span class="nl">Host:</span> <span class="n">hackecho ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/no-struggle-no-life/">无折腾，不生活</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 13 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/if-we-meet-first-time/">若，人生只是初见</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 10 April 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>看看这几天都折腾了些啥...</p>
-<p>1.换博客程序，更换域名</p>
-<p>开学前，抱着“无折腾，不生活”的态度，将博客的程序换成了国人开发的Emlog。整个转换过程基本用了一天时间，网上可以找到很多emlog转Worpdress的程序，但逆向的话却很少。最后，采取了一种最笨的方法，将文章一篇一篇手工复制...不过也正好借此机会整理下文章。至于评论，由于数量多而且分散，更恐怖的是有级联关系（即谁回复了谁的关系），但看了一下发现两个程序的评论表差不多，便用PHP写了个小脚本将评论迁移了过来。当然，经过修复无数个小bug之后，博客终于又全新上线了。</p>
-<p>不过你也许看到了，现在的博客依旧是WordPress...因为后来我又折腾回来了...不解释。</p>
-<p>遗憾的是，在折腾过程中，一不小心将最新的备份给 rm -rf 掉了，因此博客所有的数据只能还原到2011年12月底。不过幸运的是，在转换程序的时候在本地还有一次数据导入，因此又找回了几篇文章，但最新的一些评论却永远丢失了...</p>
-<p>哦对了，还换了个域名：hackecho.com，原来域名还有一年多到期，进行了301永久重定向到新域名，原来的二级域名因指向不同的host，依旧有效。 </p>
-<p>2 ...</p> <a class="" href="http://hackecho.com/2012/02/no-struggle-no-life/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>似乎只是一瞬间，时光便悄悄的滑过了三月的轮廓。在这烟花般的季节里，我怀着对曾经的感怀，静静的游荡在这片蒙蒙烟雨间。</p>
+<p>雨落无声，回忆无数。触摸着那丝丝微雨的柔情，我仿佛看到了那些陈旧的往事，随着凌乱的雨丝，一幕又一幕的穿透时光的壁垒，让苍老的思绪故地重游，再一次的去品味那一段段遗失的美好。</p>
+<p>然而，或许是思绪穿梭的太过于久远，让我再无力量去追寻过往的脚步，只能任岁月的风霜染白我满怀的柔情，于寂寞流年里，刻画出一副静止的画面，将那些可爱的人，出现过的风景，都一一的收录其中，并永久的珍藏于心间。</p>
+<p>模模糊糊的，时间已过了好久，心中怀念的太多，脑海里徘徊的也太多，每当想要去描绘的时候，伤情的笔却又不知道该从何处落下，于是，我就这样介乎于半醒半梦之间，任沧桑褪尽旧日的芳华，孜然一身，谱写着这段风月的幽曲。</p>
+<p>若，人生只是初见，我是否还会在每一次相聚的时刻，脑海里就已经勾勒出别离的画面？</p>
+<p>若，人生只是初见，我是否还会在每一个安静的午夜，发疯似得去找寻曾经存在过的痕迹？</p>
+<p>若，人生只是初见，我是否还会在每一个独处的瞬间，像傻子一样微笑的回味着自己的经历？</p>
+<p>若，人生只是初见，我是否还会在每一次别离的过后，躲在无人发现的角落里独自黯然神伤 ...</p> <a class="" href="http://hackecho.com/2011/04/if-we-meet-first-time/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/open-source-knowledge/">补习一下开源软件协议的知识</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 April 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2010/09/inception-life/">盗梦空间 2010-9-5</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 05 September 2010
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>近日接触到很多开源的东西，都有各自的开源协议。记得以前Linux操作系统老师讲过一些，但已记不大清楚。为了更好的使用这些开源软件，只好再补习一下了。</p>
-<p>下面只是一些常见的协议，具体的详解请参照<a href="http://www.opensource.org/licenses/alphabetical">http://www.opensource.org/licenses/alphabetical</a></p>
-<ul>
-<li><strong>Mozilla Public License</strong></li>
-</ul>
-<p>MPL License，允许免费重发布、免费修改，但要求修改后的代码版权归软件的发起者。这种授权维护了商业软件的利益，，它要求基于这种软件得修改无偿贡献版权给该软件。这样，围绕该软件得所有代码得版权都集中在发起开发人得手中。但MPL是允许修改，无偿使用得。MPL软件对链接没有要求。</p>
-<ul>
-<li><strong>BSD开源协议</strong></li>
-</ul>
-<p>BSD开源协议是一个给于使用者很大自由的协议。可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。 当你发布使用了BSD协议的代码，或则以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：</p>
-<p>1． 如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。</p>
-<p>2． 如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议。</p>
-<p>3． 不可以用开源代码的作者/机构名字和原来产品的名字做市场推广。</p>
-<p>BSD代码鼓励代码共享，但需要尊重代码作者的著作权 ...</p> <a class="" href="http://hackecho.com/2011/04/open-source-knowledge/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>中关村，美嘉，10：45am，《盗梦空间》。</p>
+<p>不知何时自己也这么不安分，一个人跑去电影院看电影。一杯可乐，一份热狗，一屏幕的光影流动，演绎着一层层梦境。这是属于我得两个小时，手机静音，心灵也静音。</p>
+<p>D-22酒吧刚子的演出专场现在已经开始了，本来是要去的，和朋友一起，微微的酒精和刚子低沉的声音，也许会让我静下心来，好好思考。有时候外界的喧嚣流动才能衬托出我心的一丝宁静，我想每个人都是吧，不一定融入，只需感受。但朋友因为工作的原因没来得及，我也就依旧坐在电脑前，用0和1来创造一些价值。</p>
+<p>回来的路上，我一直在问自己：“Is the world we live real ? What is the definite reality ?”每个看过《盗梦》的人大概都会这样问，也许我们活在一个很深很深的梦境中，这个梦境，何时才是解脱？</p>
+<p>影片我不多说什么，以免有剧透的嫌疑。豆瓣上还极少有电影能取得9.5如此高的评定 ...</p> <a class="" href="http://hackecho.com/2010/09/inception-life/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/ppt-that-create-google-plus/">给Google+带来灵感的一份PPT</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 06 August 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">使用PHP将CSDN泄露数据导入数据库</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 December 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>PPT来自SlideShare，请稍等使其加载完毕。</strong></p>
-<p>当Google+迅速走红，16天达到1000万用户的时候，别忘记一个叫Paul Adams的人，他是前Google员工，现在是Facebook的产品经理，在Google工作期间，他做的一系列研究奠定了Google的社会化战略基础，而他的这份研究的PPT the real life of social network在一年前也非常受欢迎。</p>
-<p>而如今Google+很多地方都是遵循了这些研究理念，比如说圈子，在这份ppt中刚开始就是以一个名叫Debbie的人开始，通过比较其再Facebook上的社交关系和现实中的社交关系，指出目前的社交网络没有解决一个把特定的信息传递给特定的人这个问题，而这个问题有时候会让我们很尴尬，PPT举的一个例子就是这个叫Debbie的人一不小心在Facebook评论了其在同性恋酒吧工作朋友的照片，而被她Facebook上的学生好到了。在现实生活中，白天是教授，和一群学生上课，晚上是禽兽，和一般死党鬼混，但你从不敢把鬼混的照片发在比如新浪微博、比如Facebook上，因为哪里，大家都是你的朋友，甚至还有很多朋友的朋友。</p>
-<p>在这个ppt中，Paul Adams还讲述了社会化网络，人是以群分的，讲了人与人之间的关系，有的人你经常联系，有的人只是认识而已，还有很多人和你只是一面之缘，在Facebook上平均每个用户有130个好友，而经常联系互动的只有4到6个而已。</p>
-<p>在影响力这个章节中，提到了社交网络对于商业的影响，之前有一篇讨论比较热烈的文章 ...</p> <a class="" href="http://hackecho.com/2011/08/ppt-that-create-google-plus/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有幸得到了CSDN泄露的600多万条用户数据，这可是做大容量数据测试和分析的好材料啊。但虽然是.sql文件，里面却是以纯文本保存的所有数据，而且以固定格式保存。这对于数据存储来讲没有任何问题，但如此大的纯文本文件，检索起来可就不是一般的慢啊（不信你拉一下滚动条试试，准死）！今天正好看到好友异泪在用Java写个小程序想将这些数据导入到MySQL里，于是索性也用PHP实现一个，正好借机对比一下PHP和Java的数据处理性能问题。</p>
+<p>原理很简单，因为原文件中每行保存一个用户，而且用户名、密码和邮箱之间都是以“#”分隔的，这样的话操作起来非常方便。</p>
+<p>Let's begin!</p>
+<h3><strong>执行环境：</strong></h3>
+<div class="codehilite"><pre><span class="n">Mac</span> <span class="n">OS</span> <span class="n">X</span> <span class="n">Lion</span> <span class="mf">10.7.2</span> <span class="o">|</span><span class="err"> </span><span class="mf">2.8</span> <span class="n">GHz</span> <span class="n">Intel</span> <span class="n">Core</span> <span class="n">i7</span> <span class="o">|</span><span class="err"> </span><span class="mi">4</span> <span class="n">GB</span> <span class="mi">1333</span> <span class="n">MHz</span> <span class="n">DDR3</span>
+<span class="n">PHP</span> <span class="mf">5.3.1</span> <span class="o">|</span> <span class="n">MySQL</span> <span class="mf">5.1.44 ...</span></pre></div> <a class="" href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Mac OS X上装MySQL for Python的辛酸经历</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>折腾了一下午，只为一个MySQL for Python...</p>
+<p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
+<p>首先说一下安装环境：</p>
+<blockquote>
+<p>操作系统：Mac OS X Lion</p>
+<p>Python版本：2.7</p>
+<p>MySQL for Python版本：1.2.3</p>
+</blockquote>
+<h3>问题：</h3>
+<p>编译MySQL for Python的源码时，出现如下错误提示：</p>
+<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span><span class="o">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<span class="nl">error:</span> <span class="n">command</span> <span class="err">‘</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span><span class="err">′</span> <span class="n">failed ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -253,6 +265,9 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/author/zhaoyu-li6.html">Next &rarr;</a></li>
 

@@ -43,204 +43,250 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/work-with-high-efficiency/">杜绝拖延，提高工作学习效率</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 08 October 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>导致工作效率降低的最大原因是拖延，说明这是一种耽误工作效率的糟糕习惯。辟如某事的行事方式，如果你发现有问题，那么你就应该立刻站出来，干脆利索的将事情解决掉，改掉拖延症，找出高效工作的方法。</p>
-<p>希腊神话告诉人们，智慧女神雅典娜，有一天从宙斯的头脑中披甲执戈一跃而出。人的最大梦想、最大创意、最大憧憬，就像雅典娜一样，也往往是在某一瞬间突然从头脑中很完备、很有力地跃出来的。但有计划而不去执行，使之烟消云散，这对于你的品格力量会产生非常不良的影响。</p>
-<p>一个生动而强烈的意象、观念闪入一位作家的脑海，使他灵光乍现，产生出一种不可阻遏的冲动——要想提起笔来，将那美丽生动的意象、观念移向白纸；但那时他或许有些不方便，所以不能立刻就写。那个意象不断的在他脑海中跳跃、催促，然而他还是拖延，最后灵感就会逐渐的模糊、暗淡，终于整个消失。</p>
-<p><strong>1、拖延症就像容易上瘾的诱惑，需要坚定意志，努力克服。</strong></p>
-<p>习惯中最足以误人的莫过于拖延，有许多人都是因为此种习惯所累而陷入困境。拖延的习惯，最能损害及减低人的做事能力。你应该极力避免拖延的习惯，就像避免一种罪恶的引诱一样。</p>
-<p><strong>2、第一时间当机立断的着手解决问题。</strong></p>
-<p>假使对于某一件事，你发觉自己有着拖延的倾向，你应该跳起来 ...</p> <a class="" href="http://hackecho.com/2011/10/work-with-high-efficiency/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
+<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
+<h3>安装MacVim和Python</h3>
+<p>下列两种方式中的任一种均可用来安装MacVim。</p>
+<p><strong>方式一：通过Mac ports</strong></p>
+<p>首先确保你的Mac ports是最新版：</p>
+<p>1 $ sudo port -v selfupdate</p>
+<p>安装：</p>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
+</pre></div>
+
+
+<p><strong>方式二：自己编译</strong></p>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/b4winckler/macvim.git</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
+<span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="o">=</span><span class="mf">10.6</span>
+<span class="err">$</span> <span class="n">make</span>
+</pre></div>
+
+
+<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 28 September 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">找不到libmysqlclient.18.dylib库的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>不论是在ThinkPHP的开发中，还是在一般的软件项目开发中，都要用到一种重要的开发思想，即MVC。维基百科中解释为：MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
-<p>通过这篇教程，让我们来简单熟悉一下MVC的基本思想，这也是使用ThinkPHP开发应用不可或缺的知识，否则你将寸步难行。</p>
-<p>MVC主要由三部分组成：</p>
+        <div class="summary" style="margin:18px 0 0 0;"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
+<p>问题描述：</p>
+<p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">import</span> <span class="nx">MySQLdb</span>  
+<span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>  
+<span class="nb">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>  
+<span class="nb">File</span> <span class="s2">&quot;build/bdist.macosx-10.6-intel/egg/MySQLdb/__init__.py&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">19</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+
+<span class="nb">File</span> <span class="s2">&quot;build/bdist.macosx-10.6-intel/egg/_mysql.py&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">7</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>  
+<span class="nb">File ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Mac OS X上装MySQL for Python的辛酸经历</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>折腾了一下午，只为一个MySQL for Python...</p>
+<p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
+<p>首先说一下安装环境：</p>
+<blockquote>
+<p>操作系统：Mac OS X Lion</p>
+<p>Python版本：2.7</p>
+<p>MySQL for Python版本：1.2.3</p>
+</blockquote>
+<h3>问题：</h3>
+<p>编译MySQL for Python的源码时，出现如下错误提示：</p>
+<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span><span class="o">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<span class="nl">error:</span> <span class="n">command</span> <span class="err">‘</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span><span class="err">′</span> <span class="n">failed ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
+<p>就不细细介绍了，看下面的例子，就都懂了：</p>
+<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="err">#</span> <span class="err">显示可识别的编码名称</span>
+<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;</span><span class="p">.</span><span class="o">/</span><span class="n">infomation</span><span class="p">.</span><span class="n">log</span> <span class="err">#</span> <span class="err">显示可识别的编码名称，将信息存入</span><span class="n">infomation</span><span class="p">.</span><span class="n">log</span><span class="err">文件中</span>
+<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> <span class="err">#</span> <span class="err">转换</span><span class="n">GB2312</span><span class="err">编码的文件</span><span class="n">a</span><span class="p">.</span><span class="n">html</span><span class="err">为</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="err">编码，存入</span><span class="n">b</span><span class="p">.</span><span class="n">html ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
+<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
+<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
+<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
+<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
+<p>使用这款插件后，效果如下：</p>
+<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
+<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
+<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
+<p><strong>插件下载地址</strong>：暂无 </p> <a class="" href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/no-struggle-no-life/">无折腾，不生活</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 13 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>看看这几天都折腾了些啥...</p>
+<p>1.换博客程序，更换域名</p>
+<p>开学前，抱着“无折腾，不生活”的态度，将博客的程序换成了国人开发的Emlog。整个转换过程基本用了一天时间，网上可以找到很多emlog转Worpdress的程序，但逆向的话却很少。最后，采取了一种最笨的方法，将文章一篇一篇手工复制...不过也正好借此机会整理下文章。至于评论，由于数量多而且分散，更恐怖的是有级联关系（即谁回复了谁的关系），但看了一下发现两个程序的评论表差不多，便用PHP写了个小脚本将评论迁移了过来。当然，经过修复无数个小bug之后，博客终于又全新上线了。</p>
+<p>不过你也许看到了，现在的博客依旧是WordPress...因为后来我又折腾回来了...不解释。</p>
+<p>遗憾的是，在折腾过程中，一不小心将最新的备份给 rm -rf 掉了，因此博客所有的数据只能还原到2011年12月底。不过幸运的是，在转换程序的时候在本地还有一次数据导入，因此又找回了几篇文章，但最新的一些评论却永远丢失了...</p>
+<p>哦对了，还换了个域名：hackecho.com，原来域名还有一年多到期，进行了301永久重定向到新域名，原来的二级域名因指向不同的host，依旧有效。 </p>
+<p>2 ...</p> <a class="" href="http://hackecho.com/2012/02/no-struggle-no-life/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/git-notes/">Git 学习笔记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 29 January 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>学习Git的笔记，会不定期更新。</p>
+<p>我的Github地址：<a href="https://github.com/uutroy">https://github.com/uutroy</a></p>
+<p>首先推荐两篇非常好的入门：</p>
 <ul>
 <li>
-<p>（控制器Controller）- 负责转发请求，对请求进行处理。</p>
+<p><a href="http://gitimmersion.com/">Git Immersion</a></p>
 </li>
 <li>
-<p>（视图View） - 界面设计人员进行图形界面设计。</p>
-</li>
-<li>
-<p>（模型Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</p>
+<p><a href="http://www.ralfebert.de/tutorials/git/#commit_a">Git Tutorial</a></p>
 </li>
 </ul>
-<p><img alt="" src="/static/images/2011/09/ModelViewControllerDiagramZh.png" /></p>
-<p>本博客以前发布过一篇关于MVC的简单介绍，详情请点击这里：<a href="http://www.hackecho.com/archives/138.html">《对MVC架构的简单解读》</a></p>
-<p><strong>视图</strong></p>
-<p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
-<p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">Read more...</a></div>
+<p>一般流程：取代码 → 更新到最新版本 → 修改代码 → 提交</p>
+<h2>Creating a new repository</h2>
+<blockquote>
+<p>$ git init</p>
+</blockquote>
+<h2>取代码及修改全局设置</h2>
+<p>git在创建提交的时候会记录你的名字和email地址，所以你应该告诉git这些内容。可以使用’git config’命令来设置，如果传递参数’-global’ ，它会将这些值记录在~/.gitconfig文件里，作为这些配置的默认值。</p>
+<p>设置用户名与邮箱</p>
+<blockquote>
+<p>git config –global user.name “name”</p>
+</blockquote>
+<p>git config –global user.email “username@email.com ...</p> <a class="" href="http://hackecho.com/2012/01/git-notes/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/intro-to-thinkphp/">深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 26 September 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 24 January 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
-<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
-<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
-<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
-<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
-<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
-<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
-<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
-<p><strong>加速开发过程：</strong></p>
-<p>PHP框架 ...</p> <a class="" href="http://hackecho.com/2011/09/intro-to-thinkphp/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
+<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
+<h2>The Zen of Python, by Tim Peters</h2>
+<ul>
+<li>
+<p>Beautiful is better than ugly.</p>
+</li>
+<li>
+<p>Explicit is better than implicit.</p>
+</li>
+<li>
+<p>Simple is better than complex.</p>
+</li>
+<li>
+<p>Complex is better than complicated.</p>
+</li>
+<li>
+<p>Flat is better ...</p></li></ul> <a class="" href="http://hackecho.com/2012/01/the-zen-of-python/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/difference-between-work-and-create/">打工与注册公司创业的区别</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 September 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>自己打工与注册公司有什么区别，有人说都是为了赚钱，都是为了生活。但这两这还是有本质的不同。</p>
-<p>1.打工是靠自己的能力吃饭，注册公司是靠自己的智慧和思考吃饭；</p>
-<p>2.打工是靠别人给自己的平台来展示能力，注册公司是靠自己的决心和眼光创造一个平台；</p>
-<p>3.打工是做好自己的本分工作就好，注册公司是要思考体系运作的每一个环节；</p>
-<p>4.打工的人期望的是一周有两天休息，注册公司的人是思考的是如何能低成本的运作；</p>
-<p>5.打工的不愿意真实的面对自己的收入，注册公司必须要真实的面对自己的实力和财务状况；</p>
-<p>6.打工的时候想的是自己的经历和文凭应该值多少钱，注册公司的时候想的是自己的勤劳和策略能创造多少钱；</p>
-<p>7.打工时想用自己的专业知识吃饭，存钱养家，注册公司时候想的是如何利用社会资源来赚钱养活组织和员工；</p>
-<p>8.打工的人一般都比较天真，认为辛苦和听话就可以长保无忧，注册公司的时候才知道市场的变幻简直就是日不可测，日不可知；</p>
-<p>9.打工搞好上司和同事关系就可以生活，注册公司要搞好客户和社会方方面面的关系才能生存；</p>
-<p>10.打工要看上司和老板的脸色，注册公司看社会消费者和主管行政部门的脸色和媒体的脸色；</p>
-<p>11.打工想的是今年我能存多少钱，发多少奖金，注册公司想的是今年能开多少店，占多少市场份额；</p>
-<p>12.打工人今天天下雨和下雪，没有客人就很高兴，可以放松偷懒，注册公司想的今天天气下雨下雪，心如火焚，着急无比，如何吸引客人上门 ...</p> <a class="" href="http://hackecho.com/2011/09/difference-between-work-and-create/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在上一篇文章《<a href="http://www.hackecho.com/archives/710.html">VPS折腾记</a>》中提到在升级Wordpress或添加删除主题和插件的时候需要填写FTP账户信息的问题，提示一般如下：</p>
+<blockquote>
+<p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</p>
+</blockquote>
+<p>一般情况下，虚拟主机很少会出现这样的情况，如果使用 VPS 的话，这种情况就会比较多。主要原因是网站服务器运行PHP的用户和Wordpress文件夹的所有者不一样，目的就是为了安全，Wordpress在升级时会创建一个临时文件看看owner是不是和当前运行的PHP是否一样，如果不一样，就会出现这个界面。</p>
+<p>第一种解决办法很简单，就是直接在wp-config.php 中加入FTP的配置代码：</p>
+<div class="codehilite"><pre><span class="c1">// ** FTP SETTINGS FOR AUTO-UPDATE ** //</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_HOST</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">localhost</span><span class="err">’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_USER</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">帐号’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_PASS</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">密码’</span><span class="p">);</span>
+</pre></div>
+
+
+<p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
+<p>针对有高级管理权限的用户，如服务器或 VPS ...</p> <a class="" href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/dreams-and-creature/">创业与梦想</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 September 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/vps-struggle/">VPS折腾记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今天在42qu上看到一个提问：</p>
-<p><em>“@Firenze : 现在是不是在一种创业狂潮的状态中？为啥每个人都在想要做一个网站然后可以如何如何可以怎样布局怎样找风头怎样拿政府扶植怎样获得盈利模式一轮融资二轮融资。这究竟是大家都看到了创业者成功的那些少数派案例然后都想来分一杯羹还是只是我现在所在的圈子是这样？又或者这是一个必然的趋势的发展方向？”</em></p>
-<p>有一个精彩的回复非常好，转载收藏。</p>
-<p>——作者：Dreamer</p>
-<p>在两个年轻人在斯坦福实验室里创造 Yahoo! 的时候，互联网的创业就与传奇和梦想划上了等号，之后的 Google 和 Facebook 一次又一次地让所有人确信这一点。它们都诞生在不起眼的大学宿舍，都在很大程度上改变了世界影响了人们的生活。所以在这个创业渐成风气的年代，你总能看到国内很多初创互联网公司大叫“我们年轻，所以我们有梦想”，它们在招聘的时候也会特别注明应聘者一定要有“激情和梦想”。</p>
-<p>然而事实真的如此吗？</p>
-<p>不知道别人怎么定义“梦想”这个词，我觉得“梦想”应该是一个很美好的东西。它触动你的心灵，让你感动；它激发出你的全部热情，而不是贪婪；它发自内心、来自于自己的反思和独立判断，而不是别人的煽动和灌输。</p>
-<p>以前我也常憧憬着去一家创业公司，那个时候我不满大公司的臃肿和低效，痛恨他们的官僚和笨重，觉得创业公司是梦想、激情、灵活和创新的化身，它一定没有那些大公司的毛病。我想象着那里的每一个员工都热爱自己的产品，每一个人都是产品的客服 ...</p> <a class="" href="http://hackecho.com/2011/09/dreams-and-creature/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 16 September 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>我们在做网站前端开发的时候经常会用到内容滑块插件，而网上又难以找到系统的、功能强大的完整教程。Troy在这里收藏最最经典而且效果非常酷炫、功能强大的10款 jQuery 内容滑块插件。每个插件下面都有针对这款插件详细介绍的链接。</p>
-<p><strong>1.jQuery HTML Content Slider</strong></p>
-<p><img alt="" src="https://sn2files.storage.live.com/y1pAGZ2hcCfv2CQOJ2flJ0Hl3gzZEHz4EkYHMKve6aLAc78X-8991UHBdVXuV5nCZQuuZQngArt0-XgNY_Lkj3Pcw/1.PNG?psid=1" /></p>
-<p><a href="http://bxslider.com/">More Information on jQuery HTML Content Slider</a></p>
-<p><strong>2.Awkward Showcase – A jQuery Plugin</strong></p>
-<p><img alt="" src="https://sn2files.storage.live.com/y1pvP3ooRkPU05ZmPb1qP6CBv6EYC3aUQZk8QwQwqAOBUzbJ38CN7e9HLt5nLMaJQLgciNHm_mhFVeguTD8OyhSKA/2.PNG?psid=1" /></p>
-<p><a href="http://www.awkwardgroup.com/sandbox/awkward-showcase-a-jquery-plugin/">More Information on Awkward Showcase – A jQuery Plugin</a></p>
-<p><strong>3.Diapo</strong></p>
-<p><img alt="" src="https://sn2files.storage.live.com/y1phjrx18GpoUiAIlZB90sHvOO1ux7UQHzaHEx_36xUDnhKGs-7aT1kYtsAcn4h3SbVt4gLznB3eIQlUiU_AQOJPg/3.PNG?psid=1" /></p>
-<p><a href="http://www.pixedelic.com/plugins/diapo/">More Information on Diapo</a></p>
-<p><strong>4.Smooth Div Scroll</strong></p>
-<p><img alt="" src="https://sn2files.storage.live.com/y1pyHHBkYkEfsr0fvzitqKR718_X_H2IUCdftFfBVIDp1hNM5GzMkAagwuOFFpERnDyfGAVX5GKfaa4QDoFhusRJg/4.PNG?psid=1" /></p>
-<p><a href="http://www.smoothdivscroll.com/#quickdemo">More Information on Smooth Div Scroll ...</a></p> <a class="" href="http://hackecho.com/2011/09/10-cool-jquery-slides/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/beauty-of-chinese-article/">中国风，将唯美雅韵进行到底</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 14 September 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>好久没有读到如此荡气回肠的文章了，中国风，是一种生活态度。</strong></p>
-<p>翻开中国滚滚历史长卷，墨香墨离，各个朝代独领风流，各个领域人才辈出，上至轩辕开天大战蚩尤，惊天地，泣鬼神，统制九州，九樽青鼎为鉴，苍松白鹿为证，黄帝仙逝，轩辕氏仍逐鹿中原，人才济济，舜尧两帝，开创文明先河，黄河长江流域谱写华丽篇章。­</p>
-<p>中国华夏五千年文明泱泱流淌，川流不息，讫立世界民族之林不倒，像明珠矗立在世界的东方，成为四大文明古国之一，其经济、文化、历史、建筑、佛法…都为世界做出了巨大的贡献，古老而神秘的国度，散发着朦胧的书香气息，其高超的技艺，精美的墨笔，巧夺天功的神来之笔，为华夏文明装点上一层浓厚的翰林墨息。­</p>
-<p>至统领九州以来，各朝各代，文人儒客，风流倜倘，身着素衣，手握折扇，不羁一格，吟诵明月诗篇，歌窈窕乐章，不为世旅尘俗所累，放心绿水之湄，听风吟月，自在江上泛舟轻摇，一壶残酒 ...</p> <a class="" href="http://hackecho.com/2011/09/beauty-of-chinese-article/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/ppt-that-create-google-plus/">给Google+带来灵感的一份PPT</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 06 August 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>PPT来自SlideShare，请稍等使其加载完毕。</strong></p>
-<p>当Google+迅速走红，16天达到1000万用户的时候，别忘记一个叫Paul Adams的人，他是前Google员工，现在是Facebook的产品经理，在Google工作期间，他做的一系列研究奠定了Google的社会化战略基础，而他的这份研究的PPT the real life of social network在一年前也非常受欢迎。</p>
-<p>而如今Google+很多地方都是遵循了这些研究理念，比如说圈子，在这份ppt中刚开始就是以一个名叫Debbie的人开始，通过比较其再Facebook上的社交关系和现实中的社交关系，指出目前的社交网络没有解决一个把特定的信息传递给特定的人这个问题，而这个问题有时候会让我们很尴尬，PPT举的一个例子就是这个叫Debbie的人一不小心在Facebook评论了其在同性恋酒吧工作朋友的照片，而被她Facebook上的学生好到了。在现实生活中，白天是教授，和一群学生上课，晚上是禽兽，和一般死党鬼混，但你从不敢把鬼混的照片发在比如新浪微博、比如Facebook上，因为哪里，大家都是你的朋友，甚至还有很多朋友的朋友。</p>
-<p>在这个ppt中，Paul Adams还讲述了社会化网络，人是以群分的，讲了人与人之间的关系，有的人你经常联系，有的人只是认识而已，还有很多人和你只是一面之缘，在Facebook上平均每个用户有130个好友，而经常联系互动的只有4到6个而已。</p>
-<p>在影响力这个章节中，提到了社交网络对于商业的影响，之前有一篇讨论比较热烈的文章 ...</p> <a class="" href="http://hackecho.com/2011/08/ppt-that-create-google-plus/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/worry-about-life/">看似积极，其实焦虑</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 19 July 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>这是在《大学生》上看到的一篇文章，转到这里分享。</p>
-<p>我有一个好友D，她不吃早餐，偶尔翘课，时常熬夜，对所学专业意义持怀疑态度。和众多单身学生一样，她把大部分时间耗在宿舍或自习室里。在大学校园里随机挑10个人，8个都和她相似。</p>
-<p>某一天，我向她借移动硬盘，发现500G的空间几乎全被装满。所有的内容分门别类，安置在十几个文件夹里。除电影以外，其余的内容几乎都与学习相关：公开课、TED演讲、纪录片、英语听力、电子书……我自己虽也有些存货，但仍不免感到眼界一开。问她，这些东西看过多少。她答道，不到1/3，面带愧色。花了不少时间下载，都是有用的东西，以后可能用得到。她又补了一句。事实上，那剩下的2/3也许永远没有重见天日的那一天，我们彼此心知肚明。</p>
-<p>几天后，听说她又买了一个新的移动硬盘，哪些在“下载”名单上排队的资源终于找到了去除。于是，新一轮填满500G的征途又野心勃勃、兴致盎然地启程了。</p>
-<p>这情景对现代人应该不陌生 ...</p> <a class="" href="http://hackecho.com/2011/07/worry-about-life/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/something-about-google-plus/">关于Google+的种种</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 08 July 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2011/07/Google-Plus1-e1310058522662.png" /></p>
-<p>应好友<a href="http://yihuxingkong.kuandao.com/">@一湖星空</a>的邀请，第一时间体验了Google最新推出的社交项目Google+，看看这位在社交领域屡次失败的巨头是怎样发动最后一轮进攻的。</p>
-<h3>Google+是什么</h3>
-<p>Google+是Google高管维克·冈多特拉(Vic Gundotra)和布拉德利·霍洛维茨(Bradley Horowitz)负责的一项社交服务项目，其用户界面出自苹果前Mac软件团队设计师安迪·赫兹菲尔德(Andy Hertzfeld)之手。Gundotra和Horowitz认为Google+不只是一个产品，也不是一种战略方案，而是一个扩展后的Google。Google+目的是让Google在线资产在日常生活中更普及，而不只是网上冲浪时偶然点击、搜索一个网站。Google+于2011年6月28日亮相，仍处于测试阶段。</p>
-<p>在过去的一年里，Google+的开发一直秘密进行着，期间传闻不断，也有过官方辟谣，但最终它还是出现了。</p>
-<h3>Google+项目负责人谈产品</h3>
-<p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p> <a class="" href="http://hackecho.com/2011/07/something-about-google-plus/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>实在不爽虚拟主机的性能问题和每天几十封宕机警告，而且主机的一切环境都是虚拟主机商配置好的，没有自由发挥的余地。于是果断决定给博客找个好点的VPS，也为以后博客改版做准备。当然，还有VPN哈哈。</p>
+<p>因为Linode VPS口碑还不错，而且支持ipv6，所以就选它了。折腾了整整一下午一晚上，终于把小博客搬了过来，简单总结一下整个过程以备忘。</p>
+<h2>SSH登陆</h2>
+<p>在Windows上，可以使用Putty来使用SSH。在Mac上，可以直接使用Terminal。命令很简单：</p>
+<blockquote>
+<p>ssh username@server -p portNumber</p>
+</blockquote>
+<p>后面的-p portNumber只在主机不是使用标准端口时需要加上，使用时将username和server替换成自己的用户名和地址就可以了。</p>
+<h2>安装LNMP</h2>
+<p>网上普遍说LNMP比LAMP性能要好，虽然我这个小博客也没多少流量，但无折腾不生活，趁年轻多折腾折腾。</p>
+<p>可以选择自己一个一个配置，也可以选择<a href="http://lnmp.org/">LNMP一键安装包</a>。当然折腾的前提是要稍微熟悉它，所以暂时用一键安装包了。官方给出了详细的安装步骤（见<a href="http://lnmp.org/install.html">这里</a>），这里就不再赘述。对于安装中遇到的各种问题，请看本文第五部分。</p>
+<p>安装完后记住将Nginx和PHP升级到最新版，安装包中的不是最新版。</p>
+<h2>安装Wordpress</h2>
+<p>不知为何，按照LNMP官方教程安装VSFTPD总是不成功，于是放弃之安装了PureFTPd ...</p> <a class="" href="http://hackecho.com/2012/01/vps-struggle/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -256,6 +302,9 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
+    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
+    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
+    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/index6.html">Next &rarr;</a></li>
 
