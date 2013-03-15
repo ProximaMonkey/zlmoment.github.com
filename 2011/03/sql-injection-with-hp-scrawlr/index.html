@@ -96,29 +96,29 @@ by Zhaoyu Li
 <p><strong>SQL注入</strong></p>
 <p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库，然后通过简单的注入命令来返回机密数据，并将其复制粘贴到自己的机器中。下面是一个简单的SQL注入范例：</p>
 <p>下面我们来绕过登录表单。这里是来自实际应用代码片段：</p>
-<div class="codehilite"><pre><span class="n">SQLQuery</span> <span class="p">=</span> &quot;<span class="n">SELECT</span> <span class="n">Username</span> <span class="n">FROM</span> <span class="n">Users</span> <span class="n">WHERE</span>
-<span class="n">Username</span> <span class="p">=</span> ‘&quot; <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span>
-<span class="n">strUsername</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> &quot;‘ <span class="n">AND</span> <span class="n">Password</span> <span class="p">=</span> ‘&quot; <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">strPassword</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> &quot;‘&quot;
-<span class="n">strAuthCheck</span> <span class="p">=</span> <span class="n">GetQueryResult</span><span class="p">(</span><span class="n">SQLQuery</span><span class="p">)</span>
-<span class="n">If</span> <span class="n">strAuthCheck</span> <span class="p">=</span> &quot;&quot; <span class="n">Then</span>
-    <span class="n">boolAuthenticated</span> <span class="p">=</span> <span class="n">False</span>
+<div class="codehilite"><pre><span class="n">SQLQuery</span> <span class="o">=</span> <span class="s">&quot;SELECT Username FROM Users WHERE</span>
+<span class="n">Username</span> <span class="o">=</span> <span class="err">‘</span><span class="s">&quot; &amp;amp;</span>
+<span class="n">strUsername</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="s">&quot;‘ AND Password = ‘&quot;</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">strPassword</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="s">&quot;‘&quot;</span>
+<span class="n">strAuthCheck</span> <span class="o">=</span> <span class="n">GetQueryResult</span><span class="p">(</span><span class="n">SQLQuery</span><span class="p">)</span>
+<span class="n">If</span> <span class="n">strAuthCheck</span> <span class="o">=</span> <span class="s">&quot;&quot;</span> <span class="n">Then</span>
+    <span class="n">boolAuthenticated</span> <span class="o">=</span> <span class="n">False</span>
 <span class="n">Else</span>
-    <span class="n">boolAuthenticated</span> <span class="p">=</span> <span class="n">True</span>
+    <span class="n">boolAuthenticated</span> <span class="o">=</span> <span class="n">True</span>
 <span class="n">End</span> <span class="n">If</span>
 </pre></div>
 
 
 <p>这是一个典型的登录处理，终端用户来到站点，然后提交他们的用户名和口令。随后，这个查询从“Users”表中寻找是否有与提供的用户名和口令匹配的记录。对于糟糕的ASP代码或者PHP代码，黑客将能使用下列类型的代码来发动进攻。</p>
 <p><strong>注入代码：</strong></p>
-<div class="codehilite"><pre>用户名：‘ <span class="n">OR</span> ‘‘<span class="p">=</span>‘
-口令：‘ <span class="n">OR</span> ‘‘<span class="p">=</span>‘
+<div class="codehilite"><pre><span class="err">用户名：‘</span> <span class="n">OR</span> <span class="err">‘‘</span><span class="o">=</span><span class="err">‘</span>
+<span class="err">口令：‘</span> <span class="n">OR</span> <span class="err">‘‘</span><span class="o">=</span><span class="err">‘</span>
 </pre></div>
 
 
 <p>这个会使SQLQuery变成下面的样子：</p>
-<div class="codehilite"><pre><span class="n">SELECT</span> <span class="n">Username</span> <span class="n">FROM</span> <span class="n">Users</span> <span class="n">WHERE</span> <span class="n">Username</span> <span class="p">=</span> ‘‘
-<span class="n">OR</span> ‘‘<span class="p">=</span>‘‘ <span class="n">AND</span>
-<span class="n">Password</span> <span class="p">=</span> ‘‘ <span class="n">OR</span> ‘‘<span class="p">=</span>‘‘
+<div class="codehilite"><pre><span class="n">SELECT</span> <span class="n">Username</span> <span class="n">FROM</span> <span class="n">Users</span> <span class="n">WHERE</span> <span class="n">Username</span> <span class="o">=</span> <span class="err">‘‘</span>
+<span class="n">OR</span> <span class="err">‘‘</span><span class="o">=</span><span class="err">‘‘</span> <span class="n">AND</span>
+<span class="n">Password</span> <span class="o">=</span> <span class="err">‘‘</span> <span class="n">OR</span> <span class="err">‘‘</span><span class="o">=</span><span class="err">‘‘</span>
 </pre></div>
 
 
@@ -137,7 +137,6 @@ by Zhaoyu Li
         <h4>Related Posts</h4>
                     <ul>
                             <li><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></li>
-                            <li><a href="http://hackecho.com/2011/02/parse-xml-in-vc/">在VC中解析XML的方法</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

@@ -60,70 +60,6 @@ by Zhaoyu Li
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 12 October 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
-<p>具体如下图所示：</p>
-<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
-<p>我们来详细了解一下图中所示的模块和操作。</p>
-<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
-<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
-<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
-<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
-        <span class="err">具体代码略……</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
-<span class="err">```</span><span class="nx">PHP</span>
-
-<span class="err">该文件已经演示了一个基于</span> <span class="nx">ThinkPHP</span> <span class="err">的实际应用。</span>
-
-<span class="o">**&gt;&gt;</span> <span class="nx">ThinkPHP</span> <span class="err">控制器</span><span class="o">**</span>
-
-<span class="err">像上面这个</span> <span class="nx">IndexAction ...</span></pre></div> <a class="" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-hello-world/">深入浅出ThinkPHP系列教程(三) Hello World！</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 01 October 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今天我们来一步一步生成ThinkPHP的Hello World！</p>
-<p><strong>入口文件</strong></p>
-<p>一个项目（系统）通常具有一个统一的入口文件，项目的所有功能操作都是通过这个入口文件进行的，并且往往入口文件是第一步被执行的，这是 ThinkPHP 或者说 PHP 框架中非常重要的一个概念。</p>
-<p><strong>创建入口文件</strong></p>
-<p>在 Web 目录（E:html）下创建一个项目目录，如 myapp 。在 myapp 目录内创建一个文件index.php，文件内容如下：</p>
-<div class="codehilite"><pre><span class="cp">&lt;?php</span>
-<span class="c1">//定义ThinkPHP框架路径</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;THINK_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;../ThinkPHP&#39;</span><span class="p">);</span>
-<span class="c1">//定义项目名称和路径</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APP_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
-<span class="c1">//加载框架入口文件</span>
-<span class="k">require</span><span class="p">(</span><span class="nx">THINK_PATH</span><span class="o">.</span><span class="s2">&quot;/ThinkPHP.php&quot;</span><span class="p">);</span>
-<span class="c1">//实例化一个网站应用实例</span>
-<span class="nx">App</span><span class="o">::</span><span class="na">run</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
-</pre></div>
-
-
-<p>在入口文件中，定义了 ThinkPHP 框架路径 ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-hello-world/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 28 September 2011
 
@@ -172,41 +108,6 @@ by Zhaoyu Li
 <p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
 <p><strong>加速开发过程：</strong></p>
 <p>PHP框架 ...</p> <a class="" href="http://hackecho.com/2011/09/intro-to-thinkphp/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/thinkphp-notes/">ThinkPHP学习笔记（一）</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 04 April 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>因为是自己的笔记，所以比较杂乱，见谅。</p>
-<p><strong>Action：</strong>模块控制器类，你暂时可以理解为一个Action文件代表着一个应用模块，Action文件中的每一个方法(function)代表着一个操作，操作分为有输出到模板的操作和只具执行不需要输出的操作。对于有输出的操作，则代表了你的项目中一个展示给用户应用的web页面。（注意：这不是正统的术语解释）</p>
-<div class="codehilite"><pre><span class="c1">//IndexAction.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-<span class="k">class</span> <span class="n">IndexAction</span> <span class="k">extends</span> <span class="n">Action</span><span class="p">{</span>
-    <span class="n">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
-        <span class="p">....</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="o">?&gt;</span>
-</pre></div>
-
-
-<p><strong>Model：</strong>数据表相对应的Model类，可以理解为一个Model文件对应着你项目数据库的其中一个表。</p>
-<div class="codehilite"><pre><span class="c1">//UserModel.class.php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
-    <span class="k">class</span> <span class="n">UserModel</span> <span class="k">extends</span> <span class="n">Model</span>
-    <span class="p">{}</span>
-<span class="o">?&gt;</span>
-</pre></div>
-
-
-<p>Action目录放置命名为xxxAction.class.php的控制器文件，Model目录放置对应数据库表的命名为xxxModel.class.php的类文件。</p>
-<p>1 在TP开发中，要增加一个应用模块，就在Action文件夹里建立一个类，类的文件命名格式是模块名称+Action.class.php ...</p> <a class="" href="http://hackecho.com/2011/04/thinkphp-notes/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

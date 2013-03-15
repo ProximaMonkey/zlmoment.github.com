@@ -43,173 +43,6 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/disappear-day/">消失的这几天</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 03 November 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>突然间，这里已经11月3日了，现在是凌晨1：20。在遥远的故乡，正是下午2：2o。朋友们，下午好。</p>
-<p>好久没写东西了，哪怕是技术方面的，也没有一篇。最新的一篇日志还停留在7月份，记得那是离签证还有一星期的时候，忙里偷闲转的一篇。一转眼，万圣节已过，开始期盼Thanksgiving的时候，却发现到处都开始准备圣诞树了。时间好快，恍惚之间，不敢苟且。</p>
-<p>如今，三个月过去了，每天的安排开始有了规律。不过回想起这三个月的种种，心头也会涌起一股莫名的感情。经常会想写一些东西记录，而一切变化太快，未等提笔，便已忙于身外，只能享受那片刻欢愉。</p>
-<p>也许有一天，我会将这些见闻与经历写一写，而现在还没有准备好。因为没有经过沉淀的思想，永远都是肤浅的。有一天回忆的时候，我要找寻那种想哭的感动。</p>
-<p>不过，我喜欢这种充实的生活，每一天都在创造价值，哥伦比亚是个小镇，宁静安详，不吵不闹，这里有传统的美国文化，也有纯真朴实的来自世界各地的人们，每天都有新发现，每天都会带给你新的的感受。</p>
-<p>明天又将是充实的一天 ...</p> <a class="" href="http://hackecho.com/2012/11/disappear-day/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/socket-work-model/">Socket的几种工作模式</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 July 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>Socket的几种工作模式我们简单介绍几种Socket的工作模式：阻塞模式、非阻塞模式、同步I/O、信号驱动I/O和异步I/O。</p>
-<h2>阻塞模式</h2>
-<p>是socket的缺省方式，也是最常用的方式，即函数阻塞直到调用完毕。</p>
-<p>可能造成阻塞的函数有：connect()、accept()、读写函数、select()、poll()、gethostbyname()等。</p>
-<p><img alt="" src="/static/images/2012/07/1.jpg" /></p>
-<p>可参见下面的例子：</p>
-<div class="codehilite"><pre><span class="c">#include &lt;stdio.h&gt;</span>
-<span class="c">#include &lt;stdlib.h&gt;</span>
-<span class="c">#include &lt;errno.h&gt;</span>
-<span class="c">#include &lt;string.h&gt;</span>
-<span class="c">#include &lt;sys/types.h&gt;</span>
-<span class="c">#include &lt;netinet/in.h&gt;</span>
-<span class="c">#include &lt;sys/socket.h&gt;</span>
-<span class="c">#include &lt;sys/wait.h&gt;</span>
-<span class="c">#define ...</span></pre></div> <a class="" href="http://hackecho.com/2012/07/socket-work-model/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
-<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
-<h2>根文件系统</h2>
-<p><strong>/bin</strong></p>
-<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
-<p><strong>/boot</strong></p>
-<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
-<p><strong>/dev</strong></p>
-<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
-<p><strong>/etc</strong></p>
-<p>该目录中包含系统和应用软件的配置文件。</p>
-<p><strong>/etc/passwd</strong></p>
-<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-faile-can-be-copied/">我的失败可以复制</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 23 June 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>常听人说，如果你开始回忆过去，说明你老了。而我却时常会怀念过去，或者说，是忏悔。</p>
-<p>有时候会想，如果大学的前三年可以重新来过，让我们都回到那个懵懂的年纪，重新开始全新的大学生活，一定会选择一种完全不一样的生活。我一直以为，世界上有另外一个我，在过着我想过的生活，在做着我想做的事，而我却永远无法重新选择。</p>
-<p>永远不能回头，在不断的选择中，我们创造了自己的生活。然而，当我们回首时看到的却满是错误与失去，多想穿越时空告诉那时的自己，你的选择，错了。可是，这些都是没有用的，回不去的事情再勉强也是幻想，走好余下的路才是最重要的，过去的错误永远是最宝贵的财富。</p>
-<p>生命中，我们竭尽全力都无法改变的事情：倒向你的墙，离你而去的人，流逝的时间，和永远的过去。</p>
-<p>就像这句歌词一样：“如果骄傲没被现实大海冷冷拍下，又怎会懂得要多努力才走得到远方；如果梦想不曾坠落悬崖千钧一发，又怎会晓得执着的人有隐形翅牓。”</p>
-<p>所以，不要难过了。离过去越近，离未来就越远。过精彩的生活，遇到精彩的人，找到精彩的未来。</p> <a class="" href="http://hackecho.com/2012/06/my-faile-can-be-copied/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-ncee/">我的高考</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 June 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>后天就要高考了，但这似乎已经与我无关。那段时光已经过去三年，可每每到这个时候，都会禁不住想起当年的我，当年的18班。</p>
-<p>时间正在将过往一丝一丝地抹去，我想在淡忘之前，再次品味一下那年的生活。</p>
-<p>关键字：运动场，角落，封闭的军事化管理，星空，考试那天</p>
-<h3>运动场</h3>
-<p>每天晚饭吃过以后，大约6点半，我们会三三两两到运动场上跑步，一般是跑6圈，然后满头大汗地回到教室等待晚自修。不管天气多么热，尤其是临近6月的时候，跑道上塑胶的味道很具有冲击感，但我们都依旧坚持着。当时的想法很简单，身体好才能保证学习，而要想身体好就要锻炼。那时候跟我一起跑的通常是永明，我高三时的同桌，物理超牛逼的一个人，现在在北大学物理系。跑步完之后，有时候我们会坐在草坪上，望着天空，莫名地感叹一下高三的生活，憧憬一下美好的未来，讨论一下大学，讨论一下理想。那时候没有多余的想法，黑色的高三也没那么苦，只是觉得很充实，很带感。</p>
-<h3>角落</h3>
-<p>后来，我们在教室的位置换成了桌子和桌子相互隔开的布局，谁也不是谁的同桌。我特别向往教室最后面的角落里的那个座位，或许只是想求得一份宁静，在聒噪的高三里 ...</p> <a class="" href="http://hackecho.com/2012/06/my-ncee/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/three-software-architecture-style/">3 Software Architecture Style</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 June 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
-<p>This brief introduction of ...</p> <a class="" href="http://hackecho.com/2012/06/three-software-architecture-style/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Sequences and Proxy Services in WSO2 ESB</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 June 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
-<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">解决MySQL无法通过localhost连接问题</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 27 May 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
-<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
-<h3>安装MySQL</h3>
-<p>依次执行下列三个命令：</p>
-<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
-<span class="n">unset</span> <span class="n">TMPDIR</span>
-<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="p">=</span>`<span class="n">whoami</span>` <span class="o">--</span><span class="n">basedir</span><span class="p">=</span>&quot;$<span class="p">(</span><span class="n">brew</span> <span class="o">--</span><span class="n">prefix</span> <span class="n">mysql</span><span class="p">)</span>&quot; <span class="o">--</span><span class="n">datadir</span><span class="p">=</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="p">=</span><span class="o">/</span><span class="n">tmp</span>
-</pre></div>
-
-
-<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
-<h3>解决localhost问题</h3>
-<p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/super-tool-homebrew/">开发者神器 - Homebrew简介</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 25 May 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
-<p><img alt="" src="/static/images/2012/05/homebrew.jpg" /></p>
-<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p> <a class="" href="http://hackecho.com/2012/05/super-tool-homebrew/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 22 May 2012
 
@@ -220,6 +53,229 @@ by Zhaoyu Li
 </div>
         <div class="summary" style="margin:18px 0 0 0;"><p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
 <p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p> <a class="" href="http://hackecho.com/2012/05/homebrew-vs-macports/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">[转]如何在保证睡眠的情况下高效学习</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 20 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>来源：http://blog.renren.com/blog/230557688/844071536</p>
+<p>少睡不是长久之计，关键还是要高效地管理时间，提供十条高效做事的经验。</p>
+<p>每天都过的很快，好像起床以后忙活几下，又到了晚上，很快又要睡觉了。To-do-list上的事好像总是做不完，有的时候积压地太多以至于都不想去碰了。每天从早到晚都是忙碌状态，但是总觉得做不了几件事，要是给我1天48小时该多好。</p>
+<p>事情太多时间不够，但是睡少了又效率低下，这实在是个悖论。似乎很多牛人都可以睡的很少，每天4-5小时睡眠，或者间歇式的睡眠，就可以高效地做事。这个境界我总是达不到，也没有想去达到。少睡不是长久之计，关键还是要高效地管理时间。</p>
+<p>我今天和一个朋友请教了这个问题，很受启发。我朋友是卡内基梅陇大学的计算机在读博士，发表了好几篇顶级论文，科研做的很牛。除学术以外，他还忙活不少其他的事，他是云飞跃留学平台的兼职编辑，他业余时间喜欢研究摄影，最近又在开发一款手机游戏，他周末也会花不少时间陪女朋友。尽管做那么多事，他告诉我说他每天都精力充沛，做事效率很高！</p>
+<p>但是他每天可以睡8小时！</p>
+<p>他讲了好几条高效做事的经验：</p>
+<h3>1、作息要规律，这是重中之重 ...</h3> <a class="" href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">年华一度，梦如歌</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 13 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="年华一度" src="/static/images/2012/05/1330396829220.jpg" /></p>
+<p>多年以前，当我们还是孩童的时候，曾是那么的渴望着长大。长大以后，懵懵懂懂的，我们又希望能够早些成熟。而当我们都成熟之后才明白，原来，成熟真的不是一件幸福的事情，我们为此付出了太大的代价。生活的种种无奈要面对，人生的诸多曲折要经历，所以我们不得不抛却内心的纯真，挂上虚伪的笑容，冷漠着自己的视线，用伪装将自己层层包裹，时间久了，最真实的自我也就忘了。</p>
+<p>纤尘风染，俗世纷争。多么的渴望，渴望时光能够倒流回曾经，不要断断续续的奔跑，也不要迫不及待的长大。可不可以，让我再次回到孩童的岁月，手拿枯树枝，头顶凉草帽，脚穿棉布鞋，去找寻那些早就化为轻烟的尘埃，来栽植自己枯萎的心灵。</p>
+<p>我知道，这注定是个没有回应的愿望，哪怕我跪在佛前祈求五百年。我也知道，过去的始终是过去的，不管如何不舍它也不会再回来，时光的脚步又怎会为我而轻易的停顿。我只是不甘心，不甘纯真的笑颜就此沉寂，只留下一些无迹可寻的回忆，装点着自己灰暗的世界，恍如戈壁般，入眼一片荒芜。</p>
+<p>年华一度，转转兜兜间，绿了芭蕉，瘦了红叶，长了头发，也长了个子 ...</p> <a class="" href="http://hackecho.com/2012/05/sing-a-song-in-my-young/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/my-recent-life-things/">近况 & 忙里偷闲</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>我觉得有必要记录一下生活。</p>
+<p>两年前，我对自己的生活就一个要求：“每天都要创造价值”。当时还和某某人深入探讨过，什么是价值，怎样去创造的问题。不知到某某人还记得否，当年为此想法兴高采烈，一致认为应该将其写本书，也像那谁谁一样火一把。后来遗憾的是，再也没有机会和某某人探讨这个问题了，只好躬身而行，久而久之，竟然也成了一种习惯性的思维。如果某天不能创造点价值（在自己看来），就没有勇气结束一天。不过毕竟人无完人，长期以来，这种思维导致的直接后果就是养成了晚睡的好习惯...看来必须调整一下了。</p>
+<p>最近几天，除了迫在眉睫的TOEFL、GRE外，其它时间全部沉浸在Tornado中。想起以前的时候，阿北坐在星巴克，用四五个月的时间创造了豆瓣，我就有种莫名的冲动。但我创造的不是豆瓣，而是一个中国的关于Python的开源社区。细节就不透露了，PyPub.com，敬请期待。</p>
+<p>其实我想吐槽一下Tornado，就不能有一个像样的文档吗！各种问题搞不清楚，查不到资料。还好Tornado是个轻量级的框架，还可以读一读源码找找问题。其实也是一举两得的事情，就像当我把Markdown的Python实现的源码过了一遍的时候，其语法也就了解的差不多了，也就是说，如果你把JAVA的C++源码读一遍，大抵也就可以用JAVA编程了 ...</p> <a class="" href="http://hackecho.com/2012/05/my-recent-life-things/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/">高效人士的七种习惯（中英对照）</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 03 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2012/05/ogwAq.jpg" /></p>
+<p><strong>摘要：</strong></p>
+<p>Habit 1: Be Proactive 凡事积极主动</p>
+<p>Habit 2: Begin with the End in Mind 先定目标而后有行动</p>
+<p>Habit 3: Put First Things First 重要的事要先做</p>
+<p>Habit 4: Think Win-Win 为了大家都赢</p>
+<p>Habit 5: Seek First to Understand, Then to Be Understood 先理解别人，再让别人理解自己</p>
+<p>Habit 6: Synergize 协同合作</p>
+<p>Habit 7: Sharpen the Saw 磨亮锯子（意指不断自我提高 ...</p> <a class="" href="http://hackecho.com/2012/05/seven-habits-of-hight-effective-people/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">利用.htaccess简单实现的10个功能</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 12 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
+<ol>
+<li>防盗链</li>
+</ol>
+<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
+<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="err">$</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="n">http</span><span class="o">:</span><span class="c1">//(www.)?yoursite.com/.*$ [NC]</span>
+<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span><span class="err">$</span> <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">302</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
+</pre></div>
+
+
+<ol>
+<li>防止目录浏览</li>
+</ol>
+<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
+<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
+</pre></div>
+
+
+<ol>
+<li>301永久重定向</li>
+</ol>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">WordPress与Suhosin冲突的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
+<p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
+<p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
+<p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
+<p>主要参考文章：</p>
+<ul>
+<li>
+<p><a href="http://www.cnblogs.com/droko/archive/2012/03/06/2381966.html">《PHP进程高负载》</a></p>
+</li>
+<li>
+<p><a href="http://changblog.com/582">《大战suhosin》</a></p>
+</li>
+<li>
+<p><a href="http://changblog.com/981">《解决wordpress引起的suhosin报错》</a></p>
+</li>
+<li>
+<p><a href="http://core.trac.wordpress.org/ticket/13847">《WP increasing the memory above other server limit》</a></p>
+</li>
+<li>
+<p><a href="http://demon.tw/software/suhosin-php.html">《Suhosin，PHP保护神？》</a></p>
+</li>
+</ul>
+<p>先观察些时日再说。</p>
+<p><em>补充（2012-3-23 20:40）：</em></p>
+<p>放上我的临时解决办法：</p>
+<p>对于上面日志中的问题，原因是suhosin的memory_limit限制了脚本内存的分配。解决办法是在php.ini中搜索memory_limit关键字，修改如下：</p>
+<div class="codehilite"><pre><span class="n">extension</span><span class="o">=</span><span class="n">suhosin</span><span class="p">.</span><span class="n">so</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="o">=</span> <span class="mi">256</span><span class="n">M</span>
+</pre></div>
+
+
+<p>对于get和post数据大小限制的问题 ...</p> <a class="" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
+<p>文章结构：</p>
+<ul>
+<li>
+<p>独立博客与BSP的区别</p>
+</li>
+<li>
+<p>申请域名</p>
+</li>
+<li>
+<p>服务器主机</p>
+</li>
+<li>
+<p>域名绑定</p>
+</li>
+<li>
+<p>安装程序</p>
+</li>
+<li>
+<p>开始使用</p>
+</li>
+</ul>
+<h3>独立博客与BSP的区别</h3>
+<p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">[转载] 给浮躁的软件业同仁</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>文章来源：网络    作者：未知</strong></p>
+<p>中国有很多小朋友，他们18,9岁或21,2岁，通过自学也写了不少代码，他们有的代码写的很漂亮，一些技术细节相当出众，也很有钻研精神，但是他们被一些错误的认识和观点左右，缺乏对系统，对程序的整体理解能力，这些人，一个网上的朋友说得很好，他们实际是fans，压根没有资格称为程序员，但是据我所知，不少小网络公司的Cfans,拿着吓人的工资，做着吓人的项目，项目的结局通常也很吓人。</p>
+<p>程序员基本素质：</p>
+<p>作一个真正合格的程序员，或者说就是可以真正合格完成一些代码工作的程序员，应该具有的素质：</p>
+<p>1.团队精神和协作能力</p>
+<p>把它作为基本素质，并不是不重要，恰恰相反，这是程序员应该具备的最基本的，也是最重要的安身立命之本。把高水平程序员说成独行侠的都是在呓语，任何个人的力量都是有限的，即便如linus这样的天才，也需要通过组成强大的团队来创造奇迹，那些遍布全球的为linux写核心的高手们，没有协作精神是不可想象的。独行侠可以作一些赚钱的小软件发点小财，但是一旦进入一些大系统的研发团队，进入商业化和产品化的开发任务，缺乏这种素质的人就完全不合格了。</p>
+<p>2.文档习惯</p>
+<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p> <a class="" href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>定义：</p>
+<p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
+<p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
+<h3>名词解析：</h3>
+<p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
+<p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
+<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -235,9 +291,6 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
-    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/index3.html">Next &rarr;</a></li>
 

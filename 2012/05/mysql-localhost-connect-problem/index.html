@@ -90,14 +90,14 @@ by Zhaoyu Li
 <p>依次执行下列三个命令：</p>
 <div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
 <span class="n">unset</span> <span class="n">TMPDIR</span>
-<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="p">=</span>`<span class="n">whoami</span>` <span class="o">--</span><span class="n">basedir</span><span class="p">=</span>&quot;$<span class="p">(</span><span class="n">brew</span> <span class="o">--</span><span class="n">prefix</span> <span class="n">mysql</span><span class="p">)</span>&quot; <span class="o">--</span><span class="n">datadir</span><span class="p">=</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="p">=</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="err">`</span><span class="n">whoami</span><span class="err">`</span> <span class="o">--</span><span class="n">basedir</span><span class="o">=</span><span class="s">&quot;$(brew --prefix mysql)&quot;</span> <span class="o">--</span><span class="n">datadir</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="o">=/</span><span class="n">tmp</span>
 </pre></div>
 
 
 <p>具体为什么有后两条命令，你安装的时候就知道了。</p>
 <h3>解决localhost问题</h3>
 <p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">local</span> <span class="n">MySQL</span> <span class="n">server</span> <span class="n">through</span> <span class="n">socket</span> ‘<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="p">.</span><span class="n">sock</span>
+<div class="codehilite"><pre><span class="n">Can</span><span class="err">’</span><span class="n">t</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">local</span> <span class="n">MySQL</span> <span class="n">server</span> <span class="n">through</span> <span class="n">socket</span> <span class="err">‘</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="p">.</span><span class="n">sock</span>
 </pre></div>
 
 
@@ -128,11 +128,11 @@ by Zhaoyu Li
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
-                            <li><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></li>
-                            <li><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></li>
-                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
+                            <li><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></li>
                             <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
+                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

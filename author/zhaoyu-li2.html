@@ -43,240 +43,204 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">单链表的一些算法实现</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 March 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>记得数据结构课上老师讲过单链表的一些算法实现，后来渐渐意识到这一部分非常重要，今天在这里搜集整理一下。</p>
-<p><strong>首先定义节点：</strong></p>
-<div class="codehilite"><pre><span class="n">struct</span> <span class="n">Node</span><span class="p">{</span>
-    <span class="n">int</span> <span class="n">data</span><span class="p">;</span> <span class="o">//</span>数据
-    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span><span class="o">//</span>下一个结点
-<span class="p">};</span>
-</pre></div>
-
-
-<p><strong>创建带n个数据的单链表：</strong></p>
-<div class="codehilite"><pre><span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Init</span><span class="p">(){</span>
-    <span class="n">head</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
-    <span class="n">head</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">next</span> <span class="p">=</span> <span class="n">NULL</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">void</span> <span class="n">LinkList</span><span class="p">::</span><span class="n">Create</span><span class="p">(</span><span class="n">int</span> <span class="n">n</span><span class="p">){</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">p</span> <span class="p">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="nb">i</span> <span class="p">=</span> 1 <span class="p">;</span> <span class="nb">i</span> <span class="o">&lt;</span><span class="p">=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="nb">i</span><span class="p">)</span>  <span class="p">{</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Node</span><span class="p">();</span>
-        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">=</span> <span class="nb">i</span> <span class="p">;</span>
-        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">=</span><span class="n">NULL</span><span class="p">;</span>
-        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next ...</span></pre></div> <a class="" href="http://hackecho.com/2011/03/algorithm-of-single-linked-list/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
+<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
+<p>就不细细介绍了，看下面的例子，就都懂了：</p>
+<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="err">#</span> <span class="err">显示可识别的编码名称</span>
+<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;</span><span class="p">.</span><span class="o">/</span><span class="n">infomation</span><span class="p">.</span><span class="n">log</span> <span class="err">#</span> <span class="err">显示可识别的编码名称，将信息存入</span><span class="n">infomation</span><span class="p">.</span><span class="n">log</span><span class="err">文件中</span>
+<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> <span class="err">#</span> <span class="err">转换</span><span class="n">GB2312</span><span class="err">编码的文件</span><span class="n">a</span><span class="p">.</span><span class="n">html</span><span class="err">为</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="err">编码，存入</span><span class="n">b</span><span class="p">.</span><span class="n">html ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/alpha-of-lzy/">李昭谕Alpha版发布</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 13 April 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/deployment-of-thinkphp/">ThinkPHP部署二三事儿</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 09 November 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>经过从出生到目前为期7454天的开发，李昭谕Alpha版发布。</p>
-<p>在正规软件开发流程中，Alpha为内测版，位于Beta版之前，一般是程序员完成第一遍的代码，这时候的程序bug非常多，程序还非常不完美。</p>
-<p>如今，7454天，20多年了，李昭谕的Alpha版必须发布了。发布后才能有进步，发布后就要不断debug，修复漏洞，发布更新的版本，每次发布的李昭谕都不一样。</p>
-<p>李昭谕Alpha版现在还非常不完美，有很多缺点：</p>
-<p>李昭谕程序内部有两套运行机制，一套叫Lazy，一套叫Diligent，它们的协调机制还不完善，lazy总是抢占进程，不服从调度...</p>
-<p>李昭谕程序的数据库还不够大，有些时候做数据分析会非常不准确...</p>
-<p>李昭谕程序的执行效率还不够高，必须升级主频...</p>
-<p>李昭谕程序的硬件载体还不够强劲，需要升级...</p>
-<p>李昭谕程序还有很长一段路要走，相比于其它一些程序，别人是Win7，他是DOS...</p>
-<p>李昭谕程序...........还有很多很多很多很多bug.....</p>
-<p>李昭谕Alpha，以后还有漫长的Beta版要走，也许永远也不会有正式版...但希望每次更新都有变化，每次都可以debug。</p>
-<p>努力开发，迈向Beta 1.0。</p> <a class="" href="http://hackecho.com/2011/04/alpha-of-lzy/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
+<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
+<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
+<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
+<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
+<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像 ...</p> <a class="" href="http://hackecho.com/2011/11/deployment-of-thinkphp/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/android-shared-preferences/">Android数据存储之Shared Preferences</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 06 August 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/development-of-mobile-network/">听创新工场COO陶宁讲移动互联网的发展</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 02 March 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>任何一个应用程序都要依赖数据存储，而且这种存储必须不丢失数据，并且有效、简便使用和更新这些数据。在 Android 操作系统中一共提供了4种数据存储方式，但是由于存储的这些数据都是私有的，所以如果需要共享其他应用程序的数据，就需要使用 Content Provider（数据共享）。4种数据存储方式分别为如下：</p>
-<p>1、Shared Preferences</p>
-<p>用来存储 “键-值”格式的数据。</p>
-<p>2、Files</p>
-<p>通过FileInputStream和FileOutputStream对文件进行操作。</p>
-<p>3、SQLite</p>
-<p>标准数据库，支持SQL语句。</p>
-<p>4、NetWork</p>
-<p>通过网络存储和获取数据。</p>
-<p><strong>下面我们来着重介绍一下Shared Preferences的使用方法。</strong></p>
-<p>Shared Preferences 类似于winform中做一些小型配置的ini文件，用来保存一些用户设置的参数。例如，可以通过它保存上一次用户所做的修改或者自定义参数设定，当再次启动程序后依然保持原有设置。</p>
-<p>在 Android系统提供的API中， 获取 Preferences对象有四种类型，分别如下：</p>
-<p>1、文件创建模式：Activity.MODE_APPEND</p>
-<p>如果该文件已经存在，然后将数据写入 ...</p> <a class="" href="http://hackecho.com/2011/08/android-shared-preferences/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>很早便锁定了今晚的第120期IT龙门阵，主题是创新工场COO陶宁讲关于IT产业变迁和移动互联网领域的创业与发展。创新工场关注的四大领域分别是移动互联网、消费互联网、电子商务和云计算，由于对移动互联网我还算是情有独钟，便想借此机会希望能得到陶老师的指导。另外，还有创新工场里的豌豆夹和友盟团队的负责人也将出席进行指导，所以更不能错过如此难得的机会了。</p>
+<p>（我对北京的交通表示一下小小的不满…）</p>
+<p>现场人很多，我看了一下签到表上很多都是著名IT公司的部门负责人，更有许多人是直接递名片的，当然还有很多充满热情的创业者。我去的比较晚，本来就不大的巴黎厅早已座无虚席。我相信来到这里的人，不论是在读的大学生还是已有成绩的项目负责人，都是带着对移动互联网的激情来的，置身其中，顿能感到一种强烈的创业者的热情，我想这才是我们真正需要的东西。</p>
+<p>留给我很深印象的是豌豆夹的项目负责人王俊煜和友盟团队负责人蒋凡，第一：年轻，第二：充满激情。作为创新工场第一批孵化项目，他们在移动互联网领域取得的巨大成功是有目共睹的，而他们还具有的共同点就是在创业过程中坚持不懈。想起马云讲过的一句话：“所有的成功秘诀都是不管用的，真正的成功方法只有一条，就是坚持不懈！”</p>
+<p><a href="/static/images/2011/03/IMG_2021.jpg"><img alt="人山人海的ARIVA三层巴黎厅" src="/static/images/2011/03/IMG_2021-300x225.jpg" /></a></p>
+<p>下面是一些我记录的感想，稍微总结一下：</p>
+<p><strong>1.关于大学生创业</strong></p>
+<p>大学生创业很难获得VC的支持和投资，因为我们没有经验，我们不可能是第二个扎克伯格。经验很重要，哪怕是失败的经历，只要能够从中学习到了一些东西，对于我们都是财富。</p>
+<p>当然，这只是VC方面，我感觉大学生创业的热情还是需要鼓励的，我个人更提倡Dorm创业 ...</p> <a class="" href="http://hackecho.com/2011/03/development-of-mobile-network/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/asynctask-in-android/">Android中使用AsyncTask实现简单的异步处理</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 24 July 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/difference-between-work-and-create/">打工与注册公司创业的区别</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 September 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>当一个程序第一次启动时，Android会同时启动一个对应的主线程(Main Thread)，主线程主要负责处理与UI相关的事件，如：用户的按键事件，用户接触屏幕的事件以及屏幕绘图事件，并把相关的事件分发到对应的组件进行处理。所以主线程通常又被叫做UI线程。</p>
-<p>比如说从网上获取一个网页，在一个TextView中将其源代码显示出来，这种涉及到网络操作的程序一般都是需要开一个线程完成网络访问，但是在获得页面源码后，是不能直接在网络操作线程中调用TextView.setText()的，因为其他线程中是不能直接访问主UI线程成员。</p>
-<p>Android提供了几种在其他线程中访问UI线程的方法：</p>
-<p><code>Java
-  Activity.runOnUiThread( Runnable )
-  View.post( Runnable )
-  View.postDelayed( Runnable, long )
-  Hanlder</code></p>
-<p>这些类或方法同样会使你的代码很复杂很难理解。然而当你需要实现一些很复杂的操作并需要频繁地更新UI时这会变得更糟糕。</p>
-<p>为了解决这个问题，Android 1.5提供了一个工具类：AsyncTask，它使创建需要与用户界面交互的长时间运行的任务变得更简单。不需要借助线程和Handler即可实现。</p>
-<p>AsyncTask是抽象类.AsyncTask定义了三种泛型类型 Params，Progress和Result。</p>
-<ul>
-<li>
-<p>Params 启动任务执行的输入参数，比如HTTP请求的URL。</p>
-</li>
-<li>
-<p>Progress 后台任务执行的百分比。</p>
-</li>
-<li>
-<p>Result ...</p></li></ul> <a class="" href="http://hackecho.com/2011/07/asynctask-in-android/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>自己打工与注册公司有什么区别，有人说都是为了赚钱，都是为了生活。但这两这还是有本质的不同。</p>
+<p>1.打工是靠自己的能力吃饭，注册公司是靠自己的智慧和思考吃饭；</p>
+<p>2.打工是靠别人给自己的平台来展示能力，注册公司是靠自己的决心和眼光创造一个平台；</p>
+<p>3.打工是做好自己的本分工作就好，注册公司是要思考体系运作的每一个环节；</p>
+<p>4.打工的人期望的是一周有两天休息，注册公司的人是思考的是如何能低成本的运作；</p>
+<p>5.打工的不愿意真实的面对自己的收入，注册公司必须要真实的面对自己的实力和财务状况；</p>
+<p>6.打工的时候想的是自己的经历和文凭应该值多少钱，注册公司的时候想的是自己的勤劳和策略能创造多少钱；</p>
+<p>7.打工时想用自己的专业知识吃饭，存钱养家，注册公司时候想的是如何利用社会资源来赚钱养活组织和员工；</p>
+<p>8.打工的人一般都比较天真，认为辛苦和听话就可以长保无忧，注册公司的时候才知道市场的变幻简直就是日不可测，日不可知；</p>
+<p>9.打工搞好上司和同事关系就可以生活，注册公司要搞好客户和社会方方面面的关系才能生存；</p>
+<p>10.打工要看上司和老板的脸色，注册公司看社会消费者和主管行政部门的脸色和媒体的脸色；</p>
+<p>11.打工想的是今年我能存多少钱，发多少奖金，注册公司想的是今年能开多少店，占多少市场份额；</p>
+<p>12.打工人今天天下雨和下雪，没有客人就很高兴，可以放松偷懒，注册公司想的今天天气下雨下雪，心如火焚，着急无比，如何吸引客人上门 ...</p> <a class="" href="http://hackecho.com/2011/09/difference-between-work-and-create/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/basic-of-gcc/">GCC 基础</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 04 March 2013
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/disappear-day/">消失的这几天</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 03 November 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>GCC，糊里糊涂地用了好长时间，每次也都是简简单单的 <code>gcc test.cpp</code> 这样简单的命令，偶尔会用一下 <code>-o</code>。说实话C和C++写的确实也不多，大一的时候还处于懵懂时期，跟着老师用VC6，后来面向对象编程之后，几乎工作都在IDE下完成，对这类命令行下的编译指令接触更是甚少。如今才体会到什么叫书到用时方恨少，不得不回过头来再打基础，认真学习。</p>
-<p>鉴于这不是一篇Tutorial，只是我的一篇笔记，所以并不会涵盖所有内容。</p>
-<h3>基础</h3>
-<p>gcc 命令只能编译 C++ 源文件，而不能自动和 C++ 程序使用的库连接。因此，通常使用 g++ 命令来完成 C++ 程序的编译和连接，该程序会自动调用 gcc 实现编译。</p>
-<p>一般来讲，编译过程分为四个阶段：预处理(也称预编译，Preprocessing)、编译(Compilation)、汇编 (Assembly)和连接(Linking ...</p> <a class="" href="http://hackecho.com/2013/03/basic-of-gcc/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>突然间，这里已经11月3日了，现在是凌晨1：20。在遥远的故乡，正是下午2：2o。朋友们，下午好。</p>
+<p>好久没写东西了，哪怕是技术方面的，也没有一篇。最新的一篇日志还停留在7月份，记得那是离签证还有一星期的时候，忙里偷闲转的一篇。一转眼，万圣节已过，开始期盼Thanksgiving的时候，却发现到处都开始准备圣诞树了。时间好快，恍惚之间，不敢苟且。</p>
+<p>如今，三个月过去了，每天的安排开始有了规律。不过回想起这三个月的种种，心头也会涌起一股莫名的感情。经常会想写一些东西记录，而一切变化太快，未等提笔，便已忙于身外，只能享受那片刻欢愉。</p>
+<p>也许有一天，我会将这些见闻与经历写一写，而现在还没有准备好。因为没有经过沉淀的思想，永远都是肤浅的。有一天回忆的时候，我要找寻那种想哭的感动。</p>
+<p>不过，我喜欢这种充实的生活，每一天都在创造价值，哥伦比亚是个小镇，宁静安详，不吵不闹，这里有传统的美国文化，也有纯真朴实的来自世界各地的人们，每天都有新发现，每天都会带给你新的的感受。</p>
+<p>明天又将是充实的一天 ...</p> <a class="" href="http://hackecho.com/2012/11/disappear-day/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 22 April 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/dreams-and-creature/">创业与梦想</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 September 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>我想，程序员只是一个代名词，我们是一群爱IT的人，希望通过自己的技术改变世界的人，我们是一群热爱生活、热爱世界的人。（蓝色文字皆为Troy注解）</p>
-<p>作为程序员，要取得非凡成就需要记住的15件事。</p>
-<p><strong>1.走一条不一样的路</strong></p>
-<p>在有利于自己的市场中竞争，如果你满足于“泯然众人矣”，那恐怕就得跟那些低工资国家的程序员们同场竞技了。</p>
-<p>“走一条不同的路”，“走自己喜欢的路”从来都是一个人成功的重要条件，但是更为重要的是，选定的一条路，一定要好好地、坚持地走下去。与其他半途而废的人来比，我们就是笑到最后的人。</p>
-<p><strong>2.了解自己的公司</strong></p>
-<p>以我在医院、咨询公司、物流企业以及大技术公司工作的经验来看，这一点所言不虚。</p>
-<p>不同公司的运营模式差异极大。如果你理解企业的运营模式，那你就不一样了！在这家公司中（或者对客户而言），你是参与业务运营的资产，你的工作能直接产生效益！</p>
-<p>如果一个人能够在他/她喜欢的公司工作，还用得着努力地去重新了解它吗？某种程度上我们喜欢某家公司的原因恰恰是我们喜欢它的运营理念。</p>
-<p><strong>3.与最优秀的人为伍</strong></p>
-<p>很早以前，我喜欢打篮球，被分配到一个水平比较高的队里。一开始适应的确很困难，但环境的压力越大（重大比赛），我的长进也就越明显 ...</p> <a class="" href="http://hackecho.com/2011/04/be-programmer-best/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天在42qu上看到一个提问：</p>
+<p><em>“@Firenze : 现在是不是在一种创业狂潮的状态中？为啥每个人都在想要做一个网站然后可以如何如何可以怎样布局怎样找风头怎样拿政府扶植怎样获得盈利模式一轮融资二轮融资。这究竟是大家都看到了创业者成功的那些少数派案例然后都想来分一杯羹还是只是我现在所在的圈子是这样？又或者这是一个必然的趋势的发展方向？”</em></p>
+<p>有一个精彩的回复非常好，转载收藏。</p>
+<p>——作者：Dreamer</p>
+<p>在两个年轻人在斯坦福实验室里创造 Yahoo! 的时候，互联网的创业就与传奇和梦想划上了等号，之后的 Google 和 Facebook 一次又一次地让所有人确信这一点。它们都诞生在不起眼的大学宿舍，都在很大程度上改变了世界影响了人们的生活。所以在这个创业渐成风气的年代，你总能看到国内很多初创互联网公司大叫“我们年轻，所以我们有梦想”，它们在招聘的时候也会特别注明应聘者一定要有“激情和梦想”。</p>
+<p>然而事实真的如此吗？</p>
+<p>不知道别人怎么定义“梦想”这个词，我觉得“梦想”应该是一个很美好的东西。它触动你的心灵，让你感动；它激发出你的全部热情，而不是贪婪；它发自内心、来自于自己的反思和独立判断，而不是别人的煽动和灌输。</p>
+<p>以前我也常憧憬着去一家创业公司，那个时候我不满大公司的臃肿和低效，痛恨他们的官僚和笨重，觉得创业公司是梦想、激情、灵活和创新的化身，它一定没有那些大公司的毛病。我想象着那里的每一个员工都热爱自己的产品，每一个人都是产品的客服 ...</p> <a class="" href="http://hackecho.com/2011/09/dreams-and-creature/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/beauty-of-chinese-article/">中国风，将唯美雅韵进行到底</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 14 September 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/dreams-not-just-words/">梦想，不是说说而已</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 29 February 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>好久没有读到如此荡气回肠的文章了，中国风，是一种生活态度。</strong></p>
-<p>翻开中国滚滚历史长卷，墨香墨离，各个朝代独领风流，各个领域人才辈出，上至轩辕开天大战蚩尤，惊天地，泣鬼神，统制九州，九樽青鼎为鉴，苍松白鹿为证，黄帝仙逝，轩辕氏仍逐鹿中原，人才济济，舜尧两帝，开创文明先河，黄河长江流域谱写华丽篇章。­</p>
-<p>中国华夏五千年文明泱泱流淌，川流不息，讫立世界民族之林不倒，像明珠矗立在世界的东方，成为四大文明古国之一，其经济、文化、历史、建筑、佛法…都为世界做出了巨大的贡献，古老而神秘的国度，散发着朦胧的书香气息，其高超的技艺，精美的墨笔，巧夺天功的神来之笔，为华夏文明装点上一层浓厚的翰林墨息。­</p>
-<p>至统领九州以来，各朝各代，文人儒客，风流倜倘，身着素衣，手握折扇，不羁一格，吟诵明月诗篇，歌窈窕乐章，不为世旅尘俗所累，放心绿水之湄，听风吟月，自在江上泛舟轻摇，一壶残酒 ...</p> <a class="" href="http://hackecho.com/2011/09/beauty-of-chinese-article/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>原文/meiya，转载时有删减。</strong></p>
+<p>我们是否有为梦想真正的实干一把？</p>
+<p>我从西藏回来以后，我在空间中上传了一些旅行时拍的照片，一个大学同学在很多照片下留了言。</p>
+<blockquote>
+<p>“最近在看《藏地密码》太让我有遐想了。”</p>
+</blockquote>
+<p>“这里的天怎么可以如此的蓝，这里的水像是在画里流淌。”</p>
+<p>“湖面像是银盘一样，天啊，我爱死了你拍的每一张照片了！”</p>
+<p>“你走过这桥的时候啥感觉啊？”</p>
+<p>“啊呀，这就是传说中的八廊街的玛吉阿米啊！”</p>
+<p>这个同学是大学睡在我上铺的姐妹，她比我更想去西藏旅行，当年有好多个夜晚我们兴奋地聊着西藏，聊着西藏旅行的梦想，她说她从高中起就想去西藏旅行了。</p>
+<p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
+<p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
+<p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="" href="http://hackecho.com/2012/02/dreams-not-just-words/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/boost-thread/">Boost Thread</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 03 March 2013
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 <code>Boost.Thread</code> ，用于开发独立于平台的多线程应用程序。</p>
-<h3>线程创建</h3>
-<p>相关类为 <code>boost::thread</code> ，定义在 <code>boost/thread.hpp</code> 中，用于创建一个新线程。</p>
-<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
-<span class="c">#include &lt;iostream&gt; </span>
-
-<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
-<span class="p">{</span> 
-    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
-<span class="p">}</span> 
-
-<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
-<span class="p">{</span> 
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
-    <span class="p">{</span> 
-        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
-        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl ...</span></pre></div> <a class="" href="http://hackecho.com/2013/03/boost-thread/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
+<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
+<h2>根文件系统</h2>
+<p><strong>/bin</strong></p>
+<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong></p>
+<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong></p>
+<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong></p>
+<p>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong></p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">第一个HackEcho爬虫诞生记</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 March 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/02/finish-of-bjtuer/">交大一软通 V2.0 开发完毕</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 February 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
-<p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
-<p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
-<p>当然，爬取的数据也不多，具体只有以下几项：</p>
-<div class="codehilite"><pre><span class="n">from</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">item</span> <span class="n">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
-
-<span class="n">class</span> <span class="n">YileeItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
-    # <span class="n">DEFINE</span> <span class="n">THE</span> <span class="n">FIELDS</span> <span class="n">FOR</span> <span class="n">YOUR</span> <span class="n">ITEM</span> <span class="n">HERE</span> <span class="n">LIKE</span><span class="p">:</span>
-    # <span class="n">NAME</span> <span class="p">=</span> <span class="n">FIELD</span><span class="p">()</span>
-    <span class="n">url</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">title</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">release_time</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">category</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">content_html</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-</pre></div>
-
-
-<p>当然 ...</p> <a class="" href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>首先感谢大家对1.0版本的支持，收到大家的意见反馈后，经过努力，V2.0版交大一软通发布！</p>
+<p>更新啦~~~：</p>
+<p>1.增加“知行快读”模块，可以快速、方便地在软件内阅读知行论坛热门板块，以及晨光BT的资源，让你第一时间获得最新信息，体验酣畅淋漓的“刷论坛”阅读感受！</p>
+<p>2.修正“免流量上网通道”无法使用的问题，更换了代理地址并且增加为两条通道，通道1无法使用时可以使用通道2。修复了其导致的无法上网的问题，程序退出时将自动关闭通道。</p>
+<p>3.主页增加了“快捷启动”栏目，直达各个常用功能，方便快捷！</p>
+<p>4.一软通内置了网络浏览系统，不再调用系统默认浏览器。</p>
+<p>5.增加“实用工具”模块，混在交大，这些工具少得了？！工具还在不断添加中！</p>
+<p>6“交大导航”新增许多地址，而且还在不断增加，导航更齐全！</p>
+<p>7.增加的功能详细介绍如下：</p>
+<blockquote>
+<p>知行快读 ...</p></blockquote> <a class="" href="http://hackecho.com/2011/02/finish-of-bjtuer/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">那些年与编程和计算机有关的小事儿</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 17 November 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/fly-of-promgrammer/">程序员的翅膀</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 10 May 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>不知道写这种文章算不算回忆录，因为说回忆录未免有些早。记得初中的时候写过一本《我的小学回忆录》，将从入学一年级第一天起开始能想起来的人和事都记录了下来，如今这本未出版的手写书已不知去向，小学的记忆也越来越模糊。忽然想不如趁着现在对一些往事还尚存记忆，稍微回忆一下，也算对自己的鼓励吧。</p>
-<p>从小就是一个对电脑比较感兴趣的人，有时候兴趣是没有理由的，因为那时周围很多同学使用电脑仅限于聊QQ和半条命，而我却对除此之外的一些其它东西有着非常浓厚的兴趣。印象比较深的是买了很多很多的电脑书籍，当时最惬意的事情就是趴在桌前，做完作业后看那本比砖头还厚的《电脑医院》，一看就是四五个小时，后来还照葫芦画瓢写了个破坏注册表的.reg脚本，号称是我制造的第一个电脑病毒！</p>
-<p>由于很多电脑名词不明白，便买书、查资料。什么《注册表终极操作》、《BIOS配置指南》、《电脑上网故障1000问》、《榨干你的电脑》等等，还有全年的《电脑迷》、《电脑爱好者》、《IT新闻周刊》和不怎么看得懂的《CHIP新电脑》等。尤记得当时第一次重装系统时的激动，第一次电脑崩溃时的伤心，第一次编译通过一个程序，第一次入侵别人电脑等等的第一次，现在回想起来，真有一番体味。</p>
-<p>跟所有少年一样，在当时那个年龄段，都有一个黑客梦。当时最崇拜的人是陈盈豪，因为他的CIH病毒第一次颠覆了我的观念：病毒原来还可以破坏硬件设备 ...</p> <a class="" href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有时候在思考一个问题，如果我们现在这些在IT领域里混迹的人出生在了100年前（ENIAC诞生于1946年），会从事些什么呢？当今很多对计算机有天赋的人是否会感到生不逢时呢？也许扎克伯格会成为宅男，拉里佩奇会去研究数学或物理，那么，我会干什么呢？（No offence）</p>
+<p>当然时代是要有人来开创的，比尔盖茨如果没有出生，会有另一个比尔出来的。</p>
+<p>前两段是小发一些感慨，今晚刷夜做一个项目，因为周四就要交了，不是我拖延，而是一个月的开发周期里，我得从头开始学几门新的技术来开发，再加上学校的课业和考试，我已经尽力了。我的同伴们也很给力，感谢他们。</p>
+<p>刚刚看了一篇文章，原文题目叫《每个程序员上辈子都是折翼的天使》（后附原文），有一些心得，不知对不对，当不当说，说出来合不合适，但简单总结一下吧。（个人观点，请勿跨省）</p>
+<p>貌似现在社会上对程序员的看法褒贬不一，不像几年前，程序员的工作是神圣的，能让黑黑的屏幕滚动几行字就很牛X的。那时计算机普及率不高，开发语言也有限，不像现在这么丰富、易学（当年要是有Python这样的脚本语言，估计扫地的老太太早出现了）。当时程序员的翅膀是硬的，受万人敬仰倒谈不上，找工作起码不是问题。如今，有一个新名词叫做 ...</p> <a class="" href="http://hackecho.com/2011/05/fly-of-promgrammer/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -292,9 +256,6 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/author/zhaoyu-li3.html">Next &rarr;</a></li>
 

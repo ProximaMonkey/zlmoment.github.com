@@ -43,158 +43,6 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/basic-of-gcc/">GCC 基础</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 04 March 2013
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>GCC，糊里糊涂地用了好长时间，每次也都是简简单单的 <code>gcc test.cpp</code> 这样简单的命令，偶尔会用一下 <code>-o</code>。说实话C和C++写的确实也不多，大一的时候还处于懵懂时期，跟着老师用VC6，后来面向对象编程之后，几乎工作都在IDE下完成，对这类命令行下的编译指令接触更是甚少。如今才体会到什么叫书到用时方恨少，不得不回过头来再打基础，认真学习。</p>
-<p>鉴于这不是一篇Tutorial，只是我的一篇笔记，所以并不会涵盖所有内容。</p>
-<h3>基础</h3>
-<p>gcc 命令只能编译 C++ 源文件，而不能自动和 C++ 程序使用的库连接。因此，通常使用 g++ 命令来完成 C++ 程序的编译和连接，该程序会自动调用 gcc 实现编译。</p>
-<p>一般来讲，编译过程分为四个阶段：预处理(也称预编译，Preprocessing)、编译(Compilation)、汇编 (Assembly)和连接(Linking ...</p> <a class="" href="http://hackecho.com/2013/03/basic-of-gcc/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/03/boost-thread/">Boost Thread</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 03 March 2013
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>这是一篇方法总结和作业笔记，已备需要的时候查阅。本文将介绍C++ Boost库 <code>Boost.Thread</code> ，用于开发独立于平台的多线程应用程序。</p>
-<h3>线程创建</h3>
-<p>相关类为 <code>boost::thread</code> ，定义在 <code>boost/thread.hpp</code> 中，用于创建一个新线程。</p>
-<div class="codehilite"><pre><span class="c">#include &lt;boost/thread.hpp&gt; </span>
-<span class="c">#include &lt;iostream&gt; </span>
-
-<span class="n">void</span> <span class="n">wait</span><span class="p">(</span><span class="n">int</span> <span class="n">seconds</span><span class="p">)</span> 
-<span class="p">{</span> 
-    <span class="n">boost</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="nb">sleep</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">posix_time</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">));</span> 
-<span class="p">}</span> 
-
-<span class="n">void</span> <span class="n">thread</span><span class="p">()</span> 
-<span class="p">{</span> 
-    <span class="k">for</span> <span class="p">(</span><span class="n">int</span> <span class="n">i</span> <span class="p">=</span> 0<span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> 5<span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> 
-    <span class="p">{</span> 
-        <span class="n">wait</span><span class="p">(</span>1<span class="p">);</span> 
-        <span class="nb">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="nb">std</span><span class="p">::</span><span class="n">endl ...</span></pre></div> <a class="" href="http://hackecho.com/2013/03/boost-thread/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/ipc-semaphores/">IPC Semaphores</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 11 February 2013
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><h3>Initializing a Semaphore Set</h3>
-<p>The function <code>semget()</code> initializes or gains access to a semaphore.</p>
-<div class="codehilite"><pre><span class="n">int</span> <span class="n">semget</span><span class="p">(</span><span class="n">key_t</span> <span class="n">key</span><span class="p">,</span> <span class="n">int</span> <span class="n">nsems</span><span class="p">,</span> <span class="n">int</span> <span class="n">semflg</span><span class="p">);</span>
-</pre></div>
-
-
-<ul>
-<li>
-<p>The <code>key</code> argument is a access value associated with the semaphore ID.</p>
-</li>
-<li>
-<p>The <code>nsems</code> argument specifies the number of elements in a semaphore array. The call fails when ...</p></li></ul> <a class="" href="http://hackecho.com/2013/02/ipc-semaphores/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/unix-multiprocess-programming/">Unix Multiprocess Programming</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 06 February 2013
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>This post is about process operations and shared memory.</p>
-<h3>Outline</h3>
-<ul>
-<li>
-<p>Process Operations</p>
-<ul>
-<li>
-<p>fork()</p>
-</li>
-<li>
-<p>wait()</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Shared Memory</p>
-<ul>
-<li>
-<p>Overview</p>
-</li>
-<li>
-<p>Allocating</p>
-</li>
-<li>
-<p>Attaching And Detaching</p>
-</li>
-<li>
-<p>Placing Data In Shared Memory</p>
-</li>
-<li>
-<p>Examples</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>Now, let's begin.</p>
-<h3>Process Operations</h3>
-<p>One of the strong features of Unix-like operating systems, is their ability to run several processes simultaneously ...</p> <a class="" href="http://hackecho.com/2013/02/unix-multiprocess-programming/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/make-your-program/">Make Your Program</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 February 2013
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>这学期选了两门挺有意思的课，一门叫Programming High Performance Computing，还有一门Parallel and Distributed Processing。两周刚刚上下来，感觉传递的知识量有我之前悠哉悠哉一学期学到的都多。不知道是美国本科生的基础好还是美国大学的教育好，同班的美国同学接受这些知识看起来都毫无压力。不过语言确实是一个因素，比如HPC的老师两节课讲了几十个英文缩写，还都与电路有关，感觉回到了当年狂补计算机组成原理的时候。这些英文缩写估计对于美国学生接受起来要更好一点吧。我只有更努力了。</p>
-<p>重新好好学习一下以前的知识，认真记住。PDP的教授第一节课说了一句话让我印象非常深刻，他说：“They value you not because what you can search but what you can do.”其实非常羡慕老教授课堂上信手拈来的各种复杂代码和命令参数，只靠Google是不行的。</p>
-<p>本篇博客就来复习一下Makefile吧，这两门课每次交作业都要求必须包含Makefile，就像HPC的Slides中说的：“Real programmers use Makefiles!”</p>
-<h3>Outline</h3>
-<ul>
-<li>
-<p>What's Makefile ...</p></li></ul> <a class="" href="http://hackecho.com/2013/02/make-your-program/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/posix-threads-programming/">POSIX Threads Programming</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 February 2013
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>I am writing this article for a memo of CS8860, Parallel and distributed system.</p>
-<h3>Overview</h3>
-<p>Technically, a thread is defined as an independent stream of instructions that can be scheduled to run as such by the operating system.</p>
-<p>In the UNIX environment a thread:</p>
-<ul>
-<li>
-<p>Exists within a process and uses ...</p></li></ul> <a class="" href="http://hackecho.com/2013/02/posix-threads-programming/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/01/intro-to-magnet-link/">Magnet Link 和 Torrent</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 01 January 2013
 
@@ -216,34 +64,6 @@ by Zhaoyu Li
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/12/python-yield/">Python中yield备忘</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 31 December 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>总是记不起来yield的用法，大概是因为实践中还没有用过的缘故吧。不过发现它真的是个非常实用的关键字，在这里草草记下几笔备忘。</p>
-<p>带有 yield 的函数在 Python 中被称之为 generator（生成器）。</p>
-<p>我们已生成斐波那契数列为例，来循序渐进了解yield。</p>
-<p>生成斐波那契数列：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
-    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">:</span> 
-        <span class="n">print</span> <span class="n">b</span> 
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> 
-        <span class="n">n</span> <span class="p">=</span> <span class="n">n</span> <span class="o">+</span> 1 
-</pre></div>
-
-
-<p>上面这个函数中直接用到了print函数，导致该函数复用性极差。我们想到可以返回一个List，改写如下：</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">fab</span><span class="p">(</span><span class="n">max</span><span class="p">):</span> 
-    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> 0<span class="p">,</span> 0<span class="p">,</span> 1 
-    <span class="n">L ...</span></pre></div> <a class="" href="http://hackecho.com/2012/12/python-yield/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/12/travel-to-st-louis/">圣路易斯掠影</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 30 December 2012
 
@@ -262,22 +82,144 @@ by Zhaoyu Li
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/suds-problems/">SUDS错误和实例</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 13 November 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/disappear-day/">消失的这几天</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 03 November 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>没想到最近项目方给了一个WebService接口，硬着头皮拿Pyhton来解析，终于迈过了第一大步，后面的过程就会轻松很多了。</p>
-<p>错误信息：</p>
-<div class="codehilite"><pre><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s">&quot;test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">12</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">doctor</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages/suds-0.4-py2.7.egg/suds/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">112</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__init__</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">wsdl</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/Library/Python/2.7/site-packages ...</span></pre></div> <a class="" href="http://hackecho.com/2012/11/suds-problems/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>突然间，这里已经11月3日了，现在是凌晨1：20。在遥远的故乡，正是下午2：2o。朋友们，下午好。</p>
+<p>好久没写东西了，哪怕是技术方面的，也没有一篇。最新的一篇日志还停留在7月份，记得那是离签证还有一星期的时候，忙里偷闲转的一篇。一转眼，万圣节已过，开始期盼Thanksgiving的时候，却发现到处都开始准备圣诞树了。时间好快，恍惚之间，不敢苟且。</p>
+<p>如今，三个月过去了，每天的安排开始有了规律。不过回想起这三个月的种种，心头也会涌起一股莫名的感情。经常会想写一些东西记录，而一切变化太快，未等提笔，便已忙于身外，只能享受那片刻欢愉。</p>
+<p>也许有一天，我会将这些见闻与经历写一写，而现在还没有准备好。因为没有经过沉淀的思想，永远都是肤浅的。有一天回忆的时候，我要找寻那种想哭的感动。</p>
+<p>不过，我喜欢这种充实的生活，每一天都在创造价值，哥伦比亚是个小镇，宁静安详，不吵不闹，这里有传统的美国文化，也有纯真朴实的来自世界各地的人们，每天都有新发现，每天都会带给你新的的感受。</p>
+<p>明天又将是充实的一天 ...</p> <a class="" href="http://hackecho.com/2012/11/disappear-day/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
+<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
+<h2>根文件系统</h2>
+<p><strong>/bin</strong></p>
+<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong></p>
+<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong></p>
+<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong></p>
+<p>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong></p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-faile-can-be-copied/">我的失败可以复制</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 23 June 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>常听人说，如果你开始回忆过去，说明你老了。而我却时常会怀念过去，或者说，是忏悔。</p>
+<p>有时候会想，如果大学的前三年可以重新来过，让我们都回到那个懵懂的年纪，重新开始全新的大学生活，一定会选择一种完全不一样的生活。我一直以为，世界上有另外一个我，在过着我想过的生活，在做着我想做的事，而我却永远无法重新选择。</p>
+<p>永远不能回头，在不断的选择中，我们创造了自己的生活。然而，当我们回首时看到的却满是错误与失去，多想穿越时空告诉那时的自己，你的选择，错了。可是，这些都是没有用的，回不去的事情再勉强也是幻想，走好余下的路才是最重要的，过去的错误永远是最宝贵的财富。</p>
+<p>生命中，我们竭尽全力都无法改变的事情：倒向你的墙，离你而去的人，流逝的时间，和永远的过去。</p>
+<p>就像这句歌词一样：“如果骄傲没被现实大海冷冷拍下，又怎会懂得要多努力才走得到远方；如果梦想不曾坠落悬崖千钧一发，又怎会晓得执着的人有隐形翅牓。”</p>
+<p>所以，不要难过了。离过去越近，离未来就越远。过精彩的生活，遇到精彩的人，找到精彩的未来。</p> <a class="" href="http://hackecho.com/2012/06/my-faile-can-be-copied/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-ncee/">我的高考</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 June 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>后天就要高考了，但这似乎已经与我无关。那段时光已经过去三年，可每每到这个时候，都会禁不住想起当年的我，当年的18班。</p>
+<p>时间正在将过往一丝一丝地抹去，我想在淡忘之前，再次品味一下那年的生活。</p>
+<p>关键字：运动场，角落，封闭的军事化管理，星空，考试那天</p>
+<h3>运动场</h3>
+<p>每天晚饭吃过以后，大约6点半，我们会三三两两到运动场上跑步，一般是跑6圈，然后满头大汗地回到教室等待晚自修。不管天气多么热，尤其是临近6月的时候，跑道上塑胶的味道很具有冲击感，但我们都依旧坚持着。当时的想法很简单，身体好才能保证学习，而要想身体好就要锻炼。那时候跟我一起跑的通常是永明，我高三时的同桌，物理超牛逼的一个人，现在在北大学物理系。跑步完之后，有时候我们会坐在草坪上，望着天空，莫名地感叹一下高三的生活，憧憬一下美好的未来，讨论一下大学，讨论一下理想。那时候没有多余的想法，黑色的高三也没那么苦，只是觉得很充实，很带感。</p>
+<h3>角落</h3>
+<p>后来，我们在教室的位置换成了桌子和桌子相互隔开的布局，谁也不是谁的同桌。我特别向往教室最后面的角落里的那个座位，或许只是想求得一份宁静，在聒噪的高三里 ...</p> <a class="" href="http://hackecho.com/2012/06/my-ncee/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/three-software-architecture-style/">3 Software Architecture Style</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 June 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>I'm heistate to compose this article for it is easy to understand and quantities of great materials have been published on net. But I think it will be a process of gaining knowledge and experience so I write it here to accept your criticism correction.</p>
+<p>This brief introduction of ...</p> <a class="" href="http://hackecho.com/2012/06/three-software-architecture-style/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Sequences and Proxy Services in WSO2 ESB</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 June 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2012/06/esb-header-logo.gif" /></p>
+<p>Recently I'm busy doing my SOA project which is using WSO2 ESB system as part of it. The official's documentation is so long that I have to find some articles that will provide a simple hello world of WSO2 ESB clearly to give me a bright view of ...</p> <a class="" href="http://hackecho.com/2012/06/sequences-and-proxy-services-in-wso2-esb/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">解决MySQL无法通过localhost连接问题</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 27 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
+<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
+<h3>安装MySQL</h3>
+<p>依次执行下列三个命令：</p>
+<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
+<span class="n">unset</span> <span class="n">TMPDIR</span>
+<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="err">`</span><span class="n">whoami</span><span class="err">`</span> <span class="o">--</span><span class="n">basedir</span><span class="o">=</span><span class="s">&quot;$(brew --prefix mysql)&quot;</span> <span class="o">--</span><span class="n">datadir</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="o">=/</span><span class="n">tmp</span>
+</pre></div>
+
+
+<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
+<h3>解决localhost问题</h3>
+<p>我们看它的错误提示：</p>
+<div class="codehilite"><pre><span class="n">Can</span><span class="err">’</span><span class="n">t ...</span></pre></div> <a class="" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/super-tool-homebrew/">开发者神器 - Homebrew简介</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 25 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
+<p><img alt="" src="/static/images/2012/05/homebrew.jpg" /></p>
+<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p> <a class="" href="http://hackecho.com/2012/05/super-tool-homebrew/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -293,9 +235,6 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
-    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/index2.html">Next &rarr;</a></li>
 

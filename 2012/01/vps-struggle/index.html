@@ -114,14 +114,14 @@ by Zhaoyu Li
 <p>以下是我的.htaceess内容：</p>
 <div class="codehilite"><pre><span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
     <span class="n">index</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="n">f</span> $<span class="n">request_filename</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span><span class="p">){</span>
-        <span class="n">rewrite</span> <span class="p">(</span><span class="o">.*</span><span class="p">)</span> $1<span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="k">break</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span><span class="p">){</span>
+        <span class="n">rewrite</span> <span class="p">(.</span><span class="o">*</span><span class="p">)</span> <span class="err">$</span><span class="mi">1</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="k">break</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="n">f</span> $<span class="n">request_filename</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">){</span>
-        <span class="n">rewrite</span> <span class="p">(</span><span class="o">.*</span><span class="p">)</span> $1<span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">){</span>
+        <span class="n">rewrite</span> <span class="p">(.</span><span class="o">*</span><span class="p">)</span> <span class="err">$</span><span class="mi">1</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span>!<span class="o">-</span><span class="n">f</span> $<span class="n">request_filename</span><span class="p">){</span>
-        <span class="n">rewrite</span> <span class="p">(</span><span class="o">.*</span><span class="p">)</span> <span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">){</span>
+        <span class="n">rewrite</span> <span class="p">(.</span><span class="o">*</span><span class="p">)</span> <span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -148,11 +148,11 @@ by Zhaoyu Li
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
-                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
-                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
                             <li><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></li>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
+                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></li>
+                            <li><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></li>
+                            <li><a href="http://hackecho.com/2011/04/level-of-programmer/">传说中程序员的层次</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

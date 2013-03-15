@@ -110,24 +110,24 @@ by Zhaoyu Li
 <p><em>补充（2012-3-23 20:40）：</em></p>
 <p>放上我的临时解决办法：</p>
 <p>对于上面日志中的问题，原因是suhosin的memory_limit限制了脚本内存的分配。解决办法是在php.ini中搜索memory_limit关键字，修改如下：</p>
-<div class="codehilite"><pre><span class="n">extension</span><span class="p">=</span><span class="n">suhosin</span><span class="p">.</span><span class="n">so</span>
-<span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="p">=</span> 256<span class="n">M</span>
+<div class="codehilite"><pre><span class="n">extension</span><span class="o">=</span><span class="n">suhosin</span><span class="p">.</span><span class="n">so</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="o">=</span> <span class="mi">256</span><span class="n">M</span>
 </pre></div>
 
 
 <p>对于get和post数据大小限制的问题，修改/etc/php5/conf.d/suhosin.ini，增加下列配置：</p>
-<div class="codehilite"><pre><span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="p">=</span> 256<span class="n">M</span>
+<div class="codehilite"><pre><span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="o">=</span> <span class="mi">256</span><span class="n">M</span>
 
-<span class="n">suhosin</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">max_varname_length</span> <span class="p">=</span> 512
-<span class="n">suhosin</span><span class="p">.</span><span class="n">post</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">post</span><span class="p">.</span><span class="n">max_name_length</span> <span class="p">=</span> 512
-<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_value_length</span> <span class="p">=</span> 1024
-<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_name_length</span> <span class="p">=</span> 512
-<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_vars</span> <span class="p">=</span> 2000
-<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_totalname_length</span> <span class="p">=</span> 1024
-<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_name_length</span> <span class="p">=</span> 512
+<span class="n">suhosin</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">max_vars</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">max_varname_length</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">post</span><span class="p">.</span><span class="n">max_vars</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">post</span><span class="p">.</span><span class="n">max_name_length</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_vars</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_value_length</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">get</span><span class="p">.</span><span class="n">max_name_length</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_vars</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_totalname_length</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">suhosin</span><span class="p">.</span><span class="n">cookie</span><span class="p">.</span><span class="n">max_name_length</span> <span class="o">=</span> <span class="mi">512</span>
 </pre></div>
 
 
@@ -135,11 +135,11 @@ by Zhaoyu Li
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
-                            <li><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></li>
-                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
-                            <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
                             <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
+                            <li><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></li>
+                            <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
+                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

@@ -43,257 +43,210 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/something-about-google-plus/">关于Google+的种种</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 08 July 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
-<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
-<h3>概览</h3>
-<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
-<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
-<h3>组件介绍</h3>
-<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
-<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
-<p><strong>Scheduler（调度控制器）</strong></p>
-<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
-<p><strong>Downloader（下载器）</strong></p>
-<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
-<p><strong>Spiders（蜘蛛）</strong></p>
-<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2011/07/Google-Plus1-e1310058522662.png" /></p>
+<p>应好友<a href="http://yihuxingkong.kuandao.com/">@一湖星空</a>的邀请，第一时间体验了Google最新推出的社交项目Google+，看看这位在社交领域屡次失败的巨头是怎样发动最后一轮进攻的。</p>
+<h3>Google+是什么</h3>
+<p>Google+是Google高管维克·冈多特拉(Vic Gundotra)和布拉德利·霍洛维茨(Bradley Horowitz)负责的一项社交服务项目，其用户界面出自苹果前Mac软件团队设计师安迪·赫兹菲尔德(Andy Hertzfeld)之手。Gundotra和Horowitz认为Google+不只是一个产品，也不是一种战略方案，而是一个扩展后的Google。Google+目的是让Google在线资产在日常生活中更普及，而不只是网上冲浪时偶然点击、搜索一个网站。Google+于2011年6月28日亮相，仍处于测试阶段。</p>
+<p>在过去的一年里，Google+的开发一直秘密进行着，期间传闻不断，也有过官方辟谣，但最终它还是出现了。</p>
+<h3>Google+项目负责人谈产品</h3>
+<p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p> <a class="" href="http://hackecho.com/2011/07/something-about-google-plus/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/10-open-source-android-project/">10个非常值得学习的Android开源项目</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 July 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
-<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
-<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
-<h3>安装MacVim和Python</h3>
-<p>下列两种方式中的任一种均可用来安装MacVim。</p>
-<p><strong>方式一：通过Mac ports</strong></p>
-<p>首先确保你的Mac ports是最新版：</p>
-<p>1 $ sudo port -v selfupdate</p>
-<p>安装：</p>
-<div class="codehilite"><pre>$ <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
-</pre></div>
-
-
-<p><strong>方式二：自己编译</strong></p>
-<div class="codehilite"><pre>$ <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">b4winckler</span><span class="o">/</span><span class="n">macvim</span><span class="p">.</span><span class="n">git</span>
-$ <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
-$ <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="p">=</span>10<span class="p">.</span>6
-$ <span class="n">make</span>
-</pre></div>
-
-
-<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="android开源项目" src="/static/images/2011/07/2010073016245383.png" /></p>
+<p>暑假要学习Android的同学们请注意了，这里是非常经典的10个Android开源项目，倘若能深入研究，一定会有所收获。</p>
+<h3>1.Android官方团队提供的示例项目</h3>
+<p>如果不是从学习Android SDK中提供的那些样例代码开始，可能没有更好的方法来掌握在Android这个平台上开发。</p>
+<p>由Android的核心开发团队提供了15个优秀的示例项 目，包含了游戏、图像处理、时间显示、开始菜单快捷方式等。</p>
+<p>项目地址：<a href="http://code.google.com/p/apps-for-android/">http://code.google.com/p/apps-for-android/</a></p>
+<p><img alt="" src="/static/images/2011/07/Amazed2_3-300x200.jpg" /></p>
+<h3>2.Remote Droid</h3>
+<p>RemoteDroid是一个Android应用，能够让用户使用自己的无线网络使用无线键盘、触摸屏操作手机。</p>
+<p>这个项目为开发者提供了如网络连接、触摸屏手指运动等很好的样例。</p>
+<p>项目地址：<a href="http://code.google.com/p/remotedroid/">http://code.google.com/p/remotedroid/</a></p>
+<p><img alt="" src="/static/images/2011/07/9867-remdrscr_super.png" /></p>
+<h3>3.TorProxy和Shadow</h3>
+<p>TorProxy应用实现了Android手机无线电电传通讯(TOR)，和Shadow应用一起使用，可以使用手机匿名上网。</p>
+<p>从该项目源代码中，可以掌握socket连接、管理cookie等方法。</p>
+<p>项目地址：<a href="http://www.cl.cam.ac.uk/research/dtg/code/svn/android-tor/">http://www.cl ...</a></p> <a class="" href="http://hackecho.com/2011/07/10-open-source-android-project/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">找不到libmysqlclient.18.dylib库的解决办法</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 June 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>一个问题刚刚搞定（<a href="http://www.hackecho.com/archives/779.html">见这里</a>），另一个问题接踵而来。感谢万能的StackOverFlow.</p>
-<p>问题描述：</p>
-<p>在Python Shell中，执行 import MySQLdb ，出现如下提示：</p>
-<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">MySQLdb</span>  
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>  
-<span class="n">File</span> &quot;<span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span>&quot;<span class="p">,</span> <span class="n">line</span> 1<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>  
-<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">MySQLdb</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line</span> 19<span class="p">,</span> <span class="n">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-
-<span class="n">File</span> &quot;<span class="n">build</span><span class="o">/</span><span class="n">bdist</span><span class="p">.</span><span class="n">macosx</span><span class="o">-</span>10<span class="p">.</span>6<span class="o">-</span><span class="n">intel</span><span class="o">/</span><span class="n">egg</span><span class="o">/</span><span class="n">_mysql</span><span class="p">.</span><span class="n">py</span>&quot;<span class="p">,</span> <span class="n">line ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/solution-to-missing-libmysqlclient-18-dylib/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>本文是《Learn Python The Hard Way， 2nd Edition》这本书的尾声部分。</p>
+<p><img alt="" src="http://pic003.cnblogs.com/2011/1/201106/2011062108360289.png" /></p>
+<p>You've finished this book and have decided to continue with programming. Maybe it will be a career for you, or maybe it will be a hobby. You'll need some advice to make sure you continue on the right path ...</p> <a class="" href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Mac OS X上装MySQL for Python的辛酸经历</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 18 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">解密人人网应用“好友档案”与“X档案”</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 23 June 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>折腾了一下午，只为一个MySQL for Python...</p>
-<p>记得寒假的时候在家就为装这个折腾了半天，遇到的是同样的问题，但后来稀里糊涂装好了，也没有做笔记。没想到今天又遇到了相同的问题，解决之后，特地记下解决方法。相信跟我同样问题的人很多，而网上却丝毫找不到相关的资料...</p>
-<p>首先说一下安装环境：</p>
-<blockquote>
-<p>操作系统：Mac OS X Lion</p>
-<p>Python版本：2.7</p>
-<p>MySQL for Python版本：1.2.3</p>
-</blockquote>
-<h3>问题：</h3>
-<p>编译MySQL for Python的源码时，出现如下错误提示：</p>
-<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
-<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/install-mysql-for-python-on-mac/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近人人被“好友档案”的应用刷屏了，大家都玩得不亦乐乎。这个应用同“X档案”一样，可以显示关于你好友中“谁最关心你”、“星座分布”、“人脉地图”等。于是忍不住想看看它的原理到底是什么呢？我们一起来分析一下“谁最关心你”的原理。</p>
+<h3>接口分析</h3>
+<p>首先，人人网每个APP能调用的API列在这里，<a href="http://wiki.dev.renren.com/wiki/API">http://wiki.dev.renren.com/wiki/API</a></p>
+<p>大家可以看到，并没有获取最近来访或访问次数的API，推测，“谁最关心你”不是根据空间访问来决定的。浏览一遍API，找出和“数量”相关的接口，大概是几个获取回复信息的API：</p>
+<ol>
+<li>
+<p>status.getComment()</p>
+</li>
+<li>
+<p>photos.getComments()</p>
+</li>
+<li>
+<p>blog.getComments()</p>
+</li>
+</ol>
+<p>另外，每个API都有默认的数量限制，比如获取日志评论，默认50条。完全统计一个人所有的回复，对算法有非常高的要求，人人网信息又如此丰富，所以好友档案不可能完全统计你所有的回复 ...</p> <a class="" href="http://hackecho.com/2011/06/secret-of-truth-of-friends-app-in-renren/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 May 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
-<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
-<p>就不细细介绍了，看下面的例子，就都懂了：</p>
-<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
-<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
-<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
-<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>（说明：本文转自博客园知识库的一篇原创文章，作者：李瑞宽)</p>
+<p>想象你是一个初出茅庐的小菜鸟，上头交代你做任务，你对其中的一项任务有那么一小点疑问，你怯生生地问：“我觉得这项任务说得不是很清楚，那样做行吗？为什么呢？我觉得应该这样做更好。”项目很紧，上头头大着呢，他很不耐烦地对你说：“不要问那么多！我都考虑清楚了，只要照着做就行！”你应该怎么办呢？你是就这样屁颠屁颠地去做了，还是还是觉得你应该知道为什么要按照他说的做，而不是按照你说的做吗？ 你应该知道。而且你要一直坚持“我应该知道”这种想法，因为这种想法，会带领你走进一片新天地。你可能还意识不到，你现在的是否坚持和你后续的发展休戚相关。坚持了，你会向着更深的层次迈进；放弃了，你就一直呆在原地，没有办法进步。</p>
+<p>依我看来，技术人员的发展，不外乎往深度发展或者往广度发展。</p>
+<p>什么是深度呢？就是你对技术的掌握程度，你一套扎进去，对技术有自己越来越深的理解，你从不会到会，从会到精，你会显著感觉到自己能力的提升，等到精通了技术之后，使用这项技术自然是挥洒自如，易如反掌。</p>
+<p>什么是广度呢？就是十八般武艺 ...</p> <a class="" href="http://hackecho.com/2011/05/what-the-programmer-should-know/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 22 April 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
-<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
-<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
-<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
-<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
-<p>使用这款插件后，效果如下：</p>
-<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
-<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
-<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
-<p><strong>插件下载地址</strong>：暂无 </p> <a class="" href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>我想，程序员只是一个代名词，我们是一群爱IT的人，希望通过自己的技术改变世界的人，我们是一群热爱生活、热爱世界的人。（蓝色文字皆为Troy注解）</p>
+<p>作为程序员，要取得非凡成就需要记住的15件事。</p>
+<p><strong>1.走一条不一样的路</strong></p>
+<p>在有利于自己的市场中竞争，如果你满足于“泯然众人矣”，那恐怕就得跟那些低工资国家的程序员们同场竞技了。</p>
+<p>“走一条不同的路”，“走自己喜欢的路”从来都是一个人成功的重要条件，但是更为重要的是，选定的一条路，一定要好好地、坚持地走下去。与其他半途而废的人来比，我们就是笑到最后的人。</p>
+<p><strong>2.了解自己的公司</strong></p>
+<p>以我在医院、咨询公司、物流企业以及大技术公司工作的经验来看，这一点所言不虚。</p>
+<p>不同公司的运营模式差异极大。如果你理解企业的运营模式，那你就不一样了！在这家公司中（或者对客户而言），你是参与业务运营的资产，你的工作能直接产生效益！</p>
+<p>如果一个人能够在他/她喜欢的公司工作，还用得着努力地去重新了解它吗？某种程度上我们喜欢某家公司的原因恰恰是我们喜欢它的运营理念。</p>
+<p><strong>3.与最优秀的人为伍</strong></p>
+<p>很早以前，我喜欢打篮球，被分配到一个水平比较高的队里。一开始适应的确很困难，但环境的压力越大（重大比赛），我的长进也就越明显 ...</p> <a class="" href="http://hackecho.com/2011/04/be-programmer-best/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/git-notes/">Git 学习笔记</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 29 January 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/level-of-programmer/">传说中程序员的层次</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 11 April 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>学习Git的笔记，会不定期更新。</p>
-<p>我的Github地址：<a href="https://github.com/uutroy">https://github.com/uutroy</a></p>
-<p>首先推荐两篇非常好的入门：</p>
+        <div class="summary" style="margin:18px 0 0 0;"><p>记得很久以前看过这篇文章，本以为当时的我怎么说也应该达到第三级了吧，可读完第一级就发现我已经落后了...</p>
+<p>自西方文艺复兴以来，中国在自然科学方面落后西方很多，软件领域也不例外。当然现在中国的许多程序员们对此可能有许多不同的意见，有些人认为中国的程序员水平远落后于西方，有些则认为中国的程序员个人能力并不比西方的程序员差，只是整个软件产业落后而已。</p>
+<p>那么，到底中国的程序员水平比西方程序员水平差，还是中国有许多优秀的程序员达到或超过了西方程序员同等水平呢？要解决这个问题，必须先知道程序员有多少种技术层级，每个层级需要什么样的技术水平，然后再比较中国和西方在各个技术层级的人数，就可以知道到底有没有差距，差距有多大。</p>
+<p>当然，对于如何划分程序员的技术层级，不同公司或不同人会有不同的划分标准，下面的划分仅代表个人的观点，如有不当之处，还请砸板砖予以纠正。</p>
+<p><strong>第1层  菜鸟</strong></p>
+<p>第1层楼属于地板层，迈进这层楼的门槛是很低的。基本上懂计算机的基本操作，了解计算机专业的一些基础知识，掌握一门基本的编程语言如C/C++，或者Java，或者JavaScript，...，均可入门迈进这层。</p>
+<p>在这层上，中国有着绝对的优势，除了从计算机专业毕业的众多人数外，还有大量的通信、自动化、数学等相关专业的人士进入这一行，此外还有众多的其他专业转行的人士，人数绝对比西方多出甚多。并且还有一个优势就是我们这层人员的平均智商比西方肯定高。</p>
+<p>没有多少人愿意一辈子做菜鸟，因为做"菜鸟"的滋味实在是不咋的，整天被老大们吆喝着去装装机器 ...</p> <a class="" href="http://hackecho.com/2011/04/level-of-programmer/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/open-source-knowledge/">补习一下开源软件协议的知识</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 02 April 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>近日接触到很多开源的东西，都有各自的开源协议。记得以前Linux操作系统老师讲过一些，但已记不大清楚。为了更好的使用这些开源软件，只好再补习一下了。</p>
+<p>下面只是一些常见的协议，具体的详解请参照<a href="http://www.opensource.org/licenses/alphabetical">http://www.opensource.org/licenses/alphabetical</a></p>
 <ul>
-<li>
-<p><a href="http://gitimmersion.com/">Git Immersion</a></p>
-</li>
-<li>
-<p><a href="http://www.ralfebert.de/tutorials/git/#commit_a">Git Tutorial</a></p>
-</li>
+<li><strong>Mozilla Public License</strong></li>
 </ul>
-<p>一般流程：取代码 → 更新到最新版本 → 修改代码 → 提交</p>
-<h2>Creating a new repository</h2>
-<blockquote>
-<p>$ git init</p>
-</blockquote>
-<h2>取代码及修改全局设置</h2>
-<p>git在创建提交的时候会记录你的名字和email地址，所以你应该告诉git这些内容。可以使用’git config’命令来设置，如果传递参数’-global’ ，它会将这些值记录在~/.gitconfig文件里，作为这些配置的默认值。</p>
-<p>设置用户名与邮箱</p>
-<blockquote>
-<p>git config –global user.name “name”</p>
-</blockquote>
-<p>git config –global user.email “username@email.com ...</p> <a class="" href="http://hackecho.com/2012/01/git-notes/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 24 January 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
-<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
-<h2>The Zen of Python, by Tim Peters</h2>
+<p>MPL License，允许免费重发布、免费修改，但要求修改后的代码版权归软件的发起者。这种授权维护了商业软件的利益，，它要求基于这种软件得修改无偿贡献版权给该软件。这样，围绕该软件得所有代码得版权都集中在发起开发人得手中。但MPL是允许修改，无偿使用得。MPL软件对链接没有要求。</p>
 <ul>
-<li>
-<p>Beautiful is better than ugly.</p>
-</li>
-<li>
-<p>Explicit is better than implicit.</p>
-</li>
-<li>
-<p>Simple is better than complex.</p>
-</li>
-<li>
-<p>Complex is better than complicated.</p>
-</li>
-<li>
-<p>Flat is better ...</p></li></ul> <a class="" href="http://hackecho.com/2012/01/the-zen-of-python/">Read more...</a></div>
+<li><strong>BSD开源协议</strong></li>
+</ul>
+<p>BSD开源协议是一个给于使用者很大自由的协议。可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。 当你发布使用了BSD协议的代码，或则以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：</p>
+<p>1． 如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。</p>
+<p>2． 如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议。</p>
+<p>3． 不可以用开源代码的作者/机构名字和原来产品的名字做市场推广。</p>
+<p>BSD代码鼓励代码共享，但需要尊重代码作者的著作权 ...</p> <a class="" href="http://hackecho.com/2011/04/open-source-knowledge/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">用HP Scrawlr检测数据库SQL注入漏洞</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 30 March 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>在上一篇文章《<a href="http://www.hackecho.com/archives/710.html">VPS折腾记</a>》中提到在升级Wordpress或添加删除主题和插件的时候需要填写FTP账户信息的问题，提示一般如下：</p>
-<blockquote>
-<p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</p>
-</blockquote>
-<p>一般情况下，虚拟主机很少会出现这样的情况，如果使用 VPS 的话，这种情况就会比较多。主要原因是网站服务器运行PHP的用户和Wordpress文件夹的所有者不一样，目的就是为了安全，Wordpress在升级时会创建一个临时文件看看owner是不是和当前运行的PHP是否一样，如果不一样，就会出现这个界面。</p>
-<p>第一种解决办法很简单，就是直接在wp-config.php 中加入FTP的配置代码：</p>
-<div class="codehilite"><pre><span class="c1">// ** FTP SETTINGS FOR AUTO-UPDATE ** //</span>
-<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_HOST</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">localhost</span><span class="err">’</span><span class="p">);</span>
-<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_USER</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">帐号’</span><span class="p">);</span>
-<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_PASS</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">密码’</span><span class="p">);</span>
-</pre></div>
-
-
-<p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
-<p>针对有高级管理权限的用户，如服务器或 VPS ...</p> <a class="" href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
+<p><strong>引言</strong></p>
+<p>SQL数据库是目前世界上最快的一种数据库，每秒钟可以完成数百万次的事务处理。使用PHP和ASP代码处理SQL连接的时候，如果代码写的不好的 话，就会为网站的安全留下隐患：黑客可以通过插入代码来获得您的服务器上数据库的控制权。所以，一定要保护好您的SQL数据库。测试软件和网络的安全性应 该成为安全审计的一部分。HP为我们提供了扫描网站的SQL漏洞的免费软件。Scrawlr只可用于合法地扫描您自己的站点，而不得用于您的组织之外的站 点。安全分析人员进行渗透测试时，应当将这款软件也纳入到他们的安全工具库中。</p>
+<p><strong>HP Scrawlr</strong></p>
+<p>Hewlett  Packard公司提供了一款免费的工具，供人们用来爬行他们的站点，并从中查找安全漏洞。Scrawlr是由HP的web安全研究团队开发的，可用于对 单独的网页进行SQL注入漏洞的检测和利用。这个程序运行速度非常快；在运行期间，它可以利用HP的智能引擎技术来创建和动态执行SQL注入。最后，它还 能提高一份简单的报告来供管理员分析有关结果。如果该程序成功的话，您就会看到数据库和各种表。</p>
+<p><strong>Scrawlr</strong></p>
+<p>下面是Scrawlr的两个截图：</p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527390.jpg" /></p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527391.jpg" /></p>
+<p><strong>SQL注入</strong></p>
+<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p> <a class="" href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/vps-struggle/">VPS折腾记</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">如何分辨极客与伪极</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 26 March 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>实在不爽虚拟主机的性能问题和每天几十封宕机警告，而且主机的一切环境都是虚拟主机商配置好的，没有自由发挥的余地。于是果断决定给博客找个好点的VPS，也为以后博客改版做准备。当然，还有VPN哈哈。</p>
-<p>因为Linode VPS口碑还不错，而且支持ipv6，所以就选它了。折腾了整整一下午一晚上，终于把小博客搬了过来，简单总结一下整个过程以备忘。</p>
-<h2>SSH登陆</h2>
-<p>在Windows上，可以使用Putty来使用SSH。在Mac上，可以直接使用Terminal。命令很简单：</p>
-<blockquote>
-<p>ssh username@server -p portNumber</p>
-</blockquote>
-<p>后面的-p portNumber只在主机不是使用标准端口时需要加上，使用时将username和server替换成自己的用户名和地址就可以了。</p>
-<h2>安装LNMP</h2>
-<p>网上普遍说LNMP比LAMP性能要好，虽然我这个小博客也没多少流量，但无折腾不生活，趁年轻多折腾折腾。</p>
-<p>可以选择自己一个一个配置，也可以选择<a href="http://lnmp.org/">LNMP一键安装包</a>。当然折腾的前提是要稍微熟悉它，所以暂时用一键安装包了。官方给出了详细的安装步骤（见<a href="http://lnmp.org/install.html">这里</a>），这里就不再赘述。对于安装中遇到的各种问题，请看本文第五部分。</p>
-<p>安装完后记住将Nginx和PHP升级到最新版，安装包中的不是最新版。</p>
-<h2>安装Wordpress</h2>
-<p>不知为何，按照LNMP官方教程安装VSFTPD总是不成功，于是放弃之安装了PureFTPd ...</p> <a class="" href="http://hackecho.com/2012/01/vps-struggle/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有着非常强健的体魄，或者非常专业的某项体育技能的，100%不是极客。极客没有时间也没有兴趣刻意锻炼身体。身体非常虚弱的，100%不是极 客，70%是伪极，呆极客或者宅。极客虽然不会进行长期稳定的体育运动，但是他们享受户外的活动。绝不会始终宅在家里。所以身体一定是健康的，却不是好坏 两个极端。</p>
+<p>不戴眼镜的，100%不是极客。</p>
+<p>出门站在衣柜犹豫不知穿什么衣服的，80%不是极客。极客们讲求效率，不会在穿衣戴帽等事情上浪费时间。另一方面，他们也没有太多的衣物供不同场合的选择。出门随手拽两件衣服披上就走的，90%是极客。</p>
+<p>拥有一辆不错的个人车的，70%不是极客。极客开车的机会不多，也不会下血本买费钱费油的好车。</p>
+<p>酒量特别好的，100%不是极客。极客们饮酒的机会不多。不过由于常常帮朋友修理电脑导致被请客在外就餐的机会也不少，所以酒量比宅要高很多。</p>
+<p>经常哭穷的，100%不是极客。极客们手头都是相对宽裕的。他们的心态比较中置，对于不同的家庭背景或者收入状况不会加以打击或者憧憬，因为他们所追求的不是纯物质生活，更多的在于精神上 ...</p> <a class="" href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -305,9 +258,6 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/category/develope3.html">3</a></li>
     <li class="active"><a href="http://hackecho.com/category/develope4.html">4</a></li>
     <li class=""><a href="http://hackecho.com/category/develope5.html">5</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope6.html">6</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope7.html">7</a></li>
-    <li class=""><a href="http://hackecho.com/category/develope8.html">8</a></li>
 
     <li class="next"><a href="http://hackecho.com/category/develope5.html">Next &rarr;</a></li>
 

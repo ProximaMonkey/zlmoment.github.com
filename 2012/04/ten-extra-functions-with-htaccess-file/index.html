@@ -91,9 +91,9 @@ by Zhaoyu Li
 </ol>
 <p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
 <div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^$</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^http://(www.)?yoursite.com/.*$ [NC]</span>
-<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span>$ <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="p">=</span>302<span class="p">,</span><span class="n">L</span><span class="p">]</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="err">$</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="n">http</span><span class="o">:</span><span class="c1">//(www.)?yoursite.com/.*$ [NC]</span>
+<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span><span class="err">$</span> <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">302</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
 </pre></div>
 
 
@@ -109,7 +109,7 @@ by Zhaoyu Li
 <li>301永久重定向</li>
 </ol>
 <p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向，不但流量没有丢失，搜索引擎也迅速更新了收录。或者当要更改网站URL结构的时候，做301重定向也是一个好方法：</p>
-<div class="codehilite"><pre><span class="n">Redirect</span> 301 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">yoursite</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">article</span><span class="p">.</span><span class="n">html</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">yoursite</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">archives</span><span class="o">/</span><span class="n">article</span>
+<div class="codehilite"><pre><span class="n">Redirect</span> <span class="mi">301</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.yoursite.com/article.html http://www.yoursite.com/archives/article</span>
 </pre></div>
 
 
@@ -117,7 +117,7 @@ by Zhaoyu Li
 <li>个性化 404 错误页面</li>
 </ol>
 <p>404页面是什么就不用解释了吧，通过下面的简单配置可以自定义404页面：</p>
-<div class="codehilite"><pre><span class="n">ErrorDocument</span> 404 <span class="o">/</span>404<span class="p">.</span><span class="n">html</span>
+<div class="codehilite"><pre><span class="n">ErrorDocument</span> <span class="mi">404</span> <span class="o">/</span><span class="mf">404.</span><span class="n">html</span>
 </pre></div>
 
 
@@ -134,9 +134,9 @@ by Zhaoyu Li
 </ol>
 <p>当你想屏蔽一些网站的访问时（比如垃圾评论网站），可以这样配置：</p>
 <div class="codehilite"><pre><span class="nt">&lt;IfModule</span> <span class="err">mod_rewrite.c</span><span class="nt">&gt;</span>
-RewriteEngine on  RewriteCond %{HTTP_REFERER} spamteam.com [NC,OR]
-RewriteCond %{HTTP_REFERER} trollteam.com [NC,OR]
-RewriteRule .* – [F]
+RewriteEngine on  RewriteCond %{HTTP_REFERER} spamteam.com <span class="cp">[</span><span class="nx">NC</span><span class="p">,</span><span class="ow">OR</span><span class="cp">]</span>
+RewriteCond %{HTTP_REFERER} trollteam.com <span class="cp">[</span><span class="nx">NC</span><span class="p">,</span><span class="ow">OR</span><span class="cp">]</span>
+RewriteRule .* – <span class="cp">[</span><span class="nb">F</span><span class="cp">]</span>
 <span class="nt">&lt;/ifModule&gt;</span>
 </pre></div>
 
@@ -145,10 +145,10 @@ RewriteRule .* – [F]
 <li>限制PHP上传文件大小</li>
 </ol>
 <p>第一个是设置最大的上传文件大小，第二个是设置最大的POST请求大小，第三个PHP脚本最长的执行时间，最后一个是脚本解析上传文件的最长时间：</p>
-<div class="codehilite"><pre><span class="n">php_value</span> <span class="n">upload_max_filesize</span> 20<span class="n">M</span>
-<span class="n">php_value</span> <span class="n">post_max_size</span> 20<span class="n">M</span>
-<span class="n">php_value</span> <span class="n">max_execution_time</span> 200
-<span class="n">php_value</span> <span class="n">max_input_time</span> 200
+<div class="codehilite"><pre><span class="n">php_value</span> <span class="n">upload_max_filesize</span> <span class="mi">20</span><span class="n">M</span>
+<span class="n">php_value</span> <span class="n">post_max_size</span> <span class="mi">20</span><span class="n">M</span>
+<span class="n">php_value</span> <span class="n">max_execution_time</span> <span class="mi">200</span>
+<span class="n">php_value</span> <span class="n">max_input_time</span> <span class="mi">200</span>
 </pre></div>
 
 
@@ -183,18 +183,18 @@ Header set Cache-Control &quot;max-age=2592000&quot;
 </ol>
 <p>很多人都说添加尾部反斜杠有益于SEO：</p>
 <div class="codehilite"><pre><span class="nt">&lt;IfModule</span> <span class="err">mod_rewrite.c</span><span class="nt">&gt;</span>
-RewriteCond %{REQUEST_URI} /+[^\.]+$
-RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+RewriteCond %{REQUEST_URI} /+<span class="cp">[</span><span class="p">^</span><span class="o">\</span><span class="nx">.</span><span class="cp">]</span>+$
+RewriteRule ^(.+<span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="cp">]</span>)$ %{REQUEST_URI}/ <span class="cp">[</span><span class="n">R</span><span class="o">=</span><span class="mi">301</span><span class="p">,</span><span class="nx">L</span><span class="cp">]</span>
 <span class="nt">&lt;/IfModule&gt;</span>
 </pre></div>
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/09/10-cool-jquery-slides/">10款非常酷的 jQuery 内容滑块插件</a></li>
-                            <li><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></li>
-                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
-                            <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
                             <li><a href="http://hackecho.com/2011/05/what-the-programmer-should-know/">程序员，你应该知道</a></li>
+                            <li><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></li>
+                            <li><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></li>
+                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

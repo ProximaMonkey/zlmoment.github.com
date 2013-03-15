@@ -94,8 +94,8 @@ by Zhaoyu Li
 </blockquote>
 <h3>问题：</h3>
 <p>编译MySQL for Python的源码时，出现如下错误提示：</p>
-<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2<span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
-<span class="n">error</span><span class="p">:</span> <span class="n">command</span> ‘<span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2′ <span class="n">failed</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">status</span> 1
+<div class="codehilite"><pre><span class="n">unable</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span><span class="o">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<span class="nl">error:</span> <span class="n">command</span> <span class="err">‘</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span><span class="err">′</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">status</span> <span class="mi">1</span>
 </pre></div>
 
 
@@ -103,7 +103,7 @@ by Zhaoyu Li
 <p>这个问题的原因，其实是与苹果系统的GCC编译器有关（其实苹果的gcc编译器叫做LLVM，还有一段非常的历史，我记得在某期的《程序员》杂志上看到过，有兴趣的读者可以看这篇文章<a href="http://www.programmer.com.cn/9436/">《Mac OS X 背后的故事（八）三好学生Chris Lattner的LLVM编译工具链》</a>。）关于我的一系列苦逼的修复过程我就不重复了，直接公布解决办法吧。</p>
 <h3>解决办法：</h3>
 <p>做连接gcc-4.2到命令llvm-gcc-4.2即可。（当然，这只是一种最笨的方法，更高明方法还没想到）</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span>4<span class="p">.</span>2
+<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">llvm</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span>
 </pre></div>
 
 
@@ -115,17 +115,17 @@ by Zhaoyu Li
 
 
 <h3>安装成功：</h3>
-<div class="codehilite"><pre><span class="n">Processing</span> <span class="n">dependencies</span> <span class="k">for</span> <span class="n">MySQL</span><span class="o">-</span><span class="n">python</span><span class="o">==</span>1<span class="p">.</span>2<span class="p">.</span>3  
-<span class="n">Finished</span> <span class="n">processing</span> <span class="n">dependencies</span> <span class="k">for</span> <span class="n">MySQL</span><span class="o">-</span><span class="n">python</span><span class="o">==</span>1<span class="p">.</span>2<span class="p">.</span>3
+<div class="codehilite"><pre><span class="n">Processing</span> <span class="n">dependencies</span> <span class="k">for</span> <span class="n">MySQL</span><span class="o">-</span><span class="n">python</span><span class="o">==</span><span class="mf">1.2.3</span>  
+<span class="n">Finished</span> <span class="n">processing</span> <span class="n">dependencies</span> <span class="k">for</span> <span class="n">MySQL</span><span class="o">-</span><span class="n">python</span><span class="o">==</span><span class="mf">1.2.3</span>
 </pre></div>
                 <br>
         <h4>Related Posts</h4>
                     <ul>
-                            <li><a href="http://hackecho.com/2011/08/add-sns-sharing-with-umeng-sns-sdk/">使用友盟SNS_SDK为Android应用加入SNS分享功能</a></li>
-                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
-                            <li><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></li>
-                            <li><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></li>
                             <li><a href="http://hackecho.com/2011/04/be-programmer-best/">做一个有理想的程序猿</a></li>
+                            <li><a href="http://hackecho.com/2011/06/advice-from-an-old-programmer/">[转] Advice From An Old Programmer</a></li>
+                            <li><a href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">深入浅出ThinkPHP系列教程(二) MVC简介</a></li>
+                            <li><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></li>
+                            <li><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></li>
                         </ul>
                 <br>
         <h4>Tags</h4>

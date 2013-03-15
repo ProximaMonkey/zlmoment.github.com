@@ -43,195 +43,212 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/make-your-program/">Make Your Program</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 February 2013
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/07/something-about-google-plus/">关于Google+的种种</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 08 July 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>这学期选了两门挺有意思的课，一门叫Programming High Performance Computing，还有一门Parallel and Distributed Processing。两周刚刚上下来，感觉传递的知识量有我之前悠哉悠哉一学期学到的都多。不知道是美国本科生的基础好还是美国大学的教育好，同班的美国同学接受这些知识看起来都毫无压力。不过语言确实是一个因素，比如HPC的老师两节课讲了几十个英文缩写，还都与电路有关，感觉回到了当年狂补计算机组成原理的时候。这些英文缩写估计对于美国学生接受起来要更好一点吧。我只有更努力了。</p>
-<p>重新好好学习一下以前的知识，认真记住。PDP的教授第一节课说了一句话让我印象非常深刻，他说：“They value you not because what you can search but what you can do.”其实非常羡慕老教授课堂上信手拈来的各种复杂代码和命令参数，只靠Google是不行的。</p>
-<p>本篇博客就来复习一下Makefile吧，这两门课每次交作业都要求必须包含Makefile，就像HPC的Slides中说的：“Real programmers use Makefiles!”</p>
-<h3>Outline</h3>
-<ul>
-<li>
-<p>What's Makefile ...</p></li></ul> <a class="" href="http://hackecho.com/2013/02/make-your-program/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2011/07/Google-Plus1-e1310058522662.png" /></p>
+<p>应好友<a href="http://yihuxingkong.kuandao.com/">@一湖星空</a>的邀请，第一时间体验了Google最新推出的社交项目Google+，看看这位在社交领域屡次失败的巨头是怎样发动最后一轮进攻的。</p>
+<h3>Google+是什么</h3>
+<p>Google+是Google高管维克·冈多特拉(Vic Gundotra)和布拉德利·霍洛维茨(Bradley Horowitz)负责的一项社交服务项目，其用户界面出自苹果前Mac软件团队设计师安迪·赫兹菲尔德(Andy Hertzfeld)之手。Gundotra和Horowitz认为Google+不只是一个产品，也不是一种战略方案，而是一个扩展后的Google。Google+目的是让Google在线资产在日常生活中更普及，而不只是网上冲浪时偶然点击、搜索一个网站。Google+于2011年6月28日亮相，仍处于测试阶段。</p>
+<p>在过去的一年里，Google+的开发一直秘密进行着，期间传闻不断，也有过官方辟谣，但最终它还是出现了。</p>
+<h3>Google+项目负责人谈产品</h3>
+<p>“我们认为在线共享很糟糕，甚至是奇怪。”Gundotra说。“我们相信和其他人保持联系是人类的一项基本需求。在现实生活中，我们一直这么干，但是在线工具却很不自然。它们强迫我们完全公开化。而现实生活中的分享却很微妙而丰富 ...</p> <a class="" href="http://hackecho.com/2011/07/something-about-google-plus/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/missing-when-you-knowing/">当你懂得，或已错过</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 April 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">用HP Scrawlr检测数据库SQL注入漏洞</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 30 March 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>文/马德</p>
-<p>一天上午,一位母亲风风火火地找到我。</p>
-<p>老师,你看到小萍了吗,我家闺女!母亲的头发枯黄,被风刮得东一绺西一绺的,像秋天的衰草,是一种刺痛人心的乱。</p>
-<p>我一愣。小萍,不是回家了吗?昨天学校月休,学生们都回家了,难道她没回去?我也有些乱了方寸,心紧跟着“怦怦”跳起来。</p>
-<p>哦,昨天,她倒是回来了,可是,今天早上,她,她就没影了……都怨我,唠叨了几句……这孩子,怎么就跑了呢!母亲像是向我解释,又像是自言自语,一副手足无措的样子。</p>
-<p>哦,这样啊。没事,她不会跑到哪里,我给你问问吧。我找出班级电话簿,挨个给小萍的同学打电话。但打了一个遍,都说没见到。突然间,母亲的情绪有些失控,怎么办,这可怎么办啊。她一边说,一边捶胸顿足 ...</p> <a class="" href="http://hackecho.com/2011/04/missing-when-you-knowing/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>您需要是不是正要检测在线数据库的漏洞呢？正好，HP为我们提供了一个免费工具来检测网站是否存在SQL注入漏洞。HP Scrawlr能够爬行您的站点，以查找代码中的安全漏洞。这款软件是免费的，并且很容易上手。</p>
+<p><strong>引言</strong></p>
+<p>SQL数据库是目前世界上最快的一种数据库，每秒钟可以完成数百万次的事务处理。使用PHP和ASP代码处理SQL连接的时候，如果代码写的不好的 话，就会为网站的安全留下隐患：黑客可以通过插入代码来获得您的服务器上数据库的控制权。所以，一定要保护好您的SQL数据库。测试软件和网络的安全性应 该成为安全审计的一部分。HP为我们提供了扫描网站的SQL漏洞的免费软件。Scrawlr只可用于合法地扫描您自己的站点，而不得用于您的组织之外的站 点。安全分析人员进行渗透测试时，应当将这款软件也纳入到他们的安全工具库中。</p>
+<p><strong>HP Scrawlr</strong></p>
+<p>Hewlett  Packard公司提供了一款免费的工具，供人们用来爬行他们的站点，并从中查找安全漏洞。Scrawlr是由HP的web安全研究团队开发的，可用于对 单独的网页进行SQL注入漏洞的检测和利用。这个程序运行速度非常快；在运行期间，它可以利用HP的智能引擎技术来创建和动态执行SQL注入。最后，它还 能提高一份简单的报告来供管理员分析有关结果。如果该程序成功的话，您就会看到数据库和各种表。</p>
+<p><strong>Scrawlr</strong></p>
+<p>下面是Scrawlr的两个截图：</p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527390.jpg" /></p>
+<p><img alt="" src="http://images.51cto.com/files/uploadimg/20091009/1527391.jpg" /></p>
+<p><strong>SQL注入</strong></p>
+<p>黑客可以使用简单的SQL命令来进行插入、删除操作，甚至能控制整个数据库。黑客可以先在web中查找数据库 ...</p> <a class="" href="http://hackecho.com/2011/03/sql-injection-with-hp-scrawlr/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/mother-day-of-programmer/">程序猿的母亲节</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 08 May 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/07/start-of-web-dev/">春风化雨——初涉网站建设领域</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 22 July 2009
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><em>转自<a href="http://t.sina.com.cn/2093492691">@程序员的那些事</a></em></p>
-<p>母亲节（Mother's Day），作为一个感谢母亲的节日，最早出现在古希腊，时间是每年的1月8日，而在中国、美国、加拿大和一些其他国家，则是每年5月的第2个星期天，其他一些国家的日期也并不相同。</p>
-<p>母亲们在这一天通常会收到礼物。康乃馨被视为献给母亲的花，中国的母亲花是萱草花，也称忘忧草。作为一个特殊的群体——程序员，我们的表述方式自然也会有些特色。我们这一辈程序员的父母（至少是绝大部分父母），别说这下面的编程语言，有些甚至都还不知道如何操作电脑。虽然也许母亲们会看不懂，但这种表述你我都能领会。或许几十年后，等我们自己的儿女用这种方式来表达他们对父母的爱，你我绝对不会陌生。</p>
-<div class="codehilite"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">MothersDayFromCodeMonkeyView</span>
-    <span class="p">{</span>
-        <span class="n">public</span> <span class="n">MothersDayFromCodeMonkeyView</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">int</span> <span class="n">age</span><span class="p">=</span>0<span class="p">;</span> <span class="o">//</span>猿猿刚出生的时候
-            <span class="n">saying</span><span class="p">=</span>&quot;<span class="n">crying</span>&quot;<span class="p">;</span> <span class="o">//</span>除了哭啼，还不知道如何去表达
-
-            <span class="k">while</span><span class="p">(</span><span class="n">true</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">try</span>
-                <span class="p">{</span>
-                    <span class="n">Thread</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span>365<span class="o">*</span>24 ...</pre></div> <a class="" href="http://hackecho.com/2011/05/mother-day-of-programmer/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>近来没有写过日志，主要是因为忙于自己的网站。今天完成了当天的任务，便写一些近来做网站的一些感受吧！­</p>
+<p>个人站长很少有独立开发整站程序的人，我也算是一个，一方面没有相关的技术，二来没有时间和精力来学习、编写和调试。所以我便很佩服DEDECMS的开发者柏拉图，因为著名的DEDECMS起初便是由他一人独立开发的。网上流行的CMS很多，但运行于PHP环境的就屈指可数了，因为我的空间是UNIX型，只能使用基于PHP的CMS。下面说一下我认识CMS的过程吧。­</p>
+<p>我接触的第一款CMS是DEDECMS，但那还是一年前，出于好奇，也并没有想去建一个自己的网站，即使想，那时也没有时间。当初没有怎么深入研究，只迷迷糊糊知道CMS可以进行网站内容管理。现在，高考结束，在北交大的录取通知书马上就要到来的情况下，我便购置了空间和域名，将身心全部投入到我的爱好中来。­</p>
+<p>大约是6月二十几号，我开始挑选自己的CMS，遍历了国内几家知名企业产品。一开始的时候，我主要注重的是模版的易用和制作难易，但“游来游去”，发现对我来说每个都是那么的难。我还以为CMS就和现在网上流行的Blog换模板一样简单。后来事实证明，情况并非如此，否则网络上的相同的网站就应该有无数个了！渐渐的，我了解到现在流行的一种网页设计方法——CSS，即层叠样式表。出于需要，只好自己买书，下载教程，争取自学成才！学习的过程中 ...</p> <a class="" href="http://hackecho.com/2009/07/start-of-web-dev/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-faile-can-be-copied/">我的失败可以复制</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 23 June 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2009/11/stay-in-my-mind/">驻足在马路边的秋殇</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 November 2009
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>常听人说，如果你开始回忆过去，说明你老了。而我却时常会怀念过去，或者说，是忏悔。</p>
-<p>有时候会想，如果大学的前三年可以重新来过，让我们都回到那个懵懂的年纪，重新开始全新的大学生活，一定会选择一种完全不一样的生活。我一直以为，世界上有另外一个我，在过着我想过的生活，在做着我想做的事，而我却永远无法重新选择。</p>
-<p>永远不能回头，在不断的选择中，我们创造了自己的生活。然而，当我们回首时看到的却满是错误与失去，多想穿越时空告诉那时的自己，你的选择，错了。可是，这些都是没有用的，回不去的事情再勉强也是幻想，走好余下的路才是最重要的，过去的错误永远是最宝贵的财富。</p>
-<p>生命中，我们竭尽全力都无法改变的事情：倒向你的墙，离你而去的人，流逝的时间，和永远的过去。</p>
-<p>就像这句歌词一样：“如果骄傲没被现实大海冷冷拍下，又怎会懂得要多努力才走得到远方；如果梦想不曾坠落悬崖千钧一发，又怎会晓得执着的人有隐形翅牓。”</p>
-<p>所以，不要难过了。离过去越近，离未来就越远。过精彩的生活，遇到精彩的人，找到精彩的未来。</p> <a class="" href="http://hackecho.com/2012/06/my-faile-can-be-copied/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><strong>又是落叶纷飞的季节。我抬起头，让风中落叶夹杂的沧桑流过脸颊，听瑟瑟中睫毛舞动的轻扬，耳发飘浮的潇洒。</strong></p>
+<p>来北京整整两个月了。</p>
+<p>校园里还是那种特有的宁静，但清爽了很多，也沉郁了很多。彳亍在湖边，感受夜的侵袭，虽然少了点雨，少了把油纸伞，但垂柳依旧撩动人儿的记忆，撩动那丁香一样的惆怅。</p>
+<p>逐渐习惯了在外的生活，习惯了这座大城市，习惯了每天忙忙碌碌。朋友形容我“日理万机”，我笑一笑，我很忙，但我也会偶尔在自行车上骤然停下，看着校园里为数已不多的红果树，怀念起儿时爬过的老黄铜，亲手种过的小葫芦！如今，黄叶飘飞，风过，叶子们抓住空气，扯住地面，拖住灰尘，最终却还是会远离，与地面摩擦唱着自豪的歌。</p>
+<p>月是故乡明。十五的月亮，被我在天安门前看得清清楚楚。故乡的歌是一枝清远的笛，总在有月亮的晚上响起。不管是余光中还是席慕容都曾醉倒、梦倒在这轮光影之中。虽然未有“近乡情更怯,不敢问来人”的恐慌，却有“身在异乡为异客，每逢佳节倍思亲”的寂寞。天安门外光影浮动 ...</p> <a class="" href="http://hackecho.com/2009/11/stay-in-my-mind/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/06/my-ncee/">我的高考</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 June 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/stay-in-my-mind-2/">驻足在马路边的秋殇（二）</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 23 October 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>后天就要高考了，但这似乎已经与我无关。那段时光已经过去三年，可每每到这个时候，都会禁不住想起当年的我，当年的18班。</p>
-<p>时间正在将过往一丝一丝地抹去，我想在淡忘之前，再次品味一下那年的生活。</p>
-<p>关键字：运动场，角落，封闭的军事化管理，星空，考试那天</p>
-<h3>运动场</h3>
-<p>每天晚饭吃过以后，大约6点半，我们会三三两两到运动场上跑步，一般是跑6圈，然后满头大汗地回到教室等待晚自修。不管天气多么热，尤其是临近6月的时候，跑道上塑胶的味道很具有冲击感，但我们都依旧坚持着。当时的想法很简单，身体好才能保证学习，而要想身体好就要锻炼。那时候跟我一起跑的通常是永明，我高三时的同桌，物理超牛逼的一个人，现在在北大学物理系。跑步完之后，有时候我们会坐在草坪上，望着天空，莫名地感叹一下高三的生活，憧憬一下美好的未来，讨论一下大学，讨论一下理想。那时候没有多余的想法，黑色的高三也没那么苦，只是觉得很充实，很带感。</p>
-<h3>角落</h3>
-<p>后来，我们在教室的位置换成了桌子和桌子相互隔开的布局，谁也不是谁的同桌。我特别向往教室最后面的角落里的那个座位，或许只是想求得一份宁静，在聒噪的高三里 ...</p> <a class="" href="http://hackecho.com/2012/06/my-ncee/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2011/10/a8206193_s-300x199.jpg" /></p>
+<hr />
+<p>09年10月末，秋殇（一）发表在我的QQ空间里。后来我把它导入了这个博客（地址：<a href="http://www.hackecho.com/archives/52.html">《驻足在马路边的秋殇》</a>），留存纪念。如今，两年过去了，我已很少再动文字。偶尔会去红袖一把，期望能添些墨香，或者仅仅是不想失去这种感觉。如今的时间不多，或者，心累了。</p>
+<p>秋，到了。</p>
+<p>少年不识愁滋味，爱上层楼，爱上层楼，为赋新词强说愁。而今识尽愁滋味，欲说还休，欲说还休，却道天凉好个秋。</p>
+<p>不及幼安忧国忧民，却也能体会此情此景。秋殇总能让人若有所感，泛起一些思绪，安静下来，仔细地体会。</p>
+<hr />
+<p><strong>遗忘</strong></p>
+<p>一位以前很要好的哥们儿昨天打电话给我，寒暄过后，竟然问我：“你知道我是谁吧？”我说废话，你的声音变成灰也认识。朋友笑到：“好多人跟我聊半天了才问我你是谁，竟然不记得我了！这才几年啊，真是的！”</p>
+<p>是啊，这是第三年，可又能怪谁呢。QQ的好友列表里有这样三个分组，分别是小学 ...</p> <a class="" href="http://hackecho.com/2011/10/stay-in-my-mind-2/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/my-recent-life-notes/">近日小记</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 26 March 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/super-tool-homebrew/">开发者神器 - Homebrew简介</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 25 May 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>有一段时间没更新博客了，主要是这段时间全部心思都在知行客团购网上。那天晚上，脑海中突然闪现出这样一个想法，便激动地无法入眠。以前也有过很多次灵感的爆发，比如今年寒假时想到的“优惯网”创意。当时我在微博上说，每天一觉醒来，上网一看，我的想法还没有人实现，便又可以安心地度过一天了。可当时忽略了重要的一点，就是执行力的问题。这也是后来在一次创新工场的宣讲会上我学习到的，执行力永远是第一位。当时有很多同学支持我，我很感动，不过，优惯网流产了，终究现在没有出现。至于将来会不会出现，我们可以wait and see，呵呵。</p>
-<p>想到“知行客团购网”时，我给自己下了一个目标，从网站策划，到域名和服务器以及网站程序的到位，最后到联系商家，上线第一个产品的时间，一定要控制在10天之内。如今，刚刚正好12天，商家已经初步到位，预计近一周内一定上线。鉴于所有的工作都是在课余时间完成的，所以我觉得，还行。我还有与我一同为这个网站努力的同伴，在这个过程中，收获的绝不仅仅是一个网站。</p>
-<p>细细数来，还有四个近在眼前的各类软件比赛摆在面前。3天后新软攀峰 ...</p> <a class="" href="http://hackecho.com/2011/03/my-recent-life-notes/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Homebrew<a href="http://mxcl.github.com/homebrew/">官网</a>页面最下方大大地写了一句话：“Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.” 哈哈，这不是公开的挑战MacPorts是什么，不过，作为用过一段时间MacPorts的非标准程序员，个人感觉Homebrew真的要好用一些：）</p>
+<p><img alt="" src="/static/images/2012/05/homebrew.jpg" /></p>
+<p>什么是Homebrew呢？Homebrew is the easiest and most flexible way to install the UNIX tools Apple didn't include with OS X. 官方的解释非常明了，Homebrew是一个包管理器，用于在Mac上安装一些OS X没有的UNIX工具（比如著名的wget ...</p> <a class="" href="http://hackecho.com/2012/05/super-tool-homebrew/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/my-recent-life-things/">近况 & 忙里偷闲</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 May 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">利用.htaccess简单实现的10个功能</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 12 April 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>我觉得有必要记录一下生活。</p>
-<p>两年前，我对自己的生活就一个要求：“每天都要创造价值”。当时还和某某人深入探讨过，什么是价值，怎样去创造的问题。不知到某某人还记得否，当年为此想法兴高采烈，一致认为应该将其写本书，也像那谁谁一样火一把。后来遗憾的是，再也没有机会和某某人探讨这个问题了，只好躬身而行，久而久之，竟然也成了一种习惯性的思维。如果某天不能创造点价值（在自己看来），就没有勇气结束一天。不过毕竟人无完人，长期以来，这种思维导致的直接后果就是养成了晚睡的好习惯...看来必须调整一下了。</p>
-<p>最近几天，除了迫在眉睫的TOEFL、GRE外，其它时间全部沉浸在Tornado中。想起以前的时候，阿北坐在星巴克，用四五个月的时间创造了豆瓣，我就有种莫名的冲动。但我创造的不是豆瓣，而是一个中国的关于Python的开源社区。细节就不透露了，PyPub.com，敬请期待。</p>
-<p>其实我想吐槽一下Tornado，就不能有一个像样的文档吗！各种问题搞不清楚，查不到资料。还好Tornado是个轻量级的框架，还可以读一读源码找找问题。其实也是一举两得的事情，就像当我把Markdown的Python实现的源码过了一遍的时候，其语法也就了解的差不多了，也就是说，如果你把JAVA的C++源码读一遍，大抵也就可以用JAVA编程了 ...</p> <a class="" href="http://hackecho.com/2012/05/my-recent-life-things/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">解决MySQL无法通过localhost连接问题</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 27 May 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今晚一朋友问到，为什么Mac上自己装了MySQL后只能通过127.0.0.1连接，却无法通过localhost连接？想到我以前也遇到过同样的问题，但当时因为通过127.0.0.1连接就可以解决，也就没有多在意，只记得是与mysql.sock文件的位置有关。今日本着解决问题的心态，再次检索这个问题。</p>
-<p>悲剧，前两天重装系统后，还没安装MySQL呢...不过，还记的上一篇文章吗，正好试下Homebrew神器的刀锋。</p>
-<h3>安装MySQL</h3>
-<p>依次执行下列三个命令：</p>
-<div class="codehilite"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">mysql</span>
-<span class="n">unset</span> <span class="n">TMPDIR</span>
-<span class="n">mysql_install_db</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">user</span><span class="p">=</span>`<span class="n">whoami</span>` <span class="o">--</span><span class="n">basedir</span><span class="p">=</span>&quot;$<span class="p">(</span><span class="n">brew</span> <span class="o">--</span><span class="n">prefix</span> <span class="n">mysql</span><span class="p">)</span>&quot; <span class="o">--</span><span class="n">datadir</span><span class="p">=</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mysql</span> <span class="o">--</span><span class="n">tmpdir</span><span class="p">=</span><span class="o">/</span><span class="n">tmp</span>
+        <div class="summary" style="margin:18px 0 0 0;"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
+<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
+<ol>
+<li>防盗链</li>
+</ol>
+<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
+<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="err">$</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="n">http</span><span class="o">:</span><span class="c1">//(www.)?yoursite.com/.*$ [NC]</span>
+<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span><span class="err">$</span> <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">302</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
 </pre></div>
 
 
-<p>具体为什么有后两条命令，你安装的时候就知道了。</p>
-<h3>解决localhost问题</h3>
-<p>我们看它的错误提示：</p>
-<div class="codehilite"><pre><span class="n">Can</span>’<span class="n">t ...</span></pre></div> <a class="" href="http://hackecho.com/2012/05/mysql-localhost-connect-problem/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">WebSocket新版Hybi-10协议介绍</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 29 April 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>不知道问什么，网上的几乎所有关于WebSocket的讲解都是旧版协议，开源的PHP-WebSocket也早不更新了。一开始还以为是服务器程序的原因，后来发现是协议变更了。而且好不容易将握手协议更换为新版后，发现传送的数据都是乱码（见<a href="http://weibo.com/1784705505/ygyi4A0Pj">这里</a>），原来数据报文的格式也进行了非常大的变更！</p>
-<p>之前我们曾介绍过基于WebSocket协议的服务器实现，但那篇文章中提到的WebSocket协议标准还是草案7.5、7.6的标准，如今只有Safari支持此版本的协议，Chrome和Firefox最新版都已升级至Hybi-10（<a href="http://tools.ietf.org/html/draft-ietf-hybi-thewebsocketprotocol-10">协议地址</a>）。因此，我们再来介绍一下WebSocket新版协议Hybi-10。这次协议变更非常大，主要集中在握手协议和数据传输的格式上。下面我们来详细介绍一下。</p>
-<h3>握手协议</h3>
-<p>我们先来看一下大致的区别：</p>
 <ol>
-<li>
-<p>最老的websocket草案标准中是没有安全key，草案7.5、7.6中有两个安全key，而现在的草案10中只有一个安全key，即将7.5、7.6中http头中的"Sec-WebSocket-Key1"与"Sec-WebSocket-Key2"合并为了一个"Sec-WebSocket-Key"</p>
-</li>
-<li>
-<p>把http头中Upgrade的值由"WebSocket"修改为了"websocket"；http头中的"-Origin"修改为了"Sec-WebSocket-Origin";</p>
-</li>
-<li>
-<p>增加了http头"Sec-WebSocket-Accept ...</p></li></ol> <a class="" href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">Read more...</a></div>
+<li>防止目录浏览</li>
+</ol>
+<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
+<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
+</pre></div>
+
+
+<ol>
+<li>301永久重定向</li>
+</ol>
+<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/no-struggle-no-life/">无折腾，不生活</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 13 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2010/07/the-movie-earthquake-in-tangshan/">23秒，32年——《唐山大地震》观后感</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 26 July 2010
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>看看这几天都折腾了些啥...</p>
-<p>1.换博客程序，更换域名</p>
-<p>开学前，抱着“无折腾，不生活”的态度，将博客的程序换成了国人开发的Emlog。整个转换过程基本用了一天时间，网上可以找到很多emlog转Worpdress的程序，但逆向的话却很少。最后，采取了一种最笨的方法，将文章一篇一篇手工复制...不过也正好借此机会整理下文章。至于评论，由于数量多而且分散，更恐怖的是有级联关系（即谁回复了谁的关系），但看了一下发现两个程序的评论表差不多，便用PHP写了个小脚本将评论迁移了过来。当然，经过修复无数个小bug之后，博客终于又全新上线了。</p>
-<p>不过你也许看到了，现在的博客依旧是WordPress...因为后来我又折腾回来了...不解释。</p>
-<p>遗憾的是，在折腾过程中，一不小心将最新的备份给 rm -rf 掉了，因此博客所有的数据只能还原到2011年12月底。不过幸运的是，在转换程序的时候在本地还有一次数据导入，因此又找回了几篇文章，但最新的一些评论却永远丢失了...</p>
-<p>哦对了，还换了个域名：hackecho.com，原来域名还有一年多到期，进行了301永久重定向到新域名，原来的二级域名因指向不同的host，依旧有效。 </p>
-<p>2 ...</p> <a class="" href="http://hackecho.com/2012/02/no-struggle-no-life/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>巧合，还是必然...</p>
+<p>23秒，改变了命运；32年，换回了真情...</p>
+<p>纯真年代的姐弟俩，虽然清贫、弱小，但却快乐地生活在这片土地上。姐姐护着弟弟，为弟弟“报仇”，把西红柿让给弟弟...殊不知，西红柿，两个“天安门”“长城”书包，成就了姐弟俩、母亲子女重逢的缘...</p>
+<p><em>——“妈，方达都吃了，我也要吃。”</em></p>
+<p><em>——“没了，妈明儿给你买去。”</em></p>
+<p><em>——“骗人！”</em></p>
+<p><em>——“没骗你，妈说话算话，好吧？”</em></p>
+<p>谁会知道，为了一句简单的诺言，母亲苦苦守了32年。“妈没骗你。”当这句话最后从母亲嘴里说出时，是释怀，还是愧疚？母亲没有骗人，漫漫32年，好长的一个黑夜，但母亲不后悔，黑夜终于过去了，“明儿”，方登拿到的西红柿，其实是母亲的心！</p>
+<p>地震改变了母亲的一生。“没了，才知道什么叫没了”。面对艰难的抉择 ...</p> <a class="" href="http://hackecho.com/2010/07/the-movie-earthquake-in-tangshan/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 24 January 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
+<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
+<h2>The Zen of Python, by Tim Peters</h2>
+<ul>
+<li>
+<p>Beautiful is better than ugly.</p>
+</li>
+<li>
+<p>Explicit is better than implicit.</p>
+</li>
+<li>
+<p>Simple is better than complex.</p>
+</li>
+<li>
+<p>Complex is better than complicated.</p>
+</li>
+<li>
+<p>Flat is better ...</p></li></ul> <a class="" href="http://hackecho.com/2012/01/the-zen-of-python/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/04/thinking-in-baidu-web-app-dev-conference/">由百度Web App应用开发者大会想到的</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 27 April 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="百度Web App应用开发者大会图片" src="/static/images/2011/04/1303884171_98102200.jpg" /></p>
+<p>今天一天时间参加了百度Web App应用开发者大会，学习了一些新的理念，分享给大家。</p>
+<p>用官方的话说，这次大会是“面向App应用开发者和互联网技术人群，围绕“开放、共赢、创富”主题，广邀行业专家和资深开发者，与大家一同分享百度应用开放平台“全开放”策略以及Web App应用的设计思想、开发方法和市场前景”的活动。期间百度技术副总裁王梦秋女士做了关于"百度框计算架构与Web应用开放平台"的演讲，DCCI互联网数据创始人&amp;总裁胡延平做了关于"生态之变与网络迁徙"的演讲，百度产品架构师田晓萌做了关于"框搜索世界，应用成就未来"的演讲，Zynga亚洲区首席技术官郑皓做了关于“数据推动Web App的飞速发展”的主题演讲，以及下午的第一分论坛中一系列非常好的主题演讲。</p>
+<p>下面基于全程中我听到的一些理念发表一下自己的看法和见解，不足之处欢迎指正。</p>
+<p><strong>1.什么是好技术、好产品？</strong></p>
+<p>满足用户需求的技术和产品就是好技术、好产品。</p>
+<p>评价一个技术、一款产品的好坏，根本程度上要看是否符合了用户需求。需求至上，我们开发新技术、设计新产品，本来就是给用户使用，方便用户的 ...</p> <a class="" href="http://hackecho.com/2011/04/thinking-in-baidu-web-app-dev-conference/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -247,9 +264,6 @@ by Zhaoyu Li
     <li class="active"><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/author/zhaoyu-li8.html">Next &rarr;</a></li>
 

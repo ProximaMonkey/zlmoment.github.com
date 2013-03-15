@@ -60,15 +60,15 @@ by Zhaoyu Li
 <p>首先确保你的Mac ports是最新版：</p>
 <p>1 $ sudo port -v selfupdate</p>
 <p>安装：</p>
-<div class="codehilite"><pre>$ <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
 </pre></div>
 
 
 <p><strong>方式二：自己编译</strong></p>
-<div class="codehilite"><pre>$ <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">b4winckler</span><span class="o">/</span><span class="n">macvim</span><span class="p">.</span><span class="n">git</span>
-$ <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
-$ <span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="p">=</span>10<span class="p">.</span>6
-$ <span class="n">make</span>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/b4winckler/macvim.git</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
+<span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="o">=</span><span class="mf">10.6</span>
+<span class="err">$</span> <span class="n">make</span>
 </pre></div>
 
 

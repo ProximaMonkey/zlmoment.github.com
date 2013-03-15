@@ -43,281 +43,267 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">HTML5 之 WebSocket 通信协议介绍</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 15 April 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/the-zen-of-python/">Python之禅 - The Zen of Python</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 24 January 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>更新：Chrome和Firefox的WebSocket协议已更新到最新版，不再支持旧版协议。关于新版协议的介绍请看<a href="http://www.hackecho.com/archives/1104.html">《WebSocket新版Hybi-10协议介绍》</a>，本篇文章中的握手协议和数据报文已不再适用。</strong></p>
-<p>最近参与一个有关HTML5的比赛，要用到WebSocket，经过一些实验后简单总结一下WebSocket的基础用法。</p>
-<p>WebSocket是HTML5的一种新的协议，它是实现了浏览器与服务器的双向通讯。</p>
-<p>在 WebSocket API 中，浏览器和服务器只需要要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。（这两小段介绍摘自维基百科）</p>
-<h3>WebSocket协议</h3>
-<p>WebSocket的协议非常简单，这也是其最大的优点之一。</p>
-<p>在客户端（如浏览器），可以利用JavaScript直接new WebSocket来实例化一个WebSocket对象，其参数格式为ws://yourdomain:port/path。WebSocket会根据这段字符串，发送Header到指定服务器端口，其数据格式大概如下：</p>
-<div class="codehilite"><pre><span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span>1<span class="p">.</span>1
-<span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hackecho</span><span class="p">.</span><span class="n">com</span> 
-<span class="n">Cookie</span><span class="p">:</span> <span class="n">__utma</span><span class="p">=</span>99<span class="n">as</span>
-<span class="n">Connection</span><span class="p">:</span> <span class="n">Upgrade</span>
-<span class="n">Host</span><span class="p">:</span> <span class="n">hackecho ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">利用.htaccess简单实现的10个功能</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 12 April 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>简单来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。</p>
-<p>通过htaccess文件，可以帮我们实现一些实用的功能，这里简单列举了10个，如果有更好的欢迎补充。（顺便推荐一个<a href="http://www.wangqu.org/htaccess/">htaccess文件在线生成器</a>）</p>
-<ol>
-<li>防盗链</li>
-</ol>
-<p>天堂皓月的几篇文章被人整篇复制了过去，图片地址都没变。不过数量不多，还可以承受。但对于流量较大的网站来说，图片盗链可是流量灾难。可以通过以下配置来防止别人盗用你的图片：</p>
-<div class="codehilite"><pre><span class="n">RewriteBase</span> <span class="o">/</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^$</span>
-<span class="n">RewriteCond</span> <span class="c">%{HTTP_REFERER} !^http://(www.)?yoursite.com/.*$ [NC]</span>
-<span class="n">RewriteRule</span> <span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">flv</span><span class="o">|</span><span class="n">png</span><span class="p">)</span>$ <span class="o">/</span><span class="n">feed</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="p">=</span>302<span class="p">,</span><span class="n">L</span><span class="p">]</span>
-</pre></div>
-
-
-<ol>
-<li>防止目录浏览</li>
-</ol>
-<p>有时候目录浏览是有用的，但大部分情况会有安全问题。为了让网站更安全，可以通过如下配置来禁用这个功能：</p>
-<div class="codehilite"><pre><span class="n">Options</span> <span class="n">All</span> <span class="o">-</span><span class="n">Indexes</span>
-</pre></div>
-
-
-<ol>
-<li>301永久重定向</li>
-</ol>
-<p>博主前段时间将uutroy.com更换为hackecho.com时，就将原域名做了301永久重定向 ...</p> <a class="" href="http://hackecho.com/2012/04/ten-extra-functions-with-htaccess-file/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">WordPress与Suhosin冲突的解决办法</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 March 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>最近时不时收到宕机邮件，然后查一下VPS的使用情况，发现CPU飙升，IO飙升，SSH进去之后，满屏的out_of_memory（PHP进程高负载）！查各种日志都找不到具体原因，往往是重启一下VPS就好了。昨天晚上突然又出现了这种情况，于是决定好好把日志研究一下了。</p>
-<p>排除了木马和后门的因素，在syslog里发现出现最多的是这个：</p>
-<p><a href="/static/images/2012/03/wp-suhosin.jpg"><img alt="" src="/static/images/2012/03/wp-suhosin.jpg" /></a></p>
-<p>其实至今我也不是很清楚到底是什么原因，参考了几篇网上的文章，改过之后暂时正常了。但这种情况为什么最近会出现还是个疑问。</p>
-<p>主要参考文章：</p>
+        <div class="summary" style="margin:18px 0 0 0;"><p>初入门Python，在学习Django的数据库操作时被告知，Django在选择所有数据时不是用的SELECT * ，而是会显式地列出所有字段，原因是这样会加快查询速度，同时遵循了Python的一个信条：明确比不明确好。那么Python的这些信条(Zen)到底都有哪些呢，我们来看一下。</p>
+<p><strong>在Python Shell中输入 import this 就可以打开The Zen of Python了</strong>，下面是主要内容：</p>
+<h2>The Zen of Python, by Tim Peters</h2>
 <ul>
 <li>
-<p><a href="http://www.cnblogs.com/droko/archive/2012/03/06/2381966.html">《PHP进程高负载》</a></p>
+<p>Beautiful is better than ugly.</p>
 </li>
 <li>
-<p><a href="http://changblog.com/582">《大战suhosin》</a></p>
+<p>Explicit is better than implicit.</p>
 </li>
 <li>
-<p><a href="http://changblog.com/981">《解决wordpress引起的suhosin报错》</a></p>
+<p>Simple is better than complex.</p>
 </li>
 <li>
-<p><a href="http://core.trac.wordpress.org/ticket/13847">《WP increasing the memory above other server limit》</a></p>
+<p>Complex is better than complicated.</p>
 </li>
 <li>
-<p><a href="http://demon.tw/software/suhosin-php.html">《Suhosin，PHP保护神？》</a></p>
-</li>
-</ul>
-<p>先观察些时日再说。</p>
-<p><em>补充（2012-3-23 20:40）：</em></p>
-<p>放上我的临时解决办法：</p>
-<p>对于上面日志中的问题，原因是suhosin的memory_limit限制了脚本内存的分配。解决办法是在php.ini中搜索memory_limit关键字，修改如下：</p>
-<div class="codehilite"><pre><span class="n">extension</span><span class="p">=</span><span class="n">suhosin</span><span class="p">.</span><span class="n">so</span>
-<span class="n">suhosin</span><span class="p">.</span><span class="n">memory_limit</span> <span class="p">=</span> 256<span class="n">M</span>
-</pre></div>
-
-
-<p>对于get和post数据大小限制的问题 ...</p> <a class="" href="http://hackecho.com/2012/03/solution-to-the-conflict-of-wordpress-and-suhosin/">Read more...</a></div>
+<p>Flat is better ...</p></li></ul> <a class="" href="http://hackecho.com/2012/01/the-zen-of-python/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Wordpress提示填写FTP信息的解决办法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
-<p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
-<p>文章结构：</p>
-<ul>
-<li>
-<p>独立博客与BSP的区别</p>
-</li>
-<li>
-<p>申请域名</p>
-</li>
-<li>
-<p>服务器主机</p>
-</li>
-<li>
-<p>域名绑定</p>
-</li>
-<li>
-<p>安装程序</p>
-</li>
-<li>
-<p>开始使用</p>
-</li>
-</ul>
-<h3>独立博客与BSP的区别</h3>
-<p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
-<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/letter-to-software-colleagues/">[转载] 给浮躁的软件业同仁</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>文章来源：网络    作者：未知</strong></p>
-<p>中国有很多小朋友，他们18,9岁或21,2岁，通过自学也写了不少代码，他们有的代码写的很漂亮，一些技术细节相当出众，也很有钻研精神，但是他们被一些错误的认识和观点左右，缺乏对系统，对程序的整体理解能力，这些人，一个网上的朋友说得很好，他们实际是fans，压根没有资格称为程序员，但是据我所知，不少小网络公司的Cfans,拿着吓人的工资，做着吓人的项目，项目的结局通常也很吓人。</p>
-<p>程序员基本素质：</p>
-<p>作一个真正合格的程序员，或者说就是可以真正合格完成一些代码工作的程序员，应该具有的素质：</p>
-<p>1.团队精神和协作能力</p>
-<p>把它作为基本素质，并不是不重要，恰恰相反，这是程序员应该具备的最基本的，也是最重要的安身立命之本。把高水平程序员说成独行侠的都是在呓语，任何个人的力量都是有限的，即便如linus这样的天才，也需要通过组成强大的团队来创造奇迹，那些遍布全球的为linux写核心的高手们，没有协作精神是不可想象的。独行侠可以作一些赚钱的小软件发点小财，但是一旦进入一些大系统的研发团队，进入商业化和产品化的开发任务，缺乏这种素质的人就完全不合格了。</p>
-<p>2.文档习惯</p>
-<p>说高水平程序员从来不写文档的肯定是乳臭未干的毛孩子，良好的文档是正规研发流程中非常重要的环节，作为代码程序员 ...</p> <a class="" href="http://hackecho.com/2012/03/letter-to-software-colleagues/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">第一个HackEcho爬虫诞生记</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 March 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>几天前开始折腾爬虫时，确立的目标是第一个目标是要把同学异泪的博客爬下来。然而折腾了几天，断断续续始终没能写出一个完整的爬虫来。本来打算今天下午完成，结果下午有课又耽搁了。六点一下课，便冲进了图书馆，于是，七点的时候，第一个HackEcho爬虫诞生了，并完整的爬下了目标博客的前212篇文章并保存到了SQLite里。lol，见下图：</p>
-<p><a href="/static/images/2012/03/sqliteyilee-1.png"><img alt="" src="/static/images/2012/03/sqliteyilee-1.png" /></a></p>
-<p>Scrapy的爬取速度还是非常惊人的，弱弱的校园无线网，整个过程只用了20秒多一点。</p>
-<p>当然，爬取的数据也不多，具体只有以下几项：</p>
-<div class="codehilite"><pre><span class="n">from</span> <span class="n">scrapy</span><span class="p">.</span><span class="n">item</span> <span class="n">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
-
-<span class="n">class</span> <span class="n">YileeItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
-    # <span class="n">DEFINE</span> <span class="n">THE</span> <span class="n">FIELDS</span> <span class="n">FOR</span> <span class="n">YOUR</span> <span class="n">ITEM</span> <span class="n">HERE</span> <span class="n">LIKE</span><span class="p">:</span>
-    # <span class="n">NAME</span> <span class="p">=</span> <span class="n">FIELD</span><span class="p">()</span>
-    <span class="n">url</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">title</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">release_time</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">category</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">content_html</span> <span class="p">=</span> <span class="n">Field</span><span class="p">()</span>
-</pre></div>
-
-
-<p>当然 ...</p> <a class="" href="http://hackecho.com/2012/03/born-of-the-first-hackecho-spider/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>定义：</p>
-<p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
-<p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
-<h3>名词解析：</h3>
-<p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
-<p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
-<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">带偏好的爬虫——优先级队列</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 07 March 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
-<p>那么怎样来判断网页的重要性呢？</p>
-<p>其因素很多，主要有链接的欢迎度、链接的重要度和平均链接深度、网站质量、历史权重等。</p>
-<p>链接的欢迎度主要由反向链接（Backlinks）的数量和质量决定，我们定义为IB(P)。</p>
-<p>链接的重要度，是一个关于URL字符串的函数，仅仅考察字符串本身，比如认为".com"和"home"的URL重要度比".cc"和"map"高，我们定义为IL(P)。</p>
-<p>平均连接深度，计算出全站的平均链接深度，然后认为距离种子站点越近的重要性越高。我们定义为ID(P)。</p>
-<p>如果定义网页的重要性为I(P)，那么其重要度有下面的公式决定：</p>
-<div class="codehilite"><pre><span class="n">I</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="p">=</span> <span class="n">X</span><span class="o">*</span><span class="n">IB</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="n">IL</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
-</pre></div>
-
-
-<p>其中，X和Y两个参数用来调整IB ...</p> <a class="" href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/dreams-not-just-words/">梦想，不是说说而已</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 29 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>原文/meiya，转载时有删减。</strong></p>
-<p>我们是否有为梦想真正的实干一把？</p>
-<p>我从西藏回来以后，我在空间中上传了一些旅行时拍的照片，一个大学同学在很多照片下留了言。</p>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在上一篇文章《<a href="http://www.hackecho.com/archives/710.html">VPS折腾记</a>》中提到在升级Wordpress或添加删除主题和插件的时候需要填写FTP账户信息的问题，提示一般如下：</p>
 <blockquote>
-<p>“最近在看《藏地密码》太让我有遐想了。”</p>
+<p>要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</p>
 </blockquote>
-<p>“这里的天怎么可以如此的蓝，这里的水像是在画里流淌。”</p>
-<p>“湖面像是银盘一样，天啊，我爱死了你拍的每一张照片了！”</p>
-<p>“你走过这桥的时候啥感觉啊？”</p>
-<p>“啊呀，这就是传说中的八廊街的玛吉阿米啊！”</p>
-<p>这个同学是大学睡在我上铺的姐妹，她比我更想去西藏旅行，当年有好多个夜晚我们兴奋地聊着西藏，聊着西藏旅行的梦想，她说她从高中起就想去西藏旅行了。</p>
-<p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
-<p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
-<p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="" href="http://hackecho.com/2012/02/dreams-not-just-words/">Read more...</a></div>
+<p>一般情况下，虚拟主机很少会出现这样的情况，如果使用 VPS 的话，这种情况就会比较多。主要原因是网站服务器运行PHP的用户和Wordpress文件夹的所有者不一样，目的就是为了安全，Wordpress在升级时会创建一个临时文件看看owner是不是和当前运行的PHP是否一样，如果不一样，就会出现这个界面。</p>
+<p>第一种解决办法很简单，就是直接在wp-config.php 中加入FTP的配置代码：</p>
+<div class="codehilite"><pre><span class="c1">// ** FTP SETTINGS FOR AUTO-UPDATE ** //</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_HOST</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">localhost</span><span class="err">’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_USER</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">帐号’</span><span class="p">);</span>
+<span class="n">define</span><span class="p">(</span><span class="err">‘</span><span class="no">FTP_PASS</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">ftp</span><span class="err">密码’</span><span class="p">);</span>
+</pre></div>
+
+
+<p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
+<p>针对有高级管理权限的用户，如服务器或 VPS ...</p> <a class="" href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/vps-struggle/">VPS折腾记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
-<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
-<h3>概览</h3>
-<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
-<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
-<h3>组件介绍</h3>
-<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
-<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
-<p><strong>Scheduler（调度控制器）</strong></p>
-<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
-<p><strong>Downloader（下载器）</strong></p>
-<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
-<p><strong>Spiders（蜘蛛）</strong></p>
-<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>实在不爽虚拟主机的性能问题和每天几十封宕机警告，而且主机的一切环境都是虚拟主机商配置好的，没有自由发挥的余地。于是果断决定给博客找个好点的VPS，也为以后博客改版做准备。当然，还有VPN哈哈。</p>
+<p>因为Linode VPS口碑还不错，而且支持ipv6，所以就选它了。折腾了整整一下午一晚上，终于把小博客搬了过来，简单总结一下整个过程以备忘。</p>
+<h2>SSH登陆</h2>
+<p>在Windows上，可以使用Putty来使用SSH。在Mac上，可以直接使用Terminal。命令很简单：</p>
+<blockquote>
+<p>ssh username@server -p portNumber</p>
+</blockquote>
+<p>后面的-p portNumber只在主机不是使用标准端口时需要加上，使用时将username和server替换成自己的用户名和地址就可以了。</p>
+<h2>安装LNMP</h2>
+<p>网上普遍说LNMP比LAMP性能要好，虽然我这个小博客也没多少流量，但无折腾不生活，趁年轻多折腾折腾。</p>
+<p>可以选择自己一个一个配置，也可以选择<a href="http://lnmp.org/">LNMP一键安装包</a>。当然折腾的前提是要稍微熟悉它，所以暂时用一键安装包了。官方给出了详细的安装步骤（见<a href="http://lnmp.org/install.html">这里</a>），这里就不再赘述。对于安装中遇到的各种问题，请看本文第五部分。</p>
+<p>安装完后记住将Nginx和PHP升级到最新版，安装包中的不是最新版。</p>
+<h2>安装Wordpress</h2>
+<p>不知为何，按照LNMP官方教程安装VSFTPD总是不成功，于是放弃之安装了PureFTPd ...</p> <a class="" href="http://hackecho.com/2012/01/vps-struggle/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/some-tips-of-learning/">[转]一点学习方法总结（作者：乱雪）</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 27 December 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>摘自“绿色兵团”论坛。（<a href="http://baike.baidu.com/view/994419.htm#sub7225157">点击查看绿色兵团组织介绍</a>）</p>
+<p>早已经习惯熬夜的我，今天，我学到很多东西，也明白很多，所以写下此文。</p>
+<p>我没有师傅，也没有拜过师，只有老师，是现实生活中学校的计算机老师，并非网上找的所谓的“高手”，有人问过我，没有师傅怎么学习？难道学习技术就一定要找师傅吗？找师傅你们的条件就是技术好，无非就是多入侵了几个站的，试问他们能帮助你们什么？帮助引导你们犯罪吗？再说高一点，就是一些精通一门甚至几门技术的，他们是真正高手，但是他们又能帮助你们什么？技术革新太快，科技日益进步，我们如果想立足就一定要不断学习知识，即使技术再高超，也需要学习技术，否则到头会落后，那么他们也需要学习，但是我没见几个真正的高手是有师傅的，即使有，也没有对他太多帮助，学习是靠自己的。换个角度，你是高手，别人找你当师傅，天天问一堆简单的问题，你有耐心回答吗？没有人会耐心回答你的，更没有耐心教你什么，既然是高手，他们不会把时间放在你身上的，而是放在更深入的地方 !</p>
+<p>从中美黑客大战以后，网上许多界内的人不断建立组织，黑客站点到处是 ...</p> <a class="" href="http://hackecho.com/2011/12/some-tips-of-learning/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/journal-writing-and-programming/">[转] 旅行，写作，编程</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 11 December 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>感谢外刊IT评论翻译这篇文章，原文地址：<a href="http://www.aqee.net/traveling-writing-programming/">《旅行，写作，编程》</a> ，转载请注明原作者地址。</p>
+<p>概括起来，今年到目前为止，我所做的事情包括：</p>
+<ul>
+<li>
+<p>花了10个月的时间做世界环游，途经非洲，东南亚，澳洲，中南美洲里的17个国家和地区。这次旅行的主题就是冲浪和摄影。</p>
+</li>
+<li>
+<p>出席在香港，日本，美国和伦敦举行的会议</p>
+</li>
+<li>
+<p>启程时给O’Reilly出版公司写了一本书，书名叫做《<a href="http://bit.ly/uFbFJR">JavaScript Web Applications</a>》</p>
+</li>
+<li>
+<p>另外写了一本关于<a href="http://arcturo.github.com/library/coffeescript/">CoffeeScript</a>的书，很快就会由O’Reilly公司出版。</p>
+</li>
+<li>
+<p>写了大量的开源库，例如<a href="http://spinejs.com/">Spine</a>, <a href="https://spinejs.com/mobile">Spine.Mobile</a>, <a href="http://maccman.github.com/gfx">GFX</a>, 和 <a href="http://github.com/maccman/juggernaut">Juggernaut</a>.</p>
+</li>
+<li>
+<p>筹划了一个创业公司的框架</p>
+</li>
+<li>
+<p>出席伦敦2011<a href="http://futureofwebapps.com/london-2011/">FOWA</a>会议</p>
+</li>
+<li>
+<p>最后，我在<a href="https://twitter.com/about/employees">Twitter</a>公司找到了一份工作</p>
+</li>
+</ul>
+<p>那么，让我从一年前开始，那是2010年9月，我刚好从一个我合作创办的公司里出来，尽管这段经历是很有价值的 ...</p> <a class="" href="http://hackecho.com/2011/12/journal-writing-and-programming/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">关于多级分类的一个思考</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 19 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近做的几个项目都设计到了多级分类，不太清楚数据表怎样设计。经过一番探究后，发现一般有以下几种解决方案：</p>
+<ul>
+<li>
+<p>每级分类一张表</p>
+</li>
+<li>
+<p>只有一张分类表</p>
+</li>
+<li>
+<p>一张分类名称表+一张分类关系表</p>
+</li>
+</ul>
+<p>第三种方法是参考了Wordpress本身的分类方法，个人感觉用在手里的项目中有点大材小用，于是主要目标是在前两种中选择一种。</p>
+<p>首先来看第一种，这是一般最先想到的方法，而且相对比较简单。但马上一想就会发现这种方法的弊端，如果只有两级分类还可以凑合，但如果涉及到多级分类或无限极分类就麻烦了，如果是五级分类就会有五张表，这明显不以维护而且不符合数据库设计原则。</p>
+<p>再来看第二种方案：</p>
+<p>如果只有一张表，那么我们必须能够标识各个分类之间的层次关系，层级等级。第一次的设计是这样的：</p>
+<blockquote>
+<p>cid</p>
+<p>cname（分类名称）</p>
+<p>parentcid（上级分类ID）</p>
+<p>cat_level（当前分类层次）</p>
+</blockquote>
+<p>貌似很完美的样子，而且支持无限级分类。但在使用过程中发现一个问题：虽然有一个分类层次，但排序后它们的层次还是无法直接显示出来。（在其中一个项目中曾经使用过这种方法，当时的解决方案是在View层又加了一次排序来动态的生成HTML代码，每次排序都要遍历一次父类，很恐怖。）。于是，第二次设计修改如下：</p>
+<blockquote>
+<p>cid</p>
+<p>cname（分类名称）</p>
+<p>parentcid（上级分类ID）</p>
+<p>cat_level（当前分类层次）</p>
+<p>cat_path ...</p></blockquote> <a class="" href="http://hackecho.com/2011/11/thinking-of-multi-level-classification/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">那些年与编程和计算机有关的小事儿</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 17 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>不知道写这种文章算不算回忆录，因为说回忆录未免有些早。记得初中的时候写过一本《我的小学回忆录》，将从入学一年级第一天起开始能想起来的人和事都记录了下来，如今这本未出版的手写书已不知去向，小学的记忆也越来越模糊。忽然想不如趁着现在对一些往事还尚存记忆，稍微回忆一下，也算对自己的鼓励吧。</p>
+<p>从小就是一个对电脑比较感兴趣的人，有时候兴趣是没有理由的，因为那时周围很多同学使用电脑仅限于聊QQ和半条命，而我却对除此之外的一些其它东西有着非常浓厚的兴趣。印象比较深的是买了很多很多的电脑书籍，当时最惬意的事情就是趴在桌前，做完作业后看那本比砖头还厚的《电脑医院》，一看就是四五个小时，后来还照葫芦画瓢写了个破坏注册表的.reg脚本，号称是我制造的第一个电脑病毒！</p>
+<p>由于很多电脑名词不明白，便买书、查资料。什么《注册表终极操作》、《BIOS配置指南》、《电脑上网故障1000问》、《榨干你的电脑》等等，还有全年的《电脑迷》、《电脑爱好者》、《IT新闻周刊》和不怎么看得懂的《CHIP新电脑》等。尤记得当时第一次重装系统时的激动，第一次电脑崩溃时的伤心，第一次编译通过一个程序，第一次入侵别人电脑等等的第一次，现在回想起来，真有一番体味。</p>
+<p>跟所有少年一样，在当时那个年龄段，都有一个黑客梦。当时最崇拜的人是陈盈豪，因为他的CIH病毒第一次颠覆了我的观念：病毒原来还可以破坏硬件设备 ...</p> <a class="" href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">用SSH远程登录Linux</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 10 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>今天配好服务器，发现如果直接远程连接主机无法打开控制台，于是果断采用SSH来登录。很简单，只需几步：</p>
+<p>首先需要在服务器安装SSH的服务器端。</p>
+<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+
+
+<p>Ubuntu中默认安装了OpenSSH的client端，我们不用重复安装。如果需要安装，只需将上述命令中的server改为client即可。</p>
+<p>安装好后启动OpenSSH。</p>
+<div class="codehilite"><pre><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">ssh</span> <span class="n">restart</span>
+</pre></div>
+
+
+<p>然后确认一下SSH Server是否启动。</p>
+<div class="codehilite"><pre><span class="n">ps</span> <span class="o">-</span><span class="n">e</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">ssh</span>
+</pre></div>
+
+
+<p>如果只有ssh-agent那ssh-server还没有启动。</p>
+<p>最后就是登录了：</p>
+<div class="codehilite"><pre><span class="n">ssh</span> <span class="o">-</span><span class="n">l</span> <span class="n">username</span> <span class="mf">202.112</span><span class="p">.</span><span class="o">***</span><span class="p">.</span><span class="o">***</span>
+</pre></div>
+
+
+<p>其中username是用户名，后面是服务器IP。</p>
+<p>接下来会提示输入密码，然后就成功登录到服务器了。经测试，可以使用sudo -i取得管理员权限，可以执行脚本。哈哈，enjoy it！</p> <a class="" href="http://hackecho.com/2011/11/login-to-linux-with-ssh/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/deployment-of-thinkphp/">ThinkPHP部署二三事儿</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 09 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
+<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
+<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
+<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
+<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
+<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像 ...</p> <a class="" href="http://hackecho.com/2011/11/deployment-of-thinkphp/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/stay-in-my-mind-2/">驻足在马路边的秋殇（二）</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 23 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="" src="/static/images/2011/10/a8206193_s-300x199.jpg" /></p>
+<hr />
+<p>09年10月末，秋殇（一）发表在我的QQ空间里。后来我把它导入了这个博客（地址：<a href="http://www.hackecho.com/archives/52.html">《驻足在马路边的秋殇》</a>），留存纪念。如今，两年过去了，我已很少再动文字。偶尔会去红袖一把，期望能添些墨香，或者仅仅是不想失去这种感觉。如今的时间不多，或者，心累了。</p>
+<p>秋，到了。</p>
+<p>少年不识愁滋味，爱上层楼，爱上层楼，为赋新词强说愁。而今识尽愁滋味，欲说还休，欲说还休，却道天凉好个秋。</p>
+<p>不及幼安忧国忧民，却也能体会此情此景。秋殇总能让人若有所感，泛起一些思绪，安静下来，仔细地体会。</p>
+<hr />
+<p><strong>遗忘</strong></p>
+<p>一位以前很要好的哥们儿昨天打电话给我，寒暄过后，竟然问我：“你知道我是谁吧？”我说废话，你的声音变成灰也认识。朋友笑到：“好多人跟我聊半天了才问我你是谁，竟然不记得我了！这才几年啊，真是的！”</p>
+<p>是啊，这是第三年，可又能怪谁呢。QQ的好友列表里有这样三个分组，分别是小学 ...</p> <a class="" href="http://hackecho.com/2011/10/stay-in-my-mind-2/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -333,9 +319,6 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/index7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/index8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/index9.html">9</a></li>
-    <li class=""><a href="http://hackecho.com/index10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/index11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/index12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/index5.html">Next &rarr;</a></li>
 

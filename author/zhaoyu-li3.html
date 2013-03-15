@@ -43,7 +43,95 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/coal-transportation-algorithm/">面试题：火车运煤问题</a></h3>
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2010/09/fragment-of-life/">日子的碎片</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 14 September 2010
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p><em><strong>安意如：“原来，需等到风住尘香花已尽， 才可以看到最后的风清月朗，花好月圆。”</strong></em></p>
+<p>关于我：</p>
+<p>日子就这样流逝着。高兴的是，我选择回到软件科协，共同推进科协的发展。昨晚经历了对10级的面试，也有很多感触。我要做的，不仅仅是从被面试者到面试官的转变，更重要的是，从理事到部长的转变。其它不说，只想说，科协会越来越好的，项目部的同志们，加油！</p>
+<p>说说自己的网站吧。我曾经回复兴华说：“任何爱IT的人，都曾有过开一个网站的梦想...”，我想我的这个梦想怎么就这么艰难呢？！哈，记得在初中的时候，自己执着地用FrontPage做“李昭谕工作室”，还帮同学做了一个所谓的军事图片网站。那些可爱的源文件我已经打包好，珍藏在我的电脑里，偶尔拿出来翻一翻，甜甜的感觉。遗憾的是，那些在现在看来丑陋无比的网页，只能永远静静躺在我的硬盘里，以前是，现在也是。这算不算一个梦想的开端呢？也许是吧，那也许不是呢，那是什么呢？</p>
+<p>这几天在考虑域名和服务器的选择，我喜欢的域名被拍卖到3000元，我只能望而却步了。不过已经锁定好目标，尽快就可以落实下来了，哈哈 ...</p> <a class="" href="http://hackecho.com/2010/09/fragment-of-life/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/git-notes/">Git 学习笔记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 29 January 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>学习Git的笔记，会不定期更新。</p>
+<p>我的Github地址：<a href="https://github.com/uutroy">https://github.com/uutroy</a></p>
+<p>首先推荐两篇非常好的入门：</p>
+<ul>
+<li>
+<p><a href="http://gitimmersion.com/">Git Immersion</a></p>
+</li>
+<li>
+<p><a href="http://www.ralfebert.de/tutorials/git/#commit_a">Git Tutorial</a></p>
+</li>
+</ul>
+<p>一般流程：取代码 → 更新到最新版本 → 修改代码 → 提交</p>
+<h2>Creating a new repository</h2>
+<blockquote>
+<p>$ git init</p>
+</blockquote>
+<h2>取代码及修改全局设置</h2>
+<p>git在创建提交的时候会记录你的名字和email地址，所以你应该告诉git这些内容。可以使用’git config’命令来设置，如果传递参数’-global’ ，它会将这些值记录在~/.gitconfig文件里，作为这些配置的默认值。</p>
+<p>设置用户名与邮箱</p>
+<blockquote>
+<p>git config –global user.name “name”</p>
+</blockquote>
+<p>git config –global user.email “username@email.com ...</p> <a class="" href="http://hackecho.com/2012/01/git-notes/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
+<h3>概览</h3>
+<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
+<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
+<h3>组件介绍</h3>
+<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
+<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
+<p><strong>Scheduler（调度控制器）</strong></p>
+<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
+<p><strong>Downloader（下载器）</strong></p>
+<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
+<p><strong>Spiders（蜘蛛）</strong></p>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/homebrew-vs-macports/">Homebrew VS MacPorts</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 22 May 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
+<p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p> <a class="" href="http://hackecho.com/2012/05/homebrew-vs-macports/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/how-others-read-your-resume/">人事部门和别的程序员是怎样阅读你的简历的</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 19 May 2011
 
 by Zhaoyu Li
@@ -51,198 +139,173 @@ by Zhaoyu Li
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>这个可能是一个比较经典的智力题了，其题目如下：</p>
-<p>你是山西的一个煤老板，你在矿区开采了有3000吨煤需要运送到市场上去卖，从你的矿区到市场有1000公里，你手里有一列烧煤的火车，这个火车最多只能装1000吨煤，且每一公里需要耗一吨煤。请问，作为一个<strong>懂编程</strong>的煤老板的你，你会怎么运送才能运最多的煤到集市？</p>
-<p>这道题一开始看上去好像是无解的，因为你的火车每一公里就要消耗一吨煤，而到目的地有1000公里，而火车最多只能装1000吨媒。如果你的火车可以全部装下，到目的地也会被全部烧光，一丁点也不剩。所以，很多人的第一反应都是觉得这个不太可能。</p>
-<p>如果你一开始就觉得不太可能的话，这是很正常的。不过我不知道你还会不会继续思考下去，如果你不想思考下去了，那么我很为你担忧，因为你可能并不是一个不善于思考的人，而是一个畏难的人，还有可能是一个容易放弃的人。这对于你做好 一个需要大量思考的工作的程序员来说可能并不适合。</p>
-<p>我一开始也觉得不可能，后来想了一想，想到一个解法可以最多运送500吨煤到市场（当然还有更好的结果），方法如下：（希望你先自己想一想再查看这个答案）</p>
-<p>答案之一：</p>
-<p>装1000吨煤，走250公里，扔下500吨煤，回矿山。</p>
-<p>装1000吨煤，走到250公里处，拿起250吨煤继续向前到500公里处，扔下500吨煤，回矿山。此时火车上还有250吨，再加上在250公里处还有250吨煤 ...</p> <a class="" href="http://hackecho.com/2011/05/coal-transportation-algorithm/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><h3>人事部门是这样阅读简历的</h3>
+<ul>
+<li>
+<p>（+15分）如果简历中说到了和工作职位相符的技能超过5次以上。</p>
+</li>
+<li>
+<p>（+8分）如果简历中说到了和工作职位相符的技能3次到5次。</p>
+</li>
+<li>
+<p>（+4分）如果简历中说到了和工作职位相符的技能1次到2次。</p>
+</li>
+<li>
+<p>（+4分）Cover Letter（“求职信”或“自荐信”）提到了招聘人员。</p>
+</li>
+<li>
+<p>（+2分）简历中有Cover Letter（求职信）。</p>
+</li>
+<li>
+<p>（-10分）没有提到和职位描述相关的技能。</p>
+</li>
+<li>
+<p>（-15分）没有受过大专教育。</p>
+</li>
+</ul>
+<h3>程序员是这样阅读简历的</h3>
+<ul>
+<li>
+<p>（+15分）曾经因为好玩而写过操作系统或编译器。</p>
+</li>
+<li>
+<p>（+12分）简历被LaTeX编译过。</p>
+</li>
+<li>
+<p>（+11分）为开源软件贡献过代码。</p>
+</li>
+<li>
+<p>（+9分）上学的时候曾经写过操作系统或编译器。</p>
+</li>
+<li>
+<p>（+8分）有一个BLOG分享技术知识。</p>
+</li>
+<li>
+<p>（+8分）编程/机器人/工程俱乐部主席。</p>
+</li>
+<li>
+<p>（+7分）编程/机器人/工程竞赛参与者。</p>
+</li>
+<li>
+<p>（+7分）在Google和Microsoft实习过。</p>
+</li>
+<li>
+<p>（+6分）使用动态语言（Python/Perl/Ruby）写过非试验性的程序。</p>
+</li>
+<li>
+<p>（+5分 ...</p></li></ul> <a class="" href="http://hackecho.com/2011/05/how-others-read-your-resume/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Mac下GBK与UTF8编码文件的批量转换</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 17 February 2012
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">[转]快速构建实时定向抓取集群</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 10 March 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>下载了一个Python改写的C语言100例，结果原作者使用的编码都是GBK，而我现在使用的Sublime Text 2和Textmate等都不支持GBK编码，导致打开全是乱码。网上也没有找到相应的转换工具，只好另辟蹊径。</p>
-<p>关键时刻还是 Terminal 给力，介绍一条shell命令：iconv</p>
-<p>就不细细介绍了，看下面的例子，就都懂了：</p>
-<div class="codehilite"><pre><span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> # 显示可识别的编码名称
-<span class="n">iconv</span> <span class="o">--</span><span class="n">list</span> <span class="o">&gt;./</span><span class="n">infomation</span><span class="p">.</span><span class="nb">log</span> # 显示可识别的编码名称，将信息存入<span class="n">infomation</span><span class="p">.</span><span class="nb">log</span>文件中
-<span class="n">iconv</span> <span class="o">-</span><span class="n">f</span> <span class="n">GB2312</span> <span class="o">-</span><span class="n">t</span> <span class="n">UTF</span><span class="o">-</span>8 <span class="n">a</span><span class="p">.</span><span class="n">html</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">html</span> # 转换<span class="n">GB2312</span>编码的文件<span class="n">a</span><span class="p">.</span><span class="n">html</span>为<span class="n">UTF</span><span class="o">-</span>8编码，存入<span class="n">b</span><span class="p">.</span><span class="n">html</span>
-<span class="n">iconv ...</span></pre></div> <a class="" href="http://hackecho.com/2012/02/convertion-of-gbk-and-utf8-on-mac/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>定义：</p>
+<p>首先，我们定义一下定向抓取，定向抓取是一种特定的抓取需求，目标站点是已知的，站点的页面是已知的。本文的介绍里面，主要是侧重于如何快速构建一个实时的抓取系统，并不包含通用意义上的比如链接分析，站点发现等等特性。</p>
+<p>在本文提到的实例系统里面，主要用到linux+mysql+redis+django+scrapy+webkit，其中scrapy+webkit作为抓取端，redis作为链接库存储，mysql作为网页信息存储，django作为爬虫管理界面，快速实现分布式抓取系统的原型。</p>
+<h3>名词解析：</h3>
+<p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
+<p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
+<p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">XML与JSON的格式转换方法</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">如何搭建个人独立博客</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 22 March 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>在前文一篇文章《<a href="http://www.hackecho.com/archives/435.html">PHP中JSON的处理</a>》中，写到了JSON数据的生成和解析，后来一想，如果服务器既能返回JSON又能返回XML不是更好吗，至少多了一种选择。因为JSON和XML都是一种数据表示方法，相互转换起来应该不难。于是简单的到网上搜了一下，搜到了一些结果，但貌似所有的结构都源自一篇文章，内容都一样，可惜的是，那片文章中有严重的错误（竟然没有一个人提出来...），后来经过简单的修正和调试，终于得到了完美的转换代码（也有不完美，暂时还无法转换索引数组，但关联数组没有问题），现分享如下：）</p>
-<p>废话不多说，直接上代码：</p>
-<div class="codehilite"><pre>public function json_to_xml(<span class="p">$</span><span class="nv">source</span>,<span class="p">$</span><span class="nv">charset</span>=&#39;utf8&#39;) <span class="err">{</span>
-    <span class="p">$</span><span class="nv">array</span> = json_decode(<span class="p">$</span><span class="nv">source</span>,true);
-    <span class="p">$</span><span class="nv">xml</span>  =&#39;<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> &#39;;
-    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;data&gt;</span>&#39;;
-    <span class="p">$</span><span class="nv">xml</span> .= <span class="p">$</span><span class="nv">this</span>-&gt;change(<span class="p">$</span><span class="nv">array</span>);
-    <span class="p">$</span><span class="nv">xml</span> .=&#39;<span class="nt">&lt;/data&gt;</span>&#39;;
-    return ...</pre></div> <a class="" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>最近一些朋友问起怎样搭建独立博客，想到以前自己折腾时的迷茫和走过的一些弯路，觉得有必要稍微总结一下。这里简单描述一下整体上的步骤吧。</p>
+<p><strong>严正声明：</strong>由于文章的特殊性，其中难免会涉及到一些域名商、主机商等，绝不存在任何广告嫌疑或其它意图，特此声明。</p>
+<p>文章结构：</p>
+<ul>
+<li>
+<p>独立博客与BSP的区别</p>
+</li>
+<li>
+<p>申请域名</p>
+</li>
+<li>
+<p>服务器主机</p>
+</li>
+<li>
+<p>域名绑定</p>
+</li>
+<li>
+<p>安装程序</p>
+</li>
+<li>
+<p>开始使用</p>
+</li>
+</ul>
+<h3>独立博客与BSP的区别</h3>
+<p>BSP是指Blog Service Provider，意指第三方博客服务提供商，如新浪博客、搜狐博客等。BSP提供给你的是一个写博客的平台，对于整站程序或模板都无法实现自定义，而且域名只能是二级域名或三级域名（如xxx.blog.sina.com.cn）。而独立博客之所以“独立”，是因为其高度的自定义。比如域名是顶级的，还可以自选，博客程序自己可以选择，还可以定制，模板的话也可以自由定制。只要你能想到的，都可以做到。</p>
+<p>但独立博客也有其缺点，如域名和主机要自己买，数据备份要自己做（弄不好会全站丢失数据），人气需要自己建立等等。不过这些对于我们来讲都是可以学习的，而且这些知识对于我们软件学院学生来讲迟早都要接触到，为何不早点利用呢 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-create-a-personal-blog/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/deployment-of-thinkphp/">ThinkPHP部署二三事儿</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 09 November 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">[转]如何在保证睡眠的情况下高效学习</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 20 May 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>费尽周折，终于得以进入信息中心的机房一探究竟了。学校所有的服务器和托管服务器都在这里，内景也跟之前想象的差不多，整齐的一排排机柜，各种颜色的指示灯和密密麻麻的网线，还有很强大的冷却空调。不过唯一不爽的是巨大的噪音。</p>
-<p>今天是去部署ThinkPHP刚做的一套系统，和安秦共同完成的。从上周六到今天，除了上课时间外火力全开，终于如期完成。当然还有不如意的地方，马上进入内测阶段，接受考验，哈哈。</p>
-<p>简单总结一下今天遇到的各种奇奇怪怪的问题，经过我们五个小时的探索，还好都算解决了。不过也看出来自己真正薄弱的地方，下一步继续努力。</p>
-<p>我们把原服务器格式化重新安装了Ubuntu 11.04。之前想安装Windows Server 2003，不过又想正好借机实践一下近期学的Linux知识，于是果断换了Ubuntu系统。考虑到使用方便问题，没有用Server版，桌面版够用。</p>
-<p>安装的过程还算顺利，服务器配置很强大，跑个Ubuntu还是很顺利的。然后就遇到了第一个问题，也是我们今天遇到的最坑爹，最苦恼，最没有办法的问题。。</p>
-<p>由于是内网部署，我们配好静态IP后，竟然发现不能访问！可以ping通，但访问时一直都是Forbidden状态。我们上网查各种方法来试图解决，都无法打通内网和外网这个桥梁。唯一能访问的知识同域内的几个网站，比如特思论坛。更痛苦的是无法连接上交大的开源镜像 ...</p> <a class="" href="http://hackecho.com/2011/11/deployment-of-thinkphp/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>来源：http://blog.renren.com/blog/230557688/844071536</p>
+<p>少睡不是长久之计，关键还是要高效地管理时间，提供十条高效做事的经验。</p>
+<p>每天都过的很快，好像起床以后忙活几下，又到了晚上，很快又要睡觉了。To-do-list上的事好像总是做不完，有的时候积压地太多以至于都不想去碰了。每天从早到晚都是忙碌状态，但是总觉得做不了几件事，要是给我1天48小时该多好。</p>
+<p>事情太多时间不够，但是睡少了又效率低下，这实在是个悖论。似乎很多牛人都可以睡的很少，每天4-5小时睡眠，或者间歇式的睡眠，就可以高效地做事。这个境界我总是达不到，也没有想去达到。少睡不是长久之计，关键还是要高效地管理时间。</p>
+<p>我今天和一个朋友请教了这个问题，很受启发。我朋友是卡内基梅陇大学的计算机在读博士，发表了好几篇顶级论文，科研做的很牛。除学术以外，他还忙活不少其他的事，他是云飞跃留学平台的兼职编辑，他业余时间喜欢研究摄影，最近又在开发一款手机游戏，他周末也会花不少时间陪女朋友。尽管做那么多事，他告诉我说他每天都精力充沛，做事效率很高！</p>
+<p>但是他每天可以睡8小时！</p>
+<p>他讲了好几条高效做事的经验：</p>
+<h3>1、作息要规律，这是重中之重 ...</h3> <a class="" href="http://hackecho.com/2012/05/how-to-keep-alive-with-less-sleep/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/development-of-mobile-network/">听创新工场COO陶宁讲移动互联网的发展</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 02 March 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">如何分辨极客与伪极</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 26 March 2011
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>很早便锁定了今晚的第120期IT龙门阵，主题是创新工场COO陶宁讲关于IT产业变迁和移动互联网领域的创业与发展。创新工场关注的四大领域分别是移动互联网、消费互联网、电子商务和云计算，由于对移动互联网我还算是情有独钟，便想借此机会希望能得到陶老师的指导。另外，还有创新工场里的豌豆夹和友盟团队的负责人也将出席进行指导，所以更不能错过如此难得的机会了。</p>
-<p>（我对北京的交通表示一下小小的不满…）</p>
-<p>现场人很多，我看了一下签到表上很多都是著名IT公司的部门负责人，更有许多人是直接递名片的，当然还有很多充满热情的创业者。我去的比较晚，本来就不大的巴黎厅早已座无虚席。我相信来到这里的人，不论是在读的大学生还是已有成绩的项目负责人，都是带着对移动互联网的激情来的，置身其中，顿能感到一种强烈的创业者的热情，我想这才是我们真正需要的东西。</p>
-<p>留给我很深印象的是豌豆夹的项目负责人王俊煜和友盟团队负责人蒋凡，第一：年轻，第二：充满激情。作为创新工场第一批孵化项目，他们在移动互联网领域取得的巨大成功是有目共睹的，而他们还具有的共同点就是在创业过程中坚持不懈。想起马云讲过的一句话：“所有的成功秘诀都是不管用的，真正的成功方法只有一条，就是坚持不懈！”</p>
-<p><a href="/static/images/2011/03/IMG_2021.jpg"><img alt="人山人海的ARIVA三层巴黎厅" src="/static/images/2011/03/IMG_2021-300x225.jpg" /></a></p>
-<p>下面是一些我记录的感想，稍微总结一下：</p>
-<p><strong>1.关于大学生创业</strong></p>
-<p>大学生创业很难获得VC的支持和投资，因为我们没有经验，我们不可能是第二个扎克伯格。经验很重要，哪怕是失败的经历，只要能够从中学习到了一些东西，对于我们都是财富。</p>
-<p>当然，这只是VC方面，我感觉大学生创业的热情还是需要鼓励的，我个人更提倡Dorm创业 ...</p> <a class="" href="http://hackecho.com/2011/03/development-of-mobile-network/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>有着非常强健的体魄，或者非常专业的某项体育技能的，100%不是极客。极客没有时间也没有兴趣刻意锻炼身体。身体非常虚弱的，100%不是极 客，70%是伪极，呆极客或者宅。极客虽然不会进行长期稳定的体育运动，但是他们享受户外的活动。绝不会始终宅在家里。所以身体一定是健康的，却不是好坏 两个极端。</p>
+<p>不戴眼镜的，100%不是极客。</p>
+<p>出门站在衣柜犹豫不知穿什么衣服的，80%不是极客。极客们讲求效率，不会在穿衣戴帽等事情上浪费时间。另一方面，他们也没有太多的衣物供不同场合的选择。出门随手拽两件衣服披上就走的，90%是极客。</p>
+<p>拥有一辆不错的个人车的，70%不是极客。极客开车的机会不多，也不会下血本买费钱费油的好车。</p>
+<p>酒量特别好的，100%不是极客。极客们饮酒的机会不多。不过由于常常帮朋友修理电脑导致被请客在外就餐的机会也不少，所以酒量比宅要高很多。</p>
+<p>经常哭穷的，100%不是极客。极客们手头都是相对宽裕的。他们的心态比较中置，对于不同的家庭背景或者收入状况不会加以打击或者憧憬，因为他们所追求的不是纯物质生活，更多的在于精神上 ...</p> <a class="" href="http://hackecho.com/2011/03/how-to-recognize-false-geek/">Read more...</a></div>
     </div>
             
     <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/difference-between-work-and-create/">打工与注册公司创业的区别</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 September 2011
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">[原创Chrome插件]去除Google搜索结果的自动跳转</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 15 February 2012
 
 by Zhaoyu Li
  
 
 
 </div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>自己打工与注册公司有什么区别，有人说都是为了赚钱，都是为了生活。但这两这还是有本质的不同。</p>
-<p>1.打工是靠自己的能力吃饭，注册公司是靠自己的智慧和思考吃饭；</p>
-<p>2.打工是靠别人给自己的平台来展示能力，注册公司是靠自己的决心和眼光创造一个平台；</p>
-<p>3.打工是做好自己的本分工作就好，注册公司是要思考体系运作的每一个环节；</p>
-<p>4.打工的人期望的是一周有两天休息，注册公司的人是思考的是如何能低成本的运作；</p>
-<p>5.打工的不愿意真实的面对自己的收入，注册公司必须要真实的面对自己的实力和财务状况；</p>
-<p>6.打工的时候想的是自己的经历和文凭应该值多少钱，注册公司的时候想的是自己的勤劳和策略能创造多少钱；</p>
-<p>7.打工时想用自己的专业知识吃饭，存钱养家，注册公司时候想的是如何利用社会资源来赚钱养活组织和员工；</p>
-<p>8.打工的人一般都比较天真，认为辛苦和听话就可以长保无忧，注册公司的时候才知道市场的变幻简直就是日不可测，日不可知；</p>
-<p>9.打工搞好上司和同事关系就可以生活，注册公司要搞好客户和社会方方面面的关系才能生存；</p>
-<p>10.打工要看上司和老板的脸色，注册公司看社会消费者和主管行政部门的脸色和媒体的脸色；</p>
-<p>11.打工想的是今年我能存多少钱，发多少奖金，注册公司想的是今年能开多少店，占多少市场份额；</p>
-<p>12.打工人今天天下雨和下雪，没有客人就很高兴，可以放松偷懒，注册公司想的今天天气下雨下雪，心如火焚，着急无比，如何吸引客人上门 ...</p> <a class="" href="http://hackecho.com/2011/09/difference-between-work-and-create/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/11/disappear-day/">消失的这几天</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 03 November 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>突然间，这里已经11月3日了，现在是凌晨1：20。在遥远的故乡，正是下午2：2o。朋友们，下午好。</p>
-<p>好久没写东西了，哪怕是技术方面的，也没有一篇。最新的一篇日志还停留在7月份，记得那是离签证还有一星期的时候，忙里偷闲转的一篇。一转眼，万圣节已过，开始期盼Thanksgiving的时候，却发现到处都开始准备圣诞树了。时间好快，恍惚之间，不敢苟且。</p>
-<p>如今，三个月过去了，每天的安排开始有了规律。不过回想起这三个月的种种，心头也会涌起一股莫名的感情。经常会想写一些东西记录，而一切变化太快，未等提笔，便已忙于身外，只能享受那片刻欢愉。</p>
-<p>也许有一天，我会将这些见闻与经历写一写，而现在还没有准备好。因为没有经过沉淀的思想，永远都是肤浅的。有一天回忆的时候，我要找寻那种想哭的感动。</p>
-<p>不过，我喜欢这种充实的生活，每一天都在创造价值，哥伦比亚是个小镇，宁静安详，不吵不闹，这里有传统的美国文化，也有纯真朴实的来自世界各地的人们，每天都有新发现，每天都会带给你新的的感受。</p>
-<p>明天又将是充实的一天 ...</p> <a class="" href="http://hackecho.com/2012/11/disappear-day/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/dreams-and-creature/">创业与梦想</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 18 September 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>今天在42qu上看到一个提问：</p>
-<p><em>“@Firenze : 现在是不是在一种创业狂潮的状态中？为啥每个人都在想要做一个网站然后可以如何如何可以怎样布局怎样找风头怎样拿政府扶植怎样获得盈利模式一轮融资二轮融资。这究竟是大家都看到了创业者成功的那些少数派案例然后都想来分一杯羹还是只是我现在所在的圈子是这样？又或者这是一个必然的趋势的发展方向？”</em></p>
-<p>有一个精彩的回复非常好，转载收藏。</p>
-<p>——作者：Dreamer</p>
-<p>在两个年轻人在斯坦福实验室里创造 Yahoo! 的时候，互联网的创业就与传奇和梦想划上了等号，之后的 Google 和 Facebook 一次又一次地让所有人确信这一点。它们都诞生在不起眼的大学宿舍，都在很大程度上改变了世界影响了人们的生活。所以在这个创业渐成风气的年代，你总能看到国内很多初创互联网公司大叫“我们年轻，所以我们有梦想”，它们在招聘的时候也会特别注明应聘者一定要有“激情和梦想”。</p>
-<p>然而事实真的如此吗？</p>
-<p>不知道别人怎么定义“梦想”这个词，我觉得“梦想”应该是一个很美好的东西。它触动你的心灵，让你感动；它激发出你的全部热情，而不是贪婪；它发自内心、来自于自己的反思和独立判断，而不是别人的煽动和灌输。</p>
-<p>以前我也常憧憬着去一家创业公司，那个时候我不满大公司的臃肿和低效，痛恨他们的官僚和笨重，觉得创业公司是梦想、激情、灵活和创新的化身，它一定没有那些大公司的毛病。我想象着那里的每一个员工都热爱自己的产品，每一个人都是产品的客服 ...</p> <a class="" href="http://hackecho.com/2011/09/dreams-and-creature/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/dreams-not-just-words/">梦想，不是说说而已</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 29 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><strong>原文/meiya，转载时有删减。</strong></p>
-<p>我们是否有为梦想真正的实干一把？</p>
-<p>我从西藏回来以后，我在空间中上传了一些旅行时拍的照片，一个大学同学在很多照片下留了言。</p>
-<blockquote>
-<p>“最近在看《藏地密码》太让我有遐想了。”</p>
-</blockquote>
-<p>“这里的天怎么可以如此的蓝，这里的水像是在画里流淌。”</p>
-<p>“湖面像是银盘一样，天啊，我爱死了你拍的每一张照片了！”</p>
-<p>“你走过这桥的时候啥感觉啊？”</p>
-<p>“啊呀，这就是传说中的八廊街的玛吉阿米啊！”</p>
-<p>这个同学是大学睡在我上铺的姐妹，她比我更想去西藏旅行，当年有好多个夜晚我们兴奋地聊着西藏，聊着西藏旅行的梦想，她说她从高中起就想去西藏旅行了。</p>
-<p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
-<p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
-<p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="" href="http://hackecho.com/2012/02/dreams-not-just-words/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
-<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
-<h2>根文件系统</h2>
-<p><strong>/bin</strong></p>
-<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
-<p><strong>/boot</strong></p>
-<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
-<p><strong>/dev</strong></p>
-<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
-<p><strong>/etc</strong></p>
-<p>该目录中包含系统和应用软件的配置文件。</p>
-<p><strong>/etc/passwd</strong></p>
-<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>也许大家和我有一样的体验，在“我们这儿”使用Google搜索时，本来一切正常，突然因为点击了某条结果而导致连接被重置... 不管是与Google的结果统计有关，还是与网络内容审查有关，总之这种跳转极大的影响了我们的使用体验。</p>
+<p>网络上有很多解决办法，比如采用先访问<a href="http://www.google.com/ncr">www.google.com/ncr</a>的方法，有将浏览器首选语言更改为英语（美国）的方法，但这些方法都不是最稳定最保险的。为了治本，我们来研究一下此跳转的原理。请看下图：</p>
+<p><a href="/static/images/2012/02/1.jpg"><img alt="" src="/static/images/2012/02/1.jpg" /></a></p>
+<p>原来，对于每个链接，都有一个onmousedown事件，当我们点击鼠标时，真正的链接地址就会被跳转。</p>
+<p>于是，解决办法：去掉每个a标签的onmousedown事件。</p>
+<p>使用这款插件后，效果如下：</p>
+<p><a href="/static/images/2012/02/2.jpg"><img alt="" src="/static/images/2012/02/2.jpg" /></a></p>
+<p>可以看到：每个a标签的onmousedown事件都被去掉了，点击后链接直接打开！</p>
+<p>当然，这只是非常简单的一个小功能，后续有机会的话会加入更多的功能，敬请期待：）</p>
+<p><strong>插件下载地址</strong>：暂无 </p> <a class="" href="http://hackecho.com/2012/02/how-to-remove-auto-jump-in-google-search-results/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
@@ -258,9 +321,6 @@ by Zhaoyu Li
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li7.html">7</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li8.html">8</a></li>
     <li class=""><a href="http://hackecho.com/author/zhaoyu-li9.html">9</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li10.html">10</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li11.html">11</a></li>
-    <li class=""><a href="http://hackecho.com/author/zhaoyu-li12.html">12</a></li>
 
     <li class="next"><a href="http://hackecho.com/author/zhaoyu-li4.html">Next &rarr;</a></li>
 
