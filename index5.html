@@ -43,6 +43,31 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
+<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
+<h3>概览</h3>
+<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
+<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
+<h3>组件介绍</h3>
+<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
+<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
+<p><strong>Scheduler（调度控制器）</strong></p>
+<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
+<p><strong>Downloader（下载器）</strong></p>
+<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
+<p><strong>Spiders（蜘蛛）</strong></p>
+<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
 
@@ -262,31 +287,6 @@ by Zhaoyu Li
 
 <p>当然我们更想从根本上解决问题，那么第二种个方法，就要从用户组下手了。</p>
 <p>针对有高级管理权限的用户，如服务器或 VPS ...</p> <a class="" href="http://hackecho.com/2012/01/solution-to-need-of-ftp-account-in-wordpress/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/vps-struggle/">VPS折腾记</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>实在不爽虚拟主机的性能问题和每天几十封宕机警告，而且主机的一切环境都是虚拟主机商配置好的，没有自由发挥的余地。于是果断决定给博客找个好点的VPS，也为以后博客改版做准备。当然，还有VPN哈哈。</p>
-<p>因为Linode VPS口碑还不错，而且支持ipv6，所以就选它了。折腾了整整一下午一晚上，终于把小博客搬了过来，简单总结一下整个过程以备忘。</p>
-<h2>SSH登陆</h2>
-<p>在Windows上，可以使用Putty来使用SSH。在Mac上，可以直接使用Terminal。命令很简单：</p>
-<blockquote>
-<p>ssh username@server -p portNumber</p>
-</blockquote>
-<p>后面的-p portNumber只在主机不是使用标准端口时需要加上，使用时将username和server替换成自己的用户名和地址就可以了。</p>
-<h2>安装LNMP</h2>
-<p>网上普遍说LNMP比LAMP性能要好，虽然我这个小博客也没多少流量，但无折腾不生活，趁年轻多折腾折腾。</p>
-<p>可以选择自己一个一个配置，也可以选择<a href="http://lnmp.org/">LNMP一键安装包</a>。当然折腾的前提是要稍微熟悉它，所以暂时用一键安装包了。官方给出了详细的安装步骤（见<a href="http://lnmp.org/install.html">这里</a>），这里就不再赘述。对于安装中遇到的各种问题，请看本文第五部分。</p>
-<p>安装完后记住将Nginx和PHP升级到最新版，安装包中的不是最新版。</p>
-<h2>安装Wordpress</h2>
-<p>不知为何，按照LNMP官方教程安装VSFTPD总是不成功，于是放弃之安装了PureFTPd ...</p> <a class="" href="http://hackecho.com/2012/01/vps-struggle/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

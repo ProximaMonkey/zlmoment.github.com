@@ -43,6 +43,38 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">深入浅出ThinkPHP系列教程(四) 模块与操作</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 12 October 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>在学习ThinkPHP的模块化和操作之前，我们先回顾一下基于ThinkPHP框架的应用程序组成和执行过程。即：ThinkPHP接收到一个指令，然后调用相应的控制器，控制器调用相应的模型类完成与数据库的交互，最后调用视图类，将生成的页面呈现给用户。</p>
+<p>具体如下图所示：</p>
+<p><img alt="" src="/static/images/2011/10/ThinkPHP_procedure.gif" /></p>
+<p>我们来详细了解一下图中所示的模块和操作。</p>
+<p><strong>模块与操作是 ThinkPHP 中的核心部分，所有的核心逻辑都在这里实现！</strong></p>
+<p><strong>&gt;&gt; ThinkPHP 模块</strong></p>
+<p>进入 MyappLibAction 目录，里面有个 IndexAction.class.php 文件。该文件为刚才我们运行入口文件 index.php 时系统自动生成的。打开该文件，其内容大致如下（方法内具体代码省略）：</p>
+<div class="codehilite"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// 本类由系统自动生成，仅供测试用途</span>
+<span class="k">class</span> <span class="nc">IndexAction</span> <span class="k">extends</span> <span class="nx">Action</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="err">具体代码略……</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+
+<p>该文件已经演示了一个基于 ThinkPHP 的实际应用。</p>
+<p><strong>&gt;&gt; ThinkPHP 控制器</strong></p>
+<p>像上面这个 IndexAction.class ...</p> <a class="" href="http://hackecho.com/2011/10/thinkphp-model-and-operation/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/10/work-with-high-efficiency/">杜绝拖延，提高工作学习效率</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 08 October 2011
 
@@ -242,21 +274,6 @@ by Zhaoyu Li
     <span class="n">$xml</span> <span class="o">.=</span> <span class="n">$this</span><span class="o">-&gt;</span><span class="n">change</span><span class="o">(</span><span class="n">$array</span><span class="o">);</span>
     <span class="n">$xml</span> <span class="o">.=</span><span class="err">&#39;</span><span class="o">&lt;/</span><span class="n">data</span><span class="o">&gt;</span><span class="err">&#39;</span><span class="o">;</span>
     <span class="k">return ...</span></pre></div> <a class="" href="http://hackecho.com/2011/08/convertion-of-xml-and-json/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/08/json-operation-in-php/">PHP中JSON的处理</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 10 August 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>近日因为小组项目的需要，要为一款Android应用（Howdy，敬请期待）开发服务器端。在HTTP协议的基础上，服务器需要根据请求返回JSON数据包（当然也可以返回XML，有关XML与JSON的转换请参看《<a href="http://www.hackecho.com/archives/444.html">XML与JSON的格式转换方法</a>》），因此简单研究了一下PHP处理JSON数据的方法。</p>
-<p>从5.2版本开始，PHP原生提供json_encode()和json_decode()函数，前者用于编码，后者用于解码。5.2以前的版本请自行到网上下载相应的JSON解析类。</p>
-<p>我们先来了解一下<strong>索引数组</strong>和<strong>关联数组</strong>：</p>
-<p>PHP支持两种数组，一种是只保存"值"（value）的索引数组（indexed array），另一种是保存"名值对"（name/value）的关联数组（associative array）。一般在JSON数据格式中，索引数组的用<code>[]</code>包围，各个值之间用英文逗号分隔，如<code>["one","two","three"]</code>；关联数组用{}包围，键值之间用英文冒号一一对应，如 ...</p> <a class="" href="http://hackecho.com/2011/08/json-operation-in-php/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

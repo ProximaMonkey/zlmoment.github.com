@@ -43,6 +43,33 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/algorithm-of-24-game/">24点游戏（速算24）算法</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 23 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>24点游戏规则：任取1－13之间的4个数字，用＋－＊／（）连结成算式，使得式子的计算结果为24。很多人玩的都是用扑克牌玩的那种，两人各出2张牌，谁先算出来谁赢，赢家收回已经算过的4张牌。最后看谁手里的牌多。</p>
+<p>解决此问题一般使用<strong>穷举法</strong>，即穷举4个整数和运算符的所有可能的表达式，然后对表达式求值。</p>
+<p>注：以下文字中“运算”两字都表示对＋－＊／分别计算。</p>
+<p>思路一：</p>
+<p>将前两个作为一组、后两个数作为一组，分别计算出各组的结果，再对获得的两个组结果进行运算。由于是排列，分前后两组进行运算就可满足所有可能的组合。</p>
+<p>思路二（递归）：</p>
+<p>把多元运算转化为两元运算。先从四个数中取出两个数进行运算，然后把运算结果和第三个数进行运算，再把结果与第四个数进行运算。在求表达式的过程中，最难处理的就是对括号的处理，而这种思路很好的避免了对括号的处理。</p>
+<ul>
+<li>
+<p>(1) 将4个整数放入数组中，</p>
+</li>
+<li>
+<p>(2) 在数组中取两个数字的排列，共有 P(4,2) 种排列。对每一个排列，</p>
+</li>
+<li>
+<p>(2.1) 对 + - * / 每一个运算符 ...</p></li></ul> <a class="" href="http://hackecho.com/2012/04/algorithm-of-24-game/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/socket-programming-in-php/">PHP中的Socket编程</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 17 April 2012
 
@@ -308,29 +335,6 @@ by Zhaoyu Li
 <p>1.抓取环：抓取环指的是spider在存储中获取url，从互联网上下载网页，然后将网页存储到数据库里面，最后在从存储里面获取下一个URL的一个流程。</p>
 <p>2.Linkbase：链接库的存储模块，包含一般的链接信息；是抓取系统的核心，使用redis存储。</p>
 <p>3.<a href="http://www.w3school.com.cn/xpath/index.asp">XPATH</a>：一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历， 是 W3C XSLT 标准的主要元素。使用XPATH以及相关工具lib进行链接抽取和信息抽取 ...</p> <a class="" href="http://hackecho.com/2012/03/how-to-build-real-time-directional-crawl-cluster/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">带偏好的爬虫——优先级队列</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Wed 07 March 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>有时候URL队列不一定要符合“先进先出”的方式，而是把重要的URL优先进行抓取。这种策略也叫做页面选择（Page Selection）。</p>
-<p>那么怎样来判断网页的重要性呢？</p>
-<p>其因素很多，主要有链接的欢迎度、链接的重要度和平均链接深度、网站质量、历史权重等。</p>
-<p>链接的欢迎度主要由反向链接（Backlinks）的数量和质量决定，我们定义为IB(P)。</p>
-<p>链接的重要度，是一个关于URL字符串的函数，仅仅考察字符串本身，比如认为".com"和"home"的URL重要度比".cc"和"map"高，我们定义为IL(P)。</p>
-<p>平均连接深度，计算出全站的平均链接深度，然后认为距离种子站点越近的重要性越高。我们定义为ID(P)。</p>
-<p>如果定义网页的重要性为I(P)，那么其重要度有下面的公式决定：</p>
-<div class="codehilite"><pre><span class="n">I</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">IB</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="n">IL</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
-</pre></div>
-
-
-<p>其中，X和Y两个参数用来调整IB ...</p> <a class="" href="http://hackecho.com/2012/03/preferences-spider-with-priority-queue/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

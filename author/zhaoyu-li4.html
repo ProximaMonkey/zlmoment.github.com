@@ -43,6 +43,30 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
+<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
+<h2>根文件系统</h2>
+<p><strong>/bin</strong></p>
+<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong></p>
+<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong></p>
+<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong></p>
+<p>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong></p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/03/find-password-of-win7/">Win 7忘记密码的恢复方法</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 08 March 2011
 
@@ -227,72 +251,6 @@ by Zhaoyu Li
 </div>
         <div class="summary" style="margin:18px 0 0 0;"><p>Source: http://tedwise.com/2010/08/28/homebrew-vs-macports/</p>
 <p>If you do development on a Mac and you have a Unix background, you immediately start noticing missing tools and utilities. OS/X doesn’t have an apt-get for package management (or even one of the lousy RPM variants). There are options ...</p> <a class="" href="http://hackecho.com/2012/05/homebrew-vs-macports/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/how-others-read-your-resume/">人事部门和别的程序员是怎样阅读你的简历的</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 19 May 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><h3>人事部门是这样阅读简历的</h3>
-<ul>
-<li>
-<p>（+15分）如果简历中说到了和工作职位相符的技能超过5次以上。</p>
-</li>
-<li>
-<p>（+8分）如果简历中说到了和工作职位相符的技能3次到5次。</p>
-</li>
-<li>
-<p>（+4分）如果简历中说到了和工作职位相符的技能1次到2次。</p>
-</li>
-<li>
-<p>（+4分）Cover Letter（“求职信”或“自荐信”）提到了招聘人员。</p>
-</li>
-<li>
-<p>（+2分）简历中有Cover Letter（求职信）。</p>
-</li>
-<li>
-<p>（-10分）没有提到和职位描述相关的技能。</p>
-</li>
-<li>
-<p>（-15分）没有受过大专教育。</p>
-</li>
-</ul>
-<h3>程序员是这样阅读简历的</h3>
-<ul>
-<li>
-<p>（+15分）曾经因为好玩而写过操作系统或编译器。</p>
-</li>
-<li>
-<p>（+12分）简历被LaTeX编译过。</p>
-</li>
-<li>
-<p>（+11分）为开源软件贡献过代码。</p>
-</li>
-<li>
-<p>（+9分）上学的时候曾经写过操作系统或编译器。</p>
-</li>
-<li>
-<p>（+8分）有一个BLOG分享技术知识。</p>
-</li>
-<li>
-<p>（+8分）编程/机器人/工程俱乐部主席。</p>
-</li>
-<li>
-<p>（+7分）编程/机器人/工程竞赛参与者。</p>
-</li>
-<li>
-<p>（+7分）在Google和Microsoft实习过。</p>
-</li>
-<li>
-<p>（+6分）使用动态语言（Python/Perl/Ruby）写过非试验性的程序。</p>
-</li>
-<li>
-<p>（+5分 ...</p></li></ul> <a class="" href="http://hackecho.com/2011/05/how-others-read-your-resume/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

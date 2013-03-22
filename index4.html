@@ -43,6 +43,30 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">趣味算法面试题：男女比例问题</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 16 April 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>阿里巴巴的一道面试题：据说澳大利亚的父母喜欢女孩，假设在澳大利亚的家庭中，如果生出来的第一个女孩，就不再生了；如果是男孩就继续生，直到生到第一个女孩为止。问若干年后，澳大利亚的男女的比例是多少？</p>
+<p>本能地反应男女比例还应该是1：1，但到底是不是呢，我们来用程序验证一下。</p>
+<p>思路：如果一个家庭生的是女孩，则继续让下一个家庭生；如果是男孩，则递归调用自己，直到结果为女孩。生男生女将由随机产生的0和1来决定。</p>
+<p>我们先看运行结果，程序代码附在文后。如果你有兴趣，可以自己实现一下。</p>
+<h3>编译环境：</h3>
+<blockquote>
+<p>i686-apple-darwin11-llvm-gcc-4.2 (GCC) 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)</p>
+</blockquote>
+<h3>运行结果：</h3>
+<p><a href="/static/images/2012/04/skitched-20120416-192726.png"><img alt="" src="/static/images/2012/04/skitched-20120416-192726.png" /></a></p>
+<p>结果很有意思，比例虽然接近于1：1，但貌似男孩总数小于女孩总数的概率要大一些。</p>
+<h3>程序代码：</h3>
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio ...</span></pre></div> <a class="" href="http://hackecho.com/2012/04/funny-algorithm-ratio-of-male-and-femal/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/04/html5-websocket-communication-protocol/">HTML5 之 WebSocket 通信协议介绍</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 15 April 2012
 
@@ -293,31 +317,6 @@ by Zhaoyu Li
 <p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
 <p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
 <p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="" href="http://hackecho.com/2012/02/dreams-not-just-words/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">初探Scrapy的架构</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 27 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>本文由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://doc.scrapy.org/en/latest/topics/architecture.html">这篇文章</a>，转载请注明出处。</p>
-<p>这篇文章将描述Scrapy的架构设计以及它各组件之间的配合。因有些地方发觉翻译之后反不如原文简练易懂，因此部分地方保留了原文。</p>
-<h3>概览</h3>
-<p>下面这幅图简单描述了Scrapy的整体架构，其中绿色的箭头表示Scrapy的数据处理流程。（点击图片可放大）</p>
-<p><a href="/static/images/2012/02/scrapy_architecture.png"><img alt="" src="/static/images/2012/02/scrapy_architecture.png" /></a></p>
-<h3>组件介绍</h3>
-<p><strong>Scrapy Engine（Scrapy引擎）</strong></p>
-<p>Scrapy引擎主要负责控制各个组件之间的数据处理过程，并在特定动作发生时触发相应的事件。</p>
-<p><strong>Scheduler（调度控制器）</strong></p>
-<p>调度控制器从Scrapy引擎接受请求，并将请求列入队列，当Scrapy引擎发出请求时再返回给引擎。</p>
-<p><strong>Downloader（下载器）</strong></p>
-<p>下载器主要负责获取网页并将网页返回给Scrapy引擎和Spiders。</p>
-<p><strong>Spiders（蜘蛛）</strong></p>
-<p>Spiders are custom classes written by Scrapy users to parse responses and extract items (aka scraped items) from them or additional URLs ...</p> <a class="" href="http://hackecho.com/2012/02/glimpse-of-the-architechture-of-scrapy/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

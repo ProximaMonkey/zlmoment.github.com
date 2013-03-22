@@ -43,6 +43,31 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/01/vps-struggle/">VPS折腾记</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 14 January 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>实在不爽虚拟主机的性能问题和每天几十封宕机警告，而且主机的一切环境都是虚拟主机商配置好的，没有自由发挥的余地。于是果断决定给博客找个好点的VPS，也为以后博客改版做准备。当然，还有VPN哈哈。</p>
+<p>因为Linode VPS口碑还不错，而且支持ipv6，所以就选它了。折腾了整整一下午一晚上，终于把小博客搬了过来，简单总结一下整个过程以备忘。</p>
+<h2>SSH登陆</h2>
+<p>在Windows上，可以使用Putty来使用SSH。在Mac上，可以直接使用Terminal。命令很简单：</p>
+<blockquote>
+<p>ssh username@server -p portNumber</p>
+</blockquote>
+<p>后面的-p portNumber只在主机不是使用标准端口时需要加上，使用时将username和server替换成自己的用户名和地址就可以了。</p>
+<h2>安装LNMP</h2>
+<p>网上普遍说LNMP比LAMP性能要好，虽然我这个小博客也没多少流量，但无折腾不生活，趁年轻多折腾折腾。</p>
+<p>可以选择自己一个一个配置，也可以选择<a href="http://lnmp.org/">LNMP一键安装包</a>。当然折腾的前提是要稍微熟悉它，所以暂时用一键安装包了。官方给出了详细的安装步骤（见<a href="http://lnmp.org/install.html">这里</a>），这里就不再赘述。对于安装中遇到的各种问题，请看本文第五部分。</p>
+<p>安装完后记住将Nginx和PHP升级到最新版，安装包中的不是最新版。</p>
+<h2>安装Wordpress</h2>
+<p>不知为何，按照LNMP官方教程安装VSFTPD总是不成功，于是放弃之安装了PureFTPd ...</p> <a class="" href="http://hackecho.com/2012/01/vps-struggle/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/12/insert-csdn-user-account-info-into-database-with-php/">使用PHP将CSDN泄露数据导入数据库</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Fri 23 December 2011
 
@@ -303,27 +328,6 @@ by Zhaoyu Li
 <p><strong>视图</strong></p>
 <p>视图是用户看到并与之交互的界面。对老式的Web应用程序来说，视图就是由HTML元素组成的界面，在新式的Web应用程序中，HTML依旧在视图中扮演着重要的角色，但一些新的技术已层出不穷，它们包括Macromedia Flash和象XHTML，XML/XSL，WML等一些标识语言和Web services.</p>
 <p>如何处理应用程序的界面变得越来越有挑战性。MVC一个大的好处是它能为你的应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，不管这些数据是联机存储的还是一个雇员列表 ...</p> <a class="" href="http://hackecho.com/2011/09/thinkphp-intro-to-mvc/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/09/intro-to-thinkphp/">深入浅出ThinkPHP系列教程(一) 初识ThinkPHP</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 26 September 2011
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p><img alt="thinkphp_logo" src="/static/images/2011/09/thinkphp_logo_505_92.png" /></p>
-<p>大家好，从今天开始，天堂皓月博客将开始撰写《深入浅出ThinkPHP系列教程》，希望大家多多支持！本教程中有一部分资料来源于互联网，如有不适和共享的地方请联系博客，谢谢！</p>
-<p>本系列教程学习前提：了解基本的PHP知识，懂得面向对象编程的思想，了解关系型数据库的基础知识，了解基本的网页设计知识。</p>
-<p><strong>&gt;&gt;什么是PHP框架？</strong></p>
-<p>由于 PHP 的高度灵活、简单易用的特性，导致 PHPer 们常常陷入单调重复而令人生厌的体力活动的窘境。而这正是 PHP框架 要解决的问题。</p>
-<p>PHP框架 是一个 PHP 应用程序的半成品。框架提供了可在应用程序之间共享的可覆用的公共且一致的结构，而不仅仅是一组工具类。</p>
-<p>形象的来说，PHP框架 把 PHP 程序开发摆到了流水线上。换句话说，PHP开发框架有助于促进快速软件开发（RAD），这节约了你的时间，有助于创建更为稳定的程序，并减少开发者的重复编写代码的劳动。这些框架还通过确保正确的数据库操作以及只在表现层编程的方式帮助初学者创建稳定的程序。PHP框架 使得你可以花更多的时间去创造真正的 Web 程序，而不是编写重复性的代码。</p>
-<p><strong>&gt;&gt;为什么要使用PHP框架？</strong></p>
-<p><strong>加速开发过程：</strong></p>
-<p>PHP框架 ...</p> <a class="" href="http://hackecho.com/2011/09/intro-to-thinkphp/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

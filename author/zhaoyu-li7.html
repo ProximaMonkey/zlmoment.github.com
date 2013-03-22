@@ -43,6 +43,39 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/macvim-with-python/">配置MacVim的Pyhton编程环境</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sat 25 February 2012
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>文章由<a href="http://www.hackecho.com">天堂皓月</a>翻译自<a href="http://paintincode.blogspot.com/2011/04/mac-vim-setup-for-python-programming.html">这篇文章</a>，图片均来自原作者，转载请注明出处。</p>
+<p>已经有很多博客介绍怎样配置Vim的Python编程环境了，这周末我将这些优秀的文章读了一遍，并将我在MacVim配置python编程环境的步骤记录在这篇文章里。</p>
+<p><a href="/static/images/2012/02/macvim_python.png"><img alt="" src="/static/images/2012/02/macvim_python.png" /></a></p>
+<h3>安装MacVim和Python</h3>
+<p>下列两种方式中的任一种均可用来安装MacVim。</p>
+<p><strong>方式一：通过Mac ports</strong></p>
+<p>首先确保你的Mac ports是最新版：</p>
+<p>1 $ sudo port -v selfupdate</p>
+<p>安装：</p>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">port</span> <span class="n">install</span> <span class="n">macvim</span> <span class="o">+</span><span class="n">cscope</span> <span class="o">+</span><span class="n">python26</span>
+</pre></div>
+
+
+<p><strong>方式二：自己编译</strong></p>
+<div class="codehilite"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/b4winckler/macvim.git</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">macvim</span><span class="o">/</span><span class="n">src</span>
+<span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">pythoninterp</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">macsdk</span><span class="o">=</span><span class="mf">10.6</span>
+<span class="err">$</span> <span class="n">make</span>
+</pre></div>
+
+
+<p>然后键入 ...</p> <a class="" href="http://hackecho.com/2012/02/macvim-with-python/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2013/02/make-your-program/">Make Your Program</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Tue 05 February 2013
 
@@ -214,24 +247,6 @@ by Zhaoyu Li
 </li>
 <li>
 <p>增加了http头"Sec-WebSocket-Accept ...</p></li></ol> <a class="" href="http://hackecho.com/2012/04/new-hybi-10-protocol-of-websocket/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/02/no-struggle-no-life/">无折腾，不生活</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Mon 13 February 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>看看这几天都折腾了些啥...</p>
-<p>1.换博客程序，更换域名</p>
-<p>开学前，抱着“无折腾，不生活”的态度，将博客的程序换成了国人开发的Emlog。整个转换过程基本用了一天时间，网上可以找到很多emlog转Worpdress的程序，但逆向的话却很少。最后，采取了一种最笨的方法，将文章一篇一篇手工复制...不过也正好借此机会整理下文章。至于评论，由于数量多而且分散，更恐怖的是有级联关系（即谁回复了谁的关系），但看了一下发现两个程序的评论表差不多，便用PHP写了个小脚本将评论迁移了过来。当然，经过修复无数个小bug之后，博客终于又全新上线了。</p>
-<p>不过你也许看到了，现在的博客依旧是WordPress...因为后来我又折腾回来了...不解释。</p>
-<p>遗憾的是，在折腾过程中，一不小心将最新的备份给 rm -rf 掉了，因此博客所有的数据只能还原到2011年12月底。不过幸运的是，在转换程序的时候在本地还有一次数据导入，因此又找回了几篇文章，但最新的一些评论却永远丢失了...</p>
-<p>哦对了，还换了个域名：hackecho.com，原来域名还有一年多到期，进行了301永久重定向到新域名，原来的二级域名因指向不同的host，依旧有效。 </p>
-<p>2 ...</p> <a class="" href="http://hackecho.com/2012/02/no-struggle-no-life/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">

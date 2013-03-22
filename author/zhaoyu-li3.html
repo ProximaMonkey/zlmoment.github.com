@@ -43,6 +43,21 @@
     <div style="margin-top: 20px;">
                 
     <div class='article' style="padding-bottom:20px;">
+        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">那些年与编程和计算机有关的小事儿</a></h3>
+        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 17 November 2011
+
+by Zhaoyu Li
+ 
+
+
+</div>
+        <div class="summary" style="margin:18px 0 0 0;"><p>不知道写这种文章算不算回忆录，因为说回忆录未免有些早。记得初中的时候写过一本《我的小学回忆录》，将从入学一年级第一天起开始能想起来的人和事都记录了下来，如今这本未出版的手写书已不知去向，小学的记忆也越来越模糊。忽然想不如趁着现在对一些往事还尚存记忆，稍微回忆一下，也算对自己的鼓励吧。</p>
+<p>从小就是一个对电脑比较感兴趣的人，有时候兴趣是没有理由的，因为那时周围很多同学使用电脑仅限于聊QQ和半条命，而我却对除此之外的一些其它东西有着非常浓厚的兴趣。印象比较深的是买了很多很多的电脑书籍，当时最惬意的事情就是趴在桌前，做完作业后看那本比砖头还厚的《电脑医院》，一看就是四五个小时，后来还照葫芦画瓢写了个破坏注册表的.reg脚本，号称是我制造的第一个电脑病毒！</p>
+<p>由于很多电脑名词不明白，便买书、查资料。什么《注册表终极操作》、《BIOS配置指南》、《电脑上网故障1000问》、《榨干你的电脑》等等，还有全年的《电脑迷》、《电脑爱好者》、《IT新闻周刊》和不怎么看得懂的《CHIP新电脑》等。尤记得当时第一次重装系统时的激动，第一次电脑崩溃时的伤心，第一次编译通过一个程序，第一次入侵别人电脑等等的第一次，现在回想起来，真有一番体味。</p>
+<p>跟所有少年一样，在当时那个年龄段，都有一个黑客梦。当时最崇拜的人是陈盈豪，因为他的CIH病毒第一次颠覆了我的观念：病毒原来还可以破坏硬件设备 ...</p> <a class="" href="http://hackecho.com/2011/11/childhood-of-programming-and-computer/">Read more...</a></div>
+    </div>
+            
+    <div class='article' style="padding-bottom:20px;">
         <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2011/05/coal-transportation-algorithm/">面试题：火车运煤问题</a></h3>
         <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Thu 19 May 2011
 
@@ -218,30 +233,6 @@ by Zhaoyu Li
 <p>我记得去年9月12号，当我背着装有相机、衣服和睡袋的大包，走在去地铁站的路上偶遇她和她男友的情景。他们把我送到地铁口，和我拥抱道别，对我说加油，祝我长途旅行愉快，因为内心的激动混合着离别时的哀愁，记得当时我还忍不住掉了眼泪。</p>
 <p>这个女同学，梦想去西藏旅行，高中想了三年，大专想了三年，毕业之后又想了三年，现在还在继续梦想着，我希望她不是只是想想而已，只是说说而已，能终有一天亲身感受西藏如此蓝的天和如此安静的湖水，坐着火车亲眼看看撒满阳光，像银盘一样的措那湖，能走一走林芝尼洋河上的吊桥，去传说中八廊街的玛吉阿米餐厅翻看别人写的情书或者自己写一封情书。</p>
 <p>你说自己喜欢读书，让我给你列书单，方便你按照书单去采购，你还问我哪里有那么多时间看书 ...</p> <a class="" href="http://hackecho.com/2012/02/dreams-not-just-words/">Read more...</a></div>
-    </div>
-            
-    <div class='article' style="padding-bottom:20px;">
-        <h3 style="text-align:center;font-weight:normal;margin:0 auto;font-size:23px;"><a href="http://hackecho.com/2012/07/fhs-introduction/">Linux文件系统备忘录</a></h3>
-        <div style="border-bottom: 1px solid #ccc;text-align:center;padding:0 0 14px 0;color:#999;"> Sun 01 July 2012
-
-by Zhaoyu Li
- 
-
-
-</div>
-        <div class="summary" style="margin:18px 0 0 0;"><p>与Windows将硬盘看做“C盘”、“D盘”几个独立的分区不同，Linux将整个文件系统看做一棵树，这棵树的树根叫做根文件系统，用/表示。各个分区通过“挂载”（Mount）以文件夹的形式访问。</p>
-<p>在/中的文件夹很多，本文介绍常见文件夹的意义。Linux的目录结构确实比较复杂，但设置合理、层次鲜明。本文以<a href="http://www.pathname.com/fhs/">FHS 2.3</a>为例进行介绍。</p>
-<h2>根文件系统</h2>
-<p><strong>/bin</strong></p>
-<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
-<p><strong>/boot</strong></p>
-<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
-<p><strong>/dev</strong></p>
-<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
-<p><strong>/etc</strong></p>
-<p>该目录中包含系统和应用软件的配置文件。</p>
-<p><strong>/etc/passwd</strong></p>
-<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息 ...</p> <a class="" href="http://hackecho.com/2012/07/fhs-introduction/">Read more...</a></div>
     </div>
           </div>
 <div class="pagination pagination-centered">
